@@ -76,7 +76,13 @@ export default function AnatomyScene({atlas,state,onSelect,onProgress,onError}:P
   };
   (async()=>{try{let cursor=0;await Promise.all(Array.from({length:3},async()=>{while(cursor<atlas.chunks.length){const i=cursor++;await loadChunk(i);}}));if(!disposed){ready=true;dirty=true;}}catch(e){if(!disposed)onError(e instanceof Error?e.message:'Could not load the anatomy.');}})();
   const fit=(view:string,extent=0)=>{
-   const aspect=camera.aspect,mobile=el.clientWidth<768,normalDistance=mobile?Math.max(4.5,1.8*el.clientHeight/Math.max(160,el.clientHeight-350)/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))):4;
+   const mobile=el.clientWidth<768;
+   const toolbar=document.querySelector('.view-controls')?.getBoundingClientRect(),dock=document.querySelector('.bottom-dock')?.getBoundingClientRect();
+   const top=mobile?(toolbar?.bottom??204)+12:100,bottom=mobile?(dock?.top??el.clientHeight-140)-28:el.clientHeight-160;
+   const usableHeight=Math.max(100,bottom-top);
+   const bodyBox=new T.Box3();bounds.forEach(b=>bodyBox.union(b));const bodyHeight=bodyBox.getSize(new T.Vector3()).y;
+   const normalDistance=mobile?Math.max(4.5,bodyHeight*1.08*el.clientHeight/usableHeight/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))):Math.max(4,bodyHeight*2.4);
+   if(mobile&&el.clientHeight>el.clientWidth)camera.setViewOffset(el.clientWidth,el.clientHeight,0,el.clientHeight/2-(top+bottom)/2,el.clientWidth,el.clientHeight);else camera.clearViewOffset();
    const reservedHeight=mobile?350:270;const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
    const distance=T.MathUtils.lerp(normalDistance,Math.max(.2,atlasDistance),extent);if(extent>.8)view='front';
    const direction=view==='front'?new T.Vector3(0,.02,1):view==='back'?new T.Vector3(0,.02,-1):view==='side'?new T.Vector3(1,.02,0):new T.Vector3(.35,.06,1).normalize();

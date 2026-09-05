@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+"""Local atlas pipeline entry point."""
+from pathlib import Path
+import subprocess
+import sys
+
+root = Path(__file__).resolve().parent
+python = root / '.venv/bin/python'
+python = str(python) if python.exists() else sys.executable
+commands = {'registry': 'build-registry.py', 'fetch-tcia': 'fetch-tcia.py', 'ingest-tcia': 'ingest-tcia.py',
+            'fetch-denver': 'fetch-denver.py', 'ingest-denver': 'ingest-denver.py',
+            'compose': 'compose-female.py', 'check-licenses': 'check-licenses.py', 'qa': 'qa-geometry.py',
+            'check-provenance': 'validate-provenance.py', 'check-composition': 'validate-composition.py'}
+if len(sys.argv) < 2 or sys.argv[1] not in commands:
+    print('Usage: ./atlas {' + '|'.join(commands) + '} [arguments]')
+    raise SystemExit(2)
+raise SystemExit(subprocess.call([python, str(root / 'scripts' / commands[sys.argv[1]]), *sys.argv[2:]], cwd=root))

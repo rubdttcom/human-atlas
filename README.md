@@ -1,64 +1,68 @@
-# Human Atlas
+# Female Open Human Atlas
 
-An interactive 3D anatomy explorer built with React, Three.js, and shadcn/ui. Take the BodyParts3D adult male reference apart into **2,234 individually selectable meshes**, explore **15 anatomical systems**, and search **3,432 named concepts**.
+Local fork of [ashemag/human-atlas](https://github.com/ashemag/human-atlas), combining
+open anatomical sources with a source record for every mesh. The original
+React/Three.js renderer, search, system layers, isolation and exploded views are
+retained. New controls expose source/donor evidence, licences, transforms, geometry
+checks and an interactive coverage table.
 
-**[Explore the live demo](https://human-atlas-seven.vercel.app)**
+**Work in progress. The atlas is not anatomically validated or complete.**
 
-## Explore
+| View | Included geometry | Interpretation |
+| --- | --- | --- |
+| HRA Female v1.5 | 888 source meshes | Female reference assembly; per-component donors unresolved. |
+| TCIA female 003 | 36 published CT segmentation labels | Female donor, 26 years; automatic and unreviewed; many labels group structures. |
+| Denver VHF lower limb | 128 final STL meshes | Female donor VHF, manual cryosection segmentation, pelvis to toes: bones, muscles, cartilage, ligaments. Native aligned VHF image frame. Smoothed and overclosure-corrected by the source; not reviewed here. |
+| Experimental composition | 938 selected meshes | Denver VHF lower limb (bones, muscles, cartilage, ligaments), TCIA trunk skeleton, HRA detailed organs, additional CT structures. Torso fit RMS 27.2 mm; lower-limb fit RMS 28.1 mm; separate provisional head fit. |
+| BodyParts3D 4.0 | 2,234 source meshes | Male reference for comparison, not included in the female composition. |
 
-- Orbit, zoom, and select structures directly on the body.
-- Toggle individual systems or use skeleton and organ presets.
-- Move from assembled anatomy to a spaced inventory of every visible piece.
-- Search anatomical names and source identifiers.
-- Isolate a selected structure and read its details.
-- Use compact controls and detail panels on mobile.
+The 4,316 catalog entries are the imported source union, not a complete anatomical
+ontology. Current reports separately identify 128 measured-female entries (Denver
+VHF), 717 female-reference entries, 36 female CT labels awaiting review, and 1,589
+template-only entries. Hierarchy-only
+entries without direct meshes must not be confused with missing human anatomy.
 
-## Run locally
+## Run
 
-Requires Node.js 22.13 or newer. No API keys or accounts are needed.
-
-```sh
+```bash
 npm ci
-npm run dev
+npm run dev -- --port 3017
 ```
 
-Open http://localhost:3016. To build the static site, run `npm run build`; the output is in `dist/`.
+Open http://localhost:3017. The source selector switches reference frames; the
+experimental composition also has a direct URL:
+http://localhost:3017/?source=composed.
 
-## Validate
+## Data and checks
 
-```sh
+- [Implementation status and remaining work](docs/PROGRESS.md)
+- [Full original plan](docs/female-open-human-atlas-plan.md)
+- [Reproducible download, conversion and verification](docs/REPRODUCIBILITY.md)
+- [Dataset inventory](datasets.csv), [structure catalog](structures.csv), [coverage](coverage.csv)
+- [Source records](registry/sources.json), [donors](registry/donors.json), [licences](registry/licences.json)
+- [Registration evidence](generated/registration-report.json), [geometry QA](generated/qa-report.json)
+- [Attribution](public/ATTRIBUTION.md), [original upstream README](docs/UPSTREAM-README.md)
+
+The source binary buffers retain their original geometry identity. Every record
+includes source asset, source revision or input hash, chunk SHA-256, donor evidence,
+geometry type, applied display transform, licence and review status. Confidence is
+unassessed unless evidence establishes it. An experimental alignment is not a VHF
+canonical registration.
+
+```bash
 npm run check
-node scripts/validate-atlas.mjs
-node scripts/validate-interactions.mjs
+python3 scripts/validate-provenance.py
+.venv/bin/python scripts/validate-composition.py
+./atlas check-licenses --target open-clean
 npm run build
 ```
 
-Validation covers mesh buffers, names and concept membership, nonoverlapping exploded layouts at desktop and mobile aspect ratios, search and inspection contracts, and tap-versus-drag handling. Browser interaction checks have exercised selection, system controls, search, isolation, rotation, and 390×844, 320×568, and 844×390 layouts. Phone controls stay clear of the exploded inventory, and isolated structures fit the space above or beside the detail panel. Physical-device performance and real multitouch hardware have not been tested.
+Input volumes and external source repositories are excluded from Git. Denver VHF
+trunk/upper-limb coverage does not exist (the dataset is pelvis to toes); additional
+female donors, specialist datasets, reviewed ontology bridges and a validated VHF
+canonical space remain unfinished. Denver assets need `scripts/fetch-denver.py`
+(local Chrome) because the publisher's endpoint rejects plain HTTP clients. BMFToolkit's 63 meshes are
+inventoried locally, with mirrored anatomy distinguished from segmented anatomy;
+they are not part of the public build.
 
-## Anatomy data
-
-The current viewer uses **BodyParts3D 4.0**, an adult male reference anatomy, licensed **CC BY 4.0**. It does not represent every human structure or variation. Individual source meshes are distinct from named concepts, which may group multiple meshes. Descriptions distinguish general system context from individual organ explanations.
-
-Geometry is simplified for browser performance while retaining every source mesh. The packaged model contains 2,288,268 triangles and downloads approximately 33 MB of compressed geometry. Full credits, source links, and adaptation details are in [ATTRIBUTION.md](public/ATTRIBUTION.md).
-
-This is an educational explorer, not a diagnostic or surgical tool.
-
-## How it works
-
-Geometry is merged into batches. Per-structure GPU textures control translation, visibility, and selection, while component geometry supports accurate picking. Exploded layouts pack only the visible pieces. Rendering updates when the scene changes; orbit controls remain responsive without thousands of separate draw calls.
-
-The optional WebMCP tools expose anatomy search and inspection in compatible browsers. The visible interface works without them.
-
-## Rebuilding geometry
-
-The repository includes browser-ready geometry. Rebuilding it is optional: obtain the official BodyParts3D OBJ archive and English metadata tables, prepare the joined concepts and display-system mappings, run `scripts/convert-anatomy.py`, then `node scripts/optimize-anatomy.mjs` and `node scripts/compress-models.mjs`. Simplification uses a 0.2% relative error limit per structure.
-
-## Deploy
-
-Import this repository into Vercel as a Vite project. The included `vercel.json` configures `npm ci`, `npm run build`, and the `dist` output directory. It can also be served by a static host.
-
-## License
-
-Original application code is released under the [MIT License](LICENSE). **The anatomy data has its own CC BY 4.0 license**; preserve the attribution when redistributing it. Third-party dependencies retain their respective licenses.
-
-Issues and pull requests are welcome. Please include reproduction steps and browser/device details for interaction problems.
+Application code: MIT. Included data: CC BY 4.0 with separate source attribution.

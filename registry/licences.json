@@ -1,0 +1,100 @@
+{
+  "hra-female": {
+    "license": "CC-BY-4.0",
+    "url": "https://humanatlas.io/3d-reference-library",
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "recorded-source-declaration"
+  },
+  "denver-vhf": {
+    "license": "CC-BY-4.0",
+    "url": "https://digitalcommons.du.edu/visiblehuman/1/",
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "recorded-source-declaration"
+  },
+  "bmftoolkit": {
+    "license": "UNVERIFIED-ASSET",
+    "url": "https://github.com/manishsreenivasa/BMFToolkit/blob/master/LICENSE",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "vhf": {
+    "license": "UNVERIFIED",
+    "url": "https://www.nlm.nih.gov/research/visible/getting_data.html",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "tcia": {
+    "license": "CC-BY-4.0",
+    "url": "https://www.cancerimagingarchive.net/collection/healthy-total-body-cts/",
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "recorded-source-declaration"
+  },
+  "bodyparts3d": {
+    "license": "CC-BY-4.0",
+    "url": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "recorded-source-declaration"
+  },
+  "spider": {
+    "license": "UNVERIFIED",
+    "url": "https://spider.grand-challenge.org/",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "openear": {
+    "license": "UNVERIFIED",
+    "url": "https://zenodo.org/records/1473724",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "sparc": {
+    "license": "UNVERIFIED",
+    "url": "https://discover.pennsieve.io/datasets/307",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "hipct": {
+    "license": "PER-ASSET",
+    "url": "https://human-organ-atlas.esrf.eu",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "teeth3ds": {
+    "license": "UNVERIFIED",
+    "url": "https://osf.io/xctdy/",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "z-anatomy": {
+    "license": "PER-ASSET",
+    "url": "https://github.com/Z-Anatomy/Models-of-human-anatomy",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "anatomytool": {
+    "license": "PER-ASSET",
+    "url": "https://anatomytool.org/",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  },
+  "cads": {
+    "license": "PER-MODEL",
+    "url": "https://github.com/murong-xu/CADS",
+    "redistributable": "unknown",
+    "commercial_use": "unknown",
+    "review_status": "pending-per-asset-review"
+  }
+}

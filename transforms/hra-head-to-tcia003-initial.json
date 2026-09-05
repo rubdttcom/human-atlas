@@ -1,0 +1,58 @@
+{
+  "id": "hra-head-to-tcia003-initial",
+  "type": "similarity-bounding-box-fit",
+  "from": "HRA viewer stage",
+  "to": "TCIA 003 viewer stage",
+  "matrix_row_major": [
+    0.8984783046834011,
+    0.0,
+    0.0,
+    0.003903021343306586,
+    0.0,
+    0.8984783046834011,
+    0.0,
+    0.21756657126718415,
+    0.0,
+    0.0,
+    0.8984783046834011,
+    0.046439059665611404,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "scale": 0.8984783046834011,
+  "source_brain_bounds": [
+    [
+      -0.0746803805232048,
+      1.505783200263977,
+      -0.14809247851371765
+    ],
+    [
+      0.0616968534886837,
+      1.651879072189331,
+      0.018947048112750053
+    ]
+  ],
+  "target_brain_bounds": [
+    [
+      -0.06560937315225601,
+      1.5704801082611084,
+      -0.09262499958276749
+    ],
+    [
+      0.06174999848008156,
+      1.7017440795898438,
+      0.06946875154972076
+    ]
+  ],
+  "volume_scale": 0.7253085288600116,
+  "surface_area_scale": 0.8072632639867585,
+  "rms_mm": null,
+  "review_status": "experimental-unreviewed",
+  "canonical_registration": false,
+  "limitations": [
+    "Brain bounding-box containment is not a surface registration or anatomical validation.",
+    "The same transform is applied to cranial sensory structures; their placement is unreviewed."
+  ]
+}

@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import {MeshoptSimplifier} from 'meshoptimizer';
 await MeshoptSimplifier.ready;
-const name=process.argv[2]??'atlas.json',prefix=name.includes('female')?'female':'body';
+const name=process.argv[2]??'atlas.json',prefix=process.argv[3]??(name.includes('female')?'female':'body');
+if(name!=='atlas.json'&&name!=='atlas-female.json'&&!process.argv[3])throw new Error('An explicit output prefix is required for additional datasets.');
 const dir=new URL('../public/models/',import.meta.url),manifest=JSON.parse(fs.readFileSync(new URL(name,dir),'utf8'));
 const originals=manifest.chunks.map(c=>c.url.split('/').pop());
 if(manifest.optimized)throw new Error('Already optimized. Re-run the source converter first.');
@@ -35,5 +36,5 @@ for(const p of manifest.parts){
 flush();manifest.sourceTriangles=manifest.triangles;manifest.triangles=triangles;manifest.chunks=chunks;manifest.optimized={method:'meshoptimizer quadric simplification',maximumRelativeError:.002,preservedMeshes:manifest.parts.length};
 fs.writeFileSync(new URL(name,dir),JSON.stringify(manifest));
 // Remove only converter outputs superseded by the optimized chunks.
-for(const name of originals)fs.unlinkSync(new URL(name,dir));
+for(const name of originals)if(!chunks.some(c=>c.url.split('/').pop()===name))fs.unlinkSync(new URL(name,dir));
 console.log(JSON.stringify({parts:manifest.parts.length,triangles,bytes:chunks.reduce((n,c)=>n+c.bytes,0),chunks:chunks.length,maxError}));

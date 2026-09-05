@@ -86,3 +86,29 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 @media(max-width:767px){body:has(.detail-sheet) .view-controls{visibility:hidden}}
 
 @media(max-height:600px) and (orientation:landscape){body:has(.detail-sheet) .bottom-dock{left:12px;right:324px;width:auto;transform:none;max-width:none;margin:0}}
+
+/* Source selection and auditable structure records. */
+*{letter-spacing:0!important}
+.glass{border-radius:8px}
+.identity h1{font-size:30px}
+.anatomy-choice select{font:inherit;font-size:12px;max-width:100%;height:38px;border:1px solid var(--border);border-radius:6px;background:white;color:var(--foreground);padding:0 8px}
+.provenance{font-size:12px;line-height:1.5;border-top:1px solid var(--border);padding-top:12px}
+.provenance h3,.provenance h4{font-size:13px;font-weight:600;margin:6px 0 12px}
+.provenance dl{margin:0}.provenance dl>div{display:grid;grid-template-columns:82px minmax(0,1fr);gap:8px;margin-bottom:9px}
+.provenance dt{color:#68727d}.provenance dd{margin:0;overflow-wrap:anywhere}
+.provenance p,.provenance li{overflow-wrap:anywhere;color:#56636f}.provenance summary{cursor:pointer}
+.provenance-links{display:flex;align-items:center;gap:16px;margin-block:14px}.provenance-links a{display:flex;gap:4px;align-items:center}.provenance-links button{width:40px;height:40px;display:grid;place-items:center}
+.studio-footer a{text-decoration:none}
+@media(max-width:767px){.identity{max-width:calc(100% - 116px)}.identity h1{font-size:24px}.identity h1 .edition{display:none}.identity-meta{overflow-wrap:anywhere}.anatomy-choice{margin-top:8px}.anatomy-choice select{height:34px;font-size:11px}.view-controls{top:152px}.search-panel{top:146px}}
+@media(max-width:350px){.identity h1{font-size:22px}.identity-meta{font-size:9px}.anatomy-choice select{width:100%;font-size:10px}}
+@media(max-height:600px) and (orientation:landscape){.identity h1{font-size:24px}.view-controls{top:76px}}
+.registration-note{font-size:11px;margin-top:8px;color:#9e354e;max-width:240px}
+@media(max-width:767px){.registration-note{font-size:10px}.is-composed .view-controls{top:184px}}
+@media(max-height:600px) and (orientation:landscape){.is-composed .view-controls{top:76px}}
+.studio-footer>span{display:flex;align-items:center}
+.coverage-sheet{width:min(960px,100vw)!important;max-width:none!important;padding:24px;gap:18px;display:flex;flex-direction:column;background:#fff}
+.coverage-sheet>header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.coverage-sheet button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;min-width:40px}
+.coverage-filters{display:flex;gap:14px;align-items:center}.coverage-filters label{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);flex:1;min-width:0;padding:8px 0}.coverage-filters input{width:100%;min-width:0;outline:none}.coverage-filters select{font-size:13px;min-height:40px;max-width:220px;border:1px solid var(--border);padding:6px}
+.coverage-table{flex:1;min-height:0;overflow:auto}.coverage-table table{border-collapse:collapse;width:100%;font-size:12px;table-layout:fixed}.coverage-table th{position:sticky;top:0;background:#edf1f2;text-align:left;font-weight:600;padding:12px 8px}.coverage-table th:first-child{width:43%}.coverage-table th:nth-child(2){width:29%}.coverage-table td{padding:9px 8px;border-bottom:1px solid var(--border);vertical-align:top;overflow-wrap:anywhere}.coverage-table td strong{display:block;font-weight:500}.coverage-table td span{display:block;color:#697781;font-size:11px;margin-top:3px}.coverage-table td button{font-size:11px;max-width:100%;white-space:normal}.coverage-sheet>footer{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}.coverage-sheet>footer>div{display:flex;align-items:center;gap:12px}
+@media(max-width:767px){.studio-footer{justify-content:space-between}.coverage-sheet{padding:16px;gap:12px}.coverage-filters{flex-wrap:wrap;gap:6px}.coverage-filters label{flex-basis:100%}.coverage-filters input{font-size:16px}.coverage-table th:first-child{width:40%}.coverage-table th:nth-child(2){width:30%}.coverage-table td,.coverage-table th{padding:8px 4px;font-size:11px}}

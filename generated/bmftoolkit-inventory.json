@@ -1,0 +1,2007 @@
+[
+  {
+    "source": "bmftoolkit",
+    "source_asset": "Sacrum",
+    "mat_index_one_based": 1,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "midline",
+    "vertices": 6891,
+    "faces": 13778,
+    "bounds_native_metres": [
+      [
+        -0.09161809999999997,
+        -0.059461000000000014,
+        -0.07693510000000003
+      ],
+      [
+        0.008319900000000017,
+        0.05953299999999999,
+        0.05041790000000003
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "SaCT",
+      "SaMC",
+      "SaRSN"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "PelvisR",
+    "mat_index_one_based": 2,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 14896,
+    "faces": 29792,
+    "bounds_native_metres": [
+      [
+        -0.074227645,
+        -0.149992433,
+        -0.14254937300000006
+      ],
+      [
+        0.07618689,
+        -0.003178178000000006,
+        0.07005945299999997
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "RPASIS",
+      "RPPSIS",
+      "RPIT"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "PelvisL",
+    "mat_index_one_based": 3,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 14896,
+    "faces": 29792,
+    "bounds_native_metres": [
+      [
+        -0.074227645,
+        0.0031781779999999994,
+        -0.14254937300000006
+      ],
+      [
+        0.07618689000000002,
+        0.149992433,
+        0.07005945299999997
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "LPASIS",
+      "LPPSIS",
+      "LPIT"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FemurR",
+    "mat_index_one_based": 4,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 7349,
+    "faces": 14694,
+    "bounds_native_metres": [
+      [
+        -0.03577397098554468,
+        -0.16964864236370028,
+        -0.477182851994203
+      ],
+      [
+        0.04699828151365852,
+        -0.06050311123878444,
+        -0.053546224321003026
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "RFmH",
+      "RFmGT",
+      "RFmMC",
+      "RFmLNP",
+      "RFmLC"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FemurL",
+    "mat_index_one_based": 5,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 7349,
+    "faces": 14694,
+    "bounds_native_metres": [
+      [
+        -0.03577397098554467,
+        0.06050311123878444,
+        -0.477182851994203
+      ],
+      [
+        0.046998281513658535,
+        0.16964864236370028,
+        -0.053546224321003026
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "LFmH",
+      "LFmGT",
+      "LFmMC",
+      "LFmLNP",
+      "LFmLC"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "PatellaR",
+    "mat_index_one_based": 6,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 1195,
+    "faces": 2386,
+    "bounds_native_metres": [
+      [
+        0.02822565585703864,
+        -0.12997249979456452,
+        -0.47312099786641654
+      ],
+      [
+        0.05430050506181953,
+        -0.08465374776899327,
+        -0.4267421544356481
+      ]
+    ],
+    "watertight": true,
+    "landmarks": "RPaAP",
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "PatellaL",
+    "mat_index_one_based": 7,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 1195,
+    "faces": 2386,
+    "bounds_native_metres": [
+      [
+        0.028225655857038654,
+        0.08465374776899327,
+        -0.47312099786641654
+      ],
+      [
+        0.05430050506181954,
+        0.12997249979456452,
+        -0.4267421544356481
+      ]
+    ],
+    "watertight": true,
+    "landmarks": "LPaAP",
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "TibiaR",
+    "mat_index_one_based": 8,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 3228,
+    "faces": 6452,
+    "bounds_native_metres": [
+      [
+        -0.05488681907691137,
+        -0.14043635943496718,
+        -0.8186217970914824
+      ],
+      [
+        0.019372082297983886,
+        -0.06331270003733871,
+        -0.4712363578107035
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "RTMC",
+      "RTLT",
+      "RTMM",
+      "RTLBE",
+      "RTLC"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "TibiaL",
+    "mat_index_one_based": 9,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 3228,
+    "faces": 6452,
+    "bounds_native_metres": [
+      [
+        -0.054886819076911356,
+        0.06331270003733871,
+        -0.8186217970914824
+      ],
+      [
+        0.0193720822979839,
+        0.14043635943496718,
+        -0.4712363578107035
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "LTMC",
+      "LTLT",
+      "LTMM",
+      "LTLBE",
+      "LTLC"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FibulaR",
+    "mat_index_one_based": 10,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 1928,
+    "faces": 3852,
+    "bounds_native_metres": [
+      [
+        -0.060310696124161275,
+        -0.15154768321871404,
+        -0.83021126499379
+      ],
+      [
+        -0.027553120443427028,
+        -0.10038170863042267,
+        -0.4892228755065397
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "RFbHM",
+      "RFbH",
+      "RFbLM",
+      "RFbMM"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FibulaL",
+    "mat_index_one_based": 11,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 1928,
+    "faces": 3852,
+    "bounds_native_metres": [
+      [
+        -0.06031069612416126,
+        0.10038170863042267,
+        -0.83021126499379
+      ],
+      [
+        -0.02755312044342701,
+        0.15154768321871404,
+        -0.4892228755065397
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "LFbHM",
+      "LFbH",
+      "LFbLM",
+      "LFbMM"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "TalusR",
+    "mat_index_one_based": 12,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 1816,
+    "faces": 3628,
+    "bounds_native_metres": [
+      [
+        -0.05255622211449242,
+        -0.11095864072543099,
+        -0.8453792768096973
+      ],
+      [
+        0.007411719713456358,
+        -0.06656181696375259,
+        -0.8102310000007139
+      ]
+    ],
+    "watertight": true,
+    "landmarks": "RFtTIP",
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "TalusL",
+    "mat_index_one_based": 13,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 1816,
+    "faces": 3628,
+    "bounds_native_metres": [
+      [
+        -0.05255622211449241,
+        0.06656181696375259,
+        -0.8453792768096973
+      ],
+      [
+        0.00741171971345637,
+        0.11095864072543099,
+        -0.8102310000007139
+      ]
+    ],
+    "watertight": true,
+    "landmarks": "LFtTIP",
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "CalcaneusR",
+    "mat_index_one_based": 14,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 2865,
+    "faces": 5726,
+    "bounds_native_metres": [
+      [
+        -0.07107365640355885,
+        -0.12260343472591693,
+        -0.8967772744839461
+      ],
+      [
+        -0.0008338159427647217,
+        -0.06082894124642164,
+        -0.8390301393910977
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "RFtCMP",
+      "RFtCLP"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "CalcaneusL",
+    "mat_index_one_based": 15,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 2865,
+    "faces": 5726,
+    "bounds_native_metres": [
+      [
+        -0.07107365640355885,
+        0.06082894124642164,
+        -0.8967772744839461
+      ],
+      [
+        -0.0008338159427647095,
+        0.12260343472591693,
+        -0.8390301393910977
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [
+      "LFtCMP",
+      "LFtCLP"
+    ],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "NavicularR",
+    "mat_index_one_based": 16,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 740,
+    "faces": 1476,
+    "bounds_native_metres": [
+      [
+        -0.0019570408230586123,
+        -0.11759316803641377,
+        -0.8507313399018706
+      ],
+      [
+        0.02331601414779808,
+        -0.07921870529606743,
+        -0.8202178364724528
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "NavicularL",
+    "mat_index_one_based": 17,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 740,
+    "faces": 1476,
+    "bounds_native_metres": [
+      [
+        -0.0019570408230585984,
+        0.07921870529606743,
+        -0.8507313399018706
+      ],
+      [
+        0.023316014147798093,
+        0.11759316803641377,
+        -0.8202178364724528
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "CuboidR",
+    "mat_index_one_based": 18,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 802,
+    "faces": 1600,
+    "bounds_native_metres": [
+      [
+        -0.008501588093521327,
+        -0.1322805109801198,
+        -0.8755367313614805
+      ],
+      [
+        0.021530826535190437,
+        -0.0940279598850209,
+        -0.8439622553542284
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "CuboidL",
+    "mat_index_one_based": 19,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 802,
+    "faces": 1600,
+    "bounds_native_metres": [
+      [
+        -0.008501588093521313,
+        0.0940279598850209,
+        -0.8755367313614805
+      ],
+      [
+        0.02153082653519045,
+        0.1322805109801198,
+        -0.8439622553542284
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "MedialCuneiformR",
+    "mat_index_one_based": 20,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 678,
+    "faces": 1352,
+    "bounds_native_metres": [
+      [
+        0.016329414918354355,
+        -0.10272392744680178,
+        -0.8672982889000538
+      ],
+      [
+        0.0495907169115976,
+        -0.07923879471215355,
+        -0.8345938903496363
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "MedialCuneiformL",
+    "mat_index_one_based": 21,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 678,
+    "faces": 1352,
+    "bounds_native_metres": [
+      [
+        0.016329414918354362,
+        0.07923879471215355,
+        -0.8672982889000538
+      ],
+      [
+        0.04959071691159762,
+        0.10272392744680178,
+        -0.8345938903496363
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "IntermediateCuneiformR",
+    "mat_index_one_based": 22,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 372,
+    "faces": 740,
+    "bounds_native_metres": [
+      [
+        0.01817391060012766,
+        -0.11339305335933698,
+        -0.8558817802082791
+      ],
+      [
+        0.03937672289308252,
+        -0.09415097088658184,
+        -0.8328306089901151
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "IntermediateCuneiformL",
+    "mat_index_one_based": 23,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 372,
+    "faces": 740,
+    "bounds_native_metres": [
+      [
+        0.018173910600127678,
+        0.09415097088658184,
+        -0.8558817802082791
+      ],
+      [
+        0.039376722893082534,
+        0.11339305335933698,
+        -0.8328306089901151
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "LateralCuneiformR",
+    "mat_index_one_based": 24,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 454,
+    "faces": 904,
+    "bounds_native_metres": [
+      [
+        0.011811272627389733,
+        -0.12551716544845284,
+        -0.8612894957022617
+      ],
+      [
+        0.03660777547262727,
+        -0.10145960342530558,
+        -0.8361320660377137
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "LateralCuneiformL",
+    "mat_index_one_based": 25,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 454,
+    "faces": 904,
+    "bounds_native_metres": [
+      [
+        0.011811272627389747,
+        0.10145960342530558,
+        -0.8612894957022617
+      ],
+      [
+        0.03660777547262729,
+        0.12551716544845284,
+        -0.8361320660377137
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FirstMetatarsalR",
+    "mat_index_one_based": 26,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 1638,
+    "faces": 3272,
+    "bounds_native_metres": [
+      [
+        0.03823048189411295,
+        -0.10626917338736769,
+        -0.8811024222436683
+      ],
+      [
+        0.10432536356421997,
+        -0.08307345182213476,
+        -0.8419634326044555
+      ]
+    ],
+    "watertight": true,
+    "landmarks": "RFt1MA",
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FirstMetatarsalL",
+    "mat_index_one_based": 27,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 1638,
+    "faces": 3272,
+    "bounds_native_metres": [
+      [
+        0.03823048189411296,
+        0.08307345182213476,
+        -0.8811024222436683
+      ],
+      [
+        0.10432536356421997,
+        0.10626917338736769,
+        -0.8419634326044555
+      ]
+    ],
+    "watertight": true,
+    "landmarks": "LFt1MA",
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "SecondMetatarsalR",
+    "mat_index_one_based": 28,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 1140,
+    "faces": 2276,
+    "bounds_native_metres": [
+      [
+        0.03263502731403298,
+        -0.12241475123032303,
+        -0.8839353467388396
+      ],
+      [
+        0.10141787454067325,
+        -0.10184848439366413,
+        -0.8378543563276982
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "SecondMetatarsalL",
+    "mat_index_one_based": 29,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 1140,
+    "faces": 2276,
+    "bounds_native_metres": [
+      [
+        0.03263502731403299,
+        0.10184848439366413,
+        -0.8839353467388396
+      ],
+      [
+        0.10141787454067328,
+        0.12241475123032303,
+        -0.8378543563276982
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "ThirdMetatarsalR",
+    "mat_index_one_based": 30,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 1078,
+    "faces": 2152,
+    "bounds_native_metres": [
+      [
+        0.029856493999972762,
+        -0.1325735534303177,
+        -0.8852247569667808
+      ],
+      [
+        0.09612302307781213,
+        -0.108585954402933,
+        -0.8455053829913245
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "ThirdMetatarsalL",
+    "mat_index_one_based": 31,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 1078,
+    "faces": 2152,
+    "bounds_native_metres": [
+      [
+        0.029856493999972776,
+        0.108585954402933,
+        -0.8852247569667808
+      ],
+      [
+        0.09612302307781216,
+        0.1325735534303177,
+        -0.8455053829913245
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FourthMetatarsalR",
+    "mat_index_one_based": 32,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 1009,
+    "faces": 2014,
+    "bounds_native_metres": [
+      [
+        0.017726235156793443,
+        -0.1402267046951981,
+        -0.8901299187751326
+      ],
+      [
+        0.08242769502086279,
+        -0.11641741424916557,
+        -0.8534053021638918
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FourthMetatarsalL",
+    "mat_index_one_based": 33,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 1009,
+    "faces": 2014,
+    "bounds_native_metres": [
+      [
+        0.017726235156793457,
+        0.11641741424916557,
+        -0.8901299187751326
+      ],
+      [
+        0.08242769502086283,
+        0.1402267046951981,
+        -0.8534053021638918
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FifthMetatarsalR",
+    "mat_index_one_based": 34,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 1043,
+    "faces": 2082,
+    "bounds_native_metres": [
+      [
+        0.0013440677715491265,
+        -0.15167148041466255,
+        -0.8904292156038985
+      ],
+      [
+        0.07113673282293381,
+        -0.12303739680172711,
+        -0.861842924478939
+      ]
+    ],
+    "watertight": true,
+    "landmarks": "RFt5MA",
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FifthMetatarsalL",
+    "mat_index_one_based": 35,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 1043,
+    "faces": 2082,
+    "bounds_native_metres": [
+      [
+        0.001344067771549143,
+        0.12303739680172711,
+        -0.8904292156038985
+      ],
+      [
+        0.07113673282293384,
+        0.15167148041466255,
+        -0.861842924478939
+      ]
+    ],
+    "watertight": true,
+    "landmarks": "LFt5MA",
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FirstProxPhalanxR",
+    "mat_index_one_based": 36,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 943,
+    "faces": 1882,
+    "bounds_native_metres": [
+      [
+        0.10295990070399297,
+        -0.1067119868203122,
+        -0.8860227368294903
+      ],
+      [
+        0.137690319179791,
+        -0.08140522342823035,
+        -0.8636084666668131
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FirstProxPhalanxL",
+    "mat_index_one_based": 37,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 943,
+    "faces": 1882,
+    "bounds_native_metres": [
+      [
+        0.10295990070399297,
+        0.08140522342823035,
+        -0.8860227368294903
+      ],
+      [
+        0.137690319179791,
+        0.1067119868203122,
+        -0.8636084666668131
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "SecondProxPhalanxR",
+    "mat_index_one_based": 38,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 522,
+    "faces": 1040,
+    "bounds_native_metres": [
+      [
+        0.1003357541522485,
+        -0.12228992228879473,
+        -0.8848287370000001
+      ],
+      [
+        0.13277867291904916,
+        -0.10859769393120558,
+        -0.870007961
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "SecondProxPhalanxL",
+    "mat_index_one_based": 39,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 522,
+    "faces": 1040,
+    "bounds_native_metres": [
+      [
+        0.10033575415224853,
+        0.10859769393120558,
+        -0.8848287370000001
+      ],
+      [
+        0.13277867291904916,
+        0.1222899222887947,
+        -0.870007961
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "ThirdProxPhalanxR",
+    "mat_index_one_based": 40,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 397,
+    "faces": 790,
+    "bounds_native_metres": [
+      [
+        0.09504258758605723,
+        -0.13619484781333824,
+        -0.8843662950000001
+      ],
+      [
+        0.12413690327892941,
+        -0.12101463613082714,
+        -0.871405308
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "ThirdProxPhalanxL",
+    "mat_index_one_based": 41,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 397,
+    "faces": 790,
+    "bounds_native_metres": [
+      [
+        0.09504258758605726,
+        0.12101463613082714,
+        -0.8843662950000001
+      ],
+      [
+        0.12413690327892944,
+        0.13619484781333824,
+        -0.871405308
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FourthProxPhalanxR",
+    "mat_index_one_based": 42,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 362,
+    "faces": 720,
+    "bounds_native_metres": [
+      [
+        0.08188402107978167,
+        -0.14540963407919805,
+        -0.8903510548023065
+      ],
+      [
+        0.11064347380581678,
+        -0.13046886384750747,
+        -0.8783558635123838
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FourthProxPhalanxL",
+    "mat_index_one_based": 43,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 362,
+    "faces": 720,
+    "bounds_native_metres": [
+      [
+        0.08188402107978171,
+        0.13046886384750747,
+        -0.8903510548023065
+      ],
+      [
+        0.11064347380581681,
+        0.14540963407919805,
+        -0.8783558635123838
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FifthProxPhalanxR",
+    "mat_index_one_based": 44,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 224,
+    "faces": 444,
+    "bounds_native_metres": [
+      [
+        0.07387228539584954,
+        -0.15957608921593452,
+        -0.8891399803203501
+      ],
+      [
+        0.09996622186862159,
+        -0.1433643968789882,
+        -0.8779675763880798
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FifthProxPhalanxL",
+    "mat_index_one_based": 45,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 224,
+    "faces": 444,
+    "bounds_native_metres": [
+      [
+        0.07387228539584957,
+        0.1433643968789882,
+        -0.8891399803203501
+      ],
+      [
+        0.09996622186862161,
+        0.15957608921593452,
+        -0.8779675763880798
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "SecondMidPhalanxR",
+    "mat_index_one_based": 46,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 550,
+    "faces": 1096,
+    "bounds_native_metres": [
+      [
+        0.13481461400679062,
+        -0.10434061984304423,
+        -0.8890210540477784
+      ],
+      [
+        0.1633558663724318,
+        -0.08512281034220488,
+        -0.87092367535848
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "SecondMidPhalanxL",
+    "mat_index_one_based": 47,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 550,
+    "faces": 1096,
+    "bounds_native_metres": [
+      [
+        0.13481461400679062,
+        0.08512281034220485,
+        -0.8890210540477784
+      ],
+      [
+        0.1633558663724318,
+        0.1043406198430442,
+        -0.87092367535848
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "ThirdMidPhalanxR",
+    "mat_index_one_based": 48,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 244,
+    "faces": 484,
+    "bounds_native_metres": [
+      [
+        0.1328831078714985,
+        -0.12126650866586537,
+        -0.8874813263788104
+      ],
+      [
+        0.14869900866956057,
+        -0.11038098210704815,
+        -0.8760812873080907
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "ThirdMidPhalanxL",
+    "mat_index_one_based": 49,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 244,
+    "faces": 484,
+    "bounds_native_metres": [
+      [
+        0.1328831078714985,
+        0.11038098210704812,
+        -0.8874813263788104
+      ],
+      [
+        0.14869900866956057,
+        0.12126650866586534,
+        -0.8760812873080907
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FourthMidPhalanxR",
+    "mat_index_one_based": 50,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 178,
+    "faces": 352,
+    "bounds_native_metres": [
+      [
+        0.12276981534071497,
+        -0.136488335614954,
+        -0.8881854889999999
+      ],
+      [
+        0.13585678301903936,
+        -0.12465951919338543,
+        -0.877305906
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FourthMidPhalanxL",
+    "mat_index_one_based": 51,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 178,
+    "faces": 352,
+    "bounds_native_metres": [
+      [
+        0.122769815340715,
+        0.1246595191933854,
+        -0.8881854889999999
+      ],
+      [
+        0.13585678301903936,
+        0.136488335614954,
+        -0.877305906
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FifthMidPhalanxR",
+    "mat_index_one_based": 52,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 163,
+    "faces": 322,
+    "bounds_native_metres": [
+      [
+        0.10850664333107854,
+        -0.14668711690916492,
+        -0.8929221701962194
+      ],
+      [
+        0.121141344578088,
+        -0.1359480876995802,
+        -0.8838374098324588
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FifthMidPhalanxL",
+    "mat_index_one_based": 53,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 163,
+    "faces": 322,
+    "bounds_native_metres": [
+      [
+        0.10850664333107857,
+        0.1359480876995802,
+        -0.8929221701962194
+      ],
+      [
+        0.12114134457808803,
+        0.14668711690916492,
+        -0.8838374098324588
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FirstDistPhalanxR",
+    "mat_index_one_based": 54,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 127,
+    "faces": 250,
+    "bounds_native_metres": [
+      [
+        0.09907752585818083,
+        -0.1616809008901094,
+        -0.8930177362870773
+      ],
+      [
+        0.11022562721226857,
+        -0.15134566413407424,
+        -0.8851275858507259
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FirstDistPhalanxL",
+    "mat_index_one_based": 55,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 127,
+    "faces": 250,
+    "bounds_native_metres": [
+      [
+        0.09907752585818086,
+        0.15134566413407424,
+        -0.8930177362870773
+      ],
+      [
+        0.11022562721226861,
+        0.1616809008901094,
+        -0.8851275858507259
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "SecondDistPhalanxR",
+    "mat_index_one_based": 56,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 193,
+    "faces": 382,
+    "bounds_native_metres": [
+      [
+        0.14833115502111155,
+        -0.12079897929146649,
+        -0.8894835739551332
+      ],
+      [
+        0.1605845241746043,
+        -0.11038454544649458,
+        -0.8801174881812801
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "SecondDistPhalanxL",
+    "mat_index_one_based": 57,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 193,
+    "faces": 382,
+    "bounds_native_metres": [
+      [
+        0.14833115502111155,
+        0.11038454544649455,
+        -0.8894835739551332
+      ],
+      [
+        0.1605845241746043,
+        0.12079897929146646,
+        -0.8801174881812801
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "ThirdDistPhalanxR",
+    "mat_index_one_based": 58,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 150,
+    "faces": 296,
+    "bounds_native_metres": [
+      [
+        0.13411861267906136,
+        -0.13531804256523158,
+        -0.893718317642918
+      ],
+      [
+        0.1481485458155059,
+        -0.12656400182171432,
+        -0.8835777421444395
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "ThirdDistPhalanxL",
+    "mat_index_one_based": 59,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 150,
+    "faces": 296,
+    "bounds_native_metres": [
+      [
+        0.13411861267906136,
+        0.1265640018217143,
+        -0.893718317642918
+      ],
+      [
+        0.1481485458155059,
+        0.13531804256523158,
+        -0.8835777421444395
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FourthDistPhalanxR",
+    "mat_index_one_based": 60,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 150,
+    "faces": 296,
+    "bounds_native_metres": [
+      [
+        0.12177670232553142,
+        -0.14852865250526043,
+        -0.8983830106853122
+      ],
+      [
+        0.135806635461976,
+        -0.13977461176174316,
+        -0.8882424351868338
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FourthDistPhalanxL",
+    "mat_index_one_based": 61,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 150,
+    "faces": 296,
+    "bounds_native_metres": [
+      [
+        0.12177670232553145,
+        0.13977461176174316,
+        -0.8983830106853122
+      ],
+      [
+        0.135806635461976,
+        0.14852865250526043,
+        -0.8882424351868338
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FifthDistPhalanxR",
+    "mat_index_one_based": 62,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "manual_segmentation",
+    "laterality": "right",
+    "vertices": 193,
+    "faces": 382,
+    "bounds_native_metres": [
+      [
+        0.11233115502111155,
+        -0.16379897929146647,
+        -0.8964835739551332
+      ],
+      [
+        0.12458452417460428,
+        -0.15338454544649457,
+        -0.8871174881812801
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  },
+  {
+    "source": "bmftoolkit",
+    "source_asset": "FifthDistPhalanxL",
+    "mat_index_one_based": 63,
+    "source_revision": "e3e781ef166162438273cc1853d6f318482fea67",
+    "input_sha256": "11cdc999966d270bb0c13174dc94031d64af3860430b975be1523b1dedfdf2de",
+    "source_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "mirrored_from_right",
+    "laterality": "left",
+    "vertices": 193,
+    "faces": 382,
+    "bounds_native_metres": [
+      [
+        0.11233115502111157,
+        0.15338454544649457,
+        -0.8964835739551332
+      ],
+      [
+        0.1245845241746043,
+        0.16379897929146647,
+        -0.8871174881812801
+      ]
+    ],
+    "watertight": true,
+    "landmarks": [],
+    "canonical_registration": null,
+    "included_in_open_build": false,
+    "notes": "Source neutral-pose correction, smoothing and mirroring; sacrum uses mirrored right half. Asset licence scope pending.",
+    "method_evidence": "https://arxiv.org/pdf/1804.03655"
+  }
+]

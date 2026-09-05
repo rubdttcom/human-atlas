@@ -1,0 +1,38 @@
+[
+  {
+    "id": "VHF",
+    "sex": "female",
+    "source": "https://digitalcommons.du.edu/visiblehuman/",
+    "age_years": 59,
+    "evidence": [
+      "Andreassen et al. 2022, https://doi.org/10.1038/s41597-022-01905-2",
+      "data/raw/denver/download-manifest.json"
+    ],
+    "datasets": [
+      "denver-vhf"
+    ]
+  },
+  {
+    "id": "TARO",
+    "sex": "male",
+    "source": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html"
+  },
+  {
+    "id": "hra-female-assembly",
+    "sex": "unknown-per-component",
+    "single_donor": false
+  },
+  {
+    "id": "Healthy-Total-Body-CTs-003",
+    "sex": "female",
+    "metadata": {
+      "Subject Number": "Healthy-Total-Body-CTs-003",
+      "Gender": "F",
+      "Age": "026Y",
+      "Weight[Kg]": 58.967,
+      "Height[m]": 1.7018,
+      "Body Mass Index [Kg/m2]": 20.3607
+    },
+    "evidence": "data/raw/tcia/demographics.xlsx"
+  }
+]

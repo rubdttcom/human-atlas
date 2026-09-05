@@ -1,0 +1,9 @@
+numpy==2.5.2
+scipy==1.18.1
+trimesh==5.1.0
+nibabel==5.4.2
+scikit-image==0.26.0
+openpyxl==3.1.5
+remotezip==0.12.6
+requests==2.34.2
+playwright==1.62.0

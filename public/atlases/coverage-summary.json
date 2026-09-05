@@ -1,0 +1,83 @@
+{
+  "canonical_catalog_entries": 4316,
+  "source_meshes": 3286,
+  "female_measured": 128,
+  "registered_female": 0,
+  "female_segmented_unreviewed": 36,
+  "female_reference": 717,
+  "template_only": 1589,
+  "without_direct_geometry": 1846,
+  "atlases": [
+    {
+      "source": "hra-female",
+      "meshes": 888,
+      "source_concepts": 1073,
+      "triangles": 1810038,
+      "chunk_hashes": {
+        "/models/female-0.bin": "d4dc9a6daa7f720d581f914c10d2d1bba02b64eadd2a5de22b1588b81fd09a0d",
+        "/models/female-1.bin": "c20a0c492992b44d5e03fe61c6363fa9341b00ec9a255659285ef98b98f3e337",
+        "/models/female-2.bin": "7adeaf94028489b7192ade457f8217cc629c457263cd004e5ea84d248d9402e6",
+        "/models/female-3.bin": "ad1e1f6a5d44d4de62d8cdaf7db8aeb0591d92ee9aff241d6278e7c3663ffc3c",
+        "/models/female-4.bin": "770e35500d09b74941686c515524961c6540fa15db4192dee987fa5c49b19fbd",
+        "/models/female-5.bin": "b2f5790193688d20ba240b10ccf5d89d56f46d034071170167afa369c327f7fb",
+        "/models/female-6.bin": "8b9d1c038bf4b7951bc19a0e30dd3c7c65c29af3f2bd9f605b8048204c66ee40",
+        "/models/female-7.bin": "36e45735f6ff00dc799109a7789acf7caa7d2d9bd7a4c20bdd0b6177cf14af17",
+        "/models/female-8.bin": "9505b45b629f3fedd69b49b0cff6cef9d5c86431aa0903529c5cc09faa7200e4",
+        "/models/female-9.bin": "b1988cec93d65044af32fd7da78852a4582fde6f4439470f430d0ef07936decb"
+      }
+    },
+    {
+      "source": "bodyparts3d",
+      "meshes": 2234,
+      "source_concepts": 3432,
+      "triangles": 2288268,
+      "chunk_hashes": {
+        "/models/body-0.bin": "b33b2b5aac20f35fbf6871f916607bf3c4d386321c8c0fdadcca6b5d24e3641e",
+        "/models/body-1.bin": "aa077a4675f0d0dd3c9b0af39dc8cf6bcb348c3bf7d283478d4206ce30a5a0de",
+        "/models/body-2.bin": "4b3acfc35b91e4427eaca0e3be897d33f144354342ae0e52a2328b582ca8bdbe",
+        "/models/body-3.bin": "6febb76b50423331f66802a63bb43f04f99ce08129837015910eed43d0719268",
+        "/models/body-4.bin": "0509e6c996fe5b935ace770a5dbf2d83a474330b7e541a844052a080bbf814bb",
+        "/models/body-5.bin": "32a967198ffed45839968228898f3d246c67f86fb26892c3ae270be30e2f1149",
+        "/models/body-6.bin": "1c98dae807210cc51a4abc806134727c9544155cad0cc328cf2e1ae1f954d3ff",
+        "/models/body-7.bin": "06340f48478eb989cec117a558290c0cd54eeead9641b565cbb8aab255b4e56b",
+        "/models/body-8.bin": "18beacfdeadc8ad483d692672aae165f4323704cd7a9bfcbebbd703f5e268e25",
+        "/models/body-9.bin": "0aa8aa09a379a2d759872659a2ef68fc4510ee37e435c4ebc63ee679722a4547",
+        "/models/body-10.bin": "4a959d998acd35cf88518a0f2f8ab99b42d9f69c7ce0d6a814df315eeac807ac",
+        "/models/body-11.bin": "e8c1afe7f30fe710ad164ec9cd2287a32881606e7eb590af47d76b3f84405027",
+        "/models/body-12.bin": "61a6c8da89bb20df50c575964ac81aa4090eabfc2cb27ad2155aea325f31c6c0",
+        "/models/body-13.bin": "4c51b6be85d5b705d2b52b79b9ad1cdae0b65ad03c9402a2f2673c7633fd94f3",
+        "/models/body-14.bin": "58604526a0cd9e7dca4d8587cd9a42f9dd03ec6c4ebbc22a9bf017b31246f7e7"
+      }
+    },
+    {
+      "source": "tcia",
+      "meshes": 36,
+      "source_concepts": 36,
+      "triangles": 1049570,
+      "chunk_hashes": {
+        "/models/tcia-003-lod-0.bin": "167b48ba2c716f9d26f259a09b494e63fb68d3425568fda50f522f0a3d79c1ab",
+        "/models/tcia-003-lod-1.bin": "8b464131a5deb9ba1c803f2913d239312caa2e4ad86241cc4e5b8bec6d68abe2",
+        "/models/tcia-003-lod-2.bin": "6348dbfc14216e9f6dadcb87a9efd9afbb29e5b63f25bc867cc96bf7164ac0ca",
+        "/models/tcia-003-lod-3.bin": "065cb82a3e7652bebea61bd87e01c02b1e0da93208c9e0707433ee1a4dd3f1e1",
+        "/models/tcia-003-lod-4.bin": "ee1caa779d16b36669931c3c2d311ebc6e2091ff612c1b1addfdbbce43e5f4e1"
+      }
+    },
+    {
+      "source": "denver-vhf",
+      "meshes": 128,
+      "source_concepts": 203,
+      "triangles": 536060,
+      "chunk_hashes": {
+        "/models/denver-vhf-lod-0.bin": "20b38a572b6c2193bddbc17745fcb97f1be2f5022cf194a65daf15104fbfbcc4",
+        "/models/denver-vhf-lod-1.bin": "d0b03249deab1836ae5db28aac1f1eac987509b61b538909df66f8a11b9f460f",
+        "/models/denver-vhf-lod-2.bin": "bde56eea77f4507eb28b0a60671a20e21107cd2c773327fa49f28bdb231354fc"
+      }
+    }
+  ],
+  "limitations": [
+    "Catalog is the imported source union, not the complete human ontology.",
+    "No UBERON/FMA equivalence inferred; no TA2 crosswalk imported.",
+    "No VHF canonical registration or anatomical QA yet. Denver meshes are in the aligned VHF image frame, but no other source is registered to it.",
+    "Best available ranks source evidence but does not authorize spatial composition."
+  ]
+}

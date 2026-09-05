@@ -1,0 +1,359 @@
+{
+  "id": "hra-stage-to-tcia003-initial",
+  "type": "similarity",
+  "from": "HRA viewer stage",
+  "to": "TCIA 003 viewer stage",
+  "matrix_row_major": [
+    0.9890718841519632,
+    -0.09234950837324678,
+    -0.08658131975733124,
+    0.07811871036506546,
+    0.08782947052661597,
+    0.9917673935776744,
+    -0.054510272341806554,
+    0.10353974833385582,
+    0.09116326417321767,
+    0.04644301871092402,
+    0.9918771365072981,
+    -0.02911062229388483,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "scale": 0.9971398841925925,
+  "landmarks": [
+    {
+      "source_concept": "HRA:VH_F_heart",
+      "target_label": "Heart",
+      "source_center_m": [
+        0.03631838597357273,
+        1.2388152480125427,
+        -0.05585685442201793
+      ],
+      "target_center_m": [
+        0.022673828527331352,
+        1.3138120770454407,
+        -0.025568358600139618
+      ],
+      "residual_mm": 30.64345134243423
+    },
+    {
+      "source_concept": "HRA:VH_F_liver",
+      "target_label": "Liver",
+      "source_center_m": [
+        -0.011333577334880829,
+        1.1422723531723022,
+        -0.07070436235517263
+      ],
+      "target_center_m": [
+        -0.06271484214812517,
+        1.2423200607299805,
+        -0.050171878188848495
+      ],
+      "residual_mm": 30.553477937612058
+    },
+    {
+      "source_concept": "HRA:VH_F_spleen",
+      "target_label": "Spleen",
+      "source_center_m": [
+        0.08155457861721516,
+        1.131465494632721,
+        -0.1177222803235054
+      ],
+      "target_center_m": [
+        0.06995117291808128,
+        1.245836079120636,
+        -0.0853886753320694
+      ],
+      "residual_mm": 8.558648838587436
+    },
+    {
+      "source_concept": "HRA:VH_F_kidney",
+      "target_label": "Kidneys",
+      "source_center_m": [
+        0.0022203773260116577,
+        1.0329652428627014,
+        -0.10059661231935024
+      ],
+      "target_center_m": [
+        -0.004341799765825272,
+        1.168484091758728,
+        -0.08683593943715096
+      ],
+      "residual_mm": 35.39700958691728
+    },
+    {
+      "source_concept": "HRA:VH_F_urinary_bladder",
+      "target_label": "Bladder",
+      "source_center_m": [
+        -0.014551946427673101,
+        0.7988775670528412,
+        -0.028434470063075423
+      ],
+      "target_center_m": [
+        -0.0033769533038139343,
+        0.8918920159339905,
+        -0.037628906313329935
+      ],
+      "residual_mm": 17.159530898083258
+    },
+    {
+      "source_concept": "HRA:VH_F_pelvis",
+      "target_label": "Pelvis",
+      "source_center_m": [
+        -0.008577220141887665,
+        0.8536729514598846,
+        -0.09108231723075733
+      ],
+      "target_center_m": [
+        -0.0009648427367210388,
+        0.938772052526474,
+        -0.0540312472730875
+      ],
+      "residual_mm": 30.81387671678248
+    }
+  ],
+  "rms_mm": 27.211147779473862,
+  "max_residual_mm": 35.39700958691728,
+  "hausdorff": null,
+  "volume_scale": 0.9914441699685749,
+  "surface_area_scale": 0.9942879486476167,
+  "review_status": "experimental-unreviewed",
+  "canonical_registration": false,
+  "limitations": [
+    "Bounding-box centres are geometric proxies, not manually marked anatomical landmarks.",
+    "Different donors and poses. Local organ placement and tissue intersections are unreviewed.",
+    "The target is a provisional TCIA display frame, not canonical VHF."
+  ],
+  "regional_transforms": [
+    {
+      "id": "hra-head-to-tcia003-initial",
+      "type": "similarity-bounding-box-fit",
+      "from": "HRA viewer stage",
+      "to": "TCIA 003 viewer stage",
+      "matrix_row_major": [
+        0.8984783046834011,
+        0.0,
+        0.0,
+        0.003903021343306586,
+        0.0,
+        0.8984783046834011,
+        0.0,
+        0.21756657126718415,
+        0.0,
+        0.0,
+        0.8984783046834011,
+        0.046439059665611404,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": 0.8984783046834011,
+      "source_brain_bounds": [
+        [
+          -0.0746803805232048,
+          1.505783200263977,
+          -0.14809247851371765
+        ],
+        [
+          0.0616968534886837,
+          1.651879072189331,
+          0.018947048112750053
+        ]
+      ],
+      "target_brain_bounds": [
+        [
+          -0.06560937315225601,
+          1.5704801082611084,
+          -0.09262499958276749
+        ],
+        [
+          0.06174999848008156,
+          1.7017440795898438,
+          0.06946875154972076
+        ]
+      ],
+      "volume_scale": 0.7253085288600116,
+      "surface_area_scale": 0.8072632639867585,
+      "rms_mm": null,
+      "review_status": "experimental-unreviewed",
+      "canonical_registration": false,
+      "limitations": [
+        "Brain bounding-box containment is not a surface registration or anatomical validation.",
+        "The same transform is applied to cranial sensory structures; their placement is unreviewed."
+      ]
+    }
+  ],
+  "additional_source_transforms": [
+    {
+      "id": "denver-stage-to-tcia003-initial",
+      "type": "similarity",
+      "from": "Denver VHF viewer stage",
+      "to": "TCIA 003 viewer stage",
+      "matrix_row_major": [
+        0.9771142627195457,
+        -0.009823834241454747,
+        0.08774719234948923,
+        0.008448512854713479,
+        0.012829968079480721,
+        0.9804529884318143,
+        -0.033101197691154056,
+        0.03827782963515569,
+        -0.08735828182548791,
+        0.03411436134981543,
+        0.9766028367973224,
+        -0.031790109408907107,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": 0.9810954896922036,
+      "landmarks": [
+        {
+          "source_concept": "Pelvis, sacrum and coccyx",
+          "source_assets": [
+            "DENVER:VHF:Left_Bone_Coccyx",
+            "DENVER:VHF:Left_Bone_Pelvis",
+            "DENVER:VHF:Left_Bone_Sacrum",
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "target_label": "Pelvis",
+          "source_center_m": [
+            0.0012559965252876282,
+            0.916332334280014,
+            -0.020853545516729355
+          ],
+          "target_center_m": [
+            -0.0009648427367210388,
+            0.938772052526474,
+            -0.0540312472730875
+          ],
+          "residual_mm": 33.054710882856845
+        },
+        {
+          "source_concept": "Femur",
+          "source_assets": [
+            "DENVER:VHF:Left_Bone_Femur",
+            "DENVER:VHF:Right_Bone_Femur"
+          ],
+          "target_label": "Femur",
+          "source_center_m": [
+            0.001729622483253479,
+            0.688266396522522,
+            -0.005287002772092819
+          ],
+          "target_center_m": [
+            -0.00048241764307022095,
+            0.7078880071640015,
+            -0.002894531935453415
+          ],
+          "residual_mm": 12.48303778514445
+        },
+        {
+          "source_concept": "Tibia",
+          "source_assets": [
+            "DENVER:VHF:Left_Bone_Tibia",
+            "DENVER:VHF:Right_Bone_Tibia"
+          ],
+          "target_label": "Tibia",
+          "source_center_m": [
+            -0.006782546639442444,
+            0.3118460029363632,
+            -0.017335617914795876
+          ],
+          "target_center_m": [
+            0.0,
+            0.34339600801467896,
+            -0.0289453137665987
+          ],
+          "residual_mm": 9.049126098660706
+        },
+        {
+          "source_concept": "Fibula",
+          "source_assets": [
+            "DENVER:VHF:Left_Bone_Fibula",
+            "DENVER:VHF:Right_Bone_Fibula"
+          ],
+          "target_label": "Fibula",
+          "source_center_m": [
+            -0.003810986876487732,
+            0.2942030653357506,
+            -0.04548805207014084
+          ],
+          "target_center_m": [
+            -0.0019296929240226746,
+            0.3351920023560524,
+            -0.05354882846586406
+          ],
+          "residual_mm": 14.152875544786312
+        },
+        {
+          "source_concept": "Patella",
+          "source_assets": [
+            "DENVER:VHF:Left_Bone_Patella",
+            "DENVER:VHF:Right_Bone_Patella"
+          ],
+          "target_label": "Patella",
+          "source_center_m": [
+            -0.01106937974691391,
+            0.5050359219312668,
+            0.03811192326247692
+          ],
+          "target_center_m": [
+            -0.0009648427367210388,
+            0.527400016784668,
+            0.06416210904717445
+          ],
+          "residual_mm": 40.91212681067419
+        },
+        {
+          "source_concept": "Tarsal bones",
+          "source_assets": [
+            "DENVER:VHF:Left_Bone_Calcaneous",
+            "DENVER:VHF:Left_Bone_Cuboid",
+            "DENVER:VHF:Left_Bone_IntermediateCuneiform",
+            "DENVER:VHF:Left_Bone_LateralCuneiform",
+            "DENVER:VHF:Left_Bone_MedialCuneiform",
+            "DENVER:VHF:Left_Bone_Navicular",
+            "DENVER:VHF:Left_Bone_Talus",
+            "DENVER:VHF:Right_Bone_Calcaneous",
+            "DENVER:VHF:Right_Bone_Cuboid",
+            "DENVER:VHF:Right_Bone_IntermediateCuneiform",
+            "DENVER:VHF:Right_Bone_LateralCuneiform",
+            "DENVER:VHF:Right_Bone_MedialCuneiform",
+            "DENVER:VHF:Right_Bone_Navicular",
+            "DENVER:VHF:Right_Bone_Talus"
+          ],
+          "target_label": "Tarsal",
+          "source_center_m": [
+            -0.012458985671401024,
+            0.113733921200037,
+            -0.033785413950681686
+          ],
+          "target_center_m": [
+            -0.010613281279802322,
+            0.1535320058465004,
+            -0.09889648295938969
+          ],
+          "residual_mm": 39.27926186179324
+        }
+      ],
+      "rms_mm": 28.128553837131054,
+      "max_residual_mm": 40.91212681067419,
+      "hausdorff": null,
+      "volume_scale": 0.944351854503009,
+      "surface_area_scale": 0.9625483598943848,
+      "review_status": "experimental-unreviewed",
+      "canonical_registration": false,
+      "limitations": [
+        "Bounding-box centres of grouped bones are geometric proxies, not anatomical landmarks.",
+        "TCIA grouped labels may include or exclude the sacrum; the pelvis proxy pairing is unreviewed.",
+        "Different donors (VHF, 59 years; TCIA 003, 26 years) and poses; joint spaces and soft-tissue overlap are unreviewed.",
+        "Denver \"Phalanges\" spans about 149 mm antero-posteriorly and probably includes the metatarsals; TCIA metatarsal and toe labels are therefore excluded, unreviewed."
+      ]
+    }
+  ]
+}
