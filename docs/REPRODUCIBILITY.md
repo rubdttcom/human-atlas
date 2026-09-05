@@ -48,6 +48,34 @@ python3 scripts/build-registry.py
 .venv/bin/python scripts/summarize-reports.py
 ```
 
+## Shortcut: download the prepared data from the GitHub release
+
+The release `data-2026-09-05` (https://github.com/rubdttcom/human-atlas/releases/tag/data-2026-09-05)
+holds the source archives and the intermediate NLM CT volume and TotalSegmentator label maps
+(412 MB in total, with `SHA256SUMS`). With them you can skip the downloads from the original
+servers and the 35 minute segmentation:
+
+```bash
+gh release download data-2026-09-05 --repo rubdttcom/human-atlas --dir /tmp/atlas-data
+(cd /tmp/atlas-data && sha256sum -c SHA256SUMS)
+mkdir -p data/derived/nlm-vhf data/raw/nlm-vhf data/raw/denver data/raw/tcia
+cp /tmp/atlas-data/vhf-fresh-ct.nii.gz /tmp/atlas-data/vhf-fresh-ct-metadata.json /tmp/atlas-data/totalseg-classmap.json data/derived/nlm-vhf/
+gunzip -c /tmp/atlas-data/totalseg.nii.gz > data/derived/nlm-vhf/totalseg.nii
+cp /tmp/atlas-data/nlm-download-manifest.json data/raw/nlm-vhf/download-manifest.json
+cp /tmp/atlas-data/denver-final-stl-models.zip data/raw/denver/final-stl-models.zip
+cp /tmp/atlas-data/denver-metadata.zip data/raw/denver/metadata.zip
+cp /tmp/atlas-data/denver-download-manifest.json data/raw/denver/download-manifest.json
+cp /tmp/atlas-data/Healthy-Total-Body-CTs-003.nii.gz data/raw/tcia/
+cp /tmp/atlas-data/tcia-demographics.xlsx data/raw/tcia/demographics.xlsx
+cp "/tmp/atlas-data/tcia-segmentation_organ_values.xlsx" "data/raw/tcia/segmentation_organ_values (1).xlsx"
+cp /tmp/atlas-data/tcia-download-manifest.json data/raw/tcia/download-manifest.json
+```
+
+Then run the pipeline from `scripts/ingest-tcia.py` and `scripts/ingest-denver.py`, skip
+`fetch-nlm-vhf.py`, `build-nlm-vhf-volume.py` and TotalSegmentator, and continue at
+`scripts/register-nlm-ct.py`. The NLM slices themselves (478 MB) are not in the release;
+`scripts/fetch-nlm-vhf.py` re-downloads them and checks them against the manifest.
+
 ## What each new step does
 
 `fetch-nlm-vhf.py` downloads the NLM Terms and Conditions page, the Female-Images README

@@ -47,7 +47,7 @@ Only if you want to regenerate or extend the geometry (new sources, new segmenta
 new registration). It downloads about 2 GB of source data (TCIA, Denver, NLM CT), needs two
 Python environments and a CPU run of TotalSegmentator of about 35 minutes. The full order
 of scripts and verification steps is in
-[docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md). Keep `data/` and `.venv-seg/` out of the
+[docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md); the GitHub release `data-2026-09-05` provides the prepared source and intermediate data (412 MB) so the download and segmentation steps can be skipped. Keep `data/` and `.venv-seg/` out of the
 Vite root scan (they are in `.gitignore`), otherwise the dev server and the build stall.
 
 ## Data and checks
