@@ -26,7 +26,11 @@ and NLM CT), 114 same-donor CT labels, 717 female-reference entries and 1,461 te
 entries. Hierarchy-only entries without direct meshes must not be confused with missing
 human anatomy.
 
-## Run
+## Run the viewer
+
+Everything the viewer needs is committed: the optimized geometry (`public/models/`, about
+340 MB), the enriched atlases (`public/atlases/`), the coverage matrix and the registration
+report. No Python, no downloads and no segmentation are required to look at the atlas.
 
 ```bash
 npm ci
@@ -36,6 +40,15 @@ npm run dev -- --port 3017
 Open http://localhost:3017. The source selector switches reference frames; the
 experimental composition also has a direct URL:
 http://localhost:3017/?source=composed.
+
+## Rebuild the data
+
+Only if you want to regenerate or extend the geometry (new sources, new segmentation,
+new registration). It downloads about 2 GB of source data (TCIA, Denver, NLM CT), needs two
+Python environments and a CPU run of TotalSegmentator of about 35 minutes. The full order
+of scripts and verification steps is in
+[docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md). Keep `data/` and `.venv-seg/` out of the
+Vite root scan (they are in `.gitignore`), otherwise the dev server and the build stall.
 
 ## Data and checks
 
