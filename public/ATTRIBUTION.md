@@ -84,3 +84,33 @@ grouped-bone bounding-box centres for the Denver VHF lower limb, and a separate 
 bounding-box fit for cranial structures. Matrices, scale changes and residuals are in `transforms/`
 and `generated/registration-report.json`. These are unreviewed cross-donor display
 adaptations, not measurements of one person or validated anatomical registration.
+
+### NLM Visible Human Female fresh CT and TotalSegmentator labels
+
+Image data: U.S. National Library of Medicine, The Visible Human Project, Visible Human
+Female data set (1995), radiological/normalCT (fresh CT, 22 September 1993 per headers).
+"Courtesy of the U.S. National Library of Medicine." Downloaded from
+https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/ under the NLM Terms
+and Conditions (https://www.nlm.nih.gov/databases/download/terms_and_conditions.html).
+NLM does not endorse this atlas. The derived label maps and meshes are not NLM data and do
+not reflect the current NLM data; they were produced here.
+
+Segmentation: Wasserthal, J. et al. (2023). TotalSegmentator: Robust Segmentation of 104
+Anatomic Structures in CT Images. Radiology: Artificial Intelligence.
+https://doi.org/10.1148/ryai.230024. TotalSegmentator 2.18.0, task `total` (Apache-2.0),
+CPU inference; licensed subtasks were not used.
+
+Adaptations: 1,734 GE slices decompressed, converted to Hounsfield units, resampled onto a
+480 mm field of view and stacked at 1 mm in file order (two exams, junction recorded);
+marching cubes per label (step 2 voxels above 400 cm3); rigid same-donor registration of the
+CT pelvis onto the Denver hip bones and sacrum (`transforms/nlm-ct-to-vhf.json`); axis and
+unit conversion to the viewer stage; meshoptimizer simplification at 0.2% relative error;
+binary packing and gzip. Labels are automatic model output and are not anatomically
+reviewed. All present labels are retained.
+
+### Ontology terms
+
+UBERON and FMA labels, synonyms and cross-references were retrieved from the EBI Ontology
+Lookup Service (https://www.ebi.ac.uk/ols4/) and stored in
+`registry/ontology-crosswalk-reviewed.json`. UBERON is CC BY 3.0; FMA is CC BY 3.0
+(Structural Informatics Group, University of Washington).

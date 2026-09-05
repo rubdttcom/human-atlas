@@ -1,0 +1,30 @@
+{
+  "id": "denver-stage-to-vhf",
+  "type": "identity",
+  "from": "Denver VHF viewer stage",
+  "to": "VHF-image-2022 canonical stage",
+  "matrix_row_major": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "scale": 1.0,
+  "rms_mm": 0.0,
+  "landmarks": [],
+  "review_status": "canonical-by-definition; anatomy unreviewed",
+  "canonical_registration": true,
+  "definition": "The canonical space is the Denver aligned VHF image frame; see transforms/canonical-space.json."
+}

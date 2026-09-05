@@ -9,8 +9,11 @@ python = root / '.venv/bin/python'
 python = str(python) if python.exists() else sys.executable
 commands = {'registry': 'build-registry.py', 'fetch-tcia': 'fetch-tcia.py', 'ingest-tcia': 'ingest-tcia.py',
             'fetch-denver': 'fetch-denver.py', 'ingest-denver': 'ingest-denver.py',
-            'compose': 'compose-female.py', 'check-licenses': 'check-licenses.py', 'qa': 'qa-geometry.py',
-            'check-provenance': 'validate-provenance.py', 'check-composition': 'validate-composition.py'}
+            'fetch-nlm-vhf': 'fetch-nlm-vhf.py', 'build-nlm-volume': 'build-nlm-vhf-volume.py', 'register-nlm-ct': 'register-nlm-ct.py',
+            'ingest-nlm-vhf': 'ingest-nlm-vhf.py', 'crosswalk': 'build-crosswalk.py', 'landmarks': 'extract-landmarks.py',
+            'compose': 'compose-female.py', 'check-licenses': 'check-licenses.py', 'qa': 'qa-geometry.py', 'qa-anatomy': 'qa-anatomy.py',
+            'compare-bmf': 'compare-bmftoolkit.py', 'summarize': 'summarize-reports.py',
+            'check-provenance': 'validate-provenance.py', 'check-composition': 'validate-composition.py', 'check-reviews': 'validate-reviews.py'}
 if len(sys.argv) < 2 or sys.argv[1] not in commands:
     print('Usage: ./atlas {' + '|'.join(commands) + '} [arguments]')
     raise SystemExit(2)

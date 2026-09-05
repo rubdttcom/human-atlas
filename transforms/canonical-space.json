@@ -1,0 +1,112 @@
+{
+  "id": "VHF-image-2022",
+  "definition": "Aligned Visible Human Female image frame of the Denver 2022 release (Andreassen et al. 2022): +x subject right, +y anterior, +z superior, millimetres.",
+  "canonical_stage": "VHF-image-2022 canonical stage",
+  "image_to_stage": {
+    "type": "axis-permutation-unit-scale-translation",
+    "from": "Denver aligned VHF image frame (mm)",
+    "to": "Denver VHF viewer stage",
+    "matrix_row_major": [
+      -0.001,
+      0,
+      0,
+      0.5399914855957031,
+      0,
+      0,
+      0.001,
+      -0.008035740852355958,
+      0,
+      0.001,
+      0,
+      -0.4457676239013672,
+      0,
+      0,
+      0,
+      1
+    ],
+    "units": "metres",
+    "canonical_registration": true,
+    "canonical_space": "VHF-image-2022",
+    "review_status": "empirical-axis-check; defines canonical space VHF-image-2022 (transforms/canonical-space.json); anatomical-review-pending",
+    "evidence": {
+      "left_pelvis_centroid_mm": [
+        457.03122031044325,
+        441.2280901414471,
+        929.5782351661315
+      ],
+      "right_pelvis_centroid_mm": [
+        620.5100695590012,
+        435.3011329219637,
+        931.6815016142001
+      ],
+      "left_patella_centroid_mm": [
+        464.6606040246229,
+        492.6797635880642,
+        514.9141564971519
+      ],
+      "left_femur_centroid_mm": [
+        444.33081761199554,
+        455.04820400680353,
+        685.529921257512
+      ],
+      "left_calcaneus_centroid_mm": [
+        514.9005820814592,
+        395.824965659039,
+        125.4425997509134
+      ],
+      "left_femur_max_extent_mm": 417.0235595703125
+    },
+    "landmarks": [],
+    "rms": null,
+    "hausdorff": null
+  },
+  "stage_axes": "+x subject left, +y superior, +z anterior, metres",
+  "reference_source": "denver-vhf",
+  "reference_donor": "VHF",
+  "evidence": [
+    "transforms/source-to-stage.json#denver-image-to-stage",
+    {
+      "left_pelvis_centroid_mm": [
+        457.03122031044325,
+        441.2280901414471,
+        929.5782351661315
+      ],
+      "right_pelvis_centroid_mm": [
+        620.5100695590012,
+        435.3011329219637,
+        931.6815016142001
+      ],
+      "left_patella_centroid_mm": [
+        464.6606040246229,
+        492.6797635880642,
+        514.9141564971519
+      ],
+      "left_femur_centroid_mm": [
+        444.33081761199554,
+        455.04820400680353,
+        685.529921257512
+      ],
+      "left_calcaneus_centroid_mm": [
+        514.9005820814592,
+        395.824965659039,
+        125.4425997509134
+      ],
+      "left_femur_max_extent_mm": 417.0235595703125
+    },
+    "generated/nlm-ct-registration.json#canonical_space_verification"
+  ],
+  "status": "defined from the Denver aligned image frame; verified against the NLM VHF CT header frame by a rigid same-donor pelvis fit (rotation 2.17 deg, free scale 1.0013, pelvis p95 4.7 mm)",
+  "nlm_verification": {
+    "axes_and_units": "consistent",
+    "rotation_deg": 2.1654199725454966,
+    "free_scale": 1.0012672027579324,
+    "pelvis_p95_mm": 4.716855714034616,
+    "interpretation": "The Denver aligned image frame and the NLM CT header frame agree in axis directions and millimetre units: the rigid pelvis fit needs a small rotation and a scale of 1 within one percent, and the same-donor pelvis surfaces agree to a few millimetres. The translation absorbs the different origins (vertex plane of the CT versus the Denver image origin). This verifies the canonical space against NLM image data; it does not review the anatomy of either segmentation."
+  },
+  "registered_sources": {
+    "denver-vhf": "denver-stage-to-vhf (identity)",
+    "nlm-vhf-ct": "nlm-ct-to-vhf (rigid same-donor pelvis registration)",
+    "hra-female": "hra-stage-to-vhf (organ proxies onto same-donor CT organs, experimental)",
+    "tcia": "tcia003-stage-to-vhf (pelvic landmark similarity, experimental; alternative source, not composed)"
+  }
+}

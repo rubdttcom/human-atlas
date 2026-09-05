@@ -1,0 +1,4 @@
+{
+  "_about": "Intake of reviewer decisions exported by the viewer's Registration review panel (landmark-review.json downloads). Merge exported files here; `scripts/validate-reviews.py` checks that every landmark exists in transforms/landmarks/*.json. When at least four pelvic landmarks per side are `confirmed`, `scripts/compose-female.py` may be re-run with `--reviewed-landmarks` (not implemented until the first review arrives).",
+  "reviews": []
+}

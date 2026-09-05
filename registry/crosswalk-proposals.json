@@ -1,0 +1,1289 @@
+{
+  "_about": "Curated crosswalk proposals for dataset-local labels. scripts/build-crosswalk.py verifies every term against OLS (label, synonyms, xrefs) and writes registry/ontology-crosswalk-reviewed.json with the evidence. Entries are evidence-matched, not anatomist-reviewed, until review_status says otherwise.",
+  "denver-vhf": {
+    "Bone_Calcaneous": {
+      "term": "UBERON:0001450",
+      "match_label": "calcaneus",
+      "tissue_class": "Bone",
+      "granularity": "individual",
+      "notes": "Source spelling \"Calcaneous\"."
+    },
+    "Bone_Coccyx": {
+      "term": "UBERON:0001350",
+      "match_label": "coccyx",
+      "tissue_class": "Bone",
+      "granularity": "individual"
+    },
+    "Bone_Cuboid": {
+      "term": "UBERON:0001455",
+      "match_label": "cuboid bone",
+      "tissue_class": "Bone",
+      "granularity": "individual"
+    },
+    "Bone_Femur": {
+      "term": "UBERON:0000981",
+      "match_label": "femur",
+      "tissue_class": "Bone",
+      "granularity": "individual"
+    },
+    "Bone_Fibula": {
+      "term": "UBERON:0001446",
+      "match_label": "fibula",
+      "tissue_class": "Bone",
+      "granularity": "individual"
+    },
+    "Bone_IntermediateCuneiform": {
+      "term": "UBERON:0001453",
+      "match_label": "intermediate cuneiform bone",
+      "tissue_class": "Bone",
+      "granularity": "individual",
+      "notes": "UBERON label is \"distal tarsal bone 2\"; human synonym intermediate cuneiform."
+    },
+    "Bone_LateralCuneiform": {
+      "term": "UBERON:0001454",
+      "match_label": "lateral cuneiform bone",
+      "tissue_class": "Bone",
+      "granularity": "individual",
+      "notes": "UBERON label is \"distal tarsal bone 3\"; human synonym lateral cuneiform."
+    },
+    "Bone_MedialCuneiform": {
+      "term": "UBERON:0001452",
+      "match_label": "medial cuneiform bone",
+      "tissue_class": "Bone",
+      "granularity": "individual",
+      "notes": "UBERON label is \"distal tarsal bone 1\"; human synonym medial cuneiform."
+    },
+    "Bone_Navicular": {
+      "term": "UBERON:0001451",
+      "match_label": "navicular bone of pes",
+      "tissue_class": "Bone",
+      "granularity": "individual"
+    },
+    "Bone_Patella": {
+      "term": "UBERON:0002446",
+      "match_label": "patella",
+      "tissue_class": "Bone",
+      "granularity": "individual"
+    },
+    "Bone_Pelvis": {
+      "term": "UBERON:0001272",
+      "match_label": "hip bone",
+      "tissue_class": "Bone",
+      "granularity": "individual",
+      "notes": "Denver \"Pelvis\" per side is one hip bone (ilium, ischium, pubis fused); sacrum and coccyx are separate files.",
+      "fma_equivalent": "fma16585"
+    },
+    "Bone_Phalanges": {
+      "term": "UBERON:0010696",
+      "match_label": "set of phalanges of pes",
+      "tissue_class": "Bone",
+      "granularity": "set",
+      "notes": "All phalanges of one foot in one mesh.",
+      "fma_equivalent": "fma78512"
+    },
+    "Bone_Sacrum": {
+      "term": "UBERON:0003690",
+      "match_label": "sacrum",
+      "tissue_class": "Bone",
+      "granularity": "individual",
+      "notes": "UBERON label is \"fused sacrum\"; the HRA female skeleton uses the same identifier."
+    },
+    "Bone_Talus": {
+      "term": "UBERON:0002395",
+      "match_label": "talus",
+      "tissue_class": "Bone",
+      "granularity": "individual"
+    },
+    "Bone_Tibia": {
+      "term": "UBERON:0000979",
+      "match_label": "tibia",
+      "tissue_class": "Bone",
+      "granularity": "individual"
+    },
+    "Cartilage_FemurDistal": {
+      "term": "fma33188",
+      "match_label": "Articular cartilage of distal epiphysis of femur",
+      "tissue_class": "Cartilage",
+      "granularity": "individual",
+      "notes": "No UBERON term; FMA generic term, lateralized FMA children are used by HRA (fma33189/fma33190)."
+    },
+    "Cartilage_FemurHead": {
+      "term": "fma51604",
+      "match_label": "Articular cartilage of head of femur",
+      "tissue_class": "Cartilage",
+      "granularity": "individual"
+    },
+    "Cartilage_Patella": {
+      "term": "fma43640",
+      "match_label": "Articular cartilage of patella",
+      "tissue_class": "Cartilage",
+      "granularity": "individual"
+    },
+    "Cartilage_PelvisAcetabulum": {
+      "term": "fma42855",
+      "match_label": "Articular cartilage of hip bone",
+      "tissue_class": "Cartilage",
+      "granularity": "individual",
+      "notes": "Denver acetabular (lunate surface) cartilage; FMA has no more specific acetabular cartilage term found by exact search."
+    },
+    "Cartilage_Talus": {
+      "term": "fma44122",
+      "match_label": "Articular cartilage of talus",
+      "tissue_class": "Cartilage",
+      "granularity": "individual"
+    },
+    "Cartilage_TibiaDistal": {
+      "term": "fma33931",
+      "match_label": "Articular cartilage of distal epiphysis of tibia",
+      "tissue_class": "Cartilage",
+      "granularity": "individual"
+    },
+    "Cartilage_TibiaLateral": {
+      "term": "fma311399",
+      "match_label": "Articular cartilage of lateral condyle of tibia",
+      "tissue_class": "Cartilage",
+      "granularity": "individual"
+    },
+    "Cartilage_TibiaMedial": {
+      "term": "fma311392",
+      "match_label": "Articular cartilage of medial condyle of tibia",
+      "tissue_class": "Cartilage",
+      "granularity": "individual"
+    },
+    "Ligament_ACL": {
+      "term": "UBERON:0003671",
+      "match_label": "anterior cruciate ligament of knee joint",
+      "tissue_class": "Ligament",
+      "granularity": "individual",
+      "fma_equivalent": "fma44614"
+    },
+    "Ligament_PCL": {
+      "term": "UBERON:0003680",
+      "match_label": "posterior cruciate ligament of knee joint",
+      "tissue_class": "Ligament",
+      "granularity": "individual",
+      "fma_equivalent": "fma44617"
+    },
+    "Ligament_LCL": {
+      "term": "fma9660",
+      "match_label": "Fibular collateral ligament",
+      "tissue_class": "Ligament",
+      "granularity": "individual",
+      "notes": "No UBERON term found by exact search for the fibular (lateral) collateral ligament of the knee."
+    },
+    "Ligament_MCL": {
+      "term": "fma44600",
+      "match_label": "Tibial collateral ligament",
+      "tissue_class": "Ligament",
+      "granularity": "individual",
+      "notes": "No UBERON term found by exact search for the tibial (medial) collateral ligament of the knee."
+    },
+    "Muscle_AdductorBrevis": {
+      "term": "UBERON:0000368",
+      "match_label": "adductor brevis",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_AdductorLongus": {
+      "term": "UBERON:0000303",
+      "match_label": "adductor longus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_AdductorMagnus": {
+      "term": "UBERON:0000370",
+      "match_label": "adductor magnus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_BicepsFemorisLong": {
+      "term": "fma45887",
+      "match_label": "Long head of biceps femoris",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "Left folder label; UBERON has only the whole biceps femoris (UBERON:0001374)."
+    },
+    "Muscle_BicepsFemorisLongHead": {
+      "term": "fma45887",
+      "match_label": "Long head of biceps femoris",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "Right folder label; same structure as Left_Muscle_BicepsFemorisLong."
+    },
+    "Muscle_BicepsFemorisShort": {
+      "term": "fma45890",
+      "match_label": "Short head of biceps femoris",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "Left folder label; UBERON has only the whole biceps femoris (UBERON:0001374)."
+    },
+    "Muscle_BicepsFemorisShortHead": {
+      "term": "fma45890",
+      "match_label": "Short head of biceps femoris",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "Right folder label; same structure as Left_Muscle_BicepsFemorisShort."
+    },
+    "Muscle_ExtensorDigitorumLongus": {
+      "term": "UBERON:0001386",
+      "match_label": "extensor digitorum longus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_ExtensorHallucisLongus": {
+      "term": "fma22533",
+      "match_label": "Extensor hallucis longus",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "No UBERON term found by exact search; FMA generic term."
+    },
+    "Muscle_FlexorDigitorumLongus": {
+      "term": "UBERON:0001666",
+      "match_label": "flexor digitorum longus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_FlexorHallucisLongus": {
+      "term": "UBERON:0001392",
+      "match_label": "flexor hallucis longus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_GastrocnemiusLateral": {
+      "term": "UBERON:0011908",
+      "match_label": "gastrocnemius lateralis",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_GastrocnemiusMedial": {
+      "term": "UBERON:0011907",
+      "match_label": "gastrocnemius medialis",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_GluteusMaximus": {
+      "term": "UBERON:0001370",
+      "match_label": "gluteus maximus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_GluteusMedius": {
+      "term": "UBERON:0001371",
+      "match_label": "gluteus medius",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_GluteusMinimus": {
+      "term": "UBERON:0008521",
+      "match_label": "gluteus minimus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Gracilis": {
+      "term": "UBERON:0000950",
+      "match_label": "gracilis",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Illiacus": {
+      "term": "UBERON:0001369",
+      "match_label": "iliacus muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "Source spelling \"Illiacus\"."
+    },
+    "Muscle_InferiorGemellus": {
+      "term": "UBERON:0019202",
+      "match_label": "inferior gemellus muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_ObturatorExternus": {
+      "term": "UBERON:0001368",
+      "match_label": "obturator externus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_ObturatorInternus": {
+      "term": "UBERON:0011048",
+      "match_label": "obturator internus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Pectineus": {
+      "term": "UBERON:0001382",
+      "match_label": "pectineus muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_PeroneusLongus": {
+      "term": "UBERON:0001387",
+      "match_label": "fibularis longus",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "Source uses the synonym peroneus longus."
+    },
+    "Muscle_Piriformis": {
+      "term": "UBERON:0008529",
+      "match_label": "piriformis muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Plantaris": {
+      "term": "UBERON:0011905",
+      "match_label": "plantaris",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Popliteus": {
+      "term": "UBERON:0001391",
+      "match_label": "popliteus muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_PsoasMajor": {
+      "term": "UBERON:0001298",
+      "match_label": "psoas major muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_QuadratusFemoris": {
+      "term": "UBERON:0008537",
+      "match_label": "quadratus femoris",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_QuadratisFemoris": {
+      "term": "UBERON:0008537",
+      "match_label": "quadratus femoris",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "Source spelling \"QuadratisFemoris\" (Right folder)."
+    },
+    "Muscle_RectusFemoris": {
+      "term": "UBERON:0001378",
+      "match_label": "rectus femoris",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Sartorius": {
+      "term": "UBERON:0001373",
+      "match_label": "sartorius muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Semimembranosus": {
+      "term": "UBERON:0001381",
+      "match_label": "semimembranosus muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Semitendinosus": {
+      "term": "UBERON:0001375",
+      "match_label": "semitendinosus",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_Semitendonosus": {
+      "term": "UBERON:0001375",
+      "match_label": "semitendinosus",
+      "tissue_class": "Muscle",
+      "granularity": "individual",
+      "notes": "Source spelling \"Semitendonosus\" (Right folder)."
+    },
+    "Muscle_Soleus": {
+      "term": "UBERON:0001389",
+      "match_label": "soleus muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_SuperiorGemellus": {
+      "term": "UBERON:0019203",
+      "match_label": "superior gemellus muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_TensorFasciaeLatae": {
+      "term": "UBERON:0001376",
+      "match_label": "tensor fasciae latae muscle",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_TibialisAnterior": {
+      "term": "UBERON:0001385",
+      "match_label": "tibialis anterior",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_TibialisPosterior": {
+      "term": "UBERON:0001667",
+      "match_label": "tibialis posterior",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_VastusIntermedius": {
+      "term": "UBERON:0014847",
+      "match_label": "vastus intermedius",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_VastusLateralis": {
+      "term": "UBERON:0001379",
+      "match_label": "vastus lateralis",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    },
+    "Muscle_VastusMedialis": {
+      "term": "UBERON:0001380",
+      "match_label": "vastus medialis",
+      "tissue_class": "Muscle",
+      "granularity": "individual"
+    }
+  },
+  "tcia": {
+    "Adrenal-glands": {
+      "term": "UBERON:0002369",
+      "match_label": "adrenal gland",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Aorta": {
+      "term": "UBERON:0000947",
+      "match_label": "aorta",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Bladder": {
+      "term": "UBERON:0001255",
+      "match_label": "urinary bladder",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Brain": {
+      "term": "UBERON:0000955",
+      "match_label": "brain",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Carpal": {
+      "term": "UBERON:0009880",
+      "match_label": "carpal skeleton",
+      "granularity": "grouped-bilateral",
+      "notes": "All carpal bones of both hands in one label.",
+      "status": "apply"
+    },
+    "Clavicle": {
+      "term": "UBERON:0001105",
+      "match_label": "clavicle bone",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Femur": {
+      "term": "UBERON:0000981",
+      "match_label": "femur",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Fibula": {
+      "term": "UBERON:0001446",
+      "match_label": "fibula",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Fingers": {
+      "term": "UBERON:0010688",
+      "match_label": "skeleton of manual acropodium",
+      "granularity": "grouped-bilateral",
+      "notes": "Bone label set (Carpal, Metacarpal, Fingers): interpreted as the phalanges of both hands. Label wording is the source's.",
+      "status": "apply"
+    },
+    "Heart": {
+      "term": "UBERON:0000948",
+      "match_label": "heart",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Humerus": {
+      "term": "UBERON:0000976",
+      "match_label": "humerus",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Kidneys": {
+      "term": "UBERON:0002113",
+      "match_label": "kidney",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Liver": {
+      "term": "UBERON:0002107",
+      "match_label": "liver",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Lung": {
+      "term": "UBERON:0002048",
+      "match_label": "lung",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Metacarpal": {
+      "term": "UBERON:0010544",
+      "match_label": "metacarpus skeleton",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Metatarsal": {
+      "term": "UBERON:0010545",
+      "match_label": "metatarsus skeleton",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Pancreas": {
+      "term": "UBERON:0001264",
+      "match_label": "pancreas",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Patella": {
+      "term": "UBERON:0002446",
+      "match_label": "patella",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Pelvis": {
+      "term": "UBERON:0007832",
+      "match_label": "pelvic girdle skeleton",
+      "granularity": "grouped-bilateral",
+      "notes": "Both hip bones in one label; whether the sacrum is included is unreviewed (see registration report).",
+      "status": "apply"
+    },
+    "Psoas": {
+      "term": "UBERON:0008450",
+      "match_label": "psoas muscle",
+      "granularity": "grouped-bilateral",
+      "notes": "Source label does not state major/minor; the generic psoas muscle term is used.",
+      "status": "apply"
+    },
+    "Radius": {
+      "term": "UBERON:0001423",
+      "match_label": "radius bone",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Ribcage": {
+      "term": "UBERON:0003252",
+      "match_label": "thoracic rib cage",
+      "granularity": "single",
+      "notes": "All ribs (and possibly costal cartilage) in one label.",
+      "status": "apply"
+    },
+    "Scapula": {
+      "term": "UBERON:0006849",
+      "match_label": "scapula",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Skeletal-muscle": {
+      "term": "UBERON:0014892",
+      "match_label": "skeletal muscle organ, vertebrate",
+      "granularity": "tissue-depot",
+      "notes": "Whole-body skeletal muscle compartment, not individual muscles.",
+      "status": "apply"
+    },
+    "Skull": {
+      "term": "UBERON:0003129",
+      "match_label": "skull",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Spine": {
+      "term": "UBERON:0001130",
+      "match_label": "vertebral column",
+      "granularity": "single",
+      "notes": "All vertebrae in one label; sacrum membership unreviewed.",
+      "status": "apply"
+    },
+    "Spleen": {
+      "term": "UBERON:0002106",
+      "match_label": "spleen",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Sternum": {
+      "term": "UBERON:0000975",
+      "match_label": "sternum",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Subcutaneous-fat": {
+      "term": "UBERON:0002190",
+      "match_label": "subcutaneous adipose tissue",
+      "granularity": "tissue-depot",
+      "status": "apply"
+    },
+    "Tarsal": {
+      "term": "UBERON:0009879",
+      "match_label": "tarsal skeleton",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Thyroid": {
+      "term": "UBERON:0002046",
+      "match_label": "thyroid gland",
+      "granularity": "single",
+      "status": "apply"
+    },
+    "Tibia": {
+      "term": "UBERON:0000979",
+      "match_label": "tibia",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "Toes": {
+      "term": "UBERON:0010696",
+      "match_label": "set of phalanges of pes",
+      "granularity": "grouped-bilateral",
+      "notes": "Phalanges of both feet; the source mesh has outlying geometry above the head (QA outlier).",
+      "status": "apply"
+    },
+    "Torso-fat": {
+      "term": "UBERON:0014454",
+      "match_label": "visceral abdominal adipose tissue",
+      "granularity": "tissue-depot",
+      "notes": "Source label \"Torso-fat\" is not defined by the source metadata; visceral fat is assumed but not verified.",
+      "status": "proposed-uncertain"
+    },
+    "Ulna": {
+      "term": "UBERON:0001424",
+      "match_label": "ulna",
+      "granularity": "grouped-bilateral",
+      "status": "apply"
+    },
+    "VCI": {
+      "term": "UBERON:0001072",
+      "match_label": "inferior vena cava",
+      "granularity": "single",
+      "notes": "Source abbreviation VCI (vena cava inferior).",
+      "status": "apply"
+    }
+  },
+  "hra-female": {
+    "rule": "Lateralized FMA identifiers (labels \"Left X\"/\"Right X\"/\"... of left X\") are resolved to their generic FMA parent through OLS; the generic FMA term is mapped to UBERON only when the UBERON term lists that FMA id as a cross-reference."
+  },
+  "nlm-vhf-ct": {
+    "spleen": {
+      "search_label": "spleen",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "kidney_right": {
+      "search_label": "kidney",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "kidney_left": {
+      "search_label": "kidney",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "gallbladder": {
+      "search_label": "gallbladder",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "liver": {
+      "search_label": "liver",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "stomach": {
+      "search_label": "stomach",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "pancreas": {
+      "search_label": "pancreas",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "adrenal_gland_right": {
+      "search_label": "adrenal gland",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "adrenal_gland_left": {
+      "search_label": "adrenal gland",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "lung_upper_lobe_left": {
+      "search_label": "upper lobe of left lung",
+      "laterality": "left",
+      "granularity": "individual",
+      "notes": "UBERON term is already lateralized; laterality kept in the term."
+    },
+    "lung_lower_lobe_left": {
+      "search_label": "lower lobe of left lung",
+      "laterality": "left",
+      "granularity": "individual",
+      "notes": "UBERON term is already lateralized; laterality kept in the term."
+    },
+    "lung_upper_lobe_right": {
+      "search_label": "upper lobe of right lung",
+      "laterality": "right",
+      "granularity": "individual",
+      "notes": "UBERON term is already lateralized; laterality kept in the term."
+    },
+    "lung_middle_lobe_right": {
+      "search_label": "middle lobe of right lung",
+      "laterality": "right",
+      "granularity": "individual",
+      "notes": "UBERON term is already lateralized; laterality kept in the term."
+    },
+    "lung_lower_lobe_right": {
+      "search_label": "lower lobe of right lung",
+      "laterality": "right",
+      "granularity": "individual",
+      "notes": "UBERON term is already lateralized; laterality kept in the term."
+    },
+    "esophagus": {
+      "search_label": "esophagus",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "trachea": {
+      "search_label": "trachea",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "thyroid_gland": {
+      "search_label": "thyroid gland",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "small_bowel": {
+      "search_label": "small intestine",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "duodenum": {
+      "search_label": "duodenum",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "colon": {
+      "search_label": "colon",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "urinary_bladder": {
+      "search_label": "urinary bladder",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "prostate": {
+      "search_label": "prostate gland",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "kidney_cyst_left": {
+      "laterality": "left",
+      "granularity": "individual",
+      "status": "proposed-uncertain",
+      "notes": "Pathological finding, not an anatomical structure."
+    },
+    "kidney_cyst_right": {
+      "laterality": "right",
+      "granularity": "individual",
+      "status": "proposed-uncertain",
+      "notes": "Pathological finding, not an anatomical structure."
+    },
+    "sacrum": {
+      "search_label": "fused sacrum",
+      "laterality": "midline",
+      "granularity": "individual",
+      "notes": "May include the coccyx; unreviewed."
+    },
+    "vertebrae_S1": {
+      "search_label": "sacral vertebra 1",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_L5": {
+      "search_label": "lumbar vertebra 5",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_L4": {
+      "search_label": "lumbar vertebra 4",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_L3": {
+      "search_label": "lumbar vertebra 3",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_L2": {
+      "search_label": "lumbar vertebra 2",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_L1": {
+      "search_label": "lumbar vertebra 1",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T12": {
+      "search_label": "thoracic vertebra 12",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T11": {
+      "search_label": "thoracic vertebra 11",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T10": {
+      "search_label": "thoracic vertebra 10",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T9": {
+      "search_label": "thoracic vertebra 9",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T8": {
+      "search_label": "thoracic vertebra 8",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T7": {
+      "search_label": "thoracic vertebra 7",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T6": {
+      "search_label": "thoracic vertebra 6",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T5": {
+      "search_label": "thoracic vertebra 5",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T4": {
+      "search_label": "thoracic vertebra 4",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T3": {
+      "search_label": "thoracic vertebra 3",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T2": {
+      "search_label": "thoracic vertebra 2",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_T1": {
+      "search_label": "thoracic vertebra 1",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_C7": {
+      "search_label": "mammalian cervical vertebra 7",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_C6": {
+      "search_label": "mammalian cervical vertebra 6",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_C5": {
+      "search_label": "mammalian cervical vertebra 5",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_C4": {
+      "search_label": "mammalian cervical vertebra 4",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_C3": {
+      "search_label": "mammalian cervical vertebra 3",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "vertebrae_C2": {
+      "search_label": "vertebral bone 2",
+      "laterality": "midline",
+      "granularity": "individual",
+      "notes": "C1/C2 use the UBERON labels \"vertebral bone 1/2\" (atlas/axis)."
+    },
+    "vertebrae_C1": {
+      "search_label": "vertebral bone 1",
+      "laterality": "midline",
+      "granularity": "individual",
+      "notes": "C1/C2 use the UBERON labels \"vertebral bone 1/2\" (atlas/axis)."
+    },
+    "heart": {
+      "search_label": "heart",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "aorta": {
+      "search_label": "aorta",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "pulmonary_vein": {
+      "search_label": "pulmonary vein",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "brachiocephalic_trunk": {
+      "search_label": "brachiocephalic artery",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "subclavian_artery_right": {
+      "search_label": "subclavian artery",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "subclavian_artery_left": {
+      "search_label": "subclavian artery",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "common_carotid_artery_right": {
+      "term": "UBERON:0010197",
+      "match_label": "trunk of common carotid artery",
+      "laterality": "right",
+      "granularity": "individual",
+      "notes": "CT label covers the artery trunk; UBERON \"common carotid artery plus branches\" is an aggregate."
+    },
+    "common_carotid_artery_left": {
+      "term": "UBERON:0010197",
+      "match_label": "trunk of common carotid artery",
+      "laterality": "left",
+      "granularity": "individual",
+      "notes": "CT label covers the artery trunk; UBERON \"common carotid artery plus branches\" is an aggregate."
+    },
+    "brachiocephalic_vein_left": {
+      "search_label": "brachiocephalic vein",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "brachiocephalic_vein_right": {
+      "search_label": "brachiocephalic vein",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "atrial_appendage_left": {
+      "term": "UBERON:0006630",
+      "match_label": "left atrium auricular region",
+      "laterality": "midline",
+      "granularity": "individual",
+      "notes": "Left atrial appendage; UBERON term is already lateralized."
+    },
+    "superior_vena_cava": {
+      "term": "UBERON:0001585",
+      "match_label": "superior vena cava",
+      "laterality": "midline",
+      "granularity": "individual",
+      "notes": "UBERON label is \"anterior vena cava\"; superior vena cava is a synonym."
+    },
+    "inferior_vena_cava": {
+      "search_label": "inferior vena cava",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "portal_vein_and_splenic_vein": {
+      "laterality": "midline",
+      "granularity": "grouped-set",
+      "status": "proposed-uncertain",
+      "notes": "Two vessels in one label (hepatic portal vein and splenic vein); no single UBERON term."
+    },
+    "iliac_artery_left": {
+      "search_label": "common iliac artery",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "iliac_artery_right": {
+      "search_label": "common iliac artery",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "iliac_vena_left": {
+      "search_label": "common iliac vein",
+      "laterality": "left",
+      "granularity": "individual",
+      "notes": "Source spelling \"iliac_vena\"."
+    },
+    "iliac_vena_right": {
+      "search_label": "common iliac vein",
+      "laterality": "right",
+      "granularity": "individual",
+      "notes": "Source spelling \"iliac_vena\"."
+    },
+    "humerus_left": {
+      "search_label": "humerus",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "humerus_right": {
+      "search_label": "humerus",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "scapula_left": {
+      "search_label": "scapula",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "scapula_right": {
+      "search_label": "scapula",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "clavicula_left": {
+      "search_label": "clavicle bone",
+      "laterality": "left",
+      "granularity": "individual",
+      "notes": "Source spelling \"clavicula\"."
+    },
+    "clavicula_right": {
+      "search_label": "clavicle bone",
+      "laterality": "right",
+      "granularity": "individual",
+      "notes": "Source spelling \"clavicula\"."
+    },
+    "femur_left": {
+      "search_label": "femur",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "femur_right": {
+      "search_label": "femur",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "hip_left": {
+      "search_label": "innominate bone",
+      "laterality": "left",
+      "granularity": "individual",
+      "notes": "TotalSegmentator \"hip\" is one hip bone per side."
+    },
+    "hip_right": {
+      "search_label": "innominate bone",
+      "laterality": "right",
+      "granularity": "individual",
+      "notes": "TotalSegmentator \"hip\" is one hip bone per side."
+    },
+    "spinal_cord": {
+      "search_label": "spinal cord",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "gluteus_maximus_left": {
+      "search_label": "gluteus maximus",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "gluteus_maximus_right": {
+      "search_label": "gluteus maximus",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "gluteus_medius_left": {
+      "search_label": "gluteus medius",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "gluteus_medius_right": {
+      "search_label": "gluteus medius",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "gluteus_minimus_left": {
+      "search_label": "gluteus minimus",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "gluteus_minimus_right": {
+      "search_label": "gluteus minimus",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "autochthon_left": {
+      "search_label": "erector spinae muscle group",
+      "laterality": "left",
+      "granularity": "individual",
+      "notes": "Autochthonous (intrinsic) back muscles as one compartment per side; erector spinae group is the closest UBERON term."
+    },
+    "autochthon_right": {
+      "search_label": "erector spinae muscle group",
+      "laterality": "right",
+      "granularity": "individual",
+      "notes": "Autochthonous (intrinsic) back muscles as one compartment per side; erector spinae group is the closest UBERON term."
+    },
+    "iliopsoas_left": {
+      "search_label": "iliopsoas",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "iliopsoas_right": {
+      "search_label": "iliopsoas",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "brain": {
+      "search_label": "brain",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "skull": {
+      "search_label": "skull",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "rib_left_1": {
+      "search_label": "rib 1",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_2": {
+      "search_label": "rib 2",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_3": {
+      "search_label": "rib 3",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_4": {
+      "search_label": "rib 4",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_5": {
+      "search_label": "rib 5",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_6": {
+      "search_label": "rib 6",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_7": {
+      "search_label": "rib 7",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_8": {
+      "search_label": "rib 8",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_9": {
+      "search_label": "rib 9",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_10": {
+      "search_label": "rib 10",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_11": {
+      "search_label": "rib 11",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_left_12": {
+      "search_label": "rib 12",
+      "laterality": "left",
+      "granularity": "individual"
+    },
+    "rib_right_1": {
+      "search_label": "rib 1",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_2": {
+      "search_label": "rib 2",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_3": {
+      "search_label": "rib 3",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_4": {
+      "search_label": "rib 4",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_5": {
+      "search_label": "rib 5",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_6": {
+      "search_label": "rib 6",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_7": {
+      "search_label": "rib 7",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_8": {
+      "search_label": "rib 8",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_9": {
+      "search_label": "rib 9",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_10": {
+      "search_label": "rib 10",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_11": {
+      "search_label": "rib 11",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "rib_right_12": {
+      "search_label": "rib 12",
+      "laterality": "right",
+      "granularity": "individual"
+    },
+    "sternum": {
+      "search_label": "sternum",
+      "laterality": "midline",
+      "granularity": "individual"
+    },
+    "costal_cartilages": {
+      "search_label": "costal cartilage",
+      "laterality": "midline",
+      "granularity": "individual",
+      "notes": "All costal cartilages in one label."
+    }
+  }
+}

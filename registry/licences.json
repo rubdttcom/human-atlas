@@ -13,18 +13,25 @@
     "commercial_use": "true",
     "review_status": "recorded-source-declaration"
   },
+  "nlm-vhf-ct": {
+    "license": "NLM-Terms-and-Conditions",
+    "url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "pending-per-asset-review"
+  },
   "bmftoolkit": {
-    "license": "UNVERIFIED-ASSET",
+    "license": "Zlib (repository LICENSE; data scope unconfirmed)",
     "url": "https://github.com/manishsreenivasa/BMFToolkit/blob/master/LICENSE",
-    "redistributable": "unknown",
-    "commercial_use": "unknown",
+    "redistributable": "pending-author-confirmation",
+    "commercial_use": "pending-author-confirmation",
     "review_status": "pending-per-asset-review"
   },
   "vhf": {
-    "license": "UNVERIFIED",
-    "url": "https://www.nlm.nih.gov/research/visible/getting_data.html",
-    "redistributable": "unknown",
-    "commercial_use": "unknown",
+    "license": "NLM-Terms-and-Conditions",
+    "url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": "true",
+    "commercial_use": "true",
     "review_status": "pending-per-asset-review"
   },
   "tcia": {
@@ -42,45 +49,45 @@
     "review_status": "recorded-source-declaration"
   },
   "spider": {
-    "license": "UNVERIFIED",
-    "url": "https://spider.grand-challenge.org/",
-    "redistributable": "unknown",
-    "commercial_use": "unknown",
-    "review_status": "pending-per-asset-review"
+    "license": "CC-BY-4.0",
+    "url": "https://zenodo.org/records/10159290",
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "recorded-source-declaration"
   },
   "openear": {
-    "license": "UNVERIFIED",
+    "license": "CC-BY-4.0",
     "url": "https://zenodo.org/records/1473724",
-    "redistributable": "unknown",
-    "commercial_use": "unknown",
-    "review_status": "pending-per-asset-review"
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "recorded-source-declaration"
   },
   "sparc": {
-    "license": "UNVERIFIED",
-    "url": "https://discover.pennsieve.io/datasets/307",
-    "redistributable": "unknown",
-    "commercial_use": "unknown",
+    "license": "CC-BY-4.0 (most datasets; some CC BY-NC-SA)",
+    "url": "https://docs.sparc.science/docs/data-use-agreement",
+    "redistributable": "per-dataset",
+    "commercial_use": "per-dataset",
     "review_status": "pending-per-asset-review"
   },
   "hipct": {
-    "license": "PER-ASSET",
-    "url": "https://human-organ-atlas.esrf.eu",
-    "redistributable": "unknown",
-    "commercial_use": "unknown",
-    "review_status": "pending-per-asset-review"
+    "license": "CC-BY-4.0",
+    "url": "https://doi.org/10.15151/ESRF-DC-2439291467",
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "recorded-source-declaration"
   },
   "teeth3ds": {
-    "license": "UNVERIFIED",
-    "url": "https://osf.io/xctdy/",
-    "redistributable": "unknown",
-    "commercial_use": "unknown",
+    "license": "CC-BY-NC-ND-4.0",
+    "url": "https://github.com/abenhamadou/3DTeethSeg22_challenge#license",
+    "redistributable": "false",
+    "commercial_use": "false",
     "review_status": "pending-per-asset-review"
   },
   "z-anatomy": {
-    "license": "PER-ASSET",
-    "url": "https://github.com/Z-Anatomy/Models-of-human-anatomy",
-    "redistributable": "unknown",
-    "commercial_use": "unknown",
+    "license": "CC-BY-SA-4.0",
+    "url": "https://github.com/LluisV/Z-Anatomy/blob/PC-Version/LICENSE",
+    "redistributable": "true",
+    "commercial_use": "true",
     "review_status": "pending-per-asset-review"
   },
   "anatomytool": {

@@ -1,0 +1,13 @@
+{
+  "_about": "Anatomical review decisions per source mesh or per canonical structure. Only a named reviewer writes here; scripts never set a status other than `pending`. `scripts/validate-reviews.py` checks that every referenced id exists and that every shipped mesh has an entry or falls under the default.",
+  "default": {"status": "pending", "reason": "No anatomist has reviewed any mesh, landmark or registration yet."},
+  "allowed_status": ["pending", "reviewed-accepted", "reviewed-with-notes", "rejected"],
+  "reviewers": [],
+  "structures": {},
+  "landmarks_file": "registry/landmark-review.json",
+  "known_issues": [
+    {"id": "tcia:TCIA:003:label-31", "issue": "Outlying geometry above the head in the source Toes segmentation (see generated/anatomy-qa.json outlier_components).", "status": "pending", "action": "Exclude the outlier components or the label from any future composite until reviewed; the label is not composed in 0.4."},
+    {"id": "nlm-vhf-ct:NLMCT:VHF:sacrum", "issue": "CT sacrum label differs from the Denver sacrum by p95 about 10 mm and Hausdorff about 30 mm under the same-donor pelvis fit (coccyx and sacral extent).", "status": "pending", "action": "Denver sacrum is used in the composite; CT sacrum remains an alternative."},
+    {"id": "hra-female:hra-head-to-vhf", "issue": "Head placement is a bounding-box fit into the CT brain envelope; cervical continuity unreviewed.", "status": "pending", "action": "Anatomist review of the skull base and cervical spine junction."}
+  ]
+}

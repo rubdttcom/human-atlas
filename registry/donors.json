@@ -6,10 +6,13 @@
     "age_years": 59,
     "evidence": [
       "Andreassen et al. 2022, https://doi.org/10.1038/s41597-022-01905-2",
-      "data/raw/denver/download-manifest.json"
+      "data/raw/denver/download-manifest.json",
+      "data/raw/nlm-vhf/download-manifest.json",
+      "https://www.nlm.nih.gov/research/visible/visible_human.html"
     ],
     "datasets": [
-      "denver-vhf"
+      "denver-vhf",
+      "nlm-vhf-ct"
     ]
   },
   {

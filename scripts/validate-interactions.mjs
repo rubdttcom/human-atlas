@@ -3,6 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {createExplosionLayout} from '../app/explosion-layout.ts';
 import {PointerTap} from '../app/pointer-tap.ts';
 import {atlasTools} from '../app/agent-tools.ts';
+import {partVisible} from '../app/anatomy.ts';
 
 for (const file of ['atlas.json','atlas-female.json']) {
   const atlas=JSON.parse(await readFile(new URL(`../public/models/${file}`,import.meta.url)));
@@ -39,3 +40,15 @@ tap.down(1,10,10,5);tap.cancel(1);assert.equal(tap.up(1,10,10),false);
 tap.down(1,10,10,5);assert.equal(tap.up(1,10,10),true);
 assert.equal(createExplosionLayout([]).cells.size,0);
 console.log('Tap, drag, multitouch, cancellation, and empty-view checks passed.');
+
+// Donor filter and isolation visibility contract.
+const base={explode:0,visible:['skeletal'],selected:[],isolate:false,view:'front',rotate:false,reset:0,donors:null,landmarks:false};
+const bone={id:'a',name:'a',conceptId:'a',system:'skeletal',chunk:0,positions:0,normals:0,indices:0,vertexCount:0,indexCount:0,bounds:[[0,0,0],[1,1,1]],provenance:{source_donor:'VHF'}};
+const organ={...bone,id:'b',system:'digestive',provenance:{source_donor:'hra-female-assembly'}};
+assert.equal(partVisible(bone,base),true);
+assert.equal(partVisible(organ,base),false);
+assert.equal(partVisible(bone,{...base,donors:['hra-female-assembly']}),false);
+assert.equal(partVisible(bone,{...base,donors:['hra-female-assembly'],selected:['a']}),true);
+assert.equal(partVisible(organ,{...base,isolate:true,selected:['b']}),true);
+assert.equal(partVisible(bone,{...base,isolate:true,selected:['b']}),false);
+console.log('Donor filter and isolation visibility checks passed.');

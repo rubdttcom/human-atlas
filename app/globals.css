@@ -112,3 +112,48 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .coverage-filters{display:flex;gap:14px;align-items:center}.coverage-filters label{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);flex:1;min-width:0;padding:8px 0}.coverage-filters input{width:100%;min-width:0;outline:none}.coverage-filters select{font-size:13px;min-height:40px;max-width:220px;border:1px solid var(--border);padding:6px}
 .coverage-table{flex:1;min-height:0;overflow:auto}.coverage-table table{border-collapse:collapse;width:100%;font-size:12px;table-layout:fixed}.coverage-table th{position:sticky;top:0;background:#edf1f2;text-align:left;font-weight:600;padding:12px 8px}.coverage-table th:first-child{width:43%}.coverage-table th:nth-child(2){width:29%}.coverage-table td{padding:9px 8px;border-bottom:1px solid var(--border);vertical-align:top;overflow-wrap:anywhere}.coverage-table td strong{display:block;font-weight:500}.coverage-table td span{display:block;color:#697781;font-size:11px;margin-top:3px}.coverage-table td button{font-size:11px;max-width:100%;white-space:normal}.coverage-sheet>footer{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}.coverage-sheet>footer>div{display:flex;align-items:center;gap:12px}
 @media(max-width:767px){.studio-footer{justify-content:space-between}.coverage-sheet{padding:16px;gap:12px}.coverage-filters{flex-wrap:wrap;gap:6px}.coverage-filters label{flex-basis:100%}.coverage-filters input{font-size:16px}.coverage-table th:first-child{width:40%}.coverage-table th:nth-child(2){width:30%}.coverage-table td,.coverage-table th{padding:8px 4px;font-size:11px}}
+
+/* Donor filter, registration review, source comparison and coverage refinements (female fork). */
+.donor-filter{display:flex;align-items:center;gap:8px;padding:8px 0 6px;border-bottom:1px solid #18253612;font-size:12px;color:#65717e}
+.donor-filter select{flex:1;min-width:0;min-height:32px;font-size:12px;border:1px solid #18253620;border-radius:4px;padding:4px 6px;background:#ffffffd9;color:#485866}
+.registration-panel{position:absolute;right:30px;top:94px;width:min(460px,calc(100vw - 40px));max-height:calc(100vh - 200px);overflow:auto;border-radius:6px;padding:12px 18px 16px;z-index:20;font-size:12px;color:#485866}
+.registration-copy{margin:10px 0;line-height:1.5}
+.registration-copy.small{color:#68727d;font-size:11px}
+.registration-copy code{font-size:11px}
+.registration-toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.registration-legend{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0;font-size:11px;color:#68727d}
+.registration-legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:8px}
+.registration-legend .dot.target{background:#1f7a5c}
+.registration-legend .dot.source{background:#c2410c}
+.registration-legend .dot.line{background:#334155;border-radius:1px;height:2px;width:14px}
+.registration-reviewer{display:flex;align-items:center;gap:8px;margin:8px 0}
+.registration-reviewer input{flex:1;min-width:0;border:1px solid var(--border);border-radius:4px;padding:5px 8px;font-size:12px}
+.registration-table{max-height:300px;overflow:auto;border:1px solid var(--border);border-radius:4px}
+.registration-table table{width:100%;border-collapse:collapse;font-size:11px}
+.registration-table th{position:sticky;top:0;background:#edf1f2;text-align:left;padding:6px;font-weight:600}
+.registration-table td{padding:5px 6px;border-bottom:1px solid var(--border);vertical-align:top}
+.registration-table td select,.registration-table td input{display:block;width:100%;font-size:11px;border:1px solid var(--border);border-radius:3px;padding:3px 4px;margin-bottom:3px}
+.registration-table tr.confirmed td:first-child{border-left:3px solid #1f7a5c}
+.registration-table tr.rejected td:first-child{border-left:3px solid #c2410c}
+.registration-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 4px;font-size:11px;color:#68727d}
+.registration-others{margin-top:8px;font-size:11px}
+.registration-others li{margin:4px 0;overflow-wrap:anywhere}
+.compare-sheet{width:min(1100px,100vw)!important;max-width:none!important;padding:24px;gap:18px;display:flex;flex-direction:column;background:#fff}
+.compare-sheet>header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.compare-sheet>header button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;min-width:40px}
+.compare-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.compare-pane{margin:0;display:flex;flex-direction:column;min-height:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;background:#f2f3f3}
+.compare-scene{position:relative;flex:1;min-height:320px}
+.compare-scene .scene{position:absolute;inset:0}
+.compare-scene canvas{display:block;width:100%!important;height:100%!important}
+.compare-progress{position:absolute;left:10px;top:10px;font-size:11px;color:#68727d;background:#ffffffcc;padding:2px 6px;border-radius:3px}
+.compare-pane figcaption{padding:10px 12px;font-size:12px;background:#fff;border-top:1px solid var(--border)}
+.compare-pane figcaption strong{display:block;font-weight:600}
+.compare-pane figcaption span{display:block;color:#68727d;font-size:11px;margin-top:3px;overflow-wrap:anywhere}
+.compare-button{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:6px 10px;border:1px solid #18253618;border-radius:3px;color:#485866;margin:6px 0 10px}
+.coverage-toggle{display:flex;align-items:center;gap:6px;font-size:12px;border-bottom:none!important;flex-basis:auto!important;padding:0!important}
+.coverage-review{color:#7a6a2b!important}
+.coverage-table td button{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 7px;margin:0 6px 4px 0;border:1px solid #18253618;border-radius:3px;min-height:28px!important;min-width:0!important}
+.coverage-table td button.best{border-color:#1f7a5c;color:#1f7a5c}
+.coverage-table td button.partial{border-style:dashed;color:#7a6a2b}
+@media (max-width:767px){.registration-panel{top:112px;left:12px;right:12px;width:auto;z-index:40}.compare-scene{min-height:240px}}

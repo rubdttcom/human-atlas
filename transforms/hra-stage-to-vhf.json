@@ -1,0 +1,676 @@
+{
+  "id": "hra-stage-to-vhf",
+  "type": "similarity",
+  "from": "HRA viewer stage",
+  "to": "VHF-image-2022 canonical stage",
+  "matrix_row_major": [
+    0.9940803670456807,
+    -0.02498852538593484,
+    0.0029367268032832574,
+    0.03594042523498678,
+    0.024960971048861406,
+    0.994044459623057,
+    0.00902159231835558,
+    0.07191171404300434,
+    -0.0031623866902269404,
+    -0.008944987573899216,
+    0.9943534650307608,
+    0.07252986305573572,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "scale": 0.9943987263220707,
+  "volume_scale": 0.9832901260308025,
+  "surface_area_scale": 0.9888288269109565,
+  "landmark_count": 6,
+  "landmarks": [
+    {
+      "landmark": "bounding-box centre",
+      "side": "n/a",
+      "source_concept": "HRA:VH_F_heart",
+      "target_labels": [
+        "heart"
+      ],
+      "source_assets": [
+        "VH_F_interventricular_septum",
+        "VH_F_left_cardiac_atrium",
+        "VH_F_left_ventricle",
+        "VH_F_right_cardiac_atrium",
+        "VH_F_right_ventricle",
+        "VH_F_papillary_muscle_of_heart_ant",
+        "VH_F_papillary_muscle_of_heart_antlat",
+        "VH_F_papillary_muscle_of_heart_med",
+        "VH_F_papillary_muscle_of_heart_pos",
+        "VH_F_papillary_muscle_of_heart_posmed",
+        "VH_F_aortic_valve",
+        "VH_F_pulmonary_valve",
+        "VH_F_mitral_valve",
+        "VH_F_tricuspid_valve"
+      ],
+      "target_assets": [
+        "NLMCT:VHF:heart"
+      ],
+      "source_point_m": [
+        0.03631838597357273,
+        1.2388152480125427,
+        -0.05585685442201793
+      ],
+      "target_point_m": [
+        0.04056095890700817,
+        1.3118917346000671,
+        -0.0005236342549324036
+      ],
+      "residual_mm": 10.30933432350511
+    },
+    {
+      "landmark": "bounding-box centre",
+      "side": "n/a",
+      "source_concept": "HRA:VH_F_liver",
+      "target_labels": [
+        "liver"
+      ],
+      "source_assets": [
+        "VH_F_gastric_impression_of_liver",
+        "VH_F_suprarenal_impression_of_liver",
+        "VH_F_renal_impression_of_liver",
+        "VH_F_duodenal_impression_of_liver",
+        "VH_F_esophageal_impression_of_liver",
+        "VH_F_porta_hepatis",
+        "VH_F_colic_impression_of_liver",
+        "VH_F_capsule_of_the_liver",
+        "VH_F_bare_area_of_liver",
+        "VH_F_diaphragmatic_surface_of_liver",
+        "VH_F_left_anterolateral_segment",
+        "VH_F_left_superomedial_segment",
+        "VH_F_left_superomedial_segment1",
+        "VH_F_left_inferomedial_segment",
+        "VH_F_quadrate_lobe",
+        "VH_F_right_anterosuperior_segment",
+        "VH_F_right_posteroinferior_segment",
+        "VH_F_right_posterosuperior_segment",
+        "VH_F_right_anteroinferior_segment",
+        "VH_F_caudate_lobe",
+        "VH_F_coronary_ligament_of_liver",
+        "VH_F_falciform_ligament",
+        "VH_F_triangular_ligament_of_liver",
+        "VH_F_ligamentum_venosum",
+        "VH_F_round_ligament_of_liver",
+        "VH_F_hepataduodenal_ligament"
+      ],
+      "target_assets": [
+        "NLMCT:VHF:liver"
+      ],
+      "source_point_m": [
+        -0.011333577334880829,
+        1.1422723531723022,
+        -0.07070436235517263
+      ],
+      "target_point_m": [
+        -0.00186920166015625,
+        1.2004122138023376,
+        -0.004935890436172485
+      ],
+      "residual_mm": 7.11229155285373
+    },
+    {
+      "landmark": "bounding-box centre",
+      "side": "n/a",
+      "source_concept": "HRA:VH_F_spleen",
+      "target_labels": [
+        "spleen"
+      ],
+      "source_assets": [
+        "VH_F_gastric_surface_of_spleen",
+        "VH_F_diaphragmatic_surface_of_spleen",
+        "VH_F_colic_surface_of_spleen",
+        "VH_F_hilum_of_spleen",
+        "VH_F_renal_surface_of_spleen"
+      ],
+      "target_assets": [
+        "NLMCT:VHF:spleen"
+      ],
+      "source_point_m": [
+        0.08155457861721516,
+        1.131465494632721,
+        -0.1177222803235054
+      ],
+      "target_point_m": [
+        0.09057174064218998,
+        1.198419988155365,
+        -0.04988845530897379
+      ],
+      "residual_mm": 5.530011659580624
+    },
+    {
+      "landmark": "bounding-box centre",
+      "side": "n/a",
+      "source_concept": "HRA:VH_F_kidney",
+      "target_labels": [
+        "kidney_left",
+        "kidney_right"
+      ],
+      "source_assets": [
+        "VH_F_kidney_capsule_L",
+        "VH_F_hilum_of_kidney_L",
+        "VH_F_renal_papilla_L_a",
+        "VH_F_renal_papilla_L_b",
+        "VH_F_renal_papilla_L_c",
+        "VH_F_renal_papilla_L_d",
+        "VH_F_renal_papilla_L_e",
+        "VH_F_renal_papilla_L_f",
+        "VH_F_renal_papilla_L_g",
+        "VH_F_renal_papilla_L_h",
+        "VH_F_renal_papilla_L_i",
+        "VH_F_renal_papilla_L_j",
+        "VH_F_renal_papilla_L_k",
+        "VH_F_renal_pyramid_L_a",
+        "VH_F_renal_pyramid_L_b",
+        "VH_F_renal_pyramid_L_c",
+        "VH_F_renal_pyramid_L_d",
+        "VH_F_renal_pyramid_L_e",
+        "VH_F_renal_pyramid_L_f",
+        "VH_F_renal_pyramid_L_g",
+        "VH_F_renal_pyramid_L_h",
+        "VH_F_renal_pyramid_L_i",
+        "VH_F_renal_pyramid_L_j",
+        "VH_F_renal_pyramid_L_k",
+        "VH_F_renal_column_L",
+        "VH_F_outer_cortex_of_kidney_L",
+        "VH_F_kidney_capsule_R",
+        "VH_F_hilum_of_kidney_R",
+        "VH_F_outer_cortex_of_kidney_R",
+        "VH_F_renal_column_R",
+        "VH_F_renal_papilla_R_a",
+        "VH_F_renal_papilla_R_b",
+        "VH_F_renal_papilla_R_c",
+        "VH_F_renal_papilla_R_d",
+        "VH_F_renal_papilla_R_e",
+        "VH_F_renal_papilla_R_f",
+        "VH_F_renal_papilla_R_g",
+        "VH_F_renal_papilla_R_h",
+        "VH_F_renal_papilla_R_i",
+        "VH_F_renal_papilla_R_j",
+        "VH_F_renal_pyramid_R_a",
+        "VH_F_renal_pyramid_R_b",
+        "VH_F_renal_pyramid_R_c",
+        "VH_F_renal_pyramid_R_d",
+        "VH_F_renal_pyramid_R_e",
+        "VH_F_renal_pyramid_R_f",
+        "VH_F_renal_pyramid_R_g",
+        "VH_F_renal_pyramid_R_h",
+        "VH_F_renal_pyramid_R_i",
+        "VH_F_renal_pyramid_R_j"
+      ],
+      "target_assets": [
+        "NLMCT:VHF:kidney_left",
+        "NLMCT:VHF:kidney_right"
+      ],
+      "source_point_m": [
+        0.0022203773260116577,
+        1.0329652428627014,
+        -0.10059661231935024
+      ],
+      "target_point_m": [
+        0.008904978632926941,
+        1.0935534238815308,
+        -0.03546977473888546
+      ],
+      "residual_mm": 5.487652661786895
+    },
+    {
+      "landmark": "bounding-box centre",
+      "side": "n/a",
+      "source_concept": "HRA:VH_F_urinary_bladder",
+      "target_labels": [
+        "urinary_bladder"
+      ],
+      "source_assets": [
+        "VH_F_fundus_of_urinary_bladder_dome",
+        "VH_F_urinary_bladder_neck_smooth_muscle",
+        "VH_F_fundus_of_urinary_bladder_base",
+        "VH_F_trigone_of_urinary_bladder",
+        "VH_F_ureteral_orifice_R",
+        "VH_F_ureteral_orifice_L"
+      ],
+      "target_assets": [
+        "NLMCT:VHF:urinary_bladder"
+      ],
+      "source_point_m": [
+        -0.014551946427673101,
+        0.7988775670528412,
+        -0.028434470063075423
+      ],
+      "target_point_m": [
+        0.004643820226192474,
+        0.8695380985736847,
+        0.030327720218338072
+      ],
+      "residual_mm": 8.601828585984233
+    },
+    {
+      "landmark": "bounding-box centre",
+      "side": "n/a",
+      "source_concept": "HRA:VH_F_pelvis",
+      "target_labels": [
+        "hip_left",
+        "hip_right",
+        "sacrum"
+      ],
+      "source_assets": [
+        "VH_F_sacrum",
+        "VH_F_coccyx",
+        "VH_F_pubis_spongy_bone_L",
+        "VH_F_pubis_spongy_bone_R",
+        "VH_F_pubis_compact_bone_R",
+        "VH_F_pubis_compact_bone_L",
+        "VH_F_ilium_compact_bone_R",
+        "VH_F_ilium_compact_bone_L",
+        "VH_F_ilium_spongy_bone_L",
+        "VH_F_ilium_spongy_bone_R",
+        "VH_F_ischium_compact_bone_R",
+        "VH_F_ischium_compact_bone_L",
+        "VH_F_ischium_spongy_bone_R",
+        "VH_F_ischium_spongy_bone_L"
+      ],
+      "target_assets": [
+        "NLMCT:VHF:hip_left",
+        "NLMCT:VHF:hip_right",
+        "NLMCT:VHF:sacrum"
+      ],
+      "source_point_m": [
+        -0.008577220141887665,
+        0.8536729514598846,
+        -0.09108231723075733
+      ],
+      "target_point_m": [
+        0.0017095431685447693,
+        0.91675865650177,
+        -0.021817896515130997
+      ],
+      "residual_mm": 6.231892169529298
+    }
+  ],
+  "rms_mm": 7.420583546835626,
+  "max_residual_mm": 10.30933432350511,
+  "landmark_selection": "bounding-box centres of six organ/pelvis proxies (targets: NLM VHF CT labels of the Denver donor)",
+  "review_status": "experimental-unreviewed",
+  "canonical_registration": true,
+  "used_in_composition": true,
+  "limitations": [
+    "Bounding-box centres are geometric proxies, not anatomical landmarks.",
+    "HRA is a multi-donor reference assembly; organ placement inside the VHF trunk is unreviewed.",
+    "Targets are automatic CT labels (TotalSegmentator) of the VHF donor, not reviewed organ surfaces."
+  ],
+  "cross_checks": [
+    {
+      "id": "hra-stage-to-vhf-pelvic-crosscheck",
+      "type": "similarity",
+      "from": "HRA viewer stage",
+      "to": "VHF-image-2022 canonical stage",
+      "matrix_row_major": [
+        0.9632180933350486,
+        0.007836388402615344,
+        -0.03563391523306279,
+        0.0009338855483341236,
+        -0.008057872275066127,
+        0.9638574435707811,
+        -0.005846314534662319,
+        0.08996475162507866,
+        0.03558448527704831,
+        0.006140009449735516,
+        0.9632322279271838,
+        0.06112061191176492,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": 0.9639088547295537,
+      "volume_scale": 0.895587265218684,
+      "surface_area_scale": 0.9291202802260398,
+      "landmark_count": 10,
+      "landmarks": [
+        {
+          "landmark": "femoral_head_centre",
+          "side": "left",
+          "source_assets": [
+            "VH_F_femur_L"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Femur"
+          ],
+          "source_point_m": [
+            0.09385318663758224,
+            0.80893620176961,
+            -0.06263821230608603
+          ],
+          "target_point_m": [
+            0.10064684590905147,
+            0.8735356232145426,
+            0.013074227110055209
+          ],
+          "residual_mm": 5.8795200521595605
+        },
+        {
+          "landmark": "anterior_superior_iliac_spine",
+          "side": "left",
+          "source_assets": [
+            "VH_F_ilium_compact_bone_L"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            0.11937338384714993,
+            0.8942059278488159,
+            -0.00231363207355819
+          ],
+          "target_point_m": [
+            0.12070006589617646,
+            0.947183738152186,
+            0.06520642039545796
+          ],
+          "residual_mm": 5.556775114117717
+        },
+        {
+          "landmark": "ischial_tuberosity",
+          "side": "left",
+          "source_assets": [
+            "VH_F_ischium_compact_bone_L"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            0.04893198262813479,
+            0.7512169618939244,
+            -0.08728244796741841
+          ],
+          "target_point_m": [
+            0.05613766527838177,
+            0.8108121969483115,
+            -0.01551738378798796
+          ],
+          "residual_mm": 3.6257191413961287
+        },
+        {
+          "landmark": "iliac_crest_apex",
+          "side": "left",
+          "source_assets": [
+            "VH_F_ilium_compact_bone_L"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            0.110411513907214,
+            0.957294243077437,
+            -0.09604480645308892
+          ],
+          "target_point_m": [
+            0.1155238069675781,
+            1.0177992634720854,
+            -0.024367859039537528
+          ],
+          "residual_mm": 6.696190216538059
+        },
+        {
+          "landmark": "pubic_symphysis_facet",
+          "side": "left",
+          "source_assets": [
+            "VH_F_pubis_compact_bone_L"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.008217785487194424,
+            0.7901125239289325,
+            -0.03371990492324466
+          ],
+          "target_point_m": [
+            0.0009723547798989147,
+            0.8493824993895593,
+            0.036309826614282954
+          ],
+          "residual_mm": 3.969416093542873
+        },
+        {
+          "landmark": "femoral_head_centre",
+          "side": "right",
+          "source_assets": [
+            "VH_F_femur_R"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Femur"
+          ],
+          "source_point_m": [
+            -0.11476588110436182,
+            0.8088221693429867,
+            -0.05885622526857125
+          ],
+          "target_point_m": [
+            -0.09995071610504325,
+            0.8726400209901566,
+            0.0020058275087007837
+          ],
+          "residual_mm": 3.965272884216291
+        },
+        {
+          "landmark": "anterior_superior_iliac_spine",
+          "side": "right",
+          "source_assets": [
+            "VH_F_ilium_compact_bone_R"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.14233959998403276,
+            0.891634830406734,
+            -0.007349654499973569
+          ],
+          "target_point_m": [
+            -0.1267585639170436,
+            0.9438544802887495,
+            0.05579743291749511
+          ],
+          "residual_mm": 7.176462994102551
+        },
+        {
+          "landmark": "ischial_tuberosity",
+          "side": "right",
+          "source_assets": [
+            "VH_F_ischium_compact_bone_R"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.06608818471431732,
+            0.7496781857574687,
+            -0.09044700072092168
+          ],
+          "target_point_m": [
+            -0.05543379814073603,
+            0.8116326011637206,
+            -0.02242595007422791
+          ],
+          "residual_mm": 2.987826819250407
+        },
+        {
+          "landmark": "iliac_crest_apex",
+          "side": "right",
+          "source_assets": [
+            "VH_F_ilium_compact_bone_R"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.12142124988379017,
+            0.9578409194946289,
+            -0.09707470069969854
+          ],
+          "target_point_m": [
+            -0.1005390675253227,
+            1.0220872304018807,
+            -0.031949617391248714
+          ],
+          "residual_mm": 8.703881437182625
+        },
+        {
+          "landmark": "pubic_symphysis_facet",
+          "side": "right",
+          "source_assets": [
+            "VH_F_pubis_compact_bone_R"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.009957687785992255,
+            0.7841241020422716,
+            -0.033572155896287696
+          ],
+          "target_point_m": [
+            -0.002797646376788371,
+            0.8452654331922531,
+            0.03303427364383089
+          ],
+          "residual_mm": 1.6776155894645561
+        }
+      ],
+      "rms_mm": 5.421361802509134,
+      "max_residual_mm": 8.703881437182625,
+      "used_in_composition": false,
+      "landmark_selection": "pelvic: anterior_superior_iliac_spine, iliac_crest_apex, ischial_tuberosity, pubic_symphysis_facet, femoral_head_centre",
+      "landmark_provenance": {
+        "method": "automatic geometric rules on optimized viewer meshes (scripts/extract-landmarks.py)",
+        "marked_by": "script, not an anatomist",
+        "manual_review": "pending",
+        "files": [
+          "transforms/landmarks/denver-vhf.json",
+          "transforms/landmarks/tcia-003.json",
+          "transforms/landmarks/hra-female.json"
+        ]
+      },
+      "organ_offsets_vs_ct_in_vhf": [
+        {
+          "proxy": "HRA:VH_F_heart",
+          "ct_labels": [
+            "heart"
+          ],
+          "organ_fit_offset_mm": 10.309334323505285,
+          "direct_pelvic_offset_mm": 33.252037558714015
+        },
+        {
+          "proxy": "HRA:VH_F_liver",
+          "ct_labels": [
+            "liver"
+          ],
+          "organ_fit_offset_mm": 7.112291552853538,
+          "direct_pelvic_offset_mm": 10.596032528368918
+        },
+        {
+          "proxy": "HRA:VH_F_spleen",
+          "ct_labels": [
+            "spleen"
+          ],
+          "organ_fit_offset_mm": 5.530011659580624,
+          "direct_pelvic_offset_mm": 19.451271170781787
+        },
+        {
+          "proxy": "HRA:VH_F_kidney",
+          "ct_labels": [
+            "kidney_left",
+            "kidney_right"
+          ],
+          "organ_fit_offset_mm": 5.487652661786719,
+          "direct_pelvic_offset_mm": 11.231116348879501
+        },
+        {
+          "proxy": "HRA:VH_F_urinary_bladder",
+          "ct_labels": [
+            "urinary_bladder"
+          ],
+          "organ_fit_offset_mm": 8.601828585984283,
+          "direct_pelvic_offset_mm": 16.0060921660302
+        },
+        {
+          "proxy": "HRA:VH_F_pelvis",
+          "ct_labels": [
+            "hip_left",
+            "hip_right",
+            "sacrum"
+          ],
+          "organ_fit_offset_mm": 6.231892169529296,
+          "direct_pelvic_offset_mm": 3.493597780216019
+        }
+      ],
+      "interpretation": "HRA pelvic landmarks fit the Denver pelvis closely (the HRA VH_F skeleton derives from the Visible Human Female), but the direct pelvic fit places HRA trunk organs away from the same-donor CT organs by the offsets listed; the organ-proxy fit is used for the composite."
+    }
+  ],
+  "regional_transforms": [
+    {
+      "id": "hra-head-to-vhf",
+      "type": "similarity-bounding-box-fit into the NLM VHF CT brain envelope",
+      "from": "HRA viewer stage",
+      "to": "VHF-image-2022 canonical stage",
+      "matrix_row_major": [
+        0.9421111799627874,
+        0.0,
+        0.0,
+        0.01577193220470534,
+        0.0,
+        0.9421111799627874,
+        0.0,
+        0.1510649144455387,
+        0.0,
+        0.0,
+        0.9421111799627874,
+        0.05535071804075631,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": 0.9421111799627874,
+      "source_brain_bounds": [
+        [
+          -0.0746803805232048,
+          1.505783200263977,
+          -0.14809247851371765
+        ],
+        [
+          0.0616968534886837,
+          1.651879072189331,
+          0.018947048112750053
+        ]
+      ],
+      "target_brain_bounds": [
+        [
+          -0.0545852892100811,
+          1.5662287473678589,
+          -0.08685339987277985
+        ],
+        [
+          0.07389722764492035,
+          1.7107700109481812,
+          0.07588548213243484
+        ]
+      ],
+      "target_asset": "NLMCT:VHF:brain",
+      "rms_mm": null,
+      "review_status": "experimental-unreviewed",
+      "canonical_registration": true,
+      "used_in_composition": true,
+      "limitations": [
+        "Brain bounding-box containment is not a surface registration or anatomical validation.",
+        "The same transform is applied to cranial sensory structures; their placement and cervical continuity are unreviewed."
+      ]
+    }
+  ]
+}

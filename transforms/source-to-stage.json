@@ -92,8 +92,9 @@
       1
     ],
     "units": "metres",
-    "canonical_registration": false,
-    "review_status": "empirical-axis-check; anatomical-review-pending",
+    "canonical_registration": true,
+    "canonical_space": "VHF-image-2022",
+    "review_status": "empirical-axis-check; defines canonical space VHF-image-2022 (transforms/canonical-space.json); anatomical-review-pending",
     "evidence": {
       "left_pelvis_centroid_mm": [
         457.03122031044325,
@@ -125,5 +126,41 @@
     "landmarks": [],
     "rms": null,
     "hausdorff": null
+  },
+  "nlm-ct-to-stage": {
+    "type": "voxel -> CT RAS mm -> VHF-image-2022 (rigid same-donor pelvis registration nlm-ct-to-vhf) -> canonical stage (denver-image-to-stage)",
+    "from": "NLM VHF fresh CT voxel indices",
+    "to": "VHF-image-2022 canonical stage",
+    "matrix_row_major": [
+      0.0009369565649067968,
+      2.9082085994265206e-05,
+      -1.4024851685907094e-05,
+      -0.22704204472948544,
+      -1.2669614280990829e-05,
+      -1.5570597555893352e-05,
+      -0.0009997707327529858,
+      1.729310250789798,
+      2.9293793745854348e-05,
+      -0.0009369194409157973,
+      1.6179785713757357e-05,
+      0.21174825162070512,
+      0,
+      0,
+      0,
+      1
+    ],
+    "units": "metres",
+    "canonical_registration": true,
+    "canonical_space": "VHF-image-2022",
+    "components": [
+      "CT header affine",
+      "transforms/nlm-ct-to-vhf.json",
+      "denver-image-to-stage"
+    ],
+    "rms_mm": 2.718263889149958,
+    "hausdorff": 35.58093094635553,
+    "landmarks": [],
+    "review_status": "automatic same-donor surface registration (pelvis p95 4.7 mm); anatomy unreviewed",
+    "evidence": "generated/nlm-ct-registration.json"
   }
 }

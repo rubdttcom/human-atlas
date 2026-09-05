@@ -1,0 +1,366 @@
+{
+  "atlas": "tcia-003",
+  "frame": "viewer stage of the source atlas (+x subject left, +y superior, +z anterior, metres)",
+  "method": "automatic geometric rules; see each landmark",
+  "manual_review": "pending",
+  "notes": [
+    "Grouped bilateral CT labels were split by connected components and assigned to a side by centroid sign; components smaller than 5 % of the largest were dropped as speckle.",
+    "Automatic segmentation, not manually reviewed; landmarks inherit any segmentation error.",
+    {
+      "component_split": {
+        "Femur": {
+          "left": {
+            "components_kept": 1,
+            "components_total": 1
+          },
+          "right": {
+            "components_kept": 1,
+            "components_total": 1
+          }
+        },
+        "Tibia": {
+          "left": {
+            "components_kept": 1,
+            "components_total": 1
+          },
+          "right": {
+            "components_kept": 1,
+            "components_total": 1
+          }
+        },
+        "Fibula": {
+          "left": {
+            "components_kept": 1,
+            "components_total": 1
+          },
+          "right": {
+            "components_kept": 1,
+            "components_total": 1
+          }
+        },
+        "Pelvis": {
+          "left": {
+            "components_kept": 0,
+            "components_total": 1
+          },
+          "right": {
+            "components_kept": 0,
+            "components_total": 1
+          }
+        }
+      }
+    }
+  ],
+  "landmarks": [
+    {
+      "landmark": "femoral_head_centre",
+      "side": "left",
+      "point_stage_m": [
+        0.09200407599496077,
+        0.8912370405431731,
+        -0.04179261384183047
+      ],
+      "rule": "least-squares sphere fit to the medial half of the proximal 60 mm, refined on the sphere shell",
+      "source_assets": [
+        "TCIA:003:label-15"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "sphere_radius_mm": 23.488786078512742,
+      "sphere_fit_rms_mm": 1.8174911656094317,
+      "on_surface": false
+    },
+    {
+      "landmark": "medial_epicondyle",
+      "side": "left",
+      "point_stage_m": [
+        0.06345173016518027,
+        0.5267431873541611,
+        0.004304687537644365
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the distal 60 mm",
+      "source_assets": [
+        "TCIA:003:label-15"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 0.899879977573662
+    },
+    {
+      "landmark": "lateral_epicondyle",
+      "side": "left",
+      "point_stage_m": [
+        0.1391275433277843,
+        0.5295309273883549,
+        0.0026460108814662267
+      ],
+      "rule": "centroid of the 3 mm most lateral slab of the distal 60 mm",
+      "source_assets": [
+        "TCIA:003:label-15"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.320097750864095
+    },
+    {
+      "landmark": "medial_malleolus",
+      "side": "left",
+      "point_stage_m": [
+        0.061106770713296205,
+        0.1752140112221241,
+        -0.07094281622105175
+      ],
+      "rule": "centroid of the 3 mm most distal slab among the medial third of the distal 40 mm of the tibia (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-30"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.0876709196296566
+    },
+    {
+      "landmark": "lateral_malleolus",
+      "side": "left",
+      "point_stage_m": [
+        0.09727272336802832,
+        0.1704831236019367,
+        -0.10075557340935963
+      ],
+      "rule": "centroid of the 3 mm most distal slab of the fibula (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-16"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.755701356391582
+    },
+    {
+      "landmark": "anterior_superior_iliac_spine",
+      "side": "left",
+      "point_stage_m": [
+        0.10618544058366255,
+        0.9737828818234531,
+        0.016753195988183672
+      ],
+      "rule": "centroid of the 3 mm most anterior slab of the superior half of the hip bone, vertices more than 40 mm lateral of the midline (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-21"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.5310948481511901
+    },
+    {
+      "landmark": "ischial_tuberosity",
+      "side": "left",
+      "point_stage_m": [
+        0.052354259623421565,
+        0.838370700677236,
+        -0.0752961001698933
+      ],
+      "rule": "centroid of the 3 mm most inferior slab of the hip bone, vertices more than 40 mm lateral of the midline (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-21"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 3.262301464907599
+    },
+    {
+      "landmark": "iliac_crest_apex",
+      "side": "left",
+      "point_stage_m": [
+        0.08471552421187245,
+        1.0386646265207335,
+        -0.07369835605455
+      ],
+      "rule": "centroid of the 3 mm most superior slab of the hip bone, vertices more than 40 mm lateral of the midline (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-21"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 4.364658906545118
+    },
+    {
+      "landmark": "pubic_symphysis_facet",
+      "side": "left",
+      "point_stage_m": [
+        0.0017302864487282932,
+        0.8665768464406332,
+        -0.01600354168486471
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the anterior-inferior quarter of the side-split pelvis label",
+      "source_assets": [
+        "TCIA:003:label-21"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 5.739139152435506
+    },
+    {
+      "landmark": "femoral_head_centre",
+      "side": "right",
+      "point_stage_m": [
+        -0.09057611722599636,
+        0.8865275356008947,
+        -0.0443816643330685
+      ],
+      "rule": "least-squares sphere fit to the medial half of the proximal 60 mm, refined on the sphere shell",
+      "source_assets": [
+        "TCIA:003:label-15"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "sphere_radius_mm": 23.230115260896962,
+      "sphere_fit_rms_mm": 1.5410833873344751,
+      "on_surface": false
+    },
+    {
+      "landmark": "medial_epicondyle",
+      "side": "right",
+      "point_stage_m": [
+        -0.06543201273855041,
+        0.5305196143248502,
+        0.026831169571617946
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the distal 60 mm",
+      "source_assets": [
+        "TCIA:003:label-15"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.1960155180135854
+    },
+    {
+      "landmark": "lateral_epicondyle",
+      "side": "right",
+      "point_stage_m": [
+        -0.1419098394051675,
+        0.532088021116872,
+        0.02552167356254593
+      ],
+      "rule": "centroid of the 3 mm most lateral slab of the distal 60 mm",
+      "source_assets": [
+        "TCIA:003:label-15"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.7842571866886936
+    },
+    {
+      "landmark": "medial_malleolus",
+      "side": "right",
+      "point_stage_m": [
+        -0.08146351152522997,
+        0.17974218793890692,
+        -0.06567515940828757
+      ],
+      "rule": "centroid of the 3 mm most distal slab among the medial third of the distal 40 mm of the tibia (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-30"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.350503155646428
+    },
+    {
+      "landmark": "lateral_malleolus",
+      "side": "right",
+      "point_stage_m": [
+        -0.11999719784311626,
+        0.17539235884728638,
+        -0.09197477801986363
+      ],
+      "rule": "centroid of the 3 mm most distal slab of the fibula (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-16"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.1764154628099717
+    },
+    {
+      "landmark": "anterior_superior_iliac_spine",
+      "side": "right",
+      "point_stage_m": [
+        -0.11260958301260117,
+        0.9655285464956406,
+        0.01678212262452283
+      ],
+      "rule": "centroid of the 3 mm most anterior slab of the superior half of the hip bone, vertices more than 40 mm lateral of the midline (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-21"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.6733939506086604
+    },
+    {
+      "landmark": "ischial_tuberosity",
+      "side": "right",
+      "point_stage_m": [
+        -0.05132786697655354,
+        0.8386213183403015,
+        -0.08307668721338488
+      ],
+      "rule": "centroid of the 3 mm most inferior slab of the hip bone, vertices more than 40 mm lateral of the midline (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-21"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 4.117756434668351
+    },
+    {
+      "landmark": "iliac_crest_apex",
+      "side": "right",
+      "point_stage_m": [
+        -0.08462483704917961,
+        1.036666613486078,
+        -0.07135823575986756
+      ],
+      "rule": "centroid of the 3 mm most superior slab of the hip bone, vertices more than 40 mm lateral of the midline (side split by connected components)",
+      "source_assets": [
+        "TCIA:003:label-21"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.9089503279020368
+    },
+    {
+      "landmark": "pubic_symphysis_facet",
+      "side": "right",
+      "point_stage_m": [
+        -0.001839744425339277,
+        0.8634859394218962,
+        -0.01432547681240791
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the anterior-inferior quarter of the side-split pelvis label",
+      "source_assets": [
+        "TCIA:003:label-21"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 6.590266907739795
+    }
+  ]
+}

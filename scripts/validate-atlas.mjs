@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const filename=process.argv[2]??'atlas.json';
 const base=new URL('../public/models/',import.meta.url),atlas=JSON.parse(fs.readFileSync(new URL(filename,base)));
-const EXPECTED={'atlas.json':[2234,3432],'atlas-female.json':[888,1073],'atlas-tcia-female.json':[36,36],'atlas-denver-female.json':[128,203]};
+const EXPECTED={'atlas.json':[2234,3432],'atlas-female.json':[888,1073],'atlas-tcia-female.json':[36,36],'atlas-denver-female.json':[128,203],'atlas-nlm-vhf-ct.json':[114,148]};
 const expected=EXPECTED[filename];if(!expected)throw new Error(`No expectation recorded for ${filename}`);
 assert.equal(atlas.parts.length,expected[0]);assert.equal(atlas.concepts.length,expected[1]);
 const ids=new Set(atlas.parts.map(p=>p.id));assert.equal(ids.size,expected[0]);

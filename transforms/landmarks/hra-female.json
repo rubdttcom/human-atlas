@@ -1,0 +1,321 @@
+{
+  "atlas": "hra-female",
+  "frame": "viewer stage of the source atlas (+x subject left, +y superior, +z anterior, metres)",
+  "method": "automatic geometric rules; see each landmark",
+  "manual_review": "pending",
+  "notes": [
+    "Reference assembly; the donor of each bone is not established. Used only as a cross-check of the organ-proxy registration."
+  ],
+  "landmarks": [
+    {
+      "landmark": "femoral_head_centre",
+      "side": "left",
+      "point_stage_m": [
+        0.09385318663758224,
+        0.80893620176961,
+        -0.06263821230608603
+      ],
+      "rule": "least-squares sphere fit to the medial half of the proximal 60 mm, refined on the sphere shell",
+      "source_assets": [
+        "VH_F_femur_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "sphere_radius_mm": 25.32387274380342,
+      "sphere_fit_rms_mm": 1.603742673552116,
+      "on_surface": false
+    },
+    {
+      "landmark": "medial_epicondyle",
+      "side": "left",
+      "point_stage_m": [
+        0.07318992777304216,
+        0.4321094426241788,
+        -0.08580821752548218
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the distal 60 mm",
+      "source_assets": [
+        "VH_F_femur_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 4.374233306430428
+    },
+    {
+      "landmark": "lateral_epicondyle",
+      "side": "left",
+      "point_stage_m": [
+        0.1527555875480175,
+        0.4357090532779694,
+        -0.08198374547064305
+      ],
+      "rule": "centroid of the 3 mm most lateral slab of the distal 60 mm",
+      "source_assets": [
+        "VH_F_femur_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 3.2549525958060044
+    },
+    {
+      "landmark": "medial_malleolus",
+      "side": "left",
+      "point_stage_m": [
+        0.11131308476130168,
+        0.07515578468640645,
+        -0.06731833641727765
+      ],
+      "rule": "centroid of the 3 mm most distal slab among the medial third of the distal 40 mm of the tibia",
+      "source_assets": [
+        "VH_F_tibia_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.0553090717098417
+    },
+    {
+      "landmark": "lateral_malleolus",
+      "side": "left",
+      "point_stage_m": [
+        0.15552685303347452,
+        0.06309223175048828,
+        -0.10782687153135027
+      ],
+      "rule": "centroid of the 3 mm most distal slab of the fibula",
+      "source_assets": [
+        "VH_F_fibula_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 3.7107590535051074
+    },
+    {
+      "landmark": "anterior_superior_iliac_spine",
+      "side": "left",
+      "point_stage_m": [
+        0.11937338384714993,
+        0.8942059278488159,
+        -0.00231363207355819
+      ],
+      "rule": "centroid of the 3 mm most anterior slab of the superior half of the ilium compact bone",
+      "source_assets": [
+        "VH_F_ilium_compact_bone_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.4401130245773788
+    },
+    {
+      "landmark": "ischial_tuberosity",
+      "side": "left",
+      "point_stage_m": [
+        0.04893198262813479,
+        0.7512169618939244,
+        -0.08728244796741841
+      ],
+      "rule": "centroid of the 3 mm most inferior slab of the ischium compact bone",
+      "source_assets": [
+        "VH_F_ischium_compact_bone_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 3.3467262003059135
+    },
+    {
+      "landmark": "iliac_crest_apex",
+      "side": "left",
+      "point_stage_m": [
+        0.110411513907214,
+        0.957294243077437,
+        -0.09604480645308892
+      ],
+      "rule": "centroid of the 3 mm most superior slab of the ilium compact bone",
+      "source_assets": [
+        "VH_F_ilium_compact_bone_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.0002380626684286
+    },
+    {
+      "landmark": "pubic_symphysis_facet",
+      "side": "left",
+      "point_stage_m": [
+        -0.008217785487194424,
+        0.7901125239289325,
+        -0.03371990492324466
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the pubis compact bone",
+      "source_assets": [
+        "VH_F_pubis_compact_bone_L"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.215645557007352
+    },
+    {
+      "landmark": "femoral_head_centre",
+      "side": "right",
+      "point_stage_m": [
+        -0.11476588110436182,
+        0.8088221693429867,
+        -0.05885622526857125
+      ],
+      "rule": "least-squares sphere fit to the medial half of the proximal 60 mm, refined on the sphere shell",
+      "source_assets": [
+        "VH_F_femur_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "sphere_radius_mm": 25.364750594306162,
+      "sphere_fit_rms_mm": 1.6470016291195868,
+      "on_surface": false
+    },
+    {
+      "landmark": "medial_epicondyle",
+      "side": "right",
+      "point_stage_m": [
+        -0.09406609155915001,
+        0.4321094426241788,
+        -0.08207598294724118
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the distal 60 mm",
+      "source_assets": [
+        "VH_F_femur_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 4.3742371288950395
+    },
+    {
+      "landmark": "lateral_epicondyle",
+      "side": "right",
+      "point_stage_m": [
+        -0.1736317664384842,
+        0.4357090532779694,
+        -0.0782515088096261
+      ],
+      "rule": "centroid of the 3 mm most lateral slab of the distal 60 mm",
+      "source_assets": [
+        "VH_F_femur_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 3.2549645342983204
+    },
+    {
+      "landmark": "medial_malleolus",
+      "side": "right",
+      "point_stage_m": [
+        -0.1328873187303543,
+        0.07515578468640645,
+        -0.06358610031505425
+      ],
+      "rule": "centroid of the 3 mm most distal slab among the medial third of the distal 40 mm of the tibia",
+      "source_assets": [
+        "VH_F_tibia_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.0553178765788638
+    },
+    {
+      "landmark": "lateral_malleolus",
+      "side": "right",
+      "point_stage_m": [
+        -0.17640302649566106,
+        0.06309223175048828,
+        -0.10409463835614068
+      ],
+      "rule": "centroid of the 3 mm most distal slab of the fibula",
+      "source_assets": [
+        "VH_F_fibula_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 3.710758979561001
+    },
+    {
+      "landmark": "anterior_superior_iliac_spine",
+      "side": "right",
+      "point_stage_m": [
+        -0.14233959998403276,
+        0.891634830406734,
+        -0.007349654499973569
+      ],
+      "rule": "centroid of the 3 mm most anterior slab of the superior half of the ilium compact bone",
+      "source_assets": [
+        "VH_F_ilium_compact_bone_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.5881920586246097
+    },
+    {
+      "landmark": "ischial_tuberosity",
+      "side": "right",
+      "point_stage_m": [
+        -0.06608818471431732,
+        0.7496781857574687,
+        -0.09044700072092168
+      ],
+      "rule": "centroid of the 3 mm most inferior slab of the ischium compact bone",
+      "source_assets": [
+        "VH_F_ischium_compact_bone_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.120675424891915
+    },
+    {
+      "landmark": "iliac_crest_apex",
+      "side": "right",
+      "point_stage_m": [
+        -0.12142124988379017,
+        0.9578409194946289,
+        -0.09707470069969854
+      ],
+      "rule": "centroid of the 3 mm most superior slab of the ilium compact bone",
+      "source_assets": [
+        "VH_F_ilium_compact_bone_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.74219790664057
+    },
+    {
+      "landmark": "pubic_symphysis_facet",
+      "side": "right",
+      "point_stage_m": [
+        -0.009957687785992255,
+        0.7841241020422716,
+        -0.033572155896287696
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the pubis compact bone",
+      "source_assets": [
+        "VH_F_pubis_compact_bone_R"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 2.4023306873319332
+    }
+  ]
+}

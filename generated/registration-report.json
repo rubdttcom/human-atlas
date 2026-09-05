@@ -1,359 +1,2385 @@
 {
-  "id": "hra-stage-to-tcia003-initial",
-  "type": "similarity",
-  "from": "HRA viewer stage",
-  "to": "TCIA 003 viewer stage",
-  "matrix_row_major": [
-    0.9890718841519632,
-    -0.09234950837324678,
-    -0.08658131975733124,
-    0.07811871036506546,
-    0.08782947052661597,
-    0.9917673935776744,
-    -0.054510272341806554,
-    0.10353974833385582,
-    0.09116326417321767,
-    0.04644301871092402,
-    0.9918771365072981,
-    -0.02911062229388483,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-  ],
-  "scale": 0.9971398841925925,
-  "landmarks": [
-    {
-      "source_concept": "HRA:VH_F_heart",
-      "target_label": "Heart",
-      "source_center_m": [
-        0.03631838597357273,
-        1.2388152480125427,
-        -0.05585685442201793
-      ],
-      "target_center_m": [
-        0.022673828527331352,
-        1.3138120770454407,
-        -0.025568358600139618
-      ],
-      "residual_mm": 30.64345134243423
-    },
-    {
-      "source_concept": "HRA:VH_F_liver",
-      "target_label": "Liver",
-      "source_center_m": [
-        -0.011333577334880829,
-        1.1422723531723022,
-        -0.07070436235517263
-      ],
-      "target_center_m": [
-        -0.06271484214812517,
-        1.2423200607299805,
-        -0.050171878188848495
-      ],
-      "residual_mm": 30.553477937612058
-    },
-    {
-      "source_concept": "HRA:VH_F_spleen",
-      "target_label": "Spleen",
-      "source_center_m": [
-        0.08155457861721516,
-        1.131465494632721,
-        -0.1177222803235054
-      ],
-      "target_center_m": [
-        0.06995117291808128,
-        1.245836079120636,
-        -0.0853886753320694
-      ],
-      "residual_mm": 8.558648838587436
-    },
-    {
-      "source_concept": "HRA:VH_F_kidney",
-      "target_label": "Kidneys",
-      "source_center_m": [
-        0.0022203773260116577,
-        1.0329652428627014,
-        -0.10059661231935024
-      ],
-      "target_center_m": [
-        -0.004341799765825272,
-        1.168484091758728,
-        -0.08683593943715096
-      ],
-      "residual_mm": 35.39700958691728
-    },
-    {
-      "source_concept": "HRA:VH_F_urinary_bladder",
-      "target_label": "Bladder",
-      "source_center_m": [
-        -0.014551946427673101,
-        0.7988775670528412,
-        -0.028434470063075423
-      ],
-      "target_center_m": [
-        -0.0033769533038139343,
-        0.8918920159339905,
-        -0.037628906313329935
-      ],
-      "residual_mm": 17.159530898083258
-    },
-    {
-      "source_concept": "HRA:VH_F_pelvis",
-      "target_label": "Pelvis",
-      "source_center_m": [
-        -0.008577220141887665,
-        0.8536729514598846,
-        -0.09108231723075733
-      ],
-      "target_center_m": [
-        -0.0009648427367210388,
-        0.938772052526474,
-        -0.0540312472730875
-      ],
-      "residual_mm": 30.81387671678248
-    }
-  ],
-  "rms_mm": 27.211147779473862,
-  "max_residual_mm": 35.39700958691728,
-  "hausdorff": null,
-  "volume_scale": 0.9914441699685749,
-  "surface_area_scale": 0.9942879486476167,
-  "review_status": "experimental-unreviewed",
-  "canonical_registration": false,
-  "limitations": [
-    "Bounding-box centres are geometric proxies, not manually marked anatomical landmarks.",
-    "Different donors and poses. Local organ placement and tissue intersections are unreviewed.",
-    "The target is a provisional TCIA display frame, not canonical VHF."
-  ],
-  "regional_transforms": [
-    {
-      "id": "hra-head-to-tcia003-initial",
-      "type": "similarity-bounding-box-fit",
-      "from": "HRA viewer stage",
-      "to": "TCIA 003 viewer stage",
+  "canonical_space": {
+    "id": "VHF-image-2022",
+    "definition": "Aligned Visible Human Female image frame of the Denver 2022 release (Andreassen et al. 2022): +x subject right, +y anterior, +z superior, millimetres.",
+    "canonical_stage": "VHF-image-2022 canonical stage",
+    "image_to_stage": {
+      "type": "axis-permutation-unit-scale-translation",
+      "from": "Denver aligned VHF image frame (mm)",
+      "to": "Denver VHF viewer stage",
       "matrix_row_major": [
-        0.8984783046834011,
-        0.0,
-        0.0,
-        0.003903021343306586,
-        0.0,
-        0.8984783046834011,
-        0.0,
-        0.21756657126718415,
-        0.0,
-        0.0,
-        0.8984783046834011,
-        0.046439059665611404,
-        0.0,
-        0.0,
-        0.0,
-        1.0
+        -0.001,
+        0,
+        0,
+        0.5399914855957031,
+        0,
+        0,
+        0.001,
+        -0.008035740852355958,
+        0,
+        0.001,
+        0,
+        -0.4457676239013672,
+        0,
+        0,
+        0,
+        1
       ],
-      "scale": 0.8984783046834011,
-      "source_brain_bounds": [
-        [
-          -0.0746803805232048,
-          1.505783200263977,
-          -0.14809247851371765
+      "units": "metres",
+      "canonical_registration": true,
+      "canonical_space": "VHF-image-2022",
+      "review_status": "empirical-axis-check; defines canonical space VHF-image-2022 (transforms/canonical-space.json); anatomical-review-pending",
+      "evidence": {
+        "left_pelvis_centroid_mm": [
+          457.03122031044325,
+          441.2280901414471,
+          929.5782351661315
         ],
-        [
-          0.0616968534886837,
-          1.651879072189331,
-          0.018947048112750053
-        ]
-      ],
-      "target_brain_bounds": [
-        [
-          -0.06560937315225601,
-          1.5704801082611084,
-          -0.09262499958276749
+        "right_pelvis_centroid_mm": [
+          620.5100695590012,
+          435.3011329219637,
+          931.6815016142001
         ],
-        [
-          0.06174999848008156,
-          1.7017440795898438,
-          0.06946875154972076
-        ]
-      ],
-      "volume_scale": 0.7253085288600116,
-      "surface_area_scale": 0.8072632639867585,
-      "rms_mm": null,
-      "review_status": "experimental-unreviewed",
-      "canonical_registration": false,
-      "limitations": [
-        "Brain bounding-box containment is not a surface registration or anatomical validation.",
-        "The same transform is applied to cranial sensory structures; their placement is unreviewed."
-      ]
+        "left_patella_centroid_mm": [
+          464.6606040246229,
+          492.6797635880642,
+          514.9141564971519
+        ],
+        "left_femur_centroid_mm": [
+          444.33081761199554,
+          455.04820400680353,
+          685.529921257512
+        ],
+        "left_calcaneus_centroid_mm": [
+          514.9005820814592,
+          395.824965659039,
+          125.4425997509134
+        ],
+        "left_femur_max_extent_mm": 417.0235595703125
+      },
+      "landmarks": [],
+      "rms": null,
+      "hausdorff": null
+    },
+    "stage_axes": "+x subject left, +y superior, +z anterior, metres",
+    "reference_source": "denver-vhf",
+    "reference_donor": "VHF",
+    "evidence": [
+      "transforms/source-to-stage.json#denver-image-to-stage",
+      {
+        "left_pelvis_centroid_mm": [
+          457.03122031044325,
+          441.2280901414471,
+          929.5782351661315
+        ],
+        "right_pelvis_centroid_mm": [
+          620.5100695590012,
+          435.3011329219637,
+          931.6815016142001
+        ],
+        "left_patella_centroid_mm": [
+          464.6606040246229,
+          492.6797635880642,
+          514.9141564971519
+        ],
+        "left_femur_centroid_mm": [
+          444.33081761199554,
+          455.04820400680353,
+          685.529921257512
+        ],
+        "left_calcaneus_centroid_mm": [
+          514.9005820814592,
+          395.824965659039,
+          125.4425997509134
+        ],
+        "left_femur_max_extent_mm": 417.0235595703125
+      },
+      "generated/nlm-ct-registration.json#canonical_space_verification"
+    ],
+    "status": "defined from the Denver aligned image frame; verified against the NLM VHF CT header frame by a rigid same-donor pelvis fit (rotation 2.17 deg, free scale 1.0013, pelvis p95 4.7 mm)",
+    "nlm_verification": {
+      "axes_and_units": "consistent",
+      "rotation_deg": 2.1654199725454966,
+      "free_scale": 1.0012672027579324,
+      "pelvis_p95_mm": 4.716855714034616,
+      "interpretation": "The Denver aligned image frame and the NLM CT header frame agree in axis directions and millimetre units: the rigid pelvis fit needs a small rotation and a scale of 1 within one percent, and the same-donor pelvis surfaces agree to a few millimetres. The translation absorbs the different origins (vertex plane of the CT versus the Denver image origin). This verifies the canonical space against NLM image data; it does not review the anatomy of either segmentation."
+    },
+    "registered_sources": {
+      "denver-vhf": "denver-stage-to-vhf (identity)",
+      "nlm-vhf-ct": "nlm-ct-to-vhf (rigid same-donor pelvis registration)",
+      "hra-female": "hra-stage-to-vhf (organ proxies onto same-donor CT organs, experimental)",
+      "tcia": "tcia003-stage-to-vhf (pelvic landmark similarity, experimental; alternative source, not composed)"
     }
-  ],
-  "additional_source_transforms": [
+  },
+  "transforms": [
     {
-      "id": "denver-stage-to-tcia003-initial",
+      "id": "hra-stage-to-vhf",
       "type": "similarity",
-      "from": "Denver VHF viewer stage",
-      "to": "TCIA 003 viewer stage",
+      "from": "HRA viewer stage",
+      "to": "VHF-image-2022 canonical stage",
       "matrix_row_major": [
-        0.9771142627195457,
-        -0.009823834241454747,
-        0.08774719234948923,
-        0.008448512854713479,
-        0.012829968079480721,
-        0.9804529884318143,
-        -0.033101197691154056,
-        0.03827782963515569,
-        -0.08735828182548791,
-        0.03411436134981543,
-        0.9766028367973224,
-        -0.031790109408907107,
+        0.9940803670456807,
+        -0.02498852538593484,
+        0.0029367268032832574,
+        0.03594042523498678,
+        0.024960971048861406,
+        0.994044459623057,
+        0.00902159231835558,
+        0.07191171404300434,
+        -0.0031623866902269404,
+        -0.008944987573899216,
+        0.9943534650307608,
+        0.07252986305573572,
         0.0,
         0.0,
         0.0,
         1.0
       ],
-      "scale": 0.9810954896922036,
+      "scale": 0.9943987263220707,
+      "volume_scale": 0.9832901260308025,
+      "surface_area_scale": 0.9888288269109565,
+      "landmark_count": 6,
       "landmarks": [
         {
-          "source_concept": "Pelvis, sacrum and coccyx",
+          "landmark": "bounding-box centre",
+          "side": "n/a",
+          "source_concept": "HRA:VH_F_heart",
+          "target_labels": [
+            "heart"
+          ],
           "source_assets": [
-            "DENVER:VHF:Left_Bone_Coccyx",
-            "DENVER:VHF:Left_Bone_Pelvis",
-            "DENVER:VHF:Left_Bone_Sacrum",
-            "DENVER:VHF:Right_Bone_Pelvis"
+            "VH_F_interventricular_septum",
+            "VH_F_left_cardiac_atrium",
+            "VH_F_left_ventricle",
+            "VH_F_right_cardiac_atrium",
+            "VH_F_right_ventricle",
+            "VH_F_papillary_muscle_of_heart_ant",
+            "VH_F_papillary_muscle_of_heart_antlat",
+            "VH_F_papillary_muscle_of_heart_med",
+            "VH_F_papillary_muscle_of_heart_pos",
+            "VH_F_papillary_muscle_of_heart_posmed",
+            "VH_F_aortic_valve",
+            "VH_F_pulmonary_valve",
+            "VH_F_mitral_valve",
+            "VH_F_tricuspid_valve"
           ],
-          "target_label": "Pelvis",
-          "source_center_m": [
-            0.0012559965252876282,
-            0.916332334280014,
-            -0.020853545516729355
+          "target_assets": [
+            "NLMCT:VHF:heart"
           ],
-          "target_center_m": [
-            -0.0009648427367210388,
-            0.938772052526474,
-            -0.0540312472730875
+          "source_point_m": [
+            0.03631838597357273,
+            1.2388152480125427,
+            -0.05585685442201793
           ],
-          "residual_mm": 33.054710882856845
+          "target_point_m": [
+            0.04056095890700817,
+            1.3118917346000671,
+            -0.0005236342549324036
+          ],
+          "residual_mm": 10.30933432350511
         },
         {
-          "source_concept": "Femur",
+          "landmark": "bounding-box centre",
+          "side": "n/a",
+          "source_concept": "HRA:VH_F_liver",
+          "target_labels": [
+            "liver"
+          ],
           "source_assets": [
-            "DENVER:VHF:Left_Bone_Femur",
-            "DENVER:VHF:Right_Bone_Femur"
+            "VH_F_gastric_impression_of_liver",
+            "VH_F_suprarenal_impression_of_liver",
+            "VH_F_renal_impression_of_liver",
+            "VH_F_duodenal_impression_of_liver",
+            "VH_F_esophageal_impression_of_liver",
+            "VH_F_porta_hepatis",
+            "VH_F_colic_impression_of_liver",
+            "VH_F_capsule_of_the_liver",
+            "VH_F_bare_area_of_liver",
+            "VH_F_diaphragmatic_surface_of_liver",
+            "VH_F_left_anterolateral_segment",
+            "VH_F_left_superomedial_segment",
+            "VH_F_left_superomedial_segment1",
+            "VH_F_left_inferomedial_segment",
+            "VH_F_quadrate_lobe",
+            "VH_F_right_anterosuperior_segment",
+            "VH_F_right_posteroinferior_segment",
+            "VH_F_right_posterosuperior_segment",
+            "VH_F_right_anteroinferior_segment",
+            "VH_F_caudate_lobe",
+            "VH_F_coronary_ligament_of_liver",
+            "VH_F_falciform_ligament",
+            "VH_F_triangular_ligament_of_liver",
+            "VH_F_ligamentum_venosum",
+            "VH_F_round_ligament_of_liver",
+            "VH_F_hepataduodenal_ligament"
           ],
-          "target_label": "Femur",
-          "source_center_m": [
-            0.001729622483253479,
-            0.688266396522522,
-            -0.005287002772092819
+          "target_assets": [
+            "NLMCT:VHF:liver"
           ],
-          "target_center_m": [
-            -0.00048241764307022095,
-            0.7078880071640015,
-            -0.002894531935453415
+          "source_point_m": [
+            -0.011333577334880829,
+            1.1422723531723022,
+            -0.07070436235517263
           ],
-          "residual_mm": 12.48303778514445
+          "target_point_m": [
+            -0.00186920166015625,
+            1.2004122138023376,
+            -0.004935890436172485
+          ],
+          "residual_mm": 7.11229155285373
         },
         {
-          "source_concept": "Tibia",
+          "landmark": "bounding-box centre",
+          "side": "n/a",
+          "source_concept": "HRA:VH_F_spleen",
+          "target_labels": [
+            "spleen"
+          ],
           "source_assets": [
-            "DENVER:VHF:Left_Bone_Tibia",
-            "DENVER:VHF:Right_Bone_Tibia"
+            "VH_F_gastric_surface_of_spleen",
+            "VH_F_diaphragmatic_surface_of_spleen",
+            "VH_F_colic_surface_of_spleen",
+            "VH_F_hilum_of_spleen",
+            "VH_F_renal_surface_of_spleen"
           ],
-          "target_label": "Tibia",
-          "source_center_m": [
-            -0.006782546639442444,
-            0.3118460029363632,
-            -0.017335617914795876
+          "target_assets": [
+            "NLMCT:VHF:spleen"
           ],
-          "target_center_m": [
-            0.0,
-            0.34339600801467896,
-            -0.0289453137665987
+          "source_point_m": [
+            0.08155457861721516,
+            1.131465494632721,
+            -0.1177222803235054
           ],
-          "residual_mm": 9.049126098660706
+          "target_point_m": [
+            0.09057174064218998,
+            1.198419988155365,
+            -0.04988845530897379
+          ],
+          "residual_mm": 5.530011659580624
         },
         {
-          "source_concept": "Fibula",
+          "landmark": "bounding-box centre",
+          "side": "n/a",
+          "source_concept": "HRA:VH_F_kidney",
+          "target_labels": [
+            "kidney_left",
+            "kidney_right"
+          ],
           "source_assets": [
-            "DENVER:VHF:Left_Bone_Fibula",
-            "DENVER:VHF:Right_Bone_Fibula"
+            "VH_F_kidney_capsule_L",
+            "VH_F_hilum_of_kidney_L",
+            "VH_F_renal_papilla_L_a",
+            "VH_F_renal_papilla_L_b",
+            "VH_F_renal_papilla_L_c",
+            "VH_F_renal_papilla_L_d",
+            "VH_F_renal_papilla_L_e",
+            "VH_F_renal_papilla_L_f",
+            "VH_F_renal_papilla_L_g",
+            "VH_F_renal_papilla_L_h",
+            "VH_F_renal_papilla_L_i",
+            "VH_F_renal_papilla_L_j",
+            "VH_F_renal_papilla_L_k",
+            "VH_F_renal_pyramid_L_a",
+            "VH_F_renal_pyramid_L_b",
+            "VH_F_renal_pyramid_L_c",
+            "VH_F_renal_pyramid_L_d",
+            "VH_F_renal_pyramid_L_e",
+            "VH_F_renal_pyramid_L_f",
+            "VH_F_renal_pyramid_L_g",
+            "VH_F_renal_pyramid_L_h",
+            "VH_F_renal_pyramid_L_i",
+            "VH_F_renal_pyramid_L_j",
+            "VH_F_renal_pyramid_L_k",
+            "VH_F_renal_column_L",
+            "VH_F_outer_cortex_of_kidney_L",
+            "VH_F_kidney_capsule_R",
+            "VH_F_hilum_of_kidney_R",
+            "VH_F_outer_cortex_of_kidney_R",
+            "VH_F_renal_column_R",
+            "VH_F_renal_papilla_R_a",
+            "VH_F_renal_papilla_R_b",
+            "VH_F_renal_papilla_R_c",
+            "VH_F_renal_papilla_R_d",
+            "VH_F_renal_papilla_R_e",
+            "VH_F_renal_papilla_R_f",
+            "VH_F_renal_papilla_R_g",
+            "VH_F_renal_papilla_R_h",
+            "VH_F_renal_papilla_R_i",
+            "VH_F_renal_papilla_R_j",
+            "VH_F_renal_pyramid_R_a",
+            "VH_F_renal_pyramid_R_b",
+            "VH_F_renal_pyramid_R_c",
+            "VH_F_renal_pyramid_R_d",
+            "VH_F_renal_pyramid_R_e",
+            "VH_F_renal_pyramid_R_f",
+            "VH_F_renal_pyramid_R_g",
+            "VH_F_renal_pyramid_R_h",
+            "VH_F_renal_pyramid_R_i",
+            "VH_F_renal_pyramid_R_j"
           ],
-          "target_label": "Fibula",
-          "source_center_m": [
-            -0.003810986876487732,
-            0.2942030653357506,
-            -0.04548805207014084
+          "target_assets": [
+            "NLMCT:VHF:kidney_left",
+            "NLMCT:VHF:kidney_right"
           ],
-          "target_center_m": [
-            -0.0019296929240226746,
-            0.3351920023560524,
-            -0.05354882846586406
+          "source_point_m": [
+            0.0022203773260116577,
+            1.0329652428627014,
+            -0.10059661231935024
           ],
-          "residual_mm": 14.152875544786312
+          "target_point_m": [
+            0.008904978632926941,
+            1.0935534238815308,
+            -0.03546977473888546
+          ],
+          "residual_mm": 5.487652661786895
         },
         {
-          "source_concept": "Patella",
+          "landmark": "bounding-box centre",
+          "side": "n/a",
+          "source_concept": "HRA:VH_F_urinary_bladder",
+          "target_labels": [
+            "urinary_bladder"
+          ],
           "source_assets": [
-            "DENVER:VHF:Left_Bone_Patella",
-            "DENVER:VHF:Right_Bone_Patella"
+            "VH_F_fundus_of_urinary_bladder_dome",
+            "VH_F_urinary_bladder_neck_smooth_muscle",
+            "VH_F_fundus_of_urinary_bladder_base",
+            "VH_F_trigone_of_urinary_bladder",
+            "VH_F_ureteral_orifice_R",
+            "VH_F_ureteral_orifice_L"
           ],
-          "target_label": "Patella",
-          "source_center_m": [
-            -0.01106937974691391,
-            0.5050359219312668,
-            0.03811192326247692
+          "target_assets": [
+            "NLMCT:VHF:urinary_bladder"
           ],
-          "target_center_m": [
-            -0.0009648427367210388,
-            0.527400016784668,
-            0.06416210904717445
+          "source_point_m": [
+            -0.014551946427673101,
+            0.7988775670528412,
+            -0.028434470063075423
           ],
-          "residual_mm": 40.91212681067419
+          "target_point_m": [
+            0.004643820226192474,
+            0.8695380985736847,
+            0.030327720218338072
+          ],
+          "residual_mm": 8.601828585984233
         },
         {
-          "source_concept": "Tarsal bones",
+          "landmark": "bounding-box centre",
+          "side": "n/a",
+          "source_concept": "HRA:VH_F_pelvis",
+          "target_labels": [
+            "hip_left",
+            "hip_right",
+            "sacrum"
+          ],
           "source_assets": [
-            "DENVER:VHF:Left_Bone_Calcaneous",
-            "DENVER:VHF:Left_Bone_Cuboid",
-            "DENVER:VHF:Left_Bone_IntermediateCuneiform",
-            "DENVER:VHF:Left_Bone_LateralCuneiform",
-            "DENVER:VHF:Left_Bone_MedialCuneiform",
-            "DENVER:VHF:Left_Bone_Navicular",
-            "DENVER:VHF:Left_Bone_Talus",
-            "DENVER:VHF:Right_Bone_Calcaneous",
-            "DENVER:VHF:Right_Bone_Cuboid",
-            "DENVER:VHF:Right_Bone_IntermediateCuneiform",
-            "DENVER:VHF:Right_Bone_LateralCuneiform",
-            "DENVER:VHF:Right_Bone_MedialCuneiform",
-            "DENVER:VHF:Right_Bone_Navicular",
-            "DENVER:VHF:Right_Bone_Talus"
+            "VH_F_sacrum",
+            "VH_F_coccyx",
+            "VH_F_pubis_spongy_bone_L",
+            "VH_F_pubis_spongy_bone_R",
+            "VH_F_pubis_compact_bone_R",
+            "VH_F_pubis_compact_bone_L",
+            "VH_F_ilium_compact_bone_R",
+            "VH_F_ilium_compact_bone_L",
+            "VH_F_ilium_spongy_bone_L",
+            "VH_F_ilium_spongy_bone_R",
+            "VH_F_ischium_compact_bone_R",
+            "VH_F_ischium_compact_bone_L",
+            "VH_F_ischium_spongy_bone_R",
+            "VH_F_ischium_spongy_bone_L"
           ],
-          "target_label": "Tarsal",
-          "source_center_m": [
-            -0.012458985671401024,
-            0.113733921200037,
-            -0.033785413950681686
+          "target_assets": [
+            "NLMCT:VHF:hip_left",
+            "NLMCT:VHF:hip_right",
+            "NLMCT:VHF:sacrum"
           ],
-          "target_center_m": [
-            -0.010613281279802322,
-            0.1535320058465004,
-            -0.09889648295938969
+          "source_point_m": [
+            -0.008577220141887665,
+            0.8536729514598846,
+            -0.09108231723075733
           ],
-          "residual_mm": 39.27926186179324
+          "target_point_m": [
+            0.0017095431685447693,
+            0.91675865650177,
+            -0.021817896515130997
+          ],
+          "residual_mm": 6.231892169529298
         }
       ],
-      "rms_mm": 28.128553837131054,
-      "max_residual_mm": 40.91212681067419,
-      "hausdorff": null,
-      "volume_scale": 0.944351854503009,
-      "surface_area_scale": 0.9625483598943848,
+      "rms_mm": 7.420583546835626,
+      "max_residual_mm": 10.30933432350511,
+      "landmark_selection": "bounding-box centres of six organ/pelvis proxies (targets: NLM VHF CT labels of the Denver donor)",
       "review_status": "experimental-unreviewed",
-      "canonical_registration": false,
+      "canonical_registration": true,
+      "used_in_composition": true,
       "limitations": [
-        "Bounding-box centres of grouped bones are geometric proxies, not anatomical landmarks.",
-        "TCIA grouped labels may include or exclude the sacrum; the pelvis proxy pairing is unreviewed.",
-        "Different donors (VHF, 59 years; TCIA 003, 26 years) and poses; joint spaces and soft-tissue overlap are unreviewed.",
-        "Denver \"Phalanges\" spans about 149 mm antero-posteriorly and probably includes the metatarsals; TCIA metatarsal and toe labels are therefore excluded, unreviewed."
+        "Bounding-box centres are geometric proxies, not anatomical landmarks.",
+        "HRA is a multi-donor reference assembly; organ placement inside the VHF trunk is unreviewed.",
+        "Targets are automatic CT labels (TotalSegmentator) of the VHF donor, not reviewed organ surfaces."
+      ],
+      "cross_checks": [
+        {
+          "id": "hra-stage-to-vhf-pelvic-crosscheck",
+          "type": "similarity",
+          "from": "HRA viewer stage",
+          "to": "VHF-image-2022 canonical stage",
+          "matrix_row_major": [
+            0.9632180933350486,
+            0.007836388402615344,
+            -0.03563391523306279,
+            0.0009338855483341236,
+            -0.008057872275066127,
+            0.9638574435707811,
+            -0.005846314534662319,
+            0.08996475162507866,
+            0.03558448527704831,
+            0.006140009449735516,
+            0.9632322279271838,
+            0.06112061191176492,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "scale": 0.9639088547295537,
+          "volume_scale": 0.895587265218684,
+          "surface_area_scale": 0.9291202802260398,
+          "landmark_count": 10,
+          "landmarks": [
+            {
+              "landmark": "femoral_head_centre",
+              "side": "left",
+              "source_assets": [
+                "VH_F_femur_L"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Femur"
+              ],
+              "source_point_m": [
+                0.09385318663758224,
+                0.80893620176961,
+                -0.06263821230608603
+              ],
+              "target_point_m": [
+                0.10064684590905147,
+                0.8735356232145426,
+                0.013074227110055209
+              ],
+              "residual_mm": 5.8795200521595605
+            },
+            {
+              "landmark": "anterior_superior_iliac_spine",
+              "side": "left",
+              "source_assets": [
+                "VH_F_ilium_compact_bone_L"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                0.11937338384714993,
+                0.8942059278488159,
+                -0.00231363207355819
+              ],
+              "target_point_m": [
+                0.12070006589617646,
+                0.947183738152186,
+                0.06520642039545796
+              ],
+              "residual_mm": 5.556775114117717
+            },
+            {
+              "landmark": "ischial_tuberosity",
+              "side": "left",
+              "source_assets": [
+                "VH_F_ischium_compact_bone_L"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                0.04893198262813479,
+                0.7512169618939244,
+                -0.08728244796741841
+              ],
+              "target_point_m": [
+                0.05613766527838177,
+                0.8108121969483115,
+                -0.01551738378798796
+              ],
+              "residual_mm": 3.6257191413961287
+            },
+            {
+              "landmark": "iliac_crest_apex",
+              "side": "left",
+              "source_assets": [
+                "VH_F_ilium_compact_bone_L"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                0.110411513907214,
+                0.957294243077437,
+                -0.09604480645308892
+              ],
+              "target_point_m": [
+                0.1155238069675781,
+                1.0177992634720854,
+                -0.024367859039537528
+              ],
+              "residual_mm": 6.696190216538059
+            },
+            {
+              "landmark": "pubic_symphysis_facet",
+              "side": "left",
+              "source_assets": [
+                "VH_F_pubis_compact_bone_L"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.008217785487194424,
+                0.7901125239289325,
+                -0.03371990492324466
+              ],
+              "target_point_m": [
+                0.0009723547798989147,
+                0.8493824993895593,
+                0.036309826614282954
+              ],
+              "residual_mm": 3.969416093542873
+            },
+            {
+              "landmark": "femoral_head_centre",
+              "side": "right",
+              "source_assets": [
+                "VH_F_femur_R"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Femur"
+              ],
+              "source_point_m": [
+                -0.11476588110436182,
+                0.8088221693429867,
+                -0.05885622526857125
+              ],
+              "target_point_m": [
+                -0.09995071610504325,
+                0.8726400209901566,
+                0.0020058275087007837
+              ],
+              "residual_mm": 3.965272884216291
+            },
+            {
+              "landmark": "anterior_superior_iliac_spine",
+              "side": "right",
+              "source_assets": [
+                "VH_F_ilium_compact_bone_R"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.14233959998403276,
+                0.891634830406734,
+                -0.007349654499973569
+              ],
+              "target_point_m": [
+                -0.1267585639170436,
+                0.9438544802887495,
+                0.05579743291749511
+              ],
+              "residual_mm": 7.176462994102551
+            },
+            {
+              "landmark": "ischial_tuberosity",
+              "side": "right",
+              "source_assets": [
+                "VH_F_ischium_compact_bone_R"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.06608818471431732,
+                0.7496781857574687,
+                -0.09044700072092168
+              ],
+              "target_point_m": [
+                -0.05543379814073603,
+                0.8116326011637206,
+                -0.02242595007422791
+              ],
+              "residual_mm": 2.987826819250407
+            },
+            {
+              "landmark": "iliac_crest_apex",
+              "side": "right",
+              "source_assets": [
+                "VH_F_ilium_compact_bone_R"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.12142124988379017,
+                0.9578409194946289,
+                -0.09707470069969854
+              ],
+              "target_point_m": [
+                -0.1005390675253227,
+                1.0220872304018807,
+                -0.031949617391248714
+              ],
+              "residual_mm": 8.703881437182625
+            },
+            {
+              "landmark": "pubic_symphysis_facet",
+              "side": "right",
+              "source_assets": [
+                "VH_F_pubis_compact_bone_R"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.009957687785992255,
+                0.7841241020422716,
+                -0.033572155896287696
+              ],
+              "target_point_m": [
+                -0.002797646376788371,
+                0.8452654331922531,
+                0.03303427364383089
+              ],
+              "residual_mm": 1.6776155894645561
+            }
+          ],
+          "rms_mm": 5.421361802509134,
+          "max_residual_mm": 8.703881437182625,
+          "used_in_composition": false,
+          "landmark_selection": "pelvic: anterior_superior_iliac_spine, iliac_crest_apex, ischial_tuberosity, pubic_symphysis_facet, femoral_head_centre",
+          "landmark_provenance": {
+            "method": "automatic geometric rules on optimized viewer meshes (scripts/extract-landmarks.py)",
+            "marked_by": "script, not an anatomist",
+            "manual_review": "pending",
+            "files": [
+              "transforms/landmarks/denver-vhf.json",
+              "transforms/landmarks/tcia-003.json",
+              "transforms/landmarks/hra-female.json"
+            ]
+          },
+          "organ_offsets_vs_ct_in_vhf": [
+            {
+              "proxy": "HRA:VH_F_heart",
+              "ct_labels": [
+                "heart"
+              ],
+              "organ_fit_offset_mm": 10.309334323505285,
+              "direct_pelvic_offset_mm": 33.252037558714015
+            },
+            {
+              "proxy": "HRA:VH_F_liver",
+              "ct_labels": [
+                "liver"
+              ],
+              "organ_fit_offset_mm": 7.112291552853538,
+              "direct_pelvic_offset_mm": 10.596032528368918
+            },
+            {
+              "proxy": "HRA:VH_F_spleen",
+              "ct_labels": [
+                "spleen"
+              ],
+              "organ_fit_offset_mm": 5.530011659580624,
+              "direct_pelvic_offset_mm": 19.451271170781787
+            },
+            {
+              "proxy": "HRA:VH_F_kidney",
+              "ct_labels": [
+                "kidney_left",
+                "kidney_right"
+              ],
+              "organ_fit_offset_mm": 5.487652661786719,
+              "direct_pelvic_offset_mm": 11.231116348879501
+            },
+            {
+              "proxy": "HRA:VH_F_urinary_bladder",
+              "ct_labels": [
+                "urinary_bladder"
+              ],
+              "organ_fit_offset_mm": 8.601828585984283,
+              "direct_pelvic_offset_mm": 16.0060921660302
+            },
+            {
+              "proxy": "HRA:VH_F_pelvis",
+              "ct_labels": [
+                "hip_left",
+                "hip_right",
+                "sacrum"
+              ],
+              "organ_fit_offset_mm": 6.231892169529296,
+              "direct_pelvic_offset_mm": 3.493597780216019
+            }
+          ],
+          "interpretation": "HRA pelvic landmarks fit the Denver pelvis closely (the HRA VH_F skeleton derives from the Visible Human Female), but the direct pelvic fit places HRA trunk organs away from the same-donor CT organs by the offsets listed; the organ-proxy fit is used for the composite."
+        }
+      ],
+      "regional_transforms": [
+        {
+          "id": "hra-head-to-vhf",
+          "type": "similarity-bounding-box-fit into the NLM VHF CT brain envelope",
+          "from": "HRA viewer stage",
+          "to": "VHF-image-2022 canonical stage",
+          "matrix_row_major": [
+            0.9421111799627874,
+            0.0,
+            0.0,
+            0.01577193220470534,
+            0.0,
+            0.9421111799627874,
+            0.0,
+            0.1510649144455387,
+            0.0,
+            0.0,
+            0.9421111799627874,
+            0.05535071804075631,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "scale": 0.9421111799627874,
+          "source_brain_bounds": [
+            [
+              -0.0746803805232048,
+              1.505783200263977,
+              -0.14809247851371765
+            ],
+            [
+              0.0616968534886837,
+              1.651879072189331,
+              0.018947048112750053
+            ]
+          ],
+          "target_brain_bounds": [
+            [
+              -0.0545852892100811,
+              1.5662287473678589,
+              -0.08685339987277985
+            ],
+            [
+              0.07389722764492035,
+              1.7107700109481812,
+              0.07588548213243484
+            ]
+          ],
+          "target_asset": "NLMCT:VHF:brain",
+          "rms_mm": null,
+          "review_status": "experimental-unreviewed",
+          "canonical_registration": true,
+          "used_in_composition": true,
+          "limitations": [
+            "Brain bounding-box containment is not a surface registration or anatomical validation.",
+            "The same transform is applied to cranial sensory structures; their placement and cervical continuity are unreviewed."
+          ]
+        }
       ]
+    },
+    {
+      "id": "nlm-stage-to-vhf",
+      "type": "identity (the NLM CT source atlas is already expressed in the canonical stage through nlm-ct-to-vhf)",
+      "from": "NLM VHF CT viewer stage",
+      "to": "VHF-image-2022 canonical stage",
+      "matrix_row_major": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": 1.0,
+      "rms_mm": 2.718263889149958,
+      "p95_mm": 4.716855714034616,
+      "hausdorff_mm": 35.58093094635553,
+      "landmarks": [],
+      "components": [
+        {
+          "id": "nlm-ct-to-vhf",
+          "type": "rigid (ICP, no scale) on the pelvis: CT hip bones and sacrum onto Denver hip bones and sacrum",
+          "from": "NLM VHF fresh CT RAS (mm)",
+          "to": "VHF-image-2022 (mm)",
+          "matrix_row_major": [
+            0.9994203359005832,
+            0.031020891727216223,
+            -0.014024851685907093,
+            520.2106550199672,
+            -0.031246713328911307,
+            0.9993807369768504,
+            -0.016179785713757357,
+            425.6175226701519,
+            0.013514255233056884,
+            0.01660863739295291,
+            0.9997707327529858,
+            1730.13061751783,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "scale": 1.0,
+          "rotation_deg": 2.1654199725454966,
+          "rms_mm": 2.718263889149958,
+          "p95_mm": 4.716855714034616,
+          "hausdorff_mm": 35.58093094635553,
+          "same_donor": true,
+          "canonical_registration": true,
+          "review_status": "automatic same-donor surface registration; anatomy unreviewed",
+          "segment_scope": "trunk, pelvis and head (rigid with the pelvis); femora need their own rigid fits (pose_change_relative_to_pelvis)",
+          "evidence": "generated/nlm-ct-registration.json",
+          "labels_sha256": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177"
+        }
+      ],
+      "same_donor": true,
+      "review_status": "automatic same-donor surface registration; anatomy unreviewed",
+      "canonical_registration": true,
+      "used_in_composition": true,
+      "evidence": {
+        "axes_and_units": "consistent",
+        "rotation_deg": 2.1654199725454966,
+        "free_scale": 1.0012672027579324,
+        "pelvis_p95_mm": 4.716855714034616,
+        "interpretation": "The Denver aligned image frame and the NLM CT header frame agree in axis directions and millimetre units: the rigid pelvis fit needs a small rotation and a scale of 1 within one percent, and the same-donor pelvis surfaces agree to a few millimetres. The translation absorbs the different origins (vertex plane of the CT versus the Denver image origin). This verifies the canonical space against NLM image data; it does not review the anatomy of either segmentation."
+      },
+      "surface_distances": [
+        {
+          "structure": "Hip bones",
+          "denver_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis",
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "ct_assets": [
+            "NLMCT:VHF:hip_left",
+            "NLMCT:VHF:hip_right"
+          ],
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 1.2077141392239268,
+              "rms_mm": 1.3698776430135433,
+              "p95_mm": 2.4062954300999126,
+              "max_mm": 6.403668645702658
+            },
+            "b_to_a": {
+              "mean_mm": 1.0771688978176588,
+              "rms_mm": 1.2375932612693374,
+              "p95_mm": 2.0864971178108656,
+              "max_mm": 9.812157522409013
+            },
+            "hausdorff_mm": 9.812157522409013,
+            "samples_per_surface": 104489,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          }
+        },
+        {
+          "structure": "Sacrum",
+          "denver_assets": [
+            "DENVER:VHF:Left_Bone_Sacrum"
+          ],
+          "ct_assets": [
+            "NLMCT:VHF:sacrum"
+          ],
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 3.164218285245477,
+              "rms_mm": 4.983407408577221,
+              "p95_mm": 9.856030376815221,
+              "max_mm": 35.579346349384664
+            },
+            "b_to_a": {
+              "mean_mm": 2.6479686648058567,
+              "rms_mm": 4.617155907167083,
+              "p95_mm": 11.330297402536507,
+              "max_mm": 25.802673980000897
+            },
+            "hausdorff_mm": 35.579346349384664,
+            "samples_per_surface": 81621,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          }
+        },
+        {
+          "structure": "Femur (left)",
+          "denver_assets": [
+            "DENVER:VHF:Left_Bone_Femur"
+          ],
+          "ct_assets": [
+            "NLMCT:VHF:femur_left"
+          ],
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 3.5267508148784765,
+              "rms_mm": 4.306055058534331,
+              "p95_mm": 8.820063096470035,
+              "max_mm": 12.394131844868378
+            },
+            "b_to_a": {
+              "mean_mm": 3.1126693231437215,
+              "rms_mm": 3.7634325624366363,
+              "p95_mm": 7.46644163419782,
+              "max_mm": 11.140622184774607
+            },
+            "hausdorff_mm": 12.394131844868378,
+            "samples_per_surface": 65148,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          }
+        },
+        {
+          "structure": "Femur (right)",
+          "denver_assets": [
+            "DENVER:VHF:Right_Bone_Femur"
+          ],
+          "ct_assets": [
+            "NLMCT:VHF:femur_right"
+          ],
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 3.3270508617590258,
+              "rms_mm": 3.975387604342271,
+              "p95_mm": 7.60016145373303,
+              "max_mm": 10.642208787686405
+            },
+            "b_to_a": {
+              "mean_mm": 2.91464043840293,
+              "rms_mm": 3.487324500286115,
+              "p95_mm": 6.6416057577815835,
+              "max_mm": 9.969134090915231
+            },
+            "hausdorff_mm": 10.642208787686405,
+            "samples_per_surface": 65242,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "denver-stage-to-vhf",
+      "type": "identity",
+      "from": "Denver VHF viewer stage",
+      "to": "VHF-image-2022 canonical stage",
+      "matrix_row_major": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": 1.0,
+      "rms_mm": 0.0,
+      "landmarks": [],
+      "review_status": "canonical-by-definition; anatomy unreviewed",
+      "canonical_registration": true,
+      "definition": "The canonical space is the Denver aligned VHF image frame; see transforms/canonical-space.json."
+    },
+    {
+      "id": "tcia003-stage-to-vhf",
+      "type": "similarity",
+      "from": "TCIA 003 viewer stage",
+      "to": "VHF-image-2022 canonical stage",
+      "matrix_row_major": [
+        1.069180599894647,
+        0.0322277422122333,
+        -0.04186071282386291,
+        -0.029988732053263058,
+        -0.02985763268820761,
+        1.0683891748035972,
+        0.059926578160634736,
+        -0.08113761979119027,
+        0.04358289132763177,
+        -0.05868599178414247,
+        1.0679862301495902,
+        0.10638876421170079,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": 1.0704849844053386,
+      "volume_scale": 1.226709531074783,
+      "surface_area_scale": 1.145938101837298,
+      "landmark_count": 10,
+      "landmarks": [
+        {
+          "landmark": "femoral_head_centre",
+          "side": "left",
+          "source_assets": [
+            "TCIA:003:label-15"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Femur"
+          ],
+          "source_point_m": [
+            0.09200407599496077,
+            0.8912370405431731,
+            -0.04179261384183047
+          ],
+          "target_point_m": [
+            0.10064684590905147,
+            0.8735356232145426,
+            0.013074227110055209
+          ],
+          "residual_mm": 7.951589691621935
+        },
+        {
+          "landmark": "anterior_superior_iliac_spine",
+          "side": "left",
+          "source_assets": [
+            "TCIA:003:label-21"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            0.10618544058366255,
+            0.9737828818234531,
+            0.016753195988183672
+          ],
+          "target_point_m": [
+            0.12070006589617646,
+            0.947183738152186,
+            0.06520642039545796
+          ],
+          "residual_mm": 13.518185388667439
+        },
+        {
+          "landmark": "ischial_tuberosity",
+          "side": "left",
+          "source_assets": [
+            "TCIA:003:label-21"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            0.052354259623421565,
+            0.838370700677236,
+            -0.0752961001698933
+          ],
+          "target_point_m": [
+            0.05613766527838177,
+            0.8108121969483115,
+            -0.01551738378798796
+          ],
+          "residual_mm": 5.90259911878131
+        },
+        {
+          "landmark": "iliac_crest_apex",
+          "side": "left",
+          "source_assets": [
+            "TCIA:003:label-21"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            0.08471552421187245,
+            1.0386646265207335,
+            -0.07369835605455
+          ],
+          "target_point_m": [
+            0.1155238069675781,
+            1.0177992634720854,
+            -0.024367859039537528
+          ],
+          "residual_mm": 19.480371498852307
+        },
+        {
+          "landmark": "pubic_symphysis_facet",
+          "side": "left",
+          "source_assets": [
+            "TCIA:003:label-21"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            0.0017302864487282932,
+            0.8665768464406332,
+            -0.01600354168486471
+          ],
+          "target_point_m": [
+            0.0009723547798989147,
+            0.8493824993895593,
+            0.036309826614282954
+          ],
+          "residual_mm": 6.1240648372469275
+        },
+        {
+          "landmark": "femoral_head_centre",
+          "side": "right",
+          "source_assets": [
+            "TCIA:003:label-15"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Femur"
+          ],
+          "source_point_m": [
+            -0.09057611722599636,
+            0.8865275356008947,
+            -0.0443816643330685
+          ],
+          "target_point_m": [
+            -0.09995071610504325,
+            0.8726400209901566,
+            0.0020058275087007837
+          ],
+          "residual_mm": 7.540579346094078
+        },
+        {
+          "landmark": "anterior_superior_iliac_spine",
+          "side": "right",
+          "source_assets": [
+            "TCIA:003:label-21"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.11260958301260117,
+            0.9655285464956406,
+            0.01678212262452283
+          ],
+          "target_point_m": [
+            -0.1267585639170436,
+            0.9438544802887495,
+            0.05579743291749511
+          ],
+          "residual_mm": 14.623125690652827
+        },
+        {
+          "landmark": "ischial_tuberosity",
+          "side": "right",
+          "source_assets": [
+            "TCIA:003:label-21"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.05132786697655354,
+            0.8386213183403015,
+            -0.08307668721338488
+          ],
+          "target_point_m": [
+            -0.05543379814073603,
+            0.8116326011637206,
+            -0.02242595007422791
+          ],
+          "residual_mm": 11.41530277578592
+        },
+        {
+          "landmark": "iliac_crest_apex",
+          "side": "right",
+          "source_assets": [
+            "TCIA:003:label-21"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.08462483704917961,
+            1.036666613486078,
+            -0.07135823575986756
+          ],
+          "target_point_m": [
+            -0.1005390675253227,
+            1.0220872304018807,
+            -0.031949617391248714
+          ],
+          "residual_mm": 16.84139158790837
+        },
+        {
+          "landmark": "pubic_symphysis_facet",
+          "side": "right",
+          "source_assets": [
+            "TCIA:003:label-21"
+          ],
+          "target_assets": [
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "source_point_m": [
+            -0.001839744425339277,
+            0.8634859394218962,
+            -0.01432547681240791
+          ],
+          "target_point_m": [
+            -0.002797646376788371,
+            0.8452654331922531,
+            0.03303427364383089
+          ],
+          "residual_mm": 8.695677872799928
+        }
+      ],
+      "rms_mm": 12.074979911513061,
+      "max_residual_mm": 19.480371498852307,
+      "used_in_composition": false,
+      "landmark_selection": "pelvic: anterior_superior_iliac_spine, iliac_crest_apex, ischial_tuberosity, pubic_symphysis_facet, femoral_head_centre",
+      "landmark_provenance": {
+        "method": "automatic geometric rules on optimized viewer meshes (scripts/extract-landmarks.py)",
+        "marked_by": "script, not an anatomist",
+        "manual_review": "pending",
+        "files": [
+          "transforms/landmarks/denver-vhf.json",
+          "transforms/landmarks/tcia-003.json",
+          "transforms/landmarks/hra-female.json"
+        ]
+      },
+      "pose_check": {
+        "all_landmark_rms_mm": 43.56916004983072,
+        "all_landmark_max_mm": 77.96045467105596,
+        "landmark_count": 18,
+        "fit": {
+          "id": "tcia003-stage-to-vhf-all-landmarks-pose-check",
+          "type": "similarity",
+          "from": "TCIA 003 viewer stage",
+          "to": "VHF-image-2022 canonical stage",
+          "matrix_row_major": [
+            0.9951551972534434,
+            0.005541053288360729,
+            -0.0981883182733171,
+            -0.007581289011825343,
+            -0.007354680330227217,
+            0.9998115518052473,
+            -0.01811864485691189,
+            -0.02623049217994744,
+            0.09806914802386546,
+            0.01875295557148989,
+            0.9950056706374268,
+            0.020557876199901792,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "scale": 1.0000027578649104,
+          "volume_scale": 1.0000082736175488,
+          "surface_area_scale": 1.0000055157374268,
+          "landmark_count": 18,
+          "landmarks": [
+            {
+              "landmark": "femoral_head_centre",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-15"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Femur"
+              ],
+              "source_point_m": [
+                0.09200407599496077,
+                0.8912370405431731,
+                -0.04179261384183047
+              ],
+              "target_point_m": [
+                0.10064684590905147,
+                0.8735356232145426,
+                0.013074227110055209
+              ],
+              "residual_mm": 14.226267246713663
+            },
+            {
+              "landmark": "medial_epicondyle",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-15"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Femur"
+              ],
+              "source_point_m": [
+                0.06345173016518027,
+                0.5267431873541611,
+                0.004304687537644365
+              ],
+              "target_point_m": [
+                0.0241313753506312,
+                0.5029119599324007,
+                -0.004801218819529123
+              ],
+              "residual_mm": 57.033020834114254
+            },
+            {
+              "landmark": "lateral_epicondyle",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-15"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Femur"
+              ],
+              "source_point_m": [
+                0.1391275433277843,
+                0.5295309273883549,
+                0.0026460108814662267
+              ],
+              "target_point_m": [
+                0.10280046409974664,
+                0.5030292944382813,
+                -0.005155174345233363
+              ],
+              "residual_mm": 60.347684646482136
+            },
+            {
+              "landmark": "medial_malleolus",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-30"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Tibia"
+              ],
+              "source_point_m": [
+                0.061106770713296205,
+                0.1752140112221241,
+                -0.07094281622105175
+              ],
+              "target_point_m": [
+                0.015518768224865198,
+                0.1498796564216415,
+                -0.010645800308945278
+              ],
+              "residual_mm": 54.68159209409748
+            },
+            {
+              "landmark": "lateral_malleolus",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-16"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Fibula"
+              ],
+              "source_point_m": [
+                0.09727272336802832,
+                0.1704831236019367,
+                -0.10075557340935963
+              ],
+              "target_point_m": [
+                0.053450927357463277,
+                0.13353505599148133,
+                -0.038505500127725745
+              ],
+              "residual_mm": 55.86487255177068
+            },
+            {
+              "landmark": "anterior_superior_iliac_spine",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-21"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                0.10618544058366255,
+                0.9737828818234531,
+                0.016753195988183672
+              ],
+              "target_point_m": [
+                0.12070006589617646,
+                0.947183738152186,
+                0.06520642039545796
+              ],
+              "residual_mm": 18.89379558845326
+            },
+            {
+              "landmark": "ischial_tuberosity",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-21"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                0.052354259623421565,
+                0.838370700677236,
+                -0.0752961001698933
+              ],
+              "target_point_m": [
+                0.05613766527838177,
+                0.8108121969483115,
+                -0.01551738378798796
+              ],
+              "residual_mm": 18.121334157448988
+            },
+            {
+              "landmark": "iliac_crest_apex",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-21"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                0.08471552421187245,
+                1.0386646265207335,
+                -0.07369835605455
+              ],
+              "target_point_m": [
+                0.1155238069675781,
+                1.0177992634720854,
+                -0.024367859039537528
+              ],
+              "residual_mm": 26.267174413396038
+            },
+            {
+              "landmark": "pubic_symphysis_facet",
+              "side": "left",
+              "source_assets": [
+                "TCIA:003:label-21"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Left_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                0.0017302864487282932,
+                0.8665768464406332,
+                -0.01600354168486471
+              ],
+              "target_point_m": [
+                0.0009723547798989147,
+                0.8493824993895593,
+                0.036309826614282954
+              ],
+              "residual_mm": 17.678553823904718
+            },
+            {
+              "landmark": "femoral_head_centre",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-15"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Femur"
+              ],
+              "source_point_m": [
+                -0.09057611722599636,
+                0.8865275356008947,
+                -0.0443816643330685
+              ],
+              "target_point_m": [
+                -0.09995071610504325,
+                0.8726400209901566,
+                0.0020058275087007837
+              ],
+              "residual_mm": 23.94490751709198
+            },
+            {
+              "landmark": "medial_epicondyle",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-15"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Femur"
+              ],
+              "source_point_m": [
+                -0.06543201273855041,
+                0.5305196143248502,
+                0.026831169571617946
+              ],
+              "target_point_m": [
+                -0.03887414100069192,
+                0.5026169130879063,
+                -0.019583350667099077
+              ],
+              "residual_mm": 77.96045467105596
+            },
+            {
+              "landmark": "lateral_epicondyle",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-15"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Femur"
+              ],
+              "source_point_m": [
+                -0.1419098394051675,
+                0.532088021116872,
+                0.02552167356254593
+              ],
+              "target_point_m": [
+                -0.11549805104732513,
+                0.5024101054205478,
+                -0.015455995566634495
+              ],
+              "residual_mm": 66.31849773269117
+            },
+            {
+              "landmark": "medial_malleolus",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-30"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Tibia"
+              ],
+              "source_point_m": [
+                -0.08146351152522997,
+                0.17974218793890692,
+                -0.06567515940828757
+              ],
+              "target_point_m": [
+                -0.038666447843698895,
+                0.14134661721832611,
+                -0.01973612343563753
+              ],
+              "residual_mm": 53.70060962996473
+            },
+            {
+              "landmark": "lateral_malleolus",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-16"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Fibula"
+              ],
+              "source_point_m": [
+                -0.11999719784311626,
+                0.17539235884728638,
+                -0.09197477801986363
+              ],
+              "target_point_m": [
+                -0.06835444048047065,
+                0.12711399272084237,
+                -0.060094008687883615
+              ],
+              "residual_mm": 57.821782571004384
+            },
+            {
+              "landmark": "anterior_superior_iliac_spine",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-21"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.11260958301260117,
+                0.9655285464956406,
+                0.01678212262452283
+              ],
+              "target_point_m": [
+                -0.1267585639170436,
+                0.9438544802887495,
+                0.05579743291749511
+              ],
+              "residual_mm": 16.324378740737384
+            },
+            {
+              "landmark": "ischial_tuberosity",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-21"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.05132786697655354,
+                0.8386213183403015,
+                -0.08307668721338488
+              ],
+              "target_point_m": [
+                -0.05543379814073603,
+                0.8116326011637206,
+                -0.02242595007422791
+              ],
+              "residual_mm": 30.6271162657652
+            },
+            {
+              "landmark": "iliac_crest_apex",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-21"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.08462483704917961,
+                1.036666613486078,
+                -0.07135823575986756
+              ],
+              "target_point_m": [
+                -0.1005390675253227,
+                1.0220872304018807,
+                -0.031949617391248714
+              ],
+              "residual_mm": 24.792580977825473
+            },
+            {
+              "landmark": "pubic_symphysis_facet",
+              "side": "right",
+              "source_assets": [
+                "TCIA:003:label-21"
+              ],
+              "target_assets": [
+                "DENVER:VHF:Right_Bone_Pelvis"
+              ],
+              "source_point_m": [
+                -0.001839744425339277,
+                0.8634859394218962,
+                -0.01432547681240791
+              ],
+              "target_point_m": [
+                -0.002797646376788371,
+                0.8452654331922531,
+                0.03303427364383089
+              ],
+              "residual_mm": 13.321229642064846
+            }
+          ],
+          "rms_mm": 43.56916004983072,
+          "max_residual_mm": 77.96045467105596,
+          "used_in_composition": false,
+          "purpose": "Pose check: one similarity over pelvis, knee and ankle landmarks."
+        },
+        "interpretation": "Knee and ankle residuals of 50-80 mm under one similarity indicate a different lower-limb pose (TCIA 003 knees flexed, shank inclined), not a frame error."
+      },
+      "review_status": "experimental-unreviewed",
+      "canonical_registration": true,
+      "limitations": [
+        "Landmarks are automatic geometric rules on grouped CT labels split by connected components or midline sign; no anatomist has confirmed them.",
+        "Different donors (VHF, 59 years; TCIA 003, 26 years, 1.70 m) and poses; a similarity cannot remove pose differences.",
+        "Since composition 0.4 the composite uses the same-donor NLM CT instead of TCIA 003; this fit only positions the alternative source."
+      ],
+      "surface_distances": [
+        {
+          "structure": "Hip bones",
+          "denver_assets": [
+            "DENVER:VHF:Left_Bone_Pelvis",
+            "DENVER:VHF:Right_Bone_Pelvis"
+          ],
+          "tcia_labels": [
+            "Pelvis"
+          ],
+          "tcia_side_selection": "whole label",
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 3.542269458258891,
+              "rms_mm": 4.158400513110884,
+              "p95_mm": 7.6016075918101995,
+              "max_mm": 13.835162156980841
+            },
+            "b_to_a": {
+              "mean_mm": 4.033573533141447,
+              "rms_mm": 4.779058229871755,
+              "p95_mm": 8.96727025845892,
+              "max_mm": 13.897747083216215
+            },
+            "hausdorff_mm": 13.897747083216215,
+            "samples_per_surface": 81749,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          },
+          "denver_inside_tcia_envelope": {
+            "tcia_bounds_vhf_m": [
+              [
+                -0.1447620164445349,
+                0.8060683003561891,
+                -0.0870022883088594
+              ],
+              [
+                0.1485071000086971,
+                1.0268868800565412,
+                0.07364857010666381
+              ]
+            ],
+            "tolerance_mm": 5.0,
+            "fraction_inside": 0.9985746471102119,
+            "max_excess_mm": 5.920212957143262,
+            "inside": false
+          },
+          "shape_after_rigid_icp": {
+            "icp_rigid_matrix_row_major": [
+              0.9999773944735829,
+              0.005056191357393613,
+              0.004432321150484979,
+              -0.005108119198912452,
+              -0.0051822184550206155,
+              0.9995689032197352,
+              0.028899002196931558,
+              0.0024398134405164925,
+              -0.004284291505962508,
+              -0.02892131817623822,
+              0.9995725097266536,
+              0.023251246664308813,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "icp_translation_mm": 23.930441759803653,
+            "icp_rotation_deg": 1.7008812560815463,
+            "after_rigid_icp": {
+              "a_to_b": {
+                "mean_mm": 3.2805385038265658,
+                "rms_mm": 4.005495218734867,
+                "p95_mm": 7.909944365371839,
+                "max_mm": 12.225027135925178
+              },
+              "b_to_a": {
+                "mean_mm": 2.986259085919012,
+                "rms_mm": 3.691289220403861,
+                "p95_mm": 7.115803823322647,
+                "max_mm": 15.646337336807633
+              },
+              "hausdorff_mm": 15.646337336807633,
+              "samples_per_surface": 82048,
+              "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+            },
+            "purpose": "donor bone-shape comparison after per-bone rigid alignment; not the composition transform"
+          }
+        },
+        {
+          "structure": "Femur (left)",
+          "denver_assets": [
+            "DENVER:VHF:Left_Bone_Femur"
+          ],
+          "tcia_labels": [
+            "Femur"
+          ],
+          "tcia_side_selection": "connected components by centroid sign",
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 33.934400219257014,
+              "rms_mm": 43.850506152254574,
+              "p95_mm": 82.1209268801205,
+              "max_mm": 95.66468848026203
+            },
+            "b_to_a": {
+              "mean_mm": 38.10935067141905,
+              "rms_mm": 47.372542349045936,
+              "p95_mm": 86.33786766245613,
+              "max_mm": 99.93718679693654
+            },
+            "hausdorff_mm": 99.93718679693654,
+            "samples_per_surface": 70109,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          },
+          "denver_inside_tcia_envelope": {
+            "tcia_bounds_vhf_m": [
+              [
+                0.052487445932564596,
+                0.4519733853276986,
+                -0.013980468541832589
+              ],
+              [
+                0.1627180985010324,
+                0.8908525124619794,
+                0.12892805517990796
+              ]
+            ],
+            "tolerance_mm": 5.0,
+            "fraction_inside": 0.8780294786823623,
+            "max_excess_mm": 29.978627276358466,
+            "inside": false
+          },
+          "shape_after_rigid_icp": {
+            "icp_rigid_matrix_row_major": [
+              0.9926199710766029,
+              0.10496649048508644,
+              0.06072585030386932,
+              -0.08597269577610343,
+              -0.08965942813077098,
+              0.9724237130439991,
+              -0.21529818684091367,
+              0.05834613611128082,
+              -0.08165035191073595,
+              0.20826463498387296,
+              0.9746584334257238,
+              -0.17530429789897725,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "icp_translation_mm": 203.78217017192623,
+            "icp_rotation_deg": 14.10492791525274,
+            "after_rigid_icp": {
+              "a_to_b": {
+                "mean_mm": 4.380870546499645,
+                "rms_mm": 5.657672915060733,
+                "p95_mm": 11.850518525813653,
+                "max_mm": 18.23784497839628
+              },
+              "b_to_a": {
+                "mean_mm": 3.5408708035292578,
+                "rms_mm": 4.548068845425397,
+                "p95_mm": 9.54147774869943,
+                "max_mm": 16.320466136478867
+              },
+              "hausdorff_mm": 18.23784497839628,
+              "samples_per_surface": 70212,
+              "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+            },
+            "purpose": "donor bone-shape comparison after per-bone rigid alignment; not the composition transform"
+          }
+        },
+        {
+          "structure": "Femur (right)",
+          "denver_assets": [
+            "DENVER:VHF:Right_Bone_Femur"
+          ],
+          "tcia_labels": [
+            "Femur"
+          ],
+          "tcia_side_selection": "connected components by centroid sign",
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 50.45942801013278,
+              "rms_mm": 63.67721554639363,
+              "p95_mm": 112.78792434277935,
+              "max_mm": 125.70994653868297
+            },
+            "b_to_a": {
+              "mean_mm": 55.47362802962931,
+              "rms_mm": 67.75643024174475,
+              "p95_mm": 116.52898942531719,
+              "max_mm": 131.15443860346812
+            },
+            "hausdorff_mm": 131.15443860346812,
+            "samples_per_surface": 69843,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          },
+          "denver_inside_tcia_envelope": {
+            "tcia_bounds_vhf_m": [
+              [
+                -0.1676560632100282,
+                0.4584322788867067,
+                -0.027425671364691262
+              ],
+              [
+                -0.07065229315097205,
+                0.8909709410635871,
+                0.14003339637974127
+              ]
+            ],
+            "tolerance_mm": 5.0,
+            "fraction_inside": 0.8370415523722442,
+            "max_excess_mm": 33.54081336195341,
+            "inside": false
+          },
+          "shape_after_rigid_icp": {
+            "icp_rigid_matrix_row_major": [
+              0.9804605195196425,
+              -0.15944560088098628,
+              -0.11521401834402566,
+              0.13326114521474275,
+              0.1205965903579461,
+              0.9499091415023185,
+              -0.2883211495613334,
+              0.07561520113223945,
+              0.15541438819270936,
+              0.26879308631367754,
+              0.9505770061876393,
+              -0.22212262618666623,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "icp_translation_mm": 269.8419028436378,
+            "icp_rotation_deg": 19.8688008757055,
+            "after_rigid_icp": {
+              "a_to_b": {
+                "mean_mm": 4.086283842298337,
+                "rms_mm": 5.13818359550102,
+                "p95_mm": 10.282352524919151,
+                "max_mm": 16.783418880994496
+              },
+              "b_to_a": {
+                "mean_mm": 3.334385326768282,
+                "rms_mm": 4.160755133454288,
+                "p95_mm": 8.414602862742358,
+                "max_mm": 14.806529084180495
+              },
+              "hausdorff_mm": 16.783418880994496,
+              "samples_per_surface": 70472,
+              "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+            },
+            "purpose": "donor bone-shape comparison after per-bone rigid alignment; not the composition transform"
+          }
+        },
+        {
+          "structure": "Tibia (left)",
+          "denver_assets": [
+            "DENVER:VHF:Left_Bone_Tibia"
+          ],
+          "tcia_labels": [
+            "Tibia"
+          ],
+          "tcia_side_selection": "connected components by centroid sign",
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 55.75745983134764,
+              "rms_mm": 57.682292549557204,
+              "p95_mm": 79.6057621942124,
+              "max_mm": 88.59603270390394
+            },
+            "b_to_a": {
+              "mean_mm": 56.9557812497367,
+              "rms_mm": 59.20256481059486,
+              "p95_mm": 84.25282878412446,
+              "max_mm": 91.4759521650031
+            },
+            "hausdorff_mm": 91.4759521650031,
+            "samples_per_surface": 66542,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          },
+          "denver_inside_tcia_envelope": {
+            "tcia_bounds_vhf_m": [
+              [
+                0.0338266168304451,
+                0.0978993768531444,
+                -0.013095427809610927
+              ],
+              [
+                0.13905294477858118,
+                0.4617324023966547,
+                0.10903080261064611
+              ]
+            ],
+            "tolerance_mm": 5.0,
+            "fraction_inside": 0.5469275450932437,
+            "max_excess_mm": 32.454117627486625,
+            "inside": false
+          },
+          "shape_after_rigid_icp": {
+            "icp_rigid_matrix_row_major": [
+              0.9964966140980568,
+              -0.015674556020655178,
+              0.08215111919299774,
+              -0.02944287525511766,
+              0.005942954359073786,
+              0.9930680415955303,
+              0.11739057055446898,
+              0.027870893235024057,
+              -0.08342169612632418,
+              -0.11649108573265676,
+              0.9896820941899653,
+              -0.019626013186468838,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "icp_translation_mm": 45.04275731571035,
+            "icp_rotation_deg": 8.261177462512544,
+            "after_rigid_icp": {
+              "a_to_b": {
+                "mean_mm": 4.802232663090058,
+                "rms_mm": 6.46235368201422,
+                "p95_mm": 14.010172139412218,
+                "max_mm": 21.66487299825296
+              },
+              "b_to_a": {
+                "mean_mm": 3.377286460846331,
+                "rms_mm": 4.433344463677185,
+                "p95_mm": 9.89336529078136,
+                "max_mm": 14.919897080861892
+              },
+              "hausdorff_mm": 21.66487299825296,
+              "samples_per_surface": 67757,
+              "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+            },
+            "purpose": "donor bone-shape comparison after per-bone rigid alignment; not the composition transform"
+          }
+        },
+        {
+          "structure": "Tibia (right)",
+          "denver_assets": [
+            "DENVER:VHF:Right_Bone_Tibia"
+          ],
+          "tcia_labels": [
+            "Tibia"
+          ],
+          "tcia_side_selection": "connected components by centroid sign",
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 87.9137427846839,
+              "rms_mm": 89.21540272364166,
+              "p95_mm": 112.36228651932286,
+              "max_mm": 122.65469864118013
+            },
+            "b_to_a": {
+              "mean_mm": 90.4441106011502,
+              "rms_mm": 92.07210692342954,
+              "p95_mm": 120.00739686638255,
+              "max_mm": 126.47628428348462
+            },
+            "hausdorff_mm": 126.47628428348462,
+            "samples_per_surface": 66641,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          },
+          "denver_inside_tcia_envelope": {
+            "tcia_bounds_vhf_m": [
+              [
+                -0.16817568996439536,
+                0.107403039501073,
+                -0.013223576674652376
+              ],
+              [
+                -0.0887559868575854,
+                0.47155856493353654,
+                0.12336661595801561
+              ]
+            ],
+            "tolerance_mm": 5.0,
+            "fraction_inside": 0.12151784369823822,
+            "max_excess_mm": 64.18359114153927,
+            "inside": false
+          },
+          "shape_after_rigid_icp": {
+            "icp_rigid_matrix_row_major": [
+              0.984963329904283,
+              -0.0164711434262402,
+              -0.1719765686891632,
+              0.07151207183375775,
+              0.04670226254077607,
+              0.9837686492183771,
+              0.17325744858049158,
+              0.019353800269067235,
+              0.1663314083913159,
+              -0.17868392834634422,
+              0.9697452842542107,
+              -0.009059412937824848,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "icp_translation_mm": 74.63657927309842,
+            "icp_rotation_deg": 14.248202484788283,
+            "after_rigid_icp": {
+              "a_to_b": {
+                "mean_mm": 4.422374787739687,
+                "rms_mm": 5.574609916895935,
+                "p95_mm": 11.227445556225556,
+                "max_mm": 19.055485337232064
+              },
+              "b_to_a": {
+                "mean_mm": 3.4231959498346094,
+                "rms_mm": 4.154194955131576,
+                "p95_mm": 8.30203690925902,
+                "max_mm": 12.717310044980469
+              },
+              "hausdorff_mm": 19.055485337232064,
+              "samples_per_surface": 66748,
+              "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+            },
+            "purpose": "donor bone-shape comparison after per-bone rigid alignment; not the composition transform"
+          }
+        },
+        {
+          "structure": "Fibula (left)",
+          "denver_assets": [
+            "DENVER:VHF:Left_Bone_Fibula"
+          ],
+          "tcia_labels": [
+            "Fibula"
+          ],
+          "tcia_side_selection": "connected components by centroid sign",
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 59.8544109866675,
+              "rms_mm": 61.7704468748587,
+              "p95_mm": 85.10743647446239,
+              "max_mm": 90.71219306630337
+            },
+            "b_to_a": {
+              "mean_mm": 61.66051938382657,
+              "rms_mm": 63.70899389595383,
+              "p95_mm": 88.29729899181284,
+              "max_mm": 95.7516513841381
+            },
+            "hausdorff_mm": 95.7516513841381,
+            "samples_per_surface": 62082,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          },
+          "denver_inside_tcia_envelope": {
+            "tcia_bounds_vhf_m": [
+              [
+                0.0710176145305641,
+                0.08994602699051746,
+                -0.020469942491643855
+              ],
+              [
+                0.1458288836248855,
+                0.4463235283042073,
+                0.06471366578740828
+              ]
+            ],
+            "tolerance_mm": 5.0,
+            "fraction_inside": 0.012968299711815562,
+            "max_excess_mm": 37.20508687257826,
+            "inside": false
+          },
+          "shape_after_rigid_icp": {
+            "icp_rigid_matrix_row_major": [
+              0.9985180605059234,
+              -0.017628844231567246,
+              0.051486956547742366,
+              -0.028421885260366528,
+              0.010574385523911857,
+              0.9908975466970923,
+              0.13420221429051102,
+              0.022933143057244237,
+              -0.05338412886131642,
+              -0.13345889180097265,
+              0.9896155106833034,
+              -0.014776515112559611,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "icp_translation_mm": 39.396421298249564,
+            "icp_rotation_deg": 8.304059408122814,
+            "after_rigid_icp": {
+              "a_to_b": {
+                "mean_mm": 3.8448432045223147,
+                "rms_mm": 5.2752611143990435,
+                "p95_mm": 12.012404881809557,
+                "max_mm": 20.895331347903717
+              },
+              "b_to_a": {
+                "mean_mm": 2.2349960404687863,
+                "rms_mm": 2.6498266733707245,
+                "p95_mm": 4.4493534679369375,
+                "max_mm": 9.442764176637356
+              },
+              "hausdorff_mm": 20.895331347903717,
+              "samples_per_surface": 62798,
+              "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+            },
+            "purpose": "donor bone-shape comparison after per-bone rigid alignment; not the composition transform"
+          }
+        },
+        {
+          "structure": "Fibula (right)",
+          "denver_assets": [
+            "DENVER:VHF:Right_Bone_Fibula"
+          ],
+          "tcia_labels": [
+            "Fibula"
+          ],
+          "tcia_side_selection": "connected components by centroid sign",
+          "in_canonical_frame": {
+            "a_to_b": {
+              "mean_mm": 99.78178148967038,
+              "rms_mm": 100.8504524278486,
+              "p95_mm": 125.11143180544529,
+              "max_mm": 131.20400006677622
+            },
+            "b_to_a": {
+              "mean_mm": 102.39414180422463,
+              "rms_mm": 103.64715961630368,
+              "p95_mm": 127.81339569893964,
+              "max_mm": 137.49562791111455
+            },
+            "hausdorff_mm": 137.49562791111455,
+            "samples_per_surface": 62144,
+            "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+          },
+          "denver_inside_tcia_envelope": {
+            "tcia_bounds_vhf_m": [
+              [
+                -0.17735548806136553,
+                0.10221689962193098,
+                -0.02523387401296104
+              ],
+              [
+                -0.1331022706368338,
+                0.4585123824154036,
+                0.07831060786091905
+              ]
+            ],
+            "tolerance_mm": 5.0,
+            "fraction_inside": 0.0,
+            "max_excess_mm": 85.30235292274985,
+            "inside": false
+          },
+          "shape_after_rigid_icp": {
+            "icp_rigid_matrix_row_major": [
+              0.9868032771133387,
+              -0.09705478288981864,
+              0.12961350777054548,
+              0.08918392971484478,
+              0.0660951252382969,
+              0.9721715688637901,
+              0.22475292014265205,
+              0.021435361649548755,
+              -0.14781991306352776,
+              -0.21322009710889267,
+              0.9657569381012834,
+              -0.04555283081633206,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "icp_translation_mm": 102.41244281731927,
+            "icp_rotation_deg": 15.768847869887784,
+            "after_rigid_icp": {
+              "a_to_b": {
+                "mean_mm": 3.3535692836542217,
+                "rms_mm": 4.216899470735666,
+                "p95_mm": 7.804407215872594,
+                "max_mm": 17.2570674928682
+              },
+              "b_to_a": {
+                "mean_mm": 2.2162693871098824,
+                "rms_mm": 2.6128593445497095,
+                "p95_mm": 4.61083508741237,
+                "max_mm": 8.403936332334817
+              },
+              "hausdorff_mm": 17.2570674928682,
+              "samples_per_surface": 62683,
+              "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+            },
+            "purpose": "donor bone-shape comparison after per-bone rigid alignment; not the composition transform"
+          }
+        },
+        {
+          "structure": "Sacrum and coccyx (one-directional)",
+          "denver_assets": [
+            "DENVER:VHF:Left_Bone_Coccyx",
+            "DENVER:VHF:Left_Bone_Sacrum"
+          ],
+          "tcia_labels": [
+            "Pelvis",
+            "Spine"
+          ],
+          "denver_to_tcia": {
+            "mean_mm": 3.411403272993559,
+            "rms_mm": 4.217149920494414,
+            "p95_mm": 8.282572894349256,
+            "max_mm": 18.5881871071458
+          },
+          "note": "Which TCIA label holds the sacrum is unreviewed; distance is to the union of Pelvis and Spine."
+        }
+      ],
+      "acceptance": {
+        "criteria_source": "docs/female-open-human-atlas-plan.md section 29.2 and 29.3 item 3",
+        "nlm_ct_pelvis_rigid_p95_below_5_mm": {
+          "value_mm": 4.716855714034616,
+          "met": true
+        },
+        "nlm_ct_frame_scale_within_1_percent": {
+          "value": 1.0012672027579324,
+          "met": true
+        },
+        "nlm_ct_frame_rotation_below_5_deg": {
+          "value_deg": 2.1654199725454966,
+          "met": true
+        },
+        "tcia_pelvic_landmark_rms_below_15_mm": {
+          "value_mm": 12.074979911513061,
+          "met": true,
+          "note": "Alternative source (TCIA 003), not composed."
+        },
+        "tcia_all_lower_limb_landmark_rms_below_15_mm": {
+          "value_mm": 43.56916004983072,
+          "met": false,
+          "note": "Not achievable with one similarity because of the TCIA 003 knee flexion; lower-limb bones come from Denver only."
+        },
+        "denver_hip_bones_inside_tcia_pelvis_envelope": {
+          "fraction_inside": 0.9985746471102119,
+          "max_excess_mm": 5.920212957143262,
+          "met": false
+        },
+        "hra_organ_proxy_rms_below_30_mm": {
+          "value_mm": 7.420583546835626,
+          "met": true
+        },
+        "manual_landmark_review": "pending",
+        "anatomical_review": "pending"
+      }
     }
-  ]
+  ],
+  "acceptance": {
+    "criteria_source": "docs/female-open-human-atlas-plan.md section 29.2 and 29.3 item 3",
+    "nlm_ct_pelvis_rigid_p95_below_5_mm": {
+      "value_mm": 4.716855714034616,
+      "met": true
+    },
+    "nlm_ct_frame_scale_within_1_percent": {
+      "value": 1.0012672027579324,
+      "met": true
+    },
+    "nlm_ct_frame_rotation_below_5_deg": {
+      "value_deg": 2.1654199725454966,
+      "met": true
+    },
+    "tcia_pelvic_landmark_rms_below_15_mm": {
+      "value_mm": 12.074979911513061,
+      "met": true,
+      "note": "Alternative source (TCIA 003), not composed."
+    },
+    "tcia_all_lower_limb_landmark_rms_below_15_mm": {
+      "value_mm": 43.56916004983072,
+      "met": false,
+      "note": "Not achievable with one similarity because of the TCIA 003 knee flexion; lower-limb bones come from Denver only."
+    },
+    "denver_hip_bones_inside_tcia_pelvis_envelope": {
+      "fraction_inside": 0.9985746471102119,
+      "max_excess_mm": 5.920212957143262,
+      "met": false
+    },
+    "hra_organ_proxy_rms_below_30_mm": {
+      "value_mm": 7.420583546835626,
+      "met": true
+    },
+    "manual_landmark_review": "pending",
+    "anatomical_review": "pending"
+  },
+  "composition": {
+    "meshes_by_source": {
+      "hra-female": 786,
+      "nlm-vhf-ct": 101,
+      "denver-vhf": 128
+    },
+    "meshes_by_donor": {
+      "hra-female-assembly": 786,
+      "VHF": 229
+    }
+  }
 }

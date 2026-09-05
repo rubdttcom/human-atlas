@@ -5,7 +5,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 reports = []
-for source in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'composed'):
+for source in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 'composed'):
     atlas = json.loads((ROOT / 'public/atlases' / (source + '.json')).read_text())
     buffers = [(ROOT / 'public' / c['url'].lstrip('/')).read_bytes() for c in atlas['chunks']]
     for part in atlas['parts']:

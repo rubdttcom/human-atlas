@@ -42,3 +42,5 @@ next-env.d.ts
 /artifacts/
 *.tsbuildinfo
 __pycache__/
+/data/derived/
+/.venv-seg/

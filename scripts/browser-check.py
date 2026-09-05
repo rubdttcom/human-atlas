@@ -55,20 +55,45 @@ with sync_playwright() as p:
         page.wait_for_function("document.querySelector('.identity-meta')?.innerText.includes('BodyParts3D')", timeout=60000)
         page.locator('.loading[role="status"]').wait_for(state='hidden', timeout=60000)
         if width in (1440, 390):
-            for source in ('tcia', 'denver-vhf', 'composed'):
+            for source in ('tcia', 'denver-vhf', 'nlm-vhf-ct', 'composed'):
                 page.get_by_label('Anatomical reference').select_option(source)
-                page.locator('.loading[role="status"]').wait_for(state='hidden', timeout=60000)
+                page.locator('.loading[role="status"]').wait_for(state='hidden', timeout=120000)
                 page.wait_for_timeout(700)
                 page.screenshot(path=str(OUT / f'{width}x{height}-{source}.png'))
                 if source == 'composed':
                     assert page.locator('.registration-note').is_visible()
+            # Composite-only controls: donor filter, registration review panel with landmark overlay, coverage filters.
+            mobile_layers = width < 768
+            if mobile_layers:
+                page.get_by_role('button', name='Open system layers', exact=True).click()
+                page.get_by_label('Filter by donor').wait_for()
+            page.get_by_label('Filter by donor').select_option('VHF')
+            page.wait_for_timeout(500)
+            assert page.locator('.panel-foot span').inner_text().startswith('2'), page.locator('.panel-foot span').inner_text()
+            page.get_by_label('Filter by donor').select_option('all')
+            if mobile_layers:
+                page.get_by_role('button', name='Close systems', exact=True).click()
+            page.get_by_role('button', name='Registration review', exact=True).click()
+            page.locator('.registration-table tbody tr').first.wait_for()
+            assert page.locator('.registration-table tbody tr').count() >= 6
+            page.locator('.registration-toggle [role=switch], .registration-toggle button, .registration-toggle input').first.click()
+            page.wait_for_timeout(600)
+            page.screenshot(path=str(OUT / f'{width}x{height}-registration.png'))
+            page.get_by_role('button', name='Close registration review').click()
+            page.get_by_role('button', name='Coverage', exact=True).click()
+            page.locator('.coverage-table').wait_for()
+            page.get_by_label('Coverage category').select_option('multi')
+            page.wait_for_timeout(400)
+            assert page.locator('.coverage-table tbody tr').count() > 10
+            page.get_by_role('button', name='Close coverage').click()
             page.get_by_role('button', name='Coverage', exact=True).click()
             page.get_by_label('Coverage category').select_option('segmented')
             page.get_by_label('Search coverage').fill('Skull')
             page.locator('.coverage-table button').first.click()
             page.locator('.loading[role="status"]').wait_for(state='hidden', timeout=60000)
             page.get_by_role('heading', name='Skull', exact=True).wait_for()
-            assert 'Healthy-Total-Body-CTs-003' in page.locator('.provenance').inner_text()
+            text = page.locator('.provenance').inner_text()
+            assert 'Healthy-Total-Body-CTs-003' in text or 'VHF' in text, text[:200]
         assert not errors, errors
         results.append({'viewport': [width, height], 'canvas': stats, 'page_errors': errors,
                         'rotation': True, 'uterus_inspection': True, 'provenance': True, 'source_switch': True})

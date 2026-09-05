@@ -1,0 +1,185 @@
+{
+  "id": "nlm-stage-to-vhf",
+  "type": "identity (the NLM CT source atlas is already expressed in the canonical stage through nlm-ct-to-vhf)",
+  "from": "NLM VHF CT viewer stage",
+  "to": "VHF-image-2022 canonical stage",
+  "matrix_row_major": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "scale": 1.0,
+  "rms_mm": 2.718263889149958,
+  "p95_mm": 4.716855714034616,
+  "hausdorff_mm": 35.58093094635553,
+  "landmarks": [],
+  "components": [
+    {
+      "id": "nlm-ct-to-vhf",
+      "type": "rigid (ICP, no scale) on the pelvis: CT hip bones and sacrum onto Denver hip bones and sacrum",
+      "from": "NLM VHF fresh CT RAS (mm)",
+      "to": "VHF-image-2022 (mm)",
+      "matrix_row_major": [
+        0.9994203359005832,
+        0.031020891727216223,
+        -0.014024851685907093,
+        520.2106550199672,
+        -0.031246713328911307,
+        0.9993807369768504,
+        -0.016179785713757357,
+        425.6175226701519,
+        0.013514255233056884,
+        0.01660863739295291,
+        0.9997707327529858,
+        1730.13061751783,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": 1.0,
+      "rotation_deg": 2.1654199725454966,
+      "rms_mm": 2.718263889149958,
+      "p95_mm": 4.716855714034616,
+      "hausdorff_mm": 35.58093094635553,
+      "same_donor": true,
+      "canonical_registration": true,
+      "review_status": "automatic same-donor surface registration; anatomy unreviewed",
+      "segment_scope": "trunk, pelvis and head (rigid with the pelvis); femora need their own rigid fits (pose_change_relative_to_pelvis)",
+      "evidence": "generated/nlm-ct-registration.json",
+      "labels_sha256": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177"
+    }
+  ],
+  "same_donor": true,
+  "review_status": "automatic same-donor surface registration; anatomy unreviewed",
+  "canonical_registration": true,
+  "used_in_composition": true,
+  "evidence": {
+    "axes_and_units": "consistent",
+    "rotation_deg": 2.1654199725454966,
+    "free_scale": 1.0012672027579324,
+    "pelvis_p95_mm": 4.716855714034616,
+    "interpretation": "The Denver aligned image frame and the NLM CT header frame agree in axis directions and millimetre units: the rigid pelvis fit needs a small rotation and a scale of 1 within one percent, and the same-donor pelvis surfaces agree to a few millimetres. The translation absorbs the different origins (vertex plane of the CT versus the Denver image origin). This verifies the canonical space against NLM image data; it does not review the anatomy of either segmentation."
+  },
+  "surface_distances": [
+    {
+      "structure": "Hip bones",
+      "denver_assets": [
+        "DENVER:VHF:Left_Bone_Pelvis",
+        "DENVER:VHF:Right_Bone_Pelvis"
+      ],
+      "ct_assets": [
+        "NLMCT:VHF:hip_left",
+        "NLMCT:VHF:hip_right"
+      ],
+      "in_canonical_frame": {
+        "a_to_b": {
+          "mean_mm": 1.2077141392239268,
+          "rms_mm": 1.3698776430135433,
+          "p95_mm": 2.4062954300999126,
+          "max_mm": 6.403668645702658
+        },
+        "b_to_a": {
+          "mean_mm": 1.0771688978176588,
+          "rms_mm": 1.2375932612693374,
+          "p95_mm": 2.0864971178108656,
+          "max_mm": 9.812157522409013
+        },
+        "hausdorff_mm": 9.812157522409013,
+        "samples_per_surface": 104489,
+        "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+      }
+    },
+    {
+      "structure": "Sacrum",
+      "denver_assets": [
+        "DENVER:VHF:Left_Bone_Sacrum"
+      ],
+      "ct_assets": [
+        "NLMCT:VHF:sacrum"
+      ],
+      "in_canonical_frame": {
+        "a_to_b": {
+          "mean_mm": 3.164218285245477,
+          "rms_mm": 4.983407408577221,
+          "p95_mm": 9.856030376815221,
+          "max_mm": 35.579346349384664
+        },
+        "b_to_a": {
+          "mean_mm": 2.6479686648058567,
+          "rms_mm": 4.617155907167083,
+          "p95_mm": 11.330297402536507,
+          "max_mm": 25.802673980000897
+        },
+        "hausdorff_mm": 35.579346349384664,
+        "samples_per_surface": 81621,
+        "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+      }
+    },
+    {
+      "structure": "Femur (left)",
+      "denver_assets": [
+        "DENVER:VHF:Left_Bone_Femur"
+      ],
+      "ct_assets": [
+        "NLMCT:VHF:femur_left"
+      ],
+      "in_canonical_frame": {
+        "a_to_b": {
+          "mean_mm": 3.5267508148784765,
+          "rms_mm": 4.306055058534331,
+          "p95_mm": 8.820063096470035,
+          "max_mm": 12.394131844868378
+        },
+        "b_to_a": {
+          "mean_mm": 3.1126693231437215,
+          "rms_mm": 3.7634325624366363,
+          "p95_mm": 7.46644163419782,
+          "max_mm": 11.140622184774607
+        },
+        "hausdorff_mm": 12.394131844868378,
+        "samples_per_surface": 65148,
+        "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+      }
+    },
+    {
+      "structure": "Femur (right)",
+      "denver_assets": [
+        "DENVER:VHF:Right_Bone_Femur"
+      ],
+      "ct_assets": [
+        "NLMCT:VHF:femur_right"
+      ],
+      "in_canonical_frame": {
+        "a_to_b": {
+          "mean_mm": 3.3270508617590258,
+          "rms_mm": 3.975387604342271,
+          "p95_mm": 7.60016145373303,
+          "max_mm": 10.642208787686405
+        },
+        "b_to_a": {
+          "mean_mm": 2.91464043840293,
+          "rms_mm": 3.487324500286115,
+          "p95_mm": 6.6416057577815835,
+          "max_mm": 9.969134090915231
+        },
+        "hausdorff_mm": 10.642208787686405,
+        "samples_per_surface": 65242,
+        "method": "nearest neighbour between dense area-weighted surface samples plus vertices; sampled, not exact point-to-triangle"
+      }
+    }
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "labels_file": "data/derived/nlm-vhf/totalseg.nii",
+  "labels_sha256": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+  "ct_file": "data/derived/nlm-vhf/vhf-fresh-ct.nii.gz",
+  "ct_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+  "frames": {
+    "ct": "NLM fresh CT RAS mm, header-derived (data/derived/nlm-vhf/vhf-fresh-ct-metadata.json)",
+    "target": "VHF-image-2022 (Denver aligned image frame, mm) via the inverse of denver-image-to-stage"
+  },
+  "method": "Register the NLM VHF fresh-CT segmentation to the Denver VHF bones and verify canonical space VHF-image-2022.\n\nSame donor, two acquisitions: the fresh CT (1993, before freezing) and the cryosections that Denver\nsegmented (aligned image frame). Both frames are +x right, +y anterior, +z superior in millimetres, so\na correct canonical space should relate them by a rigid transform with a scale of 1.0. This script\nmeasures that:\n\n1. Bones are extracted from the TotalSegmentator label map (marching cubes in the CT RAS frame).\n2. The pelvis (both hip bones and the sacrum) is registered rigidly (no scale) onto the Denver hip\n   bones and sacrum in the VHF image frame, after centroid alignment. A second fit with a free scale is\n   recorded only as a unit check.\n3. Each femur is registered rigidly on its own, because the legs may have moved between the two\n   acquisitions (fresh on the table versus frozen block).\n4. Residual surface distances are reported per bone. The pelvis transform becomes `nlm-ct-to-vhf`.\n\nUsage: .venv/bin/python scripts/register-nlm-ct.py [data/derived/nlm-vhf/totalseg.nii]\nOutputs: transforms/nlm-ct-to-vhf.json, generated/nlm-ct-registration.json",
+  "bones": [
+    {
+      "structure": "pelvis (hip bones + sacrum)",
+      "ct_labels": [
+        "hip_left",
+        "hip_right",
+        "sacrum"
+      ],
+      "denver_assets": [
+        "DENVER:VHF:Left_Bone_Pelvis",
+        "DENVER:VHF:Right_Bone_Pelvis",
+        "DENVER:VHF:Left_Bone_Sacrum"
+      ],
+      "ct_volume_cm3": 934.2588500976562,
+      "denver_volume_cm3": 929.6172034465013,
+      "before_registration_surface": {
+        "ct_to_denver": {
+          "mean_mm": 1735.2288744603206,
+          "rms_mm": 1736.0095458584165,
+          "p95_mm": 1823.5991684981657,
+          "max_mm": 1863.430641617144
+        },
+        "denver_to_ct": {
+          "mean_mm": 1743.4130696668658,
+          "rms_mm": 1744.2200000009568,
+          "p95_mm": 1830.4107107161528,
+          "max_mm": 1861.2724738479862
+        },
+        "hausdorff_mm": 1863.430641617144
+      },
+      "rigid": {
+        "matrix_row_major": [
+          0.9994203359005832,
+          0.031020891727216223,
+          -0.014024851685907093,
+          520.2106550199672,
+          -0.031246713328911307,
+          0.9993807369768504,
+          -0.016179785713757357,
+          425.6175226701519,
+          0.013514255233056884,
+          0.01660863739295291,
+          0.9997707327529858,
+          1730.13061751783,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": 0.9999999999999983,
+        "rotation_deg": 2.1654199725454966,
+        "translation_mm": [
+          520.2106550199672,
+          425.6175226701519,
+          1730.13061751783
+        ],
+        "translation_norm_mm": 1856.1038103707476,
+        "icp_cost": 7.159748261798372,
+        "surface": {
+          "ct_to_denver": {
+            "mean_mm": 1.7570749277183824,
+            "rms_mm": 2.718263889149958,
+            "p95_mm": 4.716855714034616,
+            "max_mm": 35.58093094635553
+          },
+          "denver_to_ct": {
+            "mean_mm": 1.2580903223521949,
+            "rms_mm": 2.305865215327095,
+            "p95_mm": 3.1920500978135404,
+            "max_mm": 25.802673043609744
+          },
+          "hausdorff_mm": 35.58093094635553
+        }
+      },
+      "similarity_unit_check": {
+        "scale": 1.0012672027579324,
+        "rotation_deg": 2.1531449165395133,
+        "surface": {
+          "ct_to_denver": {
+            "mean_mm": 1.7565742541032274,
+            "rms_mm": 2.705367477068937,
+            "p95_mm": 4.7327613388529794,
+            "max_mm": 35.565493548047016
+          },
+          "denver_to_ct": {
+            "mean_mm": 1.2514540331483555,
+            "rms_mm": 2.298641433320434,
+            "p95_mm": 3.176231340223018,
+            "max_mm": 25.8057370814785
+          },
+          "hausdorff_mm": 35.565493548047016
+        }
+      }
+    },
+    {
+      "structure": "hip_left",
+      "ct_labels": [
+        "hip_left"
+      ],
+      "denver_assets": [
+        "DENVER:VHF:Left_Bone_Pelvis"
+      ],
+      "ct_volume_cm3": 382.1455078125,
+      "denver_volume_cm3": 358.10898021614037,
+      "under_pelvis_transform": {
+        "ct_to_denver": {
+          "mean_mm": 1.160728929019284,
+          "rms_mm": 1.325971159126875,
+          "p95_mm": 2.350237442449819,
+          "max_mm": 6.593675851401827
+        },
+        "denver_to_ct": {
+          "mean_mm": 0.8758679605595976,
+          "rms_mm": 1.0954454158648048,
+          "p95_mm": 1.8624326195863194,
+          "max_mm": 9.812143126126404
+        },
+        "hausdorff_mm": 9.812143126126404
+      }
+    },
+    {
+      "structure": "hip_right",
+      "ct_labels": [
+        "hip_right"
+      ],
+      "denver_assets": [
+        "DENVER:VHF:Right_Bone_Pelvis"
+      ],
+      "ct_volume_cm3": 380.871533203125,
+      "denver_volume_cm3": 358.0843330599759,
+      "under_pelvis_transform": {
+        "ct_to_denver": {
+          "mean_mm": 1.165419490551617,
+          "rms_mm": 1.3371938109824724,
+          "p95_mm": 2.395494158598971,
+          "max_mm": 6.1453495535992335
+        },
+        "denver_to_ct": {
+          "mean_mm": 0.883202327905161,
+          "rms_mm": 1.0551992297059625,
+          "p95_mm": 1.9728797768011523,
+          "max_mm": 4.889366691235109
+        },
+        "hausdorff_mm": 6.1453495535992335
+      }
+    },
+    {
+      "structure": "sacrum",
+      "ct_labels": [
+        "sacrum"
+      ],
+      "denver_assets": [
+        "DENVER:VHF:Left_Bone_Sacrum"
+      ],
+      "ct_volume_cm3": 171.0322265625,
+      "denver_volume_cm3": 213.4238901703849,
+      "under_pelvis_transform": {
+        "ct_to_denver": {
+          "mean_mm": 3.1562121672437353,
+          "rms_mm": 4.9331929294721055,
+          "p95_mm": 9.745808958840817,
+          "max_mm": 35.58093094635553
+        },
+        "denver_to_ct": {
+          "mean_mm": 2.6484612616046928,
+          "rms_mm": 4.662669560000007,
+          "p95_mm": 11.581466043181056,
+          "max_mm": 25.802673043609744
+        },
+        "hausdorff_mm": 35.58093094635553
+      }
+    },
+    {
+      "structure": "femur_left",
+      "ct_labels": [
+        "femur_left"
+      ],
+      "denver_assets": [
+        "DENVER:VHF:Left_Bone_Femur"
+      ],
+      "ct_volume_cm3": 510.0580078125,
+      "denver_volume_cm3": 455.14478940588566,
+      "under_pelvis_transform": {
+        "ct_to_denver": {
+          "mean_mm": 3.55071233901993,
+          "rms_mm": 4.295123726491496,
+          "p95_mm": 8.699022037526492,
+          "max_mm": 11.978408005560652
+        },
+        "denver_to_ct": {
+          "mean_mm": 2.953859049402587,
+          "rms_mm": 3.636690179969661,
+          "p95_mm": 7.43104017660127,
+          "max_mm": 10.825566926539727
+        },
+        "hausdorff_mm": 11.978408005560652
+      },
+      "own_rigid": {
+        "matrix_row_major": [
+          0.9964853612983303,
+          0.0721453863169467,
+          -0.042567216861498426,
+          493.91955574531426,
+          -0.07236447477772882,
+          0.9973716610504578,
+          -0.0036266408136309204,
+          434.6669241014356,
+          0.0421936903849159,
+          0.006694248772405383,
+          0.9990870229990446,
+          1731.161706220677,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": 1.0000000000000058,
+        "rotation_deg": 4.814246100670375,
+        "translation_mm": [
+          493.91955574531426,
+          434.6669241014356,
+          1731.161706220677
+        ],
+        "translation_norm_mm": 1851.9753550034993,
+        "icp_cost": 3.2892198059438185,
+        "surface": {
+          "ct_to_denver": {
+            "mean_mm": 1.579630911189266,
+            "rms_mm": 1.840408865984775,
+            "p95_mm": 3.363439918037746,
+            "max_mm": 8.623652978958589
+          },
+          "denver_to_ct": {
+            "mean_mm": 1.2172555497090622,
+            "rms_mm": 1.4538000039627155,
+            "p95_mm": 2.7213984457799705,
+            "max_mm": 5.303048749921116
+          },
+          "hausdorff_mm": 8.623652978958589
+        }
+      },
+      "pose_change_relative_to_pelvis": {
+        "rotation_deg": 2.9464827445239976,
+        "translation_mm": [
+          4.892488769655131,
+          10.25061267042571,
+          -8.333817553203062
+        ],
+        "note": "own femur fit composed with the inverse pelvis fit; a hip rotation between acquisitions"
+      }
+    },
+    {
+      "structure": "femur_right",
+      "ct_labels": [
+        "femur_right"
+      ],
+      "denver_assets": [
+        "DENVER:VHF:Right_Bone_Femur"
+      ],
+      "ct_volume_cm3": 525.1619384765625,
+      "denver_volume_cm3": 432.1593875051236,
+      "under_pelvis_transform": {
+        "ct_to_denver": {
+          "mean_mm": 3.3157038929231937,
+          "rms_mm": 3.954914913624913,
+          "p95_mm": 7.513011846217034,
+          "max_mm": 10.272134916229057
+        },
+        "denver_to_ct": {
+          "mean_mm": 2.693066285474031,
+          "rms_mm": 3.298111896687218,
+          "p95_mm": 6.36125769724583,
+          "max_mm": 9.512234241564995
+        },
+        "hausdorff_mm": 10.272134916229057
+      },
+      "own_rigid": {
+        "matrix_row_major": [
+          0.9988642846312057,
+          0.030643624764780046,
+          -0.036484368563310055,
+          500.16247301459566,
+          -0.03091387825253929,
+          0.9994984672068334,
+          -0.006866307783400312,
+          434.41167498435914,
+          0.036255661896802176,
+          0.007986382940013376,
+          0.9993106347217332,
+          1726.6377108498973,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": 0.9999999999999983,
+        "rotation_deg": 2.7639288503800636,
+        "translation_mm": [
+          500.16247301459566,
+          434.41167498435914,
+          1726.6377108498973
+        ],
+        "translation_norm_mm": 1849.3657797482267,
+        "icp_cost": 5.562805312558333,
+        "surface": {
+          "ct_to_denver": {
+            "mean_mm": 2.025204850295081,
+            "rms_mm": 2.3745193334938155,
+            "p95_mm": 4.371166568946944,
+            "max_mm": 7.61001945284
+          },
+          "denver_to_ct": {
+            "mean_mm": 1.572238445232261,
+            "rms_mm": 1.9011895178588938,
+            "p95_mm": 3.617812076033314,
+            "max_mm": 6.233818732824544
+          },
+          "hausdorff_mm": 7.61001945284
+        }
+      },
+      "pose_change_relative_to_pelvis": {
+        "rotation_deg": 1.3937908421149563,
+        "translation_mm": [
+          18.954383145064924,
+          -7.415359966924882,
+          -10.701922124344264
+        ],
+        "note": "own femur fit composed with the inverse pelvis fit; a hip rotation between acquisitions"
+      }
+    }
+  ],
+  "canonical_space_verification": {
+    "axes_and_units": "consistent",
+    "rotation_deg": 2.1654199725454966,
+    "free_scale": 1.0012672027579324,
+    "pelvis_p95_mm": 4.716855714034616,
+    "interpretation": "The Denver aligned image frame and the NLM CT header frame agree in axis directions and millimetre units: the rigid pelvis fit needs a small rotation and a scale of 1 within one percent, and the same-donor pelvis surfaces agree to a few millimetres. The translation absorbs the different origins (vertex plane of the CT versus the Denver image origin). This verifies the canonical space against NLM image data; it does not review the anatomy of either segmentation."
+  },
+  "speckle_removal": {
+    "rule": "connected components below 5% of the largest component of a label are excluded from the registration meshes",
+    "per_label": {
+      "hip_left+hip_right+sacrum": {
+        "components": 40,
+        "kept_components": 1,
+        "removed_voxels": 1755
+      },
+      "hip_left": {
+        "components": 2,
+        "kept_components": 1,
+        "removed_voxels": 89
+      },
+      "hip_right": {
+        "components": 1,
+        "removed_voxels": 0
+      },
+      "sacrum": {
+        "components": 39,
+        "kept_components": 1,
+        "removed_voxels": 1666
+      },
+      "femur_left": {
+        "components": 1,
+        "removed_voxels": 0
+      },
+      "femur_right": {
+        "components": 1,
+        "removed_voxels": 0
+      }
+    }
+  }
+}

@@ -7,13 +7,15 @@ ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--target', choices=['open-clean', 'open-sharealike', 'research-full'], default='open-clean')
 args = parser.parse_args()
-allowed = {'CC0-1.0', 'CC-BY-4.0', 'CC-BY-3.0', 'MIT', 'BSD-3-Clause', 'Zlib'}
+# NLM Visible Human images are public-domain U.S. Government works released under the NLM Terms and Conditions
+# (no licence since July 2019; attribution "Courtesy of the U.S. National Library of Medicine"; redistribution allowed).
+allowed = {'CC0-1.0', 'CC-BY-4.0', 'CC-BY-3.0', 'MIT', 'BSD-3-Clause', 'Zlib', 'NLM-Terms-and-Conditions'}
 if args.target in ('open-sharealike', 'research-full'):
     allowed |= {'CC-BY-SA-4.0'}
 if args.target == 'research-full':
     allowed |= {'CC-BY-NC-4.0', 'CC-BY-NC-SA-4.0'}
 errors, records = [], []
-for filename in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'composed'):
+for filename in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 'composed'):
     atlas = json.loads((ROOT / 'public/atlases' / (filename + '.json')).read_text())
     for part in atlas['parts']:
         record = part.get('provenance', {})

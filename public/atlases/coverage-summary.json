@@ -1,12 +1,17 @@
 {
-  "canonical_catalog_entries": 4316,
-  "source_meshes": 3286,
+  "canonical_catalog_entries": 4263,
+  "source_meshes": 3400,
   "female_measured": 128,
-  "registered_female": 0,
-  "female_segmented_unreviewed": 36,
+  "registered_female": 231,
+  "female_segmented_unreviewed": 139,
+  "female_ct_same_donor": 114,
   "female_reference": 717,
-  "template_only": 1589,
-  "without_direct_geometry": 1846,
+  "template_only": 1461,
+  "without_direct_geometry": 1880,
+  "partial_grouped_only": 0,
+  "multi_source_entries": 248,
+  "denver_hra_merged_entries": 22,
+  "crosswalk_applied_meshes": 1712,
   "atlases": [
     {
       "source": "hra-female",
@@ -72,12 +77,28 @@
         "/models/denver-vhf-lod-1.bin": "d0b03249deab1836ae5db28aac1f1eac987509b61b538909df66f8a11b9f460f",
         "/models/denver-vhf-lod-2.bin": "bde56eea77f4507eb28b0a60671a20e21107cd2c773327fa49f28bdb231354fc"
       }
+    },
+    {
+      "source": "nlm-vhf-ct",
+      "meshes": 114,
+      "source_concepts": 148,
+      "triangles": 1431628,
+      "chunk_hashes": {
+        "/models/nlm-vhf-ct-lod-0.bin": "60be03805ad51f982ee478cd94fa2a67907d52d798092082e8bc0c9851cd7fe0",
+        "/models/nlm-vhf-ct-lod-1.bin": "fe63948bb36b355f8e633575211fce9bbf4b8e2095493c4776ed295c46a983de",
+        "/models/nlm-vhf-ct-lod-2.bin": "c949aaf609ada84ab986642ceb0a4b760c712e37bc4a690dffcbb9bc9ae899f4",
+        "/models/nlm-vhf-ct-lod-3.bin": "a2dfb2980f86ca5c4cf114ce50afade17bbd75b1705dd895393e58d50493ff2c",
+        "/models/nlm-vhf-ct-lod-4.bin": "d0824438122890c478bcfd73385734b35e3c766a1d64772130d08fa5107105b4",
+        "/models/nlm-vhf-ct-lod-5.bin": "63d13cc5cee60416f2ec3a50d7fdb402d7c31b3e7483348446fbd94d8047e9f1",
+        "/models/nlm-vhf-ct-lod-6.bin": "65920e644997899d5e3d95744b931d5621bc462914ed25932b9ccc473bfea2ca"
+      }
     }
   ],
   "limitations": [
     "Catalog is the imported source union, not the complete human ontology.",
-    "No UBERON/FMA equivalence inferred; no TA2 crosswalk imported.",
-    "No VHF canonical registration or anatomical QA yet. Denver meshes are in the aligned VHF image frame, but no other source is registered to it.",
+    "Dataset-local Denver and TCIA labels and lateralized HRA FMA identifiers resolve to UBERON/FMA through registry/ontology-crosswalk-reviewed.json (OLS evidence per term; anatomist review pending). No TA2 crosswalk imported.",
+    "Grouped CT labels (both sides in one mesh) are listed as partial coverage of each lateral entry, not as individual structures.",
+    "Canonical space VHF-image-2022 is the Denver aligned image frame, verified against the NLM CT headers (rigid pelvis fit: rotation about 2 deg, scale 1.00). Denver meshes are native; NLM CT labels of the same donor are placed by that rigid fit (registered_female). TCIA 003 and HRA are registered experimentally in the composite only, without anatomical QA.",
     "Best available ranks source evidence but does not authorize spatial composition."
   ]
 }

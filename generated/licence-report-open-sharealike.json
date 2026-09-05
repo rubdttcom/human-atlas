@@ -1,6 +1,6 @@
 {
   "target": "open-sharealike",
-  "mesh_references": 4224,
+  "mesh_references": 4415,
   "errors": [],
   "records": [
     {
@@ -23006,6 +23006,804 @@
       "eligible": true
     },
     {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:spleen",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:kidney_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:kidney_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:gallbladder",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:liver",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:stomach",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:pancreas",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:adrenal_gland_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:adrenal_gland_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:lung_upper_lobe_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:lung_lower_lobe_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:lung_upper_lobe_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:lung_middle_lobe_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:lung_lower_lobe_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:esophagus",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:trachea",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:thyroid_gland",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:small_bowel",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:duodenum",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:colon",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:urinary_bladder",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:sacrum",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_S1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_L5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_L4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_L3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_L2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_L1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T12",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T11",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T10",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T9",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T8",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T7",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T6",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_T1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_C7",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_C6",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_C5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_C4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_C3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_C2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:vertebrae_C1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:heart",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:aorta",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:pulmonary_vein",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:brachiocephalic_trunk",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:subclavian_artery_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:subclavian_artery_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:common_carotid_artery_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:common_carotid_artery_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:brachiocephalic_vein_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:brachiocephalic_vein_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:atrial_appendage_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:superior_vena_cava",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:inferior_vena_cava",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:portal_vein_and_splenic_vein",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:iliac_artery_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:iliac_artery_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:iliac_vena_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:iliac_vena_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:humerus_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:humerus_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:scapula_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:scapula_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:clavicula_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:clavicula_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:femur_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:femur_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:hip_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:hip_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:spinal_cord",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:gluteus_maximus_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:gluteus_maximus_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:gluteus_medius_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:gluteus_medius_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:gluteus_minimus_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:gluteus_minimus_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:autochthon_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:autochthon_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:iliopsoas_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:iliopsoas_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:brain",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:skull",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_6",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_7",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_8",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_9",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_10",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_11",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_left_12",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_6",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_7",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_8",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_9",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_10",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_11",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:rib_right_12",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:sternum",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "nlm-vhf-ct",
+      "structure": "NLMCT:VHF:costal_cartilages",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
       "atlas": "composed",
       "structure": "hra-female:VH_F_fat_L",
       "source": "hra-female",
@@ -26479,13 +27277,6 @@
     },
     {
       "atlas": "composed",
-      "structure": "hra-female:VH_F_gallbladder",
-      "source": "hra-female",
-      "license": "CC-BY-4.0",
-      "eligible": true
-    },
-    {
-      "atlas": "composed",
       "structure": "hra-female:VH_F_kidney_capsule_L",
       "source": "hra-female",
       "license": "CC-BY-4.0",
@@ -27361,20 +28152,6 @@
     },
     {
       "atlas": "composed",
-      "structure": "hra-female:VH_F_left_common_iliac_vein",
-      "source": "hra-female",
-      "license": "CC-BY-4.0",
-      "eligible": true
-    },
-    {
-      "atlas": "composed",
-      "structure": "hra-female:VH_F_right_common_iliac_vein",
-      "source": "hra-female",
-      "license": "CC-BY-4.0",
-      "eligible": true
-    },
-    {
-      "atlas": "composed",
       "structure": "hra-female:VH_F_left_colic_vein",
       "source": "hra-female",
       "license": "CC-BY-4.0",
@@ -27949,20 +28726,6 @@
     },
     {
       "atlas": "composed",
-      "structure": "hra-female:VH_F_brachiocephalic_artery_b",
-      "source": "hra-female",
-      "license": "CC-BY-4.0",
-      "eligible": true
-    },
-    {
-      "atlas": "composed",
-      "structure": "hra-female:VH_F_brachiocephalic_artery_a",
-      "source": "hra-female",
-      "license": "CC-BY-4.0",
-      "eligible": true
-    },
-    {
-      "atlas": "composed",
       "structure": "hra-female:VH_F_hilum_L",
       "source": "hra-female",
       "license": "CC-BY-4.0",
@@ -28195,13 +28958,6 @@
     {
       "atlas": "composed",
       "structure": "hra-female:VH_F_corniculate_cartilage_R",
-      "source": "hra-female",
-      "license": "CC-BY-4.0",
-      "eligible": true
-    },
-    {
-      "atlas": "composed",
-      "structure": "hra-female:VH_F_trachea",
       "source": "hra-female",
       "license": "CC-BY-4.0",
       "eligible": true
@@ -28551,128 +29307,709 @@
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-1",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:spleen",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-10",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:kidney_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-13",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:kidney_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-14",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:gallbladder",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-17",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:liver",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-18",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:stomach",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-22",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:pancreas",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-23",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:adrenal_gland_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-24",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:adrenal_gland_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-25",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:lung_upper_lobe_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-26",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:lung_lower_lobe_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-27",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:lung_upper_lobe_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-28",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:lung_middle_lobe_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-32",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:lung_lower_lobe_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-33",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:esophagus",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-34",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:trachea",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-35",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:thyroid_gland",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {
       "atlas": "composed",
-      "structure": "tcia:TCIA:003:label-36",
-      "source": "tcia",
-      "license": "CC-BY-4.0",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:small_bowel",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:duodenum",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:colon",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:urinary_bladder",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_S1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_L5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_L4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_L3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_L2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_L1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T12",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T11",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T10",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T9",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T8",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T7",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T6",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_T1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_C7",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_C6",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_C5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_C4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_C3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_C2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:vertebrae_C1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:heart",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:aorta",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:pulmonary_vein",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:brachiocephalic_trunk",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:subclavian_artery_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:subclavian_artery_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:common_carotid_artery_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:common_carotid_artery_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:brachiocephalic_vein_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:brachiocephalic_vein_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:atrial_appendage_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:superior_vena_cava",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:inferior_vena_cava",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:portal_vein_and_splenic_vein",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:iliac_artery_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:iliac_artery_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:iliac_vena_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:iliac_vena_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:humerus_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:humerus_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:scapula_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:scapula_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:clavicula_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:clavicula_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:spinal_cord",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:autochthon_left",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:autochthon_right",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:brain",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:skull",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_6",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_7",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_8",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_9",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_10",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_11",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_left_12",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_1",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_2",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_3",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_4",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_5",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_6",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_7",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_8",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_9",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_10",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_11",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:rib_right_12",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:sternum",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
+      "eligible": true
+    },
+    {
+      "atlas": "composed",
+      "structure": "nlm-vhf-ct:NLMCT:VHF:costal_cartilages",
+      "source": "nlm-vhf-ct",
+      "license": "NLM-Terms-and-Conditions",
       "eligible": true
     },
     {

@@ -1,0 +1,321 @@
+{
+  "atlas": "denver-vhf",
+  "frame": "viewer stage of the source atlas (+x subject left, +y superior, +z anterior, metres)",
+  "method": "automatic geometric rules; see each landmark",
+  "manual_review": "pending",
+  "notes": [
+    "Bones are individual manual segmentations; sides come from the archive folder, with display names normalized."
+  ],
+  "landmarks": [
+    {
+      "landmark": "femoral_head_centre",
+      "side": "left",
+      "point_stage_m": [
+        0.10064684590905147,
+        0.8735356232145426,
+        0.013074227110055209
+      ],
+      "rule": "least-squares sphere fit to the medial half of the proximal 60 mm, refined on the sphere shell",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Femur"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "sphere_radius_mm": 23.75923881849914,
+      "sphere_fit_rms_mm": 1.5801086138065141,
+      "on_surface": false
+    },
+    {
+      "landmark": "medial_epicondyle",
+      "side": "left",
+      "point_stage_m": [
+        0.0241313753506312,
+        0.5029119599324007,
+        -0.004801218819529123
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the distal 60 mm",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Femur"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 0.4561283727999537
+    },
+    {
+      "landmark": "lateral_epicondyle",
+      "side": "left",
+      "point_stage_m": [
+        0.10280046409974664,
+        0.5030292944382813,
+        -0.005155174345233363
+      ],
+      "rule": "centroid of the 3 mm most lateral slab of the distal 60 mm",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Femur"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.5311912747448468
+    },
+    {
+      "landmark": "medial_malleolus",
+      "side": "left",
+      "point_stage_m": [
+        0.015518768224865198,
+        0.1498796564216415,
+        -0.010645800308945278
+      ],
+      "rule": "centroid of the 3 mm most distal slab among the medial third of the distal 40 mm of the tibia",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Tibia"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.2800705685500497
+    },
+    {
+      "landmark": "lateral_malleolus",
+      "side": "left",
+      "point_stage_m": [
+        0.053450927357463277,
+        0.13353505599148133,
+        -0.038505500127725745
+      ],
+      "rule": "centroid of the 3 mm most distal slab of the fibula",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Fibula"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.1574667885823249
+    },
+    {
+      "landmark": "anterior_superior_iliac_spine",
+      "side": "left",
+      "point_stage_m": [
+        0.12070006589617646,
+        0.947183738152186,
+        0.06520642039545796
+      ],
+      "rule": "centroid of the 3 mm most anterior slab of the superior half of the hip bone",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Pelvis"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.6210262773126274
+    },
+    {
+      "landmark": "ischial_tuberosity",
+      "side": "left",
+      "point_stage_m": [
+        0.05613766527838177,
+        0.8108121969483115,
+        -0.01551738378798796
+      ],
+      "rule": "centroid of the 3 mm most inferior slab of the hip bone",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Pelvis"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.2792186550910214
+    },
+    {
+      "landmark": "iliac_crest_apex",
+      "side": "left",
+      "point_stage_m": [
+        0.1155238069675781,
+        1.0177992634720854,
+        -0.024367859039537528
+      ],
+      "rule": "centroid of the 3 mm most superior slab of the hip bone",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Pelvis"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.5700987810549158
+    },
+    {
+      "landmark": "pubic_symphysis_facet",
+      "side": "left",
+      "point_stage_m": [
+        0.0009723547798989147,
+        0.8493824993895593,
+        0.036309826614282954
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the anterior-inferior quarter of the hip bone",
+      "source_assets": [
+        "DENVER:VHF:Left_Bone_Pelvis"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.9303135343945612
+    },
+    {
+      "landmark": "femoral_head_centre",
+      "side": "right",
+      "point_stage_m": [
+        -0.09995071610504325,
+        0.8726400209901566,
+        0.0020058275087007837
+      ],
+      "rule": "least-squares sphere fit to the medial half of the proximal 60 mm, refined on the sphere shell",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Femur"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "sphere_radius_mm": 23.003961747418135,
+      "sphere_fit_rms_mm": 1.894919202339443,
+      "on_surface": false
+    },
+    {
+      "landmark": "medial_epicondyle",
+      "side": "right",
+      "point_stage_m": [
+        -0.03887414100069192,
+        0.5026169130879063,
+        -0.019583350667099077
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the distal 60 mm",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Femur"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 0.6482891016405639
+    },
+    {
+      "landmark": "lateral_epicondyle",
+      "side": "right",
+      "point_stage_m": [
+        -0.11549805104732513,
+        0.5024101054205478,
+        -0.015455995566634495
+      ],
+      "rule": "centroid of the 3 mm most lateral slab of the distal 60 mm",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Femur"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.293526080909564
+    },
+    {
+      "landmark": "medial_malleolus",
+      "side": "right",
+      "point_stage_m": [
+        -0.038666447843698895,
+        0.14134661721832611,
+        -0.01973612343563753
+      ],
+      "rule": "centroid of the 3 mm most distal slab among the medial third of the distal 40 mm of the tibia",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Tibia"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.4940939842943262
+    },
+    {
+      "landmark": "lateral_malleolus",
+      "side": "right",
+      "point_stage_m": [
+        -0.06835444048047065,
+        0.12711399272084237,
+        -0.060094008687883615
+      ],
+      "rule": "centroid of the 3 mm most distal slab of the fibula",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Fibula"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.4671053742914477
+    },
+    {
+      "landmark": "anterior_superior_iliac_spine",
+      "side": "right",
+      "point_stage_m": [
+        -0.1267585639170436,
+        0.9438544802887495,
+        0.05579743291749511
+      ],
+      "rule": "centroid of the 3 mm most anterior slab of the superior half of the hip bone",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Pelvis"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.5326797755228783
+    },
+    {
+      "landmark": "ischial_tuberosity",
+      "side": "right",
+      "point_stage_m": [
+        -0.05543379814073603,
+        0.8116326011637206,
+        -0.02242595007422791
+      ],
+      "rule": "centroid of the 3 mm most inferior slab of the hip bone",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Pelvis"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.5282386464034545
+    },
+    {
+      "landmark": "iliac_crest_apex",
+      "side": "right",
+      "point_stage_m": [
+        -0.1005390675253227,
+        1.0220872304018807,
+        -0.031949617391248714
+      ],
+      "rule": "centroid of the 3 mm most superior slab of the hip bone",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Pelvis"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 1.7641196890289776
+    },
+    {
+      "landmark": "pubic_symphysis_facet",
+      "side": "right",
+      "point_stage_m": [
+        -0.002797646376788371,
+        0.8452654331922531,
+        0.03303427364383089
+      ],
+      "rule": "centroid of the 3 mm most medial slab of the anterior-inferior quarter of the hip bone",
+      "source_assets": [
+        "DENVER:VHF:Right_Bone_Pelvis"
+      ],
+      "marked_by": "scripts/extract-landmarks.py (geometric rule on optimized viewer mesh)",
+      "view": "not applicable (computed, not picked in a view)",
+      "manual_review": "pending",
+      "nearest_source_vertex_mm": 0.7667533752596759
+    }
+  ]
+}
