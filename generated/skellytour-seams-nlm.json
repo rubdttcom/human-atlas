@@ -1,0 +1,147 @@
+{
+ "ct": "nlm",
+ "volume": "data/derived/nlm-vhf/skellytour/skellytour_high.nii.gz",
+ "crop_ijk": [
+  0,
+  512,
+  79,
+  391
+ ],
+ "seams": [
+  {
+   "seam_z": 260,
+   "agreement_at_seam": 0.9856,
+   "agreement_neighbours_min": 0.9884,
+   "agreement_neighbours_mean": 0.9954,
+   "label_changes_at_seam": {
+    "VERT_7->VERT_8": 74
+   },
+   "labels_crossing_seam": [
+    "SKULL",
+    "LEFT_HUMERUS",
+    "RIGHT_HUMERUS",
+    "LEFT_SCAPULA",
+    "RIGHT_SCAPULA",
+    "LEFT_CLAVICLE",
+    "RIGHT_CLAVICLE",
+    "VERT_7",
+    "VERT_8",
+    60
+   ],
+   "identity_kept_fraction": {
+    "LEFT_HUMERUS": 1.0,
+    "RIGHT_HUMERUS": 1.0,
+    "LEFT_SCAPULA": 1.0,
+    "RIGHT_SCAPULA": 1.0,
+    "LEFT_CLAVICLE": 1.0,
+    "RIGHT_CLAVICLE": 1.0,
+    "VERT_7": 0.9119,
+    "VERT_8": 1.0
+   },
+   "vertebrae_losing_identity_at_seam": [],
+   "vertebra_renumbering_suspected": false
+  },
+  {
+   "seam_z": 520,
+   "agreement_at_seam": 1.0,
+   "agreement_neighbours_min": 0.9968,
+   "agreement_neighbours_mean": 0.999,
+   "label_changes_at_seam": {},
+   "labels_crossing_seam": [
+    "SKULL",
+    "LEFT_RIB_7",
+    "LEFT_RIB_8",
+    "LEFT_RIB_9",
+    "LEFT_RIB_10",
+    "LEFT_RIB_11",
+    "LEFT_RIB_12",
+    "RIGHT_RIB_7",
+    "RIGHT_RIB_8",
+    "RIGHT_RIB_9",
+    "RIGHT_RIB_10",
+    "RIGHT_RIB_11",
+    "RIGHT_RIB_12",
+    "VERT_19",
+    60
+   ],
+   "identity_kept_fraction": {
+    "LEFT_RIB_9": 1.0,
+    "LEFT_RIB_10": 1.0,
+    "LEFT_RIB_11": 1.0,
+    "LEFT_RIB_12": 1.0,
+    "RIGHT_RIB_9": 1.0,
+    "RIGHT_RIB_10": 1.0,
+    "RIGHT_RIB_11": 1.0,
+    "RIGHT_RIB_12": 1.0,
+    "VERT_19": 1.0
+   },
+   "vertebrae_losing_identity_at_seam": [],
+   "vertebra_renumbering_suspected": false
+  },
+  {
+   "seam_z": 780,
+   "agreement_at_seam": 1.0,
+   "agreement_neighbours_min": 1.0,
+   "agreement_neighbours_mean": 1.0,
+   "label_changes_at_seam": {},
+   "labels_crossing_seam": [
+    "SKULL",
+    "PELVIS",
+    60
+   ],
+   "identity_kept_fraction": {
+    "PELVIS": 1.0
+   },
+   "vertebrae_losing_identity_at_seam": [],
+   "vertebra_renumbering_suspected": false
+  },
+  {
+   "seam_z": 1040,
+   "agreement_at_seam": 1.0,
+   "agreement_neighbours_min": 1.0,
+   "agreement_neighbours_mean": 1.0,
+   "label_changes_at_seam": {},
+   "labels_crossing_seam": [
+    "SKULL",
+    "LEFT_FEMUR",
+    "RIGHT_FEMUR",
+    60
+   ],
+   "identity_kept_fraction": {
+    "LEFT_FEMUR": 1.0,
+    "RIGHT_FEMUR": 1.0
+   },
+   "vertebrae_losing_identity_at_seam": [],
+   "vertebra_renumbering_suspected": false
+  },
+  {
+   "seam_z": 1300,
+   "agreement_at_seam": null,
+   "agreement_neighbours_min": null,
+   "agreement_neighbours_mean": null,
+   "label_changes_at_seam": {},
+   "labels_crossing_seam": [
+    "SKULL",
+    60
+   ],
+   "identity_kept_fraction": {},
+   "vertebrae_losing_identity_at_seam": [],
+   "vertebra_renumbering_suspected": false
+  },
+  {
+   "seam_z": 1560,
+   "agreement_at_seam": null,
+   "agreement_neighbours_min": null,
+   "agreement_neighbours_mean": null,
+   "label_changes_at_seam": {},
+   "labels_crossing_seam": [
+    "SKULL",
+    60
+   ],
+   "identity_kept_fraction": {},
+   "vertebrae_losing_identity_at_seam": [],
+   "vertebra_renumbering_suspected": false
+  }
+ ],
+ "any_vertebra_renumbering_suspected": false
+}

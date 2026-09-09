@@ -82,6 +82,11 @@
      "centroid_offset_mm": 0.44
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "humerus_left": {
@@ -145,6 +150,11 @@
      "dice": 0.8992,
      "centroid_offset_mm": 8.24
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "agree"
   },
@@ -210,6 +220,11 @@
      "centroid_offset_mm": 3.8
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "clavicle_left": {
@@ -274,6 +289,11 @@
      "centroid_offset_mm": 2.02
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "hip_left": {
@@ -314,6 +334,11 @@
      "dice": 0.9227,
      "centroid_offset_mm": 9.4
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "unsupported"
    },
    "consensus": "agree"
   },
@@ -379,6 +404,11 @@
      "centroid_offset_mm": 1.9
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_left_2": {
@@ -442,6 +472,11 @@
      "dice": 0.7301,
      "centroid_offset_mm": 3.06
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -507,6 +542,11 @@
      "centroid_offset_mm": 1.94
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_left_4": {
@@ -570,6 +610,11 @@
      "dice": 0.7731,
      "centroid_offset_mm": 5.0
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -635,6 +680,11 @@
      "centroid_offset_mm": 14.54
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_left_6": {
@@ -698,6 +748,11 @@
      "dice": 0.618,
      "centroid_offset_mm": 20.35
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -763,6 +818,11 @@
      "centroid_offset_mm": 12.66
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_left_8": {
@@ -826,6 +886,11 @@
      "dice": 0.7079,
      "centroid_offset_mm": 15.4
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -891,6 +956,11 @@
      "centroid_offset_mm": 15.04
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_left_10": {
@@ -954,6 +1024,11 @@
      "dice": 0.8007,
      "centroid_offset_mm": 8.05
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -1019,6 +1094,11 @@
      "centroid_offset_mm": 1.28
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_left_12": {
@@ -1083,6 +1163,11 @@
      "centroid_offset_mm": 0.73
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "patella_left": {
@@ -1104,6 +1189,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "tibia_left": {
@@ -1125,6 +1215,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "fibula_left": {
@@ -1146,6 +1241,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "radius_left": {
@@ -1167,6 +1267,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "ulna_left": {
@@ -1188,6 +1293,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "femur_right": {
@@ -1251,6 +1361,11 @@
      "dice": 0.965,
      "centroid_offset_mm": 1.11
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "agree"
   },
@@ -1316,6 +1431,11 @@
      "centroid_offset_mm": 14.52
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "scapula_right": {
@@ -1379,6 +1499,11 @@
      "dice": 0.7874,
      "centroid_offset_mm": 3.23
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -1444,6 +1569,11 @@
      "centroid_offset_mm": 1.63
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "hip_right": {
@@ -1484,6 +1614,11 @@
      "dice": 0.9248,
      "centroid_offset_mm": 1.53
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "unsupported"
    },
    "consensus": "agree"
   },
@@ -1549,6 +1684,11 @@
      "centroid_offset_mm": 5.86
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_right_2": {
@@ -1612,6 +1752,11 @@
      "dice": 0.7423,
      "centroid_offset_mm": 2.18
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -1677,6 +1822,11 @@
      "centroid_offset_mm": 1.88
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_right_4": {
@@ -1740,6 +1890,11 @@
      "dice": 0.7804,
      "centroid_offset_mm": 2.51
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -1805,6 +1960,11 @@
      "centroid_offset_mm": 3.69
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_right_6": {
@@ -1868,6 +2028,11 @@
      "dice": 0.815,
      "centroid_offset_mm": 3.5
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -1933,6 +2098,11 @@
      "centroid_offset_mm": 6.32
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_right_8": {
@@ -1996,6 +2166,11 @@
      "dice": 0.7465,
      "centroid_offset_mm": 4.97
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -2061,6 +2236,11 @@
      "centroid_offset_mm": 7.21
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_right_10": {
@@ -2124,6 +2304,11 @@
      "dice": 0.7884,
      "centroid_offset_mm": 2.58
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -2189,6 +2374,11 @@
      "centroid_offset_mm": 1.77
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "rib_right_12": {
@@ -2253,6 +2443,11 @@
      "centroid_offset_mm": 1.53
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "patella_right": {
@@ -2274,6 +2469,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "tibia_right": {
@@ -2295,6 +2495,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "fibula_right": {
@@ -2316,6 +2521,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "radius_right": {
@@ -2337,6 +2547,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "ulna_right": {
@@ -2358,6 +2573,11 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "present",
+    "skellytour": "unsupported"
+   },
    "consensus": "single"
   },
   "skull": {
@@ -2421,6 +2641,11 @@
      "dice": 0.7894,
      "centroid_offset_mm": 13.38
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -2486,6 +2711,11 @@
      "centroid_offset_mm": 3.33
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "sacrum": {
@@ -2526,6 +2756,11 @@
      "dice": 0.7813,
      "centroid_offset_mm": 7.16
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "unsupported"
    },
    "consensus": "partial"
   },
@@ -2591,6 +2826,11 @@
      "centroid_offset_mm": 4.5
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "vertebra_C2": {
@@ -2654,6 +2894,11 @@
      "dice": 0.6817,
      "centroid_offset_mm": 3.96
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -2719,6 +2964,11 @@
      "centroid_offset_mm": 3.79
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "vertebra_C4": {
@@ -2782,6 +3032,11 @@
      "dice": 0.5798,
      "centroid_offset_mm": 3.84
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -2847,6 +3102,11 @@
      "centroid_offset_mm": 4.0
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "vertebra_C6": {
@@ -2910,6 +3170,11 @@
      "dice": 0.5812,
      "centroid_offset_mm": 3.89
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -2975,6 +3240,11 @@
      "centroid_offset_mm": 3.74
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "vertebra_T1": {
@@ -3038,6 +3308,11 @@
      "dice": 0.6855,
      "centroid_offset_mm": 3.66
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -3103,6 +3378,11 @@
      "centroid_offset_mm": 3.88
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "vertebra_T3": {
@@ -3166,6 +3446,11 @@
      "dice": 0.746,
      "centroid_offset_mm": 3.42
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -3231,6 +3516,11 @@
      "centroid_offset_mm": 3.29
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "vertebra_T5": {
@@ -3294,6 +3584,11 @@
      "dice": 0.7684,
      "centroid_offset_mm": 3.25
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -3359,6 +3654,11 @@
      "centroid_offset_mm": 3.1
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "vertebra_T7": {
@@ -3422,6 +3722,11 @@
      "dice": 0.7847,
      "centroid_offset_mm": 3.09
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -3487,6 +3792,11 @@
      "centroid_offset_mm": 2.9
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "partial"
   },
   "vertebra_T9": {
@@ -3550,6 +3860,11 @@
      "dice": 0.8162,
      "centroid_offset_mm": 2.5
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -3615,6 +3930,11 @@
      "centroid_offset_mm": 2.59
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "vertebra_T11": {
@@ -3678,6 +3998,11 @@
      "dice": 0.8289,
      "centroid_offset_mm": 2.68
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "agree"
   },
@@ -3743,6 +4068,11 @@
      "centroid_offset_mm": 2.57
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "vertebra_L1": {
@@ -3806,6 +4136,11 @@
      "dice": 0.8399,
      "centroid_offset_mm": 2.02
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -3871,6 +4206,11 @@
      "centroid_offset_mm": 18.83
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "disagree"
   },
   "vertebra_L3": {
@@ -3934,6 +4274,11 @@
      "dice": 0.596,
      "centroid_offset_mm": 18.86
     }
+   },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
    },
    "consensus": "partial"
   },
@@ -3999,6 +4344,11 @@
      "centroid_offset_mm": 5.71
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "vertebra_L5": {
@@ -4063,6 +4413,11 @@
      "centroid_offset_mm": 2.02
     }
    },
+   "model_status": {
+    "totalseg": "present",
+    "moose": "present",
+    "skellytour": "present"
+   },
    "consensus": "agree"
   },
   "pelvis": {
@@ -4084,10 +4439,15 @@
     }
    },
    "pairs": {},
+   "model_status": {
+    "totalseg": "unsupported",
+    "moose": "unsupported",
+    "skellytour": "present"
+   },
    "consensus": "single"
   }
  },
- "vertebra_matching": {
+ "vertebra_matching_diagnostic": {
   "totalseg|moose": {
    "per_vertebra": {
     "C1": {
@@ -4215,7 +4575,9 @@
    "n": 24,
    "shift_histogram": {
     "0": 24
-   }
+   },
+   "not_one_to_one": [],
+   "note": "nearest centroid per label, diagnostic only; not a correspondence for voting (see ct-vertebra-instances.py)"
   },
   "totalseg|skellytour": {
    "per_vertebra": {
@@ -4344,7 +4706,9 @@
    "n": 24,
    "shift_histogram": {
     "0": 24
-   }
+   },
+   "not_one_to_one": [],
+   "note": "nearest centroid per label, diagnostic only; not a correspondence for voting (see ct-vertebra-instances.py)"
   },
   "moose|skellytour": {
    "per_vertebra": {
@@ -4473,7 +4837,9 @@
    "n": 24,
    "shift_histogram": {
     "0": 24
-   }
+   },
+   "not_one_to_one": [],
+   "note": "nearest centroid per label, diagnostic only; not a correspondence for voting (see ct-vertebra-instances.py)"
   }
  },
  "laterality": {
@@ -5456,6 +5822,8 @@
   },
   "summary": {
    "organ_anchor_ok": true,
+   "organ_anchor_n": 4,
+   "midline_assumption": "x = 0 of the CT RAS frame is taken as the midline; valid only because the anchors and the paired bones straddle it (checked by the bone-side test)",
    "bone_side_mismatches": {
     "totalseg": [],
     "moose:peripheral_bones": [],
@@ -5465,5 +5833,6 @@
    },
    "ok": true
   }
- }
+ },
+ "note": "agreement JSON only: consensus masks and uncertainty maps are produced per instance by scripts/ct-vertebra-instances.py; laterality checks are consistency checks that share TotalSegmentator organ labels"
 }

@@ -8,11 +8,19 @@ Usage: python scripts/ct-prior-consensus.py nlm | denver
 
 Per bone (the shared naming below): volume per model, pairwise Dice, centroid offsets in mm, and
 the consensus class: `agree` (all pairwise Dice >= 0.80), `partial`, `disagree` (a pair below 0.50),
-`single` (one model only). Vertebrae are also matched by centroid: for every model label, the
-label of the other models whose centroid is nearest, so naming shifts (L1 called L2) show up as
-off-diagonal matches instead of low Dice.
+`single` (one model only). Per bone and model the status is also recorded: `present`, `negative`
+(the model has the class and processed the region but predicted nothing), `unsupported` (no such class)
+or `unprocessed` (Skellytour ran on a body-cropped grid; outside the crop nothing was predicted).
+Vertebrae are also matched by nearest centroid per label. That block is DIAGNOSTIC ONLY: it is not
+one-to-one (two labels can pick the same partner: Denver totalseg|skellytour L2 and L3 both pick L2),
+so it must not be used as a correspondence for voting. The instance correspondence lives in
+`scripts/ct-vertebra-instances.py`. The name lists below are the models' label vocabularies, not a
+statement about how many vertebrae this donor has (she has six lumbar-type bodies; see the instance script).
 
-Laterality. Three independent tests, all in the NIfTI RAS world of the CT (+x = subject right):
+Laterality. Three consistency checks, all in the NIfTI RAS world of the CT (+x = subject right). They are
+not independent: checks 1 and 3 use TotalSegmentator organ labels and all three share the CT header
+and the same models' training biases; together they show the placement is self-consistent, which is
+anatomical evidence only as far as the organ labels are right (liver right, spleen left).
   1. organ anchor (TotalSegmentator only): liver and gallbladder centroids must have x > 0,
      spleen and stomach x < 0; this fixes which image side is the subject's right, independent of
      any bone label;
@@ -53,7 +61,7 @@ else:
     sys.exit('usage: ct-prior-consensus.py nlm|denver')
 
 CLASSMAP = {v: int(k) for k, v in json.loads((ROOT / 'data/derived/nlm-vhf/totalseg-classmap.json').read_text())['total'].items()}
-VERT = [f'C{i}' for i in range(1, 8)] + [f'T{i}' for i in range(1, 13)] + [f'L{i}' for i in range(1, 6)]
+VERT = [f'C{i}' for i in range(1, 8)] + [f'T{i}' for i in range(1, 13)] + [f'L{i}' for i in range(1, 6)]   # shared label vocabulary of the three models, NOT the donor's count (MOOSE also has L6, TotalSegmentator S1)
 SKELLY_LABELS = {'SKULL': 1, 'PELVIS': 2, 'STERNUM': 3, 'LEFT_FEMUR': 4, 'RIGHT_FEMUR': 5, 'LEFT_HUMERUS': 6, 'RIGHT_HUMERUS': 7,
                  'LEFT_SCAPULA': 8, 'RIGHT_SCAPULA': 9, 'LEFT_CLAVICLE': 10, 'RIGHT_CLAVICLE': 11}
 SKELLY_LABELS.update({f'LEFT_RIB_{i}': 11 + i for i in range(1, 13)})
@@ -94,6 +102,7 @@ class Model:
     def __init__(self, name, arr, affine, names_to_ids):
         self.name, self.arr, self.affine = name, arr, affine
         self.ids = names_to_ids
+        self.processed_box = None   # None = whole grid; else the slices the model actually saw
         self.vox_ml = float(np.prod(np.abs(np.diag(affine)[:3])) / 1000)
         objs = ndimage.find_objects(arr)
         self.box = {i + 1: o for i, o in enumerate(objs) if o is not None}
@@ -130,44 +139,77 @@ def dice(m1, l1, m2, l2):
 print('loading', CT, flush=True)
 ts_im, ts_arr = load(TS)
 affine = ts_im.affine
+
+
+def same_grid(path, im):
+    """Every model must sit on the TotalSegmentator voxel grid: same shape and the same affine (1e-3 mm), else the Dice values are meaningless."""
+    if im.shape != ts_im.shape:
+        sys.exit(f'{path}: shape {im.shape} differs from TotalSegmentator {ts_im.shape}')
+    if not np.allclose(im.affine, affine, atol=1e-3):
+        sys.exit(f'{path}: affine differs from TotalSegmentator (max |diff| {np.abs(im.affine - affine).max():.4f}); resample before comparing')
+
 models = {}
 models['totalseg'] = Model('totalseg', ts_arr, affine, CLASSMAP)
 moose_arrays, moose_ids = {}, {}
 for task in ['peripheral_bones', 'vertebrae', 'ribs']:
     f = MOOSE / f'clin_CT_{task}_segmentation_{MOOSE_TAG}.nii.gz'
     im, a = load(f)
-    assert a.shape == ts_arr.shape, (f, a.shape, ts_arr.shape)
+    same_grid(f, im)
     ids = {v['name']: int(k) for k, v in json.loads((MOOSE / f'clin_CT_{task}_organ_indices.json').read_text())['organ_indices'].items()}
     models[f'moose:{task}'] = Model(f'moose:{task}', a, affine, ids)
 if SKELLY.exists():
     im, a = load(SKELLY)
-    assert a.shape == ts_arr.shape
+    same_grid(SKELLY, im)
     models['skellytour'] = Model('skellytour', a, affine, SKELLY_LABELS)
-    print('skellytour included', flush=True)
+    plan = json.loads((SKELLY.parent / 'plan.json').read_text())
+    i0, i1, j0, j1 = plan['crop']
+    models['skellytour'].processed_box = (slice(i0, i1), slice(j0, j1), slice(0, a.shape[2]))   # outside the crop Skellytour saw nothing
+    print('skellytour included, processed crop', plan['crop'], flush=True)
 else:
     print('skellytour absent:', SKELLY.relative_to(ROOT), flush=True)
 print('models ready', flush=True)
 
 
 def resolve(bone):
-    """(model, label) pairs available for a shared bone name."""
+    """(model, label) pairs available for a shared bone name, plus the status of every model on that bone.
+
+    Status: `present`; `unsupported` (the model has no class for this bone: it cannot vote, it abstains);
+    `unprocessed` (the model has the class but never saw the region where the other models put the bone);
+    `negative` (the model has the class, saw the region and predicted nothing: a vote against, not an abstention).
+    """
     ts, mo, sk = SHARED[bone]
-    out = []
-    if ts and models['totalseg'].has(ts):
-        out.append(('totalseg', ts))
-    if mo and models[f'moose:{mo[0]}'].has(mo[1]):
-        out.append((f'moose:{mo[0]}', mo[1]))
-    if sk and 'skellytour' in models and models['skellytour'].has(sk):
-        out.append(('skellytour', sk))
-    return out
+    out, status = [], {}
+    wanted = [('totalseg', ts), (f'moose:{mo[0]}' if mo else None, mo[1] if mo else None), ('skellytour', sk)]
+    for m, label in wanted:
+        if m is None or label is None or m not in models:
+            status[(m or 'moose').split(':')[0]] = 'unsupported'
+            continue
+        if label not in models[m].ids:
+            status[m.split(':')[0]] = 'unsupported'
+        elif models[m].has(label):
+            out.append((m, label))
+            status[m.split(':')[0]] = 'present'
+        else:
+            status[m.split(':')[0]] = 'absent'   # refined below once the other models say where the bone is
+    for m in list(status):
+        if status[m] != 'absent':
+            continue
+        model = models[m if m != 'moose' else f'moose:{mo[0]}']
+        if model.processed_box is not None and out:
+            c = np.array(models[out[0][0]].info[out[0][1]]['centroid_vox'])
+            inside = all(model.processed_box[d].start <= c[d] < model.processed_box[d].stop for d in range(3))
+            status[m] = 'negative' if inside else 'unprocessed'
+        else:
+            status[m] = 'negative'
+    return out, status
 
 
 bones = {}
 for bone in SHARED:
-    avail = resolve(bone)
+    avail, status = resolve(bone)
     if not avail:
         continue
-    entry = {'models': {}, 'pairs': {}}
+    entry = {'models': {}, 'pairs': {}, 'model_status': status}
     for m, l in avail:
         entry['models'][m.split(':')[0]] = dict(label=l, **models[m].info[l])
     dices = []
@@ -189,7 +231,7 @@ for bone in SHARED:
     bones[bone] = entry
     print(f"{bone:16s} {entry['consensus']:9s} " + '  '.join(f"{k} {v['dice']:.3f}" for k, v in entry['pairs'].items()), flush=True)
 
-# vertebra naming by nearest centroid
+# vertebra naming by nearest centroid: DIAGNOSTIC ONLY (not one-to-one; see docstring and ct-vertebra-instances.py)
 vert_models = {'totalseg': [(f'vertebrae_{v}', v) for v in VERT], 'moose:vertebrae': [(f'vertebra_{v}', v) for v in VERT]}
 if 'skellytour' in models:
     vert_models['skellytour'] = [(f'VERT_{n}', v) for n, v in enumerate(VERT, start=1)]
@@ -207,8 +249,11 @@ for i in range(len(names)):
             best = min(vert_centroids[b].items(), key=lambda kv: np.linalg.norm(kv[1] - c))
             rows[v] = {'nearest': best[0], 'distance_mm': round(float(np.linalg.norm(best[1] - c)), 2), 'same_name': best[0] == v}
             shifts.append(VERT.index(best[0]) - VERT.index(v))
+        targets = [r['nearest'] for r in rows.values()]
         vertebra_matching[f"{a.split(':')[0]}|{b.split(':')[0]}"] = {'per_vertebra': rows, 'same_name_count': sum(r['same_name'] for r in rows.values()), 'n': len(rows),
-                                                                    'shift_histogram': {str(s): shifts.count(s) for s in sorted(set(shifts))}}
+                                                                    'shift_histogram': {str(s): shifts.count(s) for s in sorted(set(shifts))},
+                                                                    'not_one_to_one': sorted({t for t in targets if targets.count(t) > 1}),
+                                                                    'note': 'nearest centroid per label, diagnostic only; not a correspondence for voting (see ct-vertebra-instances.py)'}
         print('vertebra match', a, b, 'same name', sum(r['same_name'] for r in rows.values()), '/', len(rows), 'shifts', vertebra_matching[f"{a.split(':')[0]}|{b.split(':')[0]}"]['shift_histogram'], flush=True)
 
 # laterality
@@ -220,8 +265,13 @@ for organ, expect in [('liver', 'right'), ('gallbladder', 'right'), ('spleen', '
         side = 'right' if x > 0 else 'left'
         lat['organ_anchor'][organ] = {'x_ras_mm': round(x, 1), 'expected_side': expect, 'observed_side': side, 'ok': side == expect}
         anchor_ok.append(side == expect)
-# the heart sits left of the midline only slightly; report it but do not let it decide
-lat['summary']['organ_anchor_ok'] = all(v['ok'] for k, v in lat['organ_anchor'].items() if k != 'heart')
+# the heart sits left of the midline only slightly; report it but do not let it decide.
+# The anchor needs at least one right-sided and one left-sided organ present; with no anchors the check is undecided, never passed.
+anchors = {k: v for k, v in lat['organ_anchor'].items() if k != 'heart'}
+has_both = any(v['expected_side'] == 'right' for v in anchors.values()) and any(v['expected_side'] == 'left' for v in anchors.values())
+lat['summary']['organ_anchor_ok'] = bool(anchors) and has_both and all(v['ok'] for v in anchors.values())
+lat['summary']['organ_anchor_n'] = len(anchors)
+lat['summary']['midline_assumption'] = 'x = 0 of the CT RAS frame is taken as the midline; valid only because the anchors and the paired bones straddle it (checked by the bone-side test)'
 for m, model in models.items():
     rows = {}
     for label in model.info:
@@ -273,7 +323,7 @@ if VOX_TO_VHF is not None:
                                  'ok': bool((c[0] - mid_x) * (denver_centroid[expect_part][0] - mid_x) > 0)}
     lat['denver_frame'] = {'transform': 'transforms/denver-aligned-ct-voxel-to-vhf.json', 'denver_frame_x_positive_is_subject_right': bool(denver_right_positive),
                            'denver_mesh_centroids_mm': {k: v.round(1).tolist() for k, v in denver_centroid.items()}, 'bones': rows, 'organs': organ_rows,
-                           'ok': all(r['same_side_as_denver_mesh'] for r in rows.values()) and all(r['ok'] for r in organ_rows.values())}
+                           'ok': bool(rows) and bool(organ_rows) and all(r['same_side_as_denver_mesh'] for r in rows.values()) and all(r['ok'] for r in organ_rows.values())}
     print('denver frame laterality ok', lat['denver_frame']['ok'], 'x positive is right', denver_right_positive, flush=True)
 
 lat['summary']['bone_side_mismatches'] = {m: v['mismatches'] for m, v in lat['bone_sides'].items()}
@@ -282,7 +332,8 @@ lat['summary']['ok'] = lat['summary']['organ_anchor_ok'] and not any(lat['summar
 summary = {c: sum(1 for b in bones.values() if b['consensus'] == c) for c in ['agree', 'partial', 'disagree', 'single']}
 out = {'ct': CT, 'totalseg': str(TS.relative_to(ROOT)), 'moose': str(MOOSE.relative_to(ROOT)), 'skellytour': str(SKELLY.relative_to(ROOT)) if SKELLY.exists() else None,
        'shape': list(ts_arr.shape), 'affine_axcodes': list(nib.aff2axcodes(affine)), 'consensus_summary': summary, 'bones': bones,
-       'vertebra_matching': vertebra_matching, 'laterality': lat}
+       'vertebra_matching_diagnostic': vertebra_matching, 'laterality': lat,
+       'note': 'agreement JSON only: consensus masks and uncertainty maps are produced per instance by scripts/ct-vertebra-instances.py; laterality checks are consistency checks that share TotalSegmentator organ labels'}
 dest = ROOT / f'generated/ct-prior-consensus-{CT}.json'
 dest.write_text(json.dumps(out, indent=1) + '\n')
 print('summary', summary, 'laterality ok', lat['summary']['ok'], '->', dest.relative_to(ROOT))

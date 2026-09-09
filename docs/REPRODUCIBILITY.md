@@ -174,7 +174,7 @@ All pin the GPU by UUID through `CUDA_VISIBLE_DEVICES`.
 | `run-moose.sh` | MOOSE 3.2.2, four bone models | `nlm-vhf/derived/vhf-fresh-ct.nii.gz` | `moose/input/vhf/moosez-*/segmentations/` | `data/derived/nlm-vhf/moose/` |
 | `run-denver-ct-priors.sh` | MOOSE bones, then TotalSegmentator `total` | Denver aligned CT (HU + 1000 -> HU) | `denver/priors/{moose,totalseg}/` | `data/derived/denver/priors/` (TotalSegmentator was rerun locally on CPU after the GPU run was killed by RAM) |
 | `run-skellytour-chunked.sh nlm denver` | Skellytour `high` | both CTs | `skellytour/{nlm,denver}/skellytour_high.nii.gz` | `data/derived/nlm-vhf/skellytour/`, `data/derived/denver/priors/skellytour/` |
-| `merge-skellytour.py` | stitches Skellytour chunks (postprocessed outputs preferred) | chunk outputs | `skellytour_high.{nii.gz,json}` | same |
+| `merge-skellytour.py` | the only stitching of Skellytour chunks (called by the shell script): postprocessed output preferred, **stops** on a missing or ambiguous chunk (`--allow-missing` only lists them and marks the manifest incomplete, never zero-fills silently), writes per-chunk file, SHA-256 and labels, the crop box (unprocessed region) and the label agreement across every seam | chunk outputs | `skellytour_high.{nii.gz,json}` | same |
 
 Skellytour `high` needs about 38 GB RAM per 109 L of CT (its own estimate), so it runs in
 body-cropped z-chunks: `CORE=260 OV=40` for the 0.94 mm NLM CT (7 chunks, 3.2 min each), `CORE=150 OV=30`
@@ -191,5 +191,23 @@ ssh rub-pc 'pgrep -af "skellytour|moosez|TotalSegmentator|nnUNet" | grep -v pgre
 ssh rub-pc 'pkill -f skellytour; pkill -f moosez; sleep 3; pgrep -af "skellytour|moosez" | grep -v pgrep; free -g'
 ```
 
-Consensus of the three models and the laterality tests: `python scripts/ct-prior-consensus.py nlm` and
-`... denver` (needs the copies listed above), outputs `generated/ct-prior-consensus-{nlm,denver}.json`.
+Consensus of the three models and the laterality checks: `python scripts/ct-prior-consensus.py nlm` and
+`... denver` (needs the copies listed above), outputs `generated/ct-prior-consensus-{nlm,denver}.json`
+(agreement per named bone with a per-model status `present | negative | unsupported | unprocessed`; the
+vertebra centroid block is diagnostic only; the laterality checks share TotalSegmentator organ labels and are
+consistency checks, not independent tests). The current merged Skellytour volumes predate the manifest
+format above; their seams are checked locally from the stitched volume with
+`python scripts/skellytour-seam-check.py nlm|denver` (`generated/skellytour-seams-{nlm,denver}.json`:
+label agreement at each seam against its neighbouring slices and the identity kept by every vertebra
+label that crosses a seam).
+
+Vertebra consensus by instance (names and counts observed, never imposed):
+`python scripts/ct-vertebra-instances.py nlm --selftest` and `... denver --selftest` (about 5 min each,
+8 GB RAM). Outputs `generated/ct-vertebra-instances-{nlm,denver}.json` (candidates, pairwise
+correspondence with states matched/split/merge/partial/unmatched, instance table with per-model state
+`seed | matched | merge | partial | single | negative | absorbed | unsupported | unprocessed`, votes,
+HRA same-donor chain by order, self-test results), review panels in
+`generated/ct-vertebra-instances-{nlm,denver}/` and the label maps `vertebra-{instances,review,votes,eligible}.nii.gz`
+under `data/derived/nlm-vhf/consensus/` and `data/derived/denver/priors/consensus/`. The self-test perturbs
+the MOOSE candidates (merge two bodies, split one, delete one, swap two names, shift one by 15 mm) and
+must report the expected states; the run exits non-zero if it does not.

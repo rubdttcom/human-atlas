@@ -1,0 +1,9219 @@
+{
+ "ct": "nlm",
+ "inputs": {
+  "totalseg": "data/derived/nlm-vhf/totalseg.nii",
+  "moose": "data/derived/nlm-vhf/moose/segmentations/clin_CT_vertebrae_segmentation_CT_vhf.nii.gz",
+  "skellytour": "data/derived/nlm-vhf/skellytour/skellytour_high.nii.gz",
+  "ct_hu": "data/derived/nlm-vhf/vhf-fresh-ct.nii.gz"
+ },
+ "grid": {
+  "shape": [
+   512,
+   512,
+   1734
+  ],
+  "axcodes": [
+   "L",
+   "P",
+   "I"
+  ],
+  "voxel_ml": 0.00087890625,
+  "roi": [
+   [
+    32,
+    322
+   ],
+   [
+    174,
+    373
+   ],
+   [
+    133,
+    855
+   ]
+  ]
+ },
+ "parameters": {
+  "min_candidate_ml": 3.0,
+  "iou_group": 0.2,
+  "iou_match": 0.5,
+  "cover_part": 0.2,
+  "connectivity": 26,
+  "vote": "strict majority of eligible models per voxel",
+  "eligibility": {
+   "totalseg": "whole grid",
+   "moose": "whole grid",
+   "skellytour": "body crop i 0:512 j 79:391 (plan.json); no sacrum class"
+  }
+ },
+ "label_vocabulary": {
+  "totalseg": [
+   "sacrum",
+   "vertebrae_C1",
+   "vertebrae_C2",
+   "vertebrae_C3",
+   "vertebrae_C4",
+   "vertebrae_C5",
+   "vertebrae_C6",
+   "vertebrae_C7",
+   "vertebrae_L1",
+   "vertebrae_L2",
+   "vertebrae_L3",
+   "vertebrae_L4",
+   "vertebrae_L5",
+   "vertebrae_S1",
+   "vertebrae_T1",
+   "vertebrae_T10",
+   "vertebrae_T11",
+   "vertebrae_T12",
+   "vertebrae_T2",
+   "vertebrae_T3",
+   "vertebrae_T4",
+   "vertebrae_T5",
+   "vertebrae_T6",
+   "vertebrae_T7",
+   "vertebrae_T8",
+   "vertebrae_T9"
+  ],
+  "moose": [
+   "sacrum",
+   "vertebra_C1",
+   "vertebra_C2",
+   "vertebra_C3",
+   "vertebra_C4",
+   "vertebra_C5",
+   "vertebra_C6",
+   "vertebra_C7",
+   "vertebra_L1",
+   "vertebra_L2",
+   "vertebra_L3",
+   "vertebra_L4",
+   "vertebra_L5",
+   "vertebra_L6",
+   "vertebra_T1",
+   "vertebra_T10",
+   "vertebra_T11",
+   "vertebra_T12",
+   "vertebra_T2",
+   "vertebra_T3",
+   "vertebra_T4",
+   "vertebra_T5",
+   "vertebra_T6",
+   "vertebra_T7",
+   "vertebra_T8",
+   "vertebra_T9"
+  ],
+  "skellytour": [
+   "VERT_1",
+   "VERT_10",
+   "VERT_11",
+   "VERT_12",
+   "VERT_13",
+   "VERT_14",
+   "VERT_15",
+   "VERT_16",
+   "VERT_17",
+   "VERT_18",
+   "VERT_19",
+   "VERT_2",
+   "VERT_20",
+   "VERT_21",
+   "VERT_22",
+   "VERT_23",
+   "VERT_24",
+   "VERT_3",
+   "VERT_4",
+   "VERT_5",
+   "VERT_6",
+   "VERT_7",
+   "VERT_8",
+   "VERT_9"
+  ]
+ },
+ "candidates": [
+  {
+   "cid": 1,
+   "model": "totalseg",
+   "label": "vertebrae_C1",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 19474,
+   "volume_ml": 17.12,
+   "centroid_vox": [
+    246.2,
+    245.2,
+    161.6
+   ],
+   "centroid_ras_mm": [
+    8.8,
+    9.7,
+    -161.6
+   ],
+   "centroid_vhf_mm": [
+    531.5,
+    437.6,
+    1568.8
+   ],
+   "z_ras_mm": -161.6,
+   "z_vox": [
+    150,
+    175
+   ],
+   "box": [
+    [
+     171,
+     256
+    ],
+    [
+     50,
+     101
+    ],
+    [
+     17,
+     42
+    ]
+   ]
+  },
+  {
+   "cid": 2,
+   "model": "totalseg",
+   "label": "vertebrae_C2",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 20475,
+   "volume_ml": 18.0,
+   "centroid_vox": [
+    244.8,
+    246.1,
+    178.1
+   ],
+   "centroid_ras_mm": [
+    10.0,
+    8.9,
+    -178.1
+   ],
+   "centroid_vhf_mm": [
+    533.0,
+    437.0,
+    1552.3
+   ],
+   "z_ras_mm": -178.1,
+   "z_vox": [
+    150,
+    192
+   ],
+   "box": [
+    [
+     182,
+     242
+    ],
+    [
+     53,
+     108
+    ],
+    [
+     17,
+     59
+    ]
+   ]
+  },
+  {
+   "cid": 3,
+   "model": "totalseg",
+   "label": "vertebrae_C3",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 13078,
+   "volume_ml": 11.49,
+   "centroid_vox": [
+    244.6,
+    247.0,
+    196.4
+   ],
+   "centroid_ras_mm": [
+    10.2,
+    8.0,
+    -196.4
+   ],
+   "centroid_vhf_mm": [
+    533.4,
+    436.4,
+    1534.0
+   ],
+   "z_ras_mm": -196.4,
+   "z_vox": [
+    187,
+    210
+   ],
+   "box": [
+    [
+     184,
+     243
+    ],
+    [
+     56,
+     103
+    ],
+    [
+     54,
+     77
+    ]
+   ]
+  },
+  {
+   "cid": 4,
+   "model": "totalseg",
+   "label": "vertebrae_C4",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 12866,
+   "volume_ml": 11.31,
+   "centroid_vox": [
+    243.5,
+    250.2,
+    210.7
+   ],
+   "centroid_ras_mm": [
+    11.2,
+    5.0,
+    -210.7
+   ],
+   "centroid_vhf_mm": [
+    534.5,
+    433.7,
+    1519.7
+   ],
+   "z_ras_mm": -210.7,
+   "z_vox": [
+    201,
+    225
+   ],
+   "box": [
+    [
+     182,
+     243
+    ],
+    [
+     60,
+     103
+    ],
+    [
+     68,
+     92
+    ]
+   ]
+  },
+  {
+   "cid": 5,
+   "model": "totalseg",
+   "label": "vertebrae_C5",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 14226,
+   "volume_ml": 12.5,
+   "centroid_vox": [
+    245.1,
+    254.4,
+    225.3
+   ],
+   "centroid_ras_mm": [
+    9.8,
+    1.0,
+    -225.3
+   ],
+   "centroid_vhf_mm": [
+    533.2,
+    429.9,
+    1505.0
+   ],
+   "z_ras_mm": -225.3,
+   "z_vox": [
+    213,
+    240
+   ],
+   "box": [
+    [
+     182,
+     245
+    ],
+    [
+     64,
+     108
+    ],
+    [
+     80,
+     107
+    ]
+   ]
+  },
+  {
+   "cid": 6,
+   "model": "totalseg",
+   "label": "vertebrae_C6",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 14721,
+   "volume_ml": 12.94,
+   "centroid_vox": [
+    246.8,
+    261.4,
+    240.2
+   ],
+   "centroid_ras_mm": [
+    8.2,
+    -5.5,
+    -240.2
+   ],
+   "centroid_vhf_mm": [
+    531.6,
+    423.7,
+    1490.0
+   ],
+   "z_ras_mm": -240.2,
+   "z_vox": [
+    228,
+    256
+   ],
+   "box": [
+    [
+     184,
+     245
+    ],
+    [
+     71,
+     120
+    ],
+    [
+     95,
+     123
+    ]
+   ]
+  },
+  {
+   "cid": 7,
+   "model": "totalseg",
+   "label": "vertebrae_C7",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 19902,
+   "volume_ml": 17.49,
+   "centroid_vox": [
+    246.9,
+    272.1,
+    255.7
+   ],
+   "centroid_ras_mm": [
+    8.0,
+    -15.5,
+    -255.7
+   ],
+   "centroid_vhf_mm": [
+    531.4,
+    414.0,
+    1474.4
+   ],
+   "z_ras_mm": -255.7,
+   "z_vox": [
+    241,
+    273
+   ],
+   "box": [
+    [
+     179,
+     251
+    ],
+    [
+     77,
+     140
+    ],
+    [
+     108,
+     140
+    ]
+   ]
+  },
+  {
+   "cid": 8,
+   "model": "totalseg",
+   "label": "vertebrae_T1",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 24323,
+   "volume_ml": 21.38,
+   "centroid_vox": [
+    248.4,
+    281.2,
+    272.3
+   ],
+   "centroid_ras_mm": [
+    6.7,
+    -24.1,
+    -272.3
+   ],
+   "centroid_vhf_mm": [
+    529.9,
+    405.7,
+    1457.6
+   ],
+   "z_ras_mm": -272.3,
+   "z_vox": [
+    258,
+    291
+   ],
+   "box": [
+    [
+     176,
+     256
+    ],
+    [
+     84,
+     152
+    ],
+    [
+     125,
+     158
+    ]
+   ]
+  },
+  {
+   "cid": 9,
+   "model": "totalseg",
+   "label": "vertebrae_T2",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 24879,
+   "volume_ml": 21.87,
+   "centroid_vox": [
+    249.4,
+    291.1,
+    291.5
+   ],
+   "centroid_ras_mm": [
+    5.7,
+    -33.4,
+    -291.5
+   ],
+   "centroid_vhf_mm": [
+    529.0,
+    396.8,
+    1438.2
+   ],
+   "z_ras_mm": -291.5,
+   "z_vox": [
+    273,
+    312
+   ],
+   "box": [
+    [
+     181,
+     253
+    ],
+    [
+     92,
+     160
+    ],
+    [
+     140,
+     179
+    ]
+   ]
+  },
+  {
+   "cid": 10,
+   "model": "totalseg",
+   "label": "vertebrae_T3",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 24426,
+   "volume_ml": 21.47,
+   "centroid_vox": [
+    250.1,
+    301.4,
+    311.8
+   ],
+   "centroid_ras_mm": [
+    5.1,
+    -43.0,
+    -311.8
+   ],
+   "centroid_vhf_mm": [
+    528.3,
+    387.5,
+    1417.8
+   ],
+   "z_ras_mm": -311.8,
+   "z_vox": [
+    294,
+    333
+   ],
+   "box": [
+    [
+     184,
+     250
+    ],
+    [
+     96,
+     170
+    ],
+    [
+     161,
+     200
+    ]
+   ]
+  },
+  {
+   "cid": 11,
+   "model": "totalseg",
+   "label": "vertebrae_T4",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 24517,
+   "volume_ml": 21.55,
+   "centroid_vox": [
+    250.1,
+    308.2,
+    333.3
+   ],
+   "centroid_ras_mm": [
+    5.1,
+    -49.4,
+    -333.3
+   ],
+   "centroid_vhf_mm": [
+    528.4,
+    381.5,
+    1396.2
+   ],
+   "z_ras_mm": -333.3,
+   "z_vox": [
+    315,
+    357
+   ],
+   "box": [
+    [
+     186,
+     250
+    ],
+    [
+     100,
+     178
+    ],
+    [
+     182,
+     224
+    ]
+   ]
+  },
+  {
+   "cid": 12,
+   "model": "totalseg",
+   "label": "vertebrae_T5",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 25100,
+   "volume_ml": 22.06,
+   "centroid_vox": [
+    249.8,
+    311.7,
+    355.2
+   ],
+   "centroid_ras_mm": [
+    5.4,
+    -52.7,
+    -355.2
+   ],
+   "centroid_vhf_mm": [
+    528.9,
+    378.5,
+    1374.2
+   ],
+   "z_ras_mm": -355.2,
+   "z_vox": [
+    336,
+    381
+   ],
+   "box": [
+    [
+     186,
+     250
+    ],
+    [
+     104,
+     180
+    ],
+    [
+     203,
+     248
+    ]
+   ]
+  },
+  {
+   "cid": 13,
+   "model": "totalseg",
+   "label": "vertebrae_T6",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 26618,
+   "volume_ml": 23.39,
+   "centroid_vox": [
+    249.6,
+    314.4,
+    377.9
+   ],
+   "centroid_ras_mm": [
+    5.6,
+    -55.3,
+    -377.9
+   ],
+   "centroid_vhf_mm": [
+    529.4,
+    376.3,
+    1351.5
+   ],
+   "z_ras_mm": -377.9,
+   "z_vox": [
+    358,
+    405
+   ],
+   "box": [
+    [
+     186,
+     250
+    ],
+    [
+     104,
+     183
+    ],
+    [
+     225,
+     272
+    ]
+   ]
+  },
+  {
+   "cid": 14,
+   "model": "totalseg",
+   "label": "vertebrae_T7",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 28973,
+   "volume_ml": 25.46,
+   "centroid_vox": [
+    249.7,
+    315.4,
+    400.5
+   ],
+   "centroid_ras_mm": [
+    5.4,
+    -56.1,
+    -400.5
+   ],
+   "centroid_vhf_mm": [
+    529.5,
+    375.8,
+    1328.9
+   ],
+   "z_ras_mm": -400.5,
+   "z_vox": [
+    381,
+    430
+   ],
+   "box": [
+    [
+     184,
+     250
+    ],
+    [
+     111,
+     183
+    ],
+    [
+     248,
+     297
+    ]
+   ]
+  },
+  {
+   "cid": 15,
+   "model": "totalseg",
+   "label": "vertebrae_T8",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 30473,
+   "volume_ml": 26.78,
+   "centroid_vox": [
+    250.1,
+    315.8,
+    423.4
+   ],
+   "centroid_ras_mm": [
+    5.0,
+    -56.6,
+    -423.4
+   ],
+   "centroid_vhf_mm": [
+    529.4,
+    375.8,
+    1306.0
+   ],
+   "z_ras_mm": -423.4,
+   "z_vox": [
+    405,
+    453
+   ],
+   "box": [
+    [
+     186,
+     250
+    ],
+    [
+     111,
+     183
+    ],
+    [
+     272,
+     320
+    ]
+   ]
+  },
+  {
+   "cid": 16,
+   "model": "totalseg",
+   "label": "vertebrae_T9",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 32064,
+   "volume_ml": 28.18,
+   "centroid_vox": [
+    250.9,
+    314.7,
+    446.7
+   ],
+   "centroid_ras_mm": [
+    4.3,
+    -55.5,
+    -446.7
+   ],
+   "centroid_vhf_mm": [
+    529.1,
+    377.2,
+    1282.7
+   ],
+   "z_ras_mm": -446.7,
+   "z_vox": [
+    429,
+    472
+   ],
+   "box": [
+    [
+     186,
+     253
+    ],
+    [
+     108,
+     183
+    ],
+    [
+     296,
+     339
+    ]
+   ]
+  },
+  {
+   "cid": 17,
+   "model": "totalseg",
+   "label": "vertebrae_T10",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 38717,
+   "volume_ml": 34.03,
+   "centroid_vox": [
+    251.3,
+    313.8,
+    470.4
+   ],
+   "centroid_ras_mm": [
+    3.9,
+    -54.7,
+    -470.4
+   ],
+   "centroid_vhf_mm": [
+    529.0,
+    378.5,
+    1259.0
+   ],
+   "z_ras_mm": -470.4,
+   "z_vox": [
+    451,
+    493
+   ],
+   "box": [
+    [
+     186,
+     253
+    ],
+    [
+     104,
+     185
+    ],
+    [
+     318,
+     360
+    ]
+   ]
+  },
+  {
+   "cid": 18,
+   "model": "totalseg",
+   "label": "vertebrae_T11",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 41697,
+   "volume_ml": 36.65,
+   "centroid_vox": [
+    252.1,
+    311.3,
+    495.9
+   ],
+   "centroid_ras_mm": [
+    3.2,
+    -52.3,
+    -495.9
+   ],
+   "centroid_vhf_mm": [
+    528.7,
+    381.3,
+    1233.5
+   ],
+   "z_ras_mm": -495.9,
+   "z_vox": [
+    475,
+    517
+   ],
+   "box": [
+    [
+     190,
+     250
+    ],
+    [
+     104,
+     181
+    ],
+    [
+     342,
+     384
+    ]
+   ]
+  },
+  {
+   "cid": 19,
+   "model": "totalseg",
+   "label": "vertebrae_T12",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 47374,
+   "volume_ml": 41.64,
+   "centroid_vox": [
+    252.1,
+    308.8,
+    523.8
+   ],
+   "centroid_ras_mm": [
+    3.2,
+    -49.9,
+    -523.8
+   ],
+   "centroid_vhf_mm": [
+    529.2,
+    384.1,
+    1205.7
+   ],
+   "z_ras_mm": -523.8,
+   "z_vox": [
+    501,
+    546
+   ],
+   "box": [
+    [
+     192,
+     246
+    ],
+    [
+     103,
+     180
+    ],
+    [
+     368,
+     413
+    ]
+   ]
+  },
+  {
+   "cid": 20,
+   "model": "totalseg",
+   "label": "vertebrae_L1",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 5,
+   "voxels": 55220,
+   "volume_ml": 48.53,
+   "centroid_vox": [
+    252.5,
+    306.1,
+    554.7
+   ],
+   "centroid_ras_mm": [
+    2.8,
+    -47.4,
+    -554.7
+   ],
+   "centroid_vhf_mm": [
+    529.3,
+    387.1,
+    1174.8
+   ],
+   "z_ras_mm": -554.7,
+   "z_vox": [
+    534,
+    582
+   ],
+   "box": [
+    [
+     176,
+     251
+    ],
+    [
+     98,
+     180
+    ],
+    [
+     401,
+     449
+    ]
+   ]
+  },
+  {
+   "cid": 21,
+   "model": "totalseg",
+   "label": "vertebrae_L1",
+   "role": "vertebra",
+   "component": 3,
+   "components_of_label": 5,
+   "voxels": 32584,
+   "volume_ml": 28.64,
+   "centroid_vox": [
+    252.6,
+    298.1,
+    594.5
+   ],
+   "centroid_ras_mm": [
+    2.8,
+    -39.9,
+    -594.5
+   ],
+   "centroid_vhf_mm": [
+    530.1,
+    395.3,
+    1135.2
+   ],
+   "z_ras_mm": -594.5,
+   "z_vox": [
+    585,
+    619
+   ],
+   "box": [
+    [
+     184,
+     259
+    ],
+    [
+     85,
+     162
+    ],
+    [
+     452,
+     486
+    ]
+   ]
+  },
+  {
+   "cid": 22,
+   "model": "totalseg",
+   "label": "vertebrae_L2",
+   "role": "vertebra",
+   "component": 2,
+   "components_of_label": 3,
+   "voxels": 69340,
+   "volume_ml": 60.94,
+   "centroid_vox": [
+    252.9,
+    293.7,
+    622.7
+   ],
+   "centroid_ras_mm": [
+    2.4,
+    -35.8,
+    -622.7
+   ],
+   "centroid_vhf_mm": [
+    530.3,
+    399.8,
+    1107.0
+   ],
+   "z_ras_mm": -622.7,
+   "z_vox": [
+    603,
+    658
+   ],
+   "box": [
+    [
+     173,
+     266
+    ],
+    [
+     82,
+     177
+    ],
+    [
+     470,
+     525
+    ]
+   ]
+  },
+  {
+   "cid": 23,
+   "model": "totalseg",
+   "label": "vertebrae_L2",
+   "role": "vertebra",
+   "component": 3,
+   "components_of_label": 3,
+   "voxels": 28740,
+   "volume_ml": 25.26,
+   "centroid_vox": [
+    253.7,
+    302.5,
+    580.8
+   ],
+   "centroid_ras_mm": [
+    1.7,
+    -44.1,
+    -580.8
+   ],
+   "centroid_vhf_mm": [
+    528.7,
+    390.9,
+    1148.8
+   ],
+   "z_ras_mm": -580.8,
+   "z_vox": [
+    567,
+    609
+   ],
+   "box": [
+    [
+     181,
+     261
+    ],
+    [
+     95,
+     178
+    ],
+    [
+     434,
+     476
+    ]
+   ]
+  },
+  {
+   "cid": 24,
+   "model": "totalseg",
+   "label": "vertebrae_L3",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 3,
+   "voxels": 75493,
+   "volume_ml": 66.35,
+   "centroid_vox": [
+    253.0,
+    289.0,
+    656.8
+   ],
+   "centroid_ras_mm": [
+    2.4,
+    -31.4,
+    -656.8
+   ],
+   "centroid_vhf_mm": [
+    530.8,
+    404.8,
+    1072.9
+   ],
+   "z_ras_mm": -656.8,
+   "z_vox": [
+    634,
+    688
+   ],
+   "box": [
+    [
+     171,
+     269
+    ],
+    [
+     77,
+     170
+    ],
+    [
+     501,
+     555
+    ]
+   ]
+  },
+  {
+   "cid": 25,
+   "model": "totalseg",
+   "label": "vertebrae_L4",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 73266,
+   "volume_ml": 64.39,
+   "centroid_vox": [
+    251.2,
+    283.6,
+    689.7
+   ],
+   "centroid_ras_mm": [
+    4.0,
+    -26.3,
+    -689.7
+   ],
+   "centroid_vhf_mm": [
+    533.1,
+    410.3,
+    1040.3
+   ],
+   "z_ras_mm": -689.7,
+   "z_vox": [
+    666,
+    717
+   ],
+   "box": [
+    [
+     171,
+     269
+    ],
+    [
+     74,
+     165
+    ],
+    [
+     533,
+     584
+    ]
+   ]
+  },
+  {
+   "cid": 26,
+   "model": "totalseg",
+   "label": "vertebrae_L5",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 73065,
+   "volume_ml": 64.22,
+   "centroid_vox": [
+    247.8,
+    281.9,
+    720.7
+   ],
+   "centroid_ras_mm": [
+    7.2,
+    -24.8,
+    -720.7
+   ],
+   "centroid_vhf_mm": [
+    536.8,
+    412.3,
+    1009.3
+   ],
+   "z_ras_mm": -720.7,
+   "z_vox": [
+    696,
+    742
+   ],
+   "box": [
+    [
+     163,
+     269
+    ],
+    [
+     76,
+     162
+    ],
+    [
+     563,
+     609
+    ]
+   ]
+  },
+  {
+   "cid": 27,
+   "model": "totalseg",
+   "label": "vertebrae_S1",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 56291,
+   "volume_ml": 49.47,
+   "centroid_vox": [
+    248.3,
+    290.3,
+    746.9
+   ],
+   "centroid_ras_mm": [
+    6.8,
+    -32.6,
+    -746.9
+   ],
+   "centroid_vhf_mm": [
+    536.4,
+    404.9,
+    982.9
+   ],
+   "z_ras_mm": -746.9,
+   "z_vox": [
+    721,
+    766
+   ],
+   "box": [
+    [
+     182,
+     250
+    ],
+    [
+     88,
+     159
+    ],
+    [
+     588,
+     633
+    ]
+   ]
+  },
+  {
+   "cid": 28,
+   "model": "totalseg",
+   "label": "sacrum",
+   "role": "sacrum",
+   "component": 2,
+   "components_of_label": 8,
+   "voxels": 195034,
+   "volume_ml": 171.42,
+   "centroid_vox": [
+    247.8,
+    313.4,
+    766.7
+   ],
+   "centroid_ras_mm": [
+    7.2,
+    -54.3,
+    -766.7
+   ],
+   "centroid_vhf_mm": [
+    536.5,
+    383.5,
+    962.8
+   ],
+   "z_ras_mm": -766.7,
+   "z_vox": [
+    724,
+    847
+   ],
+   "box": [
+    [
+     154,
+     282
+    ],
+    [
+     93,
+     191
+    ],
+    [
+     591,
+     714
+    ]
+   ]
+  },
+  {
+   "cid": 29,
+   "model": "moose",
+   "label": "vertebra_C1",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 20133,
+   "volume_ml": 17.7,
+   "centroid_vox": [
+    246.1,
+    245.4,
+    157.0
+   ],
+   "centroid_ras_mm": [
+    8.8,
+    9.5,
+    -157.0
+   ],
+   "centroid_vhf_mm": [
+    531.5,
+    437.4,
+    1573.4
+   ],
+   "z_ras_mm": -157.0,
+   "z_vox": [
+    141,
+    171
+   ],
+   "box": [
+    [
+     172,
+     256
+    ],
+    [
+     50,
+     102
+    ],
+    [
+     8,
+     38
+    ]
+   ]
+  },
+  {
+   "cid": 30,
+   "model": "moose",
+   "label": "vertebra_C2",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 20401,
+   "volume_ml": 17.93,
+   "centroid_vox": [
+    244.9,
+    246.4,
+    173.9
+   ],
+   "centroid_ras_mm": [
+    9.9,
+    8.5,
+    -173.9
+   ],
+   "centroid_vhf_mm": [
+    532.8,
+    436.6,
+    1556.5
+   ],
+   "z_ras_mm": -173.9,
+   "z_vox": [
+    146,
+    189
+   ],
+   "box": [
+    [
+     183,
+     240
+    ],
+    [
+     54,
+     108
+    ],
+    [
+     13,
+     56
+    ]
+   ]
+  },
+  {
+   "cid": 31,
+   "model": "moose",
+   "label": "vertebra_C3",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 13446,
+   "volume_ml": 11.82,
+   "centroid_vox": [
+    244.8,
+    247.5,
+    192.6
+   ],
+   "centroid_ras_mm": [
+    10.0,
+    7.5,
+    -192.6
+   ],
+   "centroid_vhf_mm": [
+    533.2,
+    435.9,
+    1537.8
+   ],
+   "z_ras_mm": -192.6,
+   "z_vox": [
+    183,
+    204
+   ],
+   "box": [
+    [
+     184,
+     244
+    ],
+    [
+     57,
+     103
+    ],
+    [
+     50,
+     71
+    ]
+   ]
+  },
+  {
+   "cid": 32,
+   "model": "moose",
+   "label": "vertebra_C4",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 12790,
+   "volume_ml": 11.24,
+   "centroid_vox": [
+    243.7,
+    250.7,
+    206.9
+   ],
+   "centroid_ras_mm": [
+    11.0,
+    4.5,
+    -206.9
+   ],
+   "centroid_vhf_mm": [
+    534.3,
+    433.1,
+    1523.5
+   ],
+   "z_ras_mm": -206.9,
+   "z_vox": [
+    197,
+    221
+   ],
+   "box": [
+    [
+     183,
+     244
+    ],
+    [
+     60,
+     103
+    ],
+    [
+     64,
+     88
+    ]
+   ]
+  },
+  {
+   "cid": 33,
+   "model": "moose",
+   "label": "vertebra_C5",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 14040,
+   "volume_ml": 12.34,
+   "centroid_vox": [
+    245.1,
+    254.8,
+    221.4
+   ],
+   "centroid_ras_mm": [
+    9.7,
+    0.7,
+    -221.4
+   ],
+   "centroid_vhf_mm": [
+    533.1,
+    429.6,
+    1508.9
+   ],
+   "z_ras_mm": -221.4,
+   "z_vox": [
+    210,
+    236
+   ],
+   "box": [
+    [
+     183,
+     245
+    ],
+    [
+     65,
+     108
+    ],
+    [
+     77,
+     103
+    ]
+   ]
+  },
+  {
+   "cid": 34,
+   "model": "moose",
+   "label": "vertebra_C6",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 15096,
+   "volume_ml": 13.27,
+   "centroid_vox": [
+    246.9,
+    261.9,
+    236.2
+   ],
+   "centroid_ras_mm": [
+    8.0,
+    -6.0,
+    -236.2
+   ],
+   "centroid_vhf_mm": [
+    531.4,
+    423.2,
+    1493.9
+   ],
+   "z_ras_mm": -236.2,
+   "z_vox": [
+    224,
+    252
+   ],
+   "box": [
+    [
+     184,
+     244
+    ],
+    [
+     71,
+     121
+    ],
+    [
+     91,
+     119
+    ]
+   ]
+  },
+  {
+   "cid": 35,
+   "model": "moose",
+   "label": "vertebra_C7",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 20183,
+   "volume_ml": 17.74,
+   "centroid_vox": [
+    247.0,
+    272.3,
+    252.0
+   ],
+   "centroid_ras_mm": [
+    7.9,
+    -15.7,
+    -252.0
+   ],
+   "centroid_vhf_mm": [
+    531.2,
+    413.7,
+    1478.0
+   ],
+   "z_ras_mm": -252.0,
+   "z_vox": [
+    239,
+    269
+   ],
+   "box": [
+    [
+     180,
+     252
+    ],
+    [
+     78,
+     140
+    ],
+    [
+     106,
+     136
+    ]
+   ]
+  },
+  {
+   "cid": 36,
+   "model": "moose",
+   "label": "vertebra_T1",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 24555,
+   "volume_ml": 21.58,
+   "centroid_vox": [
+    248.3,
+    281.5,
+    268.5
+   ],
+   "centroid_ras_mm": [
+    6.7,
+    -24.4,
+    -268.5
+   ],
+   "centroid_vhf_mm": [
+    530.0,
+    405.4,
+    1461.4
+   ],
+   "z_ras_mm": -268.5,
+   "z_vox": [
+    254,
+    288
+   ],
+   "box": [
+    [
+     176,
+     255
+    ],
+    [
+     84,
+     153
+    ],
+    [
+     121,
+     155
+    ]
+   ]
+  },
+  {
+   "cid": 37,
+   "model": "moose",
+   "label": "vertebra_T2",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 26004,
+   "volume_ml": 22.86,
+   "centroid_vox": [
+    249.5,
+    291.9,
+    288.0
+   ],
+   "centroid_ras_mm": [
+    5.6,
+    -34.1,
+    -288.0
+   ],
+   "centroid_vhf_mm": [
+    528.8,
+    396.0,
+    1441.7
+   ],
+   "z_ras_mm": -288.0,
+   "z_vox": [
+    269,
+    309
+   ],
+   "box": [
+    [
+     181,
+     253
+    ],
+    [
+     92,
+     161
+    ],
+    [
+     136,
+     176
+    ]
+   ]
+  },
+  {
+   "cid": 38,
+   "model": "moose",
+   "label": "vertebra_T3",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 25581,
+   "volume_ml": 22.48,
+   "centroid_vox": [
+    250.0,
+    302.1,
+    308.5
+   ],
+   "centroid_ras_mm": [
+    5.2,
+    -43.7,
+    -308.5
+   ],
+   "centroid_vhf_mm": [
+    528.4,
+    386.8,
+    1421.0
+   ],
+   "z_ras_mm": -308.5,
+   "z_vox": [
+    291,
+    329
+   ],
+   "box": [
+    [
+     184,
+     250
+    ],
+    [
+     98,
+     170
+    ],
+    [
+     158,
+     196
+    ]
+   ]
+  },
+  {
+   "cid": 39,
+   "model": "moose",
+   "label": "vertebra_T4",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 25053,
+   "volume_ml": 22.02,
+   "centroid_vox": [
+    250.2,
+    308.7,
+    330.1
+   ],
+   "centroid_ras_mm": [
+    4.9,
+    -49.9,
+    -330.1
+   ],
+   "centroid_vhf_mm": [
+    528.2,
+    380.9,
+    1399.4
+   ],
+   "z_ras_mm": -330.1,
+   "z_vox": [
+    311,
+    354
+   ],
+   "box": [
+    [
+     186,
+     250
+    ],
+    [
+     102,
+     178
+    ],
+    [
+     178,
+     221
+    ]
+   ]
+  },
+  {
+   "cid": 40,
+   "model": "moose",
+   "label": "vertebra_T5",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 25578,
+   "volume_ml": 22.48,
+   "centroid_vox": [
+    250.1,
+    312.5,
+    352.1
+   ],
+   "centroid_ras_mm": [
+    5.1,
+    -53.5,
+    -352.1
+   ],
+   "centroid_vhf_mm": [
+    528.5,
+    377.7,
+    1377.3
+   ],
+   "z_ras_mm": -352.1,
+   "z_vox": [
+    333,
+    377
+   ],
+   "box": [
+    [
+     186,
+     252
+    ],
+    [
+     106,
+     180
+    ],
+    [
+     200,
+     244
+    ]
+   ]
+  },
+  {
+   "cid": 41,
+   "model": "moose",
+   "label": "vertebra_T6",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 27397,
+   "volume_ml": 24.08,
+   "centroid_vox": [
+    249.6,
+    314.8,
+    374.9
+   ],
+   "centroid_ras_mm": [
+    5.5,
+    -55.6,
+    -374.9
+   ],
+   "centroid_vhf_mm": [
+    529.2,
+    375.9,
+    1354.5
+   ],
+   "z_ras_mm": -374.9,
+   "z_vox": [
+    357,
+    402
+   ],
+   "box": [
+    [
+     184,
+     250
+    ],
+    [
+     106,
+     183
+    ],
+    [
+     224,
+     269
+    ]
+   ]
+  },
+  {
+   "cid": 42,
+   "model": "moose",
+   "label": "vertebra_T7",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 29322,
+   "volume_ml": 25.77,
+   "centroid_vox": [
+    250.0,
+    316.4,
+    397.7
+   ],
+   "centroid_ras_mm": [
+    5.1,
+    -57.1,
+    -397.7
+   ],
+   "centroid_vhf_mm": [
+    529.1,
+    374.8,
+    1331.7
+   ],
+   "z_ras_mm": -397.7,
+   "z_vox": [
+    378,
+    429
+   ],
+   "box": [
+    [
+     184,
+     252
+    ],
+    [
+     111,
+     183
+    ],
+    [
+     245,
+     296
+    ]
+   ]
+  },
+  {
+   "cid": 43,
+   "model": "moose",
+   "label": "vertebra_T8",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 30983,
+   "volume_ml": 27.23,
+   "centroid_vox": [
+    250.0,
+    315.9,
+    420.6
+   ],
+   "centroid_ras_mm": [
+    5.1,
+    -56.6,
+    -420.6
+   ],
+   "centroid_vhf_mm": [
+    529.5,
+    375.7,
+    1308.7
+   ],
+   "z_ras_mm": -420.6,
+   "z_vox": [
+    402,
+    450
+   ],
+   "box": [
+    [
+     186,
+     252
+    ],
+    [
+     111,
+     183
+    ],
+    [
+     269,
+     317
+    ]
+   ]
+  },
+  {
+   "cid": 44,
+   "model": "moose",
+   "label": "vertebra_T9",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 32788,
+   "volume_ml": 28.82,
+   "centroid_vox": [
+    250.9,
+    314.8,
+    444.0
+   ],
+   "centroid_ras_mm": [
+    4.3,
+    -55.6,
+    -444.0
+   ],
+   "centroid_vhf_mm": [
+    529.0,
+    377.1,
+    1285.3
+   ],
+   "z_ras_mm": -444.0,
+   "z_vox": [
+    426,
+    470
+   ],
+   "box": [
+    [
+     184,
+     253
+    ],
+    [
+     110,
+     183
+    ],
+    [
+     293,
+     337
+    ]
+   ]
+  },
+  {
+   "cid": 45,
+   "model": "moose",
+   "label": "vertebra_T10",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 38748,
+   "volume_ml": 34.06,
+   "centroid_vox": [
+    251.4,
+    314.1,
+    467.9
+   ],
+   "centroid_ras_mm": [
+    3.8,
+    -54.9,
+    -467.9
+   ],
+   "centroid_vhf_mm": [
+    528.9,
+    378.2,
+    1261.5
+   ],
+   "z_ras_mm": -467.9,
+   "z_vox": [
+    449,
+    491
+   ],
+   "box": [
+    [
+     186,
+     253
+    ],
+    [
+     106,
+     183
+    ],
+    [
+     316,
+     358
+    ]
+   ]
+  },
+  {
+   "cid": 46,
+   "model": "moose",
+   "label": "vertebra_T11",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 42036,
+   "volume_ml": 36.95,
+   "centroid_vox": [
+    251.9,
+    311.4,
+    493.0
+   ],
+   "centroid_ras_mm": [
+    3.3,
+    -52.4,
+    -493.0
+   ],
+   "centroid_vhf_mm": [
+    528.8,
+    381.1,
+    1236.4
+   ],
+   "z_ras_mm": -493.0,
+   "z_vox": [
+    473,
+    515
+   ],
+   "box": [
+    [
+     189,
+     250
+    ],
+    [
+     106,
+     182
+    ],
+    [
+     340,
+     382
+    ]
+   ]
+  },
+  {
+   "cid": 47,
+   "model": "moose",
+   "label": "vertebra_T12",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 48102,
+   "volume_ml": 42.28,
+   "centroid_vox": [
+    252.1,
+    309.0,
+    521.1
+   ],
+   "centroid_ras_mm": [
+    3.2,
+    -50.2,
+    -521.1
+   ],
+   "centroid_vhf_mm": [
+    529.2,
+    383.8,
+    1208.3
+   ],
+   "z_ras_mm": -521.1,
+   "z_vox": [
+    498,
+    543
+   ],
+   "box": [
+    [
+     192,
+     247
+    ],
+    [
+     103,
+     180
+    ],
+    [
+     365,
+     410
+    ]
+   ]
+  },
+  {
+   "cid": 48,
+   "model": "moose",
+   "label": "vertebra_L1",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 57665,
+   "volume_ml": 50.68,
+   "centroid_vox": [
+    253.3,
+    306.6,
+    552.1
+   ],
+   "centroid_ras_mm": [
+    2.0,
+    -47.9,
+    -552.1
+   ],
+   "centroid_vhf_mm": [
+    528.5,
+    386.6,
+    1177.4
+   ],
+   "z_ras_mm": -552.1,
+   "z_vox": [
+    531,
+    581
+   ],
+   "box": [
+    [
+     176,
+     268
+    ],
+    [
+     98,
+     180
+    ],
+    [
+     398,
+     448
+    ]
+   ]
+  },
+  {
+   "cid": 49,
+   "model": "moose",
+   "label": "vertebra_L2",
+   "role": "vertebra",
+   "component": 2,
+   "components_of_label": 10,
+   "voxels": 63477,
+   "volume_ml": 55.79,
+   "centroid_vox": [
+    253.2,
+    300.7,
+    585.6
+   ],
+   "centroid_ras_mm": [
+    2.2,
+    -42.4,
+    -585.6
+   ],
+   "centroid_vhf_mm": [
+    529.3,
+    392.6,
+    1144.0
+   ],
+   "z_ras_mm": -585.6,
+   "z_vox": [
+    564,
+    617
+   ],
+   "box": [
+    [
+     181,
+     261
+    ],
+    [
+     87,
+     178
+    ],
+    [
+     431,
+     484
+    ]
+   ]
+  },
+  {
+   "cid": 50,
+   "model": "moose",
+   "label": "vertebra_L2",
+   "role": "vertebra",
+   "component": 9,
+   "components_of_label": 10,
+   "voxels": 6611,
+   "volume_ml": 5.81,
+   "centroid_vox": [
+    246.3,
+    320.6,
+    637.8
+   ],
+   "centroid_ras_mm": [
+    8.6,
+    -61.0,
+    -637.8
+   ],
+   "centroid_vhf_mm": [
+    535.9,
+    374.7,
+    1091.6
+   ],
+   "z_ras_mm": -637.8,
+   "z_vox": [
+    621,
+    656
+   ],
+   "box": [
+    [
+     202,
+     237
+    ],
+    [
+     132,
+     177
+    ],
+    [
+     488,
+     523
+    ]
+   ]
+  },
+  {
+   "cid": 51,
+   "model": "moose",
+   "label": "vertebra_L3",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 3,
+   "voxels": 127506,
+   "volume_ml": 112.07,
+   "centroid_vox": [
+    252.4,
+    290.9,
+    638.1
+   ],
+   "centroid_ras_mm": [
+    2.9,
+    -33.2,
+    -638.1
+   ],
+   "centroid_vhf_mm": [
+    531.0,
+    402.6,
+    1091.6
+   ],
+   "z_ras_mm": -638.1,
+   "z_vox": [
+    600,
+    686
+   ],
+   "box": [
+    [
+     172,
+     269
+    ],
+    [
+     78,
+     177
+    ],
+    [
+     467,
+     553
+    ]
+   ]
+  },
+  {
+   "cid": 52,
+   "model": "moose",
+   "label": "vertebra_L4",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 72918,
+   "volume_ml": 64.09,
+   "centroid_vox": [
+    251.2,
+    284.0,
+    687.8
+   ],
+   "centroid_ras_mm": [
+    4.0,
+    -26.7,
+    -687.8
+   ],
+   "centroid_vhf_mm": [
+    533.0,
+    409.9,
+    1042.1
+   ],
+   "z_ras_mm": -687.8,
+   "z_vox": [
+    663,
+    716
+   ],
+   "box": [
+    [
+     172,
+     268
+    ],
+    [
+     76,
+     166
+    ],
+    [
+     530,
+     583
+    ]
+   ]
+  },
+  {
+   "cid": 53,
+   "model": "moose",
+   "label": "vertebra_L4",
+   "role": "vertebra",
+   "component": 2,
+   "components_of_label": 2,
+   "voxels": 6419,
+   "volume_ml": 5.64,
+   "centroid_vox": [
+    270.3,
+    289.1,
+    643.3
+   ],
+   "centroid_ras_mm": [
+    -13.9,
+    -31.5,
+    -643.3
+   ],
+   "centroid_vhf_mm": [
+    514.3,
+    404.9,
+    1086.3
+   ],
+   "z_ras_mm": -643.3,
+   "z_vox": [
+    635,
+    651
+   ],
+   "box": [
+    [
+     224,
+     258
+    ],
+    [
+     87,
+     148
+    ],
+    [
+     502,
+     518
+    ]
+   ]
+  },
+  {
+   "cid": 54,
+   "model": "moose",
+   "label": "vertebra_L5",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 72843,
+   "volume_ml": 64.02,
+   "centroid_vox": [
+    247.5,
+    282.3,
+    718.9
+   ],
+   "centroid_ras_mm": [
+    7.5,
+    -25.2,
+    -718.9
+   ],
+   "centroid_vhf_mm": [
+    537.0,
+    411.9,
+    1011.1
+   ],
+   "z_ras_mm": -718.9,
+   "z_vox": [
+    693,
+    741
+   ],
+   "box": [
+    [
+     164,
+     269
+    ],
+    [
+     76,
+     162
+    ],
+    [
+     560,
+     608
+    ]
+   ]
+  },
+  {
+   "cid": 55,
+   "model": "moose",
+   "label": "sacrum",
+   "role": "sacrum",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 254081,
+   "volume_ml": 223.31,
+   "centroid_vox": [
+    247.8,
+    308.5,
+    760.5
+   ],
+   "centroid_ras_mm": [
+    7.2,
+    -49.7,
+    -760.5
+   ],
+   "centroid_vhf_mm": [
+    536.6,
+    388.0,
+    969.0
+   ],
+   "z_ras_mm": -760.5,
+   "z_vox": [
+    723,
+    845
+   ],
+   "box": [
+    [
+     154,
+     282
+    ],
+    [
+     86,
+     191
+    ],
+    [
+     590,
+     712
+    ]
+   ]
+  },
+  {
+   "cid": 56,
+   "model": "skellytour",
+   "label": "VERT_1",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 21128,
+   "volume_ml": 18.57,
+   "centroid_vox": [
+    246.4,
+    245.0,
+    161.5
+   ],
+   "centroid_ras_mm": [
+    8.5,
+    9.8,
+    -161.5
+   ],
+   "centroid_vhf_mm": [
+    531.3,
+    437.8,
+    1568.9
+   ],
+   "z_ras_mm": -161.5,
+   "z_vox": [
+    148,
+    175
+   ],
+   "box": [
+    [
+     171,
+     257
+    ],
+    [
+     50,
+     101
+    ],
+    [
+     15,
+     42
+    ]
+   ]
+  },
+  {
+   "cid": 57,
+   "model": "skellytour",
+   "label": "VERT_2",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 21640,
+   "volume_ml": 19.02,
+   "centroid_vox": [
+    244.7,
+    246.1,
+    177.9
+   ],
+   "centroid_ras_mm": [
+    10.2,
+    8.8,
+    -177.9
+   ],
+   "centroid_vhf_mm": [
+    533.1,
+    437.0,
+    1552.6
+   ],
+   "z_ras_mm": -177.9,
+   "z_vox": [
+    150,
+    194
+   ],
+   "box": [
+    [
+     183,
+     240
+    ],
+    [
+     53,
+     107
+    ],
+    [
+     17,
+     61
+    ]
+   ]
+  },
+  {
+   "cid": 58,
+   "model": "skellytour",
+   "label": "VERT_3",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 13254,
+   "volume_ml": 11.65,
+   "centroid_vox": [
+    244.4,
+    246.7,
+    196.3
+   ],
+   "centroid_ras_mm": [
+    10.4,
+    8.2,
+    -196.3
+   ],
+   "centroid_vhf_mm": [
+    533.6,
+    436.7,
+    1534.1
+   ],
+   "z_ras_mm": -196.3,
+   "z_vox": [
+    187,
+    210
+   ],
+   "box": [
+    [
+     185,
+     242
+    ],
+    [
+     56,
+     102
+    ],
+    [
+     54,
+     77
+    ]
+   ]
+  },
+  {
+   "cid": 59,
+   "model": "skellytour",
+   "label": "VERT_4",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 13828,
+   "volume_ml": 12.15,
+   "centroid_vox": [
+    244.0,
+    250.0,
+    210.6
+   ],
+   "centroid_ras_mm": [
+    10.8,
+    5.2,
+    -210.6
+   ],
+   "centroid_vhf_mm": [
+    534.1,
+    433.8,
+    1519.8
+   ],
+   "z_ras_mm": -210.6,
+   "z_vox": [
+    201,
+    226
+   ],
+   "box": [
+    [
+     183,
+     243
+    ],
+    [
+     60,
+     103
+    ],
+    [
+     68,
+     93
+    ]
+   ]
+  },
+  {
+   "cid": 60,
+   "model": "skellytour",
+   "label": "VERT_5",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 14690,
+   "volume_ml": 12.91,
+   "centroid_vox": [
+    244.9,
+    254.3,
+    225.4
+   ],
+   "centroid_ras_mm": [
+    9.9,
+    1.1,
+    -225.4
+   ],
+   "centroid_vhf_mm": [
+    533.3,
+    430.1,
+    1505.0
+   ],
+   "z_ras_mm": -225.4,
+   "z_vox": [
+    213,
+    240
+   ],
+   "box": [
+    [
+     183,
+     245
+    ],
+    [
+     65,
+     108
+    ],
+    [
+     80,
+     107
+    ]
+   ]
+  },
+  {
+   "cid": 61,
+   "model": "skellytour",
+   "label": "VERT_6",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 15450,
+   "volume_ml": 13.58,
+   "centroid_vox": [
+    247.0,
+    261.4,
+    240.1
+   ],
+   "centroid_ras_mm": [
+    8.0,
+    -5.6,
+    -240.1
+   ],
+   "centroid_vhf_mm": [
+    531.4,
+    423.7,
+    1490.1
+   ],
+   "z_ras_mm": -240.1,
+   "z_vox": [
+    228,
+    256
+   ],
+   "box": [
+    [
+     184,
+     244
+    ],
+    [
+     71,
+     121
+    ],
+    [
+     95,
+     123
+    ]
+   ]
+  },
+  {
+   "cid": 62,
+   "model": "skellytour",
+   "label": "VERT_7",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 20287,
+   "volume_ml": 17.83,
+   "centroid_vox": [
+    246.9,
+    271.9,
+    255.7
+   ],
+   "centroid_ras_mm": [
+    8.1,
+    -15.4,
+    -255.7
+   ],
+   "centroid_vhf_mm": [
+    531.4,
+    414.1,
+    1474.3
+   ],
+   "z_ras_mm": -255.7,
+   "z_vox": [
+    242,
+    274
+   ],
+   "box": [
+    [
+     180,
+     251
+    ],
+    [
+     77,
+     140
+    ],
+    [
+     109,
+     141
+    ]
+   ]
+  },
+  {
+   "cid": 63,
+   "model": "skellytour",
+   "label": "VERT_8",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 24359,
+   "volume_ml": 21.41,
+   "centroid_vox": [
+    248.4,
+    281.1,
+    272.1
+   ],
+   "centroid_ras_mm": [
+    6.7,
+    -24.0,
+    -272.1
+   ],
+   "centroid_vhf_mm": [
+    529.9,
+    405.8,
+    1457.7
+   ],
+   "z_ras_mm": -272.1,
+   "z_vox": [
+    257,
+    292
+   ],
+   "box": [
+    [
+     176,
+     255
+    ],
+    [
+     84,
+     152
+    ],
+    [
+     124,
+     159
+    ]
+   ]
+  },
+  {
+   "cid": 64,
+   "model": "skellytour",
+   "label": "VERT_9",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 24913,
+   "volume_ml": 21.9,
+   "centroid_vox": [
+    249.7,
+    291.0,
+    291.7
+   ],
+   "centroid_ras_mm": [
+    5.5,
+    -33.3,
+    -291.7
+   ],
+   "centroid_vhf_mm": [
+    528.7,
+    396.9,
+    1438.0
+   ],
+   "z_ras_mm": -291.7,
+   "z_vox": [
+    274,
+    312
+   ],
+   "box": [
+    [
+     181,
+     252
+    ],
+    [
+     92,
+     161
+    ],
+    [
+     141,
+     179
+    ]
+   ]
+  },
+  {
+   "cid": 65,
+   "model": "skellytour",
+   "label": "VERT_10",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 24943,
+   "volume_ml": 21.92,
+   "centroid_vox": [
+    250.0,
+    301.4,
+    311.9
+   ],
+   "centroid_ras_mm": [
+    5.1,
+    -43.1,
+    -311.9
+   ],
+   "centroid_vhf_mm": [
+    528.4,
+    387.5,
+    1417.7
+   ],
+   "z_ras_mm": -311.9,
+   "z_vox": [
+    294,
+    331
+   ],
+   "box": [
+    [
+     184,
+     251
+    ],
+    [
+     96,
+     169
+    ],
+    [
+     161,
+     198
+    ]
+   ]
+  },
+  {
+   "cid": 66,
+   "model": "skellytour",
+   "label": "VERT_11",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 25060,
+   "volume_ml": 22.03,
+   "centroid_vox": [
+    250.1,
+    307.7,
+    333.2
+   ],
+   "centroid_ras_mm": [
+    5.1,
+    -48.9,
+    -333.2
+   ],
+   "centroid_vhf_mm": [
+    528.5,
+    382.0,
+    1396.2
+   ],
+   "z_ras_mm": -333.2,
+   "z_vox": [
+    314,
+    358
+   ],
+   "box": [
+    [
+     186,
+     250
+    ],
+    [
+     98,
+     178
+    ],
+    [
+     181,
+     225
+    ]
+   ]
+  },
+  {
+   "cid": 67,
+   "model": "skellytour",
+   "label": "VERT_12",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 25666,
+   "volume_ml": 22.56,
+   "centroid_vox": [
+    249.9,
+    311.5,
+    355.2
+   ],
+   "centroid_ras_mm": [
+    5.2,
+    -52.5,
+    -355.2
+   ],
+   "centroid_vhf_mm": [
+    528.8,
+    378.8,
+    1374.2
+   ],
+   "z_ras_mm": -355.2,
+   "z_vox": [
+    337,
+    380
+   ],
+   "box": [
+    [
+     185,
+     250
+    ],
+    [
+     105,
+     180
+    ],
+    [
+     204,
+     247
+    ]
+   ]
+  },
+  {
+   "cid": 68,
+   "model": "skellytour",
+   "label": "VERT_13",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 27085,
+   "volume_ml": 23.81,
+   "centroid_vox": [
+    249.4,
+    313.9,
+    377.9
+   ],
+   "centroid_ras_mm": [
+    5.7,
+    -54.7,
+    -377.9
+   ],
+   "centroid_vhf_mm": [
+    529.5,
+    376.8,
+    1351.5
+   ],
+   "z_ras_mm": -377.9,
+   "z_vox": [
+    359,
+    405
+   ],
+   "box": [
+    [
+     185,
+     249
+    ],
+    [
+     105,
+     182
+    ],
+    [
+     226,
+     272
+    ]
+   ]
+  },
+  {
+   "cid": 69,
+   "model": "skellytour",
+   "label": "VERT_14",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 28783,
+   "volume_ml": 25.3,
+   "centroid_vox": [
+    249.9,
+    315.4,
+    400.6
+   ],
+   "centroid_ras_mm": [
+    5.3,
+    -56.1,
+    -400.6
+   ],
+   "centroid_vhf_mm": [
+    529.4,
+    375.8,
+    1328.8
+   ],
+   "z_ras_mm": -400.6,
+   "z_vox": [
+    382,
+    431
+   ],
+   "box": [
+    [
+     184,
+     251
+    ],
+    [
+     111,
+     182
+    ],
+    [
+     249,
+     298
+    ]
+   ]
+  },
+  {
+   "cid": 70,
+   "model": "skellytour",
+   "label": "VERT_15",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 31122,
+   "volume_ml": 27.35,
+   "centroid_vox": [
+    249.9,
+    315.3,
+    423.5
+   ],
+   "centroid_ras_mm": [
+    5.3,
+    -56.0,
+    -423.5
+   ],
+   "centroid_vhf_mm": [
+    529.7,
+    376.3,
+    1305.9
+   ],
+   "z_ras_mm": -423.5,
+   "z_vox": [
+    405,
+    453
+   ],
+   "box": [
+    [
+     186,
+     251
+    ],
+    [
+     110,
+     183
+    ],
+    [
+     272,
+     320
+    ]
+   ]
+  },
+  {
+   "cid": 71,
+   "model": "skellytour",
+   "label": "VERT_16",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 32922,
+   "volume_ml": 28.94,
+   "centroid_vox": [
+    250.6,
+    314.5,
+    446.5
+   ],
+   "centroid_ras_mm": [
+    4.6,
+    -55.3,
+    -446.5
+   ],
+   "centroid_vhf_mm": [
+    529.3,
+    377.4,
+    1282.9
+   ],
+   "z_ras_mm": -446.5,
+   "z_vox": [
+    429,
+    473
+   ],
+   "box": [
+    [
+     185,
+     252
+    ],
+    [
+     108,
+     183
+    ],
+    [
+     296,
+     340
+    ]
+   ]
+  },
+  {
+   "cid": 72,
+   "model": "skellytour",
+   "label": "VERT_17",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 39293,
+   "volume_ml": 34.53,
+   "centroid_vox": [
+    251.2,
+    313.5,
+    470.4
+   ],
+   "centroid_ras_mm": [
+    4.0,
+    -54.4,
+    -470.4
+   ],
+   "centroid_vhf_mm": [
+    529.2,
+    378.7,
+    1258.9
+   ],
+   "z_ras_mm": -470.4,
+   "z_vox": [
+    452,
+    494
+   ],
+   "box": [
+    [
+     186,
+     252
+    ],
+    [
+     106,
+     183
+    ],
+    [
+     319,
+     361
+    ]
+   ]
+  },
+  {
+   "cid": 73,
+   "model": "skellytour",
+   "label": "VERT_18",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 43018,
+   "volume_ml": 37.81,
+   "centroid_vox": [
+    251.7,
+    311.2,
+    495.7
+   ],
+   "centroid_ras_mm": [
+    3.5,
+    -52.2,
+    -495.7
+   ],
+   "centroid_vhf_mm": [
+    529.1,
+    381.4,
+    1233.7
+   ],
+   "z_ras_mm": -495.7,
+   "z_vox": [
+    477,
+    517
+   ],
+   "box": [
+    [
+     190,
+     249
+    ],
+    [
+     105,
+     182
+    ],
+    [
+     344,
+     384
+    ]
+   ]
+  },
+  {
+   "cid": 74,
+   "model": "skellytour",
+   "label": "VERT_19",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 48419,
+   "volume_ml": 42.56,
+   "centroid_vox": [
+    251.8,
+    308.3,
+    523.6
+   ],
+   "centroid_ras_mm": [
+    3.5,
+    -49.5,
+    -523.6
+   ],
+   "centroid_vhf_mm": [
+    529.5,
+    384.5,
+    1205.9
+   ],
+   "z_ras_mm": -523.6,
+   "z_vox": [
+    501,
+    546
+   ],
+   "box": [
+    [
+     192,
+     246
+    ],
+    [
+     103,
+     179
+    ],
+    [
+     368,
+     413
+    ]
+   ]
+  },
+  {
+   "cid": 75,
+   "model": "skellytour",
+   "label": "VERT_20",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 55284,
+   "volume_ml": 48.59,
+   "centroid_vox": [
+    252.7,
+    306.6,
+    554.2
+   ],
+   "centroid_ras_mm": [
+    2.7,
+    -47.9,
+    -554.2
+   ],
+   "centroid_vhf_mm": [
+    529.2,
+    386.6,
+    1175.3
+   ],
+   "z_ras_mm": -554.2,
+   "z_vox": [
+    534,
+    581
+   ],
+   "box": [
+    [
+     176,
+     268
+    ],
+    [
+     100,
+     180
+    ],
+    [
+     401,
+     448
+    ]
+   ]
+  },
+  {
+   "cid": 76,
+   "model": "skellytour",
+   "label": "VERT_21",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 107709,
+   "volume_ml": 94.67,
+   "centroid_vox": [
+    252.7,
+    297.9,
+    609.0
+   ],
+   "centroid_ras_mm": [
+    2.6,
+    -39.8,
+    -609.0
+   ],
+   "centroid_vhf_mm": [
+    530.1,
+    395.6,
+    1120.6
+   ],
+   "z_ras_mm": -609.0,
+   "z_vox": [
+    567,
+    658
+   ],
+   "box": [
+    [
+     173,
+     266
+    ],
+    [
+     82,
+     178
+    ],
+    [
+     434,
+     525
+    ]
+   ]
+  },
+  {
+   "cid": 77,
+   "model": "skellytour",
+   "label": "VERT_22",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 76835,
+   "volume_ml": 67.53,
+   "centroid_vox": [
+    253.0,
+    288.8,
+    656.9
+   ],
+   "centroid_ras_mm": [
+    2.4,
+    -31.2,
+    -656.9
+   ],
+   "centroid_vhf_mm": [
+    530.8,
+    405.0,
+    1072.9
+   ],
+   "z_ras_mm": -656.9,
+   "z_vox": [
+    635,
+    688
+   ],
+   "box": [
+    [
+     171,
+     269
+    ],
+    [
+     77,
+     170
+    ],
+    [
+     502,
+     555
+    ]
+   ]
+  },
+  {
+   "cid": 78,
+   "model": "skellytour",
+   "label": "VERT_23",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 74674,
+   "volume_ml": 65.63,
+   "centroid_vox": [
+    251.3,
+    283.4,
+    689.6
+   ],
+   "centroid_ras_mm": [
+    4.0,
+    -26.2,
+    -689.6
+   ],
+   "centroid_vhf_mm": [
+    533.0,
+    410.5,
+    1040.3
+   ],
+   "z_ras_mm": -689.6,
+   "z_vox": [
+    665,
+    716
+   ],
+   "box": [
+    [
+     171,
+     268
+    ],
+    [
+     74,
+     166
+    ],
+    [
+     532,
+     583
+    ]
+   ]
+  },
+  {
+   "cid": 79,
+   "model": "skellytour",
+   "label": "VERT_24",
+   "role": "vertebra",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 76235,
+   "volume_ml": 67.0,
+   "centroid_vox": [
+    247.7,
+    281.9,
+    720.9
+   ],
+   "centroid_ras_mm": [
+    7.4,
+    -24.8,
+    -720.9
+   ],
+   "centroid_vhf_mm": [
+    536.9,
+    412.3,
+    1009.1
+   ],
+   "z_ras_mm": -720.9,
+   "z_vox": [
+    696,
+    742
+   ],
+   "box": [
+    [
+     161,
+     270
+    ],
+    [
+     75,
+     163
+    ],
+    [
+     563,
+     609
+    ]
+   ]
+  }
+ ],
+ "fragments_below_min": {
+  "totalseg": {
+   "vertebrae_C1": {
+    "count": 1,
+    "volume_ml": 0.0
+   },
+   "vertebrae_T3": {
+    "count": 1,
+    "volume_ml": 0.0
+   },
+   "vertebrae_T5": {
+    "count": 1,
+    "volume_ml": 0.01
+   },
+   "vertebrae_T6": {
+    "count": 1,
+    "volume_ml": 0.15
+   },
+   "vertebrae_T7": {
+    "count": 1,
+    "volume_ml": 0.0
+   },
+   "vertebrae_T8": {
+    "count": 1,
+    "volume_ml": 0.3
+   },
+   "vertebrae_L1": {
+    "count": 3,
+    "volume_ml": 0.03
+   },
+   "vertebrae_L2": {
+    "count": 1,
+    "volume_ml": 0.22
+   },
+   "vertebrae_L3": {
+    "count": 2,
+    "volume_ml": 1.2
+   },
+   "sacrum": {
+    "count": 7,
+    "volume_ml": 1.29
+   }
+  },
+  "moose": {
+   "vertebra_L1": {
+    "count": 1,
+    "volume_ml": 0.14
+   },
+   "vertebra_L2": {
+    "count": 8,
+    "volume_ml": 0.43
+   },
+   "vertebra_L3": {
+    "count": 2,
+    "volume_ml": 0.02
+   }
+  },
+  "skellytour": {}
+ },
+ "pairwise_correspondence": {
+  "totalseg|moose": {
+   "a_to_b": {
+    "vertebrae_C1#1": {
+     "cid": 1,
+     "state": "partial",
+     "volume_ml": 17.12,
+     "z_ras_mm": -161.6,
+     "partners": [
+      {
+       "cid": 29,
+       "label": "vertebra_C1",
+       "iou": 0.403,
+       "covers_me": 0.584,
+       "i_cover_it": 0.565,
+       "intersection_ml": 9.99,
+       "centroid_distance_mm": 4.6
+      },
+      {
+       "cid": 30,
+       "label": "vertebra_C2",
+       "iou": 0.027,
+       "covers_me": 0.054,
+       "i_cover_it": 0.052,
+       "intersection_ml": 0.93,
+       "centroid_distance_mm": 12.4
+      }
+     ]
+    },
+    "vertebrae_C2#1": {
+     "cid": 2,
+     "state": "partial",
+     "volume_ml": 18.0,
+     "z_ras_mm": -178.1,
+     "partners": [
+      {
+       "cid": 30,
+       "label": "vertebra_C2",
+       "iou": 0.49,
+       "covers_me": 0.656,
+       "i_cover_it": 0.659,
+       "intersection_ml": 11.81,
+       "centroid_distance_mm": 4.2
+      },
+      {
+       "cid": 31,
+       "label": "vertebra_C3",
+       "iou": 0.045,
+       "covers_me": 0.071,
+       "i_cover_it": 0.108,
+       "intersection_ml": 1.28,
+       "centroid_distance_mm": 14.6
+      }
+     ]
+    },
+    "vertebrae_C3#1": {
+     "cid": 3,
+     "state": "partial",
+     "volume_ml": 11.49,
+     "z_ras_mm": -196.4,
+     "partners": [
+      {
+       "cid": 31,
+       "label": "vertebra_C3",
+       "iou": 0.417,
+       "covers_me": 0.597,
+       "i_cover_it": 0.581,
+       "intersection_ml": 6.87,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 32,
+       "label": "vertebra_C4",
+       "iou": 0.062,
+       "covers_me": 0.116,
+       "i_cover_it": 0.119,
+       "intersection_ml": 1.33,
+       "centroid_distance_mm": 11.1
+      }
+     ]
+    },
+    "vertebrae_C4#1": {
+     "cid": 4,
+     "state": "partial",
+     "volume_ml": 11.31,
+     "z_ras_mm": -210.7,
+     "partners": [
+      {
+       "cid": 32,
+       "label": "vertebra_C4",
+       "iou": 0.39,
+       "covers_me": 0.559,
+       "i_cover_it": 0.562,
+       "intersection_ml": 6.32,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 33,
+       "label": "vertebra_C5",
+       "iou": 0.052,
+       "covers_me": 0.104,
+       "i_cover_it": 0.095,
+       "intersection_ml": 1.17,
+       "centroid_distance_mm": 11.6
+      }
+     ]
+    },
+    "vertebrae_C5#1": {
+     "cid": 5,
+     "state": "partial",
+     "volume_ml": 12.5,
+     "z_ras_mm": -225.3,
+     "partners": [
+      {
+       "cid": 33,
+       "label": "vertebra_C5",
+       "iou": 0.377,
+       "covers_me": 0.544,
+       "i_cover_it": 0.551,
+       "intersection_ml": 6.8,
+       "centroid_distance_mm": 3.9
+      },
+      {
+       "cid": 34,
+       "label": "vertebra_C6",
+       "iou": 0.042,
+       "covers_me": 0.083,
+       "i_cover_it": 0.078,
+       "intersection_ml": 1.04,
+       "centroid_distance_mm": 13.1
+      }
+     ]
+    },
+    "vertebrae_C6#1": {
+     "cid": 6,
+     "state": "partial",
+     "volume_ml": 12.94,
+     "z_ras_mm": -240.2,
+     "partners": [
+      {
+       "cid": 34,
+       "label": "vertebra_C6",
+       "iou": 0.402,
+       "covers_me": 0.58,
+       "i_cover_it": 0.566,
+       "intersection_ml": 7.51,
+       "centroid_distance_mm": 4.0
+      },
+      {
+       "cid": 35,
+       "label": "vertebra_C7",
+       "iou": 0.024,
+       "covers_me": 0.056,
+       "i_cover_it": 0.041,
+       "intersection_ml": 0.73,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "vertebrae_C7#1": {
+     "cid": 7,
+     "state": "partial",
+     "volume_ml": 17.49,
+     "z_ras_mm": -255.7,
+     "partners": [
+      {
+       "cid": 35,
+       "label": "vertebra_C7",
+       "iou": 0.465,
+       "covers_me": 0.639,
+       "i_cover_it": 0.63,
+       "intersection_ml": 11.18,
+       "centroid_distance_mm": 3.7
+      },
+      {
+       "cid": 36,
+       "label": "vertebra_T1",
+       "iou": 0.029,
+       "covers_me": 0.063,
+       "i_cover_it": 0.051,
+       "intersection_ml": 1.11,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "vertebrae_T1#1": {
+     "cid": 8,
+     "state": "matched",
+     "volume_ml": 21.38,
+     "z_ras_mm": -272.3,
+     "partners": [
+      {
+       "cid": 36,
+       "label": "vertebra_T1",
+       "iou": 0.505,
+       "covers_me": 0.674,
+       "i_cover_it": 0.668,
+       "intersection_ml": 14.41,
+       "centroid_distance_mm": 3.8
+      }
+     ]
+    },
+    "vertebrae_T2#1": {
+     "cid": 9,
+     "state": "matched",
+     "volume_ml": 21.87,
+     "z_ras_mm": -291.5,
+     "partners": [
+      {
+       "cid": 37,
+       "label": "vertebra_T2",
+       "iou": 0.556,
+       "covers_me": 0.73,
+       "i_cover_it": 0.699,
+       "intersection_ml": 15.97,
+       "centroid_distance_mm": 3.6
+      }
+     ]
+    },
+    "vertebrae_T3#1": {
+     "cid": 10,
+     "state": "matched",
+     "volume_ml": 21.47,
+     "z_ras_mm": -311.8,
+     "partners": [
+      {
+       "cid": 38,
+       "label": "vertebra_T3",
+       "iou": 0.585,
+       "covers_me": 0.756,
+       "i_cover_it": 0.721,
+       "intersection_ml": 16.22,
+       "centroid_distance_mm": 3.4
+      }
+     ]
+    },
+    "vertebrae_T4#1": {
+     "cid": 11,
+     "state": "matched",
+     "volume_ml": 21.55,
+     "z_ras_mm": -333.3,
+     "partners": [
+      {
+       "cid": 39,
+       "label": "vertebra_T4",
+       "iou": 0.597,
+       "covers_me": 0.756,
+       "i_cover_it": 0.739,
+       "intersection_ml": 16.28,
+       "centroid_distance_mm": 3.2
+      }
+     ]
+    },
+    "vertebrae_T5#1": {
+     "cid": 12,
+     "state": "matched",
+     "volume_ml": 22.06,
+     "z_ras_mm": -355.2,
+     "partners": [
+      {
+       "cid": 40,
+       "label": "vertebra_T5",
+       "iou": 0.612,
+       "covers_me": 0.767,
+       "i_cover_it": 0.752,
+       "intersection_ml": 16.91,
+       "centroid_distance_mm": 3.2
+      }
+     ]
+    },
+    "vertebrae_T6#1": {
+     "cid": 13,
+     "state": "matched",
+     "volume_ml": 23.39,
+     "z_ras_mm": -377.9,
+     "partners": [
+      {
+       "cid": 41,
+       "label": "vertebra_T6",
+       "iou": 0.626,
+       "covers_me": 0.781,
+       "i_cover_it": 0.759,
+       "intersection_ml": 18.28,
+       "centroid_distance_mm": 3.0
+      }
+     ]
+    },
+    "vertebrae_T7#1": {
+     "cid": 14,
+     "state": "matched",
+     "volume_ml": 25.46,
+     "z_ras_mm": -400.5,
+     "partners": [
+      {
+       "cid": 42,
+       "label": "vertebra_T7",
+       "iou": 0.652,
+       "covers_me": 0.794,
+       "i_cover_it": 0.785,
+       "intersection_ml": 20.23,
+       "centroid_distance_mm": 3.0
+      }
+     ]
+    },
+    "vertebrae_T8#1": {
+     "cid": 15,
+     "state": "matched",
+     "volume_ml": 26.78,
+     "z_ras_mm": -423.4,
+     "partners": [
+      {
+       "cid": 43,
+       "label": "vertebra_T8",
+       "iou": 0.654,
+       "covers_me": 0.797,
+       "i_cover_it": 0.784,
+       "intersection_ml": 21.36,
+       "centroid_distance_mm": 2.8
+      }
+     ]
+    },
+    "vertebrae_T9#1": {
+     "cid": 16,
+     "state": "matched",
+     "volume_ml": 28.18,
+     "z_ras_mm": -446.7,
+     "partners": [
+      {
+       "cid": 44,
+       "label": "vertebra_T9",
+       "iou": 0.659,
+       "covers_me": 0.804,
+       "i_cover_it": 0.786,
+       "intersection_ml": 22.65,
+       "centroid_distance_mm": 2.7
+      }
+     ]
+    },
+    "vertebrae_T10#1": {
+     "cid": 17,
+     "state": "matched",
+     "volume_ml": 34.03,
+     "z_ras_mm": -470.4,
+     "partners": [
+      {
+       "cid": 45,
+       "label": "vertebra_T10",
+       "iou": 0.7,
+       "covers_me": 0.824,
+       "i_cover_it": 0.823,
+       "intersection_ml": 28.03,
+       "centroid_distance_mm": 2.5
+      }
+     ]
+    },
+    "vertebrae_T11#1": {
+     "cid": 18,
+     "state": "matched",
+     "volume_ml": 36.65,
+     "z_ras_mm": -495.9,
+     "partners": [
+      {
+       "cid": 46,
+       "label": "vertebra_T11",
+       "iou": 0.686,
+       "covers_me": 0.817,
+       "i_cover_it": 0.811,
+       "intersection_ml": 29.95,
+       "centroid_distance_mm": 2.9
+      }
+     ]
+    },
+    "vertebrae_T12#1": {
+     "cid": 19,
+     "state": "matched",
+     "volume_ml": 41.64,
+     "z_ras_mm": -523.8,
+     "partners": [
+      {
+       "cid": 47,
+       "label": "vertebra_T12",
+       "iou": 0.709,
+       "covers_me": 0.836,
+       "i_cover_it": 0.824,
+       "intersection_ml": 34.82,
+       "centroid_distance_mm": 2.7
+      }
+     ]
+    },
+    "vertebrae_L1#1": {
+     "cid": 20,
+     "state": "matched",
+     "volume_ml": 48.53,
+     "z_ras_mm": -554.7,
+     "partners": [
+      {
+       "cid": 48,
+       "label": "vertebra_L1",
+       "iou": 0.717,
+       "covers_me": 0.853,
+       "i_cover_it": 0.817,
+       "intersection_ml": 41.42,
+       "centroid_distance_mm": 2.8
+      }
+     ]
+    },
+    "vertebrae_L1#3": {
+     "cid": 21,
+     "state": "merge",
+     "volume_ml": 28.64,
+     "z_ras_mm": -594.5,
+     "partners": [
+      {
+       "cid": 49,
+       "label": "vertebra_L2",
+       "iou": 0.365,
+       "covers_me": 0.789,
+       "i_cover_it": 0.405,
+       "intersection_ml": 22.59,
+       "centroid_distance_mm": 9.3
+      }
+     ]
+    },
+    "vertebrae_L2#2": {
+     "cid": 22,
+     "state": "split",
+     "volume_ml": 60.94,
+     "z_ras_mm": -622.7,
+     "partners": [
+      {
+       "cid": 51,
+       "label": "vertebra_L3",
+       "iou": 0.354,
+       "covers_me": 0.743,
+       "i_cover_it": 0.404,
+       "intersection_ml": 45.25,
+       "centroid_distance_mm": 15.6
+      },
+      {
+       "cid": 50,
+       "label": "vertebra_L2",
+       "iou": 0.082,
+       "covers_me": 0.083,
+       "i_cover_it": 0.871,
+       "intersection_ml": 5.06,
+       "centroid_distance_mm": 30.0
+      }
+     ]
+    },
+    "vertebrae_L2#3": {
+     "cid": 23,
+     "state": "merge",
+     "volume_ml": 25.26,
+     "z_ras_mm": -580.8,
+     "partners": [
+      {
+       "cid": 49,
+       "label": "vertebra_L2",
+       "iou": 0.415,
+       "covers_me": 0.94,
+       "i_cover_it": 0.426,
+       "intersection_ml": 23.76,
+       "centroid_distance_mm": 5.1
+      }
+     ]
+    },
+    "vertebrae_L3#1": {
+     "cid": 24,
+     "state": "split",
+     "volume_ml": 66.35,
+     "z_ras_mm": -656.8,
+     "partners": [
+      {
+       "cid": 51,
+       "label": "vertebra_L3",
+       "iou": 0.42,
+       "covers_me": 0.795,
+       "i_cover_it": 0.471,
+       "intersection_ml": 52.77,
+       "centroid_distance_mm": 18.8
+      },
+      {
+       "cid": 53,
+       "label": "vertebra_L4",
+       "iou": 0.061,
+       "covers_me": 0.062,
+       "i_cover_it": 0.73,
+       "intersection_ml": 4.12,
+       "centroid_distance_mm": 21.2
+      }
+     ]
+    },
+    "vertebrae_L4#1": {
+     "cid": 25,
+     "state": "matched",
+     "volume_ml": 64.39,
+     "z_ras_mm": -689.7,
+     "partners": [
+      {
+       "cid": 52,
+       "label": "vertebra_L4",
+       "iou": 0.772,
+       "covers_me": 0.869,
+       "i_cover_it": 0.874,
+       "intersection_ml": 55.99,
+       "centroid_distance_mm": 1.9
+      }
+     ]
+    },
+    "vertebrae_L5#1": {
+     "cid": 26,
+     "state": "matched",
+     "volume_ml": 64.22,
+     "z_ras_mm": -720.7,
+     "partners": [
+      {
+       "cid": 54,
+       "label": "vertebra_L5",
+       "iou": 0.762,
+       "covers_me": 0.864,
+       "i_cover_it": 0.866,
+       "intersection_ml": 55.47,
+       "centroid_distance_mm": 1.9
+      }
+     ]
+    },
+    "vertebrae_S1#1": {
+     "cid": 27,
+     "state": "merge",
+     "volume_ml": 49.47,
+     "z_ras_mm": -746.9,
+     "partners": [
+      {
+       "cid": 55,
+       "label": "sacrum",
+       "iou": 0.196,
+       "covers_me": 0.904,
+       "i_cover_it": 0.2,
+       "intersection_ml": 44.71,
+       "centroid_distance_mm": 21.9
+      }
+     ]
+    },
+    "sacrum#2": {
+     "cid": 28,
+     "state": "merge",
+     "volume_ml": 171.42,
+     "z_ras_mm": -766.7,
+     "partners": [
+      {
+       "cid": 55,
+       "label": "sacrum",
+       "iou": 0.644,
+       "covers_me": 0.902,
+       "i_cover_it": 0.692,
+       "intersection_ml": 154.62,
+       "centroid_distance_mm": 7.7
+      }
+     ]
+    }
+   },
+   "b_to_a": {
+    "vertebra_C1#1": {
+     "cid": 29,
+     "state": "partial",
+     "volume_ml": 17.7,
+     "z_ras_mm": -157.0,
+     "partners": [
+      {
+       "cid": 1,
+       "label": "vertebrae_C1",
+       "iou": 0.403,
+       "covers_me": 0.565,
+       "i_cover_it": 0.584,
+       "intersection_ml": 9.99,
+       "centroid_distance_mm": 4.6
+      }
+     ]
+    },
+    "vertebra_C2#1": {
+     "cid": 30,
+     "state": "partial",
+     "volume_ml": 17.93,
+     "z_ras_mm": -173.9,
+     "partners": [
+      {
+       "cid": 2,
+       "label": "vertebrae_C2",
+       "iou": 0.49,
+       "covers_me": 0.659,
+       "i_cover_it": 0.656,
+       "intersection_ml": 11.81,
+       "centroid_distance_mm": 4.2
+      },
+      {
+       "cid": 1,
+       "label": "vertebrae_C1",
+       "iou": 0.027,
+       "covers_me": 0.052,
+       "i_cover_it": 0.054,
+       "intersection_ml": 0.93,
+       "centroid_distance_mm": 12.4
+      }
+     ]
+    },
+    "vertebra_C3#1": {
+     "cid": 31,
+     "state": "partial",
+     "volume_ml": 11.82,
+     "z_ras_mm": -192.6,
+     "partners": [
+      {
+       "cid": 3,
+       "label": "vertebrae_C3",
+       "iou": 0.417,
+       "covers_me": 0.581,
+       "i_cover_it": 0.597,
+       "intersection_ml": 6.87,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 2,
+       "label": "vertebrae_C2",
+       "iou": 0.045,
+       "covers_me": 0.108,
+       "i_cover_it": 0.071,
+       "intersection_ml": 1.28,
+       "centroid_distance_mm": 14.6
+      }
+     ]
+    },
+    "vertebra_C4#1": {
+     "cid": 32,
+     "state": "partial",
+     "volume_ml": 11.24,
+     "z_ras_mm": -206.9,
+     "partners": [
+      {
+       "cid": 4,
+       "label": "vertebrae_C4",
+       "iou": 0.39,
+       "covers_me": 0.562,
+       "i_cover_it": 0.559,
+       "intersection_ml": 6.32,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 3,
+       "label": "vertebrae_C3",
+       "iou": 0.062,
+       "covers_me": 0.119,
+       "i_cover_it": 0.116,
+       "intersection_ml": 1.33,
+       "centroid_distance_mm": 11.1
+      }
+     ]
+    },
+    "vertebra_C5#1": {
+     "cid": 33,
+     "state": "partial",
+     "volume_ml": 12.34,
+     "z_ras_mm": -221.4,
+     "partners": [
+      {
+       "cid": 5,
+       "label": "vertebrae_C5",
+       "iou": 0.377,
+       "covers_me": 0.551,
+       "i_cover_it": 0.544,
+       "intersection_ml": 6.8,
+       "centroid_distance_mm": 3.9
+      },
+      {
+       "cid": 4,
+       "label": "vertebrae_C4",
+       "iou": 0.052,
+       "covers_me": 0.095,
+       "i_cover_it": 0.104,
+       "intersection_ml": 1.17,
+       "centroid_distance_mm": 11.6
+      }
+     ]
+    },
+    "vertebra_C6#1": {
+     "cid": 34,
+     "state": "partial",
+     "volume_ml": 13.27,
+     "z_ras_mm": -236.2,
+     "partners": [
+      {
+       "cid": 6,
+       "label": "vertebrae_C6",
+       "iou": 0.402,
+       "covers_me": 0.566,
+       "i_cover_it": 0.58,
+       "intersection_ml": 7.51,
+       "centroid_distance_mm": 4.0
+      },
+      {
+       "cid": 5,
+       "label": "vertebrae_C5",
+       "iou": 0.042,
+       "covers_me": 0.078,
+       "i_cover_it": 0.083,
+       "intersection_ml": 1.04,
+       "centroid_distance_mm": 13.1
+      }
+     ]
+    },
+    "vertebra_C7#1": {
+     "cid": 35,
+     "state": "partial",
+     "volume_ml": 17.74,
+     "z_ras_mm": -252.0,
+     "partners": [
+      {
+       "cid": 7,
+       "label": "vertebrae_C7",
+       "iou": 0.465,
+       "covers_me": 0.63,
+       "i_cover_it": 0.639,
+       "intersection_ml": 11.18,
+       "centroid_distance_mm": 3.7
+      },
+      {
+       "cid": 6,
+       "label": "vertebrae_C6",
+       "iou": 0.024,
+       "covers_me": 0.041,
+       "i_cover_it": 0.056,
+       "intersection_ml": 0.73,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "vertebra_T1#1": {
+     "cid": 36,
+     "state": "matched",
+     "volume_ml": 21.58,
+     "z_ras_mm": -268.5,
+     "partners": [
+      {
+       "cid": 8,
+       "label": "vertebrae_T1",
+       "iou": 0.505,
+       "covers_me": 0.668,
+       "i_cover_it": 0.674,
+       "intersection_ml": 14.41,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 7,
+       "label": "vertebrae_C7",
+       "iou": 0.029,
+       "covers_me": 0.051,
+       "i_cover_it": 0.063,
+       "intersection_ml": 1.11,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "vertebra_T2#1": {
+     "cid": 37,
+     "state": "matched",
+     "volume_ml": 22.86,
+     "z_ras_mm": -288.0,
+     "partners": [
+      {
+       "cid": 9,
+       "label": "vertebrae_T2",
+       "iou": 0.556,
+       "covers_me": 0.699,
+       "i_cover_it": 0.73,
+       "intersection_ml": 15.97,
+       "centroid_distance_mm": 3.6
+      }
+     ]
+    },
+    "vertebra_T3#1": {
+     "cid": 38,
+     "state": "matched",
+     "volume_ml": 22.48,
+     "z_ras_mm": -308.5,
+     "partners": [
+      {
+       "cid": 10,
+       "label": "vertebrae_T3",
+       "iou": 0.585,
+       "covers_me": 0.721,
+       "i_cover_it": 0.756,
+       "intersection_ml": 16.22,
+       "centroid_distance_mm": 3.4
+      }
+     ]
+    },
+    "vertebra_T4#1": {
+     "cid": 39,
+     "state": "matched",
+     "volume_ml": 22.02,
+     "z_ras_mm": -330.1,
+     "partners": [
+      {
+       "cid": 11,
+       "label": "vertebrae_T4",
+       "iou": 0.597,
+       "covers_me": 0.739,
+       "i_cover_it": 0.756,
+       "intersection_ml": 16.28,
+       "centroid_distance_mm": 3.2
+      }
+     ]
+    },
+    "vertebra_T5#1": {
+     "cid": 40,
+     "state": "matched",
+     "volume_ml": 22.48,
+     "z_ras_mm": -352.1,
+     "partners": [
+      {
+       "cid": 12,
+       "label": "vertebrae_T5",
+       "iou": 0.612,
+       "covers_me": 0.752,
+       "i_cover_it": 0.767,
+       "intersection_ml": 16.91,
+       "centroid_distance_mm": 3.2
+      }
+     ]
+    },
+    "vertebra_T6#1": {
+     "cid": 41,
+     "state": "matched",
+     "volume_ml": 24.08,
+     "z_ras_mm": -374.9,
+     "partners": [
+      {
+       "cid": 13,
+       "label": "vertebrae_T6",
+       "iou": 0.626,
+       "covers_me": 0.759,
+       "i_cover_it": 0.781,
+       "intersection_ml": 18.28,
+       "centroid_distance_mm": 3.0
+      }
+     ]
+    },
+    "vertebra_T7#1": {
+     "cid": 42,
+     "state": "matched",
+     "volume_ml": 25.77,
+     "z_ras_mm": -397.7,
+     "partners": [
+      {
+       "cid": 14,
+       "label": "vertebrae_T7",
+       "iou": 0.652,
+       "covers_me": 0.785,
+       "i_cover_it": 0.794,
+       "intersection_ml": 20.23,
+       "centroid_distance_mm": 3.0
+      }
+     ]
+    },
+    "vertebra_T8#1": {
+     "cid": 43,
+     "state": "matched",
+     "volume_ml": 27.23,
+     "z_ras_mm": -420.6,
+     "partners": [
+      {
+       "cid": 15,
+       "label": "vertebrae_T8",
+       "iou": 0.654,
+       "covers_me": 0.784,
+       "i_cover_it": 0.797,
+       "intersection_ml": 21.36,
+       "centroid_distance_mm": 2.8
+      }
+     ]
+    },
+    "vertebra_T9#1": {
+     "cid": 44,
+     "state": "matched",
+     "volume_ml": 28.82,
+     "z_ras_mm": -444.0,
+     "partners": [
+      {
+       "cid": 16,
+       "label": "vertebrae_T9",
+       "iou": 0.659,
+       "covers_me": 0.786,
+       "i_cover_it": 0.804,
+       "intersection_ml": 22.65,
+       "centroid_distance_mm": 2.7
+      }
+     ]
+    },
+    "vertebra_T10#1": {
+     "cid": 45,
+     "state": "matched",
+     "volume_ml": 34.06,
+     "z_ras_mm": -467.9,
+     "partners": [
+      {
+       "cid": 17,
+       "label": "vertebrae_T10",
+       "iou": 0.7,
+       "covers_me": 0.823,
+       "i_cover_it": 0.824,
+       "intersection_ml": 28.03,
+       "centroid_distance_mm": 2.5
+      }
+     ]
+    },
+    "vertebra_T11#1": {
+     "cid": 46,
+     "state": "matched",
+     "volume_ml": 36.95,
+     "z_ras_mm": -493.0,
+     "partners": [
+      {
+       "cid": 18,
+       "label": "vertebrae_T11",
+       "iou": 0.686,
+       "covers_me": 0.811,
+       "i_cover_it": 0.817,
+       "intersection_ml": 29.95,
+       "centroid_distance_mm": 2.9
+      }
+     ]
+    },
+    "vertebra_T12#1": {
+     "cid": 47,
+     "state": "matched",
+     "volume_ml": 42.28,
+     "z_ras_mm": -521.1,
+     "partners": [
+      {
+       "cid": 19,
+       "label": "vertebrae_T12",
+       "iou": 0.709,
+       "covers_me": 0.824,
+       "i_cover_it": 0.836,
+       "intersection_ml": 34.82,
+       "centroid_distance_mm": 2.7
+      }
+     ]
+    },
+    "vertebra_L1#1": {
+     "cid": 48,
+     "state": "matched",
+     "volume_ml": 50.68,
+     "z_ras_mm": -552.1,
+     "partners": [
+      {
+       "cid": 20,
+       "label": "vertebrae_L1",
+       "iou": 0.717,
+       "covers_me": 0.817,
+       "i_cover_it": 0.853,
+       "intersection_ml": 41.42,
+       "centroid_distance_mm": 2.8
+      }
+     ]
+    },
+    "vertebra_L2#2": {
+     "cid": 49,
+     "state": "split",
+     "volume_ml": 55.79,
+     "z_ras_mm": -585.6,
+     "partners": [
+      {
+       "cid": 23,
+       "label": "vertebrae_L2",
+       "iou": 0.415,
+       "covers_me": 0.426,
+       "i_cover_it": 0.94,
+       "intersection_ml": 23.76,
+       "centroid_distance_mm": 5.1
+      },
+      {
+       "cid": 21,
+       "label": "vertebrae_L1",
+       "iou": 0.365,
+       "covers_me": 0.405,
+       "i_cover_it": 0.789,
+       "intersection_ml": 22.59,
+       "centroid_distance_mm": 9.3
+      }
+     ]
+    },
+    "vertebra_L2#9": {
+     "cid": 50,
+     "state": "merge",
+     "volume_ml": 5.81,
+     "z_ras_mm": -637.8,
+     "partners": [
+      {
+       "cid": 22,
+       "label": "vertebrae_L2",
+       "iou": 0.082,
+       "covers_me": 0.871,
+       "i_cover_it": 0.083,
+       "intersection_ml": 5.06,
+       "centroid_distance_mm": 30.0
+      }
+     ]
+    },
+    "vertebra_L3#1": {
+     "cid": 51,
+     "state": "split",
+     "volume_ml": 112.07,
+     "z_ras_mm": -638.1,
+     "partners": [
+      {
+       "cid": 24,
+       "label": "vertebrae_L3",
+       "iou": 0.42,
+       "covers_me": 0.471,
+       "i_cover_it": 0.795,
+       "intersection_ml": 52.77,
+       "centroid_distance_mm": 18.8
+      },
+      {
+       "cid": 22,
+       "label": "vertebrae_L2",
+       "iou": 0.354,
+       "covers_me": 0.404,
+       "i_cover_it": 0.743,
+       "intersection_ml": 45.25,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "vertebra_L4#1": {
+     "cid": 52,
+     "state": "matched",
+     "volume_ml": 64.09,
+     "z_ras_mm": -687.8,
+     "partners": [
+      {
+       "cid": 25,
+       "label": "vertebrae_L4",
+       "iou": 0.772,
+       "covers_me": 0.874,
+       "i_cover_it": 0.869,
+       "intersection_ml": 55.99,
+       "centroid_distance_mm": 1.9
+      }
+     ]
+    },
+    "vertebra_L4#2": {
+     "cid": 53,
+     "state": "merge",
+     "volume_ml": 5.64,
+     "z_ras_mm": -643.3,
+     "partners": [
+      {
+       "cid": 24,
+       "label": "vertebrae_L3",
+       "iou": 0.061,
+       "covers_me": 0.73,
+       "i_cover_it": 0.062,
+       "intersection_ml": 4.12,
+       "centroid_distance_mm": 21.2
+      }
+     ]
+    },
+    "vertebra_L5#1": {
+     "cid": 54,
+     "state": "matched",
+     "volume_ml": 64.02,
+     "z_ras_mm": -718.9,
+     "partners": [
+      {
+       "cid": 26,
+       "label": "vertebrae_L5",
+       "iou": 0.762,
+       "covers_me": 0.866,
+       "i_cover_it": 0.864,
+       "intersection_ml": 55.47,
+       "centroid_distance_mm": 1.9
+      }
+     ]
+    },
+    "sacrum#1": {
+     "cid": 55,
+     "state": "split",
+     "volume_ml": 223.31,
+     "z_ras_mm": -760.5,
+     "partners": [
+      {
+       "cid": 28,
+       "label": "sacrum",
+       "iou": 0.644,
+       "covers_me": 0.692,
+       "i_cover_it": 0.902,
+       "intersection_ml": 154.62,
+       "centroid_distance_mm": 7.7
+      },
+      {
+       "cid": 27,
+       "label": "vertebrae_S1",
+       "iou": 0.196,
+       "covers_me": 0.2,
+       "i_cover_it": 0.904,
+       "intersection_ml": 44.71,
+       "centroid_distance_mm": 21.9
+      }
+     ]
+    }
+   },
+   "order": {
+    "matched_pairs": 15,
+    "order_violations": 0
+   },
+   "state_counts": {
+    "a_to_b": {
+     "matched": 15,
+     "merge": 4,
+     "partial": 7,
+     "split": 2
+    },
+    "b_to_a": {
+     "matched": 15,
+     "merge": 2,
+     "partial": 7,
+     "split": 3
+    }
+   }
+  },
+  "totalseg|skellytour": {
+   "a_to_b": {
+    "vertebrae_C1#1": {
+     "cid": 1,
+     "state": "matched",
+     "volume_ml": 17.12,
+     "z_ras_mm": -161.6,
+     "partners": [
+      {
+       "cid": 56,
+       "label": "VERT_1",
+       "iou": 0.827,
+       "covers_me": 0.944,
+       "i_cover_it": 0.87,
+       "intersection_ml": 16.16,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "vertebrae_C2#1": {
+     "cid": 2,
+     "state": "matched",
+     "volume_ml": 18.0,
+     "z_ras_mm": -178.1,
+     "partners": [
+      {
+       "cid": 57,
+       "label": "VERT_2",
+       "iou": 0.851,
+       "covers_me": 0.946,
+       "i_cover_it": 0.895,
+       "intersection_ml": 17.02,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "vertebrae_C3#1": {
+     "cid": 3,
+     "state": "matched",
+     "volume_ml": 11.49,
+     "z_ras_mm": -196.4,
+     "partners": [
+      {
+       "cid": 58,
+       "label": "VERT_3",
+       "iou": 0.833,
+       "covers_me": 0.915,
+       "i_cover_it": 0.903,
+       "intersection_ml": 10.52,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "vertebrae_C4#1": {
+     "cid": 4,
+     "state": "matched",
+     "volume_ml": 11.31,
+     "z_ras_mm": -210.7,
+     "partners": [
+      {
+       "cid": 59,
+       "label": "VERT_4",
+       "iou": 0.823,
+       "covers_me": 0.937,
+       "i_cover_it": 0.872,
+       "intersection_ml": 10.6,
+       "centroid_distance_mm": 0.5
+      }
+     ]
+    },
+    "vertebrae_C5#1": {
+     "cid": 5,
+     "state": "matched",
+     "volume_ml": 12.5,
+     "z_ras_mm": -225.3,
+     "partners": [
+      {
+       "cid": 60,
+       "label": "VERT_5",
+       "iou": 0.826,
+       "covers_me": 0.92,
+       "i_cover_it": 0.891,
+       "intersection_ml": 11.5,
+       "centroid_distance_mm": 0.2
+      }
+     ]
+    },
+    "vertebrae_C6#1": {
+     "cid": 6,
+     "state": "matched",
+     "volume_ml": 12.94,
+     "z_ras_mm": -240.2,
+     "partners": [
+      {
+       "cid": 61,
+       "label": "VERT_6",
+       "iou": 0.833,
+       "covers_me": 0.932,
+       "i_cover_it": 0.888,
+       "intersection_ml": 12.05,
+       "centroid_distance_mm": 0.2
+      }
+     ]
+    },
+    "vertebrae_C7#1": {
+     "cid": 7,
+     "state": "matched",
+     "volume_ml": 17.49,
+     "z_ras_mm": -255.7,
+     "partners": [
+      {
+       "cid": 62,
+       "label": "VERT_7",
+       "iou": 0.86,
+       "covers_me": 0.934,
+       "i_cover_it": 0.916,
+       "intersection_ml": 16.33,
+       "centroid_distance_mm": 0.1
+      }
+     ]
+    },
+    "vertebrae_T1#1": {
+     "cid": 8,
+     "state": "matched",
+     "volume_ml": 21.38,
+     "z_ras_mm": -272.3,
+     "partners": [
+      {
+       "cid": 63,
+       "label": "VERT_8",
+       "iou": 0.869,
+       "covers_me": 0.93,
+       "i_cover_it": 0.929,
+       "intersection_ml": 19.89,
+       "centroid_distance_mm": 0.2
+      }
+     ]
+    },
+    "vertebrae_T2#1": {
+     "cid": 9,
+     "state": "matched",
+     "volume_ml": 21.87,
+     "z_ras_mm": -291.5,
+     "partners": [
+      {
+       "cid": 64,
+       "label": "VERT_9",
+       "iou": 0.868,
+       "covers_me": 0.93,
+       "i_cover_it": 0.928,
+       "intersection_ml": 20.33,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "vertebrae_T3#1": {
+     "cid": 10,
+     "state": "matched",
+     "volume_ml": 21.47,
+     "z_ras_mm": -311.8,
+     "partners": [
+      {
+       "cid": 65,
+       "label": "VERT_10",
+       "iou": 0.858,
+       "covers_me": 0.933,
+       "i_cover_it": 0.914,
+       "intersection_ml": 20.04,
+       "centroid_distance_mm": 0.1
+      }
+     ]
+    },
+    "vertebrae_T4#1": {
+     "cid": 11,
+     "state": "matched",
+     "volume_ml": 21.55,
+     "z_ras_mm": -333.3,
+     "partners": [
+      {
+       "cid": 66,
+       "label": "VERT_11",
+       "iou": 0.865,
+       "covers_me": 0.938,
+       "i_cover_it": 0.918,
+       "intersection_ml": 20.21,
+       "centroid_distance_mm": 0.5
+      }
+     ]
+    },
+    "vertebrae_T5#1": {
+     "cid": 12,
+     "state": "matched",
+     "volume_ml": 22.06,
+     "z_ras_mm": -355.2,
+     "partners": [
+      {
+       "cid": 67,
+       "label": "VERT_12",
+       "iou": 0.857,
+       "covers_me": 0.933,
+       "i_cover_it": 0.913,
+       "intersection_ml": 20.59,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "vertebrae_T6#1": {
+     "cid": 13,
+     "state": "matched",
+     "volume_ml": 23.39,
+     "z_ras_mm": -377.9,
+     "partners": [
+      {
+       "cid": 68,
+       "label": "VERT_13",
+       "iou": 0.872,
+       "covers_me": 0.94,
+       "i_cover_it": 0.923,
+       "intersection_ml": 21.98,
+       "centroid_distance_mm": 0.6
+      }
+     ]
+    },
+    "vertebrae_T7#1": {
+     "cid": 14,
+     "state": "matched",
+     "volume_ml": 25.46,
+     "z_ras_mm": -400.5,
+     "partners": [
+      {
+       "cid": 69,
+       "label": "VERT_14",
+       "iou": 0.866,
+       "covers_me": 0.925,
+       "i_cover_it": 0.931,
+       "intersection_ml": 23.56,
+       "centroid_distance_mm": 0.1
+      }
+     ]
+    },
+    "vertebrae_T8#1": {
+     "cid": 15,
+     "state": "matched",
+     "volume_ml": 26.78,
+     "z_ras_mm": -423.4,
+     "partners": [
+      {
+       "cid": 70,
+       "label": "VERT_15",
+       "iou": 0.872,
+       "covers_me": 0.942,
+       "i_cover_it": 0.922,
+       "intersection_ml": 25.22,
+       "centroid_distance_mm": 0.7
+      }
+     ]
+    },
+    "vertebrae_T9#1": {
+     "cid": 16,
+     "state": "matched",
+     "volume_ml": 28.18,
+     "z_ras_mm": -446.7,
+     "partners": [
+      {
+       "cid": 71,
+       "label": "VERT_16",
+       "iou": 0.885,
+       "covers_me": 0.952,
+       "i_cover_it": 0.927,
+       "intersection_ml": 26.82,
+       "centroid_distance_mm": 0.4
+      }
+     ]
+    },
+    "vertebrae_T10#1": {
+     "cid": 17,
+     "state": "matched",
+     "volume_ml": 34.03,
+     "z_ras_mm": -470.4,
+     "partners": [
+      {
+       "cid": 72,
+       "label": "VERT_17",
+       "iou": 0.896,
+       "covers_me": 0.952,
+       "i_cover_it": 0.938,
+       "intersection_ml": 32.41,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "vertebrae_T11#1": {
+     "cid": 18,
+     "state": "matched",
+     "volume_ml": 36.65,
+     "z_ras_mm": -495.9,
+     "partners": [
+      {
+       "cid": 73,
+       "label": "VERT_18",
+       "iou": 0.891,
+       "covers_me": 0.957,
+       "i_cover_it": 0.928,
+       "intersection_ml": 35.08,
+       "centroid_distance_mm": 0.4
+      }
+     ]
+    },
+    "vertebrae_T12#1": {
+     "cid": 19,
+     "state": "matched",
+     "volume_ml": 41.64,
+     "z_ras_mm": -523.8,
+     "partners": [
+      {
+       "cid": 74,
+       "label": "VERT_19",
+       "iou": 0.881,
+       "covers_me": 0.947,
+       "i_cover_it": 0.927,
+       "intersection_ml": 39.44,
+       "centroid_distance_mm": 0.5
+      }
+     ]
+    },
+    "vertebrae_L1#1": {
+     "cid": 20,
+     "state": "matched",
+     "volume_ml": 48.53,
+     "z_ras_mm": -554.7,
+     "partners": [
+      {
+       "cid": 75,
+       "label": "VERT_20",
+       "iou": 0.859,
+       "covers_me": 0.925,
+       "i_cover_it": 0.924,
+       "intersection_ml": 44.89,
+       "centroid_distance_mm": 0.7
+      }
+     ]
+    },
+    "vertebrae_L1#3": {
+     "cid": 21,
+     "state": "merge",
+     "volume_ml": 28.64,
+     "z_ras_mm": -594.5,
+     "partners": [
+      {
+       "cid": 76,
+       "label": "VERT_21",
+       "iou": 0.134,
+       "covers_me": 0.508,
+       "i_cover_it": 0.154,
+       "intersection_ml": 14.54,
+       "centroid_distance_mm": 14.5
+      }
+     ]
+    },
+    "vertebrae_L2#2": {
+     "cid": 22,
+     "state": "merge",
+     "volume_ml": 60.94,
+     "z_ras_mm": -622.7,
+     "partners": [
+      {
+       "cid": 76,
+       "label": "VERT_21",
+       "iou": 0.537,
+       "covers_me": 0.892,
+       "i_cover_it": 0.574,
+       "intersection_ml": 54.35,
+       "centroid_distance_mm": 14.3
+      }
+     ]
+    },
+    "vertebrae_L2#3": {
+     "cid": 23,
+     "state": "merge",
+     "volume_ml": 25.26,
+     "z_ras_mm": -580.8,
+     "partners": [
+      {
+       "cid": 76,
+       "label": "VERT_21",
+       "iou": 0.202,
+       "covers_me": 0.797,
+       "i_cover_it": 0.213,
+       "intersection_ml": 20.13,
+       "centroid_distance_mm": 28.5
+      }
+     ]
+    },
+    "vertebrae_L3#1": {
+     "cid": 24,
+     "state": "matched",
+     "volume_ml": 66.35,
+     "z_ras_mm": -656.8,
+     "partners": [
+      {
+       "cid": 77,
+       "label": "VERT_22",
+       "iou": 0.902,
+       "covers_me": 0.957,
+       "i_cover_it": 0.94,
+       "intersection_ml": 63.48,
+       "centroid_distance_mm": 0.2
+      }
+     ]
+    },
+    "vertebrae_L4#1": {
+     "cid": 25,
+     "state": "matched",
+     "volume_ml": 64.39,
+     "z_ras_mm": -689.7,
+     "partners": [
+      {
+       "cid": 78,
+       "label": "VERT_23",
+       "iou": 0.91,
+       "covers_me": 0.962,
+       "i_cover_it": 0.944,
+       "intersection_ml": 61.94,
+       "centroid_distance_mm": 0.1
+      }
+     ]
+    },
+    "vertebrae_L5#1": {
+     "cid": 26,
+     "state": "matched",
+     "volume_ml": 64.22,
+     "z_ras_mm": -720.7,
+     "partners": [
+      {
+       "cid": 79,
+       "label": "VERT_24",
+       "iou": 0.894,
+       "covers_me": 0.964,
+       "i_cover_it": 0.924,
+       "intersection_ml": 61.93,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "vertebrae_S1#1": {
+     "cid": 27,
+     "state": "unmatched",
+     "volume_ml": 49.47,
+     "z_ras_mm": -746.9,
+     "partners": []
+    },
+    "sacrum#2": {
+     "cid": 28,
+     "state": "unmatched",
+     "volume_ml": 171.42,
+     "z_ras_mm": -766.7,
+     "partners": []
+    }
+   },
+   "b_to_a": {
+    "VERT_1#1": {
+     "cid": 56,
+     "state": "matched",
+     "volume_ml": 18.57,
+     "z_ras_mm": -161.5,
+     "partners": [
+      {
+       "cid": 1,
+       "label": "vertebrae_C1",
+       "iou": 0.827,
+       "covers_me": 0.87,
+       "i_cover_it": 0.944,
+       "intersection_ml": 16.16,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "VERT_2#1": {
+     "cid": 57,
+     "state": "matched",
+     "volume_ml": 19.02,
+     "z_ras_mm": -177.9,
+     "partners": [
+      {
+       "cid": 2,
+       "label": "vertebrae_C2",
+       "iou": 0.851,
+       "covers_me": 0.895,
+       "i_cover_it": 0.946,
+       "intersection_ml": 17.02,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "VERT_3#1": {
+     "cid": 58,
+     "state": "matched",
+     "volume_ml": 11.65,
+     "z_ras_mm": -196.3,
+     "partners": [
+      {
+       "cid": 3,
+       "label": "vertebrae_C3",
+       "iou": 0.833,
+       "covers_me": 0.903,
+       "i_cover_it": 0.915,
+       "intersection_ml": 10.52,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "VERT_4#1": {
+     "cid": 59,
+     "state": "matched",
+     "volume_ml": 12.15,
+     "z_ras_mm": -210.6,
+     "partners": [
+      {
+       "cid": 4,
+       "label": "vertebrae_C4",
+       "iou": 0.823,
+       "covers_me": 0.872,
+       "i_cover_it": 0.937,
+       "intersection_ml": 10.6,
+       "centroid_distance_mm": 0.5
+      }
+     ]
+    },
+    "VERT_5#1": {
+     "cid": 60,
+     "state": "matched",
+     "volume_ml": 12.91,
+     "z_ras_mm": -225.4,
+     "partners": [
+      {
+       "cid": 5,
+       "label": "vertebrae_C5",
+       "iou": 0.826,
+       "covers_me": 0.891,
+       "i_cover_it": 0.92,
+       "intersection_ml": 11.5,
+       "centroid_distance_mm": 0.2
+      }
+     ]
+    },
+    "VERT_6#1": {
+     "cid": 61,
+     "state": "matched",
+     "volume_ml": 13.58,
+     "z_ras_mm": -240.1,
+     "partners": [
+      {
+       "cid": 6,
+       "label": "vertebrae_C6",
+       "iou": 0.833,
+       "covers_me": 0.888,
+       "i_cover_it": 0.932,
+       "intersection_ml": 12.05,
+       "centroid_distance_mm": 0.2
+      }
+     ]
+    },
+    "VERT_7#1": {
+     "cid": 62,
+     "state": "matched",
+     "volume_ml": 17.83,
+     "z_ras_mm": -255.7,
+     "partners": [
+      {
+       "cid": 7,
+       "label": "vertebrae_C7",
+       "iou": 0.86,
+       "covers_me": 0.916,
+       "i_cover_it": 0.934,
+       "intersection_ml": 16.33,
+       "centroid_distance_mm": 0.1
+      }
+     ]
+    },
+    "VERT_8#1": {
+     "cid": 63,
+     "state": "matched",
+     "volume_ml": 21.41,
+     "z_ras_mm": -272.1,
+     "partners": [
+      {
+       "cid": 8,
+       "label": "vertebrae_T1",
+       "iou": 0.869,
+       "covers_me": 0.929,
+       "i_cover_it": 0.93,
+       "intersection_ml": 19.89,
+       "centroid_distance_mm": 0.2
+      }
+     ]
+    },
+    "VERT_9#1": {
+     "cid": 64,
+     "state": "matched",
+     "volume_ml": 21.9,
+     "z_ras_mm": -291.7,
+     "partners": [
+      {
+       "cid": 9,
+       "label": "vertebrae_T2",
+       "iou": 0.868,
+       "covers_me": 0.928,
+       "i_cover_it": 0.93,
+       "intersection_ml": 20.33,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "VERT_10#1": {
+     "cid": 65,
+     "state": "matched",
+     "volume_ml": 21.92,
+     "z_ras_mm": -311.9,
+     "partners": [
+      {
+       "cid": 10,
+       "label": "vertebrae_T3",
+       "iou": 0.858,
+       "covers_me": 0.914,
+       "i_cover_it": 0.933,
+       "intersection_ml": 20.04,
+       "centroid_distance_mm": 0.1
+      }
+     ]
+    },
+    "VERT_11#1": {
+     "cid": 66,
+     "state": "matched",
+     "volume_ml": 22.03,
+     "z_ras_mm": -333.2,
+     "partners": [
+      {
+       "cid": 11,
+       "label": "vertebrae_T4",
+       "iou": 0.865,
+       "covers_me": 0.918,
+       "i_cover_it": 0.938,
+       "intersection_ml": 20.21,
+       "centroid_distance_mm": 0.5
+      }
+     ]
+    },
+    "VERT_12#1": {
+     "cid": 67,
+     "state": "matched",
+     "volume_ml": 22.56,
+     "z_ras_mm": -355.2,
+     "partners": [
+      {
+       "cid": 12,
+       "label": "vertebrae_T5",
+       "iou": 0.857,
+       "covers_me": 0.913,
+       "i_cover_it": 0.933,
+       "intersection_ml": 20.59,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "VERT_13#1": {
+     "cid": 68,
+     "state": "matched",
+     "volume_ml": 23.81,
+     "z_ras_mm": -377.9,
+     "partners": [
+      {
+       "cid": 13,
+       "label": "vertebrae_T6",
+       "iou": 0.872,
+       "covers_me": 0.923,
+       "i_cover_it": 0.94,
+       "intersection_ml": 21.98,
+       "centroid_distance_mm": 0.6
+      }
+     ]
+    },
+    "VERT_14#1": {
+     "cid": 69,
+     "state": "matched",
+     "volume_ml": 25.3,
+     "z_ras_mm": -400.6,
+     "partners": [
+      {
+       "cid": 14,
+       "label": "vertebrae_T7",
+       "iou": 0.866,
+       "covers_me": 0.931,
+       "i_cover_it": 0.925,
+       "intersection_ml": 23.56,
+       "centroid_distance_mm": 0.1
+      }
+     ]
+    },
+    "VERT_15#1": {
+     "cid": 70,
+     "state": "matched",
+     "volume_ml": 27.35,
+     "z_ras_mm": -423.5,
+     "partners": [
+      {
+       "cid": 15,
+       "label": "vertebrae_T8",
+       "iou": 0.872,
+       "covers_me": 0.922,
+       "i_cover_it": 0.942,
+       "intersection_ml": 25.22,
+       "centroid_distance_mm": 0.7
+      }
+     ]
+    },
+    "VERT_16#1": {
+     "cid": 71,
+     "state": "matched",
+     "volume_ml": 28.94,
+     "z_ras_mm": -446.5,
+     "partners": [
+      {
+       "cid": 16,
+       "label": "vertebrae_T9",
+       "iou": 0.885,
+       "covers_me": 0.927,
+       "i_cover_it": 0.952,
+       "intersection_ml": 26.82,
+       "centroid_distance_mm": 0.4
+      }
+     ]
+    },
+    "VERT_17#1": {
+     "cid": 72,
+     "state": "matched",
+     "volume_ml": 34.53,
+     "z_ras_mm": -470.4,
+     "partners": [
+      {
+       "cid": 17,
+       "label": "vertebrae_T10",
+       "iou": 0.896,
+       "covers_me": 0.938,
+       "i_cover_it": 0.952,
+       "intersection_ml": 32.41,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    },
+    "VERT_18#1": {
+     "cid": 73,
+     "state": "matched",
+     "volume_ml": 37.81,
+     "z_ras_mm": -495.7,
+     "partners": [
+      {
+       "cid": 18,
+       "label": "vertebrae_T11",
+       "iou": 0.891,
+       "covers_me": 0.928,
+       "i_cover_it": 0.957,
+       "intersection_ml": 35.08,
+       "centroid_distance_mm": 0.4
+      }
+     ]
+    },
+    "VERT_19#1": {
+     "cid": 74,
+     "state": "matched",
+     "volume_ml": 42.56,
+     "z_ras_mm": -523.6,
+     "partners": [
+      {
+       "cid": 19,
+       "label": "vertebrae_T12",
+       "iou": 0.881,
+       "covers_me": 0.927,
+       "i_cover_it": 0.947,
+       "intersection_ml": 39.44,
+       "centroid_distance_mm": 0.5
+      }
+     ]
+    },
+    "VERT_20#1": {
+     "cid": 75,
+     "state": "matched",
+     "volume_ml": 48.59,
+     "z_ras_mm": -554.2,
+     "partners": [
+      {
+       "cid": 20,
+       "label": "vertebrae_L1",
+       "iou": 0.859,
+       "covers_me": 0.924,
+       "i_cover_it": 0.925,
+       "intersection_ml": 44.89,
+       "centroid_distance_mm": 0.7
+      }
+     ]
+    },
+    "VERT_21#1": {
+     "cid": 76,
+     "state": "split",
+     "volume_ml": 94.67,
+     "z_ras_mm": -609.0,
+     "partners": [
+      {
+       "cid": 22,
+       "label": "vertebrae_L2",
+       "iou": 0.537,
+       "covers_me": 0.574,
+       "i_cover_it": 0.892,
+       "intersection_ml": 54.35,
+       "centroid_distance_mm": 14.3
+      },
+      {
+       "cid": 23,
+       "label": "vertebrae_L2",
+       "iou": 0.202,
+       "covers_me": 0.213,
+       "i_cover_it": 0.797,
+       "intersection_ml": 20.13,
+       "centroid_distance_mm": 28.5
+      },
+      {
+       "cid": 21,
+       "label": "vertebrae_L1",
+       "iou": 0.134,
+       "covers_me": 0.154,
+       "i_cover_it": 0.508,
+       "intersection_ml": 14.54,
+       "centroid_distance_mm": 14.5
+      }
+     ]
+    },
+    "VERT_22#1": {
+     "cid": 77,
+     "state": "matched",
+     "volume_ml": 67.53,
+     "z_ras_mm": -656.9,
+     "partners": [
+      {
+       "cid": 24,
+       "label": "vertebrae_L3",
+       "iou": 0.902,
+       "covers_me": 0.94,
+       "i_cover_it": 0.957,
+       "intersection_ml": 63.48,
+       "centroid_distance_mm": 0.2
+      }
+     ]
+    },
+    "VERT_23#1": {
+     "cid": 78,
+     "state": "matched",
+     "volume_ml": 65.63,
+     "z_ras_mm": -689.6,
+     "partners": [
+      {
+       "cid": 25,
+       "label": "vertebrae_L4",
+       "iou": 0.91,
+       "covers_me": 0.944,
+       "i_cover_it": 0.962,
+       "intersection_ml": 61.94,
+       "centroid_distance_mm": 0.1
+      }
+     ]
+    },
+    "VERT_24#1": {
+     "cid": 79,
+     "state": "matched",
+     "volume_ml": 67.0,
+     "z_ras_mm": -720.9,
+     "partners": [
+      {
+       "cid": 26,
+       "label": "vertebrae_L5",
+       "iou": 0.894,
+       "covers_me": 0.924,
+       "i_cover_it": 0.964,
+       "intersection_ml": 61.93,
+       "centroid_distance_mm": 0.3
+      }
+     ]
+    }
+   },
+   "order": {
+    "matched_pairs": 23,
+    "order_violations": 0
+   },
+   "state_counts": {
+    "a_to_b": {
+     "matched": 23,
+     "merge": 3,
+     "unmatched": 2
+    },
+    "b_to_a": {
+     "matched": 23,
+     "split": 1
+    }
+   }
+  },
+  "moose|skellytour": {
+   "a_to_b": {
+    "vertebra_C1#1": {
+     "cid": 29,
+     "state": "partial",
+     "volume_ml": 17.7,
+     "z_ras_mm": -157.0,
+     "partners": [
+      {
+       "cid": 56,
+       "label": "VERT_1",
+       "iou": 0.429,
+       "covers_me": 0.616,
+       "i_cover_it": 0.587,
+       "intersection_ml": 10.89,
+       "centroid_distance_mm": 4.5
+      }
+     ]
+    },
+    "vertebra_C2#1": {
+     "cid": 30,
+     "state": "matched",
+     "volume_ml": 17.93,
+     "z_ras_mm": -173.9,
+     "partners": [
+      {
+       "cid": 57,
+       "label": "VERT_2",
+       "iou": 0.517,
+       "covers_me": 0.702,
+       "i_cover_it": 0.662,
+       "intersection_ml": 12.59,
+       "centroid_distance_mm": 4.0
+      },
+      {
+       "cid": 56,
+       "label": "VERT_1",
+       "iou": 0.031,
+       "covers_me": 0.061,
+       "i_cover_it": 0.059,
+       "intersection_ml": 1.1,
+       "centroid_distance_mm": 12.5
+      }
+     ]
+    },
+    "vertebra_C3#1": {
+     "cid": 31,
+     "state": "partial",
+     "volume_ml": 11.82,
+     "z_ras_mm": -192.6,
+     "partners": [
+      {
+       "cid": 58,
+       "label": "VERT_3",
+       "iou": 0.44,
+       "covers_me": 0.606,
+       "i_cover_it": 0.615,
+       "intersection_ml": 7.17,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 57,
+       "label": "VERT_2",
+       "iou": 0.044,
+       "covers_me": 0.109,
+       "i_cover_it": 0.068,
+       "intersection_ml": 1.29,
+       "centroid_distance_mm": 14.8
+      }
+     ]
+    },
+    "vertebra_C4#1": {
+     "cid": 32,
+     "state": "partial",
+     "volume_ml": 11.24,
+     "z_ras_mm": -206.9,
+     "partners": [
+      {
+       "cid": 59,
+       "label": "VERT_4",
+       "iou": 0.408,
+       "covers_me": 0.603,
+       "i_cover_it": 0.558,
+       "intersection_ml": 6.78,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 58,
+       "label": "VERT_3",
+       "iou": 0.059,
+       "covers_me": 0.114,
+       "i_cover_it": 0.11,
+       "intersection_ml": 1.28,
+       "centroid_distance_mm": 11.2
+      }
+     ]
+    },
+    "vertebra_C5#1": {
+     "cid": 33,
+     "state": "partial",
+     "volume_ml": 12.34,
+     "z_ras_mm": -221.4,
+     "partners": [
+      {
+       "cid": 60,
+       "label": "VERT_5",
+       "iou": 0.381,
+       "covers_me": 0.565,
+       "i_cover_it": 0.54,
+       "intersection_ml": 6.97,
+       "centroid_distance_mm": 4.0
+      },
+      {
+       "cid": 59,
+       "label": "VERT_4",
+       "iou": 0.059,
+       "covers_me": 0.111,
+       "i_cover_it": 0.113,
+       "intersection_ml": 1.37,
+       "centroid_distance_mm": 11.8
+      }
+     ]
+    },
+    "vertebra_C6#1": {
+     "cid": 34,
+     "state": "partial",
+     "volume_ml": 13.27,
+     "z_ras_mm": -236.2,
+     "partners": [
+      {
+       "cid": 61,
+       "label": "VERT_6",
+       "iou": 0.41,
+       "covers_me": 0.588,
+       "i_cover_it": 0.574,
+       "intersection_ml": 7.8,
+       "centroid_distance_mm": 3.9
+      },
+      {
+       "cid": 60,
+       "label": "VERT_5",
+       "iou": 0.046,
+       "covers_me": 0.087,
+       "i_cover_it": 0.089,
+       "intersection_ml": 1.15,
+       "centroid_distance_mm": 13.1
+      }
+     ]
+    },
+    "vertebra_C7#1": {
+     "cid": 35,
+     "state": "partial",
+     "volume_ml": 17.74,
+     "z_ras_mm": -252.0,
+     "partners": [
+      {
+       "cid": 62,
+       "label": "VERT_7",
+       "iou": 0.473,
+       "covers_me": 0.644,
+       "i_cover_it": 0.641,
+       "intersection_ml": 11.42,
+       "centroid_distance_mm": 3.7
+      },
+      {
+       "cid": 61,
+       "label": "VERT_6",
+       "iou": 0.027,
+       "covers_me": 0.047,
+       "i_cover_it": 0.061,
+       "intersection_ml": 0.83,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "vertebra_T1#1": {
+     "cid": 36,
+     "state": "matched",
+     "volume_ml": 21.58,
+     "z_ras_mm": -268.5,
+     "partners": [
+      {
+       "cid": 63,
+       "label": "VERT_8",
+       "iou": 0.522,
+       "covers_me": 0.683,
+       "i_cover_it": 0.688,
+       "intersection_ml": 14.74,
+       "centroid_distance_mm": 3.6
+      },
+      {
+       "cid": 62,
+       "label": "VERT_7",
+       "iou": 0.028,
+       "covers_me": 0.05,
+       "i_cover_it": 0.06,
+       "intersection_ml": 1.08,
+       "centroid_distance_mm": 15.7
+      }
+     ]
+    },
+    "vertebra_T2#1": {
+     "cid": 37,
+     "state": "matched",
+     "volume_ml": 22.86,
+     "z_ras_mm": -288.0,
+     "partners": [
+      {
+       "cid": 64,
+       "label": "VERT_9",
+       "iou": 0.555,
+       "covers_me": 0.699,
+       "i_cover_it": 0.73,
+       "intersection_ml": 15.98,
+       "centroid_distance_mm": 3.8
+      }
+     ]
+    },
+    "vertebra_T3#1": {
+     "cid": 38,
+     "state": "matched",
+     "volume_ml": 22.48,
+     "z_ras_mm": -308.5,
+     "partners": [
+      {
+       "cid": 65,
+       "label": "VERT_10",
+       "iou": 0.595,
+       "covers_me": 0.737,
+       "i_cover_it": 0.756,
+       "intersection_ml": 16.56,
+       "centroid_distance_mm": 3.5
+      }
+     ]
+    },
+    "vertebra_T4#1": {
+     "cid": 39,
+     "state": "matched",
+     "volume_ml": 22.02,
+     "z_ras_mm": -330.1,
+     "partners": [
+      {
+       "cid": 66,
+       "label": "VERT_11",
+       "iou": 0.6,
+       "covers_me": 0.75,
+       "i_cover_it": 0.75,
+       "intersection_ml": 16.51,
+       "centroid_distance_mm": 3.3
+      }
+     ]
+    },
+    "vertebra_T5#1": {
+     "cid": 40,
+     "state": "matched",
+     "volume_ml": 22.48,
+     "z_ras_mm": -352.1,
+     "partners": [
+      {
+       "cid": 67,
+       "label": "VERT_12",
+       "iou": 0.624,
+       "covers_me": 0.77,
+       "i_cover_it": 0.767,
+       "intersection_ml": 17.3,
+       "centroid_distance_mm": 3.3
+      }
+     ]
+    },
+    "vertebra_T6#1": {
+     "cid": 41,
+     "state": "matched",
+     "volume_ml": 24.08,
+     "z_ras_mm": -374.9,
+     "partners": [
+      {
+       "cid": 68,
+       "label": "VERT_13",
+       "iou": 0.639,
+       "covers_me": 0.775,
+       "i_cover_it": 0.784,
+       "intersection_ml": 18.67,
+       "centroid_distance_mm": 3.1
+      }
+     ]
+    },
+    "vertebra_T7#1": {
+     "cid": 42,
+     "state": "matched",
+     "volume_ml": 25.77,
+     "z_ras_mm": -397.7,
+     "partners": [
+      {
+       "cid": 69,
+       "label": "VERT_14",
+       "iou": 0.646,
+       "covers_me": 0.778,
+       "i_cover_it": 0.792,
+       "intersection_ml": 20.04,
+       "centroid_distance_mm": 3.1
+      }
+     ]
+    },
+    "vertebra_T8#1": {
+     "cid": 43,
+     "state": "matched",
+     "volume_ml": 27.23,
+     "z_ras_mm": -420.6,
+     "partners": [
+      {
+       "cid": 70,
+       "label": "VERT_15",
+       "iou": 0.659,
+       "covers_me": 0.796,
+       "i_cover_it": 0.793,
+       "intersection_ml": 21.69,
+       "centroid_distance_mm": 3.0
+      }
+     ]
+    },
+    "vertebra_T9#1": {
+     "cid": 44,
+     "state": "matched",
+     "volume_ml": 28.82,
+     "z_ras_mm": -444.0,
+     "partners": [
+      {
+       "cid": 71,
+       "label": "VERT_16",
+       "iou": 0.689,
+       "covers_me": 0.818,
+       "i_cover_it": 0.815,
+       "intersection_ml": 23.57,
+       "centroid_distance_mm": 2.5
+      }
+     ]
+    },
+    "vertebra_T10#1": {
+     "cid": 45,
+     "state": "matched",
+     "volume_ml": 34.06,
+     "z_ras_mm": -467.9,
+     "partners": [
+      {
+       "cid": 72,
+       "label": "VERT_17",
+       "iou": 0.71,
+       "covers_me": 0.837,
+       "i_cover_it": 0.825,
+       "intersection_ml": 28.49,
+       "centroid_distance_mm": 2.6
+      }
+     ]
+    },
+    "vertebra_T11#1": {
+     "cid": 46,
+     "state": "matched",
+     "volume_ml": 36.95,
+     "z_ras_mm": -493.0,
+     "partners": [
+      {
+       "cid": 73,
+       "label": "VERT_18",
+       "iou": 0.708,
+       "covers_me": 0.839,
+       "i_cover_it": 0.819,
+       "intersection_ml": 30.98,
+       "centroid_distance_mm": 2.7
+      }
+     ]
+    },
+    "vertebra_T12#1": {
+     "cid": 47,
+     "state": "matched",
+     "volume_ml": 42.28,
+     "z_ras_mm": -521.1,
+     "partners": [
+      {
+       "cid": 74,
+       "label": "VERT_19",
+       "iou": 0.731,
+       "covers_me": 0.847,
+       "i_cover_it": 0.842,
+       "intersection_ml": 35.82,
+       "centroid_distance_mm": 2.6
+      }
+     ]
+    },
+    "vertebra_L1#1": {
+     "cid": 48,
+     "state": "matched",
+     "volume_ml": 50.68,
+     "z_ras_mm": -552.1,
+     "partners": [
+      {
+       "cid": 75,
+       "label": "VERT_20",
+       "iou": 0.726,
+       "covers_me": 0.824,
+       "i_cover_it": 0.859,
+       "intersection_ml": 41.75,
+       "centroid_distance_mm": 2.2
+      }
+     ]
+    },
+    "vertebra_L2#2": {
+     "cid": 49,
+     "state": "merge",
+     "volume_ml": 55.79,
+     "z_ras_mm": -585.6,
+     "partners": [
+      {
+       "cid": 76,
+       "label": "VERT_21",
+       "iou": 0.284,
+       "covers_me": 0.597,
+       "i_cover_it": 0.352,
+       "intersection_ml": 33.32,
+       "centroid_distance_mm": 23.5
+      }
+     ]
+    },
+    "vertebra_L2#9": {
+     "cid": 50,
+     "state": "merge",
+     "volume_ml": 5.81,
+     "z_ras_mm": -637.8,
+     "partners": [
+      {
+       "cid": 76,
+       "label": "VERT_21",
+       "iou": 0.055,
+       "covers_me": 0.907,
+       "i_cover_it": 0.056,
+       "intersection_ml": 5.27,
+       "centroid_distance_mm": 36.3
+      }
+     ]
+    },
+    "vertebra_L3#1": {
+     "cid": 51,
+     "state": "split",
+     "volume_ml": 112.07,
+     "z_ras_mm": -638.1,
+     "partners": [
+      {
+       "cid": 77,
+       "label": "VERT_22",
+       "iou": 0.424,
+       "covers_me": 0.478,
+       "i_cover_it": 0.792,
+       "intersection_ml": 53.51,
+       "centroid_distance_mm": 18.9
+      },
+      {
+       "cid": 76,
+       "label": "VERT_21",
+       "iou": 0.261,
+       "covers_me": 0.382,
+       "i_cover_it": 0.452,
+       "intersection_ml": 42.78,
+       "centroid_distance_mm": 29.8
+      }
+     ]
+    },
+    "vertebra_L4#1": {
+     "cid": 52,
+     "state": "matched",
+     "volume_ml": 64.09,
+     "z_ras_mm": -687.8,
+     "partners": [
+      {
+       "cid": 78,
+       "label": "VERT_23",
+       "iou": 0.778,
+       "covers_me": 0.886,
+       "i_cover_it": 0.865,
+       "intersection_ml": 56.75,
+       "centroid_distance_mm": 1.9
+      }
+     ]
+    },
+    "vertebra_L4#2": {
+     "cid": 53,
+     "state": "merge",
+     "volume_ml": 5.64,
+     "z_ras_mm": -643.3,
+     "partners": [
+      {
+       "cid": 77,
+       "label": "VERT_22",
+       "iou": 0.06,
+       "covers_me": 0.738,
+       "i_cover_it": 0.062,
+       "intersection_ml": 4.17,
+       "centroid_distance_mm": 21.2
+      }
+     ]
+    },
+    "vertebra_L5#1": {
+     "cid": 54,
+     "state": "matched",
+     "volume_ml": 64.02,
+     "z_ras_mm": -718.9,
+     "partners": [
+      {
+       "cid": 79,
+       "label": "VERT_24",
+       "iou": 0.758,
+       "covers_me": 0.882,
+       "i_cover_it": 0.843,
+       "intersection_ml": 56.48,
+       "centroid_distance_mm": 2.0
+      }
+     ]
+    },
+    "sacrum#1": {
+     "cid": 55,
+     "state": "unmatched",
+     "volume_ml": 223.31,
+     "z_ras_mm": -760.5,
+     "partners": []
+    }
+   },
+   "b_to_a": {
+    "VERT_1#1": {
+     "cid": 56,
+     "state": "partial",
+     "volume_ml": 18.57,
+     "z_ras_mm": -161.5,
+     "partners": [
+      {
+       "cid": 29,
+       "label": "vertebra_C1",
+       "iou": 0.429,
+       "covers_me": 0.587,
+       "i_cover_it": 0.616,
+       "intersection_ml": 10.89,
+       "centroid_distance_mm": 4.5
+      },
+      {
+       "cid": 30,
+       "label": "vertebra_C2",
+       "iou": 0.031,
+       "covers_me": 0.059,
+       "i_cover_it": 0.061,
+       "intersection_ml": 1.1,
+       "centroid_distance_mm": 12.5
+      }
+     ]
+    },
+    "VERT_2#1": {
+     "cid": 57,
+     "state": "matched",
+     "volume_ml": 19.02,
+     "z_ras_mm": -177.9,
+     "partners": [
+      {
+       "cid": 30,
+       "label": "vertebra_C2",
+       "iou": 0.517,
+       "covers_me": 0.662,
+       "i_cover_it": 0.702,
+       "intersection_ml": 12.59,
+       "centroid_distance_mm": 4.0
+      },
+      {
+       "cid": 31,
+       "label": "vertebra_C3",
+       "iou": 0.044,
+       "covers_me": 0.068,
+       "i_cover_it": 0.109,
+       "intersection_ml": 1.29,
+       "centroid_distance_mm": 14.8
+      }
+     ]
+    },
+    "VERT_3#1": {
+     "cid": 58,
+     "state": "partial",
+     "volume_ml": 11.65,
+     "z_ras_mm": -196.3,
+     "partners": [
+      {
+       "cid": 31,
+       "label": "vertebra_C3",
+       "iou": 0.44,
+       "covers_me": 0.615,
+       "i_cover_it": 0.606,
+       "intersection_ml": 7.17,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 32,
+       "label": "vertebra_C4",
+       "iou": 0.059,
+       "covers_me": 0.11,
+       "i_cover_it": 0.114,
+       "intersection_ml": 1.28,
+       "centroid_distance_mm": 11.2
+      }
+     ]
+    },
+    "VERT_4#1": {
+     "cid": 59,
+     "state": "partial",
+     "volume_ml": 12.15,
+     "z_ras_mm": -210.6,
+     "partners": [
+      {
+       "cid": 32,
+       "label": "vertebra_C4",
+       "iou": 0.408,
+       "covers_me": 0.558,
+       "i_cover_it": 0.603,
+       "intersection_ml": 6.78,
+       "centroid_distance_mm": 3.8
+      },
+      {
+       "cid": 33,
+       "label": "vertebra_C5",
+       "iou": 0.059,
+       "covers_me": 0.113,
+       "i_cover_it": 0.111,
+       "intersection_ml": 1.37,
+       "centroid_distance_mm": 11.8
+      }
+     ]
+    },
+    "VERT_5#1": {
+     "cid": 60,
+     "state": "partial",
+     "volume_ml": 12.91,
+     "z_ras_mm": -225.4,
+     "partners": [
+      {
+       "cid": 33,
+       "label": "vertebra_C5",
+       "iou": 0.381,
+       "covers_me": 0.54,
+       "i_cover_it": 0.565,
+       "intersection_ml": 6.97,
+       "centroid_distance_mm": 4.0
+      },
+      {
+       "cid": 34,
+       "label": "vertebra_C6",
+       "iou": 0.046,
+       "covers_me": 0.089,
+       "i_cover_it": 0.087,
+       "intersection_ml": 1.15,
+       "centroid_distance_mm": 13.1
+      }
+     ]
+    },
+    "VERT_6#1": {
+     "cid": 61,
+     "state": "partial",
+     "volume_ml": 13.58,
+     "z_ras_mm": -240.1,
+     "partners": [
+      {
+       "cid": 34,
+       "label": "vertebra_C6",
+       "iou": 0.41,
+       "covers_me": 0.574,
+       "i_cover_it": 0.588,
+       "intersection_ml": 7.8,
+       "centroid_distance_mm": 3.9
+      },
+      {
+       "cid": 35,
+       "label": "vertebra_C7",
+       "iou": 0.027,
+       "covers_me": 0.061,
+       "i_cover_it": 0.047,
+       "intersection_ml": 0.83,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "VERT_7#1": {
+     "cid": 62,
+     "state": "partial",
+     "volume_ml": 17.83,
+     "z_ras_mm": -255.7,
+     "partners": [
+      {
+       "cid": 35,
+       "label": "vertebra_C7",
+       "iou": 0.473,
+       "covers_me": 0.641,
+       "i_cover_it": 0.644,
+       "intersection_ml": 11.42,
+       "centroid_distance_mm": 3.7
+      },
+      {
+       "cid": 36,
+       "label": "vertebra_T1",
+       "iou": 0.028,
+       "covers_me": 0.06,
+       "i_cover_it": 0.05,
+       "intersection_ml": 1.08,
+       "centroid_distance_mm": 15.7
+      }
+     ]
+    },
+    "VERT_8#1": {
+     "cid": 63,
+     "state": "matched",
+     "volume_ml": 21.41,
+     "z_ras_mm": -272.1,
+     "partners": [
+      {
+       "cid": 36,
+       "label": "vertebra_T1",
+       "iou": 0.522,
+       "covers_me": 0.688,
+       "i_cover_it": 0.683,
+       "intersection_ml": 14.74,
+       "centroid_distance_mm": 3.6
+      }
+     ]
+    },
+    "VERT_9#1": {
+     "cid": 64,
+     "state": "matched",
+     "volume_ml": 21.9,
+     "z_ras_mm": -291.7,
+     "partners": [
+      {
+       "cid": 37,
+       "label": "vertebra_T2",
+       "iou": 0.555,
+       "covers_me": 0.73,
+       "i_cover_it": 0.699,
+       "intersection_ml": 15.98,
+       "centroid_distance_mm": 3.8
+      }
+     ]
+    },
+    "VERT_10#1": {
+     "cid": 65,
+     "state": "matched",
+     "volume_ml": 21.92,
+     "z_ras_mm": -311.9,
+     "partners": [
+      {
+       "cid": 38,
+       "label": "vertebra_T3",
+       "iou": 0.595,
+       "covers_me": 0.756,
+       "i_cover_it": 0.737,
+       "intersection_ml": 16.56,
+       "centroid_distance_mm": 3.5
+      }
+     ]
+    },
+    "VERT_11#1": {
+     "cid": 66,
+     "state": "matched",
+     "volume_ml": 22.03,
+     "z_ras_mm": -333.2,
+     "partners": [
+      {
+       "cid": 39,
+       "label": "vertebra_T4",
+       "iou": 0.6,
+       "covers_me": 0.75,
+       "i_cover_it": 0.75,
+       "intersection_ml": 16.51,
+       "centroid_distance_mm": 3.3
+      }
+     ]
+    },
+    "VERT_12#1": {
+     "cid": 67,
+     "state": "matched",
+     "volume_ml": 22.56,
+     "z_ras_mm": -355.2,
+     "partners": [
+      {
+       "cid": 40,
+       "label": "vertebra_T5",
+       "iou": 0.624,
+       "covers_me": 0.767,
+       "i_cover_it": 0.77,
+       "intersection_ml": 17.3,
+       "centroid_distance_mm": 3.3
+      }
+     ]
+    },
+    "VERT_13#1": {
+     "cid": 68,
+     "state": "matched",
+     "volume_ml": 23.81,
+     "z_ras_mm": -377.9,
+     "partners": [
+      {
+       "cid": 41,
+       "label": "vertebra_T6",
+       "iou": 0.639,
+       "covers_me": 0.784,
+       "i_cover_it": 0.775,
+       "intersection_ml": 18.67,
+       "centroid_distance_mm": 3.1
+      }
+     ]
+    },
+    "VERT_14#1": {
+     "cid": 69,
+     "state": "matched",
+     "volume_ml": 25.3,
+     "z_ras_mm": -400.6,
+     "partners": [
+      {
+       "cid": 42,
+       "label": "vertebra_T7",
+       "iou": 0.646,
+       "covers_me": 0.792,
+       "i_cover_it": 0.778,
+       "intersection_ml": 20.04,
+       "centroid_distance_mm": 3.1
+      }
+     ]
+    },
+    "VERT_15#1": {
+     "cid": 70,
+     "state": "matched",
+     "volume_ml": 27.35,
+     "z_ras_mm": -423.5,
+     "partners": [
+      {
+       "cid": 43,
+       "label": "vertebra_T8",
+       "iou": 0.659,
+       "covers_me": 0.793,
+       "i_cover_it": 0.796,
+       "intersection_ml": 21.69,
+       "centroid_distance_mm": 3.0
+      }
+     ]
+    },
+    "VERT_16#1": {
+     "cid": 71,
+     "state": "matched",
+     "volume_ml": 28.94,
+     "z_ras_mm": -446.5,
+     "partners": [
+      {
+       "cid": 44,
+       "label": "vertebra_T9",
+       "iou": 0.689,
+       "covers_me": 0.815,
+       "i_cover_it": 0.818,
+       "intersection_ml": 23.57,
+       "centroid_distance_mm": 2.5
+      }
+     ]
+    },
+    "VERT_17#1": {
+     "cid": 72,
+     "state": "matched",
+     "volume_ml": 34.53,
+     "z_ras_mm": -470.4,
+     "partners": [
+      {
+       "cid": 45,
+       "label": "vertebra_T10",
+       "iou": 0.71,
+       "covers_me": 0.825,
+       "i_cover_it": 0.837,
+       "intersection_ml": 28.49,
+       "centroid_distance_mm": 2.6
+      }
+     ]
+    },
+    "VERT_18#1": {
+     "cid": 73,
+     "state": "matched",
+     "volume_ml": 37.81,
+     "z_ras_mm": -495.7,
+     "partners": [
+      {
+       "cid": 46,
+       "label": "vertebra_T11",
+       "iou": 0.708,
+       "covers_me": 0.819,
+       "i_cover_it": 0.839,
+       "intersection_ml": 30.98,
+       "centroid_distance_mm": 2.7
+      }
+     ]
+    },
+    "VERT_19#1": {
+     "cid": 74,
+     "state": "matched",
+     "volume_ml": 42.56,
+     "z_ras_mm": -523.6,
+     "partners": [
+      {
+       "cid": 47,
+       "label": "vertebra_T12",
+       "iou": 0.731,
+       "covers_me": 0.842,
+       "i_cover_it": 0.847,
+       "intersection_ml": 35.82,
+       "centroid_distance_mm": 2.6
+      }
+     ]
+    },
+    "VERT_20#1": {
+     "cid": 75,
+     "state": "matched",
+     "volume_ml": 48.59,
+     "z_ras_mm": -554.2,
+     "partners": [
+      {
+       "cid": 48,
+       "label": "vertebra_L1",
+       "iou": 0.726,
+       "covers_me": 0.859,
+       "i_cover_it": 0.824,
+       "intersection_ml": 41.75,
+       "centroid_distance_mm": 2.2
+      }
+     ]
+    },
+    "VERT_21#1": {
+     "cid": 76,
+     "state": "split",
+     "volume_ml": 94.67,
+     "z_ras_mm": -609.0,
+     "partners": [
+      {
+       "cid": 51,
+       "label": "vertebra_L3",
+       "iou": 0.261,
+       "covers_me": 0.452,
+       "i_cover_it": 0.382,
+       "intersection_ml": 42.78,
+       "centroid_distance_mm": 29.8
+      },
+      {
+       "cid": 49,
+       "label": "vertebra_L2",
+       "iou": 0.284,
+       "covers_me": 0.352,
+       "i_cover_it": 0.597,
+       "intersection_ml": 33.32,
+       "centroid_distance_mm": 23.5
+      },
+      {
+       "cid": 50,
+       "label": "vertebra_L2",
+       "iou": 0.055,
+       "covers_me": 0.056,
+       "i_cover_it": 0.907,
+       "intersection_ml": 5.27,
+       "centroid_distance_mm": 36.3
+      }
+     ]
+    },
+    "VERT_22#1": {
+     "cid": 77,
+     "state": "split",
+     "volume_ml": 67.53,
+     "z_ras_mm": -656.9,
+     "partners": [
+      {
+       "cid": 51,
+       "label": "vertebra_L3",
+       "iou": 0.424,
+       "covers_me": 0.792,
+       "i_cover_it": 0.478,
+       "intersection_ml": 53.51,
+       "centroid_distance_mm": 18.9
+      },
+      {
+       "cid": 53,
+       "label": "vertebra_L4",
+       "iou": 0.06,
+       "covers_me": 0.062,
+       "i_cover_it": 0.738,
+       "intersection_ml": 4.17,
+       "centroid_distance_mm": 21.2
+      }
+     ]
+    },
+    "VERT_23#1": {
+     "cid": 78,
+     "state": "matched",
+     "volume_ml": 65.63,
+     "z_ras_mm": -689.6,
+     "partners": [
+      {
+       "cid": 52,
+       "label": "vertebra_L4",
+       "iou": 0.778,
+       "covers_me": 0.865,
+       "i_cover_it": 0.886,
+       "intersection_ml": 56.75,
+       "centroid_distance_mm": 1.9
+      }
+     ]
+    },
+    "VERT_24#1": {
+     "cid": 79,
+     "state": "matched",
+     "volume_ml": 67.0,
+     "z_ras_mm": -720.9,
+     "partners": [
+      {
+       "cid": 54,
+       "label": "vertebra_L5",
+       "iou": 0.758,
+       "covers_me": 0.843,
+       "i_cover_it": 0.882,
+       "intersection_ml": 56.48,
+       "centroid_distance_mm": 2.0
+      }
+     ]
+    }
+   },
+   "order": {
+    "matched_pairs": 16,
+    "order_violations": 0
+   },
+   "state_counts": {
+    "a_to_b": {
+     "matched": 16,
+     "merge": 3,
+     "partial": 6,
+     "split": 1,
+     "unmatched": 1
+    },
+    "b_to_a": {
+     "matched": 16,
+     "partial": 6,
+     "split": 2
+    }
+   }
+  }
+ },
+ "instances": [
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -160.0,
+   "role": "vertebra",
+   "id": "V01",
+   "index": 1,
+   "consensus_ml": 17.62,
+   "union_ml": 25.98,
+   "agreement_ratio": 0.678,
+   "unanimous_fraction": 0.551,
+   "eligible_models_on_consensus": {
+    "3": 20042
+   },
+   "votes_histogram_on_union": {
+    "1": 9519,
+    "2": 8990,
+    "3": 11052
+   },
+   "consensus_centroid_ras_mm": [
+    8.6,
+    9.8,
+    -161.2
+   ],
+   "consensus_centroid_vhf_mm": [
+    531.4,
+    437.7,
+    1569.3
+   ],
+   "consensus_z_vox": [
+    148,
+    175
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_C1",
+     "candidate_ml": 17.12,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.898,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_C1",
+     "candidate_ml": 17.7,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.463,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_1",
+     "candidate_ml": 18.57,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.92,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_C1",
+    "moose": "vertebra_C1",
+    "skellytour": "VERT_1"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "C1",
+   "hra_z_offset_mm": 1.6
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -176.6,
+   "role": "vertebra",
+   "id": "V02",
+   "index": 2,
+   "consensus_ml": 18.44,
+   "union_ml": 23.68,
+   "agreement_ratio": 0.779,
+   "unanimous_fraction": 0.623,
+   "eligible_models_on_consensus": {
+    "3": 20981
+   },
+   "votes_histogram_on_union": {
+    "1": 5956,
+    "2": 7904,
+    "3": 13077
+   },
+   "consensus_centroid_ras_mm": [
+    10.1,
+    8.9,
+    -177.5
+   ],
+   "consensus_centroid_vhf_mm": [
+    533.1,
+    437.1,
+    1552.9
+   ],
+   "consensus_z_vox": [
+    150,
+    192
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_C2",
+     "candidate_ml": 18.0,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.908,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_C2",
+     "candidate_ml": 17.93,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.55,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_2",
+     "candidate_ml": 19.02,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.937,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_C2",
+    "moose": "vertebra_C2",
+    "skellytour": "VERT_2"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "C2",
+   "hra_z_offset_mm": -3.3
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -195.1,
+   "role": "vertebra",
+   "id": "V03",
+   "index": 3,
+   "consensus_ml": 11.43,
+   "union_ml": 15.54,
+   "agreement_ratio": 0.735,
+   "unanimous_fraction": 0.574,
+   "eligible_models_on_consensus": {
+    "3": 13003
+   },
+   "votes_histogram_on_union": {
+    "1": 4677,
+    "2": 5539,
+    "3": 7464
+   },
+   "consensus_centroid_ras_mm": [
+    10.4,
+    8.1,
+    -196.0
+   ],
+   "consensus_centroid_vhf_mm": [
+    533.6,
+    436.6,
+    1534.4
+   ],
+   "consensus_z_vox": [
+    187,
+    210
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_C3",
+     "candidate_ml": 11.49,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.894,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_C3",
+     "candidate_ml": 11.82,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.474,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_3",
+     "candidate_ml": 11.65,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.931,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_C3",
+    "moose": "vertebra_C3",
+    "skellytour": "VERT_3"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "C3",
+   "hra_z_offset_mm": 4.0
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -209.4,
+   "role": "vertebra",
+   "id": "V04",
+   "index": 4,
+   "consensus_ml": 11.58,
+   "union_ml": 15.61,
+   "agreement_ratio": 0.742,
+   "unanimous_fraction": 0.523,
+   "eligible_models_on_consensus": {
+    "3": 13173
+   },
+   "votes_histogram_on_union": {
+    "1": 4591,
+    "2": 6278,
+    "3": 6895
+   },
+   "consensus_centroid_ras_mm": [
+    11.2,
+    5.1,
+    -210.3
+   ],
+   "consensus_centroid_vhf_mm": [
+    534.5,
+    433.8,
+    1520.1
+   ],
+   "consensus_z_vox": [
+    201,
+    225
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_C4",
+     "candidate_ml": 11.31,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.902,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_C4",
+     "candidate_ml": 11.24,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.446,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_4",
+     "candidate_ml": 12.15,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.912,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_C4",
+    "moose": "vertebra_C4",
+    "skellytour": "VERT_4"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "C4",
+   "hra_z_offset_mm": 4.3
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -224.0,
+   "role": "vertebra",
+   "id": "V05",
+   "index": 5,
+   "consensus_ml": 12.41,
+   "union_ml": 17.47,
+   "agreement_ratio": 0.71,
+   "unanimous_fraction": 0.518,
+   "eligible_models_on_consensus": {
+    "3": 14118
+   },
+   "votes_histogram_on_union": {
+    "1": 5764,
+    "2": 6807,
+    "3": 7311
+   },
+   "consensus_centroid_ras_mm": [
+    9.9,
+    1.1,
+    -225.0
+   ],
+   "consensus_centroid_vhf_mm": [
+    533.3,
+    430.0,
+    1505.3
+   ],
+   "consensus_z_vox": [
+    213,
+    240
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_C5",
+     "candidate_ml": 12.5,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.91,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_C5",
+     "candidate_ml": 12.34,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.421,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_5",
+     "candidate_ml": 12.91,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.906,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_C5",
+    "moose": "vertebra_C5",
+    "skellytour": "VERT_5"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "C5",
+   "hra_z_offset_mm": 3.4
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -238.8,
+   "role": "vertebra",
+   "id": "V06",
+   "index": 6,
+   "consensus_ml": 12.94,
+   "union_ml": 18.36,
+   "agreement_ratio": 0.705,
+   "unanimous_fraction": 0.557,
+   "eligible_models_on_consensus": {
+    "3": 14725
+   },
+   "votes_histogram_on_union": {
+    "1": 6159,
+    "2": 6521,
+    "3": 8204
+   },
+   "consensus_centroid_ras_mm": [
+    8.1,
+    -5.5,
+    -239.9
+   ],
+   "consensus_centroid_vhf_mm": [
+    531.5,
+    423.7,
+    1490.3
+   ],
+   "consensus_z_vox": [
+    228,
+    256
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_C6",
+     "candidate_ml": 12.94,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.913,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_C6",
+     "candidate_ml": 13.27,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.447,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_6",
+     "candidate_ml": 13.58,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.911,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_C6",
+    "moose": "vertebra_C6",
+    "skellytour": "VERT_6"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "C6",
+   "hra_z_offset_mm": 3.6
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -254.5,
+   "role": "vertebra",
+   "id": "V07",
+   "index": 7,
+   "consensus_ml": 17.42,
+   "union_ml": 23.92,
+   "agreement_ratio": 0.728,
+   "unanimous_fraction": 0.617,
+   "eligible_models_on_consensus": {
+    "3": 19820
+   },
+   "votes_histogram_on_union": {
+    "1": 7398,
+    "2": 7582,
+    "3": 12238
+   },
+   "consensus_centroid_ras_mm": [
+    8.1,
+    -15.5,
+    -255.4
+   ],
+   "consensus_centroid_vhf_mm": [
+    531.4,
+    414.0,
+    1474.7
+   ],
+   "consensus_z_vox": [
+    241,
+    273
+   ],
+   "crosses_skellytour_seam_z": [
+    260
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_C7",
+     "candidate_ml": 17.49,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.922,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_C7",
+     "candidate_ml": 17.74,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.508,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_7",
+     "candidate_ml": 17.83,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.931,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_C7",
+    "moose": "vertebra_C7",
+    "skellytour": "VERT_7"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "C7",
+   "hra_z_offset_mm": 3.4
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -271.0,
+   "role": "vertebra",
+   "id": "V08",
+   "index": 8,
+   "consensus_ml": 21.11,
+   "union_ml": 28.1,
+   "agreement_ratio": 0.751,
+   "unanimous_fraction": 0.661,
+   "eligible_models_on_consensus": {
+    "3": 24023
+   },
+   "votes_histogram_on_union": {
+    "1": 7951,
+    "2": 8139,
+    "3": 15884
+   },
+   "consensus_centroid_ras_mm": [
+    6.7,
+    -24.1,
+    -271.9
+   ],
+   "consensus_centroid_vhf_mm": [
+    530.0,
+    405.7,
+    1458.0
+   ],
+   "consensus_z_vox": [
+    257,
+    291
+   ],
+   "crosses_skellytour_seam_z": [
+    260
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T1",
+     "candidate_ml": 21.38,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.918,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T1",
+     "candidate_ml": 21.58,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.552,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_8",
+     "candidate_ml": 21.41,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.945,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T1",
+    "moose": "vertebra_T1",
+    "skellytour": "VERT_8"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T1",
+   "hra_z_offset_mm": 3.2
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -290.4,
+   "role": "vertebra",
+   "id": "V09",
+   "index": 9,
+   "consensus_ml": 21.66,
+   "union_ml": 28.97,
+   "agreement_ratio": 0.748,
+   "unanimous_fraction": 0.707,
+   "eligible_models_on_consensus": {
+    "3": 24640
+   },
+   "votes_histogram_on_union": {
+    "1": 8316,
+    "2": 7220,
+    "3": 17420
+   },
+   "consensus_centroid_ras_mm": [
+    5.6,
+    -33.4,
+    -291.3
+   ],
+   "consensus_centroid_vhf_mm": [
+    528.8,
+    396.8,
+    1438.4
+   ],
+   "consensus_z_vox": [
+    273,
+    312
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T2",
+     "candidate_ml": 21.87,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.932,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T2",
+     "candidate_ml": 22.86,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.597,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_9",
+     "candidate_ml": 21.9,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.931,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T2",
+    "moose": "vertebra_T2",
+    "skellytour": "VERT_9"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T2",
+   "hra_z_offset_mm": 1.8
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -310.7,
+   "role": "vertebra",
+   "id": "V10",
+   "index": 10,
+   "consensus_ml": 21.44,
+   "union_ml": 27.73,
+   "agreement_ratio": 0.773,
+   "unanimous_fraction": 0.732,
+   "eligible_models_on_consensus": {
+    "3": 24392
+   },
+   "votes_histogram_on_union": {
+    "1": 7160,
+    "2": 6539,
+    "3": 17853
+   },
+   "consensus_centroid_ras_mm": [
+    5.1,
+    -43.2,
+    -311.5
+   ],
+   "consensus_centroid_vhf_mm": [
+    528.3,
+    387.3,
+    1418.1
+   ],
+   "consensus_z_vox": [
+    294,
+    330
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T3",
+     "candidate_ml": 21.47,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.921,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T3",
+     "candidate_ml": 22.48,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.637,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_10",
+     "candidate_ml": 21.92,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.931,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T3",
+    "moose": "vertebra_T3",
+    "skellytour": "VERT_10"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T3",
+   "hra_z_offset_mm": 1.8
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -332.2,
+   "role": "vertebra",
+   "id": "V11",
+   "index": 11,
+   "consensus_ml": 21.48,
+   "union_ml": 27.1,
+   "agreement_ratio": 0.793,
+   "unanimous_fraction": 0.734,
+   "eligible_models_on_consensus": {
+    "3": 24443
+   },
+   "votes_histogram_on_union": {
+    "1": 6388,
+    "2": 6511,
+    "3": 17932
+   },
+   "consensus_centroid_ras_mm": [
+    5.1,
+    -49.4,
+    -333.0
+   ],
+   "consensus_centroid_vhf_mm": [
+    528.4,
+    381.5,
+    1396.5
+   ],
+   "consensus_z_vox": [
+    314,
+    357
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T4",
+     "candidate_ml": 21.55,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.93,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T4",
+     "candidate_ml": 22.02,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.644,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_11",
+     "candidate_ml": 22.03,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.93,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T4",
+    "moose": "vertebra_T4",
+    "skellytour": "VERT_11"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T4",
+   "hra_z_offset_mm": 3.6
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -354.2,
+   "role": "vertebra",
+   "id": "V12",
+   "index": 12,
+   "consensus_ml": 22.12,
+   "union_ml": 27.57,
+   "agreement_ratio": 0.802,
+   "unanimous_fraction": 0.739,
+   "eligible_models_on_consensus": {
+    "3": 25167
+   },
+   "votes_histogram_on_union": {
+    "1": 6198,
+    "2": 6571,
+    "3": 18596
+   },
+   "consensus_centroid_ras_mm": [
+    5.2,
+    -52.7,
+    -354.8
+   ],
+   "consensus_centroid_vhf_mm": [
+    528.8,
+    378.5,
+    1374.6
+   ],
+   "consensus_z_vox": [
+    336,
+    380
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T5",
+     "candidate_ml": 22.06,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.919,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T5",
+     "candidate_ml": 22.48,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.669,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_12",
+     "candidate_ml": 22.56,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.932,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T5",
+    "moose": "vertebra_T5",
+    "skellytour": "VERT_12"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T5",
+   "hra_z_offset_mm": 3.0
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -376.9,
+   "role": "vertebra",
+   "id": "V13",
+   "index": 13,
+   "consensus_ml": 23.4,
+   "union_ml": 28.93,
+   "agreement_ratio": 0.809,
+   "unanimous_fraction": 0.759,
+   "eligible_models_on_consensus": {
+    "3": 26624
+   },
+   "votes_histogram_on_union": {
+    "1": 6290,
+    "2": 6411,
+    "3": 20213
+   },
+   "consensus_centroid_ras_mm": [
+    5.6,
+    -55.1,
+    -377.6
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.4,
+    376.5,
+    1351.8
+   ],
+   "consensus_z_vox": [
+    358,
+    405
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T6",
+     "candidate_ml": 23.39,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.926,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T6",
+     "candidate_ml": 24.08,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.678,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_13",
+     "candidate_ml": 23.81,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.941,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T6",
+    "moose": "vertebra_T6",
+    "skellytour": "VERT_13"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T6",
+   "hra_z_offset_mm": 2.8
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -399.6,
+   "role": "vertebra",
+   "id": "V14",
+   "index": 14,
+   "consensus_ml": 25.39,
+   "union_ml": 31.23,
+   "agreement_ratio": 0.813,
+   "unanimous_fraction": 0.757,
+   "eligible_models_on_consensus": {
+    "3": 28889
+   },
+   "votes_histogram_on_union": {
+    "1": 6639,
+    "2": 7021,
+    "3": 21868
+   },
+   "consensus_centroid_ras_mm": [
+    5.3,
+    -56.2,
+    -400.2
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.4,
+    375.8,
+    1329.2
+   ],
+   "consensus_z_vox": [
+    381,
+    430
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T7",
+     "candidate_ml": 25.46,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.935,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T7",
+     "candidate_ml": 25.77,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.699,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_14",
+     "candidate_ml": 25.3,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.927,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T7",
+    "moose": "vertebra_T7",
+    "skellytour": "VERT_14"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T7",
+   "hra_z_offset_mm": 4.3
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -422.5,
+   "role": "vertebra",
+   "id": "V15",
+   "index": 15,
+   "consensus_ml": 26.82,
+   "union_ml": 33.23,
+   "agreement_ratio": 0.807,
+   "unanimous_fraction": 0.773,
+   "eligible_models_on_consensus": {
+    "3": 30511
+   },
+   "votes_histogram_on_union": {
+    "1": 7298,
+    "2": 6929,
+    "3": 23582
+   },
+   "consensus_centroid_ras_mm": [
+    5.1,
+    -56.4,
+    -423.1
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.5,
+    375.9,
+    1306.3
+   ],
+   "consensus_z_vox": [
+    405,
+    453
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T8",
+     "candidate_ml": 26.78,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.932,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T8",
+     "candidate_ml": 27.23,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.703,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_15",
+     "candidate_ml": 27.35,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.936,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T8",
+    "moose": "vertebra_T8",
+    "skellytour": "VERT_15"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T8",
+   "hra_z_offset_mm": 4.3
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -445.7,
+   "role": "vertebra",
+   "id": "V16",
+   "index": 16,
+   "consensus_ml": 28.69,
+   "union_ml": 34.85,
+   "agreement_ratio": 0.823,
+   "unanimous_fraction": 0.773,
+   "eligible_models_on_consensus": {
+    "3": 32642
+   },
+   "votes_histogram_on_union": {
+    "1": 7010,
+    "2": 7417,
+    "3": 25225
+   },
+   "consensus_centroid_ras_mm": [
+    4.5,
+    -55.3,
+    -446.3
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.2,
+    377.4,
+    1283.1
+   ],
+   "consensus_z_vox": [
+    429,
+    472
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T9",
+     "candidate_ml": 28.18,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.923,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T9",
+     "candidate_ml": 28.82,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.718,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_16",
+     "candidate_ml": 28.94,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.959,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T9",
+    "moose": "vertebra_T9",
+    "skellytour": "VERT_16"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T9",
+   "hra_z_offset_mm": 2.4
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -469.6,
+   "role": "vertebra",
+   "id": "V17",
+   "index": 17,
+   "consensus_ml": 34.13,
+   "union_ml": 40.9,
+   "agreement_ratio": 0.835,
+   "unanimous_fraction": 0.803,
+   "eligible_models_on_consensus": {
+    "3": 38837
+   },
+   "votes_histogram_on_union": {
+    "1": 7695,
+    "2": 7665,
+    "3": 31172
+   },
+   "consensus_centroid_ras_mm": [
+    3.9,
+    -54.5,
+    -470.1
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.1,
+    378.6,
+    1259.3
+   ],
+   "consensus_z_vox": [
+    451,
+    493
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T10",
+     "candidate_ml": 34.03,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.941,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T10",
+     "candidate_ml": 34.06,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.745,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_17",
+     "candidate_ml": 34.53,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.952,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T10",
+    "moose": "vertebra_T10",
+    "skellytour": "VERT_17"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T10",
+   "hra_z_offset_mm": 0.2
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -494.9,
+   "role": "vertebra",
+   "id": "V18",
+   "index": 18,
+   "consensus_ml": 37.18,
+   "union_ml": 44.53,
+   "agreement_ratio": 0.835,
+   "unanimous_fraction": 0.791,
+   "eligible_models_on_consensus": {
+    "3": 42300
+   },
+   "votes_histogram_on_union": {
+    "1": 8365,
+    "2": 8832,
+    "3": 33468
+   },
+   "consensus_centroid_ras_mm": [
+    3.4,
+    -52.2,
+    -495.5
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.0,
+    381.3,
+    1233.9
+   ],
+   "consensus_z_vox": [
+    475,
+    517
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T11",
+     "candidate_ml": 36.65,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.932,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T11",
+     "candidate_ml": 36.95,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.739,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_18",
+     "candidate_ml": 37.81,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.956,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T11",
+    "moose": "vertebra_T11",
+    "skellytour": "VERT_18"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T11",
+   "hra_z_offset_mm": -1.7
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -522.8,
+   "role": "vertebra",
+   "id": "V19",
+   "index": 19,
+   "consensus_ml": 42.18,
+   "union_ml": 50.12,
+   "agreement_ratio": 0.842,
+   "unanimous_fraction": 0.805,
+   "eligible_models_on_consensus": {
+    "3": 47997
+   },
+   "votes_histogram_on_union": {
+    "1": 9028,
+    "2": 9371,
+    "3": 38626
+   },
+   "consensus_centroid_ras_mm": [
+    3.4,
+    -49.8,
+    -523.3
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.4,
+    384.2,
+    1206.2
+   ],
+   "consensus_z_vox": [
+    501,
+    546
+   ],
+   "crosses_skellytour_seam_z": [
+    520
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_T12",
+     "candidate_ml": 41.64,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.926,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_T12",
+     "candidate_ml": 42.28,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.768,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_19",
+     "candidate_ml": 42.56,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.951,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_T12",
+    "moose": "vertebra_T12",
+    "skellytour": "VERT_19"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "T12",
+   "hra_z_offset_mm": -3.1
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -553.7,
+   "role": "vertebra",
+   "id": "V20",
+   "index": 20,
+   "consensus_ml": 48.66,
+   "union_ml": 59.37,
+   "agreement_ratio": 0.82,
+   "unanimous_fraction": 0.816,
+   "eligible_models_on_consensus": {
+    "3": 55364
+   },
+   "votes_histogram_on_union": {
+    "1": 12188,
+    "2": 10198,
+    "3": 45166
+   },
+   "consensus_centroid_ras_mm": [
+    2.5,
+    -47.7,
+    -554.1
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.0,
+    386.8,
+    1175.4
+   ],
+   "consensus_z_vox": [
+    534,
+    581
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_L1",
+     "candidate_ml": 48.53,
+     "components_of_label": 5,
+     "iou_with_consensus": 0.921,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_L1",
+     "candidate_ml": 50.68,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.778,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_20",
+     "candidate_ml": 48.59,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.933,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_L1",
+    "moose": "vertebra_L1",
+    "skellytour": "VERT_20"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "L1",
+   "hra_z_offset_mm": 0.6
+  },
+  {
+   "partition_model": "totalseg",
+   "group_kind": "partitioned",
+   "seed_merged_from": [
+    "vertebrae_L2#3",
+    "vertebrae_L1#3"
+   ],
+   "z_ras_mm": -587.6,
+   "role": "vertebra",
+   "id": "V21",
+   "index": 21,
+   "consensus_ml": 49.93,
+   "union_ml": 63.8,
+   "agreement_ratio": 0.783,
+   "unanimous_fraction": 0.645,
+   "eligible_models_on_consensus": {
+    "3": 56810
+   },
+   "votes_histogram_on_union": {
+    "1": 15783,
+    "2": 20188,
+    "3": 36622
+   },
+   "consensus_centroid_ras_mm": [
+    2.3,
+    -42.6,
+    -587.0
+   ],
+   "consensus_centroid_vhf_mm": [
+    529.4,
+    392.4,
+    1142.6
+   ],
+   "consensus_z_vox": [
+    567,
+    615
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "seed",
+     "label": "vertebrae_L1",
+     "candidate_ml": 28.64,
+     "components_of_label": 5,
+     "iou_with_consensus": 0.888,
+     "extra_candidates": [],
+     "seed_components": [
+      "vertebrae_L2#3",
+      "vertebrae_L1#3"
+     ]
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_L2",
+     "candidate_ml": 55.79,
+     "components_of_label": 10,
+     "iou_with_consensus": 0.814,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "merge",
+     "label": "VERT_21",
+     "candidate_ml": 94.67,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.709,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_L1",
+    "moose": "vertebra_L2",
+    "skellytour": "VERT_21"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "L2",
+   "hra_z_offset_mm": 1.8
+  },
+  {
+   "partition_model": "totalseg",
+   "group_kind": "partitioned",
+   "z_ras_mm": -622.7,
+   "role": "vertebra",
+   "id": "V22",
+   "index": 22,
+   "consensus_ml": 60.75,
+   "union_ml": 71.43,
+   "agreement_ratio": 0.85,
+   "unanimous_fraction": 0.672,
+   "eligible_models_on_consensus": {
+    "3": 69117
+   },
+   "votes_histogram_on_union": {
+    "1": 12153,
+    "2": 22680,
+    "3": 46437
+   },
+   "consensus_centroid_ras_mm": [
+    2.4,
+    -36.1,
+    -622.5
+   ],
+   "consensus_centroid_vhf_mm": [
+    530.2,
+    399.6,
+    1107.2
+   ],
+   "consensus_z_vox": [
+    602,
+    658
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "seed",
+     "label": "vertebrae_L2",
+     "candidate_ml": 60.94,
+     "components_of_label": 3,
+     "iou_with_consensus": 0.934,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "merge",
+     "label": "vertebra_L3",
+     "candidate_ml": 112.07,
+     "components_of_label": 3,
+     "iou_with_consensus": 0.702,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "merge",
+     "label": "VERT_21",
+     "candidate_ml": 94.67,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.896,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_L2",
+    "moose": "vertebra_L3",
+    "skellytour": "VERT_21"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "L3",
+   "hra_z_offset_mm": 4.6
+  },
+  {
+   "partition_model": null,
+   "group_kind": "single",
+   "z_ras_mm": -637.8,
+   "role": "vertebra",
+   "id": "V23",
+   "index": 23,
+   "consensus_ml": 0.0,
+   "union_ml": 0.44,
+   "agreement_ratio": 0.0,
+   "unanimous_fraction": null,
+   "eligible_models_on_consensus": {},
+   "votes_histogram_on_union": {
+    "1": 501
+   },
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "negative"
+    },
+    "moose": {
+     "state": "single",
+     "label": "vertebra_L2",
+     "candidate_ml": 5.81,
+     "components_of_label": 10,
+     "iou_with_consensus": 0.0,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "negative"
+    }
+   },
+   "source_labels": {
+    "moose": "vertebra_L2"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "single",
+   "z_ras_mm": -643.3,
+   "role": "vertebra",
+   "id": "V24",
+   "index": 24,
+   "consensus_ml": 0.0,
+   "union_ml": 1.71,
+   "agreement_ratio": 0.0,
+   "unanimous_fraction": null,
+   "eligible_models_on_consensus": {},
+   "votes_histogram_on_union": {
+    "1": 1948
+   },
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "negative"
+    },
+    "moose": {
+     "state": "single",
+     "label": "vertebra_L4",
+     "candidate_ml": 5.64,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.0,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "negative"
+    }
+   },
+   "source_labels": {
+    "moose": "vertebra_L4"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": "totalseg",
+   "group_kind": "partitioned",
+   "z_ras_mm": -656.8,
+   "role": "vertebra",
+   "id": "V25",
+   "index": 25,
+   "consensus_ml": 65.98,
+   "union_ml": 73.95,
+   "agreement_ratio": 0.892,
+   "unanimous_fraction": 0.786,
+   "eligible_models_on_consensus": {
+    "3": 75070
+   },
+   "votes_histogram_on_union": {
+    "1": 9074,
+    "2": 16028,
+    "3": 59042
+   },
+   "consensus_centroid_ras_mm": [
+    2.5,
+    -31.4,
+    -656.6
+   ],
+   "consensus_centroid_vhf_mm": [
+    531.0,
+    404.8,
+    1073.1
+   ],
+   "consensus_z_vox": [
+    634,
+    688
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "seed",
+     "label": "vertebrae_L3",
+     "candidate_ml": 66.35,
+     "components_of_label": 3,
+     "iou_with_consensus": 0.947,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "merge",
+     "label": "vertebra_L3",
+     "candidate_ml": 112.07,
+     "components_of_label": 3,
+     "iou_with_consensus": 0.777,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_22",
+     "candidate_ml": 67.53,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.952,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_L3",
+    "moose": "vertebra_L3",
+    "skellytour": "VERT_22"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "L4",
+   "hra_z_offset_mm": 0.5
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -689.0,
+   "role": "vertebra",
+   "id": "V26",
+   "index": 26,
+   "consensus_ml": 64.54,
+   "union_ml": 74.35,
+   "agreement_ratio": 0.868,
+   "unanimous_fraction": 0.853,
+   "eligible_models_on_consensus": {
+    "3": 73427
+   },
+   "votes_histogram_on_union": {
+    "1": 11172,
+    "2": 10764,
+    "3": 62663
+   },
+   "consensus_centroid_ras_mm": [
+    4.0,
+    -26.3,
+    -689.4
+   ],
+   "consensus_centroid_vhf_mm": [
+    533.0,
+    410.3,
+    1040.5
+   ],
+   "consensus_z_vox": [
+    665,
+    716
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_L4",
+     "candidate_ml": 64.39,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.951,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_L4",
+     "candidate_ml": 64.09,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.813,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_23",
+     "candidate_ml": 65.63,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.956,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_L4",
+    "moose": "vertebra_L4",
+    "skellytour": "VERT_23"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "L5",
+   "hra_z_offset_mm": -3.6
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -720.2,
+   "role": "vertebra",
+   "id": "V27",
+   "index": 27,
+   "consensus_ml": 64.89,
+   "union_ml": 75.76,
+   "agreement_ratio": 0.857,
+   "unanimous_fraction": 0.84,
+   "eligible_models_on_consensus": {
+    "3": 73831
+   },
+   "votes_histogram_on_union": {
+    "1": 12365,
+    "2": 11832,
+    "3": 61999
+   },
+   "consensus_centroid_ras_mm": [
+    7.3,
+    -24.8,
+    -720.5
+   ],
+   "consensus_centroid_vhf_mm": [
+    536.8,
+    412.3,
+    1009.5
+   ],
+   "consensus_z_vox": [
+    696,
+    742
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.11,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "vertebrae_L5",
+     "candidate_ml": 64.22,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.95,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "vertebra_L5",
+     "candidate_ml": 64.02,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.804,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "VERT_24",
+     "candidate_ml": 67.0,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.94,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_L5",
+    "moose": "vertebra_L5",
+    "skellytour": "VERT_24"
+   },
+   "name_status": "pending",
+   "hra_name_by_order": "L6",
+   "hra_z_offset_mm": -6.0
+  },
+  {
+   "partition_model": null,
+   "group_kind": "single",
+   "z_ras_mm": -746.9,
+   "role": "vertebra",
+   "id": "V28",
+   "index": 28,
+   "consensus_ml": 0.0,
+   "union_ml": 49.45,
+   "agreement_ratio": 0.0,
+   "unanimous_fraction": null,
+   "eligible_models_on_consensus": {},
+   "votes_histogram_on_union": {
+    "1": 56259
+   },
+   "skellytour_pelvis_overlap_ml": 48.75,
+   "models": {
+    "totalseg": {
+     "state": "single",
+     "label": "vertebrae_S1",
+     "candidate_ml": 49.47,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.0,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "absorbed",
+     "absorbed_into": "sacrum",
+     "fraction_of_union": 0.904
+    },
+    "skellytour": {
+     "state": "absorbed",
+     "absorbed_into": "PELVIS",
+     "fraction_of_union": 0.986
+    }
+   },
+   "source_labels": {
+    "totalseg": "vertebrae_S1"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": -763.6,
+   "role": "sacrum",
+   "id": "S29",
+   "index": 29,
+   "consensus_ml": 154.62,
+   "union_ml": 194.83,
+   "agreement_ratio": 0.794,
+   "unanimous_fraction": 1.0,
+   "eligible_models_on_consensus": {
+    "2": 175918
+   },
+   "votes_histogram_on_union": {
+    "1": 45757,
+    "2": 175918
+   },
+   "consensus_centroid_ras_mm": [
+    7.2,
+    -54.0,
+    -765.4
+   ],
+   "consensus_centroid_vhf_mm": [
+    536.4,
+    383.8,
+    964.2
+   ],
+   "consensus_z_vox": [
+    724,
+    845
+   ],
+   "crosses_skellytour_seam_z": [
+    780
+   ],
+   "skellytour_pelvis_overlap_ml": 175.68,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "sacrum",
+     "candidate_ml": 171.42,
+     "components_of_label": 8,
+     "iou_with_consensus": 0.902,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "sacrum",
+     "candidate_ml": 223.31,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.692,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "unsupported"
+    }
+   },
+   "source_labels": {
+    "totalseg": "sacrum",
+    "moose": "sacrum"
+   },
+   "name_status": "pending"
+  }
+ ],
+ "instance_count": {
+  "vertebra_consensus": 25,
+  "vertebra_any": 28,
+  "sacrum": 1
+ },
+ "lumbar_type_block_below_T12": [
+  "V20",
+  "V21",
+  "V22",
+  "V25",
+  "V26",
+  "V27"
+ ],
+ "hra_same_donor_evidence": {
+  "source": "HRA united-female v1.5 (public/atlases/hra-female.json), modelled on the Visible Human Female; NIH 3D 3DPX-020988: \"The Visible Human Female has 6 lumbar vertebrae\"",
+  "transform": "hra-stage-to-vhf (similarity on six organ proxies, RMS 7.4 mm) then inverse denver-image-to-stage; positions are approximate, the order and count are the evidence",
+  "hra_vertebra_count": 25,
+  "our_consensus_vertebra_count": 25,
+  "hra_chain_vhf_mm": [
+   {
+    "name": "C1",
+    "asset": "VH_F_cervical_vertebra_1",
+    "vhf_mm": [
+     553.6,
+     439.5,
+     1567.7
+    ]
+   },
+   {
+    "name": "C2",
+    "asset": "VH_F_cervical_vertebra_2",
+    "vhf_mm": [
+     555.0,
+     435.1,
+     1556.2
+    ]
+   },
+   {
+    "name": "C3",
+    "asset": "VH_F_cervical_vertebra_3",
+    "vhf_mm": [
+     553.6,
+     436.3,
+     1530.4
+    ]
+   },
+   {
+    "name": "C4",
+    "asset": "VH_F_cervical_vertebra_4",
+    "vhf_mm": [
+     553.1,
+     433.7,
+     1515.8
+    ]
+   },
+   {
+    "name": "C5",
+    "asset": "VH_F_cervical_vertebra_5",
+    "vhf_mm": [
+     551.8,
+     429.8,
+     1501.9
+    ]
+   },
+   {
+    "name": "C6",
+    "asset": "VH_F_cervical_vertebra_6",
+    "vhf_mm": [
+     551.9,
+     419.8,
+     1486.7
+    ]
+   },
+   {
+    "name": "C7",
+    "asset": "VH_F_cervical_vertebra_7",
+    "vhf_mm": [
+     549.4,
+     407.8,
+     1471.3
+    ]
+   },
+   {
+    "name": "T1",
+    "asset": "VH_F_thoracic_vertebra_1",
+    "vhf_mm": [
+     549.4,
+     398.1,
+     1454.8
+    ]
+   },
+   {
+    "name": "T2",
+    "asset": "VH_F_thoracic_vertebra_2",
+    "vhf_mm": [
+     547.5,
+     390.1,
+     1436.6
+    ]
+   },
+   {
+    "name": "T3",
+    "asset": "VH_F_thoracic_vertebra_3",
+    "vhf_mm": [
+     546.9,
+     383.7,
+     1416.3
+    ]
+   },
+   {
+    "name": "T4",
+    "asset": "VH_F_thoracic_vertebra_4",
+    "vhf_mm": [
+     545.7,
+     377.7,
+     1392.9
+    ]
+   },
+   {
+    "name": "T5",
+    "asset": "VH_F_thoracic_vertebra_5",
+    "vhf_mm": [
+     544.9,
+     374.2,
+     1371.6
+    ]
+   },
+   {
+    "name": "T6",
+    "asset": "VH_F_thoracic_vertebra_6",
+    "vhf_mm": [
+     545.2,
+     373.7,
+     1349.0
+    ]
+   },
+   {
+    "name": "T7",
+    "asset": "VH_F_thoracic_vertebra_7",
+    "vhf_mm": [
+     543.6,
+     370.5,
+     1324.9
+    ]
+   },
+   {
+    "name": "T8",
+    "asset": "VH_F_thoracic_vertebra_8",
+    "vhf_mm": [
+     541.8,
+     370.0,
+     1302.0
+    ]
+   },
+   {
+    "name": "T9",
+    "asset": "VH_F_thoracic_vertebra_9",
+    "vhf_mm": [
+     540.6,
+     371.6,
+     1280.7
+    ]
+   },
+   {
+    "name": "T10",
+    "asset": "VH_F_thoracic_vertebra_10",
+    "vhf_mm": [
+     539.6,
+     373.2,
+     1259.1
+    ]
+   },
+   {
+    "name": "T11",
+    "asset": "VH_F_thoracic_vertebra_11",
+    "vhf_mm": [
+     539.4,
+     373.6,
+     1235.6
+    ]
+   },
+   {
+    "name": "T12",
+    "asset": "VH_F_thoracic_vertebra_12",
+    "vhf_mm": [
+     537.7,
+     376.2,
+     1209.3
+    ]
+   },
+   {
+    "name": "L1",
+    "asset": "VH_F_lumbar_vertebra_1",
+    "vhf_mm": [
+     534.8,
+     378.6,
+     1174.8
+    ]
+   },
+   {
+    "name": "L2",
+    "asset": "VH_F_lumbar_vertebra_2",
+    "vhf_mm": [
+     535.3,
+     383.1,
+     1140.8
+    ]
+   },
+   {
+    "name": "L3",
+    "asset": "VH_F_lumbar_vertebra_3",
+    "vhf_mm": [
+     535.3,
+     386.6,
+     1102.6
+    ]
+   },
+   {
+    "name": "L4",
+    "asset": "VH_F_lumbar_vertebra_4",
+    "vhf_mm": [
+     534.4,
+     389.9,
+     1072.6
+    ]
+   },
+   {
+    "name": "L5",
+    "asset": "VH_F_lumbar_vertebra_5",
+    "vhf_mm": [
+     533.6,
+     394.1,
+     1044.1
+    ]
+   },
+   {
+    "name": "L6",
+    "asset": "VH_F_lumbar_vertebra_6",
+    "vhf_mm": [
+     536.6,
+     396.6,
+     1015.5
+    ]
+   },
+   {
+    "name": "sacrum",
+    "asset": "VH_F_sacrum",
+    "vhf_mm": [
+     534.7,
+     381.1,
+     961.4
+    ]
+   }
+  ],
+  "sacrum_offset_mm": 4.2,
+  "by_order_from_sacrum": [
+   {
+    "instance": "V01",
+    "hra_name_by_order": "C1",
+    "z_offset_mm": 1.6
+   },
+   {
+    "instance": "V02",
+    "hra_name_by_order": "C2",
+    "z_offset_mm": -3.3
+   },
+   {
+    "instance": "V03",
+    "hra_name_by_order": "C3",
+    "z_offset_mm": 4.0
+   },
+   {
+    "instance": "V04",
+    "hra_name_by_order": "C4",
+    "z_offset_mm": 4.3
+   },
+   {
+    "instance": "V05",
+    "hra_name_by_order": "C5",
+    "z_offset_mm": 3.4
+   },
+   {
+    "instance": "V06",
+    "hra_name_by_order": "C6",
+    "z_offset_mm": 3.6
+   },
+   {
+    "instance": "V07",
+    "hra_name_by_order": "C7",
+    "z_offset_mm": 3.4
+   },
+   {
+    "instance": "V08",
+    "hra_name_by_order": "T1",
+    "z_offset_mm": 3.2
+   },
+   {
+    "instance": "V09",
+    "hra_name_by_order": "T2",
+    "z_offset_mm": 1.8
+   },
+   {
+    "instance": "V10",
+    "hra_name_by_order": "T3",
+    "z_offset_mm": 1.8
+   },
+   {
+    "instance": "V11",
+    "hra_name_by_order": "T4",
+    "z_offset_mm": 3.6
+   },
+   {
+    "instance": "V12",
+    "hra_name_by_order": "T5",
+    "z_offset_mm": 3.0
+   },
+   {
+    "instance": "V13",
+    "hra_name_by_order": "T6",
+    "z_offset_mm": 2.8
+   },
+   {
+    "instance": "V14",
+    "hra_name_by_order": "T7",
+    "z_offset_mm": 4.3
+   },
+   {
+    "instance": "V15",
+    "hra_name_by_order": "T8",
+    "z_offset_mm": 4.3
+   },
+   {
+    "instance": "V16",
+    "hra_name_by_order": "T9",
+    "z_offset_mm": 2.4
+   },
+   {
+    "instance": "V17",
+    "hra_name_by_order": "T10",
+    "z_offset_mm": 0.2
+   },
+   {
+    "instance": "V18",
+    "hra_name_by_order": "T11",
+    "z_offset_mm": -1.7
+   },
+   {
+    "instance": "V19",
+    "hra_name_by_order": "T12",
+    "z_offset_mm": -3.1
+   },
+   {
+    "instance": "V20",
+    "hra_name_by_order": "L1",
+    "z_offset_mm": 0.6
+   },
+   {
+    "instance": "V21",
+    "hra_name_by_order": "L2",
+    "z_offset_mm": 1.8
+   },
+   {
+    "instance": "V22",
+    "hra_name_by_order": "L3",
+    "z_offset_mm": 4.6
+   },
+   {
+    "instance": "V25",
+    "hra_name_by_order": "L4",
+    "z_offset_mm": 0.5
+   },
+   {
+    "instance": "V26",
+    "hra_name_by_order": "L5",
+    "z_offset_mm": -3.6
+   },
+   {
+    "instance": "V27",
+    "hra_name_by_order": "L6",
+    "z_offset_mm": -6.0
+   }
+  ],
+  "counts_agree": true,
+  "reading": "Same count as the HRA female skeleton: the by-order names are a candidate numbering with same-donor external support, pending anatomist confirmation."
+ },
+ "skellytour_seams_z": [
+  260,
+  520,
+  780,
+  1040,
+  1300,
+  1560
+ ],
+ "volumes": {
+  "instances": "data/derived/nlm-vhf/consensus/vertebra-instances.nii.gz",
+  "review": "data/derived/nlm-vhf/consensus/vertebra-review.nii.gz",
+  "votes": "data/derived/nlm-vhf/consensus/vertebra-votes.nii.gz",
+  "eligible": "data/derived/nlm-vhf/consensus/vertebra-eligible.nii.gz"
+ },
+ "naming": "Every instance id is provisional and geometric. hra_name_by_order is external same-donor evidence for the count and order, not a decision; name_status stays pending until an anatomist or a documented reference confirms the levels.",
+ "selftest": {
+  "merge_two_bodies": {
+   "moose_state": "split",
+   "totalseg_states": [
+    "merge",
+    "merge"
+   ],
+   "pass": true
+  },
+  "split_one_body": {
+   "moose_states": [
+    "merge",
+    "merge"
+   ],
+   "totalseg_state": "split",
+   "pass": true
+  },
+  "delete_one_body": {
+   "before": [
+    "matched"
+   ],
+   "after": [
+    "unmatched"
+   ],
+   "pass": true
+  },
+  "swap_two_labels": {
+   "state_counts_before": {
+    "matched": 23,
+    "merge": 3,
+    "unmatched": 2
+   },
+   "state_counts_after": {
+    "matched": 23,
+    "merge": 3,
+    "unmatched": 2
+   },
+   "order_violations_before": 0,
+   "order_violations_after": 0,
+   "pass": true
+  },
+  "shift_15mm": {
+   "moose_state": "partial",
+   "pass": true
+  },
+  "all_pass": true,
+  "perturbed_model": "skellytour"
+ }
+}

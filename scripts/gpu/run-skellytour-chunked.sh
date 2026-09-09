@@ -44,21 +44,8 @@ PY
     echo "chunk $c exit ${PIPESTATUS[0]} $(date -Is)"
     rm -f $OUT/chunks/out$c/temp.nii.gz
   done
-  $PY - "$IN" "$OUT" <<'PY'
-import sys, json, glob, nibabel as nib, numpy as np
-inp, out = sys.argv[1], sys.argv[2]
-im = nib.load(inp); plan = json.load(open(f"{out}/chunks/plan.json")); i0, i1, j0, j1 = plan['crop']
-full = np.zeros(im.shape, np.uint8); done = []
-for p in plan['chunks']:
-    c = p['chunk']; cands = [f for f in glob.glob(f"{out}/chunks/out{c}/*.nii.gz") if 'temp' not in f]
-    if not cands: print('missing chunk', c); continue
-    seg = np.asanyarray(nib.load(cands[0]).dataobj).astype(np.uint8)
-    a, b = p['core0'] - p['z0'], p['core1'] - p['z0']
-    full[i0:i1, j0:j1, p['core0']:p['core1']] = seg[:, :, a:b]; done.append(c)
-    print('chunk', c, 'from', cands[0].split('/')[-1], 'labels', int(len(np.unique(seg)) - 1), flush=True)
-nib.save(nib.Nifti1Image(full, im.affine), f"{out}/skellytour_high.nii.gz")
-u, n = np.unique(full, return_counts=True); print('merged labels', len(u) - 1, 'voxels', int(n[1:].sum()), 'chunks done', done, 'of', len(plan['chunks']))
-PY
+  # single deterministic fusion with provenance and seam checks; stops on missing or ambiguous chunks
+  $PY "$(dirname "$0")/merge-skellytour.py" "$IN" "$OUT" || { echo "MERGE FAILED $(date -Is)"; return 1; }
 }
 echo "START $(date -Is) CORE=$CORE OV=$OV targets=$*"
 for t in "$@"; do case $t in nlm) run_one $BASE/nlm-vhf/derived/vhf-fresh-ct.nii.gz $BASE/skellytour/nlm;; denver) run_one $BASE/denver/aligned-ct-nii/denver_aligned_ct_hu.nii.gz $BASE/skellytour/denver;; esac; done

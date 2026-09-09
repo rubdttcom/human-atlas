@@ -36,7 +36,23 @@
    "id": "nlm-vhf-ct:NLMCT:VHF:vertebrae_L2",
    "issue": "Lumbar numbering of the VHF donor: three CT models (TotalSegmentator, MOOSE, Skellytour) find six lumbar-type vertebral bodies between the last rib-bearing vertebra and the sacrum on both the NLM fresh CT (z 556 to 740) and the Denver aligned CT, and each forces five names onto them differently (generated/ct-prior-consensus-{nlm,denver}.json; L2 Dice 0.39, 0.19, 0.01 in the worst pairs). The shipped CT labels L1 to L3 are therefore unreliable in extent and name.",
    "status": "pending",
-   "action": "Anatomist to decide the numbering (lumbarised S1, extra lumbar segment or rib count) from the cryosections; until then vertebra consensus works on instances, and L1 to L3 of nlm-vhf-ct stay marked as automatic and disputed."
+   "action": "Vertebra consensus works on geometric instances with neutral ids (scripts/ct-vertebra-instances.py, generated/ct-vertebra-instances-{nlm,denver}.json); L1 to L3 of nlm-vhf-ct stay marked as automatic and disputed. Numbering evidence gathered so far, in order of preference (plan B section 2.5): same-donor published references first, anatomist only for what they cannot close.",
+   "evidence": [
+    {
+     "source": "HRA united-female v1.5 skeleton (public/atlases/hra-female.json, assets VH_F_lumbar_vertebra_1..6, VH_F_thoracic_vertebra_1..12, seven cervical, VH_F_sacrum), modelled on the Visible Human Female",
+     "statement": "25 vertebrae: 7 cervical, 12 thoracic, 6 lumbar, plus a fused sacrum",
+     "url": "https://lod.humanatlas.io/ref-organ/united-female/v1.5",
+     "checked": "2026-09-09"
+    },
+    {
+     "source": "NIH 3D entry 3DPX-020988, Spinal Cord, Female (HRA, CC BY 4.0, created 2024-03-06, published 2025-08-05)",
+     "statement": "\"The Visible Human Female has 6 lumbar vertebrae, and the total length of her spinal column is 60.923 cm.\"",
+     "url": "https://3d.nih.gov/entries/3DPX-020988",
+     "checked": "2026-09-09",
+     "limits": "supports the count and the order; it does not validate our mask boundaries, nor say whether the body TotalSegmentator calls S1 (fused to the sacrum by MOOSE and Skellytour) is sacral or a lumbarised segment"
+    }
+   ],
+   "open_question": "Lumbosacral transition: TotalSegmentator segments a separate S1 body (about 49 mL) under the sixth lumbar-type body; MOOSE labels it sacrum and Skellytour pelvis. Whether it is S1 of a normal sacrum below six lumbar vertebrae or a further transitional segment is not decided by any reference found so far."
   }
  ]
 }
