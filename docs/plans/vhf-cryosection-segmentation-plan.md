@@ -1,6 +1,6 @@
 # Plan: AI segmentation of the Visible Human Female cryosections
 
-Status: proposal (5 September 2026). A project of its own, separate from the atlas; it delivers a new source `nlm-vhf-cryo` to the atlas.
+Status: proposal (5 September 2026). A project of its own, separate from the atlas; it delivers a new source `nlm-vhf-cryo` to the atlas. A machine-driven alternative with the anatomist as blinded auditor is in `vhf-cryosection-machine-driven-plan.md` (plan B).
 
 ## 1. Goal
 

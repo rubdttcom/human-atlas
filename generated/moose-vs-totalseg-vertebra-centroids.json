@@ -1,0 +1,122 @@
+[
+ {
+  "vertebra": "C1",
+  "offset_mm": 4.59,
+  "dz_mm": -4.59
+ },
+ {
+  "vertebra": "C2",
+  "offset_mm": 4.2,
+  "dz_mm": -4.18
+ },
+ {
+  "vertebra": "C3",
+  "offset_mm": 3.81,
+  "dz_mm": -3.77
+ },
+ {
+  "vertebra": "C4",
+  "offset_mm": 3.84,
+  "dz_mm": -3.81
+ },
+ {
+  "vertebra": "C5",
+  "offset_mm": 3.91,
+  "dz_mm": -3.89
+ },
+ {
+  "vertebra": "C6",
+  "offset_mm": 3.98,
+  "dz_mm": -3.95
+ },
+ {
+  "vertebra": "C7",
+  "offset_mm": 3.7,
+  "dz_mm": -3.69
+ },
+ {
+  "vertebra": "T1",
+  "offset_mm": 3.8,
+  "dz_mm": -3.79
+ },
+ {
+  "vertebra": "T2",
+  "offset_mm": 3.59,
+  "dz_mm": -3.52
+ },
+ {
+  "vertebra": "T3",
+  "offset_mm": 3.33,
+  "dz_mm": -3.26
+ },
+ {
+  "vertebra": "T4",
+  "offset_mm": 3.22,
+  "dz_mm": -3.18
+ },
+ {
+  "vertebra": "T5",
+  "offset_mm": 3.21,
+  "dz_mm": -3.1
+ },
+ {
+  "vertebra": "T6",
+  "offset_mm": 2.82,
+  "dz_mm": -2.81
+ },
+ {
+  "vertebra": "T7",
+  "offset_mm": 3.0,
+  "dz_mm": -2.81
+ },
+ {
+  "vertebra": "T8",
+  "offset_mm": 2.47,
+  "dz_mm": -2.44
+ },
+ {
+  "vertebra": "T9",
+  "offset_mm": 2.68,
+  "dz_mm": -2.68
+ },
+ {
+  "vertebra": "T10",
+  "offset_mm": 2.5,
+  "dz_mm": -2.49
+ },
+ {
+  "vertebra": "T11",
+  "offset_mm": 2.89,
+  "dz_mm": -2.89
+ },
+ {
+  "vertebra": "T12",
+  "offset_mm": 2.67,
+  "dz_mm": -2.66
+ },
+ {
+  "vertebra": "L1",
+  "offset_mm": 17.49,
+  "dz_mm": -17.16
+ },
+ {
+  "vertebra": "L2",
+  "offset_mm": 20.94,
+  "dz_mm": -19.99
+ },
+ {
+  "vertebra": "L3",
+  "offset_mm": 18.26,
+  "dz_mm": -18.23
+ },
+ {
+  "vertebra": "L4",
+  "offset_mm": 5.73,
+  "dz_mm": -5.49
+ },
+ {
+  "vertebra": "L5",
+  "offset_mm": 1.9,
+  "dz_mm": -1.84
+ }
+]

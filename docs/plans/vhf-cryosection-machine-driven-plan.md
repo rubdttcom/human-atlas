@@ -1,0 +1,271 @@
+# Plan B: machine-driven segmentation of the Visible Human Female cryosections
+
+Status: alternative proposal to `vhf-cryosection-segmentation-plan.md` (plan A). First draft 6 September 2026; revised the same day after a web survey of tools, datasets, licences and prior projects (section 3 and the source list); revised 9 September 2026 after an external review of plan A (section 10) and the first MOOSE run on the NLM CT (section 9, step 0, done). Same goal, same input data as plan A. The difference is the role of the anatomist: plan A uses the anatomist as a labeller (60 to 100 hours); plan B uses the anatomist only as a blinded auditor (15 to 25 hours) and derives every label by machine from priors that already exist for this donor and from open models.
+
+## 1. Thesis
+
+Three facts make a fully machine-driven pipeline possible for this donor:
+
+1. **Same-donor gold labels of the same modality exist** (Denver, 128 structures, pelvis to feet, CC BY 4.0). They train the colour model and they measure how consistent a human is.
+2. **A second physical instrument imaged the same body.** The NLM CT exists, and Denver publishes it already aligned to the cryosection frame. Bone, air and cavity boundaries are verified against physics, not against opinion.
+3. **Names come from registered priors, not from a human.** Three open CT models name every vertebra, rib, organ, arm bone, carpal, metacarpal and finger (section 3.2). The colour network never invents a name; it refines a boundary and confirms an assignment.
+
+**Sex rule (project decision, 6 September 2026).** Every training label, shape prior and adjacency reference in the label path comes from a female body. Male datasets (Visible Human Male, Voxel-Man SIO, Denver male, BodyParts3D) are not used for training, priors or comparison. Generic segmentation models trained on mixed clinical CT (TotalSegmentator, MOOSE, Skellytour) are tools that name structures on this donor's own CT; they contribute no anatomy of their own.
+
+"Fidelity equal to the anatomist" is therefore a measurement, not a promise. Section 2 defines it. Section 3.4 shows that the reference itself (Denver) published no inter-rater statistic, so the audit of plan B is stricter than the validation of the labels it is compared with.
+
+## 2. Definition of fidelity
+
+### 2.1 Human noise floor `H`
+
+Denver publishes both the *original* hand-painted label maps and the *final* STL meshes (after correction, smoothing and overclosure removal). Voxelise the final meshes onto the label-map grid and compute, per structure class (long bone, small bone, cartilage, ligament, muscle group), the Dice and the surface p95 between original and final. This is a *lower bound* of expert variability on these photographs: the final meshes differ from the raw painting by smoothing and overclosure removal, not by a second annotator. Call it `H_c` (Dice) and `P_c` (p95, mm). No inter-rater figure exists for this donor; the sealed test set of section 2.4 is the only measure of transfer to unlabelled regions. Training always uses the *original* label maps, never the voxelised final meshes.
+
+Denver's own published checks are coarse: volume change below 15 % for 95 % of structures between original and final, and bilateral muscle volume within 10 % for 70 % of the muscles. No inter-rater agreement, no hours, no Dice were reported (section 3.4). `H_c` is therefore the only quantitative reference for "anatomist quality" on this donor, and it is measured, not assumed.
+
+### 2.2 Pass criteria per structure
+
+A machine label of structure `s` in class `c` is *equivalent to manual tagging* when it satisfies all that apply:
+
+| Check | Applies to | Criterion |
+|---|---|---|
+| Held-out agreement | structures with Denver gold (lower limb) | Dice(machine, Denver final) >= `H_c` and p95 <= `P_c` on slice bands never seen in training or pseudo-labelling |
+| Physical concordance | every bone | after a **per-bone rigid fit** (each bone as its own rigid body, which removes posture differences between the fresh CT and the frozen block), surface p95 between the cryosection bone and the CT cortical edge (HU > 300) must be <= the value Denver's own cryosection bones reach against the same CT (measured today on the femora: 3.4 and 4.4 mm; to be measured per bone class in stage 1). A fixed 1 mm bar is not supported: the CT voxel is 1 mm and the existing pelvis fit reaches 4.7 mm p95. Alignment error and segmentation error are reported separately. |
+| Prior consensus | every structure with a CT prior | the three CT models of section 3.2 agree on the name of the component (majority); disagreement is recorded as uncertainty |
+| Topology | every structure | expected number of connected components (1 for a bone), no tunnels through the object, no islands |
+| Counts and uniqueness | skeleton | 206 bones, every name used once, 24 named vertebrae, 12 rib pairs, 27 bones per hand, 26 per foot |
+| Adjacency | every structure | the contact graph equals the reference graph (HRA skeleton; Denver for the lower limb) |
+| Bilateral symmetry | paired structures | left/right volume ratio within 0.85 to 1.15 unless the CT shows an asymmetry (Denver reached 0.90 to 1.10 for only 70 % of muscles) |
+| Volume prior | every structure | within 2 SD of the HRA or literature value for an adult woman of this stature |
+| Slice continuity | every structure | centroid jump between consecutive slices < 2 mm; area change < 30 % except at anatomical ends |
+| Blinded audit | every stratum | section 2.3 |
+
+### 2.3 Blinded audit (the only human step)
+
+The anatomist does not draw. They grade panels. Each panel shows one slice, one structure, one outline and a 3D thumbnail. The panel does not say whether the outline is machine, Denver or a deliberately perturbed control (2 mm dilation, wrong neighbour). Grades: accept, minor (< 2 mm), reject.
+
+Design: seven strata (long bones; hand and foot bones; vertebrae and ribs; trunk organs; trunk muscles; limb muscles; head and neck). Per stratum, 60 random machine panels plus 20 Denver panels plus 20 controls where Denver exists. With 0 rejects in 60 the reject rate is below 5 % at 95 % confidence (rule of three). With 1 to 3 rejects the stratum is retrained and re-sampled. Machine panels must score no worse than Denver panels in the same session, and the anatomist must reject the controls, otherwise the session is invalid.
+
+Time: 7 strata x 100 panels x 10 to 15 s is about 3 hours per round; three rounds plus reading the failure reports gives 15 to 25 hours.
+
+Result per structure goes to `registry/review-status.json` as `audited-pass`, `audited-minor` or `audited-fail`, with panel identifiers. Nothing enters the composite below `audited-pass`; failed and untested structures ship as a separate `machine-unverified` layer with a visible flag.
+
+### 2.4 Sealed test set in unlabelled regions (about 4 hours, anatomist)
+
+Held-out Denver bands answer only "does the model complete a region whose anatomy it has seen". Transfer to the forearm, hand and trunk needs a reference there. Before any training, the anatomist draws a small sealed set: 3 bones and 3 muscles in one forearm block, 2 organs and 2 muscles in one trunk block, on the original photographs, about 4 hours. The set is hashed and never opened during development. It is scored once per release (Dice, p95) and reported next to the audit. The clock also records **human minutes per accepted structure** for every human step (sealed set, audit), which is the metric that decides whether plan B beats plan A.
+
+## 3. Survey of what exists (6 September 2026)
+
+### 3.1 Labelled cryosection data (training material)
+
+| Resource | Content | Licence | Decision |
+|---|---|---|---|
+| Denver VHF 2022 | 128 structures, pelvis to feet, on the aligned VHF photographs; aligned whole-body CT; original label maps and final STL | CC BY 4.0 | **Gold training and noise floor.** Downloaded. |
+| Voxel-Man Segmented Internal Organs of the Visible Human **Male**, Zenodo record 15882019 (11 Aug 2025) | 774 slices x (RGB + frozen CT + label), 1 mm, torso of the VHM, > 200 objects | CC BY 4.0 | **Excluded by the sex rule.** Recorded here because it is the only other open labelled cryosection set; it is male. |
+| Visible Korean, female whole body | 0.2 mm colour sections, segmented images of the female whole body (2020) | free for non-commercial use, after KISTI permission | **Not used for shipped labels.** The atlas is CC BY 4.0. Could be requested for an internal ablation only after a legal reading. |
+| Chinese Visible Human, female | 860 structures segmented semi-automatically in Photoshop over 7 years (2012) | no public access found | Not usable. |
+| AustinWoman v2.3 (UT Austin) | whole-body VHF voxel labels, 64 materials, native 1/3 x 1/3 x 1 mm, semi-automatic (BRISKit) | CC BY-NC-ND 3.0 | **Comparison only**, like NEVA. Same donor, whole body, so it is a useful external check of tissue classes; nothing copied. Ask UT Austin for a CC BY relicence of the label volume. |
+| NEVA VHP-Female v2.2 | 249 structures, whole body | registered researchers, no redistribution | Comparison only, as in plan A. |
+| NLM VHP in the NCI Imaging Data Commons (Zenodo 12690050) | DICOM conversion of VHM/VHF cryosections, CT, MRI, downloadable with `idc-index` | NLM terms | Alternative download path with manifests; the record lists only 96 MB, so verify content before relying on it. NLM FTP remains the primary source. |
+
+### 3.2 Open CT models that name structures (priors)
+
+| Model | Coverage relevant to us | Licence (code / weights) | Decision |
+|---|---|---|---|
+| TotalSegmentator 2.11 free tasks: `total`, `body`, `vertebrae_body`, `head_glands_cavities`, `head_muscles`, `headneck_bones_vessels`, `headneck_muscles`, `craniofacial_structures`, `abdominal_muscles`, `trunk_cavities`, `teeth`, `oculomotor_muscles`, `ventricle_parts` | 117 core labels plus head, neck, face, jaw, teeth, trunk muscles and cavities | Apache-2.0 / Apache-2.0 (licensed tasks `appendicular_bones`, `tissue_types`, `thigh_shoulder_muscles`, `brain_structures` excluded) | **Prior vote 1.** Plan A used only `total`; the head and neck tasks are new inputs. |
+| MOOSE 3.2 (ENHANCE-PET): `clin_ct_peripheral_bones`, `clin_ct_all_bones_v1`, `clin_ct_ribs`, `clin_ct_vertebrae`, `clin_ct_muscles`, `clin_ct_organs` | individual ribs and vertebrae, humerus, radius, ulna, **carpals, metacarpals, fingers**, femur, tibia, fibula, tarsals, muscles, organs | Apache-2.0 / CC BY 4.0 | **Prior vote 2 and the open replacement for the licensed `appendicular_bones` task.** Verify the exact hand label granularity in the model's `dataset.json` after install. |
+| Skellytour (Wardell 2025, Radiology AI) | 60 bone labels: individual ribs and vertebrae, skull, pelvis, sternum, scapulae, clavicles, humeri, femora; cortical/trabecular sub-segmentation; trained on low-density bone | Apache-2.0 code; weights licence to confirm (paper states CC BY 4.0) | **Prior vote 3 for the axial skeleton and long bones.** No hand bones. |
+| CADS (Xu 2025) | 167 structures head to knee, including brain white/grey matter, CSF, eyes, thyroid, pituitary, carotids, trunk muscles | Apache-2.0 code; weights in three variants, the "open" one CC BY-SA 4.0 | **Comparison and head prior only** until the share-alike reach onto model outputs is settled in `docs/LICENSING.md`. |
+| VISTA3D (NVIDIA) | 127 classes | NVIDIA OneWay Noncommercial | Excluded. |
+| SAT (Shanghai, text prompts, 497 classes CT/MR/PET) | large vocabulary | no licence statement found in the repository | Excluded until a licence is published. |
+| nnInteractive (DKFZ) | promptable 3D, best-in-class interactive | Apache-2.0 / **CC BY-NC-SA 4.0** | Excluded from label generation. |
+| MedSAM2 (Wang lab) | promptable 3D propagation | weights CC BY-SA 4.0, "research and education only" | Excluded from label generation (plan A proposed it; this replaces it). |
+| SAM-Med3D (OpenMEDLab) | promptable 3D, 131K masks | Apache-2.0 code; weights licence not stated | Optional; verify weights licence first. |
+
+Policy: a model whose weights are Apache, MIT, CC BY or the SAM licence may touch shipped labels. A model with NC or SA weights may only produce internal comparison metrics.
+
+### 3.3 Foundation models for the colour photographs
+
+The cryosections are natural-colour photographs. That is the home domain of the general-purpose Segment Anything family, not of CT models.
+
+| Model | Why it matters | Licence | Decision |
+|---|---|---|---|
+| SAM 3 (Meta, Nov 2025; SAM 3.1 since) | concept prompts (text noun phrase or image exemplar) return every instance in an image; video memory propagates through slice stacks; a controlled comparison on 16 medical datasets found SAM 3 stronger than SAM 2, with the largest margin on colour modalities (endoscopy, ultrasound) | custom SAM licence: derivatives redistributed under the same licence, no restriction on outputs, no user thresholds, acceptable-use list (no military etc.) | **Second opinion and exemplar-driven proposals.** Exemplar prompts are cut from Denver slices ("this is a femur"), text prompts for tissue ("bone", "muscle", "fat"). Fine-tuned checkpoints, if any, stay SAM-licensed and are not shipped with the atlas. |
+| Medical SAM3 (Jan and Jun 2026, weights on Hugging Face) | SAM 3 fine-tuned on 33 medical datasets with text prompts, 3D support | licence file not read yet | Evaluate against plain SAM 3 on Denver slices; adopt only if licence permits. |
+| Biomedisa (ANU, Nature Communications 2020) | random-walk "smart interpolation" from sparsely labelled slices using the full image data; local, GPU | EUPL 1.2 | **Prompt-free propagator**: the labelled slices come from the priors and from the network, not from a human. Colour input support to verify; fall back to per-channel or luminance. |
+
+### 3.4 What the reference (Denver) actually did
+
+From the Scientific Data paper: images were aligned in Synopsys ScanIP with manual and automatic registration where slices did not align; no alignment accuracy was reported. Segmentation was manual in ScanIP by research assistants using Netter, Fleckenstein, Radiopaedia and AnatomyLearning as references, reviewed by a panel of the authors; no hours, no inter-rater statistic. Validation: volume change < 15 % for 95 % of structures from original to final; contralateral muscle volume within 10 % for 70 % of muscles; overclosures removed to a 0.05 mm gap. The whole-body CT aligned to the cryosection frame is shared, without a stated alignment method or accuracy.
+
+Consequence for plan B: the bar "as good as the anatomist" cannot be read from Denver's paper. It has to be measured (section 2.1). Plan B's symmetry, topology and CT-concordance checks are stricter than anything reported for the reference.
+
+### 3.5 Other evidence used
+
+- 125 distinct bones in one 3D network on upper-body CT is feasible (MICCAI 2020 workshop, Schnider et al.); data not public.
+- SAM and SAM 2 zero-shot on bone CT: box plus centre point per component is the best prompt (arXiv 2411.08629). We use the same prompt shape, generated from priors.
+- nnU-Net revisited (2024): under controlled conditions CNN nnU-Net variants beat transformer and Mamba variants. nnU-Net stays the backbone.
+- OpenHands (2024): open statistical shape model of the finger bones from 0.3 mm CT of 10 hands (5 female, 5 male); usable only if the female subjects can be separated. Licence to check.
+- MuscleMap (MIT code, Zenodo weights): 113 muscles and bones, CT and MRI, neck to foot; arm, forearm and hand muscles announced but not released. Candidate fourth prior vote for muscles when released.
+- No published work segments the whole VHF or VHM from colour with deep learning and free labels. The gap plan A identified stands.
+
+## 4. Pipeline
+
+Every stage is a seeded, versioned script under `scripts/`, with a JSON report under `generated/`. No stage has a manual input except stage 6.
+
+### Stage 0. Data and alignment (2 weeks)
+
+- Download the 5,189 colour slices with a SHA-256 manifest (extend `fetch-nlm-vhf.py`); compare with the IDC manifest as a second path.
+- Reproduce the alignment for the whole body with two automatic features per slice: the block and body outline, and the corresponding slice of Denver's aligned CT (bone and skin contours). Validate on pelvis to feet against Denver's aligned slices.
+- Criterion: mean in-plane error < 1 pixel (0.33 mm) against Denver's aligned photographs on pelvis to feet (an image-to-image check; mask-to-mesh agreement only verifies the conversion, not the alignment). Above the pelvis no aligned photographs exist: the check is photograph-to-CT (body outline and bone contours per slice, reported per region), and the residual is published as alignment uncertainty, separate from segmentation error.
+
+### Stage 1. Named priors in the cryosection frame (1 week, CPU or one GPU)
+
+- Run TotalSegmentator (free tasks), MOOSE (bones, ribs, vertebrae, muscles, organs) and Skellytour on Denver's aligned whole-body CT. All three outputs land directly in the cryosection frame; no registration of ours.
+- Majority vote per voxel and per name; the disagreement map is the prior uncertainty. Compare with the existing `nlm-vhf-ct` labels carried through `nlm-ct-to-vhf`: this measures the fresh-CT versus frozen-block posture question asked in the main plan.
+- Resample to 0.33 mm with a signed-distance channel per label. Fit the HRA skeleton to the consensus bone mask (per-bone rigid, then a smooth global field) to obtain the reference adjacency graph.
+
+### Stage 2. Tissue and organ network (3 weeks, GPU)
+
+- nnU-Net v2 cascade: 2D at full resolution on RGB plus prior channels (consensus one-hot at tissue level, prior distance, prior uncertainty), and 3D at 1 mm for context.
+- Classes: cortical bone, trabecular bone, cartilage, ligament and tendon, skeletal muscle, fat, skin, vessel lumen and blood, nerve, air, block and background, plus one class per organ that has a named prior.
+- Explicit label mapping, versioned in `registry/cryo-tissue-map.json`: every Denver label and every CT prior label maps to one tissue class before training. Denver composite labels ("fat with fascia", "outer fat with skin") map to a composite class or are ignored; they are never treated as pure tissue. Voxels inside the body that no source labels are **unknown**, not background: they carry an ignore label in the loss. Only the block, the air and the table are known background.
+- Storage: the RGB volume stays `uint8` (39 GB), labels `uint16` (26 GB); inference and post-processing run in overlapping blocks; full-body class probabilities are never materialised (only the argmax and a per-voxel max-probability map).
+- Training data and trust:
+  - Denver lower limb: full trust; five folds by 50 mm slice bands so neighbouring slices never straddle train and test.
+  - CT consensus on the VHF trunk, arms and head (this donor, female): weak labels; only voxels inside all three priors eroded by 1 mm enter the loss; a 2 mm boundary band is ignored so the colour edge decides. This is the only source of organ colour appearance, since no open female cryosection organ labels exist (section 3.1).
+- Internal target: mean Dice on held-out Denver bands >= `H_c` per class. Fallback if `H` is unavailable: bone 0.95, muscle 0.90, cartilage 0.85.
+
+### Stage 3. Instances and names (3 weeks)
+
+- **Bones.** Connected components of the bone classes, intersected with the CT bone mask dilated by 1 mm (this removes ice and blood that look like bone). Names by an assignment problem (Hungarian) between components and prior names (consensus of the three CT models; HRA where they are silent), with hard constraints: uniqueness, counts, proximal-to-distal order along each ray of the hand and foot, side of the mid-sagittal plane, adjacency. Fallback for the hand if MOOSE labels are coarse: ray-order heuristic (5 rays of metacarpal plus 3 or 2 phalanges, 8 carpals by adjacency) plus the OpenHands shape prior restricted to its female subjects (5 of 10) if the release separates them; otherwise no shape prior.
+- **Organs.** Named prior plus colour refinement; boundary snap by graph cut with the prior as unary term and the colour gradient as pairwise term.
+- **Muscles.** The weakest link. The network gives the muscle voxel set and the fascial planes (visible colour edges). Names come from the CT muscle priors where they exist (TotalSegmentator, MOOSE, later MuscleMap) and from Denver (female, lower limb) and HRA female shape priors registered by the bones elsewhere. Every muscle carries an explicit uncertainty; muscles that fail section 2.2 stay `machine-unverified`.
+- **Second opinion on colour.** SAM 3 with exemplar prompts cut from Denver slices and text prompts for tissue, prompted per structure with a box plus the centre point taken from the prior centroid, propagated through the stack by its video memory in both directions. Biomedisa interpolates between the slices where SAM 3 and nnU-Net agree. Where the three disagree by more than 1 mm the voxel is marked uncertain.
+
+### Stage 4. Self-training rounds (2 weeks, GPU)
+
+- Voxels where the ensemble agrees and all checks of section 2.2 pass become pseudo-labels for trunk, arms and head. Retrain. Three rounds at most; stop when the held-out Denver Dice changes by less than 0.005.
+- The held-out Denver bands are frozen from stage 2 and never enter pseudo-labelling.
+
+### Stage 5. Automatic proofs (1 week)
+
+- Run every check of section 2.2 per structure; write `generated/cryo-proofs.json` with pass or fail, measured values and thresholds.
+- External comparison, distances only, nothing copied: AustinWoman tissue classes (same donor, female) and NEVA VHP-Female if its terms allow.
+- Structures that fail return to stage 3 with the failing constraint as a hard penalty; after two failures they stay `machine-unverified`.
+
+### Stage 6. Blinded audit (3 sessions of about 3 hours, anatomist)
+
+- Panels generated by stratified random sampling (section 2.3), served in the atlas viewer's review panel, decisions exported to `registry/review-status.json`.
+- Failing strata are retrained and re-sampled; passing strata are frozen.
+- Every audit decision binds to the SHA-256 of the exact label volume and mesh it graded, plus model version and seed. A retrained prediction is a new *proposal* with a new hash; it inherits no status. An `audited-pass` structure is replaced only when its successor passes its own audit.
+
+### Stage 7. Integration (1 week)
+
+- New source `nlm-vhf-cryo` through the existing pipeline. Names resolve to UBERON/FMA through `registry/ontology-crosswalk-reviewed.json`; MOOSE and Skellytour label names need crosswalk entries (one-off).
+- In the composite the cryosection replaces the CT of the same donor for every `audited-pass` structure; the CT stays as an alternative; `machine-unverified` is a separate layer, off by default.
+
+## 5. Where the machine is expected to win, tie and lose
+
+- **Win:** bone boundaries (checked against CT at 1 mm), slice-to-slice consistency, reproducibility (seeded, versioned), coverage in weeks, and a documented validation that the reference never had.
+- **Tie:** organs with a named prior; lower-limb muscles where Denver trains directly.
+- **Lose or unknown:** intrinsic hand and forearm muscles, nerves, small vessels, small ligaments. No open prior of the same modality exists. These are not promised; they ship only as `machine-unverified` unless the audit passes.
+
+## 6. Acceptance criteria of the project
+
+| Item | Criterion |
+|---|---|
+| Alignment | < 1 pixel against Denver's aligned slices |
+| Human noise floor | `H_c` and `P_c` measured and published per class |
+| Held-out lower limb | Dice >= `H_c` and p95 <= `P_c` for every class |
+| Bone concordance | p95 < 1.0 mm against the same-donor CT cortical edge for every bone |
+| Skeleton naming | 206 bones, every name once, counts exact, adjacency graph equal to the reference, three-model prior consensus recorded |
+| Audit | 0 rejects in 60 per stratum; machine panels no worse than Denver panels; controls rejected |
+| Licences | every model and dataset in `datasets.csv` with weight licence, version and verification date; no NC or SA weights in the label path |
+| Publication | only `audited-pass` in the composite; every mesh carries stage versions, seeds, proof values and panel identifiers |
+
+## 7. Resources
+
+- GPU: the available RTX 3080 (10 GB) is enough for stage 1 inference (minutes per model) and for 2D nnU-Net at full resolution and 3D at 1 mm with a reduced patch size. About 10 GPU-days on a 24 GB card becomes 2 to 3 weeks on the 3080. 3D at 0.33 mm is not planned on either card. Without a GPU, stage 1 runs on CPU in about an hour per model; stages 2 to 4 do not.
+- Disk: 40 GB photographs, 40 GB RGB volume, 150 GB priors, predictions and folds.
+- People: one engineer for 12 to 14 weeks; one anatomist for 15 to 25 hours of audit.
+- Licences: outputs CC BY 4.0 with the NLM attribution and the statement that they are not the current NLM data; attribution lines for Denver, Voxel-Man, TotalSegmentator, MOOSE, Skellytour; SAM 3 acknowledged in any publication.
+
+## 8. Risks specific to plan B
+
+- **MOOSE hand granularity.** If carpals or fingers are grouped labels, hand naming relies on the ray-order heuristic and OpenHands; still automatic, less certain. Read `dataset.json` in the first week.
+- **Weight licences change.** Pin every version; record the licence text and date in `datasets.csv`. Skellytour's weight licence is not stated in the repository.
+- **No female cryosection organ labels exist.** Organ colour is learned only from this donor through CT priors. The "trunk organs" audit stratum is the gate; if it fails twice, trunk organs stay CT-derived in the composite and the cryosection organs ship as `machine-unverified`.
+- **SAM 3 on cryosections is untested.** No paper applies it to cadaver photographs. It is a second opinion, never the sole source of a label.
+- **Confirmation bias in self-training.** Guarded by frozen held-out bands and by the physical CT check, which the network cannot learn to satisfy falsely.
+- **The guarantee is statistical.** The atlas must say "audited to < 5 % reject rate at 95 % confidence by a blinded anatomist", never "validated".
+- **Trunk posture.** The CT was acquired on a table, the block was frozen in another posture. The prior is a prior; the colour edge decides. Stage 1 measures the offset; stage 5 rejects structures whose CT concordance fails.
+
+## 9. First concrete milestone (2 weeks, replaces plan A section 7)
+
+0. **Done 9 September 2026 on rub-pc (RTX 3080, 4.4 min for four models).** MOOSE 3.2.2 `clin_ct_peripheral_bones`, `clin_ct_all_bones_v1`, `clin_ct_ribs`, `clin_ct_vertebrae` on the NLM CT. Outputs in `data/derived/nlm-vhf/moose/`. All 31 peripheral labels present, 24 vertebrae plus hips and sacrum, 24 ribs plus sternum. Hand labels are **grouped** (carpal, metacarpal, fingers per side), so individual hand bones need stage 3. Two anomalies were inspected (`generated/moose-vs-totalseg.json`, `generated/moose-vs-totalseg-vertebra-centroids.json`): (a) the right ulna (23 mL versus 51 mL left) and right radius touch the CT field-of-view edge (x = 0; 10,806 bone voxels in the first three columns of the forearm range): the 1993 fresh CT cuts the right forearm, so **the right forearm can only come from the cryosections**; (b) L1 to L3: MOOSE and TotalSegmentator agree on the total lumbar volume (225 versus 231 mL) but not on its split (Dice 0.65, 0.39, 0.60; centroid offsets 17 to 21 mm, against 2.5 to 4.6 mm for every other vertebra); one model shifts the lumbar names and MOOSE fragments L2 into 18 components; L1 to L3 stay out of the atlas until a third model or the photographs arbitrate. Agreement elsewhere: femora 0.96, humeri and hips 0.92, sternum, skull and clavicles 0.83 to 0.88, T10 to L5 0.81 to 0.87, ribs 0.68 to 0.75 (thin structures, 1 mm CT; volumes agree, boundaries do not). Original text of the step: run MOOSE `clin_ct_peripheral_bones` and `clin_ct_all_bones_v1` on the NLM CT already in `data/raw/nlm-vhf/`. Compute: minutes on the RTX 3080, about an hour on CPU. The elapsed "days" are install, run, comparison, crosswalk entries for the new label names, meshing through the existing pipeline and the QA report. Result: VHF hands, radii and ulnae under CC BY 4.0, closing a gap recorded in `docs/PROGRESS.md`. Compare with the TotalSegmentator `total` labels for the shared bones (Dice, p95).
+1. Download Denver's aligned whole-body CT and original label maps; run TotalSegmentator, MOOSE and Skellytour on that CT; compute the three-way consensus and compare with `nlm-vhf-ct` (Dice, centroid offsets per label). Deliverable: `generated/ct-prior-consensus.json` and the first measurement of the trunk posture offset.
+2. Compute `H_c`, `P_c` from Denver original maps versus final STL. Deliverable: `generated/denver-noise-floor.json`. In parallel the anatomist draws the sealed test set (section 2.4, about 4 hours); it is hashed and locked.
+3. Download the pelvis-to-feet VHF slices; align; train fold 0 of 2D nnU-Net on Denver with RGB + CT prior channels, and once with RGB only. Deliverable: Dice per class versus `H_c`, both ablations (this measures what the CT prior channel adds).
+4. Run SAM 3 zero-shot with exemplar prompts on 50 Denver slices; report Dice against Denver per tissue. Deliverable: go/no-go for SAM 3 as second opinion.
+5. Apply fold 0 plus the CT priors to the sealed forearm and trunk blocks; score once against the sealed set. Deliverable: first transfer Dice and p95 in unlabelled regions, and the human minutes spent.
+
+Decision rule: if fold 0 reaches `H_c` on bones and is within 0.03 of `H_c` on muscles, plan B proceeds. If not, plan A's assisted-annotation phase C is the fallback, keeping plan B's proofs (section 2.2), audit (section 2.3) and open priors (section 3.2) as its quality control.
+
+## 10. External review of plan A (ChatGPT, 8 September 2026) and what plan B takes from it
+
+The review read plan A and `generated/nlm-ct-registration.json` on GitHub; it had not seen plan B, the sex rule, the licence survey or the MOOSE results. Assessment point by point:
+
+| Review point | Verdict | Effect on plan B |
+|---|---|---|
+| 1. A 2.17 deg rigid pelvis fit does not prove whole-body alignment; a fixed p95 < 2 mm (plan A) or < 1 mm (plan B draft) bar is unsupported when the femora reach 7.5 to 8.7 mm under the pelvis transform and 3.4 to 4.4 mm with their own rigid fit | **Correct.** | Concordance is now a per-bone rigid fit with a relative bar (section 2.2); alignment and segmentation errors are reported separately (stage 0). |
+| 2. Random slice splits leak; needs spatial blocks and a separate question about transfer to unlabelled regions | **Correct**; plan B already used 50 mm bands. | Added the sealed test set in forearm and trunk (section 2.4). |
+| 3. Tissue classes must be an explicit mapping; Denver has composite labels; unlabelled anatomy is not background | **Correct.** | Versioned label map, composite classes, ignore label for unknown (stage 2). |
+| 4. Train on original masks, not voxelised final meshes; `femors` is not an alignment tool; mask-versus-mesh checks do not validate photograph alignment | **Correct.** | Original maps for training, `H` relabelled as a lower bound (section 2.1); alignment check is image-to-image (stage 0); plan B never claimed `femors` aligns. |
+| 5. The MedSAM2 85 % saving is unproven on RGB cryosections; the decisive metric is human time per accepted structure | **Correct**; plan B had already dropped MedSAM2 for its licence. | Human minutes per accepted structure is now a reported metric (section 2.4). |
+| 6. Retraining invalidates reviewed masks; bind approval to a hash | **Correct.** | Stage 6: decisions bind to SHA-256, model version and seed; new predictions are proposals. |
+| 7. 24 GB VRAM is not a universal requirement; RAM and scratch budgets are missing (RGB float32 155 GB) | **Correct.** | Section 7 already plans the RTX 3080; stage 2 now fixes uint8 storage and block processing. |
+| Proposed first milestone: verify RGB-to-mask correspondence, reserve evaluation blocks, compare a 2D tissue model with SAM-assisted annotation on a small new forearm and trunk region with a manual reference, report human minutes | **Largely adopted.** | Section 9 steps 2 to 4 now include the sealed set and the human-minutes clock. The reviewer assumed an anatomist-labeller workflow; plan B keeps the anatomist as auditor plus the 4-hour sealed set. |
+
+Where the reviewer lacked information: it did not know the sex rule (it did not propose male data either), the licence status of MedSAM2 and nnInteractive, the existence of MOOSE with hand bones under CC BY 4.0, nor that Denver's aligned whole-body CT removes the need for our own CT-to-cryosection registration in the trunk.
+
+## Sources consulted (6 September 2026)
+
+Data and prior projects
+- Denver VHF, paper (PMC): https://pmc.ncbi.nlm.nih.gov/articles/PMC9849470/ ; data: https://digitalcommons.du.edu/visiblehuman/1/ ; SimTK: https://simtk.org/projects/3d-vh-geometry
+- Voxel-Man Segmented Internal Organs, Zenodo (CC BY 4.0, Aug 2025): https://zenodo.org/records/15882019 ; project page: https://www.virtual-body.org/segmented-internal-organs/
+- NLM VHP in the Imaging Data Commons: https://zenodo.org/records/12690050 ; https://portal.imaging.datacommons.cancer.gov/collections/nlm_visible_human_project
+- AustinMan/AustinWoman FAQ and licence: https://web.corral.tacc.utexas.edu/AustinManEMVoxels/AustinMan/faq/index.html ; paper: https://pubmed.ncbi.nlm.nih.gov/28269020/
+- Visible Korean sectioned and segmented images (2020): https://link.springer.com/article/10.1007/s12565-020-00562-y ; distribution: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5890020/ ; overview: http://vkh3.kisti.re.kr/?q=node/24
+- Chinese Visible Human female segmentation dataset (2012): https://pubmed.ncbi.nlm.nih.gov/22391063/ ; CVH datasets: https://pmc.ncbi.nlm.nih.gov/articles/PMC1571260/
+- HDRK-Woman (Korean colour-slice voxel model): https://pubmed.ncbi.nlm.nih.gov/24971755/
+- NEVA VHP-Female: https://www.nevaelectromagnetics.com/vhp-female-5-0
+- HRA 3D reference objects (modelled on VHP data): https://3d.nih.gov/collections/hra ; https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10737119/
+
+CT models and datasets
+- TotalSegmentator (tasks and licences): https://github.com/wasserth/TotalSegmentator ; dataset CC BY 4.0: https://zenodo.org/record/6802614
+- MOOSE 3.2: https://github.com/ENHANCE-PET/MOOSE ; ENHANCE.PET 1.6k dataset: https://www.nature.com/articles/s41597-026-07218-y
+- Skellytour: https://github.com/cpwardell/Skellytour ; https://pubs.rsna.org/doi/10.1148/ryai.240050
+- CADS: https://github.com/murong-xu/CADS ; dataset: https://huggingface.co/datasets/mrmrx/CADS-dataset
+- VISTA3D (NVIDIA OneWay Noncommercial): https://github.com/Project-MONAI/VISTA/blob/main/vista3d/README.md
+- SAT: https://github.com/zhaoziheng/SAT ; https://www.nature.com/articles/s41746-025-01964-w
+- MuscleMap: https://github.com/MuscleMap/MuscleMap
+- Distinct bone segmentation, 125 classes (MICCAI 2020): https://arxiv.org/abs/2010.07045
+- Wrist CT dataset, 22 subjects (Nottingham 2025): https://arxiv.org/abs/2507.07131
+- OpenHands finger SSM: https://github.com/abel-research/OpenHands ; https://pmc.ncbi.nlm.nih.gov/articles/PMC11511744/
+- Lower-body bone database from cadaver CT: https://www.nature.com/articles/s41597-023-02669-z ; https://github.com/MCM-Fischer/VSDFullBodyBoneModels
+
+Promptable and foundation models
+- SAM 3: https://github.com/facebookresearch/sam3 ; licence: https://github.com/facebookresearch/sam3/blob/main/LICENSE
+- SAM 3 vs SAM 2 zero-shot on 3D medical data: https://arxiv.org/abs/2511.21926
+- SAM family zero-shot on bone CT: https://arxiv.org/abs/2411.08629
+- SAM 2 zero-shot 3D CT propagation: https://arxiv.org/abs/2603.23116
+- Medical SAM3: https://github.com/AIM-Research-Lab/Medical-SAM3 ; https://arxiv.org/abs/2601.10880
+- MedSAM2 weights (CC BY-SA, research only): https://huggingface.co/wanglab/MedSAM2
+- nnInteractive (weights CC BY-NC-SA): https://github.com/MIC-DKFZ/nnInteractive ; https://huggingface.co/nnInteractive/nnInteractive
+- SAM-Med3D: https://github.com/openmedlab/SAM-Med3D
+- Biomedisa (EUPL 1.2): https://github.com/biomedisa/biomedisa ; https://www.nature.com/articles/s41467-020-19303-w
+- nnU-Net revisited (2024): https://www.researchgate.net/publication/384578733_nnU-Net_Revisited_A_Call_for_Rigorous_Validation_in_3D_Medical_Image_Segmentation
+
+Statistics
+- Rule of three: Hanley and Lippman-Hand, JAMA 1983, 249(13):1743-1745
+- Learning with noisy labels in medical segmentation: Karimi et al., Medical Image Analysis 2020, https://doi.org/10.1016/j.media.2020.101759

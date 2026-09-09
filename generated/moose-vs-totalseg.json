@@ -1,0 +1,368 @@
+[
+ {
+  "label": "humerus_left",
+  "moose_mL": 166.9,
+  "totalseg_mL": 169.3,
+  "dice": 0.9259
+ },
+ {
+  "label": "humerus_right",
+  "moose_mL": 163.0,
+  "totalseg_mL": 155.6,
+  "dice": 0.9171
+ },
+ {
+  "label": "scapula_left",
+  "moose_mL": 90.9,
+  "totalseg_mL": 83.8,
+  "dice": 0.7268
+ },
+ {
+  "label": "scapula_right",
+  "moose_mL": 91.9,
+  "totalseg_mL": 90.0,
+  "dice": 0.77
+ },
+ {
+  "label": "clavicle_left",
+  "moose_mL": 30.1,
+  "totalseg_mL": 28.0,
+  "dice": 0.8288
+ },
+ {
+  "label": "clavicle_right",
+  "moose_mL": 34.3,
+  "totalseg_mL": 32.1,
+  "dice": 0.8418
+ },
+ {
+  "label": "femur_left",
+  "moose_mL": 518.8,
+  "totalseg_mL": 510.3,
+  "dice": 0.9652
+ },
+ {
+  "label": "femur_right",
+  "moose_mL": 531.6,
+  "totalseg_mL": 525.5,
+  "dice": 0.9608
+ },
+ {
+  "label": "skull",
+  "moose_mL": 749.2,
+  "totalseg_mL": 756.6,
+  "dice": 0.8416
+ },
+ {
+  "label": "vertebra_C1",
+  "moose_mL": 17.7,
+  "totalseg_mL": 17.1,
+  "dice": 0.574
+ },
+ {
+  "label": "vertebra_C2",
+  "moose_mL": 17.9,
+  "totalseg_mL": 18.0,
+  "dice": 0.6575
+ },
+ {
+  "label": "vertebra_C3",
+  "moose_mL": 11.8,
+  "totalseg_mL": 11.5,
+  "dice": 0.589
+ },
+ {
+  "label": "vertebra_C4",
+  "moose_mL": 11.2,
+  "totalseg_mL": 11.3,
+  "dice": 0.5606
+ },
+ {
+  "label": "vertebra_C5",
+  "moose_mL": 12.3,
+  "totalseg_mL": 12.5,
+  "dice": 0.5471
+ },
+ {
+  "label": "vertebra_C6",
+  "moose_mL": 13.3,
+  "totalseg_mL": 12.9,
+  "dice": 0.5731
+ },
+ {
+  "label": "vertebra_C7",
+  "moose_mL": 17.7,
+  "totalseg_mL": 17.5,
+  "dice": 0.6345
+ },
+ {
+  "label": "vertebra_T1",
+  "moose_mL": 21.6,
+  "totalseg_mL": 21.4,
+  "dice": 0.6708
+ },
+ {
+  "label": "vertebra_T2",
+  "moose_mL": 22.9,
+  "totalseg_mL": 21.9,
+  "dice": 0.7143
+ },
+ {
+  "label": "vertebra_T3",
+  "moose_mL": 22.5,
+  "totalseg_mL": 21.5,
+  "dice": 0.738
+ },
+ {
+  "label": "vertebra_T4",
+  "moose_mL": 22.0,
+  "totalseg_mL": 21.5,
+  "dice": 0.7474
+ },
+ {
+  "label": "vertebra_T5",
+  "moose_mL": 22.5,
+  "totalseg_mL": 22.1,
+  "dice": 0.7593
+ },
+ {
+  "label": "vertebra_T6",
+  "moose_mL": 24.1,
+  "totalseg_mL": 23.5,
+  "dice": 0.7676
+ },
+ {
+  "label": "vertebra_T7",
+  "moose_mL": 25.8,
+  "totalseg_mL": 25.5,
+  "dice": 0.7896
+ },
+ {
+  "label": "vertebra_T8",
+  "moose_mL": 27.2,
+  "totalseg_mL": 27.1,
+  "dice": 0.7865
+ },
+ {
+  "label": "vertebra_T9",
+  "moose_mL": 28.8,
+  "totalseg_mL": 28.2,
+  "dice": 0.7946
+ },
+ {
+  "label": "vertebra_T10",
+  "moose_mL": 34.1,
+  "totalseg_mL": 34.0,
+  "dice": 0.8235
+ },
+ {
+  "label": "vertebra_T11",
+  "moose_mL": 36.9,
+  "totalseg_mL": 36.6,
+  "dice": 0.8138
+ },
+ {
+  "label": "vertebra_T12",
+  "moose_mL": 42.3,
+  "totalseg_mL": 41.6,
+  "dice": 0.8299
+ },
+ {
+  "label": "vertebra_L1",
+  "moose_mL": 50.8,
+  "totalseg_mL": 77.2,
+  "dice": 0.6492
+ },
+ {
+  "label": "vertebra_L2",
+  "moose_mL": 62.0,
+  "totalseg_mL": 86.4,
+  "dice": 0.3926
+ },
+ {
+  "label": "vertebra_L3",
+  "moose_mL": 112.1,
+  "totalseg_mL": 67.5,
+  "dice": 0.5979
+ },
+ {
+  "label": "vertebra_L4",
+  "moose_mL": 69.7,
+  "totalseg_mL": 64.4,
+  "dice": 0.8349
+ },
+ {
+  "label": "vertebra_L5",
+  "moose_mL": 64.0,
+  "totalseg_mL": 64.2,
+  "dice": 0.865
+ },
+ {
+  "label": "hip_left",
+  "moose_mL": 400.3,
+  "totalseg_mL": 382.5,
+  "dice": 0.9227
+ },
+ {
+  "label": "hip_right",
+  "moose_mL": 393.5,
+  "totalseg_mL": 381.1,
+  "dice": 0.9248
+ },
+ {
+  "label": "sacrum",
+  "moose_mL": 223.3,
+  "totalseg_mL": 172.7,
+  "dice": 0.7813
+ },
+ {
+  "label": "rib_left_1",
+  "moose_mL": 11.0,
+  "totalseg_mL": 8.7,
+  "dice": 0.6803
+ },
+ {
+  "label": "rib_left_2",
+  "moose_mL": 13.8,
+  "totalseg_mL": 11.1,
+  "dice": 0.6884
+ },
+ {
+  "label": "rib_left_3",
+  "moose_mL": 14.5,
+  "totalseg_mL": 11.4,
+  "dice": 0.6759
+ },
+ {
+  "label": "rib_left_4",
+  "moose_mL": 17.1,
+  "totalseg_mL": 13.4,
+  "dice": 0.7023
+ },
+ {
+  "label": "rib_left_5",
+  "moose_mL": 22.1,
+  "totalseg_mL": 18.0,
+  "dice": 0.7036
+ },
+ {
+  "label": "rib_left_6",
+  "moose_mL": 24.0,
+  "totalseg_mL": 19.7,
+  "dice": 0.7272
+ },
+ {
+  "label": "rib_left_7",
+  "moose_mL": 21.3,
+  "totalseg_mL": 17.3,
+  "dice": 0.7004
+ },
+ {
+  "label": "rib_left_8",
+  "moose_mL": 18.6,
+  "totalseg_mL": 15.9,
+  "dice": 0.7009
+ },
+ {
+  "label": "rib_left_9",
+  "moose_mL": 17.1,
+  "totalseg_mL": 13.3,
+  "dice": 0.7066
+ },
+ {
+  "label": "rib_left_10",
+  "moose_mL": 14.5,
+  "totalseg_mL": 11.4,
+  "dice": 0.7335
+ },
+ {
+  "label": "rib_left_11",
+  "moose_mL": 10.5,
+  "totalseg_mL": 8.8,
+  "dice": 0.7486
+ },
+ {
+  "label": "rib_left_12",
+  "moose_mL": 6.2,
+  "totalseg_mL": 4.5,
+  "dice": 0.6916
+ },
+ {
+  "label": "rib_right_1",
+  "moose_mL": 11.8,
+  "totalseg_mL": 9.6,
+  "dice": 0.7198
+ },
+ {
+  "label": "rib_right_2",
+  "moose_mL": 13.0,
+  "totalseg_mL": 10.5,
+  "dice": 0.6924
+ },
+ {
+  "label": "rib_right_3",
+  "moose_mL": 14.0,
+  "totalseg_mL": 11.2,
+  "dice": 0.6936
+ },
+ {
+  "label": "rib_right_4",
+  "moose_mL": 15.8,
+  "totalseg_mL": 13.7,
+  "dice": 0.7167
+ },
+ {
+  "label": "rib_right_5",
+  "moose_mL": 19.1,
+  "totalseg_mL": 16.7,
+  "dice": 0.7451
+ },
+ {
+  "label": "rib_right_6",
+  "moose_mL": 21.1,
+  "totalseg_mL": 17.9,
+  "dice": 0.7355
+ },
+ {
+  "label": "rib_right_7",
+  "moose_mL": 23.5,
+  "totalseg_mL": 20.8,
+  "dice": 0.7273
+ },
+ {
+  "label": "rib_right_8",
+  "moose_mL": 19.8,
+  "totalseg_mL": 14.5,
+  "dice": 0.6883
+ },
+ {
+  "label": "rib_right_9",
+  "moose_mL": 18.8,
+  "totalseg_mL": 14.5,
+  "dice": 0.7092
+ },
+ {
+  "label": "rib_right_10",
+  "moose_mL": 13.8,
+  "totalseg_mL": 11.5,
+  "dice": 0.6934
+ },
+ {
+  "label": "rib_right_11",
+  "moose_mL": 10.9,
+  "totalseg_mL": 8.9,
+  "dice": 0.7249
+ },
+ {
+  "label": "rib_right_12",
+  "moose_mL": 7.0,
+  "totalseg_mL": 5.0,
+  "dice": 0.6821
+ },
+ {
+  "label": "sternum",
+  "moose_mL": 53.6,
+  "totalseg_mL": 48.4,
+  "dice": 0.8826
+ }
+]
