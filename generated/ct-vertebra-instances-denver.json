@@ -1,5 +1,6 @@
 {
  "ct": "denver",
+ "family": "vertebrae",
  "inputs": {
   "totalseg": "data/derived/denver/priors/totalseg/total.nii.gz",
   "moose": "data/derived/denver/priors/moose/moosez-2026-09-09-02-44-23/segmentations/clin_CT_vertebrae_segmentation_CT_denverct.nii.gz",
@@ -8519,19 +8520,24 @@
   {
    "partition_model": null,
    "group_kind": "clean",
+   "fragments": [
+    {
+     "totalseg": "vertebrae_L2#5"
+    }
+   ],
    "z_ras_mm": 279.8,
    "role": "vertebra",
    "id": "V21",
    "index": 21,
    "consensus_ml": 40.42,
-   "union_ml": 69.55,
-   "agreement_ratio": 0.581,
+   "union_ml": 73.31,
+   "agreement_ratio": 0.551,
    "unanimous_fraction": 0.0,
    "eligible_models_on_consensus": {
     "3": 77394
    },
    "votes_histogram_on_union": {
-    "1": 55789,
+    "1": 62985,
     "2": 77394
    },
    "consensus_centroid_ras_mm": [
@@ -8556,7 +8562,7 @@
      "label": "vertebrae_L2",
      "candidate_ml": 54.84,
      "components_of_label": 7,
-     "iou_with_consensus": 0.737,
+     "iou_with_consensus": 0.65,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -8589,14 +8595,14 @@
    "id": "V22",
    "index": 22,
    "consensus_ml": 50.67,
-   "union_ml": 78.11,
-   "agreement_ratio": 0.649,
+   "union_ml": 74.86,
+   "agreement_ratio": 0.677,
    "unanimous_fraction": 0.586,
    "eligible_models_on_consensus": {
     "3": 97031
    },
    "votes_histogram_on_union": {
-    "1": 52533,
+    "1": 46323,
     "2": 40180,
     "3": 56851
    },
@@ -8693,97 +8699,21 @@
    "name_status": "pending"
   },
   {
-   "partition_model": null,
-   "group_kind": "single",
-   "z_ras_mm": 225.2,
-   "role": "vertebra",
-   "id": "V24",
-   "index": 24,
-   "consensus_ml": 0.0,
-   "union_ml": 0.51,
-   "agreement_ratio": 0.0,
-   "unanimous_fraction": null,
-   "eligible_models_on_consensus": {},
-   "votes_histogram_on_union": {
-    "1": 986
-   },
-   "skellytour_pelvis_overlap_ml": 0.0,
-   "models": {
-    "totalseg": {
-     "state": "single",
-     "label": "vertebrae_L2",
-     "candidate_ml": 7.3,
-     "components_of_label": 7,
-     "iou_with_consensus": 0.0,
-     "extra_candidates": [],
-     "seed_components": null
-    },
-    "moose": {
-     "state": "negative"
-    },
-    "skellytour": {
-     "state": "negative"
-    }
-   },
-   "source_labels": {
-    "totalseg": "vertebrae_L2"
-   },
-   "name_status": "pending"
-  },
-  {
-   "partition_model": null,
-   "group_kind": "single",
-   "z_ras_mm": 222.5,
-   "role": "vertebra",
-   "id": "V25",
-   "index": 25,
-   "consensus_ml": 0.0,
-   "union_ml": 10.42,
-   "agreement_ratio": 0.0,
-   "unanimous_fraction": null,
-   "eligible_models_on_consensus": {},
-   "votes_histogram_on_union": {
-    "1": 19950
-   },
-   "skellytour_pelvis_overlap_ml": 0.0,
-   "models": {
-    "totalseg": {
-     "state": "negative"
-    },
-    "moose": {
-     "state": "single",
-     "label": "vertebra_L4",
-     "candidate_ml": 20.88,
-     "components_of_label": 7,
-     "iou_with_consensus": 0.0,
-     "extra_candidates": [],
-     "seed_components": null
-    },
-    "skellytour": {
-     "state": "negative"
-    }
-   },
-   "source_labels": {
-    "moose": "vertebra_L4"
-   },
-   "name_status": "pending"
-  },
-  {
    "partition_model": "skellytour",
    "group_kind": "partitioned",
    "z_ras_mm": 208.0,
    "role": "vertebra",
-   "id": "V26",
-   "index": 26,
+   "id": "V24",
+   "index": 24,
    "consensus_ml": 60.78,
-   "union_ml": 69.46,
-   "agreement_ratio": 0.875,
+   "union_ml": 72.8,
+   "agreement_ratio": 0.835,
    "unanimous_fraction": 0.568,
    "eligible_models_on_consensus": {
     "3": 116394
    },
    "votes_histogram_on_union": {
-    "1": 16621,
+    "1": 23017,
     "2": 50232,
     "3": 66162
    },
@@ -8846,19 +8776,24 @@
   {
    "partition_model": null,
    "group_kind": "clean",
+   "fragments": [
+    {
+     "moose": "vertebra_L4#2"
+    }
+   ],
    "z_ras_mm": 177.4,
    "role": "vertebra",
-   "id": "V27",
-   "index": 27,
+   "id": "V25",
+   "index": 25,
    "consensus_ml": 63.85,
-   "union_ml": 79.03,
-   "agreement_ratio": 0.808,
+   "union_ml": 86.11,
+   "agreement_ratio": 0.742,
    "unanimous_fraction": 0.751,
    "eligible_models_on_consensus": {
     "3": 122271
    },
    "votes_histogram_on_union": {
-    "1": 29060,
+    "1": 42614,
     "2": 30429,
     "3": 91842
    },
@@ -8895,7 +8830,7 @@
      "label": "vertebra_L4",
      "candidate_ml": 62.38,
      "components_of_label": 7,
-     "iou_with_consensus": 0.677,
+     "iou_with_consensus": 0.53,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -8923,8 +8858,8 @@
    "group_kind": "single",
    "z_ras_mm": 154.2,
    "role": "vertebra",
-   "id": "V28",
-   "index": 28,
+   "id": "V26",
+   "index": 26,
    "consensus_ml": 0.0,
    "union_ml": 2.84,
    "agreement_ratio": 0.0,
@@ -8961,8 +8896,8 @@
    "group_kind": "clean",
    "z_ras_mm": 145.9,
    "role": "vertebra",
-   "id": "V29",
-   "index": 29,
+   "id": "V27",
+   "index": 27,
    "consensus_ml": 63.24,
    "union_ml": 77.81,
    "agreement_ratio": 0.813,
@@ -9034,8 +8969,8 @@
    "group_kind": "single",
    "z_ras_mm": 118.8,
    "role": "vertebra",
-   "id": "V30",
-   "index": 30,
+   "id": "V28",
+   "index": 28,
    "consensus_ml": 0.0,
    "union_ml": 49.33,
    "agreement_ratio": 0.0,
@@ -9076,8 +9011,8 @@
    "group_kind": "clean",
    "z_ras_mm": 103.0,
    "role": "sacrum",
-   "id": "S31",
-   "index": 31,
+   "id": "S29",
+   "index": 29,
    "consensus_ml": 143.2,
    "union_ml": 210.27,
    "agreement_ratio": 0.681,
@@ -9139,16 +9074,16 @@
  ],
  "instance_count": {
   "vertebra_consensus": 25,
-  "vertebra_any": 30,
+  "vertebra_any": 28,
   "sacrum": 1
  },
  "lumbar_type_block_below_T12": [
   "V20",
   "V21",
   "V22",
-  "V26",
-  "V27",
-  "V29"
+  "V24",
+  "V25",
+  "V27"
  ],
  "hra_same_donor_evidence": {
   "source": "HRA united-female v1.5 (public/atlases/hra-female.json), modelled on the Visible Human Female; NIH 3D 3DPX-020988: \"The Visible Human Female has 6 lumbar vertebrae\"",
@@ -9504,17 +9439,17 @@
     "z_offset_mm": 3.3
    },
    {
-    "instance": "V26",
+    "instance": "V24",
     "hra_name_by_order": "L4",
     "z_offset_mm": -3.6
    },
    {
-    "instance": "V27",
+    "instance": "V25",
     "hra_name_by_order": "L5",
     "z_offset_mm": -6.7
    },
    {
-    "instance": "V29",
+    "instance": "V27",
     "hra_name_by_order": "L6",
     "z_offset_mm": -9.3
    }

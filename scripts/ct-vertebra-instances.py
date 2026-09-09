@@ -1,6 +1,11 @@
 """Vertebra consensus by geometric instance, without imposing names or counts (plan B, stage 1).
 
-Usage: python scripts/ct-vertebra-instances.py nlm | denver [--selftest]
+Usage: python scripts/ct-vertebra-instances.py nlm | denver [vertebrae | ribs_left | ribs_right] [--selftest]
+
+The same machinery runs on the rib families (`ribs_left`, `ribs_right`: TotalSegmentator `rib_<side>_1..12`,
+MOOSE `clin_ct_ribs` `rib_<side>_1..13`, Skellytour `<SIDE>_RIB_1..12`), with ids RL01.. / RR01.. from cranial
+to caudal, coronal projection panels and no HRA chain (the HRA female skeleton has no rib meshes). Outputs
+then go to generated/ct-rib-instances-<ct>-<side>.json and rib-<side>-*.nii.gz.
 
 Why. On this donor three CT models (TotalSegmentator `total`, MOOSE `clin_ct_vertebrae`, Skellytour
 `high`) find six lumbar-type vertebral bodies and force their own names onto them differently, so a vote
@@ -56,18 +61,25 @@ from scipy import ndimage
 ROOT = Path(__file__).resolve().parents[1]
 ARGS = [a for a in sys.argv[1:] if not a.startswith('--')]
 CT = ARGS[0] if ARGS else 'nlm'
+FAMILY = ARGS[1] if len(ARGS) > 1 else 'vertebrae'
+if FAMILY not in ('vertebrae', 'ribs_left', 'ribs_right'):
+    sys.exit('family must be vertebrae, ribs_left or ribs_right')
+SIDE = FAMILY.split('_')[1] if FAMILY != 'vertebrae' else None
+MEMBER_ROLE = 'vertebra' if FAMILY == 'vertebrae' else 'rib'
+ID_PREFIX = 'V' if FAMILY == 'vertebrae' else ('RL' if SIDE == 'left' else 'RR')
+MOOSE_TASK = 'vertebrae' if FAMILY == 'vertebrae' else 'ribs'
 SELFTEST = '--selftest' in sys.argv
 MIN_ML = 3.0          # smaller components are fragments, not candidates
 IOU_GROUP = 0.20      # overlap that links two candidates of different models into one group
 IOU_MATCH = 0.50      # one-to-one match
 COVER_PART = 0.20     # a candidate covering >= 20 % of two partners is a split/merge
 MODEL_ORDER = ['totalseg', 'skellytour', 'moose']   # tie-break for the partition model
-OVERSIZE = 1.4        # a candidate > 1.4 x the smaller of its two neighbours (same model) is treated as a merge of bodies
+OVERSIZE = 1.4        # a candidate > 1.4 x the mean of its two neighbours (same model) is treated as a merge of bodies
 
 if CT == 'nlm':
     TS = ROOT / 'data/derived/nlm-vhf/totalseg.nii'
-    MOOSE = ROOT / 'data/derived/nlm-vhf/moose/segmentations/clin_CT_vertebrae_segmentation_CT_vhf.nii.gz'
-    MOOSE_IDX = ROOT / 'data/derived/nlm-vhf/moose/segmentations/clin_CT_vertebrae_organ_indices.json'
+    MOOSE = ROOT / f'data/derived/nlm-vhf/moose/segmentations/clin_CT_{MOOSE_TASK}_segmentation_CT_vhf.nii.gz'
+    MOOSE_IDX = ROOT / f'data/derived/nlm-vhf/moose/segmentations/clin_CT_{MOOSE_TASK}_organ_indices.json'
     SKELLY_DIR = ROOT / 'data/derived/nlm-vhf/skellytour'
     HU = ROOT / 'data/derived/nlm-vhf/vhf-fresh-ct.nii.gz'
     OUT_NII = ROOT / 'data/derived/nlm-vhf/consensus'
@@ -76,8 +88,8 @@ if CT == 'nlm':
 elif CT == 'denver':
     TS = ROOT / 'data/derived/denver/priors/totalseg/total.nii.gz'
     seg = next((ROOT / 'data/derived/denver/priors/moose').glob('*/segmentations'))
-    MOOSE = seg / 'clin_CT_vertebrae_segmentation_CT_denverct.nii.gz'
-    MOOSE_IDX = seg / 'clin_CT_vertebrae_organ_indices.json'
+    MOOSE = seg / f'clin_CT_{MOOSE_TASK}_segmentation_CT_denverct.nii.gz'
+    MOOSE_IDX = seg / f'clin_CT_{MOOSE_TASK}_organ_indices.json'
     SKELLY_DIR = ROOT / 'data/derived/denver/priors/skellytour'
     HU = ROOT / 'data/derived/denver/aligned-ct-nii/denver_aligned_ct_hu.nii.gz'
     OUT_NII = ROOT / 'data/derived/denver/priors/consensus'
@@ -85,18 +97,29 @@ elif CT == 'denver':
     VOX_TO_VHF = np.array(json.loads((ROOT / 'transforms/denver-aligned-ct-voxel-to-vhf.json').read_text())['matrix_row_major']).reshape(4, 4)
 else:
     sys.exit('usage: ct-vertebra-instances.py nlm|denver [--selftest]')
-OUT_JSON = ROOT / f'generated/ct-vertebra-instances-{CT}.json'
-OUT_PNG = ROOT / f'generated/ct-vertebra-instances-{CT}'
+if FAMILY == 'vertebrae':
+    OUT_JSON = ROOT / f'generated/ct-vertebra-instances-{CT}.json'
+    OUT_PNG = ROOT / f'generated/ct-vertebra-instances-{CT}'
+    NII_STEM = 'vertebra'
+else:
+    OUT_JSON = ROOT / f'generated/ct-rib-instances-{CT}-{SIDE}.json'
+    OUT_PNG = ROOT / f'generated/ct-rib-instances-{CT}-{SIDE}'
+    NII_STEM = f'rib-{SIDE}'
 
 VERT24 = [f'C{i}' for i in range(1, 8)] + [f'T{i}' for i in range(1, 13)] + [f'L{i}' for i in range(1, 6)]
 TS_CLASS = {v: int(k) for k, v in json.loads((ROOT / 'data/derived/nlm-vhf/totalseg-classmap.json').read_text())['total'].items()}
-TS_LABELS = {f'vertebrae_{v}': TS_CLASS[f'vertebrae_{v}'] for v in VERT24 + ['S1']}
-TS_LABELS['sacrum'] = TS_CLASS['sacrum']
 MO_ALL = {v['name']: int(k) for k, v in json.loads(MOOSE_IDX.read_text())['organ_indices'].items()}
-MO_LABELS = {n: i for n, i in MO_ALL.items() if n.startswith('vertebra_') or n == 'sacrum'}
-SK_LABELS = {f'VERT_{i}': 35 + i for i in range(1, 25)}
+if FAMILY == 'vertebrae':
+    TS_LABELS = {f'vertebrae_{v}': TS_CLASS[f'vertebrae_{v}'] for v in VERT24 + ['S1']}
+    TS_LABELS['sacrum'] = TS_CLASS['sacrum']
+    MO_LABELS = {n: i for n, i in MO_ALL.items() if n.startswith('vertebra_') or n == 'sacrum'}
+    SK_LABELS = {f'VERT_{i}': 35 + i for i in range(1, 25)}
+else:
+    TS_LABELS = {f'rib_{SIDE}_{i}': TS_CLASS[f'rib_{SIDE}_{i}'] for i in range(1, 13)}
+    MO_LABELS = {n: i for n, i in MO_ALL.items() if n.startswith(f'rib_{SIDE}_')}
+    SK_LABELS = {f'{SIDE.upper()}_RIB_{i}': (11 if SIDE == 'left' else 23) + i for i in range(1, 13)}
 SK_PELVIS = 2
-ROLE = lambda label: 'sacrum' if label == 'sacrum' else 'vertebra'   # noqa: E731
+ROLE = lambda label: 'sacrum' if label == 'sacrum' else MEMBER_ROLE   # noqa: E731
 
 
 def load(path):
@@ -306,12 +329,12 @@ for g in groups:
 
     def oversized(cid):
         """A candidate much larger than its own model's neighbours along the spine is a merge of bodies, not one body."""
-        own = [c for c in cands if c['model'] == by_id[cid]['model'] and c['role'] == 'vertebra']
+        own = [c for c in cands if c['model'] == by_id[cid]['model'] and c['role'] == MEMBER_ROLE]
         med = float(np.median([c['volume_ml'] for c in own]))
         chain = sorted((c for c in own if c['volume_ml'] >= 0.4 * med or c['cid'] == cid), key=lambda c: -c['z_ras_mm'])   # fragments are not neighbours
         k = next(i for i, c in enumerate(chain) if c['cid'] == cid)
         neigh = [chain[i]['volume_ml'] for i in (k - 1, k + 1) if 0 <= i < len(chain)]
-        return bool(neigh) and by_id[cid]['volume_ml'] > OVERSIZE * min(neigh)
+        return bool(neigh) and by_id[cid]['volume_ml'] > OVERSIZE * float(np.mean(neigh))   # mean, not min: ribs 11 and 12 shrink fast
 
     # a component of the partition model is a candidate, not a proof of one body: two consecutive seeds are one
     # instance when no other model separates them and at least one other model covers both with ONE candidate of
@@ -374,16 +397,63 @@ for g in groups:
                 instances.append({'members': {m: cid}, 'seed_cids': [cid], 'partition_model': None, 'group_kind': 'single'})
                 assign[cid] = (len(instances) - 1, 'single')
 
+# fragments: an instance whose members all carry the same label as the members of one other, larger instance of the
+# same models (a second component of rib_left_6 in TotalSegmentator and MOOSE, next to the main rib_left_6) and lie
+# within that instance's z range (+/- FRAG_MM) is a detached piece of it, not another bone: merge it in, state `fragment`
+FRAG_MM = 25.0
+def z_range(inst):
+    zs = []
+    for c in inst['members'].values():
+        b = by_id[c]['box']
+        zs += [to_ras([b[0][0], b[1][0], b[2][0]])[2], to_ras([b[0][1], b[1][1], b[2][1]])[2]]
+    return min(zs), max(zs)
+merged_into = {}
+for k, inst in enumerate(instances):
+    targets = set()
+    for m, cid in inst['members'].items():
+        label = by_id[cid]['label']
+        t = [j for j, other in enumerate(instances) if j != k and m in other['members'] and by_id[other['members'][m]]['label'] == label
+             and by_id[other['members'][m]]['voxels'] > by_id[cid]['voxels']]
+        if len(t) != 1:
+            targets = set()
+            break
+        targets.add(t[0])
+    if len(targets) == 1:
+        j = targets.pop()
+        while j in merged_into:
+            j = merged_into[j]
+        lo, hi = z_range(instances[j])
+        zc = np.mean([by_id[c]['z_ras_mm'] for c in inst['members'].values()])
+        # two or more models naming the piece like the main instance is enough; a single model's fragment must also lie near it
+        if len(inst['members']) >= 2 or (lo - FRAG_MM <= zc <= hi + FRAG_MM):
+            merged_into[k] = j
+            instances[j].setdefault('fragments', []).append({m: f"{by_id[c]['label']}#{by_id[c]['component']}" for m, c in inst['members'].items()})
+            for c in inst['members'].values():
+                assign[c] = (j, 'fragment')
+old_to_new, n = {}, 0
+for k in range(len(instances)):
+    if k not in merged_into:
+        old_to_new[k] = n
+        n += 1
+for k in merged_into:
+    j = merged_into[k]
+    while j in merged_into:
+        j = merged_into[j]
+    old_to_new[k] = old_to_new[j]
+instances = [inst for k, inst in enumerate(instances) if k not in merged_into]
+for cid, (k, st) in list(assign.items()):
+    assign[cid] = ([old_to_new[x] for x in k] if isinstance(k, list) else old_to_new[k], st)
+
 # order cranial -> caudal by the z (RAS) of the seed centroid; ids V01.. ; sacrum role from the members' labels
 for inst in instances:
     zs = [by_id[c]['z_ras_mm'] for c in inst['seed_cids']]
     inst['z_ras_mm'] = round(float(np.mean(zs)), 1)
-    inst['role'] = 'sacrum' if any(by_id[c]['role'] == 'sacrum' for c in inst['members'].values()) else 'vertebra'
+    inst['role'] = 'sacrum' if any(by_id[c]['role'] == 'sacrum' for c in inst['members'].values()) else MEMBER_ROLE
 order = sorted(range(len(instances)), key=lambda k: -instances[k]['z_ras_mm'])
 new_index = {old: new for new, old in enumerate(order)}
 instances = [instances[k] for k in order]
 for k, inst in enumerate(instances):
-    inst['id'] = f'V{k + 1:02d}' if inst['role'] == 'vertebra' else f'S{k + 1:02d}'
+    inst['id'] = f'{ID_PREFIX}{k + 1:02d}' if inst['role'] == MEMBER_ROLE else f'S{k + 1:02d}'
     inst['index'] = k + 1
 for cid, (k, s) in list(assign.items()):
     assign[cid] = ([new_index[x] for x in k] if isinstance(k, list) else new_index[k], s)
@@ -486,53 +556,59 @@ for inst in instances:
         inst.pop(key, None)
     if not inst.get('seed_merged_from'):
         inst.pop('seed_merged_from', None)
+    if not inst.get('fragments'):
+        inst.pop('fragments', None)
 
-# 5. HRA same-donor chain (evidence, not decision) ------------------------------------------------------
-hra = json.loads((ROOT / 'public/atlases/hra-female.json').read_text())
-hra_names = {'vertebral bone 1': 'C1', 'vertebral bone 2': 'C2'}
-hra_names.update({f'mammalian cervical vertebra {i}': f'C{i}' for i in range(3, 8)})
-hra_names.update({f'thoracic vertebra {i}': f'T{i}' for i in range(1, 13)})
-hra_names.update({f'lumbar vertebra {i}': f'L{i}' for i in range(1, 7)})
-hra_names['fused sacrum'] = 'sacrum'
-hra_to_vhf = np.array(json.loads((ROOT / 'transforms/hra-stage-to-vhf.json').read_text())['matrix_row_major']).reshape(4, 4)
-stage_to_image = np.linalg.inv(np.array(json.loads((ROOT / 'transforms/source-to-stage.json').read_text())['denver-image-to-stage']['matrix_row_major']).reshape(4, 4))
-hra_chain = []
-for p in hra['parts']:
-    if p['name'] in hra_names:
-        c = (np.array(p['bounds'][0]) + np.array(p['bounds'][1])) / 2
-        w = stage_to_image @ hra_to_vhf @ np.r_[c, 1]
-        hra_chain.append({'name': hra_names[p['name']], 'asset': p['id'], 'vhf_mm': w[:3].round(1).tolist()})
-hra_chain.sort(key=lambda r: -r['vhf_mm'][2])
-hra_vert = [r for r in hra_chain if r['name'] != 'sacrum']
-hra_sacrum = next((r for r in hra_chain if r['name'] == 'sacrum'), None)
-our_vert = [inst for inst in instances if inst['role'] == 'vertebra' and inst['consensus_ml'] > 0]
-our_sacrum = next((inst for inst in instances if inst['role'] == 'sacrum'), None)
-# match by order from the sacrum upwards: the lowest consensus vertebra <-> HRA L6, and so on
-hra_evidence = {'source': 'HRA united-female v1.5 (public/atlases/hra-female.json), modelled on the Visible Human Female; NIH 3D 3DPX-020988: "The Visible Human Female has 6 lumbar vertebrae"',
-                'transform': 'hra-stage-to-vhf (similarity on six organ proxies, RMS 7.4 mm) then inverse denver-image-to-stage; positions are approximate, the order and count are the evidence',
-                'hra_vertebra_count': len(hra_vert), 'our_consensus_vertebra_count': len(our_vert), 'hra_chain_vhf_mm': hra_chain,
-                'sacrum_offset_mm': None, 'by_order_from_sacrum': []}
-if hra_sacrum and our_sacrum and our_sacrum.get('consensus_centroid_vhf_mm'):
-    hra_evidence['sacrum_offset_mm'] = round(float(np.linalg.norm(np.array(hra_sacrum['vhf_mm']) - np.array(our_sacrum['consensus_centroid_vhf_mm']))), 1)
-for n, inst in enumerate(reversed(our_vert)):   # caudal -> cranial
-    h = hra_vert[len(hra_vert) - 1 - n] if n < len(hra_vert) else None
-    row = {'instance': inst['id'], 'hra_name_by_order': h['name'] if h else None,
-           'z_offset_mm': round(float(inst['consensus_centroid_vhf_mm'][2] - h['vhf_mm'][2]), 1) if h and inst.get('consensus_centroid_vhf_mm') else None}
-    inst['hra_name_by_order'] = row['hra_name_by_order']
-    inst['hra_z_offset_mm'] = row['z_offset_mm']
-    hra_evidence['by_order_from_sacrum'].append(row)
-hra_evidence['by_order_from_sacrum'].reverse()
-hra_evidence['counts_agree'] = len(hra_vert) == len(our_vert)
-hra_evidence['reading'] = ('Same count as the HRA female skeleton: the by-order names are a candidate numbering with same-donor external support, pending anatomist confirmation.'
-                           if hra_evidence['counts_agree'] else
-                           f'Counts differ ({len(our_vert)} consensus vertebra instances against {len(hra_vert)} HRA vertebrae): by-order names are not usable until the difference is explained (missing instance, unprocessed region, or an HRA modelling choice).')
-print('HRA chain', len(hra_vert), 'vertebrae; ours', len(our_vert), '; counts agree', hra_evidence['counts_agree'], flush=True)
+our_vert = [inst for inst in instances if inst['role'] == MEMBER_ROLE and inst['consensus_ml'] > 0]
+hra_evidence, lumbar_block = None, []
+if FAMILY == 'vertebrae':
+    # 5. HRA same-donor chain (evidence, not decision) ------------------------------------------------------
+    hra = json.loads((ROOT / 'public/atlases/hra-female.json').read_text())
+    hra_names = {'vertebral bone 1': 'C1', 'vertebral bone 2': 'C2'}
+    hra_names.update({f'mammalian cervical vertebra {i}': f'C{i}' for i in range(3, 8)})
+    hra_names.update({f'thoracic vertebra {i}': f'T{i}' for i in range(1, 13)})
+    hra_names.update({f'lumbar vertebra {i}': f'L{i}' for i in range(1, 7)})
+    hra_names['fused sacrum'] = 'sacrum'
+    hra_to_vhf = np.array(json.loads((ROOT / 'transforms/hra-stage-to-vhf.json').read_text())['matrix_row_major']).reshape(4, 4)
+    stage_to_image = np.linalg.inv(np.array(json.loads((ROOT / 'transforms/source-to-stage.json').read_text())['denver-image-to-stage']['matrix_row_major']).reshape(4, 4))
+    hra_chain = []
+    for p in hra['parts']:
+        if p['name'] in hra_names:
+            c = (np.array(p['bounds'][0]) + np.array(p['bounds'][1])) / 2
+            w = stage_to_image @ hra_to_vhf @ np.r_[c, 1]
+            hra_chain.append({'name': hra_names[p['name']], 'asset': p['id'], 'vhf_mm': w[:3].round(1).tolist()})
+    hra_chain.sort(key=lambda r: -r['vhf_mm'][2])
+    hra_vert = [r for r in hra_chain if r['name'] != 'sacrum']
+    hra_sacrum = next((r for r in hra_chain if r['name'] == 'sacrum'), None)
+    our_vert = [inst for inst in instances if inst['role'] == MEMBER_ROLE and inst['consensus_ml'] > 0]
+    our_sacrum = next((inst for inst in instances if inst['role'] == 'sacrum'), None)
+    # match by order from the sacrum upwards: the lowest consensus vertebra <-> HRA L6, and so on
+    hra_evidence = {'source': 'HRA united-female v1.5 (public/atlases/hra-female.json), modelled on the Visible Human Female; NIH 3D 3DPX-020988: "The Visible Human Female has 6 lumbar vertebrae"',
+                    'transform': 'hra-stage-to-vhf (similarity on six organ proxies, RMS 7.4 mm) then inverse denver-image-to-stage; positions are approximate, the order and count are the evidence',
+                    'hra_vertebra_count': len(hra_vert), 'our_consensus_vertebra_count': len(our_vert), 'hra_chain_vhf_mm': hra_chain,
+                    'sacrum_offset_mm': None, 'by_order_from_sacrum': []}
+    if hra_sacrum and our_sacrum and our_sacrum.get('consensus_centroid_vhf_mm'):
+        hra_evidence['sacrum_offset_mm'] = round(float(np.linalg.norm(np.array(hra_sacrum['vhf_mm']) - np.array(our_sacrum['consensus_centroid_vhf_mm']))), 1)
+    for n, inst in enumerate(reversed(our_vert)):   # caudal -> cranial
+        h = hra_vert[len(hra_vert) - 1 - n] if n < len(hra_vert) else None
+        row = {'instance': inst['id'], 'hra_name_by_order': h['name'] if h else None,
+               'z_offset_mm': round(float(inst['consensus_centroid_vhf_mm'][2] - h['vhf_mm'][2]), 1) if h and inst.get('consensus_centroid_vhf_mm') else None}
+        inst['hra_name_by_order'] = row['hra_name_by_order']
+        inst['hra_z_offset_mm'] = row['z_offset_mm']
+        hra_evidence['by_order_from_sacrum'].append(row)
+    hra_evidence['by_order_from_sacrum'].reverse()
+    hra_evidence['counts_agree'] = len(hra_vert) == len(our_vert)
+    hra_evidence['reading'] = ('Same count as the HRA female skeleton: the by-order names are a candidate numbering with same-donor external support, pending anatomist confirmation.'
+                               if hra_evidence['counts_agree'] else
+                               f'Counts differ ({len(our_vert)} consensus vertebra instances against {len(hra_vert)} HRA vertebrae): by-order names are not usable until the difference is explained (missing instance, unprocessed region, or an HRA modelling choice).')
+    print('HRA chain', len(hra_vert), 'vertebrae; ours', len(our_vert), '; counts agree', hra_evidence['counts_agree'], flush=True)
 
-# summary of the lumbar-type block: instances below the last one that any model calls T12
-lumbar_block = []
-t12_z = [inst['z_ras_mm'] for inst in instances if any(l.endswith('T12') for l in inst['source_labels'].values())]
-if t12_z:
-    lumbar_block = [inst['id'] for inst in instances if inst['role'] == 'vertebra' and inst['z_ras_mm'] < min(t12_z) and inst['consensus_ml'] > 0]
+    # summary of the lumbar-type block: instances below the last one that any model calls T12
+    lumbar_block = []
+    t12_z = [inst['z_ras_mm'] for inst in instances if any(l.endswith('T12') for l in inst['source_labels'].values())]
+    if t12_z:
+        lumbar_block = [inst['id'] for inst in instances if inst['role'] == 'vertebra' and inst['z_ras_mm'] < min(t12_z) and inst['consensus_ml'] > 0]
+
 
 # 6. write volumes and JSON -----------------------------------------------------------------------------
 OUT_NII.mkdir(parents=True, exist_ok=True)
@@ -540,21 +616,21 @@ def save(name, arr_roi):
     full = np.zeros(ts_im.shape, np.uint8)
     full[roi] = arr_roi
     nib.save(nib.Nifti1Image(full, affine), OUT_NII / name)
-save('vertebra-instances.nii.gz', consensus)
-save('vertebra-review.nii.gz', review)
-save('vertebra-votes.nii.gz', best_votes)
-save('vertebra-eligible.nii.gz', eligible)
+save(f'{NII_STEM}-instances.nii.gz', consensus)
+save(f'{NII_STEM}-review.nii.gz', review)
+save(f'{NII_STEM}-votes.nii.gz', best_votes)
+save(f'{NII_STEM}-eligible.nii.gz', eligible)
 
-out = {'ct': CT, 'inputs': {'totalseg': str(TS.relative_to(ROOT)), 'moose': str(MOOSE.relative_to(ROOT)), 'skellytour': str((SKELLY_DIR / 'skellytour_high.nii.gz').relative_to(ROOT)), 'ct_hu': str(HU.relative_to(ROOT))},
+out = {'ct': CT, 'family': FAMILY, 'inputs': {'totalseg': str(TS.relative_to(ROOT)), 'moose': str(MOOSE.relative_to(ROOT)), 'skellytour': str((SKELLY_DIR / 'skellytour_high.nii.gz').relative_to(ROOT)), 'ct_hu': str(HU.relative_to(ROOT))},
        'grid': {'shape': list(ts_im.shape), 'axcodes': list(nib.aff2axcodes(affine)), 'voxel_ml': vox_ml, 'roi': [[s.start, s.stop] for s in roi]},
        'parameters': {'min_candidate_ml': MIN_ML, 'iou_group': IOU_GROUP, 'iou_match': IOU_MATCH, 'cover_part': COVER_PART, 'connectivity': 26, 'vote': 'strict majority of eligible models per voxel',
                       'eligibility': {'totalseg': 'whole grid', 'moose': 'whole grid', 'skellytour': f'body crop i {i0}:{i1} j {j0}:{j1} (plan.json); no sacrum class'}},
        'label_vocabulary': {'totalseg': sorted(TS_LABELS), 'moose': sorted(MO_LABELS), 'skellytour': sorted(SK_LABELS)},
        'candidates': cands, 'fragments_below_min': fragments, 'pairwise_correspondence': pairwise,
-       'instances': instances, 'instance_count': {'vertebra_consensus': len(our_vert), 'vertebra_any': sum(1 for i in instances if i['role'] == 'vertebra'), 'sacrum': len(sacrum_ids)},
+       'instances': instances, 'instance_count': {f'{MEMBER_ROLE}_consensus': len(our_vert), f'{MEMBER_ROLE}_any': sum(1 for i in instances if i['role'] == MEMBER_ROLE), 'sacrum': len(sacrum_ids)},
        'lumbar_type_block_below_T12': lumbar_block, 'hra_same_donor_evidence': hra_evidence,
        'skellytour_seams_z': seams,
-       'volumes': {k: str((OUT_NII / f'vertebra-{k}.nii.gz').relative_to(ROOT)) for k in ['instances', 'review', 'votes', 'eligible']},
+       'volumes': {k: str((OUT_NII / f'{NII_STEM}-{k}.nii.gz').relative_to(ROOT)) for k in ['instances', 'review', 'votes', 'eligible']},
        'naming': 'Every instance id is provisional and geometric. hra_name_by_order is external same-donor evidence for the count and order, not a decision; name_status stays pending until an anatomist or a documented reference confirms the levels.'}
 OUT_JSON.write_text(json.dumps(out, indent=1, default=float) + '\n')
 print('->', OUT_JSON.relative_to(ROOT), flush=True)
@@ -603,6 +679,12 @@ def overlay(ax, img, lab, aspect, title):
 # sagittal: max-projection of the instance labels over a slab around the mid-sagittal plane keeps thin bodies visible
 slab = slice(max(0, x_mid - 12), min(cons_r.shape[0], x_mid + 12))
 def slab_labels(lab):
+    if FAMILY != 'vertebrae':   # ribs: coronal projection along y (anterior-posterior), labels of the most posterior voxel win
+        out = np.zeros((lab.shape[0], lab.shape[2]), lab.dtype)
+        for dy in range(lab.shape[1] - 1, -1, -1):
+            m = lab[:, dy, :] > 0
+            out[m] = lab[:, dy, :][m]
+        return out
     s = lab[slab]
     # per (y, z) take the label of the voxel nearest to the mid plane
     out = np.zeros(s.shape[1:], lab.dtype)
@@ -610,22 +692,27 @@ def slab_labels(lab):
         m = s[dx] > 0
         out[m] = s[dx][m]
     return out
+if FAMILY != 'vertebrae':
+    hu_r_view = hu_r.max(axis=1)     # coronal MIP of the CT for the rib panels
+    aspect_sag = aspect_cor
+else:
+    hu_r_view = hu_r[x_mid]
 
 fig, ax = plt.subplots(figsize=(6, 16))
-overlay(ax, hu_r[x_mid], slab_labels(cons_r), aspect_sag, f'{CT}: consensus instances (strict majority), sagittal slab; cyan = Skellytour chunk seams')
+overlay(ax, hu_r_view, slab_labels(cons_r), aspect_sag, f'{CT} {FAMILY}: consensus instances (strict majority), ' + ('sagittal slab' if FAMILY == 'vertebrae' else 'coronal projection') + '; cyan = Skellytour chunk seams')
 for inst in instances:
     if inst['consensus_ml'] <= 0:
         continue
     c = centroid_r(inst['index'])
     if c is not None:
         hn = inst.get('hra_name_by_order')
-        ax.text(c[1] + 25, c[2], f"{inst['id']}  {inst['consensus_ml']:.0f} mL  {inst['unanimous_fraction']:.2f}" + (f'  HRA {hn}' if hn else ''), fontsize=6, color='yellow', va='center')
+        ax.text((c[1] if FAMILY == 'vertebrae' else c[0]) + 25, c[2], f"{inst['id']}  {inst['consensus_ml']:.0f} mL  {inst['unanimous_fraction']:.2f}" + (f'  HRA {hn}' if hn else ''), fontsize=6, color='yellow', va='center')
 fig.tight_layout()
 fig.savefig(OUT_PNG / 'sagittal.png', dpi=130)
 plt.close(fig)
 
 # models: each model's own labels with its own names, then the consensus
-fig, axes = plt.subplots(1, 4, figsize=(20, 16))
+fig, axes = plt.subplots(1, 4, figsize=(20, 16) if FAMILY == 'vertebrae' else (24, 14))
 for ax, m in zip(axes, models):
     lab = slab_labels(mod_r[m])
     ids = arrays[m][1]
@@ -634,22 +721,22 @@ for ax, m in zip(axes, models):
     for v in np.unique(lab):
         if v in inv:
             show[lab == v] = v
-    ax.imshow(hu_r[x_mid].T, cmap='gray', vmin=-200, vmax=1200, origin='lower', aspect=aspect_sag)
+    ax.imshow(hu_r_view.T, cmap='gray', vmin=-200, vmax=1200, origin='lower', aspect=aspect_sag)
     ax.imshow(np.ma.masked_equal(show.T, 0), cmap='nipy_spectral', alpha=0.55, origin='lower', aspect=aspect_sag, interpolation='nearest')
     for z in seam_idx:
         ax.axhline(z, color='cyan', lw=0.6, ls='--')
     for v in np.unique(show):
         if v and v in inv:
             c = np.array(ndimage.center_of_mass(show == v))
-            ax.text(c[0] + 25, c[1], inv[v].replace('vertebrae_', '').replace('vertebra_', ''), fontsize=6, color='yellow', va='center')
+            ax.text(c[0] + 25, c[1], inv[v].replace('vertebrae_', '').replace('vertebra_', '').replace(f'rib_{SIDE}_', 'r').replace(f'{str(SIDE).upper()}_RIB_', 'R'), fontsize=6, color='yellow', va='center')
     ax.set_title(f'{m}: own labels', fontsize=9)
     ax.set_xticks([])
     ax.set_yticks([])
-overlay(axes[3], hu_r[x_mid], slab_labels(cons_r), aspect_sag, 'consensus instances')
+overlay(axes[3], hu_r_view, slab_labels(cons_r), aspect_sag, 'consensus instances')
 for inst in instances:
     c = centroid_r(inst['index'])
     if c is not None:
-        axes[3].text(c[1] + 25, c[2], inst['id'], fontsize=6, color='yellow', va='center')
+        axes[3].text((c[1] if FAMILY == 'vertebrae' else c[0]) + 25, c[2], inst['id'], fontsize=6, color='yellow', va='center')
 fig.tight_layout()
 fig.savefig(OUT_PNG / 'models.png', dpi=110)
 plt.close(fig)

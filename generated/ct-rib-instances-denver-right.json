@@ -1,0 +1,4152 @@
+{
+ "ct": "denver",
+ "family": "ribs_right",
+ "inputs": {
+  "totalseg": "data/derived/denver/priors/totalseg/total.nii.gz",
+  "moose": "data/derived/denver/priors/moose/moosez-2026-09-09-02-44-23/segmentations/clin_CT_ribs_segmentation_CT_denverct.nii.gz",
+  "skellytour": "data/derived/denver/priors/skellytour/skellytour_high.nii.gz",
+  "ct_hu": "data/derived/denver/aligned-ct-nii/denver_aligned_ct_hu.nii.gz"
+ },
+ "grid": {
+  "shape": [
+   673,
+   670,
+   1727
+  ],
+  "axcodes": [
+   "L",
+   "A",
+   "S"
+  ],
+  "voxel_ml": 0.0005222317110747667,
+  "roi": [
+   [
+    137,
+    325
+   ],
+   [
+    215,
+    442
+   ],
+   [
+    1096,
+    1478
+   ]
+  ]
+ },
+ "parameters": {
+  "min_candidate_ml": 3.0,
+  "iou_group": 0.2,
+  "iou_match": 0.5,
+  "cover_part": 0.2,
+  "connectivity": 26,
+  "vote": "strict majority of eligible models per voxel",
+  "eligibility": {
+   "totalseg": "whole grid",
+   "moose": "whole grid",
+   "skellytour": "body crop i 0:673 j 147:565 (plan.json); no sacrum class"
+  }
+ },
+ "label_vocabulary": {
+  "totalseg": [
+   "rib_right_1",
+   "rib_right_10",
+   "rib_right_11",
+   "rib_right_12",
+   "rib_right_2",
+   "rib_right_3",
+   "rib_right_4",
+   "rib_right_5",
+   "rib_right_6",
+   "rib_right_7",
+   "rib_right_8",
+   "rib_right_9"
+  ],
+  "moose": [
+   "rib_right_1",
+   "rib_right_10",
+   "rib_right_11",
+   "rib_right_12",
+   "rib_right_13",
+   "rib_right_2",
+   "rib_right_3",
+   "rib_right_4",
+   "rib_right_5",
+   "rib_right_6",
+   "rib_right_7",
+   "rib_right_8",
+   "rib_right_9"
+  ],
+  "skellytour": [
+   "RIGHT_RIB_1",
+   "RIGHT_RIB_10",
+   "RIGHT_RIB_11",
+   "RIGHT_RIB_12",
+   "RIGHT_RIB_2",
+   "RIGHT_RIB_3",
+   "RIGHT_RIB_4",
+   "RIGHT_RIB_5",
+   "RIGHT_RIB_6",
+   "RIGHT_RIB_7",
+   "RIGHT_RIB_8",
+   "RIGHT_RIB_9"
+  ]
+ },
+ "candidates": [
+  {
+   "cid": 1,
+   "model": "totalseg",
+   "label": "rib_right_1",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 18030,
+   "volume_ml": 9.42,
+   "centroid_vox": [
+    254.9,
+    344.9,
+    1427.8
+   ],
+   "centroid_ras_mm": [
+    58.6,
+    7.5,
+    564.8
+   ],
+   "centroid_vhf_mm": [
+    585.9,
+    432.3,
+    1427.0
+   ],
+   "z_ras_mm": 564.8,
+   "z_vox": [
+    1396,
+    1466
+   ],
+   "box": [
+    [
+     89,
+     147
+    ],
+    [
+     88,
+     185
+    ],
+    [
+     300,
+     370
+    ]
+   ]
+  },
+  {
+   "cid": 2,
+   "model": "totalseg",
+   "label": "rib_right_2",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 19908,
+   "volume_ml": 10.4,
+   "centroid_vox": [
+    225.5,
+    330.6,
+    1413.7
+   ],
+   "centroid_ras_mm": [
+    79.8,
+    -2.8,
+    550.7
+   ],
+   "centroid_vhf_mm": [
+    607.0,
+    421.6,
+    1413.0
+   ],
+   "z_ras_mm": 550.7,
+   "z_vox": [
+    1370,
+    1451
+   ],
+   "box": [
+    [
+     50,
+     147
+    ],
+    [
+     61,
+     202
+    ],
+    [
+     274,
+     355
+    ]
+   ]
+  },
+  {
+   "cid": 3,
+   "model": "totalseg",
+   "label": "rib_right_3",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 22295,
+   "volume_ml": 11.64,
+   "centroid_vox": [
+    213.0,
+    329.1,
+    1390.6
+   ],
+   "centroid_ras_mm": [
+    88.9,
+    -3.9,
+    527.6
+   ],
+   "centroid_vhf_mm": [
+    616.3,
+    420.7,
+    1389.9
+   ],
+   "z_ras_mm": 527.6,
+   "z_vox": [
+    1339,
+    1432
+   ],
+   "box": [
+    [
+     33,
+     147
+    ],
+    [
+     42,
+     208
+    ],
+    [
+     243,
+     336
+    ]
+   ]
+  },
+  {
+   "cid": 4,
+   "model": "totalseg",
+   "label": "rib_right_4",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 25367,
+   "volume_ml": 13.25,
+   "centroid_vox": [
+    202.8,
+    328.1,
+    1368.4
+   ],
+   "centroid_ras_mm": [
+    96.3,
+    -4.6,
+    505.4
+   ],
+   "centroid_vhf_mm": [
+    624.0,
+    420.2,
+    1367.8
+   ],
+   "z_ras_mm": 505.4,
+   "z_vox": [
+    1306,
+    1412
+   ],
+   "box": [
+    [
+     25,
+     145
+    ],
+    [
+     28,
+     215
+    ],
+    [
+     210,
+     316
+    ]
+   ]
+  },
+  {
+   "cid": 5,
+   "model": "totalseg",
+   "label": "rib_right_5",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 31617,
+   "volume_ml": 16.51,
+   "centroid_vox": [
+    199.4,
+    329.3,
+    1344.0
+   ],
+   "centroid_ras_mm": [
+    98.7,
+    -3.7,
+    481.0
+   ],
+   "centroid_vhf_mm": [
+    626.8,
+    421.5,
+    1343.5
+   ],
+   "z_ras_mm": 481.0,
+   "z_vox": [
+    1274,
+    1393
+   ],
+   "box": [
+    [
+     21,
+     147
+    ],
+    [
+     21,
+     219
+    ],
+    [
+     178,
+     297
+    ]
+   ]
+  },
+  {
+   "cid": 6,
+   "model": "totalseg",
+   "label": "rib_right_6",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 3,
+   "voxels": 32778,
+   "volume_ml": 17.12,
+   "centroid_vox": [
+    196.9,
+    325.6,
+    1321.0
+   ],
+   "centroid_ras_mm": [
+    100.5,
+    -6.4,
+    458.0
+   ],
+   "centroid_vhf_mm": [
+    628.8,
+    419.2,
+    1320.5
+   ],
+   "z_ras_mm": 458.0,
+   "z_vox": [
+    1247,
+    1370
+   ],
+   "box": [
+    [
+     18,
+     147
+    ],
+    [
+     13,
+     212
+    ],
+    [
+     151,
+     274
+    ]
+   ]
+  },
+  {
+   "cid": 7,
+   "model": "totalseg",
+   "label": "rib_right_7",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 36650,
+   "volume_ml": 19.14,
+   "centroid_vox": [
+    194.9,
+    320.3,
+    1295.5
+   ],
+   "centroid_ras_mm": [
+    102.0,
+    -10.2,
+    432.5
+   ],
+   "centroid_vhf_mm": [
+    630.5,
+    415.9,
+    1294.9
+   ],
+   "z_ras_mm": 432.5,
+   "z_vox": [
+    1220,
+    1345
+   ],
+   "box": [
+    [
+     18,
+     150
+    ],
+    [
+     11,
+     210
+    ],
+    [
+     124,
+     249
+    ]
+   ]
+  },
+  {
+   "cid": 8,
+   "model": "totalseg",
+   "label": "rib_right_8",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 27348,
+   "volume_ml": 14.28,
+   "centroid_vox": [
+    192.4,
+    296.8,
+    1277.9
+   ],
+   "centroid_ras_mm": [
+    103.8,
+    -27.2,
+    414.9
+   ],
+   "centroid_vhf_mm": [
+    632.0,
+    399.2,
+    1277.0
+   ],
+   "z_ras_mm": 414.9,
+   "z_vox": [
+    1203,
+    1322
+   ],
+   "box": [
+    [
+     18,
+     150
+    ],
+    [
+     9,
+     194
+    ],
+    [
+     107,
+     226
+    ]
+   ]
+  },
+  {
+   "cid": 9,
+   "model": "totalseg",
+   "label": "rib_right_9",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 27768,
+   "volume_ml": 14.5,
+   "centroid_vox": [
+    190.4,
+    288.2,
+    1243.3
+   ],
+   "centroid_ras_mm": [
+    105.2,
+    -33.5,
+    380.3
+   ],
+   "centroid_vhf_mm": [
+    633.8,
+    393.6,
+    1242.2
+   ],
+   "z_ras_mm": 380.3,
+   "z_vox": [
+    1155,
+    1298
+   ],
+   "box": [
+    [
+     10,
+     147
+    ],
+    [
+     9,
+     181
+    ],
+    [
+     59,
+     202
+    ]
+   ]
+  },
+  {
+   "cid": 10,
+   "model": "totalseg",
+   "label": "rib_right_10",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 21657,
+   "volume_ml": 11.31,
+   "centroid_vox": [
+    193.6,
+    270.0,
+    1214.1
+   ],
+   "centroid_ras_mm": [
+    102.9,
+    -46.6,
+    351.1
+   ],
+   "centroid_vhf_mm": [
+    631.5,
+    381.1,
+    1212.8
+   ],
+   "z_ras_mm": 351.1,
+   "z_vox": [
+    1131,
+    1272
+   ],
+   "box": [
+    [
+     8,
+     150
+    ],
+    [
+     9,
+     156
+    ],
+    [
+     35,
+     176
+    ]
+   ]
+  },
+  {
+   "cid": 11,
+   "model": "totalseg",
+   "label": "rib_right_11",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 17027,
+   "volume_ml": 8.89,
+   "centroid_vox": [
+    205.2,
+    258.5,
+    1177.8
+   ],
+   "centroid_ras_mm": [
+    94.5,
+    -54.9,
+    314.8
+   ],
+   "centroid_vhf_mm": [
+    623.3,
+    373.8,
+    1176.3
+   ],
+   "z_ras_mm": 314.8,
+   "z_vox": [
+    1107,
+    1242
+   ],
+   "box": [
+    [
+     18,
+     150
+    ],
+    [
+     9,
+     138
+    ],
+    [
+     11,
+     146
+    ]
+   ]
+  },
+  {
+   "cid": 12,
+   "model": "totalseg",
+   "label": "rib_right_12",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 10171,
+   "volume_ml": 5.31,
+   "centroid_vox": [
+    238.9,
+    248.8,
+    1157.8
+   ],
+   "centroid_ras_mm": [
+    70.1,
+    -62.0,
+    294.8
+   ],
+   "centroid_vhf_mm": [
+    599.0,
+    367.9,
+    1155.8
+   ],
+   "z_ras_mm": 294.8,
+   "z_vox": [
+    1104,
+    1205
+   ],
+   "box": [
+    [
+     48,
+     152
+    ],
+    [
+     21,
+     69
+    ],
+    [
+     8,
+     109
+    ]
+   ]
+  },
+  {
+   "cid": 13,
+   "model": "moose",
+   "label": "rib_right_1",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 22646,
+   "volume_ml": 11.83,
+   "centroid_vox": [
+    258.7,
+    342.7,
+    1433.6
+   ],
+   "centroid_ras_mm": [
+    55.9,
+    5.9,
+    570.6
+   ],
+   "centroid_vhf_mm": [
+    583.0,
+    430.6,
+    1432.7
+   ],
+   "z_ras_mm": 570.6,
+   "z_vox": [
+    1401,
+    1470
+   ],
+   "box": [
+    [
+     90,
+     173
+    ],
+    [
+     88,
+     185
+    ],
+    [
+     305,
+     374
+    ]
+   ]
+  },
+  {
+   "cid": 14,
+   "model": "moose",
+   "label": "rib_right_2",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 24541,
+   "volume_ml": 12.82,
+   "centroid_vox": [
+    234.2,
+    327.3,
+    1420.4
+   ],
+   "centroid_ras_mm": [
+    73.6,
+    -5.2,
+    557.4
+   ],
+   "centroid_vhf_mm": [
+    600.6,
+    419.3,
+    1419.5
+   ],
+   "z_ras_mm": 557.4,
+   "z_vox": [
+    1374,
+    1455
+   ],
+   "box": [
+    [
+     51,
+     175
+    ],
+    [
+     63,
+     200
+    ],
+    [
+     278,
+     359
+    ]
+   ]
+  },
+  {
+   "cid": 15,
+   "model": "moose",
+   "label": "rib_right_3",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 27049,
+   "volume_ml": 14.13,
+   "centroid_vox": [
+    224.0,
+    324.8,
+    1396.6
+   ],
+   "centroid_ras_mm": [
+    80.9,
+    -7.0,
+    533.6
+   ],
+   "centroid_vhf_mm": [
+    608.2,
+    417.7,
+    1395.8
+   ],
+   "z_ras_mm": 533.6,
+   "z_vox": [
+    1344,
+    1435
+   ],
+   "box": [
+    [
+     32,
+     177
+    ],
+    [
+     42,
+     206
+    ],
+    [
+     248,
+     339
+    ]
+   ]
+  },
+  {
+   "cid": 16,
+   "model": "moose",
+   "label": "rib_right_4",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 29739,
+   "volume_ml": 15.53,
+   "centroid_vox": [
+    214.4,
+    320.3,
+    1375.7
+   ],
+   "centroid_ras_mm": [
+    87.9,
+    -10.3,
+    512.7
+   ],
+   "centroid_vhf_mm": [
+    615.3,
+    414.6,
+    1374.9
+   ],
+   "z_ras_mm": 512.7,
+   "z_vox": [
+    1311,
+    1416
+   ],
+   "box": [
+    [
+     24,
+     177
+    ],
+    [
+     27,
+     214
+    ],
+    [
+     215,
+     320
+    ]
+   ]
+  },
+  {
+   "cid": 17,
+   "model": "moose",
+   "label": "rib_right_5",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 36072,
+   "volume_ml": 18.84,
+   "centroid_vox": [
+    211.2,
+    317.3,
+    1353.8
+   ],
+   "centroid_ras_mm": [
+    90.2,
+    -12.4,
+    490.8
+   ],
+   "centroid_vhf_mm": [
+    617.8,
+    412.9,
+    1353.0
+   ],
+   "z_ras_mm": 490.8,
+   "z_vox": [
+    1279,
+    1396
+   ],
+   "box": [
+    [
+     22,
+     180
+    ],
+    [
+     19,
+     214
+    ],
+    [
+     183,
+     300
+    ]
+   ]
+  },
+  {
+   "cid": 18,
+   "model": "moose",
+   "label": "rib_right_6",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 40221,
+   "volume_ml": 21.0,
+   "centroid_vox": [
+    213.8,
+    310.1,
+    1332.5
+   ],
+   "centroid_ras_mm": [
+    88.3,
+    -17.6,
+    469.5
+   ],
+   "centroid_vhf_mm": [
+    616.1,
+    408.2,
+    1331.6
+   ],
+   "z_ras_mm": 469.5,
+   "z_vox": [
+    1251,
+    1375
+   ],
+   "box": [
+    [
+     18,
+     177
+    ],
+    [
+     13,
+     210
+    ],
+    [
+     155,
+     279
+    ]
+   ]
+  },
+  {
+   "cid": 19,
+   "model": "moose",
+   "label": "rib_right_7",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 44390,
+   "volume_ml": 23.18,
+   "centroid_vox": [
+    209.6,
+    310.9,
+    1304.5
+   ],
+   "centroid_ras_mm": [
+    91.3,
+    -17.0,
+    441.5
+   ],
+   "centroid_vhf_mm": [
+    619.6,
+    409.2,
+    1303.6
+   ],
+   "z_ras_mm": 441.5,
+   "z_vox": [
+    1221,
+    1354
+   ],
+   "box": [
+    [
+     20,
+     177
+    ],
+    [
+     11,
+     208
+    ],
+    [
+     125,
+     258
+    ]
+   ]
+  },
+  {
+   "cid": 20,
+   "model": "moose",
+   "label": "rib_right_8",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 36986,
+   "volume_ml": 19.32,
+   "centroid_vox": [
+    210.2,
+    295.9,
+    1282.2
+   ],
+   "centroid_ras_mm": [
+    90.9,
+    -27.9,
+    419.2
+   ],
+   "centroid_vhf_mm": [
+    619.1,
+    398.8,
+    1281.1
+   ],
+   "z_ras_mm": 419.2,
+   "z_vox": [
+    1186,
+    1330
+   ],
+   "box": [
+    [
+     18,
+     177
+    ],
+    [
+     9,
+     204
+    ],
+    [
+     90,
+     234
+    ]
+   ]
+  },
+  {
+   "cid": 21,
+   "model": "moose",
+   "label": "rib_right_9",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 36117,
+   "volume_ml": 18.86,
+   "centroid_vox": [
+    212.0,
+    280.6,
+    1256.5
+   ],
+   "centroid_ras_mm": [
+    89.6,
+    -39.0,
+    393.5
+   ],
+   "centroid_vhf_mm": [
+    617.8,
+    388.3,
+    1255.1
+   ],
+   "z_ras_mm": 393.5,
+   "z_vox": [
+    1158,
+    1308
+   ],
+   "box": [
+    [
+     9,
+     177
+    ],
+    [
+     9,
+     179
+    ],
+    [
+     62,
+     212
+    ]
+   ]
+  },
+  {
+   "cid": 22,
+   "model": "moose",
+   "label": "rib_right_10",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 27162,
+   "volume_ml": 14.18,
+   "centroid_vox": [
+    213.4,
+    267.1,
+    1227.5
+   ],
+   "centroid_ras_mm": [
+    88.6,
+    -48.7,
+    364.5
+   ],
+   "centroid_vhf_mm": [
+    617.0,
+    379.2,
+    1226.0
+   ],
+   "z_ras_mm": 364.5,
+   "z_vox": [
+    1135,
+    1282
+   ],
+   "box": [
+    [
+     9,
+     173
+    ],
+    [
+     9,
+     158
+    ],
+    [
+     39,
+     186
+    ]
+   ]
+  },
+  {
+   "cid": 23,
+   "model": "moose",
+   "label": "rib_right_11",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 20472,
+   "volume_ml": 10.69,
+   "centroid_vox": [
+    219.2,
+    257.1,
+    1191.0
+   ],
+   "centroid_ras_mm": [
+    84.4,
+    -55.9,
+    328.0
+   ],
+   "centroid_vhf_mm": [
+    613.0,
+    372.8,
+    1189.3
+   ],
+   "z_ras_mm": 328.0,
+   "z_vox": [
+    1113,
+    1251
+   ],
+   "box": [
+    [
+     20,
+     171
+    ],
+    [
+     9,
+     125
+    ],
+    [
+     17,
+     155
+    ]
+   ]
+  },
+  {
+   "cid": 24,
+   "model": "moose",
+   "label": "rib_right_12",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 13199,
+   "volume_ml": 6.89,
+   "centroid_vox": [
+    251.4,
+    250.9,
+    1171.7
+   ],
+   "centroid_ras_mm": [
+    61.1,
+    -60.4,
+    308.7
+   ],
+   "centroid_vhf_mm": [
+    589.9,
+    369.5,
+    1169.6
+   ],
+   "z_ras_mm": 308.7,
+   "z_vox": [
+    1108,
+    1218
+   ],
+   "box": [
+    [
+     49,
+     169
+    ],
+    [
+     21,
+     67
+    ],
+    [
+     12,
+     122
+    ]
+   ]
+  },
+  {
+   "cid": 25,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_1",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 20196,
+   "volume_ml": 10.55,
+   "centroid_vox": [
+    258.7,
+    335.4,
+    1434.8
+   ],
+   "centroid_ras_mm": [
+    55.8,
+    0.7,
+    571.8
+   ],
+   "centroid_vhf_mm": [
+    582.8,
+    425.4,
+    1433.8
+   ],
+   "z_ras_mm": 571.8,
+   "z_vox": [
+    1400,
+    1466
+   ],
+   "box": [
+    [
+     89,
+     174
+    ],
+    [
+     88,
+     172
+    ],
+    [
+     304,
+     370
+    ]
+   ]
+  },
+  {
+   "cid": 26,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_2",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 25508,
+   "volume_ml": 13.32,
+   "centroid_vox": [
+    234.2,
+    327.9,
+    1416.2
+   ],
+   "centroid_ras_mm": [
+    73.6,
+    -4.8,
+    553.2
+   ],
+   "centroid_vhf_mm": [
+    600.6,
+    419.8,
+    1415.3
+   ],
+   "z_ras_mm": 553.2,
+   "z_vox": [
+    1370,
+    1451
+   ],
+   "box": [
+    [
+     51,
+     176
+    ],
+    [
+     62,
+     201
+    ],
+    [
+     274,
+     355
+    ]
+   ]
+  },
+  {
+   "cid": 27,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_3",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 26775,
+   "volume_ml": 13.98,
+   "centroid_vox": [
+    224.6,
+    322.7,
+    1394.3
+   ],
+   "centroid_ras_mm": [
+    80.5,
+    -8.5,
+    531.3
+   ],
+   "centroid_vhf_mm": [
+    607.7,
+    416.3,
+    1393.4
+   ],
+   "z_ras_mm": 531.3,
+   "z_vox": [
+    1338,
+    1432
+   ],
+   "box": [
+    [
+     32,
+     177
+    ],
+    [
+     41,
+     207
+    ],
+    [
+     242,
+     336
+    ]
+   ]
+  },
+  {
+   "cid": 28,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_4",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 9495,
+   "volume_ml": 4.96,
+   "centroid_vox": [
+    205.4,
+    401.7,
+    1328.3
+   ],
+   "centroid_ras_mm": [
+    94.4,
+    48.6,
+    465.3
+   ],
+   "centroid_vhf_mm": [
+    624.3,
+    474.2,
+    1328.8
+   ],
+   "z_ras_mm": 465.3,
+   "z_vox": [
+    1306,
+    1350
+   ],
+   "box": [
+    [
+     28,
+     112
+    ],
+    [
+     144,
+     214
+    ],
+    [
+     210,
+     254
+    ]
+   ]
+  },
+  {
+   "cid": 29,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_4",
+   "role": "rib",
+   "component": 2,
+   "components_of_label": 2,
+   "voxels": 12769,
+   "volume_ml": 6.67,
+   "centroid_vox": [
+    248.2,
+    261.2,
+    1403.0
+   ],
+   "centroid_ras_mm": [
+    63.5,
+    -53.0,
+    540.0
+   ],
+   "centroid_vhf_mm": [
+    589.2,
+    372.2,
+    1401.0
+   ],
+   "z_ras_mm": 540.0,
+   "z_vox": [
+    1388,
+    1412
+   ],
+   "box": [
+    [
+     44,
+     179
+    ],
+    [
+     28,
+     77
+    ],
+    [
+     292,
+     316
+    ]
+   ]
+  },
+  {
+   "cid": 30,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_5",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 17720,
+   "volume_ml": 9.25,
+   "centroid_vox": [
+    188.5,
+    387.6,
+    1311.4
+   ],
+   "centroid_ras_mm": [
+    106.6,
+    38.4,
+    448.4
+   ],
+   "centroid_vhf_mm": [
+    636.4,
+    464.0,
+    1311.9
+   ],
+   "z_ras_mm": 448.4,
+   "z_vox": [
+    1274,
+    1350
+   ],
+   "box": [
+    [
+     21,
+     109
+    ],
+    [
+     106,
+     218
+    ],
+    [
+     178,
+     254
+    ]
+   ]
+  },
+  {
+   "cid": 31,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_5",
+   "role": "rib",
+   "component": 2,
+   "components_of_label": 2,
+   "voxels": 13974,
+   "volume_ml": 7.3,
+   "centroid_vox": [
+    246.8,
+    254.4,
+    1383.7
+   ],
+   "centroid_ras_mm": [
+    64.5,
+    -57.9,
+    520.7
+   ],
+   "centroid_vhf_mm": [
+    590.4,
+    367.6,
+    1381.6
+   ],
+   "z_ras_mm": 520.7,
+   "z_vox": [
+    1369,
+    1393
+   ],
+   "box": [
+    [
+     44,
+     179
+    ],
+    [
+     21,
+     69
+    ],
+    [
+     273,
+     297
+    ]
+   ]
+  },
+  {
+   "cid": 32,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_6",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 37831,
+   "volume_ml": 19.76,
+   "centroid_vox": [
+    207.3,
+    321.6,
+    1323.7
+   ],
+   "centroid_ras_mm": [
+    93.0,
+    -9.3,
+    460.7
+   ],
+   "centroid_vhf_mm": [
+    621.2,
+    416.5,
+    1323.0
+   ],
+   "z_ras_mm": 460.7,
+   "z_vox": [
+    1248,
+    1371
+   ],
+   "box": [
+    [
+     18,
+     179
+    ],
+    [
+     14,
+     212
+    ],
+    [
+     152,
+     275
+    ]
+   ]
+  },
+  {
+   "cid": 33,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_7",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 3,
+   "voxels": 47214,
+   "volume_ml": 24.66,
+   "centroid_vox": [
+    206.1,
+    312.3,
+    1301.0
+   ],
+   "centroid_ras_mm": [
+    93.9,
+    -16.1,
+    438.0
+   ],
+   "centroid_vhf_mm": [
+    622.2,
+    410.2,
+    1300.1
+   ],
+   "z_ras_mm": 438.0,
+   "z_vox": [
+    1219,
+    1350
+   ],
+   "box": [
+    [
+     19,
+     178
+    ],
+    [
+     11,
+     212
+    ],
+    [
+     123,
+     254
+    ]
+   ]
+  },
+  {
+   "cid": 34,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_8",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 2,
+   "voxels": 34590,
+   "volume_ml": 18.06,
+   "centroid_vox": [
+    210.9,
+    283.9,
+    1287.8
+   ],
+   "centroid_ras_mm": [
+    90.4,
+    -36.5,
+    424.8
+   ],
+   "centroid_vhf_mm": [
+    618.3,
+    390.1,
+    1286.5
+   ],
+   "z_ras_mm": 424.8,
+   "z_vox": [
+    1214,
+    1328
+   ],
+   "box": [
+    [
+     18,
+     178
+    ],
+    [
+     9,
+     180
+    ],
+    [
+     118,
+     232
+    ]
+   ]
+  },
+  {
+   "cid": 35,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_9",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 35162,
+   "volume_ml": 18.36,
+   "centroid_vox": [
+    212.0,
+    275.2,
+    1257.5
+   ],
+   "centroid_ras_mm": [
+    89.6,
+    -42.9,
+    394.5
+   ],
+   "centroid_vhf_mm": [
+    617.7,
+    384.4,
+    1256.1
+   ],
+   "z_ras_mm": 394.5,
+   "z_vox": [
+    1164,
+    1304
+   ],
+   "box": [
+    [
+     9,
+     178
+    ],
+    [
+     8,
+     169
+    ],
+    [
+     68,
+     208
+    ]
+   ]
+  },
+  {
+   "cid": 36,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_10",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 27447,
+   "volume_ml": 14.33,
+   "centroid_vox": [
+    212.5,
+    264.3,
+    1225.8
+   ],
+   "centroid_ras_mm": [
+    89.2,
+    -50.8,
+    362.8
+   ],
+   "centroid_vhf_mm": [
+    617.5,
+    377.2,
+    1224.3
+   ],
+   "z_ras_mm": 362.8,
+   "z_vox": [
+    1137,
+    1278
+   ],
+   "box": [
+    [
+     8,
+     174
+    ],
+    [
+     9,
+     145
+    ],
+    [
+     41,
+     182
+    ]
+   ]
+  },
+  {
+   "cid": 37,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_11",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 20981,
+   "volume_ml": 10.96,
+   "centroid_vox": [
+    219.7,
+    255.7,
+    1188.6
+   ],
+   "centroid_ras_mm": [
+    84.1,
+    -57.0,
+    325.6
+   ],
+   "centroid_vhf_mm": [
+    612.7,
+    371.9,
+    1186.9
+   ],
+   "z_ras_mm": 325.6,
+   "z_vox": [
+    1117,
+    1248
+   ],
+   "box": [
+    [
+     20,
+     171
+    ],
+    [
+     9,
+     109
+    ],
+    [
+     21,
+     152
+    ]
+   ]
+  },
+  {
+   "cid": 38,
+   "model": "skellytour",
+   "label": "RIGHT_RIB_12",
+   "role": "rib",
+   "component": 1,
+   "components_of_label": 1,
+   "voxels": 12218,
+   "volume_ml": 6.38,
+   "centroid_vox": [
+    251.0,
+    251.6,
+    1167.8
+   ],
+   "centroid_ras_mm": [
+    61.4,
+    -59.9,
+    304.8
+   ],
+   "centroid_vhf_mm": [
+    590.2,
+    370.0,
+    1165.7
+   ],
+   "z_ras_mm": 304.8,
+   "z_vox": [
+    1104,
+    1216
+   ],
+   "box": [
+    [
+     48,
+     168
+    ],
+    [
+     20,
+     69
+    ],
+    [
+     8,
+     120
+    ]
+   ]
+  }
+ ],
+ "fragments_below_min": {
+  "totalseg": {
+   "rib_right_6": {
+    "count": 2,
+    "volume_ml": 0.1
+   },
+   "rib_right_7": {
+    "count": 1,
+    "volume_ml": 1.6
+   }
+  },
+  "moose": {
+   "rib_right_6": {
+    "count": 1,
+    "volume_ml": 0.0
+   },
+   "rib_right_9": {
+    "count": 1,
+    "volume_ml": 0.0
+   },
+   "rib_right_12": {
+    "count": 1,
+    "volume_ml": 0.23
+   }
+  },
+  "skellytour": {
+   "RIGHT_RIB_7": {
+    "count": 2,
+    "volume_ml": 1.71
+   },
+   "RIGHT_RIB_8": {
+    "count": 1,
+    "volume_ml": 0.75
+   }
+  }
+ },
+ "pairwise_correspondence": {
+  "totalseg|moose": {
+   "a_to_b": {
+    "rib_right_1#1": {
+     "cid": 1,
+     "state": "partial",
+     "volume_ml": 9.42,
+     "z_ras_mm": 564.8,
+     "partners": [
+      {
+       "cid": 13,
+       "label": "rib_right_1",
+       "iou": 0.334,
+       "covers_me": 0.565,
+       "i_cover_it": 0.45,
+       "intersection_ml": 5.32,
+       "centroid_distance_mm": 6.6
+      }
+     ]
+    },
+    "rib_right_2#1": {
+     "cid": 2,
+     "state": "partial",
+     "volume_ml": 10.4,
+     "z_ras_mm": 550.7,
+     "partners": [
+      {
+       "cid": 14,
+       "label": "rib_right_2",
+       "iou": 0.311,
+       "covers_me": 0.53,
+       "i_cover_it": 0.43,
+       "intersection_ml": 5.51,
+       "centroid_distance_mm": 9.4
+      }
+     ]
+    },
+    "rib_right_3#1": {
+     "cid": 3,
+     "state": "partial",
+     "volume_ml": 11.64,
+     "z_ras_mm": 527.6,
+     "partners": [
+      {
+       "cid": 15,
+       "label": "rib_right_3",
+       "iou": 0.335,
+       "covers_me": 0.556,
+       "i_cover_it": 0.458,
+       "intersection_ml": 6.47,
+       "centroid_distance_mm": 10.5
+      }
+     ]
+    },
+    "rib_right_4#1": {
+     "cid": 4,
+     "state": "partial",
+     "volume_ml": 13.25,
+     "z_ras_mm": 505.4,
+     "partners": [
+      {
+       "cid": 16,
+       "label": "rib_right_4",
+       "iou": 0.39,
+       "covers_me": 0.609,
+       "i_cover_it": 0.52,
+       "intersection_ml": 8.07,
+       "centroid_distance_mm": 12.5
+      }
+     ]
+    },
+    "rib_right_5#1": {
+     "cid": 5,
+     "state": "partial",
+     "volume_ml": 16.51,
+     "z_ras_mm": 481.0,
+     "partners": [
+      {
+       "cid": 17,
+       "label": "rib_right_5",
+       "iou": 0.423,
+       "covers_me": 0.636,
+       "i_cover_it": 0.558,
+       "intersection_ml": 10.51,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "rib_right_6#1": {
+     "cid": 6,
+     "state": "partial",
+     "volume_ml": 17.12,
+     "z_ras_mm": 458.0,
+     "partners": [
+      {
+       "cid": 18,
+       "label": "rib_right_6",
+       "iou": 0.426,
+       "covers_me": 0.666,
+       "i_cover_it": 0.543,
+       "intersection_ml": 11.4,
+       "centroid_distance_mm": 20.2
+      }
+     ]
+    },
+    "rib_right_7#1": {
+     "cid": 7,
+     "state": "partial",
+     "volume_ml": 19.14,
+     "z_ras_mm": 432.5,
+     "partners": [
+      {
+       "cid": 19,
+       "label": "rib_right_7",
+       "iou": 0.482,
+       "covers_me": 0.719,
+       "i_cover_it": 0.594,
+       "intersection_ml": 13.77,
+       "centroid_distance_mm": 15.5
+      }
+     ]
+    },
+    "rib_right_8#1": {
+     "cid": 8,
+     "state": "partial",
+     "volume_ml": 14.28,
+     "z_ras_mm": 414.9,
+     "partners": [
+      {
+       "cid": 20,
+       "label": "rib_right_8",
+       "iou": 0.423,
+       "covers_me": 0.7,
+       "i_cover_it": 0.517,
+       "intersection_ml": 9.99,
+       "centroid_distance_mm": 13.6
+      }
+     ]
+    },
+    "rib_right_9#1": {
+     "cid": 9,
+     "state": "partial",
+     "volume_ml": 14.5,
+     "z_ras_mm": 380.3,
+     "partners": [
+      {
+       "cid": 21,
+       "label": "rib_right_9",
+       "iou": 0.444,
+       "covers_me": 0.708,
+       "i_cover_it": 0.544,
+       "intersection_ml": 10.27,
+       "centroid_distance_mm": 21.2
+      }
+     ]
+    },
+    "rib_right_10#1": {
+     "cid": 10,
+     "state": "partial",
+     "volume_ml": 11.31,
+     "z_ras_mm": 351.1,
+     "partners": [
+      {
+       "cid": 22,
+       "label": "rib_right_10",
+       "iou": 0.426,
+       "covers_me": 0.674,
+       "i_cover_it": 0.537,
+       "intersection_ml": 7.62,
+       "centroid_distance_mm": 19.7
+      }
+     ]
+    },
+    "rib_right_11#1": {
+     "cid": 11,
+     "state": "partial",
+     "volume_ml": 8.89,
+     "z_ras_mm": 314.8,
+     "partners": [
+      {
+       "cid": 23,
+       "label": "rib_right_11",
+       "iou": 0.448,
+       "covers_me": 0.682,
+       "i_cover_it": 0.567,
+       "intersection_ml": 6.06,
+       "centroid_distance_mm": 16.7
+      }
+     ]
+    },
+    "rib_right_12#1": {
+     "cid": 12,
+     "state": "partial",
+     "volume_ml": 5.31,
+     "z_ras_mm": 294.8,
+     "partners": [
+      {
+       "cid": 24,
+       "label": "rib_right_12",
+       "iou": 0.418,
+       "covers_me": 0.677,
+       "i_cover_it": 0.522,
+       "intersection_ml": 3.6,
+       "centroid_distance_mm": 16.6
+      }
+     ]
+    }
+   },
+   "b_to_a": {
+    "rib_right_1#1": {
+     "cid": 13,
+     "state": "partial",
+     "volume_ml": 11.83,
+     "z_ras_mm": 570.6,
+     "partners": [
+      {
+       "cid": 1,
+       "label": "rib_right_1",
+       "iou": 0.334,
+       "covers_me": 0.45,
+       "i_cover_it": 0.565,
+       "intersection_ml": 5.32,
+       "centroid_distance_mm": 6.6
+      }
+     ]
+    },
+    "rib_right_2#1": {
+     "cid": 14,
+     "state": "partial",
+     "volume_ml": 12.82,
+     "z_ras_mm": 557.4,
+     "partners": [
+      {
+       "cid": 2,
+       "label": "rib_right_2",
+       "iou": 0.311,
+       "covers_me": 0.43,
+       "i_cover_it": 0.53,
+       "intersection_ml": 5.51,
+       "centroid_distance_mm": 9.4
+      }
+     ]
+    },
+    "rib_right_3#1": {
+     "cid": 15,
+     "state": "partial",
+     "volume_ml": 14.13,
+     "z_ras_mm": 533.6,
+     "partners": [
+      {
+       "cid": 3,
+       "label": "rib_right_3",
+       "iou": 0.335,
+       "covers_me": 0.458,
+       "i_cover_it": 0.556,
+       "intersection_ml": 6.47,
+       "centroid_distance_mm": 10.5
+      }
+     ]
+    },
+    "rib_right_4#1": {
+     "cid": 16,
+     "state": "partial",
+     "volume_ml": 15.53,
+     "z_ras_mm": 512.7,
+     "partners": [
+      {
+       "cid": 4,
+       "label": "rib_right_4",
+       "iou": 0.39,
+       "covers_me": 0.52,
+       "i_cover_it": 0.609,
+       "intersection_ml": 8.07,
+       "centroid_distance_mm": 12.5
+      }
+     ]
+    },
+    "rib_right_5#1": {
+     "cid": 17,
+     "state": "partial",
+     "volume_ml": 18.84,
+     "z_ras_mm": 490.8,
+     "partners": [
+      {
+       "cid": 5,
+       "label": "rib_right_5",
+       "iou": 0.423,
+       "covers_me": 0.558,
+       "i_cover_it": 0.636,
+       "intersection_ml": 10.51,
+       "centroid_distance_mm": 15.6
+      }
+     ]
+    },
+    "rib_right_6#1": {
+     "cid": 18,
+     "state": "partial",
+     "volume_ml": 21.0,
+     "z_ras_mm": 469.5,
+     "partners": [
+      {
+       "cid": 6,
+       "label": "rib_right_6",
+       "iou": 0.426,
+       "covers_me": 0.543,
+       "i_cover_it": 0.666,
+       "intersection_ml": 11.4,
+       "centroid_distance_mm": 20.2
+      }
+     ]
+    },
+    "rib_right_7#1": {
+     "cid": 19,
+     "state": "partial",
+     "volume_ml": 23.18,
+     "z_ras_mm": 441.5,
+     "partners": [
+      {
+       "cid": 7,
+       "label": "rib_right_7",
+       "iou": 0.482,
+       "covers_me": 0.594,
+       "i_cover_it": 0.719,
+       "intersection_ml": 13.77,
+       "centroid_distance_mm": 15.5
+      }
+     ]
+    },
+    "rib_right_8#1": {
+     "cid": 20,
+     "state": "partial",
+     "volume_ml": 19.32,
+     "z_ras_mm": 419.2,
+     "partners": [
+      {
+       "cid": 8,
+       "label": "rib_right_8",
+       "iou": 0.423,
+       "covers_me": 0.517,
+       "i_cover_it": 0.7,
+       "intersection_ml": 9.99,
+       "centroid_distance_mm": 13.6
+      }
+     ]
+    },
+    "rib_right_9#1": {
+     "cid": 21,
+     "state": "partial",
+     "volume_ml": 18.86,
+     "z_ras_mm": 393.5,
+     "partners": [
+      {
+       "cid": 9,
+       "label": "rib_right_9",
+       "iou": 0.444,
+       "covers_me": 0.544,
+       "i_cover_it": 0.708,
+       "intersection_ml": 10.27,
+       "centroid_distance_mm": 21.2
+      }
+     ]
+    },
+    "rib_right_10#1": {
+     "cid": 22,
+     "state": "partial",
+     "volume_ml": 14.18,
+     "z_ras_mm": 364.5,
+     "partners": [
+      {
+       "cid": 10,
+       "label": "rib_right_10",
+       "iou": 0.426,
+       "covers_me": 0.537,
+       "i_cover_it": 0.674,
+       "intersection_ml": 7.62,
+       "centroid_distance_mm": 19.7
+      }
+     ]
+    },
+    "rib_right_11#1": {
+     "cid": 23,
+     "state": "partial",
+     "volume_ml": 10.69,
+     "z_ras_mm": 328.0,
+     "partners": [
+      {
+       "cid": 11,
+       "label": "rib_right_11",
+       "iou": 0.448,
+       "covers_me": 0.567,
+       "i_cover_it": 0.682,
+       "intersection_ml": 6.06,
+       "centroid_distance_mm": 16.7
+      }
+     ]
+    },
+    "rib_right_12#1": {
+     "cid": 24,
+     "state": "partial",
+     "volume_ml": 6.89,
+     "z_ras_mm": 308.7,
+     "partners": [
+      {
+       "cid": 12,
+       "label": "rib_right_12",
+       "iou": 0.418,
+       "covers_me": 0.522,
+       "i_cover_it": 0.677,
+       "intersection_ml": 3.6,
+       "centroid_distance_mm": 16.6
+      }
+     ]
+    }
+   },
+   "order": {
+    "matched_pairs": 0,
+    "order_violations": 0
+   },
+   "state_counts": {
+    "a_to_b": {
+     "partial": 12
+    },
+    "b_to_a": {
+     "partial": 12
+    }
+   }
+  },
+  "totalseg|skellytour": {
+   "a_to_b": {
+    "rib_right_1#1": {
+     "cid": 1,
+     "state": "matched",
+     "volume_ml": 9.42,
+     "z_ras_mm": 564.8,
+     "partners": [
+      {
+       "cid": 25,
+       "label": "RIGHT_RIB_1",
+       "iou": 0.631,
+       "covers_me": 0.821,
+       "i_cover_it": 0.733,
+       "intersection_ml": 7.73,
+       "centroid_distance_mm": 10.2
+      }
+     ]
+    },
+    "rib_right_2#1": {
+     "cid": 2,
+     "state": "matched",
+     "volume_ml": 10.4,
+     "z_ras_mm": 550.7,
+     "partners": [
+      {
+       "cid": 26,
+       "label": "RIGHT_RIB_2",
+       "iou": 0.693,
+       "covers_me": 0.934,
+       "i_cover_it": 0.729,
+       "intersection_ml": 9.71,
+       "centroid_distance_mm": 7.0
+      }
+     ]
+    },
+    "rib_right_3#1": {
+     "cid": 3,
+     "state": "matched",
+     "volume_ml": 11.64,
+     "z_ras_mm": 527.6,
+     "partners": [
+      {
+       "cid": 27,
+       "label": "RIGHT_RIB_3",
+       "iou": 0.683,
+       "covers_me": 0.893,
+       "i_cover_it": 0.743,
+       "intersection_ml": 10.4,
+       "centroid_distance_mm": 10.3
+      }
+     ]
+    },
+    "rib_right_4#1": {
+     "cid": 4,
+     "state": "split",
+     "volume_ml": 13.25,
+     "z_ras_mm": 505.4,
+     "partners": [
+      {
+       "cid": 29,
+       "label": "RIGHT_RIB_4",
+       "iou": 0.269,
+       "covers_me": 0.319,
+       "i_cover_it": 0.634,
+       "intersection_ml": 4.23,
+       "centroid_distance_mm": 67.9
+      },
+      {
+       "cid": 28,
+       "label": "RIGHT_RIB_4",
+       "iou": 0.271,
+       "covers_me": 0.293,
+       "i_cover_it": 0.784,
+       "intersection_ml": 3.89,
+       "centroid_distance_mm": 66.6
+      }
+     ]
+    },
+    "rib_right_5#1": {
+     "cid": 5,
+     "state": "split",
+     "volume_ml": 16.51,
+     "z_ras_mm": 481.0,
+     "partners": [
+      {
+       "cid": 30,
+       "label": "RIGHT_RIB_5",
+       "iou": 0.429,
+       "covers_me": 0.468,
+       "i_cover_it": 0.835,
+       "intersection_ml": 7.73,
+       "centroid_distance_mm": 53.8
+      },
+      {
+       "cid": 31,
+       "label": "RIGHT_RIB_5",
+       "iou": 0.254,
+       "covers_me": 0.292,
+       "i_cover_it": 0.66,
+       "intersection_ml": 4.82,
+       "centroid_distance_mm": 75.4
+      }
+     ]
+    },
+    "rib_right_6#1": {
+     "cid": 6,
+     "state": "matched",
+     "volume_ml": 17.12,
+     "z_ras_mm": 458.0,
+     "partners": [
+      {
+       "cid": 32,
+       "label": "RIGHT_RIB_6",
+       "iou": 0.639,
+       "covers_me": 0.84,
+       "i_cover_it": 0.727,
+       "intersection_ml": 14.37,
+       "centroid_distance_mm": 8.5
+      }
+     ]
+    },
+    "rib_right_7#1": {
+     "cid": 7,
+     "state": "matched",
+     "volume_ml": 19.14,
+     "z_ras_mm": 432.5,
+     "partners": [
+      {
+       "cid": 33,
+       "label": "RIGHT_RIB_7",
+       "iou": 0.718,
+       "covers_me": 0.957,
+       "i_cover_it": 0.742,
+       "intersection_ml": 18.31,
+       "centroid_distance_mm": 11.4
+      }
+     ]
+    },
+    "rib_right_8#1": {
+     "cid": 8,
+     "state": "matched",
+     "volume_ml": 14.28,
+     "z_ras_mm": 414.9,
+     "partners": [
+      {
+       "cid": 34,
+       "label": "RIGHT_RIB_8",
+       "iou": 0.65,
+       "covers_me": 0.892,
+       "i_cover_it": 0.705,
+       "intersection_ml": 12.74,
+       "centroid_distance_mm": 19.1
+      }
+     ]
+    },
+    "rib_right_9#1": {
+     "cid": 9,
+     "state": "matched",
+     "volume_ml": 14.5,
+     "z_ras_mm": 380.3,
+     "partners": [
+      {
+       "cid": 35,
+       "label": "RIGHT_RIB_9",
+       "iou": 0.64,
+       "covers_me": 0.885,
+       "i_cover_it": 0.699,
+       "intersection_ml": 12.83,
+       "centroid_distance_mm": 23.1
+      }
+     ]
+    },
+    "rib_right_10#1": {
+     "cid": 10,
+     "state": "matched",
+     "volume_ml": 11.31,
+     "z_ras_mm": 351.1,
+     "partners": [
+      {
+       "cid": 36,
+       "label": "RIGHT_RIB_10",
+       "iou": 0.652,
+       "covers_me": 0.895,
+       "i_cover_it": 0.706,
+       "intersection_ml": 10.12,
+       "centroid_distance_mm": 18.5
+      }
+     ]
+    },
+    "rib_right_11#1": {
+     "cid": 11,
+     "state": "matched",
+     "volume_ml": 8.89,
+     "z_ras_mm": 314.8,
+     "partners": [
+      {
+       "cid": 37,
+       "label": "RIGHT_RIB_11",
+       "iou": 0.659,
+       "covers_me": 0.886,
+       "i_cover_it": 0.719,
+       "intersection_ml": 7.88,
+       "centroid_distance_mm": 15.1
+      }
+     ]
+    },
+    "rib_right_12#1": {
+     "cid": 12,
+     "state": "matched",
+     "volume_ml": 5.31,
+     "z_ras_mm": 294.8,
+     "partners": [
+      {
+       "cid": 38,
+       "label": "RIGHT_RIB_12",
+       "iou": 0.607,
+       "covers_me": 0.831,
+       "i_cover_it": 0.692,
+       "intersection_ml": 4.42,
+       "centroid_distance_mm": 13.4
+      }
+     ]
+    }
+   },
+   "b_to_a": {
+    "RIGHT_RIB_1#1": {
+     "cid": 25,
+     "state": "matched",
+     "volume_ml": 10.55,
+     "z_ras_mm": 571.8,
+     "partners": [
+      {
+       "cid": 1,
+       "label": "rib_right_1",
+       "iou": 0.631,
+       "covers_me": 0.733,
+       "i_cover_it": 0.821,
+       "intersection_ml": 7.73,
+       "centroid_distance_mm": 10.2
+      }
+     ]
+    },
+    "RIGHT_RIB_2#1": {
+     "cid": 26,
+     "state": "matched",
+     "volume_ml": 13.32,
+     "z_ras_mm": 553.2,
+     "partners": [
+      {
+       "cid": 2,
+       "label": "rib_right_2",
+       "iou": 0.693,
+       "covers_me": 0.729,
+       "i_cover_it": 0.934,
+       "intersection_ml": 9.71,
+       "centroid_distance_mm": 7.0
+      }
+     ]
+    },
+    "RIGHT_RIB_3#1": {
+     "cid": 27,
+     "state": "matched",
+     "volume_ml": 13.98,
+     "z_ras_mm": 531.3,
+     "partners": [
+      {
+       "cid": 3,
+       "label": "rib_right_3",
+       "iou": 0.683,
+       "covers_me": 0.743,
+       "i_cover_it": 0.893,
+       "intersection_ml": 10.4,
+       "centroid_distance_mm": 10.3
+      }
+     ]
+    },
+    "RIGHT_RIB_4#1": {
+     "cid": 28,
+     "state": "merge",
+     "volume_ml": 4.96,
+     "z_ras_mm": 465.3,
+     "partners": [
+      {
+       "cid": 4,
+       "label": "rib_right_4",
+       "iou": 0.271,
+       "covers_me": 0.784,
+       "i_cover_it": 0.293,
+       "intersection_ml": 3.89,
+       "centroid_distance_mm": 66.6
+      }
+     ]
+    },
+    "RIGHT_RIB_4#2": {
+     "cid": 29,
+     "state": "merge",
+     "volume_ml": 6.67,
+     "z_ras_mm": 540.0,
+     "partners": [
+      {
+       "cid": 4,
+       "label": "rib_right_4",
+       "iou": 0.269,
+       "covers_me": 0.634,
+       "i_cover_it": 0.319,
+       "intersection_ml": 4.23,
+       "centroid_distance_mm": 67.9
+      }
+     ]
+    },
+    "RIGHT_RIB_5#1": {
+     "cid": 30,
+     "state": "merge",
+     "volume_ml": 9.25,
+     "z_ras_mm": 448.4,
+     "partners": [
+      {
+       "cid": 5,
+       "label": "rib_right_5",
+       "iou": 0.429,
+       "covers_me": 0.835,
+       "i_cover_it": 0.468,
+       "intersection_ml": 7.73,
+       "centroid_distance_mm": 53.8
+      }
+     ]
+    },
+    "RIGHT_RIB_5#2": {
+     "cid": 31,
+     "state": "merge",
+     "volume_ml": 7.3,
+     "z_ras_mm": 520.7,
+     "partners": [
+      {
+       "cid": 5,
+       "label": "rib_right_5",
+       "iou": 0.254,
+       "covers_me": 0.66,
+       "i_cover_it": 0.292,
+       "intersection_ml": 4.82,
+       "centroid_distance_mm": 75.4
+      }
+     ]
+    },
+    "RIGHT_RIB_6#1": {
+     "cid": 32,
+     "state": "matched",
+     "volume_ml": 19.76,
+     "z_ras_mm": 460.7,
+     "partners": [
+      {
+       "cid": 6,
+       "label": "rib_right_6",
+       "iou": 0.639,
+       "covers_me": 0.727,
+       "i_cover_it": 0.84,
+       "intersection_ml": 14.37,
+       "centroid_distance_mm": 8.5
+      }
+     ]
+    },
+    "RIGHT_RIB_7#1": {
+     "cid": 33,
+     "state": "matched",
+     "volume_ml": 24.66,
+     "z_ras_mm": 438.0,
+     "partners": [
+      {
+       "cid": 7,
+       "label": "rib_right_7",
+       "iou": 0.718,
+       "covers_me": 0.742,
+       "i_cover_it": 0.957,
+       "intersection_ml": 18.31,
+       "centroid_distance_mm": 11.4
+      }
+     ]
+    },
+    "RIGHT_RIB_8#1": {
+     "cid": 34,
+     "state": "matched",
+     "volume_ml": 18.06,
+     "z_ras_mm": 424.8,
+     "partners": [
+      {
+       "cid": 8,
+       "label": "rib_right_8",
+       "iou": 0.65,
+       "covers_me": 0.705,
+       "i_cover_it": 0.892,
+       "intersection_ml": 12.74,
+       "centroid_distance_mm": 19.1
+      }
+     ]
+    },
+    "RIGHT_RIB_9#1": {
+     "cid": 35,
+     "state": "matched",
+     "volume_ml": 18.36,
+     "z_ras_mm": 394.5,
+     "partners": [
+      {
+       "cid": 9,
+       "label": "rib_right_9",
+       "iou": 0.64,
+       "covers_me": 0.699,
+       "i_cover_it": 0.885,
+       "intersection_ml": 12.83,
+       "centroid_distance_mm": 23.1
+      }
+     ]
+    },
+    "RIGHT_RIB_10#1": {
+     "cid": 36,
+     "state": "matched",
+     "volume_ml": 14.33,
+     "z_ras_mm": 362.8,
+     "partners": [
+      {
+       "cid": 10,
+       "label": "rib_right_10",
+       "iou": 0.652,
+       "covers_me": 0.706,
+       "i_cover_it": 0.895,
+       "intersection_ml": 10.12,
+       "centroid_distance_mm": 18.5
+      }
+     ]
+    },
+    "RIGHT_RIB_11#1": {
+     "cid": 37,
+     "state": "matched",
+     "volume_ml": 10.96,
+     "z_ras_mm": 325.6,
+     "partners": [
+      {
+       "cid": 11,
+       "label": "rib_right_11",
+       "iou": 0.659,
+       "covers_me": 0.719,
+       "i_cover_it": 0.886,
+       "intersection_ml": 7.88,
+       "centroid_distance_mm": 15.1
+      }
+     ]
+    },
+    "RIGHT_RIB_12#1": {
+     "cid": 38,
+     "state": "matched",
+     "volume_ml": 6.38,
+     "z_ras_mm": 304.8,
+     "partners": [
+      {
+       "cid": 12,
+       "label": "rib_right_12",
+       "iou": 0.607,
+       "covers_me": 0.692,
+       "i_cover_it": 0.831,
+       "intersection_ml": 4.42,
+       "centroid_distance_mm": 13.4
+      }
+     ]
+    }
+   },
+   "order": {
+    "matched_pairs": 10,
+    "order_violations": 0
+   },
+   "state_counts": {
+    "a_to_b": {
+     "matched": 10,
+     "split": 2
+    },
+    "b_to_a": {
+     "matched": 10,
+     "merge": 4
+    }
+   }
+  },
+  "moose|skellytour": {
+   "a_to_b": {
+    "rib_right_1#1": {
+     "cid": 13,
+     "state": "partial",
+     "volume_ml": 11.83,
+     "z_ras_mm": 570.6,
+     "partners": [
+      {
+       "cid": 25,
+       "label": "RIGHT_RIB_1",
+       "iou": 0.315,
+       "covers_me": 0.453,
+       "i_cover_it": 0.508,
+       "intersection_ml": 5.36,
+       "centroid_distance_mm": 5.3
+      }
+     ]
+    },
+    "rib_right_2#1": {
+     "cid": 14,
+     "state": "partial",
+     "volume_ml": 12.82,
+     "z_ras_mm": 557.4,
+     "partners": [
+      {
+       "cid": 26,
+       "label": "RIGHT_RIB_2",
+       "iou": 0.316,
+       "covers_me": 0.49,
+       "i_cover_it": 0.471,
+       "intersection_ml": 6.27,
+       "centroid_distance_mm": 4.2
+      }
+     ]
+    },
+    "rib_right_3#1": {
+     "cid": 15,
+     "state": "partial",
+     "volume_ml": 14.13,
+     "z_ras_mm": 533.6,
+     "partners": [
+      {
+       "cid": 27,
+       "label": "RIGHT_RIB_3",
+       "iou": 0.35,
+       "covers_me": 0.516,
+       "i_cover_it": 0.521,
+       "intersection_ml": 7.29,
+       "centroid_distance_mm": 2.8
+      }
+     ]
+    },
+    "rib_right_4#1": {
+     "cid": 16,
+     "state": "split",
+     "volume_ml": 15.53,
+     "z_ras_mm": 512.7,
+     "partners": [
+      {
+       "cid": 29,
+       "label": "RIGHT_RIB_4",
+       "iou": 0.183,
+       "covers_me": 0.221,
+       "i_cover_it": 0.515,
+       "intersection_ml": 3.43,
+       "centroid_distance_mm": 56.2
+      },
+      {
+       "cid": 28,
+       "label": "RIGHT_RIB_4",
+       "iou": 0.183,
+       "covers_me": 0.204,
+       "i_cover_it": 0.639,
+       "intersection_ml": 3.17,
+       "centroid_distance_mm": 75.9
+      }
+     ]
+    },
+    "rib_right_5#1": {
+     "cid": 17,
+     "state": "split",
+     "volume_ml": 18.84,
+     "z_ras_mm": 490.8,
+     "partners": [
+      {
+       "cid": 30,
+       "label": "RIGHT_RIB_5",
+       "iou": 0.255,
+       "covers_me": 0.303,
+       "i_cover_it": 0.616,
+       "intersection_ml": 5.7,
+       "centroid_distance_mm": 68.2
+      },
+      {
+       "cid": 31,
+       "label": "RIGHT_RIB_5",
+       "iou": 0.198,
+       "covers_me": 0.229,
+       "i_cover_it": 0.591,
+       "intersection_ml": 4.31,
+       "centroid_distance_mm": 60.2
+      }
+     ]
+    },
+    "rib_right_6#1": {
+     "cid": 18,
+     "state": "partial",
+     "volume_ml": 21.0,
+     "z_ras_mm": 469.5,
+     "partners": [
+      {
+       "cid": 32,
+       "label": "RIGHT_RIB_6",
+       "iou": 0.46,
+       "covers_me": 0.611,
+       "i_cover_it": 0.65,
+       "intersection_ml": 12.84,
+       "centroid_distance_mm": 13.0
+      }
+     ]
+    },
+    "rib_right_7#1": {
+     "cid": 19,
+     "state": "matched",
+     "volume_ml": 23.18,
+     "z_ras_mm": 441.5,
+     "partners": [
+      {
+       "cid": 33,
+       "label": "RIGHT_RIB_7",
+       "iou": 0.559,
+       "covers_me": 0.74,
+       "i_cover_it": 0.695,
+       "intersection_ml": 17.15,
+       "centroid_distance_mm": 4.5
+      }
+     ]
+    },
+    "rib_right_8#1": {
+     "cid": 20,
+     "state": "partial",
+     "volume_ml": 19.32,
+     "z_ras_mm": 419.2,
+     "partners": [
+      {
+       "cid": 34,
+       "label": "RIGHT_RIB_8",
+       "iou": 0.491,
+       "covers_me": 0.637,
+       "i_cover_it": 0.681,
+       "intersection_ml": 12.3,
+       "centroid_distance_mm": 10.3
+      }
+     ]
+    },
+    "rib_right_9#1": {
+     "cid": 21,
+     "state": "matched",
+     "volume_ml": 18.86,
+     "z_ras_mm": 393.5,
+     "partners": [
+      {
+       "cid": 35,
+       "label": "RIGHT_RIB_9",
+       "iou": 0.532,
+       "covers_me": 0.685,
+       "i_cover_it": 0.704,
+       "intersection_ml": 12.93,
+       "centroid_distance_mm": 4.0
+      }
+     ]
+    },
+    "rib_right_10#1": {
+     "cid": 22,
+     "state": "matched",
+     "volume_ml": 14.18,
+     "z_ras_mm": 364.5,
+     "partners": [
+      {
+       "cid": 36,
+       "label": "RIGHT_RIB_10",
+       "iou": 0.535,
+       "covers_me": 0.701,
+       "i_cover_it": 0.693,
+       "intersection_ml": 9.94,
+       "centroid_distance_mm": 2.8
+      }
+     ]
+    },
+    "rib_right_11#1": {
+     "cid": 23,
+     "state": "matched",
+     "volume_ml": 10.69,
+     "z_ras_mm": 328.0,
+     "partners": [
+      {
+       "cid": 37,
+       "label": "RIGHT_RIB_11",
+       "iou": 0.539,
+       "covers_me": 0.709,
+       "i_cover_it": 0.692,
+       "intersection_ml": 7.58,
+       "centroid_distance_mm": 2.7
+      }
+     ]
+    },
+    "rib_right_12#1": {
+     "cid": 24,
+     "state": "matched",
+     "volume_ml": 6.89,
+     "z_ras_mm": 308.7,
+     "partners": [
+      {
+       "cid": 38,
+       "label": "RIGHT_RIB_12",
+       "iou": 0.512,
+       "covers_me": 0.652,
+       "i_cover_it": 0.705,
+       "intersection_ml": 4.5,
+       "centroid_distance_mm": 3.9
+      }
+     ]
+    }
+   },
+   "b_to_a": {
+    "RIGHT_RIB_1#1": {
+     "cid": 25,
+     "state": "partial",
+     "volume_ml": 10.55,
+     "z_ras_mm": 571.8,
+     "partners": [
+      {
+       "cid": 13,
+       "label": "rib_right_1",
+       "iou": 0.315,
+       "covers_me": 0.508,
+       "i_cover_it": 0.453,
+       "intersection_ml": 5.36,
+       "centroid_distance_mm": 5.3
+      }
+     ]
+    },
+    "RIGHT_RIB_2#1": {
+     "cid": 26,
+     "state": "partial",
+     "volume_ml": 13.32,
+     "z_ras_mm": 553.2,
+     "partners": [
+      {
+       "cid": 14,
+       "label": "rib_right_2",
+       "iou": 0.316,
+       "covers_me": 0.471,
+       "i_cover_it": 0.49,
+       "intersection_ml": 6.27,
+       "centroid_distance_mm": 4.2
+      }
+     ]
+    },
+    "RIGHT_RIB_3#1": {
+     "cid": 27,
+     "state": "partial",
+     "volume_ml": 13.98,
+     "z_ras_mm": 531.3,
+     "partners": [
+      {
+       "cid": 15,
+       "label": "rib_right_3",
+       "iou": 0.35,
+       "covers_me": 0.521,
+       "i_cover_it": 0.516,
+       "intersection_ml": 7.29,
+       "centroid_distance_mm": 2.8
+      }
+     ]
+    },
+    "RIGHT_RIB_4#1": {
+     "cid": 28,
+     "state": "merge",
+     "volume_ml": 4.96,
+     "z_ras_mm": 465.3,
+     "partners": [
+      {
+       "cid": 16,
+       "label": "rib_right_4",
+       "iou": 0.183,
+       "covers_me": 0.639,
+       "i_cover_it": 0.204,
+       "intersection_ml": 3.17,
+       "centroid_distance_mm": 75.9
+      }
+     ]
+    },
+    "RIGHT_RIB_4#2": {
+     "cid": 29,
+     "state": "merge",
+     "volume_ml": 6.67,
+     "z_ras_mm": 540.0,
+     "partners": [
+      {
+       "cid": 16,
+       "label": "rib_right_4",
+       "iou": 0.183,
+       "covers_me": 0.515,
+       "i_cover_it": 0.221,
+       "intersection_ml": 3.43,
+       "centroid_distance_mm": 56.2
+      }
+     ]
+    },
+    "RIGHT_RIB_5#1": {
+     "cid": 30,
+     "state": "merge",
+     "volume_ml": 9.25,
+     "z_ras_mm": 448.4,
+     "partners": [
+      {
+       "cid": 17,
+       "label": "rib_right_5",
+       "iou": 0.255,
+       "covers_me": 0.616,
+       "i_cover_it": 0.303,
+       "intersection_ml": 5.7,
+       "centroid_distance_mm": 68.2
+      }
+     ]
+    },
+    "RIGHT_RIB_5#2": {
+     "cid": 31,
+     "state": "merge",
+     "volume_ml": 7.3,
+     "z_ras_mm": 520.7,
+     "partners": [
+      {
+       "cid": 17,
+       "label": "rib_right_5",
+       "iou": 0.198,
+       "covers_me": 0.591,
+       "i_cover_it": 0.229,
+       "intersection_ml": 4.31,
+       "centroid_distance_mm": 60.2
+      }
+     ]
+    },
+    "RIGHT_RIB_6#1": {
+     "cid": 32,
+     "state": "partial",
+     "volume_ml": 19.76,
+     "z_ras_mm": 460.7,
+     "partners": [
+      {
+       "cid": 18,
+       "label": "rib_right_6",
+       "iou": 0.46,
+       "covers_me": 0.65,
+       "i_cover_it": 0.611,
+       "intersection_ml": 12.84,
+       "centroid_distance_mm": 13.0
+      }
+     ]
+    },
+    "RIGHT_RIB_7#1": {
+     "cid": 33,
+     "state": "matched",
+     "volume_ml": 24.66,
+     "z_ras_mm": 438.0,
+     "partners": [
+      {
+       "cid": 19,
+       "label": "rib_right_7",
+       "iou": 0.559,
+       "covers_me": 0.695,
+       "i_cover_it": 0.74,
+       "intersection_ml": 17.15,
+       "centroid_distance_mm": 4.5
+      }
+     ]
+    },
+    "RIGHT_RIB_8#1": {
+     "cid": 34,
+     "state": "partial",
+     "volume_ml": 18.06,
+     "z_ras_mm": 424.8,
+     "partners": [
+      {
+       "cid": 20,
+       "label": "rib_right_8",
+       "iou": 0.491,
+       "covers_me": 0.681,
+       "i_cover_it": 0.637,
+       "intersection_ml": 12.3,
+       "centroid_distance_mm": 10.3
+      }
+     ]
+    },
+    "RIGHT_RIB_9#1": {
+     "cid": 35,
+     "state": "matched",
+     "volume_ml": 18.36,
+     "z_ras_mm": 394.5,
+     "partners": [
+      {
+       "cid": 21,
+       "label": "rib_right_9",
+       "iou": 0.532,
+       "covers_me": 0.704,
+       "i_cover_it": 0.685,
+       "intersection_ml": 12.93,
+       "centroid_distance_mm": 4.0
+      }
+     ]
+    },
+    "RIGHT_RIB_10#1": {
+     "cid": 36,
+     "state": "matched",
+     "volume_ml": 14.33,
+     "z_ras_mm": 362.8,
+     "partners": [
+      {
+       "cid": 22,
+       "label": "rib_right_10",
+       "iou": 0.535,
+       "covers_me": 0.693,
+       "i_cover_it": 0.701,
+       "intersection_ml": 9.94,
+       "centroid_distance_mm": 2.8
+      }
+     ]
+    },
+    "RIGHT_RIB_11#1": {
+     "cid": 37,
+     "state": "matched",
+     "volume_ml": 10.96,
+     "z_ras_mm": 325.6,
+     "partners": [
+      {
+       "cid": 23,
+       "label": "rib_right_11",
+       "iou": 0.539,
+       "covers_me": 0.692,
+       "i_cover_it": 0.709,
+       "intersection_ml": 7.58,
+       "centroid_distance_mm": 2.7
+      }
+     ]
+    },
+    "RIGHT_RIB_12#1": {
+     "cid": 38,
+     "state": "matched",
+     "volume_ml": 6.38,
+     "z_ras_mm": 304.8,
+     "partners": [
+      {
+       "cid": 24,
+       "label": "rib_right_12",
+       "iou": 0.512,
+       "covers_me": 0.705,
+       "i_cover_it": 0.652,
+       "intersection_ml": 4.5,
+       "centroid_distance_mm": 3.9
+      }
+     ]
+    }
+   },
+   "order": {
+    "matched_pairs": 5,
+    "order_violations": 0
+   },
+   "state_counts": {
+    "a_to_b": {
+     "matched": 5,
+     "partial": 5,
+     "split": 2
+    },
+    "b_to_a": {
+     "matched": 5,
+     "merge": 4,
+     "partial": 5
+    }
+   }
+  }
+ },
+ "instances": [
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 569.1,
+   "role": "rib",
+   "id": "RR01",
+   "index": 1,
+   "consensus_ml": 9.75,
+   "union_ml": 17.71,
+   "agreement_ratio": 0.55,
+   "unanimous_fraction": 0.444,
+   "eligible_models_on_consensus": {
+    "3": 18669
+   },
+   "votes_histogram_on_union": {
+    "1": 15247,
+    "2": 10382,
+    "3": 8287
+   },
+   "consensus_centroid_ras_mm": [
+    57.5,
+    4.5,
+    568.4
+   ],
+   "consensus_centroid_vhf_mm": [
+    584.6,
+    429.2,
+    1430.5
+   ],
+   "consensus_z_vox": [
+    1400,
+    1466
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_1",
+     "candidate_ml": 9.42,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.834,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_1",
+     "candidate_ml": 11.83,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.417,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_1",
+     "candidate_ml": 10.55,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.759,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_1",
+    "moose": "rib_right_1",
+    "skellytour": "RIGHT_RIB_1"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 553.8,
+   "role": "rib",
+   "id": "RR02",
+   "index": 2,
+   "consensus_ml": 11.11,
+   "union_ml": 20.23,
+   "agreement_ratio": 0.549,
+   "unanimous_fraction": 0.467,
+   "eligible_models_on_consensus": {
+    "3": 21281
+   },
+   "votes_histogram_on_union": {
+    "1": 17460,
+    "2": 11346,
+    "3": 9935
+   },
+   "consensus_centroid_ras_mm": [
+    77.5,
+    -4.1,
+    552.5
+   ],
+   "consensus_centroid_vhf_mm": [
+    604.6,
+    420.3,
+    1414.6
+   ],
+   "consensus_z_vox": [
+    1370,
+    1451
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_2",
+     "candidate_ml": 10.4,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.873,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_2",
+     "candidate_ml": 12.82,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.38,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_2",
+     "candidate_ml": 13.32,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.792,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_2",
+    "moose": "rib_right_2",
+    "skellytour": "RIGHT_RIB_2"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 530.8,
+   "role": "rib",
+   "id": "RR03",
+   "index": 3,
+   "consensus_ml": 12.26,
+   "union_ml": 21.54,
+   "agreement_ratio": 0.569,
+   "unanimous_fraction": 0.486,
+   "eligible_models_on_consensus": {
+    "3": 23469
+   },
+   "votes_histogram_on_union": {
+    "1": 17784,
+    "2": 12072,
+    "3": 11397
+   },
+   "consensus_centroid_ras_mm": [
+    85.1,
+    -6.7,
+    530.3
+   ],
+   "consensus_centroid_vhf_mm": [
+    612.4,
+    417.9,
+    1392.5
+   ],
+   "consensus_z_vox": [
+    1339,
+    1432
+   ],
+   "crosses_skellytour_seam_z": [
+    1350
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_3",
+     "candidate_ml": 11.64,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.841,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_3",
+     "candidate_ml": 14.13,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.421,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_3",
+     "candidate_ml": 13.98,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.809,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_3",
+    "moose": "rib_right_3",
+    "skellytour": "RIGHT_RIB_3"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": "skellytour",
+   "group_kind": "partitioned",
+   "seed_merged_from": [
+    "RIGHT_RIB_4#2",
+    "RIGHT_RIB_4#1"
+   ],
+   "z_ras_mm": 502.6,
+   "role": "rib",
+   "id": "RR04",
+   "index": 4,
+   "consensus_ml": 12.54,
+   "union_ml": 22.74,
+   "agreement_ratio": 0.552,
+   "unanimous_fraction": 0.409,
+   "eligible_models_on_consensus": {
+    "3": 24015
+   },
+   "votes_histogram_on_union": {
+    "1": 19529,
+    "2": 14204,
+    "3": 9811
+   },
+   "consensus_centroid_ras_mm": [
+    88.3,
+    -7.9,
+    508.3
+   ],
+   "consensus_centroid_vhf_mm": [
+    615.9,
+    417.1,
+    1370.5
+   ],
+   "consensus_z_vox": [
+    1306,
+    1412
+   ],
+   "crosses_skellytour_seam_z": [
+    1350
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_4",
+     "candidate_ml": 13.25,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.751,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "partial",
+     "label": "rib_right_4",
+     "candidate_ml": 15.53,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.516,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "seed",
+     "label": "RIGHT_RIB_4",
+     "candidate_ml": 6.67,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.658,
+     "extra_candidates": [],
+     "seed_components": [
+      "RIGHT_RIB_4#2",
+      "RIGHT_RIB_4#1"
+     ]
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_4",
+    "moose": "rib_right_4",
+    "skellytour": "RIGHT_RIB_4"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": "skellytour",
+   "group_kind": "partitioned",
+   "seed_merged_from": [
+    "RIGHT_RIB_5#2",
+    "RIGHT_RIB_5#1"
+   ],
+   "z_ras_mm": 484.6,
+   "role": "rib",
+   "id": "RR05",
+   "index": 5,
+   "consensus_ml": 17.02,
+   "union_ml": 26.86,
+   "agreement_ratio": 0.634,
+   "unanimous_fraction": 0.472,
+   "eligible_models_on_consensus": {
+    "3": 32585
+   },
+   "votes_histogram_on_union": {
+    "1": 18842,
+    "2": 17214,
+    "3": 15371
+   },
+   "consensus_centroid_ras_mm": [
+    92.7,
+    -5.9,
+    482.9
+   ],
+   "consensus_centroid_vhf_mm": [
+    620.7,
+    419.5,
+    1345.3
+   ],
+   "consensus_z_vox": [
+    1274,
+    1393
+   ],
+   "crosses_skellytour_seam_z": [
+    1350
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_5",
+     "candidate_ml": 16.51,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.812,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_5",
+     "candidate_ml": 18.84,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.535,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "seed",
+     "label": "RIGHT_RIB_5",
+     "candidate_ml": 9.25,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.764,
+     "extra_candidates": [],
+     "seed_components": [
+      "RIGHT_RIB_5#2",
+      "RIGHT_RIB_5#1"
+     ]
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_5",
+    "moose": "rib_right_5",
+    "skellytour": "RIGHT_RIB_5"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 462.7,
+   "role": "rib",
+   "id": "RR06",
+   "index": 6,
+   "consensus_ml": 19.13,
+   "union_ml": 29.01,
+   "agreement_ratio": 0.659,
+   "unanimous_fraction": 0.509,
+   "eligible_models_on_consensus": {
+    "3": 36632
+   },
+   "votes_histogram_on_union": {
+    "1": 18916,
+    "2": 17982,
+    "3": 18650
+   },
+   "consensus_centroid_ras_mm": [
+    94.1,
+    -10.9,
+    462.2
+   ],
+   "consensus_centroid_vhf_mm": [
+    622.2,
+    414.9,
+    1324.5
+   ],
+   "consensus_z_vox": [
+    1248,
+    1371
+   ],
+   "crosses_skellytour_seam_z": [
+    1350
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_6",
+     "candidate_ml": 17.12,
+     "components_of_label": 3,
+     "iou_with_consensus": 0.793,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_6",
+     "candidate_ml": 21.0,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.565,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_6",
+     "candidate_ml": 19.76,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.816,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_6",
+    "moose": "rib_right_6",
+    "skellytour": "RIGHT_RIB_6"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 437.3,
+   "role": "rib",
+   "id": "RR07",
+   "index": 7,
+   "consensus_ml": 22.36,
+   "union_ml": 31.18,
+   "agreement_ratio": 0.717,
+   "unanimous_fraction": 0.6,
+   "eligible_models_on_consensus": {
+    "3": 42824
+   },
+   "votes_histogram_on_union": {
+    "1": 16879,
+    "2": 17110,
+    "3": 25714
+   },
+   "consensus_centroid_ras_mm": [
+    95.1,
+    -14.7,
+    437.2
+   ],
+   "consensus_centroid_vhf_mm": [
+    623.5,
+    411.5,
+    1299.4
+   ],
+   "consensus_z_vox": [
+    1220,
+    1350
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_7",
+     "candidate_ml": 19.14,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.816,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_7",
+     "candidate_ml": 23.18,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.623,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_7",
+     "candidate_ml": 24.66,
+     "components_of_label": 3,
+     "iou_with_consensus": 0.881,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_7",
+    "moose": "rib_right_7",
+    "skellytour": "RIGHT_RIB_7"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 419.6,
+   "role": "rib",
+   "id": "RR08",
+   "index": 8,
+   "consensus_ml": 16.88,
+   "union_ml": 25.7,
+   "agreement_ratio": 0.657,
+   "unanimous_fraction": 0.538,
+   "eligible_models_on_consensus": {
+    "3": 32328
+   },
+   "votes_histogram_on_union": {
+    "1": 16885,
+    "2": 14945,
+    "3": 17383
+   },
+   "consensus_centroid_ras_mm": [
+    93.8,
+    -32.1,
+    420.9
+   ],
+   "consensus_centroid_vhf_mm": [
+    621.8,
+    394.5,
+    1282.8
+   ],
+   "consensus_z_vox": [
+    1203,
+    1328
+   ],
+   "crosses_skellytour_seam_z": [],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_8",
+     "candidate_ml": 14.28,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.78,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_8",
+     "candidate_ml": 19.32,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.575,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_8",
+     "candidate_ml": 18.06,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.841,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_8",
+    "moose": "rib_right_8",
+    "skellytour": "RIGHT_RIB_8"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 389.4,
+   "role": "rib",
+   "id": "RR09",
+   "index": 9,
+   "consensus_ml": 17.15,
+   "union_ml": 25.14,
+   "agreement_ratio": 0.682,
+   "unanimous_fraction": 0.55,
+   "eligible_models_on_consensus": {
+    "3": 32848
+   },
+   "votes_histogram_on_union": {
+    "1": 15286,
+    "2": 14783,
+    "3": 18065
+   },
+   "consensus_centroid_ras_mm": [
+    93.5,
+    -39.0,
+    389.7
+   ],
+   "consensus_centroid_vhf_mm": [
+    621.7,
+    388.3,
+    1251.4
+   ],
+   "consensus_z_vox": [
+    1158,
+    1304
+   ],
+   "crosses_skellytour_seam_z": [
+    1200
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_9",
+     "candidate_ml": 14.5,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.759,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_9",
+     "candidate_ml": 18.86,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.618,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_9",
+     "candidate_ml": 18.36,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.85,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_9",
+    "moose": "rib_right_9",
+    "skellytour": "RIGHT_RIB_9"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 359.5,
+   "role": "rib",
+   "id": "RR10",
+   "index": 10,
+   "consensus_ml": 13.05,
+   "union_ml": 19.46,
+   "agreement_ratio": 0.67,
+   "unanimous_fraction": 0.561,
+   "eligible_models_on_consensus": {
+    "3": 24983
+   },
+   "votes_histogram_on_union": {
+    "1": 12286,
+    "2": 10969,
+    "3": 14014
+   },
+   "consensus_centroid_ras_mm": [
+    92.2,
+    -49.5,
+    360.5
+   ],
+   "consensus_centroid_vhf_mm": [
+    620.5,
+    378.4,
+    1222.0
+   ],
+   "consensus_z_vox": [
+    1135,
+    1278
+   ],
+   "crosses_skellytour_seam_z": [
+    1200
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_10",
+     "candidate_ml": 11.31,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.749,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_10",
+     "candidate_ml": 14.18,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.603,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_10",
+     "candidate_ml": 14.33,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.871,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_10",
+    "moose": "rib_right_10",
+    "skellytour": "RIGHT_RIB_10"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 322.8,
+   "role": "rib",
+   "id": "RR11",
+   "index": 11,
+   "consensus_ml": 9.89,
+   "union_ml": 14.84,
+   "agreement_ratio": 0.666,
+   "unanimous_fraction": 0.588,
+   "eligible_models_on_consensus": {
+    "3": 18932
+   },
+   "votes_histogram_on_union": {
+    "1": 9475,
+    "2": 7791,
+    "3": 11141
+   },
+   "consensus_centroid_ras_mm": [
+    86.9,
+    -56.5,
+    323.3
+   ],
+   "consensus_centroid_vhf_mm": [
+    615.5,
+    372.3,
+    1184.6
+   ],
+   "consensus_z_vox": [
+    1113,
+    1248
+   ],
+   "crosses_skellytour_seam_z": [
+    1200
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_11",
+     "candidate_ml": 8.89,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.763,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_11",
+     "candidate_ml": 10.69,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.613,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_11",
+     "candidate_ml": 10.96,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.861,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_11",
+    "moose": "rib_right_11",
+    "skellytour": "RIGHT_RIB_11"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "clean",
+   "z_ras_mm": 302.8,
+   "role": "rib",
+   "id": "RR12",
+   "index": 12,
+   "consensus_ml": 6.09,
+   "union_ml": 9.28,
+   "agreement_ratio": 0.656,
+   "unanimous_fraction": 0.526,
+   "eligible_models_on_consensus": {
+    "3": 11668
+   },
+   "votes_histogram_on_union": {
+    "1": 6109,
+    "2": 5525,
+    "3": 6143
+   },
+   "consensus_centroid_ras_mm": [
+    63.3,
+    -60.7,
+    303.3
+   ],
+   "consensus_centroid_vhf_mm": [
+    592.2,
+    369.3,
+    1164.2
+   ],
+   "consensus_z_vox": [
+    1104,
+    1216
+   ],
+   "crosses_skellytour_seam_z": [
+    1200
+   ],
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "matched",
+     "label": "rib_right_12",
+     "candidate_ml": 5.31,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.728,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "moose": {
+     "state": "matched",
+     "label": "rib_right_12",
+     "candidate_ml": 6.89,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.603,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "matched",
+     "label": "RIGHT_RIB_12",
+     "candidate_ml": 6.38,
+     "components_of_label": 1,
+     "iou_with_consensus": 0.843,
+     "extra_candidates": [],
+     "seed_components": null
+    }
+   },
+   "source_labels": {
+    "totalseg": "rib_right_12",
+    "moose": "rib_right_12",
+    "skellytour": "RIGHT_RIB_12"
+   },
+   "name_status": "pending"
+  }
+ ],
+ "instance_count": {
+  "rib_consensus": 12,
+  "rib_any": 12,
+  "sacrum": 0
+ },
+ "lumbar_type_block_below_T12": [],
+ "hra_same_donor_evidence": null,
+ "skellytour_seams_z": [
+  150,
+  300,
+  450,
+  600,
+  750,
+  900,
+  1050,
+  1200,
+  1350,
+  1500,
+  1650
+ ],
+ "volumes": {
+  "instances": "data/derived/denver/priors/consensus/rib-right-instances.nii.gz",
+  "review": "data/derived/denver/priors/consensus/rib-right-review.nii.gz",
+  "votes": "data/derived/denver/priors/consensus/rib-right-votes.nii.gz",
+  "eligible": "data/derived/denver/priors/consensus/rib-right-eligible.nii.gz"
+ },
+ "naming": "Every instance id is provisional and geometric. hra_name_by_order is external same-donor evidence for the count and order, not a decision; name_status stays pending until an anatomist or a documented reference confirms the levels.",
+ "selftest": {
+  "merge_two_bodies": {
+   "moose_state": "split",
+   "totalseg_states": [
+    "merge",
+    "merge"
+   ],
+   "pass": true
+  },
+  "split_one_body": {
+   "moose_states": [
+    "merge",
+    "merge"
+   ],
+   "totalseg_state": "split",
+   "pass": true
+  },
+  "delete_one_body": {
+   "before": [
+    "matched"
+   ],
+   "after": [
+    "unmatched"
+   ],
+   "pass": true
+  },
+  "swap_two_labels": {
+   "state_counts_before": {
+    "matched": 10,
+    "split": 2
+   },
+   "state_counts_after": {
+    "matched": 10,
+    "split": 2
+   },
+   "order_violations_before": 0,
+   "order_violations_after": 0,
+   "pass": true
+  },
+  "shift_15mm": {
+   "moose_state": "unmatched",
+   "pass": true
+  },
+  "all_pass": true,
+  "perturbed_model": "skellytour"
+ }
+}

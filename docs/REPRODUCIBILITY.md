@@ -195,15 +195,22 @@ Consensus of the three models and the laterality checks: `python scripts/ct-prio
 `... denver` (needs the copies listed above), outputs `generated/ct-prior-consensus-{nlm,denver}.json`
 (agreement per named bone with a per-model status `present | negative | unsupported | unprocessed`; the
 vertebra centroid block is diagnostic only; the laterality checks share TotalSegmentator organ labels and are
-consistency checks, not independent tests). The current merged Skellytour volumes predate the manifest
-format above; their seams are checked locally from the stitched volume with
+consistency checks, not independent tests). The merge with provenance was re-run on rub-pc on 2026-09-09
+for both CTs (all chunks postprocessed, manifests complete): the stitched volumes are byte-identical to the
+earlier ones (MD5 `cb3d6a9a…` NLM, `8efb1921…` Denver), so no downstream result changed; the new
+`skellytour_high.json` manifests record per-chunk SHA-256 and seam agreement (Denver seam z 1500, cervical
+spine, agrees on only 65 % of the doubly predicted voxels: boundary disagreement between chunks, identity
+kept). Seams are also checked locally from the stitched volume with
 `python scripts/skellytour-seam-check.py nlm|denver` (`generated/skellytour-seams-{nlm,denver}.json`:
 label agreement at each seam against its neighbouring slices and the identity kept by every vertebra
 label that crosses a seam).
 
 Vertebra consensus by instance (names and counts observed, never imposed):
 `python scripts/ct-vertebra-instances.py nlm --selftest` and `... denver --selftest` (about 5 min each,
-8 GB RAM). Outputs `generated/ct-vertebra-instances-{nlm,denver}.json` (candidates, pairwise
+8 GB RAM). The same script runs on the rib families: `... nlm ribs_left --selftest`, `... ribs_right`
+(outputs `generated/ct-rib-instances-<ct>-<side>.json`, panels `generated/ct-rib-instances-<ct>-<side>/`,
+label maps `rib-<side>-{instances,review,votes,eligible}.nii.gz`; no HRA chain, the HRA female skeleton has
+no rib meshes). Outputs `generated/ct-vertebra-instances-{nlm,denver}.json` (candidates, pairwise
 correspondence with states matched/split/merge/partial/unmatched, instance table with per-model state
 `seed | matched | merge | partial | single | negative | absorbed | unsupported | unprocessed`, votes,
 HRA same-donor chain by order, self-test results), review panels in
