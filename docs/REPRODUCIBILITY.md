@@ -162,3 +162,34 @@ Overrides select geometry; they do not validate its registration.
 Keep `data/derived/` and `.venv-seg/` ignored by Git (they are in `.gitignore`): Tailwind's source scanner reads every non-ignored file, and the 800 MB NIfTI volumes stall `vite build` and the dev server for tens of minutes.
 
 Neither counts nor licence eligibility imply anatomical correctness.
+
+## GPU runs on the CT priors (plan B, stage 1)
+
+The three CT bone models run on a separate machine with an RTX 3080 (10 GB) and 31 GB RAM; the
+scripts in `scripts/gpu/` are copied there and run under `/media/rub/Backups/VHF/` (variable `BASE`).
+All pin the GPU by UUID through `CUDA_VISIBLE_DEVICES`.
+
+| Script | Model | Input | Output on the GPU box | Copy in the repo |
+| --- | --- | --- | --- | --- |
+| `run-moose.sh` | MOOSE 3.2.2, four bone models | `nlm-vhf/derived/vhf-fresh-ct.nii.gz` | `moose/input/vhf/moosez-*/segmentations/` | `data/derived/nlm-vhf/moose/` |
+| `run-denver-ct-priors.sh` | MOOSE bones, then TotalSegmentator `total` | Denver aligned CT (HU + 1000 -> HU) | `denver/priors/{moose,totalseg}/` | `data/derived/denver/priors/` (TotalSegmentator was rerun locally on CPU after the GPU run was killed by RAM) |
+| `run-skellytour-chunked.sh nlm denver` | Skellytour `high` | both CTs | `skellytour/{nlm,denver}/skellytour_high.nii.gz` | `data/derived/nlm-vhf/skellytour/`, `data/derived/denver/priors/skellytour/` |
+| `merge-skellytour.py` | stitches Skellytour chunks (postprocessed outputs preferred) | chunk outputs | `skellytour_high.{nii.gz,json}` | same |
+
+Skellytour `high` needs about 38 GB RAM per 109 L of CT (its own estimate), so it runs in
+body-cropped z-chunks: `CORE=260 OV=40` for the 0.94 mm NLM CT (7 chunks, 3.2 min each), `CORE=150 OV=30`
+for the 0.72 mm Denver CT (12 chunks, 2.7 min each). Larger chunks die at the export step with
+"Segmentation export worker died". The chunk cores are stitched back onto the full CT grid, so the
+result shares the voxel frame of the TotalSegmentator and MOOSE outputs.
+
+Orphaned model processes. When an nnU-Net worker is killed by the OOM killer, the Skellytour parent
+process stays alive and keeps its RAM (about 1.6 GB each) and GPU memory. Before any new run:
+
+```bash
+ssh rub-pc 'pgrep -af "skellytour|moosez|TotalSegmentator|nnUNet" | grep -v pgrep; free -g; nvidia-smi --query-gpu=index,memory.used --format=csv'
+# only if the listed processes belong to a finished or failed run:
+ssh rub-pc 'pkill -f skellytour; pkill -f moosez; sleep 3; pgrep -af "skellytour|moosez" | grep -v pgrep; free -g'
+```
+
+Consensus of the three models and the laterality tests: `python scripts/ct-prior-consensus.py nlm` and
+`... denver` (needs the copies listed above), outputs `generated/ct-prior-consensus-{nlm,denver}.json`.

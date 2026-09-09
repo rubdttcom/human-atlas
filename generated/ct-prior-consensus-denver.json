@@ -1,0 +1,5764 @@
+{
+ "ct": "denver",
+ "totalseg": "data/derived/denver/priors/totalseg/total.nii.gz",
+ "moose": "data/derived/denver/priors/moose/moosez-2026-09-09-02-44-23/segmentations",
+ "skellytour": "data/derived/denver/priors/skellytour/skellytour_high.nii.gz",
+ "shape": [
+  673,
+  670,
+  1727
+ ],
+ "affine_axcodes": [
+  "L",
+  "A",
+  "S"
+ ],
+ "consensus_summary": {
+  "agree": 7,
+  "partial": 38,
+  "disagree": 16,
+  "single": 11
+ },
+ "bones": {
+  "femur_left": {
+   "models": {
+    "totalseg": {
+     "label": "femur_left",
+     "voxels": 971998,
+     "volume_ml": 507.61,
+     "centroid_vox": [
+      464.40017160529135,
+      347.9793497517485,
+      681.0503972230396
+     ],
+     "centroid_ras_mm": [
+      -92.78915208395262,
+      9.740929673240174,
+      -181.94960277696043
+     ]
+    },
+    "moose": {
+     "label": "femur_left",
+     "voxels": 972657,
+     "volume_ml": 507.95,
+     "centroid_vox": [
+      464.2968384538434,
+      347.393205415681,
+      683.247419182713
+     ],
+     "centroid_ras_mm": [
+      -92.71447776086308,
+      9.31734894512661,
+      -179.75258081728703
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_FEMUR",
+     "voxels": 929074,
+     "volume_ml": 485.19,
+     "centroid_vox": [
+      464.3517416266088,
+      347.99435244124794,
+      681.108770668429
+     ],
+     "centroid_ras_mm": [
+      -92.75415386871691,
+      9.751771456996863,
+      -181.89122933157103
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.9522,
+     "centroid_offset_mm": 2.24
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9682,
+     "centroid_offset_mm": 0.07
+    },
+    "moose|skellytour": {
+     "dice": 0.9544,
+     "centroid_offset_mm": 2.18
+    }
+   },
+   "consensus": "agree"
+  },
+  "humerus_left": {
+   "models": {
+    "totalseg": {
+     "label": "humerus_left",
+     "voxels": 321373,
+     "volume_ml": 167.83,
+     "centroid_vox": [
+      594.0164046139532,
+      296.3068832789313,
+      1368.5978598077622
+     ],
+     "centroid_ras_mm": [
+      -186.45710206620032,
+      -27.60048885658057,
+      505.59785980776223
+     ]
+    },
+    "moose": {
+     "label": "humerus_left",
+     "voxels": 316242,
+     "volume_ml": 165.15,
+     "centroid_vox": [
+      594.7186079015437,
+      296.24817070471346,
+      1371.7385451647788
+     ],
+     "centroid_ras_mm": [
+      -186.9645534933298,
+      -27.642917851294527,
+      508.73854516477877
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_HUMERUS",
+     "voxels": 280338,
+     "volume_ml": 146.4,
+     "centroid_vox": [
+      590.8770127488959,
+      299.83282680193196,
+      1380.2492847919298
+     ],
+     "centroid_ras_mm": [
+      -184.18840166220684,
+      -25.052444573187586,
+      517.2492847919298
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.892,
+     "centroid_offset_mm": 3.18
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9134,
+     "centroid_offset_mm": 12.14
+    },
+    "moose|skellytour": {
+     "dice": 0.864,
+     "centroid_offset_mm": 9.32
+    }
+   },
+   "consensus": "agree"
+  },
+  "scapula_left": {
+   "models": {
+    "totalseg": {
+     "label": "scapula_left",
+     "voxels": 162013,
+     "volume_ml": 84.61,
+     "centroid_vox": [
+      487.68456852227905,
+      266.8945146377143,
+      1440.010209057298
+     ],
+     "centroid_ras_mm": [
+      -109.61576149206167,
+      -48.85551387000493,
+      577.010209057298
+     ]
+    },
+    "moose": {
+     "label": "scapula_left",
+     "voxels": 171894,
+     "volume_ml": 89.77,
+     "centroid_vox": [
+      494.3762958567489,
+      277.1200914517086,
+      1452.8117037243883
+     ],
+     "centroid_ras_mm": [
+      -114.45157847818001,
+      -41.46593931348431,
+      589.8117037243883
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_SCAPULA",
+     "voxels": 150136,
+     "volume_ml": 78.41,
+     "centroid_vox": [
+      491.67732589119197,
+      276.0451124313955,
+      1447.8204627804125
+     ],
+     "centroid_ras_mm": [
+      -112.5011516074926,
+      -42.2427793648375,
+      584.8204627804125
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6221,
+     "centroid_offset_mm": 15.55
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8113,
+     "centroid_offset_mm": 10.63
+    },
+    "moose|skellytour": {
+     "dice": 0.6178,
+     "centroid_offset_mm": 5.41
+    }
+   },
+   "consensus": "partial"
+  },
+  "clavicle_left": {
+   "models": {
+    "totalseg": {
+     "label": "clavicula_left",
+     "voxels": 52956,
+     "volume_ml": 27.66,
+     "centroid_vox": [
+      429.11775813883224,
+      362.4561900445653,
+      1455.9377974167232
+     ],
+     "centroid_ras_mm": [
+      -67.29210388931466,
+      20.2027053395484,
+      592.9377974167232
+     ]
+    },
+    "moose": {
+     "label": "clavicle_left",
+     "voxels": 56659,
+     "volume_ml": 29.59,
+     "centroid_vox": [
+      427.67473834695284,
+      362.65197056072293,
+      1458.886302264424
+     ],
+     "centroid_ras_mm": [
+      -66.24929696188201,
+      20.344187306500203,
+      595.8863022644241
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_CLAVICLE",
+     "voxels": 52867,
+     "volume_ml": 27.61,
+     "centroid_vox": [
+      428.55242400741486,
+      362.99614126014336,
+      1455.4196001286246
+     ],
+     "centroid_ras_mm": [
+      -66.8835617806937,
+      20.59290433144656,
+      592.4196001286246
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6982,
+     "centroid_offset_mm": 3.13
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9391,
+     "centroid_offset_mm": 0.77
+    },
+    "moose|skellytour": {
+     "dice": 0.6903,
+     "centroid_offset_mm": 3.53
+    }
+   },
+   "consensus": "partial"
+  },
+  "hip_left": {
+   "models": {
+    "totalseg": {
+     "label": "hip_left",
+     "voxels": 731481,
+     "volume_ml": 382.0,
+     "centroid_vox": [
+      441.90460039290156,
+      332.0704844008252,
+      931.0138335787259
+     ],
+     "centroid_ras_mm": [
+      -76.53259231336114,
+      -1.7557075100439192,
+      68.0138335787259
+     ]
+    },
+    "moose": {
+     "label": "hip_left",
+     "voxels": 757742,
+     "volume_ml": 395.72,
+     "centroid_vox": [
+      435.9387496007876,
+      330.95281771368093,
+      936.9220420670888
+     ],
+     "centroid_ras_mm": [
+      -72.22133437424225,
+      -2.563396060453016,
+      73.9220420670888
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.8902,
+     "centroid_offset_mm": 7.36
+    }
+   },
+   "consensus": "agree"
+  },
+  "rib_left_1": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_1",
+     "voxels": 17024,
+     "volume_ml": 8.89,
+     "centroid_vox": [
+      408.38962640977445,
+      344.98032189849624,
+      1435.8067434210527
+     ],
+     "centroid_ras_mm": [
+      -52.312794886459415,
+      7.573664166187314,
+      572.8067434210527
+     ]
+    },
+    "moose": {
+     "label": "rib_left_1",
+     "voxels": 21096,
+     "volume_ml": 11.02,
+     "centroid_vox": [
+      405.09162874478574,
+      341.1830204778157,
+      1442.0492036405005
+     ],
+     "centroid_ras_mm": [
+      -49.929477047673856,
+      4.8295214667458595,
+      579.0492036405005
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_1",
+     "voxels": 20658,
+     "volume_ml": 10.79,
+     "centroid_vox": [
+      404.2022461032046,
+      336.59565301578084,
+      1441.334640333043
+     ],
+     "centroid_ras_mm": [
+      -49.28675933513904,
+      1.5144327929733663,
+      578.3346403330429
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4403,
+     "centroid_offset_mm": 7.22
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7829,
+     "centroid_offset_mm": 8.74
+    },
+    "moose|skellytour": {
+     "dice": 0.4426,
+     "centroid_offset_mm": 3.45
+    }
+   },
+   "consensus": "disagree"
+  },
+  "rib_left_2": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_2",
+     "voxels": 21285,
+     "volume_ml": 11.12,
+     "centroid_vox": [
+      439.3908386187456,
+      333.2095842142354,
+      1425.185200845666
+     ],
+     "centroid_ras_mm": [
+      -74.71600725558375,
+      -0.9325301820917389,
+      562.185200845666
+     ]
+    },
+    "moose": {
+     "label": "rib_left_2",
+     "voxels": 26158,
+     "volume_ml": 13.66,
+     "centroid_vox": [
+      430.6243978897469,
+      329.5685832250172,
+      1430.623939139078
+     ],
+     "centroid_ras_mm": [
+      -68.38088616260063,
+      -3.5637214351241653,
+      567.623939139078
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_2",
+     "voxels": 27144,
+     "volume_ml": 14.18,
+     "centroid_vox": [
+      430.4396920129679,
+      330.83211759504866,
+      1426.1753241968759
+     ],
+     "centroid_ras_mm": [
+      -68.24740735037187,
+      -2.6506207267811988,
+      563.1753241968759
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4419,
+     "centroid_offset_mm": 8.75
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8247,
+     "centroid_offset_mm": 6.77
+    },
+    "moose|skellytour": {
+     "dice": 0.4556,
+     "centroid_offset_mm": 4.54
+    }
+   },
+   "consensus": "disagree"
+  },
+  "rib_left_3": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_3",
+     "voxels": 22104,
+     "volume_ml": 11.54,
+     "centroid_vox": [
+      456.2424448063699,
+      326.24529496923634,
+      1404.5195439739414
+     ],
+     "centroid_ras_mm": [
+      -86.89392177187318,
+      -5.965315671382143,
+      541.5195439739414
+     ]
+    },
+    "moose": {
+     "label": "rib_left_3",
+     "voxels": 27399,
+     "volume_ml": 14.31,
+     "centroid_vox": [
+      444.19756195481585,
+      320.0634329720063,
+      1410.476294755283
+     ],
+     "centroid_ras_mm": [
+      -78.18961477040364,
+      -10.432675406447174,
+      547.4762947552831
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_3",
+     "voxels": 28988,
+     "volume_ml": 15.14,
+     "centroid_vox": [
+      443.97895680971436,
+      321.4307644542569,
+      1406.06771767628
+     ],
+     "centroid_ras_mm": [
+      -78.03163844813344,
+      -9.444565090974237,
+      543.0677176762799
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4682,
+     "centroid_offset_mm": 11.45
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7969,
+     "centroid_offset_mm": 9.65
+    },
+    "moose|skellytour": {
+     "dice": 0.4964,
+     "centroid_offset_mm": 4.52
+    }
+   },
+   "consensus": "disagree"
+  },
+  "rib_left_4": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_4",
+     "voxels": 25461,
+     "volume_ml": 13.3,
+     "centroid_vox": [
+      466.70358587643847,
+      326.15278268724717,
+      1381.7169789089196
+     ],
+     "centroid_ras_mm": [
+      -94.4537282541595,
+      -6.032170228106736,
+      518.7169789089196
+     ]
+    },
+    "moose": {
+     "label": "rib_left_4",
+     "voxels": 32819,
+     "volume_ml": 17.14,
+     "centroid_vox": [
+      452.1882141442457,
+      315.46250647490785,
+      1387.8461257198574
+     ],
+     "centroid_ras_mm": [
+      -83.96410761155136,
+      -13.75756259841961,
+      524.8461257198574
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_4",
+     "voxels": 32357,
+     "volume_ml": 16.9,
+     "centroid_vox": [
+      456.4843774144698,
+      314.3050035540996,
+      1386.4947306610625
+     ],
+     "centroid_ras_mm": [
+      -87.06875582551413,
+      -14.59403904256476,
+      523.4947306610625
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5385,
+     "centroid_offset_mm": 14.4
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8121,
+     "centroid_offset_mm": 12.27
+    },
+    "moose|skellytour": {
+     "dice": 0.5804,
+     "centroid_offset_mm": 3.49
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_left_5": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_5",
+     "voxels": 30195,
+     "volume_ml": 15.77,
+     "centroid_vox": [
+      470.9991058122206,
+      325.8425567146879,
+      1355.1727769498261
+     ],
+     "centroid_ras_mm": [
+      -97.55791155862028,
+      -6.25635689212541,
+      492.17277694982613
+     ]
+    },
+    "moose": {
+     "label": "rib_left_5",
+     "voxels": 42247,
+     "volume_ml": 22.06,
+     "centroid_vox": [
+      462.04312732265015,
+      326.7351291215944,
+      1352.3265320614482
+     ],
+     "centroid_ras_mm": [
+      -91.08581986353829,
+      -5.611334076502715,
+      489.32653206144823
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_5",
+     "voxels": 34615,
+     "volume_ml": 18.08,
+     "centroid_vox": [
+      465.9128990322115,
+      321.6744763830709,
+      1357.4755452838365
+     ],
+     "centroid_ras_mm": [
+      -93.88233365290051,
+      -9.268445200522706,
+      494.4755452838365
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5313,
+     "centroid_offset_mm": 7.1
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7948,
+     "centroid_offset_mm": 5.28
+    },
+    "moose|skellytour": {
+     "dice": 0.5673,
+     "centroid_offset_mm": 6.91
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_left_6": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_6",
+     "voxels": 35199,
+     "volume_ml": 18.38,
+     "centroid_vox": [
+      476.4920026137106,
+      330.999943180204,
+      1319.842864854115
+     ],
+     "centroid_ras_mm": [
+      -101.52738645321341,
+      -2.5293405587715085,
+      456.8428648541151
+     ]
+    },
+    "moose": {
+     "label": "rib_left_6",
+     "voxels": 47347,
+     "volume_ml": 24.73,
+     "centroid_vox": [
+      468.57386951654803,
+      317.5467083447737,
+      1325.0797938623355
+     ],
+     "centroid_ras_mm": [
+      -95.80529997004703,
+      -12.251401587811813,
+      462.07979386233546
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_6",
+     "voxels": 37597,
+     "volume_ml": 19.63,
+     "centroid_vox": [
+      463.1289730563609,
+      307.9240630901402,
+      1338.7220522914063
+     ],
+     "centroid_ras_mm": [
+      -91.87051281065442,
+      -19.20526402838817,
+      475.72205229140627
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4941,
+     "centroid_offset_mm": 12.44
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7479,
+     "centroid_offset_mm": 26.98
+    },
+    "moose|skellytour": {
+     "dice": 0.4855,
+     "centroid_offset_mm": 15.81
+    }
+   },
+   "consensus": "disagree"
+  },
+  "rib_left_7": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_7",
+     "voxels": 34016,
+     "volume_ml": 17.76,
+     "centroid_vox": [
+      482.79427328316086,
+      321.4806267638758,
+      1294.2717544684854
+     ],
+     "centroid_ras_mm": [
+      -106.08176023910488,
+      -9.408531793176792,
+      431.27175446848537
+     ]
+    },
+    "moose": {
+     "label": "rib_left_7",
+     "voxels": 41310,
+     "volume_ml": 21.57,
+     "centroid_vox": [
+      461.30079883805377,
+      296.58157831033645,
+      1306.9099491648512
+     ],
+     "centroid_ras_mm": [
+      -90.54937172157662,
+      -27.401978840784096,
+      443.90994916485124
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_7",
+     "voxels": 42385,
+     "volume_ml": 22.13,
+     "centroid_vox": [
+      461.3454288073611,
+      298.53646337147575,
+      1314.5789548189218
+     ],
+     "centroid_ras_mm": [
+      -90.58162383719326,
+      -25.98926939940108,
+      451.57895481892183
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4986,
+     "centroid_offset_mm": 26.92
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7099,
+     "centroid_offset_mm": 30.46
+    },
+    "moose|skellytour": {
+     "dice": 0.4943,
+     "centroid_offset_mm": 7.8
+    }
+   },
+   "consensus": "disagree"
+  },
+  "rib_left_8": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_8",
+     "voxels": 32516,
+     "volume_ml": 16.98,
+     "centroid_vox": [
+      480.08558863328824,
+      298.30877106655186,
+      1271.2803850412106
+     ],
+     "centroid_ras_mm": [
+      -104.12431299339613,
+      -26.15381261234515,
+      408.2803850412106
+     ]
+    },
+    "moose": {
+     "label": "rib_left_8",
+     "voxels": 35472,
+     "volume_ml": 18.52,
+     "centroid_vox": [
+      455.31574199368515,
+      279.60580175913395,
+      1285.2576962110961
+     ],
+     "centroid_ras_mm": [
+      -86.22423441333711,
+      -39.669625816773504,
+      422.2576962110961
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_8",
+     "voxels": 39772,
+     "volume_ml": 20.77,
+     "centroid_vox": [
+      460.8393844916021,
+      285.92713466760534,
+      1286.3000854872776
+     ],
+     "centroid_ras_mm": [
+      -90.2159278702834,
+      -35.10147658925919,
+      423.30008548727756
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5616,
+     "centroid_offset_mm": 26.43
+    },
+    "totalseg|skellytour": {
+     "dice": 0.771,
+     "centroid_offset_mm": 22.34
+    },
+    "moose|skellytour": {
+     "dice": 0.5847,
+     "centroid_offset_mm": 6.16
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_left_9": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_9",
+     "voxels": 25376,
+     "volume_ml": 13.25,
+     "centroid_vox": [
+      473.3090715636822,
+      273.0800362547289,
+      1258.813800441362
+     ],
+     "centroid_ras_mm": [
+      -99.2272221954612,
+      -44.385509488702496,
+      395.813800441362
+     ]
+    },
+    "moose": {
+     "label": "rib_left_9",
+     "voxels": 32459,
+     "volume_ml": 16.95,
+     "centroid_vox": [
+      450.41988354539575,
+      265.9032933855017,
+      1268.610339197141
+     ],
+     "centroid_ras_mm": [
+      -82.68621287382905,
+      -49.57182586672363,
+      405.610339197141
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_9",
+     "voxels": 36520,
+     "volume_ml": 19.07,
+     "centroid_vox": [
+      458.71423877327493,
+      274.2111445783132,
+      1260.7393209200438
+     ],
+     "centroid_ras_mm": [
+      -88.68017854144773,
+      -43.568107258914495,
+      397.73932092004384
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5645,
+     "centroid_offset_mm": 19.91
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7571,
+     "centroid_offset_mm": 10.75
+    },
+    "moose|skellytour": {
+     "dice": 0.6323,
+     "centroid_offset_mm": 11.57
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_left_10": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_10",
+     "voxels": 23046,
+     "volume_ml": 12.04,
+     "centroid_vox": [
+      471.6276143365443,
+      266.66475744163847,
+      1222.4675865659983
+     ],
+     "centroid_ras_mm": [
+      -98.01210702205299,
+      -49.021549288953196,
+      359.4675865659983
+     ]
+    },
+    "moose": {
+     "label": "rib_left_10",
+     "voxels": 27538,
+     "volume_ml": 14.38,
+     "centroid_vox": [
+      451.27827002687195,
+      259.1128259132835,
+      1238.7584791923887
+     ],
+     "centroid_ras_mm": [
+      -83.30653102492806,
+      -54.478998006970215,
+      375.7584791923887
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_10",
+     "voxels": 29303,
+     "volume_ml": 15.3,
+     "centroid_vox": [
+      457.482203187387,
+      264.4754120738491,
+      1229.4280107838788
+     ],
+     "centroid_ras_mm": [
+      -87.78984061882358,
+      -50.603692880414116,
+      366.4280107838788
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6139,
+     "centroid_offset_mm": 22.61
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8233,
+     "centroid_offset_mm": 12.47
+    },
+    "moose|skellytour": {
+     "dice": 0.6937,
+     "centroid_offset_mm": 11.05
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_left_11": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_11",
+     "voxels": 16504,
+     "volume_ml": 8.62,
+     "centroid_vox": [
+      458.8115608337373,
+      254.566226369365,
+      1189.6297261269995
+     ],
+     "centroid_ras_mm": [
+      -88.75050891350037,
+      -57.764625499636225,
+      326.62972612699946
+     ]
+    },
+    "moose": {
+     "label": "rib_left_11",
+     "voxels": 20354,
+     "volume_ml": 10.63,
+     "centroid_vox": [
+      446.5643116832072,
+      254.90306573646458,
+      1199.6291638007272
+     ],
+     "centroid_ras_mm": [
+      -79.89996068953434,
+      -57.52120650606446,
+      336.62916380072716
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_11",
+     "voxels": 18380,
+     "volume_ml": 9.6,
+     "centroid_vox": [
+      443.97263329706203,
+      253.07927094668116,
+      1199.1588139281828
+     ],
+     "centroid_ras_mm": [
+      -78.02706872370089,
+      -58.839182774792306,
+      336.1588139281828
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6517,
+     "centroid_offset_mm": 13.36
+    },
+    "totalseg|skellytour": {
+     "dice": 0.782,
+     "centroid_offset_mm": 14.39
+    },
+    "moose|skellytour": {
+     "dice": 0.7017,
+     "centroid_offset_mm": 2.34
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_left_12": {
+   "models": {
+    "totalseg": {
+     "label": "rib_left_12",
+     "voxels": 9307,
+     "volume_ml": 4.86,
+     "centroid_vox": [
+      426.7823143870205,
+      245.13688621467713,
+      1170.5198237885463
+     ],
+     "centroid_ras_mm": [
+      -65.60438142235762,
+      -64.57879484766752,
+      307.5198237885463
+     ]
+    },
+    "moose": {
+     "label": "rib_left_12",
+     "voxels": 12261,
+     "volume_ml": 6.4,
+     "centroid_vox": [
+      414.4335698556398,
+      247.93377375417992,
+      1181.6760459995107
+     ],
+     "centroid_ras_mm": [
+      -56.680486951272144,
+      -62.55760725352866,
+      318.67604599951073
+     ]
+    },
+    "skellytour": {
+     "label": "LEFT_RIB_12",
+     "voxels": 11183,
+     "volume_ml": 5.84,
+     "centroid_vox": [
+      415.66896181704374,
+      247.7199320397031,
+      1178.4774210855762
+     ],
+     "centroid_ras_mm": [
+      -57.5732503788401,
+      -62.712141254022185,
+      315.4774210855762
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5847,
+     "centroid_offset_mm": 14.43
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7732,
+     "centroid_offset_mm": 11.46
+    },
+    "moose|skellytour": {
+     "dice": 0.6959,
+     "centroid_offset_mm": 3.32
+    }
+   },
+   "consensus": "partial"
+  },
+  "patella_left": {
+   "models": {
+    "moose": {
+     "label": "patella_left",
+     "voxels": 47188,
+     "volume_ml": 24.64,
+     "centroid_vox": [
+      444.78320759515134,
+      398.7087183182165,
+      521.8273289819446
+     ],
+     "centroid_ras_mm": [
+      -78.61283511304856,
+      46.400812831527844,
+      -341.17267101805544
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "tibia_left": {
+   "models": {
+    "moose": {
+     "label": "tibia_left",
+     "voxels": 574474,
+     "volume_ml": 300.01,
+     "centroid_vox": [
+      419.8328366470893,
+      323.77418821391393,
+      369.87900583838433
+     ],
+     "centroid_ras_mm": [
+      -60.58229955624506,
+      -7.751075823375345,
+      -493.12099416161567
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "fibula_left": {
+   "models": {
+    "moose": {
+     "label": "fibula_left",
+     "voxels": 107248,
+     "volume_ml": 56.01,
+     "centroid_vox": [
+      439.71367298224675,
+      282.30862113978816,
+      298.9634212293003
+     ],
+     "centroid_ras_mm": [
+      -74.94930544911296,
+      -37.71641714312497,
+      -564.0365787706996
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "radius_left": {
+   "models": {
+    "moose": {
+     "label": "radius_left",
+     "voxels": 88279,
+     "volume_ml": 46.1,
+     "centroid_vox": [
+      617.7581078172611,
+      369.97109165260144,
+      1130.0207410595951
+     ],
+     "centroid_ras_mm": [
+      -203.61418661125265,
+      25.633394163038588,
+      267.02074105959514
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "ulna_left": {
+   "models": {
+    "moose": {
+     "label": "ulna_left",
+     "voxels": 95567,
+     "volume_ml": 49.91,
+     "centroid_vox": [
+      636.0091140247157,
+      303.8092333127544,
+      1150.514644176337
+     ],
+     "centroid_ras_mm": [
+      -216.8033859644795,
+      -22.178870503650273,
+      287.514644176337
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "femur_right": {
+   "models": {
+    "totalseg": {
+     "label": "femur_right",
+     "voxels": 997034,
+     "volume_ml": 520.68,
+     "centroid_vox": [
+      192.08304130049726,
+      336.16753490853876,
+      679.8904390421992
+     ],
+     "centroid_ras_mm": [
+      104.002459187408,
+      1.2050506691080045,
+      -183.1095609578008
+     ]
+    },
+    "moose": {
+     "label": "femur_right",
+     "voxels": 995070,
+     "volume_ml": 519.66,
+     "centroid_vox": [
+      192.11432663028734,
+      335.74240003215857,
+      681.9004160511321
+     ],
+     "centroid_ras_mm": [
+      103.97985065576088,
+      0.8978243949589455,
+      -181.09958394886792
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_FEMUR",
+     "voxels": 949028,
+     "volume_ml": 495.61,
+     "centroid_vox": [
+      192.01215875611678,
+      336.1575053633823,
+      679.4780154010208
+     ],
+     "centroid_ras_mm": [
+      104.05368288422073,
+      1.1978027580072705,
+      -183.5219845989792
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.9505,
+     "centroid_offset_mm": 2.03
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9662,
+     "centroid_offset_mm": 0.42
+    },
+    "moose|skellytour": {
+     "dice": 0.9547,
+     "centroid_offset_mm": 2.44
+    }
+   },
+   "consensus": "agree"
+  },
+  "humerus_right": {
+   "models": {
+    "totalseg": {
+     "label": "humerus_right",
+     "voxels": 293526,
+     "volume_ml": 153.29,
+     "centroid_vox": [
+      77.5729441344208,
+      303.8977126387441,
+      1369.715360819825
+     ],
+     "centroid_ras_mm": [
+      186.7538692912458,
+      -22.11493038682309,
+      506.71536081982504
+     ]
+    },
+    "moose": {
+     "label": "humerus_right",
+     "voxels": 297558,
+     "volume_ml": 155.39,
+     "centroid_vox": [
+      75.8641138870405,
+      302.3598491722622,
+      1368.9031516544674
+     ],
+     "centroid_ras_mm": [
+      187.9887657422873,
+      -23.226276665867687,
+      505.90315165446737
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_HUMERUS",
+     "voxels": 268863,
+     "volume_ml": 140.41,
+     "centroid_vox": [
+      77.53979164109603,
+      305.3078147606774,
+      1373.4404734009513
+     ],
+     "centroid_ras_mm": [
+      186.77782713984584,
+      -21.095911611464317,
+      510.4404734009513
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.901,
+     "centroid_offset_mm": 1.85
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9179,
+     "centroid_offset_mm": 3.86
+    },
+    "moose|skellytour": {
+     "dice": 0.8734,
+     "centroid_offset_mm": 5.16
+    }
+   },
+   "consensus": "agree"
+  },
+  "scapula_right": {
+   "models": {
+    "totalseg": {
+     "label": "scapula_right",
+     "voxels": 171615,
+     "volume_ml": 89.62,
+     "centroid_vox": [
+      174.21548815662965,
+      267.8228418261807,
+      1429.2521982344201
+     ],
+     "centroid_ras_mm": [
+      116.91455387907443,
+      -48.184652646545175,
+      566.2521982344201
+     ]
+    },
+    "moose": {
+     "label": "scapula_right",
+     "voxels": 173138,
+     "volume_ml": 90.42,
+     "centroid_vox": [
+      171.3270397024339,
+      273.969411683166,
+      1438.8405318301009
+     ],
+     "centroid_ras_mm": [
+      119.00190851864207,
+      -43.74279698878959,
+      575.8405318301009
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_SCAPULA",
+     "voxels": 149820,
+     "volume_ml": 78.24,
+     "centroid_vox": [
+      173.27466960352422,
+      273.335102122547,
+      1434.2507275397143
+     ],
+     "centroid_ras_mm": [
+      117.5944420622834,
+      -44.201184605974476,
+      571.2507275397143
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6659,
+     "centroid_offset_mm": 10.77
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8447,
+     "centroid_offset_mm": 6.43
+    },
+    "moose|skellytour": {
+     "dice": 0.6392,
+     "centroid_offset_mm": 4.82
+    }
+   },
+   "consensus": "partial"
+  },
+  "clavicle_right": {
+   "models": {
+    "totalseg": {
+     "label": "clavicula_right",
+     "voxels": 61695,
+     "volume_ml": 32.22,
+     "centroid_vox": [
+      239.1882486425156,
+      357.132571521193,
+      1448.5350838803793
+     ],
+     "centroid_ras_mm": [
+      69.96159792490917,
+      16.355560410267174,
+      585.5350838803793
+     ]
+    },
+    "moose": {
+     "label": "clavicle_right",
+     "voxels": 64346,
+     "volume_ml": 33.6,
+     "centroid_vox": [
+      243.75785596618283,
+      359.0891741522395,
+      1450.1734995182296
+     ],
+     "centroid_ras_mm": [
+      66.65934372189454,
+      17.769511063868947,
+      587.1734995182296
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_CLAVICLE",
+     "voxels": 60331,
+     "volume_ml": 31.51,
+     "centroid_vox": [
+      242.91334471498897,
+      359.17447083588866,
+      1446.722497555154
+     ],
+     "centroid_ras_mm": [
+      67.26963485441794,
+      17.831151225075985,
+      583.722497555154
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.7447,
+     "centroid_offset_mm": 3.95
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9194,
+     "centroid_offset_mm": 3.57
+    },
+    "moose|skellytour": {
+     "dice": 0.729,
+     "centroid_offset_mm": 3.51
+    }
+   },
+   "consensus": "partial"
+  },
+  "hip_right": {
+   "models": {
+    "totalseg": {
+     "label": "hip_right",
+     "voxels": 727771,
+     "volume_ml": 380.07,
+     "centroid_vox": [
+      218.35040005716084,
+      330.9313451621458,
+      931.0940199595752
+     ],
+     "centroid_ras_mm": [
+      85.02019447353916,
+      -2.5789133289038375,
+      68.09401995957523
+     ]
+    },
+    "moose": {
+     "label": "hip_right",
+     "voxels": 746006,
+     "volume_ml": 389.59,
+     "centroid_vox": [
+      218.6179226440538,
+      330.3803012308212,
+      932.37055600089
+     ],
+     "centroid_ras_mm": [
+      84.82686766788717,
+      -2.9771285385210433,
+      69.37055600089002
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.8969,
+     "centroid_offset_mm": 1.35
+    }
+   },
+   "consensus": "agree"
+  },
+  "rib_right_1": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_1",
+     "voxels": 18030,
+     "volume_ml": 9.42,
+     "centroid_vox": [
+      254.93216860787575,
+      344.8595673876872,
+      1427.8249584026623
+     ],
+     "centroid_ras_mm": [
+      58.584159516084895,
+      7.486400193025588,
+      564.8249584026623
+     ]
+    },
+    "moose": {
+     "label": "rib_right_1",
+     "voxels": 22646,
+     "volume_ml": 11.83,
+     "centroid_vox": [
+      258.667314315994,
+      342.6764108451824,
+      1433.5592599134504
+     ],
+     "centroid_ras_mm": [
+      55.88493401598066,
+      5.908728993361166,
+      570.5592599134504
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_1",
+     "voxels": 20196,
+     "volume_ml": 10.55,
+     "centroid_vox": [
+      258.7397009308774,
+      335.4024064171123,
+      1434.8365517924342
+     ],
+     "centroid_ras_mm": [
+      55.832623393577165,
+      0.6521259651464391,
+      571.8365517924342
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5005,
+     "centroid_offset_mm": 6.53
+    },
+    "totalseg|skellytour": {
+     "dice": 0.774,
+     "centroid_offset_mm": 10.17
+    },
+    "moose|skellytour": {
+     "dice": 0.4794,
+     "centroid_offset_mm": 5.41
+    }
+   },
+   "consensus": "disagree"
+  },
+  "rib_right_2": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_2",
+     "voxels": 19908,
+     "volume_ml": 10.4,
+     "centroid_vox": [
+      225.5497287522604,
+      330.5715290335543,
+      1413.7188065099458
+     ],
+     "centroid_ras_mm": [
+      79.81755631267487,
+      -2.8389366172944506,
+      550.7188065099458
+     ]
+    },
+    "moose": {
+     "label": "rib_right_2",
+     "voxels": 24541,
+     "volume_ml": 12.82,
+     "centroid_vox": [
+      234.1985656656208,
+      327.30732243999836,
+      1420.3829509799928
+     ],
+     "centroid_ras_mm": [
+      73.56742232404767,
+      -5.197835135171374,
+      557.3829509799928
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_2",
+     "voxels": 25508,
+     "volume_ml": 13.32,
+     "centroid_vox": [
+      234.18594166535988,
+      327.9270032930845,
+      1416.225929120276
+     ],
+     "centroid_ras_mm": [
+      73.57654513372643,
+      -4.750019041426754,
+      553.2259291202761
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4744,
+     "centroid_offset_mm": 9.44
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8189,
+     "centroid_offset_mm": 6.99
+    },
+    "moose|skellytour": {
+     "dice": 0.48,
+     "centroid_offset_mm": 4.18
+    }
+   },
+   "consensus": "disagree"
+  },
+  "rib_right_3": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_3",
+     "voxels": 22295,
+     "volume_ml": 11.64,
+     "centroid_vox": [
+      212.97815653734023,
+      329.08714958510876,
+      1390.5807580174928
+     ],
+     "centroid_ras_mm": [
+      88.90247854881687,
+      -3.911632349181531,
+      527.5807580174928
+     ]
+    },
+    "moose": {
+     "label": "rib_right_3",
+     "voxels": 27049,
+     "volume_ml": 14.13,
+     "centroid_vox": [
+      224.0429221043292,
+      324.84982808976304,
+      1396.6414654885577
+     ],
+     "centroid_ras_mm": [
+      80.90645919509319,
+      -6.973758200796311,
+      533.6414654885577
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_3",
+     "voxels": 26775,
+     "volume_ml": 13.98,
+     "centroid_vox": [
+      224.62644257703082,
+      322.7051353874883,
+      1394.2949393090569
+     ],
+     "centroid_ras_mm": [
+      80.48477461761453,
+      -8.523633275089935,
+      531.2949393090569
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5024,
+     "centroid_offset_mm": 10.49
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8113,
+     "centroid_offset_mm": 10.29
+    },
+    "moose|skellytour": {
+     "dice": 0.5188,
+     "centroid_offset_mm": 2.84
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_right_4": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_4",
+     "voxels": 25367,
+     "volume_ml": 13.25,
+     "centroid_vox": [
+      202.75022667244846,
+      328.0706823826231,
+      1368.3704813340166
+     ],
+     "centroid_ras_mm": [
+      96.29375355171405,
+      -4.6461884836331535,
+      505.37048133401663
+     ]
+    },
+    "moose": {
+     "label": "rib_right_4",
+     "voxels": 29739,
+     "volume_ml": 15.53,
+     "centroid_vox": [
+      214.41776791418675,
+      320.2640976495511,
+      1375.7459901139916
+     ],
+     "centroid_ras_mm": [
+      87.86213473299773,
+      -10.28766387090738,
+      512.7459901139916
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_4",
+     "voxels": 22264,
+     "volume_ml": 11.63,
+     "centroid_vox": [
+      229.94376572044558,
+      321.11309737693136,
+      1371.129491555875
+     ],
+     "centroid_ras_mm": [
+      76.64217908250484,
+      -9.674129114085048,
+      508.1294915558749
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5611,
+     "centroid_offset_mm": 12.54
+    },
+    "totalseg|skellytour": {
+     "dice": 0.6524,
+     "centroid_offset_mm": 20.47
+    },
+    "moose|skellytour": {
+     "dice": 0.4861,
+     "centroid_offset_mm": 12.15
+    }
+   },
+   "consensus": "disagree"
+  },
+  "rib_right_5": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_5",
+     "voxels": 31617,
+     "volume_ml": 16.51,
+     "centroid_vox": [
+      199.38336970617073,
+      329.31742417054113,
+      1344.0302368978714
+     ],
+     "centroid_ras_mm": [
+      98.72683297852944,
+      -3.745223035704413,
+      481.0302368978714
+     ]
+    },
+    "moose": {
+     "label": "rib_right_5",
+     "voxels": 36072,
+     "volume_ml": 18.84,
+     "centroid_vox": [
+      211.244538700377,
+      317.34300842758927,
+      1353.8281769793746
+     ],
+     "centroid_ras_mm": [
+      90.15528790048313,
+      -12.398606557523777,
+      490.8281769793746
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_5",
+     "voxels": 31694,
+     "volume_ml": 16.55,
+     "centroid_vox": [
+      214.20622199785447,
+      328.8864769356976,
+      1343.2856692118382
+     ],
+     "centroid_ras_mm": [
+      88.01500966116075,
+      -4.056649645638487,
+      480.28566921183824
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5944,
+     "centroid_offset_mm": 15.63
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7591,
+     "centroid_offset_mm": 10.74
+    },
+    "moose|skellytour": {
+     "dice": 0.5661,
+     "centroid_offset_mm": 13.61
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_right_6": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_6",
+     "voxels": 32974,
+     "volume_ml": 17.22,
+     "centroid_vox": [
+      197.01143325043975,
+      326.1720749681567,
+      1320.4445927094075
+     ],
+     "centroid_ras_mm": [
+      100.44092711735257,
+      -6.018228545330345,
+      457.4445927094075
+     ]
+    },
+    "moose": {
+     "label": "rib_right_6",
+     "voxels": 40225,
+     "volume_ml": 21.01,
+     "centroid_vox": [
+      213.7693971410814,
+      310.119030453698,
+      1332.5383965195774
+     ],
+     "centroid_ras_mm": [
+      88.33068376991599,
+      -17.619057667888114,
+      469.5383965195774
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_6",
+     "voxels": 37831,
+     "volume_ml": 19.76,
+     "centroid_vox": [
+      207.28458142792948,
+      321.6118262800349,
+      1323.7383891517538
+     ],
+     "centroid_ras_mm": [
+      93.0169748290229,
+      -9.313719674107858,
+      460.73838915175384
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5962,
+     "centroid_offset_mm": 20.68
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7774,
+     "centroid_offset_mm": 8.76
+    },
+    "moose|skellytour": {
+     "dice": 0.6301,
+     "centroid_offset_mm": 12.98
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_right_7": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_7",
+     "voxels": 39714,
+     "volume_ml": 20.74,
+     "centroid_vox": [
+      193.66057309764818,
+      327.16238606033136,
+      1287.8217253361536
+     ],
+     "centroid_ras_mm": [
+      102.86244635073604,
+      -5.30257428123457,
+      424.8217253361536
+     ]
+    },
+    "moose": {
+     "label": "rib_right_7",
+     "voxels": 44390,
+     "volume_ml": 23.18,
+     "centroid_vox": [
+      209.5987384546069,
+      310.9184951565668,
+      1304.4806262671773
+     ],
+     "centroid_ras_mm": [
+      91.34463534195109,
+      -17.04131969431279,
+      441.4806262671773
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_7",
+     "voxels": 50494,
+     "volume_ml": 26.37,
+     "centroid_vox": [
+      204.39422505644234,
+      314.12270764843345,
+      1299.3492692201053
+     ],
+     "centroid_ras_mm": [
+      95.10570823649076,
+      -14.725776274681067,
+      436.34926922010527
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6269,
+     "centroid_offset_mm": 23.41
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8089,
+     "centroid_offset_mm": 16.79
+    },
+    "moose|skellytour": {
+     "dice": 0.692,
+     "centroid_offset_mm": 6.77
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_right_8": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_8",
+     "voxels": 27348,
+     "volume_ml": 14.28,
+     "centroid_vox": [
+      192.42185900248649,
+      296.8069328652918,
+      1277.9163375749597
+     ],
+     "centroid_ras_mm": [
+      103.75761053823527,
+      -27.23912501690836,
+      414.9163375749597
+     ]
+    },
+    "moose": {
+     "label": "rib_right_8",
+     "voxels": 36986,
+     "volume_ml": 19.32,
+     "centroid_vox": [
+      210.20918726004433,
+      295.8579462499324,
+      1282.1738495647
+     ],
+     "centroid_ras_mm": [
+      90.90349084293902,
+      -27.92491589940812,
+      419.17384956470005
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_8",
+     "voxels": 36020,
+     "volume_ml": 18.81,
+     "centroid_vox": [
+      209.1622987229317,
+      287.88720155469184,
+      1282.841588006663
+     ],
+     "centroid_ras_mm": [
+      91.66003113773914,
+      -33.685022470204444,
+      419.84158800666296
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5948,
+     "centroid_offset_mm": 13.56
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7702,
+     "centroid_offset_mm": 14.57
+    },
+    "moose|skellytour": {
+     "dice": 0.6454,
+     "centroid_offset_mm": 5.85
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_right_9": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_9",
+     "voxels": 27768,
+     "volume_ml": 14.5,
+     "centroid_vox": [
+      190.38256266205704,
+      288.1758138864881,
+      1243.2567703831749
+     ],
+     "centroid_ras_mm": [
+      105.23132029804262,
+      -33.476455033615366,
+      380.25677038317485
+     ]
+    },
+    "moose": {
+     "label": "rib_right_9",
+     "voxels": 36125,
+     "volume_ml": 18.87,
+     "centroid_vox": [
+      212.01270588235295,
+      280.6266574394464,
+      1256.4580484429066
+     ],
+     "centroid_ras_mm": [
+      89.60016726852865,
+      -38.931898322438684,
+      393.4580484429066
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_9",
+     "voxels": 35162,
+     "volume_ml": 18.36,
+     "centroid_vox": [
+      212.03449746885843,
+      275.150759342472,
+      1257.492491894659
+     ],
+     "centroid_ras_mm": [
+      89.58441944753858,
+      -42.8890890010245,
+      394.492491894659
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6153,
+     "centroid_offset_mm": 21.17
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7806,
+     "centroid_offset_mm": 23.15
+    },
+    "moose|skellytour": {
+     "dice": 0.6946,
+     "centroid_offset_mm": 4.09
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_right_10": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_10",
+     "voxels": 21657,
+     "volume_ml": 11.31,
+     "centroid_vox": [
+      193.5570023548968,
+      270.01366763633007,
+      1214.1484970217482
+     ],
+     "centroid_ras_mm": [
+      102.93729237060927,
+      -46.601439204513014,
+      351.1484970217482
+     ]
+    },
+    "moose": {
+     "label": "rib_right_10",
+     "voxels": 27162,
+     "volume_ml": 14.18,
+     "centroid_vox": [
+      213.35365584272145,
+      267.11560268021503,
+      1227.5132538104706
+     ],
+     "centroid_ras_mm": [
+      88.6311217184385,
+      -48.695743267002996,
+      364.5132538104706
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_10",
+     "voxels": 27447,
+     "volume_ml": 14.33,
+     "centroid_vox": [
+      212.5117863518782,
+      264.2522315735782,
+      1225.832659307028
+     ],
+     "centroid_ras_mm": [
+      89.23950376696337,
+      -50.764975610602676,
+      362.83265930702805
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5979,
+     "centroid_offset_mm": 19.69
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7896,
+     "centroid_offset_mm": 18.48
+    },
+    "moose|skellytour": {
+     "dice": 0.6969,
+     "centroid_offset_mm": 2.73
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_right_11": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_11",
+     "voxels": 17027,
+     "volume_ml": 8.89,
+     "centroid_vox": [
+      205.22975274563927,
+      258.4898103012862,
+      1177.8287425853057
+     ],
+     "centroid_ras_mm": [
+      94.50190912904984,
+      -54.92922398428914,
+      314.8287425853057
+     ]
+    },
+    "moose": {
+     "label": "rib_right_11",
+     "voxels": 20472,
+     "volume_ml": 10.69,
+     "centroid_vox": [
+      219.2092614302462,
+      257.0845545134818,
+      1190.9802168815943
+     ],
+     "centroid_ras_mm": [
+      84.39953313916396,
+      -55.944740527155545,
+      327.9802168815943
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_11",
+     "voxels": 20981,
+     "volume_ml": 10.96,
+     "centroid_vox": [
+      219.67332348315142,
+      255.692340689195,
+      1188.6351937467232
+     ],
+     "centroid_ras_mm": [
+      84.0641759068852,
+      -56.95083221668318,
+      325.6351937467232
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6189,
+     "centroid_offset_mm": 16.61
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7942,
+     "centroid_offset_mm": 15.16
+    },
+    "moose|skellytour": {
+     "dice": 0.7004,
+     "centroid_offset_mm": 2.57
+    }
+   },
+   "consensus": "partial"
+  },
+  "rib_right_12": {
+   "models": {
+    "totalseg": {
+     "label": "rib_right_12",
+     "voxels": 10171,
+     "volume_ml": 5.31,
+     "centroid_vox": [
+      238.9367810441451,
+      248.76275685773277,
+      1157.8052305574672
+     ],
+     "centroid_ras_mm": [
+      70.14332249658952,
+      -61.95853763024675,
+      294.8052305574672
+     ]
+    },
+    "moose": {
+     "label": "rib_right_12",
+     "voxels": 13647,
+     "volume_ml": 7.13,
+     "centroid_vox": [
+      252.91595222393198,
+      251.33494540924744,
+      1171.8698615080236
+     ],
+     "centroid_ras_mm": [
+      60.0411904065908,
+      -60.09973011057377,
+      308.86986150802363
+     ]
+    },
+    "skellytour": {
+     "label": "RIGHT_RIB_12",
+     "voxels": 12218,
+     "volume_ml": 6.38,
+     "centroid_vox": [
+      251.02782779505645,
+      251.5917498772303,
+      1167.7612538877067
+     ],
+     "centroid_ras_mm": [
+      61.40565487573144,
+      -59.914148817984994,
+      304.76125388770674
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5784,
+     "centroid_offset_mm": 17.42
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7554,
+     "centroid_offset_mm": 13.4
+    },
+    "moose|skellytour": {
+     "dice": 0.6658,
+     "centroid_offset_mm": 4.33
+    }
+   },
+   "consensus": "partial"
+  },
+  "patella_right": {
+   "models": {
+    "moose": {
+     "label": "patella_right",
+     "voxels": 48017,
+     "volume_ml": 25.08,
+     "centroid_vox": [
+      203.14850990274277,
+      382.20757231813735,
+      516.4562759022846
+     ],
+     "centroid_ras_mm": [
+      96.0059317810298,
+      34.47616047658795,
+      -346.5437240977154
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "tibia_right": {
+   "models": {
+    "moose": {
+     "label": "tibia_right",
+     "voxels": 586703,
+     "volume_ml": 306.39,
+     "centroid_vox": [
+      238.48489610586617,
+      304.84751058031065,
+      364.00113174809064
+     ],
+     "centroid_ras_mm": [
+      70.46987986377991,
+      -21.42855319456237,
+      -498.99886825190936
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "fibula_right": {
+   "models": {
+    "moose": {
+     "label": "fibula_right",
+     "voxels": 103508,
+     "volume_ml": 54.06,
+     "centroid_vox": [
+      224.48212698535377,
+      258.4593074931406,
+      297.10396297870693
+     ],
+     "centroid_ras_mm": [
+      80.58906514750487,
+      -54.951267021965634,
+      -565.8960370212931
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "radius_right": {
+   "models": {
+    "moose": {
+     "label": "radius_right",
+     "voxels": 73217,
+     "volume_ml": 38.24,
+     "centroid_vox": [
+      48.64597019817802,
+      381.82882390701616,
+      1088.3745305052105
+     ],
+     "centroid_ras_mm": [
+      207.65812090313068,
+      34.20245566041433,
+      225.3745305052105
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "ulna_right": {
+   "models": {
+    "moose": {
+     "label": "ulna_right",
+     "voxels": 48377,
+     "volume_ml": 25.26,
+     "centroid_vox": [
+      30.676457820865288,
+      339.9027430390475,
+      1088.7329722802158
+     ],
+     "centroid_ras_mm": [
+      220.6438970477825,
+      3.9043212791279416,
+      225.7329722802158
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  },
+  "skull": {
+   "models": {
+    "totalseg": {
+     "label": "skull",
+     "voxels": 1446381,
+     "volume_ml": 755.35,
+     "centroid_vox": [
+      329.3639290062577,
+      356.44039226178995,
+      1636.4465897989535
+     ],
+     "centroid_ras_mm": [
+      4.795600411606216,
+      15.855352907367603,
+      773.4465897989535
+     ]
+    },
+    "moose": {
+     "label": "skull",
+     "voxels": 1421545,
+     "volume_ml": 742.38,
+     "centroid_vox": [
+      329.2101122370379,
+      358.3425800801241,
+      1639.4072948798666
+     ],
+     "centroid_ras_mm": [
+      4.906757024564968,
+      17.229980369443695,
+      776.4072948798666
+     ]
+    },
+    "skellytour": {
+     "label": "SKULL",
+     "voxels": 1218930,
+     "volume_ml": 636.56,
+     "centroid_vox": [
+      329.2265568982632,
+      359.6872133756656,
+      1597.4748738647831
+     ],
+     "centroid_ras_mm": [
+      4.894873191272069,
+      18.201687703839298,
+      734.4748738647831
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.7293,
+     "centroid_offset_mm": 3.27
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8445,
+     "centroid_offset_mm": 39.04
+    },
+    "moose|skellytour": {
+     "dice": 0.6582,
+     "centroid_offset_mm": 41.94
+    }
+   },
+   "consensus": "partial"
+  },
+  "sternum": {
+   "models": {
+    "totalseg": {
+     "label": "sternum",
+     "voxels": 95074,
+     "volume_ml": 49.65,
+     "centroid_vox": [
+      337.3902959799735,
+      414.55872267917624,
+      1364.055398952395
+     ],
+     "centroid_ras_mm": [
+      -1.0047019331080378,
+      57.854913766567165,
+      501.0553989523951
+     ]
+    },
+    "moose": {
+     "label": "sternum",
+     "voxels": 103232,
+     "volume_ml": 53.91,
+     "centroid_vox": [
+      337.63086058586487,
+      413.40815832300063,
+      1367.5769335089894
+     ],
+     "centroid_ras_mm": [
+      -1.1785473917291824,
+      57.02345151786557,
+      504.57693350898944
+     ]
+    },
+    "skellytour": {
+     "label": "STERNUM",
+     "voxels": 90240,
+     "volume_ml": 47.13,
+     "centroid_vox": [
+      337.67651817375884,
+      414.8591866134752,
+      1361.2297872340425
+     ],
+     "centroid_ras_mm": [
+      -1.211542122095068,
+      58.072045834951666,
+      498.22978723404253
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.8483,
+     "centroid_offset_mm": 3.62
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9209,
+     "centroid_offset_mm": 2.84
+    },
+    "moose|skellytour": {
+     "dice": 0.8217,
+     "centroid_offset_mm": 6.43
+    }
+   },
+   "consensus": "agree"
+  },
+  "sacrum": {
+   "models": {
+    "totalseg": {
+     "label": "sacrum",
+     "voxels": 327489,
+     "volume_ml": 171.03,
+     "centroid_vox": [
+      329.49537541718956,
+      262.3733988011811,
+      962.0191090387768
+     ],
+     "centroid_ras_mm": [
+      4.700609872545527,
+      -52.122725408331576,
+      99.01910903877683
+     ]
+    },
+    "moose": {
+     "label": "sacrum",
+     "voxels": 431243,
+     "volume_ml": 225.21,
+     "centroid_vox": [
+      329.6340624659415,
+      268.8187866237829,
+      969.8847517524922
+     ],
+     "centroid_ras_mm": [
+      4.6003868430364605,
+      -47.464927151354715,
+      106.8847517524922
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.7232,
+     "centroid_offset_mm": 9.14
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_C1": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_C1",
+     "voxels": 31963,
+     "volume_ml": 16.69,
+     "centroid_vox": [
+      326.7121984794919,
+      349.2976253793449,
+      1564.3821919093953
+     ],
+     "centroid_ras_mm": [
+      6.711889417867496,
+      10.69358948044399,
+      701.3821919093953
+     ]
+    },
+    "moose": {
+     "label": "vertebra_C1",
+     "voxels": 34110,
+     "volume_ml": 17.81,
+     "centroid_vox": [
+      326.3389328642627,
+      349.32140134857815,
+      1571.190501319261
+     ],
+     "centroid_ras_mm": [
+      6.981632058629543,
+      10.710771327541579,
+      708.1905013192611
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_1",
+     "voxels": 34906,
+     "volume_ml": 18.23,
+     "centroid_vox": [
+      327.15653469317596,
+      350.0203403426345,
+      1564.4306709448233
+     ],
+     "centroid_ras_mm": [
+      6.3907871818854005,
+      11.21586379332507,
+      701.4306709448233
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4214,
+     "centroid_offset_mm": 6.81
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8989,
+     "centroid_offset_mm": 0.62
+    },
+    "moose|skellytour": {
+     "dice": 0.4297,
+     "centroid_offset_mm": 6.8
+    }
+   },
+   "consensus": "disagree"
+  },
+  "vertebra_C2": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_C2",
+     "voxels": 33246,
+     "volume_ml": 17.36,
+     "centroid_vox": [
+      324.9577392769055,
+      348.13385068880467,
+      1547.8285508031042
+     ],
+     "centroid_ras_mm": [
+      7.979759907690919,
+      9.8525807041988,
+      684.8285508031042
+     ]
+    },
+    "moose": {
+     "label": "vertebra_C2",
+     "voxels": 34302,
+     "volume_ml": 17.91,
+     "centroid_vox": [
+      325.1829047868929,
+      347.52821992886714,
+      1554.2478572677978
+     ],
+     "centroid_ras_mm": [
+      7.81704269829774,
+      9.414917994731326,
+      691.2478572677978
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_2",
+     "voxels": 35997,
+     "volume_ml": 18.8,
+     "centroid_vox": [
+      324.95999666638886,
+      348.3181376225797,
+      1548.0391977109205
+     ],
+     "centroid_ras_mm": [
+      7.978128591610272,
+      9.985756764747208,
+      685.0391977109205
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5091,
+     "centroid_offset_mm": 6.44
+    },
+    "totalseg|skellytour": {
+     "dice": 0.924,
+     "centroid_offset_mm": 0.25
+    },
+    "moose|skellytour": {
+     "dice": 0.5324,
+     "centroid_offset_mm": 6.24
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_C3": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_C3",
+     "voxels": 20944,
+     "volume_ml": 10.94,
+     "centroid_vox": [
+      324.78265851795265,
+      347.18468296409475,
+      1529.7429335370512
+     ],
+     "centroid_ras_mm": [
+      8.106283070660425,
+      9.166658941938095,
+      666.7429335370512
+     ]
+    },
+    "moose": {
+     "label": "vertebra_C3",
+     "voxels": 22251,
+     "volume_ml": 11.62,
+     "centroid_vox": [
+      324.90697047323715,
+      346.30191901487575,
+      1535.5049211271403
+     ],
+     "centroid_ras_mm": [
+      8.016448288862648,
+      8.52872426722763,
+      672.5049211271403
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_3",
+     "voxels": 22263,
+     "volume_ml": 11.63,
+     "centroid_vox": [
+      324.61927862372545,
+      347.3196783901541,
+      1529.6174370030992
+     ],
+     "centroid_ras_mm": [
+      8.224350533395238,
+      9.264214198115894,
+      666.6174370030992
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4183,
+     "centroid_offset_mm": 5.8
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9073,
+     "centroid_offset_mm": 0.2
+    },
+    "moose|skellytour": {
+     "dice": 0.4247,
+     "centroid_offset_mm": 5.94
+    }
+   },
+   "consensus": "disagree"
+  },
+  "vertebra_C4": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_C4",
+     "voxels": 20024,
+     "volume_ml": 10.46,
+     "centroid_vox": [
+      323.9945565321614,
+      343.76947662804633,
+      1515.9725829005195
+     ],
+     "centroid_ras_mm": [
+      8.6758097084317,
+      6.698639552401772,
+      652.9725829005195
+     ]
+    },
+    "moose": {
+     "label": "vertebra_C4",
+     "voxels": 19961,
+     "volume_ml": 10.42,
+     "centroid_vox": [
+      324.3533891087621,
+      342.6780722408697,
+      1521.7624367516657
+     ],
+     "centroid_ras_mm": [
+      8.416497189799998,
+      5.909929610942243,
+      658.7624367516657
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_4",
+     "voxels": 25245,
+     "volume_ml": 13.18,
+     "centroid_vox": [
+      326.39500891265595,
+      340.1824915824916,
+      1513.9709249356308
+     ],
+     "centroid_ras_mm": [
+      6.941108365152417,
+      4.106483245778975,
+      650.9709249356308
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.3615,
+     "centroid_offset_mm": 5.85
+    },
+    "totalseg|skellytour": {
+     "dice": 0.8119,
+     "centroid_offset_mm": 3.71
+    },
+    "moose|skellytour": {
+     "dice": 0.3258,
+     "centroid_offset_mm": 8.13
+    }
+   },
+   "consensus": "disagree"
+  },
+  "vertebra_C5": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_C5",
+     "voxels": 22363,
+     "volume_ml": 11.68,
+     "centroid_vox": [
+      326.1024907212807,
+      338.5175960291553,
+      1502.21794929124
+     ],
+     "centroid_ras_mm": [
+      7.1524983946466705,
+      2.9033364655053333,
+      639.2179492912401
+     ]
+    },
+    "moose": {
+     "label": "vertebra_C5",
+     "voxels": 21498,
+     "volume_ml": 11.23,
+     "centroid_vox": [
+      325.9334356684343,
+      337.4011535956833,
+      1508.0826123360312
+     ],
+     "centroid_ras_mm": [
+      7.27466704487432,
+      2.0965326293722057,
+      645.0826123360312
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_5",
+     "voxels": 18068,
+     "volume_ml": 9.44,
+     "centroid_vox": [
+      323.4427717511623,
+      342.6541952623423,
+      1501.1353774629179
+     ],
+     "centroid_ras_mm": [
+      9.074560297519866,
+      5.8926747688709895,
+      638.1353774629179
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.3459,
+     "centroid_offset_mm": 5.92
+    },
+    "totalseg|skellytour": {
+     "dice": 0.7911,
+     "centroid_offset_mm": 3.72
+    },
+    "moose|skellytour": {
+     "dice": 0.3202,
+     "centroid_offset_mm": 8.12
+    }
+   },
+   "consensus": "disagree"
+  },
+  "vertebra_C6": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_C6",
+     "voxels": 24416,
+     "volume_ml": 12.75,
+     "centroid_vox": [
+      328.3912598296199,
+      329.9802998034076,
+      1488.119511795544
+     ],
+     "centroid_ras_mm": [
+      5.498505639383467,
+      -3.266191974682613,
+      625.119511795544
+     ]
+    },
+    "moose": {
+     "label": "vertebra_C6",
+     "voxels": 23028,
+     "volume_ml": 12.03,
+     "centroid_vox": [
+      328.2945110300504,
+      329.09614382490884,
+      1494.0870244919229
+     ],
+     "centroid_ras_mm": [
+      5.568421741005693,
+      -3.905132607720418,
+      631.0870244919229
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_6",
+     "voxels": 24362,
+     "volume_ml": 12.72,
+     "centroid_vox": [
+      328.5556604548067,
+      329.6167802315081,
+      1488.0006567605287
+     ],
+     "centroid_ras_mm": [
+      5.379700539284528,
+      -3.528891578643311,
+      625.0006567605287
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.3756,
+     "centroid_offset_mm": 6.0
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9046,
+     "centroid_offset_mm": 0.31
+    },
+    "moose|skellytour": {
+     "dice": 0.3641,
+     "centroid_offset_mm": 6.1
+    }
+   },
+   "consensus": "disagree"
+  },
+  "vertebra_C7": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_C7",
+     "voxels": 32628,
+     "volume_ml": 17.04,
+     "centroid_vox": [
+      328.55283805320585,
+      316.48605492215273,
+      1473.0776020595808
+     ],
+     "centroid_ras_mm": [
+      5.381740164768445,
+      -13.017889159873278,
+      610.0776020595808
+     ]
+    },
+    "moose": {
+     "label": "vertebra_C7",
+     "voxels": 32628,
+     "volume_ml": 17.04,
+     "centroid_vox": [
+      328.5105737403457,
+      316.1208777736913,
+      1478.6765354909894
+     ],
+     "centroid_ras_mm": [
+      5.41228272453219,
+      -13.281786621501084,
+      615.6765354909894
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_7",
+     "voxels": 32267,
+     "volume_ml": 16.85,
+     "centroid_vox": [
+      328.41946880714045,
+      316.37437629776554,
+      1472.8119131000713
+     ],
+     "centroid_ras_mm": [
+      5.478120252197698,
+      -13.098594389151827,
+      609.8119131000713
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.4555,
+     "centroid_offset_mm": 5.61
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9161,
+     "centroid_offset_mm": 0.29
+    },
+    "moose|skellytour": {
+     "dice": 0.4496,
+     "centroid_offset_mm": 5.87
+    }
+   },
+   "consensus": "disagree"
+  },
+  "vertebra_T1": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T1",
+     "voxels": 41086,
+     "volume_ml": 21.46,
+     "centroid_vox": [
+      330.4359879277613,
+      304.07002385240713,
+      1456.8256827143066
+     ],
+     "centroid_ras_mm": [
+      4.020870587212158,
+      -21.990408652406643,
+      593.8256827143066
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T1",
+     "voxels": 40959,
+     "volume_ml": 21.39,
+     "centroid_vox": [
+      330.4818477013599,
+      303.83151444127054,
+      1462.701970262946
+     ],
+     "centroid_ras_mm": [
+      3.9877297461313503,
+      -22.162768912183225,
+      599.7019702629459
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_8",
+     "voxels": 40783,
+     "volume_ml": 21.3,
+     "centroid_vox": [
+      330.5529264644582,
+      303.9820268249025,
+      1456.8382414241228
+     ],
+     "centroid_ras_mm": [
+      3.936364250682601,
+      -22.054000233334136,
+      593.8382414241228
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5253,
+     "centroid_offset_mm": 5.88
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9291,
+     "centroid_offset_mm": 0.11
+    },
+    "moose|skellytour": {
+     "dice": 0.5294,
+     "centroid_offset_mm": 5.86
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T2": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T2",
+     "voxels": 41110,
+     "volume_ml": 21.47,
+     "centroid_vox": [
+      331.9847239114571,
+      291.0722695207979,
+      1437.6072488445634
+     ],
+     "centroid_ras_mm": [
+      2.9016672182419256,
+      -31.383313957202517,
+      574.6072488445634
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T2",
+     "voxels": 43160,
+     "volume_ml": 22.54,
+     "centroid_vox": [
+      331.83788229842446,
+      290.7514596848934,
+      1443.2861677479148
+     ],
+     "centroid_ras_mm": [
+      3.0077831926502654,
+      -31.61514911369332,
+      580.2861677479148
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_9",
+     "voxels": 42621,
+     "volume_ml": 22.26,
+     "centroid_vox": [
+      332.1862227540414,
+      291.2609042490791,
+      1437.1464067009222
+     ],
+     "centroid_ras_mm": [
+      2.7560528683216887,
+      -31.246995936817058,
+      574.1464067009222
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.5557,
+     "centroid_offset_mm": 5.68
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9249,
+     "centroid_offset_mm": 0.5
+    },
+    "moose|skellytour": {
+     "dice": 0.5459,
+     "centroid_offset_mm": 6.16
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T3": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T3",
+     "voxels": 41033,
+     "volume_ml": 21.43,
+     "centroid_vox": [
+      332.8098603562986,
+      278.74264616284455,
+      1417.382594497112
+     ],
+     "centroid_ras_mm": [
+      2.305377406002293,
+      -40.2933903973622,
+      554.382594497112
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T3",
+     "voxels": 43753,
+     "volume_ml": 22.85,
+     "centroid_vox": [
+      332.7034260507851,
+      277.6189061321509,
+      1422.6640687495715
+     ],
+     "centroid_ras_mm": [
+      2.3822927967201224,
+      -41.105467885997626,
+      559.6640687495715
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_10",
+     "voxels": 42486,
+     "volume_ml": 22.19,
+     "centroid_vox": [
+      332.781174975286,
+      277.93056536270774,
+      1416.9651649955279
+     ],
+     "centroid_ras_mm": [
+      2.3261070690355723,
+      -40.88024546947091,
+      553.9651649955279
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.594,
+     "centroid_offset_mm": 5.34
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9116,
+     "centroid_offset_mm": 0.72
+    },
+    "moose|skellytour": {
+     "dice": 0.5871,
+     "centroid_offset_mm": 5.7
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T4": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T4",
+     "voxels": 41282,
+     "volume_ml": 21.56,
+     "centroid_vox": [
+      332.82750351242674,
+      268.7021462138462,
+      1396.221355554479
+     ],
+     "centroid_ras_mm": [
+      2.2926274731630087,
+      -47.54921804478877,
+      533.221355554479
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T4",
+     "voxels": 42404,
+     "volume_ml": 22.14,
+     "centroid_vox": [
+      333.1234317517215,
+      268.8120460333931,
+      1401.0636732383737
+     ],
+     "centroid_ras_mm": [
+      2.0787731520399575,
+      -47.46979827952154,
+      538.0636732383737
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_11",
+     "voxels": 42027,
+     "volume_ml": 21.95,
+     "centroid_vox": [
+      332.5997810931068,
+      270.0469935993528,
+      1395.630832560021
+     ],
+     "centroid_ras_mm": [
+      2.4571924484564533,
+      -46.57735599699291,
+      532.630832560021
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6148,
+     "centroid_offset_mm": 4.85
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9113,
+     "centroid_offset_mm": 1.15
+    },
+    "moose|skellytour": {
+     "dice": 0.6092,
+     "centroid_offset_mm": 5.52
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T5": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T5",
+     "voxels": 42158,
+     "volume_ml": 22.02,
+     "centroid_vox": [
+      332.89577304426206,
+      264.13458892736844,
+      1373.9451824090327
+     ],
+     "centroid_ras_mm": [
+      2.2432920855743816,
+      -50.84999077610448,
+      510.94518240903267
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T5",
+     "voxels": 44046,
+     "volume_ml": 23.0,
+     "centroid_vox": [
+      332.91384007628386,
+      263.9875357580711,
+      1379.0216591744993
+     ],
+     "centroid_ras_mm": [
+      2.230235836272385,
+      -50.95625963291931,
+      516.0216591744993
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_12",
+     "voxels": 42955,
+     "volume_ml": 22.43,
+     "centroid_vox": [
+      332.6035618670702,
+      265.5164008846467,
+      1373.7780467931557
+     ],
+     "centroid_ras_mm": [
+      2.454460249423363,
+      -49.85141605830225,
+      510.7780467931557
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6386,
+     "centroid_offset_mm": 5.08
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9199,
+     "centroid_offset_mm": 1.03
+    },
+    "moose|skellytour": {
+     "dice": 0.6396,
+     "centroid_offset_mm": 5.36
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T6": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T6",
+     "voxels": 45364,
+     "volume_ml": 23.69,
+     "centroid_vox": [
+      332.0883299532669,
+      260.7752623225465,
+      1351.1985274667136
+     ],
+     "centroid_ras_mm": [
+      2.826795689291913,
+      -53.27762834194445,
+      488.1985274667136
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T6",
+     "voxels": 45932,
+     "volume_ml": 23.99,
+     "centroid_vox": [
+      332.0606113385004,
+      260.90703648872244,
+      1356.0101236610642
+     ],
+     "centroid_ras_mm": [
+      2.846826712885644,
+      -53.18240094858629,
+      493.0101236610642
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_13",
+     "voxels": 44475,
+     "volume_ml": 23.23,
+     "centroid_vox": [
+      332.1543338954469,
+      261.6560539629005,
+      1351.065497470489
+     ],
+     "centroid_ras_mm": [
+      2.7790975436874703,
+      -52.64111896809197,
+      488.06549747048894
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6597,
+     "centroid_offset_mm": 4.81
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9308,
+     "centroid_offset_mm": 0.65
+    },
+    "moose|skellytour": {
+     "dice": 0.6553,
+     "centroid_offset_mm": 4.97
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T7": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T7",
+     "voxels": 49576,
+     "volume_ml": 25.89,
+     "centroid_vox": [
+      332.76343391963854,
+      259.25375181539454,
+      1328.6418428271745
+     ],
+     "centroid_ras_mm": [
+      2.338927749550976,
+      -54.37715705662211,
+      465.6418428271745
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T7",
+     "voxels": 49634,
+     "volume_ml": 25.92,
+     "centroid_vox": [
+      332.5800459362534,
+      259.0277229318612,
+      1333.5569972196479
+     ],
+     "centroid_ras_mm": [
+      2.471454178196069,
+      -54.540498188098525,
+      470.5569972196479
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_14",
+     "voxels": 48732,
+     "volume_ml": 25.45,
+     "centroid_vox": [
+      332.59835426413855,
+      259.69742674218173,
+      1328.3304399573176
+     ],
+     "centroid_ras_mm": [
+      2.4582235549878533,
+      -54.05653270359139,
+      465.3304399573176
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6643,
+     "centroid_offset_mm": 4.92
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9319,
+     "centroid_offset_mm": 0.46
+    },
+    "moose|skellytour": {
+     "dice": 0.6504,
+     "centroid_offset_mm": 5.25
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T8": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T8",
+     "voxels": 51721,
+     "volume_ml": 27.01,
+     "centroid_vox": [
+      332.6277334158272,
+      258.93211654840394,
+      1305.5226117051102
+     ],
+     "centroid_ras_mm": [
+      2.4369925344048795,
+      -54.60958871584947,
+      442.5226117051102
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T8",
+     "voxels": 51885,
+     "volume_ml": 27.1,
+     "centroid_vox": [
+      332.5768333815168,
+      259.1246410330539,
+      1310.5711477305579
+     ],
+     "centroid_ras_mm": [
+      2.4737757501889917,
+      -54.470459739640575,
+      447.57114773055787
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_15",
+     "voxels": 51937,
+     "volume_ml": 27.12,
+     "centroid_vox": [
+      332.62206134355085,
+      259.84850877024087,
+      1305.487359685773
+     ],
+     "centroid_ras_mm": [
+      2.4410914915335127,
+      -53.94735236777254,
+      442.4873596857731
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6579,
+     "centroid_offset_mm": 5.05
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9317,
+     "centroid_offset_mm": 0.66
+    },
+    "moose|skellytour": {
+     "dice": 0.6577,
+     "centroid_offset_mm": 5.11
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T9": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T9",
+     "voxels": 53962,
+     "volume_ml": 28.18,
+     "centroid_vox": [
+      333.7072569586005,
+      260.09501130425116,
+      1281.7622586264408
+     ],
+     "centroid_ras_mm": [
+      1.6568683565760693,
+      -53.76921582969996,
+      418.7622586264408
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T9",
+     "voxels": 54894,
+     "volume_ml": 28.67,
+     "centroid_vox": [
+      333.4795423907895,
+      260.70084162203517,
+      1287.066182096404
+     ],
+     "centroid_ras_mm": [
+      1.8214276579293767,
+      -53.33140890855506,
+      424.06618209640396
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_16",
+     "voxels": 54931,
+     "volume_ml": 28.69,
+     "centroid_vox": [
+      333.4908521599825,
+      260.72876881906393,
+      1282.4288835084014
+     ],
+     "centroid_ras_mm": [
+      1.8132545852324427,
+      -53.31122715173561,
+      419.42888350840144
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6433,
+     "centroid_offset_mm": 5.32
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9337,
+     "centroid_offset_mm": 0.82
+    },
+    "moose|skellytour": {
+     "dice": 0.6847,
+     "centroid_offset_mm": 4.64
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T10": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T10",
+     "voxels": 64879,
+     "volume_ml": 33.88,
+     "centroid_vox": [
+      334.33132446554356,
+      261.4227099677862,
+      1257.9820743229704
+     ],
+     "centroid_ras_mm": [
+      1.2058822210510414,
+      -52.80974640892774,
+      394.98207432297045
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T10",
+     "voxels": 66792,
+     "volume_ml": 34.88,
+     "centroid_vox": [
+      334.23311174991017,
+      261.75348844172953,
+      1263.0935591088753
+     ],
+     "centroid_ras_mm": [
+      1.276856230417252,
+      -52.57070735623088,
+      400.0935591088753
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_17",
+     "voxels": 66456,
+     "volume_ml": 34.71,
+     "centroid_vox": [
+      334.32105453232214,
+      262.24098651739496,
+      1258.3308053448898
+     ],
+     "centroid_ras_mm": [
+      1.213303850032048,
+      -52.21841394121688,
+      395.33080534488977
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6886,
+     "centroid_offset_mm": 5.12
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9357,
+     "centroid_offset_mm": 0.69
+    },
+    "moose|skellytour": {
+     "dice": 0.7135,
+     "centroid_offset_mm": 4.78
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T11": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T11",
+     "voxels": 70557,
+     "volume_ml": 36.85,
+     "centroid_vox": [
+      335.1066797057698,
+      264.61487875051375,
+      1232.648667035163
+     ],
+     "centroid_ras_mm": [
+      0.645567095590394,
+      -50.502906448107126,
+      369.64866703516304
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T11",
+     "voxels": 71221,
+     "volume_ml": 37.19,
+     "centroid_vox": [
+      335.11093638112357,
+      264.9680290925429,
+      1237.6003145139775
+     ],
+     "centroid_ras_mm": [
+      0.6424909835566552,
+      -50.24770023044772,
+      374.60031451397754
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_18",
+     "voxels": 72960,
+     "volume_ml": 38.1,
+     "centroid_vox": [
+      335.11270559210527,
+      265.47595942982457,
+      1233.104920504386
+     ],
+     "centroid_ras_mm": [
+      0.6412124526049752,
+      -49.88064131874657,
+      370.104920504386
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.7084,
+     "centroid_offset_mm": 4.96
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9331,
+     "centroid_offset_mm": 0.77
+    },
+    "moose|skellytour": {
+     "dice": 0.7343,
+     "centroid_offset_mm": 4.51
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_T12": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_T12",
+     "voxels": 81292,
+     "volume_ml": 42.45,
+     "centroid_vox": [
+      335.22955518378194,
+      268.14850169758404,
+      1204.7232199970476
+     ],
+     "centroid_ras_mm": [
+      0.5567703927289926,
+      -47.94931258274474,
+      341.72321999704764
+     ]
+    },
+    "moose": {
+     "label": "vertebra_T12",
+     "voxels": 81459,
+     "volume_ml": 42.54,
+     "centroid_vox": [
+      335.0222320431137,
+      268.18706343068294,
+      1209.4217581850992
+     ],
+     "centroid_ras_mm": [
+      0.7065937066728338,
+      -47.92144571450382,
+      346.4217581850992
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_19",
+     "voxels": 81087,
+     "volume_ml": 42.35,
+     "centroid_vox": [
+      335.11196615980367,
+      268.5979626820575,
+      1205.310925302453
+     ],
+     "centroid_ras_mm": [
+      0.641746807802889,
+      -47.624506900343675,
+      342.3109253024529
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.7342,
+     "centroid_offset_mm": 4.7
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9397,
+     "centroid_offset_mm": 0.68
+    },
+    "moose|skellytour": {
+     "dice": 0.7634,
+     "centroid_offset_mm": 4.12
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_L1": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_L1",
+     "voxels": 93556,
+     "volume_ml": 48.86,
+     "centroid_vox": [
+      335.80997477446664,
+      271.47476377784426,
+      1173.9265787335928
+     ],
+     "centroid_ras_mm": [
+      0.1373266862810567,
+      -45.54556929434938,
+      310.9265787335928
+     ]
+    },
+    "moose": {
+     "label": "vertebra_L1",
+     "voxels": 97456,
+     "volume_ml": 50.89,
+     "centroid_vox": [
+      336.49151411919223,
+      271.045487194221,
+      1178.525816778854
+     ],
+     "centroid_ras_mm": [
+      -0.3551918183141538,
+      -45.85578859813586,
+      315.52581677885405
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_20",
+     "voxels": 85953,
+     "volume_ml": 44.89,
+     "centroid_vox": [
+      336.3415005875304,
+      269.39418054052794,
+      1174.7746908194013
+     ],
+     "centroid_ras_mm": [
+      -0.2467836378401671,
+      -47.049115278391525,
+      311.77469081940126
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.7377,
+     "centroid_offset_mm": 4.64
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9039,
+     "centroid_offset_mm": 1.77
+    },
+    "moose|skellytour": {
+     "dice": 0.7452,
+     "centroid_offset_mm": 3.94
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_L2": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_L2",
+     "voxels": 130167,
+     "volume_ml": 67.98,
+     "centroid_vox": [
+      333.4874276890456,
+      280.20633493896304,
+      1129.942404756966
+     ],
+     "centroid_ras_mm": [
+      1.8157292997414913,
+      -39.23564690421591,
+      266.94240475696597
+     ]
+    },
+    "moose": {
+     "label": "vertebra_L2",
+     "voxels": 106859,
+     "volume_ml": 55.81,
+     "centroid_vox": [
+      336.11273734547393,
+      278.4286957579614,
+      1144.301612405132
+     ],
+     "centroid_ras_mm": [
+      -0.08146650573920056,
+      -40.52026854478942,
+      281.3016124051319
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_21",
+     "voxels": 90596,
+     "volume_ml": 47.31,
+     "centroid_vox": [
+      338.1475892975407,
+      291.91472029670183,
+      1104.1162523731732
+     ],
+     "centroid_ras_mm": [
+      -1.5519645015784533,
+      -30.774511839534085,
+      241.1162523731732
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6636,
+     "centroid_offset_mm": 14.54
+    },
+    "totalseg|skellytour": {
+     "dice": 0.1933,
+     "centroid_offset_mm": 27.38
+    },
+    "moose|skellytour": {
+     "dice": 0.0127,
+     "centroid_offset_mm": 41.38
+    }
+   },
+   "consensus": "disagree"
+  },
+  "vertebra_L3": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_L3",
+     "voxels": 226103,
+     "volume_ml": 118.08,
+     "centroid_vox": [
+      335.84521213783097,
+      291.81860037239665,
+      1087.7885963476822
+     ],
+     "centroid_ras_mm": [
+      0.11186219381355045,
+      -30.843973480665994,
+      224.7885963476822
+     ]
+    },
+    "moose": {
+     "label": "vertebra_L3",
+     "voxels": 193941,
+     "volume_ml": 101.28,
+     "centroid_vox": [
+      335.5339407345533,
+      288.5525597991142,
+      1094.5259486132381
+     ],
+     "centroid_ras_mm": [
+      0.3368043446255342,
+      -33.20419733501737,
+      231.52594861323814
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_22",
+     "voxels": 115320,
+     "volume_ml": 60.22,
+     "centroid_vox": [
+      338.08737426292055,
+      296.4631980575789,
+      1070.9741241762054
+     ],
+     "centroid_ras_mm": [
+      -1.5084497448225989,
+      -27.48752704209187,
+      207.97412417620535
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.7163,
+     "centroid_offset_mm": 7.14
+    },
+    "totalseg|skellytour": {
+     "dice": 0.6485,
+     "centroid_offset_mm": 17.22
+    },
+    "moose|skellytour": {
+     "dice": 0.4338,
+     "centroid_offset_mm": 24.31
+    }
+   },
+   "consensus": "disagree"
+  },
+  "vertebra_L4": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_L4",
+     "voxels": 123325,
+     "volume_ml": 64.4,
+     "centroid_vox": [
+      334.3992702209609,
+      300.60102979931077,
+      1039.1005716602474
+     ],
+     "centroid_ras_mm": [
+      1.1567808124372903,
+      -24.497298059016913,
+      176.1005716602474
+     ]
+    },
+    "moose": {
+     "label": "vertebra_L4",
+     "voxels": 159478,
+     "volume_ml": 83.28,
+     "centroid_vox": [
+      335.21508295815096,
+      299.86589372828854,
+      1053.5649619383237
+     ],
+     "centroid_ras_mm": [
+      0.5672288335821918,
+      -25.02854856007147,
+      190.56496193832368
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_23",
+     "voxels": 123104,
+     "volume_ml": 64.29,
+     "centroid_vox": [
+      334.4243160254744,
+      301.621425786327,
+      1039.257002209514
+     ],
+     "centroid_ras_mm": [
+      1.1386813112407026,
+      -23.75990276480607,
+      176.25700220951398
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6664,
+     "centroid_offset_mm": 14.49
+    },
+    "totalseg|skellytour": {
+     "dice": 0.946,
+     "centroid_offset_mm": 0.75
+    },
+    "moose|skellytour": {
+     "dice": 0.6736,
+     "centroid_offset_mm": 14.38
+    }
+   },
+   "consensus": "partial"
+  },
+  "vertebra_L5": {
+   "models": {
+    "totalseg": {
+     "label": "vertebrae_L5",
+     "voxels": 122194,
+     "volume_ml": 63.81,
+     "centroid_vox": [
+      329.62282108777845,
+      303.0775078972781,
+      1007.9276396549749
+     ],
+     "centroid_ras_mm": [
+      4.60851049254444,
+      -22.707656273971082,
+      144.92763965497488
+     ]
+    },
+    "moose": {
+     "label": "vertebra_L5",
+     "voxels": 100044,
+     "volume_ml": 52.25,
+     "centroid_vox": [
+      324.3211686857783,
+      302.63587021710447,
+      1010.797319179561
+     ],
+     "centroid_ras_mm": [
+      8.439781472164952,
+      -23.026808398489436,
+      147.797319179561
+     ]
+    },
+    "skellytour": {
+     "label": "VERT_24",
+     "voxels": 125285,
+     "volume_ml": 65.43,
+     "centroid_vox": [
+      329.64444267071076,
+      303.4522408907691,
+      1008.0988147024783
+     ],
+     "centroid_ras_mm": [
+      4.592885525658488,
+      -22.436853223486935,
+      145.0988147024783
+     ]
+    }
+   },
+   "pairs": {
+    "totalseg|moose": {
+     "dice": 0.6888,
+     "centroid_offset_mm": 4.8
+    },
+    "totalseg|skellytour": {
+     "dice": 0.9405,
+     "centroid_offset_mm": 0.32
+    },
+    "moose|skellytour": {
+     "dice": 0.6976,
+     "centroid_offset_mm": 4.74
+    }
+   },
+   "consensus": "partial"
+  },
+  "pelvis": {
+   "models": {
+    "skellytour": {
+     "label": "PELVIS",
+     "voxels": 1839469,
+     "volume_ml": 960.63,
+     "centroid_vox": [
+      330.6786338883667,
+      316.79872778502926,
+      940.0761877476598
+     ],
+     "centroid_ras_mm": [
+      3.8455210250947403,
+      -12.791934235857184,
+      77.07618774765979
+     ]
+    }
+   },
+   "pairs": {},
+   "consensus": "single"
+  }
+ },
+ "vertebra_matching": {
+  "totalseg|moose": {
+   "per_vertebra": {
+    "C1": {
+     "nearest": "C1",
+     "distance_mm": 6.81,
+     "same_name": true
+    },
+    "C2": {
+     "nearest": "C2",
+     "distance_mm": 6.44,
+     "same_name": true
+    },
+    "C3": {
+     "nearest": "C3",
+     "distance_mm": 5.8,
+     "same_name": true
+    },
+    "C4": {
+     "nearest": "C4",
+     "distance_mm": 5.85,
+     "same_name": true
+    },
+    "C5": {
+     "nearest": "C5",
+     "distance_mm": 5.92,
+     "same_name": true
+    },
+    "C6": {
+     "nearest": "C6",
+     "distance_mm": 6.0,
+     "same_name": true
+    },
+    "C7": {
+     "nearest": "C7",
+     "distance_mm": 5.61,
+     "same_name": true
+    },
+    "T1": {
+     "nearest": "T1",
+     "distance_mm": 5.88,
+     "same_name": true
+    },
+    "T2": {
+     "nearest": "T2",
+     "distance_mm": 5.68,
+     "same_name": true
+    },
+    "T3": {
+     "nearest": "T3",
+     "distance_mm": 5.34,
+     "same_name": true
+    },
+    "T4": {
+     "nearest": "T4",
+     "distance_mm": 4.85,
+     "same_name": true
+    },
+    "T5": {
+     "nearest": "T5",
+     "distance_mm": 5.08,
+     "same_name": true
+    },
+    "T6": {
+     "nearest": "T6",
+     "distance_mm": 4.81,
+     "same_name": true
+    },
+    "T7": {
+     "nearest": "T7",
+     "distance_mm": 4.92,
+     "same_name": true
+    },
+    "T8": {
+     "nearest": "T8",
+     "distance_mm": 5.05,
+     "same_name": true
+    },
+    "T9": {
+     "nearest": "T9",
+     "distance_mm": 5.32,
+     "same_name": true
+    },
+    "T10": {
+     "nearest": "T10",
+     "distance_mm": 5.12,
+     "same_name": true
+    },
+    "T11": {
+     "nearest": "T11",
+     "distance_mm": 4.96,
+     "same_name": true
+    },
+    "T12": {
+     "nearest": "T12",
+     "distance_mm": 4.7,
+     "same_name": true
+    },
+    "L1": {
+     "nearest": "L1",
+     "distance_mm": 4.64,
+     "same_name": true
+    },
+    "L2": {
+     "nearest": "L2",
+     "distance_mm": 14.54,
+     "same_name": true
+    },
+    "L3": {
+     "nearest": "L3",
+     "distance_mm": 7.14,
+     "same_name": true
+    },
+    "L4": {
+     "nearest": "L4",
+     "distance_mm": 14.49,
+     "same_name": true
+    },
+    "L5": {
+     "nearest": "L5",
+     "distance_mm": 4.8,
+     "same_name": true
+    }
+   },
+   "same_name_count": 24,
+   "n": 24,
+   "shift_histogram": {
+    "0": 24
+   }
+  },
+  "totalseg|skellytour": {
+   "per_vertebra": {
+    "C1": {
+     "nearest": "C1",
+     "distance_mm": 0.62,
+     "same_name": true
+    },
+    "C2": {
+     "nearest": "C2",
+     "distance_mm": 0.25,
+     "same_name": true
+    },
+    "C3": {
+     "nearest": "C3",
+     "distance_mm": 0.2,
+     "same_name": true
+    },
+    "C4": {
+     "nearest": "C4",
+     "distance_mm": 3.71,
+     "same_name": true
+    },
+    "C5": {
+     "nearest": "C5",
+     "distance_mm": 3.72,
+     "same_name": true
+    },
+    "C6": {
+     "nearest": "C6",
+     "distance_mm": 0.31,
+     "same_name": true
+    },
+    "C7": {
+     "nearest": "C7",
+     "distance_mm": 0.29,
+     "same_name": true
+    },
+    "T1": {
+     "nearest": "T1",
+     "distance_mm": 0.11,
+     "same_name": true
+    },
+    "T2": {
+     "nearest": "T2",
+     "distance_mm": 0.5,
+     "same_name": true
+    },
+    "T3": {
+     "nearest": "T3",
+     "distance_mm": 0.72,
+     "same_name": true
+    },
+    "T4": {
+     "nearest": "T4",
+     "distance_mm": 1.15,
+     "same_name": true
+    },
+    "T5": {
+     "nearest": "T5",
+     "distance_mm": 1.03,
+     "same_name": true
+    },
+    "T6": {
+     "nearest": "T6",
+     "distance_mm": 0.65,
+     "same_name": true
+    },
+    "T7": {
+     "nearest": "T7",
+     "distance_mm": 0.46,
+     "same_name": true
+    },
+    "T8": {
+     "nearest": "T8",
+     "distance_mm": 0.66,
+     "same_name": true
+    },
+    "T9": {
+     "nearest": "T9",
+     "distance_mm": 0.82,
+     "same_name": true
+    },
+    "T10": {
+     "nearest": "T10",
+     "distance_mm": 0.69,
+     "same_name": true
+    },
+    "T11": {
+     "nearest": "T11",
+     "distance_mm": 0.77,
+     "same_name": true
+    },
+    "T12": {
+     "nearest": "T12",
+     "distance_mm": 0.68,
+     "same_name": true
+    },
+    "L1": {
+     "nearest": "L1",
+     "distance_mm": 1.77,
+     "same_name": true
+    },
+    "L2": {
+     "nearest": "L2",
+     "distance_mm": 27.38,
+     "same_name": true
+    },
+    "L3": {
+     "nearest": "L2",
+     "distance_mm": 16.41,
+     "same_name": false
+    },
+    "L4": {
+     "nearest": "L4",
+     "distance_mm": 0.75,
+     "same_name": true
+    },
+    "L5": {
+     "nearest": "L5",
+     "distance_mm": 0.32,
+     "same_name": true
+    }
+   },
+   "same_name_count": 23,
+   "n": 24,
+   "shift_histogram": {
+    "-1": 1,
+    "0": 23
+   }
+  },
+  "moose|skellytour": {
+   "per_vertebra": {
+    "C1": {
+     "nearest": "C1",
+     "distance_mm": 6.8,
+     "same_name": true
+    },
+    "C2": {
+     "nearest": "C2",
+     "distance_mm": 6.24,
+     "same_name": true
+    },
+    "C3": {
+     "nearest": "C3",
+     "distance_mm": 5.94,
+     "same_name": true
+    },
+    "C4": {
+     "nearest": "C4",
+     "distance_mm": 8.13,
+     "same_name": true
+    },
+    "C5": {
+     "nearest": "C4",
+     "distance_mm": 6.23,
+     "same_name": false
+    },
+    "C6": {
+     "nearest": "C6",
+     "distance_mm": 6.1,
+     "same_name": true
+    },
+    "C7": {
+     "nearest": "C7",
+     "distance_mm": 5.87,
+     "same_name": true
+    },
+    "T1": {
+     "nearest": "T1",
+     "distance_mm": 5.86,
+     "same_name": true
+    },
+    "T2": {
+     "nearest": "T2",
+     "distance_mm": 6.16,
+     "same_name": true
+    },
+    "T3": {
+     "nearest": "T3",
+     "distance_mm": 5.7,
+     "same_name": true
+    },
+    "T4": {
+     "nearest": "T4",
+     "distance_mm": 5.52,
+     "same_name": true
+    },
+    "T5": {
+     "nearest": "T5",
+     "distance_mm": 5.36,
+     "same_name": true
+    },
+    "T6": {
+     "nearest": "T6",
+     "distance_mm": 4.97,
+     "same_name": true
+    },
+    "T7": {
+     "nearest": "T7",
+     "distance_mm": 5.25,
+     "same_name": true
+    },
+    "T8": {
+     "nearest": "T8",
+     "distance_mm": 5.11,
+     "same_name": true
+    },
+    "T9": {
+     "nearest": "T9",
+     "distance_mm": 4.64,
+     "same_name": true
+    },
+    "T10": {
+     "nearest": "T10",
+     "distance_mm": 4.78,
+     "same_name": true
+    },
+    "T11": {
+     "nearest": "T11",
+     "distance_mm": 4.51,
+     "same_name": true
+    },
+    "T12": {
+     "nearest": "T12",
+     "distance_mm": 4.12,
+     "same_name": true
+    },
+    "L1": {
+     "nearest": "L1",
+     "distance_mm": 3.94,
+     "same_name": true
+    },
+    "L2": {
+     "nearest": "L1",
+     "distance_mm": 31.17,
+     "same_name": false
+    },
+    "L3": {
+     "nearest": "L2",
+     "distance_mm": 10.07,
+     "same_name": false
+    },
+    "L4": {
+     "nearest": "L4",
+     "distance_mm": 14.38,
+     "same_name": true
+    },
+    "L5": {
+     "nearest": "L5",
+     "distance_mm": 4.74,
+     "same_name": true
+    }
+   },
+   "same_name_count": 21,
+   "n": 24,
+   "shift_histogram": {
+    "-1": 3,
+    "0": 21
+   }
+  }
+ },
+ "laterality": {
+  "ras_convention": "+x = subject right (NIfTI RAS world of the CT affine)",
+  "organ_anchor": {
+   "liver": {
+    "x_ras_mm": 45.7,
+    "expected_side": "right",
+    "observed_side": "right",
+    "ok": true
+   },
+   "gallbladder": {
+    "x_ras_mm": 80.7,
+    "expected_side": "right",
+    "observed_side": "right",
+    "ok": true
+   },
+   "spleen": {
+    "x_ras_mm": -82.9,
+    "expected_side": "left",
+    "observed_side": "left",
+    "ok": true
+   },
+   "stomach": {
+    "x_ras_mm": -59.6,
+    "expected_side": "left",
+    "observed_side": "left",
+    "ok": true
+   },
+   "heart": {
+    "x_ras_mm": -38.6,
+    "expected_side": "left",
+    "observed_side": "left",
+    "ok": true
+   }
+  },
+  "bone_sides": {
+   "totalseg": {
+    "labels": {
+     "kidney_right": {
+      "x_ras_mm": 75.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "kidney_left": {
+      "x_ras_mm": -75.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "adrenal_gland_right": {
+      "x_ras_mm": 31.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "adrenal_gland_left": {
+      "x_ras_mm": -34.1,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "lung_upper_lobe_left": {
+      "x_ras_mm": -75.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "lung_lower_lobe_left": {
+      "x_ras_mm": -67.3,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "lung_upper_lobe_right": {
+      "x_ras_mm": 63.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "lung_middle_lobe_right": {
+      "x_ras_mm": 57.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "lung_lower_lobe_right": {
+      "x_ras_mm": 71.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "subclavian_artery_right": {
+      "x_ras_mm": 50.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "subclavian_artery_left": {
+      "x_ras_mm": -36.7,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "common_carotid_artery_right": {
+      "x_ras_mm": 23.2,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "common_carotid_artery_left": {
+      "x_ras_mm": -15.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "brachiocephalic_vein_left": {
+      "x_ras_mm": -6.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "brachiocephalic_vein_right": {
+      "x_ras_mm": 30.4,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "atrial_appendage_left": {
+      "x_ras_mm": -32.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "iliac_artery_left": {
+      "x_ras_mm": -42.3,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "iliac_artery_right": {
+      "x_ras_mm": 42.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "iliac_vena_left": {
+      "x_ras_mm": -43.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "iliac_vena_right": {
+      "x_ras_mm": 49.7,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "humerus_left": {
+      "x_ras_mm": -186.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "humerus_right": {
+      "x_ras_mm": 186.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "scapula_left": {
+      "x_ras_mm": -109.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "scapula_right": {
+      "x_ras_mm": 116.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "clavicula_left": {
+      "x_ras_mm": -67.3,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "clavicula_right": {
+      "x_ras_mm": 70.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "femur_left": {
+      "x_ras_mm": -92.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "femur_right": {
+      "x_ras_mm": 104.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "hip_left": {
+      "x_ras_mm": -76.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "hip_right": {
+      "x_ras_mm": 85.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "gluteus_maximus_left": {
+      "x_ras_mm": -99.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "gluteus_maximus_right": {
+      "x_ras_mm": 108.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "gluteus_medius_left": {
+      "x_ras_mm": -125.3,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "gluteus_medius_right": {
+      "x_ras_mm": 136.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "gluteus_minimus_left": {
+      "x_ras_mm": -119.7,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "gluteus_minimus_right": {
+      "x_ras_mm": 127.7,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "autochthon_left": {
+      "x_ras_mm": -29.9,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "autochthon_right": {
+      "x_ras_mm": 34.5,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "iliopsoas_left": {
+      "x_ras_mm": -68.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "iliopsoas_right": {
+      "x_ras_mm": 72.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_left_1": {
+      "x_ras_mm": -52.3,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_2": {
+      "x_ras_mm": -74.7,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_3": {
+      "x_ras_mm": -86.9,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_4": {
+      "x_ras_mm": -94.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_5": {
+      "x_ras_mm": -97.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_6": {
+      "x_ras_mm": -101.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_7": {
+      "x_ras_mm": -106.1,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_8": {
+      "x_ras_mm": -104.1,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_9": {
+      "x_ras_mm": -99.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_10": {
+      "x_ras_mm": -98.0,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_11": {
+      "x_ras_mm": -88.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_12": {
+      "x_ras_mm": -65.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_right_1": {
+      "x_ras_mm": 58.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_2": {
+      "x_ras_mm": 79.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_3": {
+      "x_ras_mm": 88.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_4": {
+      "x_ras_mm": 96.3,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_5": {
+      "x_ras_mm": 98.7,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_6": {
+      "x_ras_mm": 100.4,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_7": {
+      "x_ras_mm": 102.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_8": {
+      "x_ras_mm": 103.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_9": {
+      "x_ras_mm": 105.2,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_10": {
+      "x_ras_mm": 102.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_11": {
+      "x_ras_mm": 94.5,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_12": {
+      "x_ras_mm": 70.1,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     }
+    },
+    "mismatches": [],
+    "n": 64
+   },
+   "moose:peripheral_bones": {
+    "labels": {
+     "carpal_left": {
+      "x_ras_mm": -168.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "carpal_right": {
+      "x_ras_mm": 184.4,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "clavicle_left": {
+      "x_ras_mm": -66.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "clavicle_right": {
+      "x_ras_mm": 66.7,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "femur_left": {
+      "x_ras_mm": -92.7,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "femur_right": {
+      "x_ras_mm": 104.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "fibula_left": {
+      "x_ras_mm": -74.9,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "fibula_right": {
+      "x_ras_mm": 80.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "fingers_left": {
+      "x_ras_mm": -128.0,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "fingers_right": {
+      "x_ras_mm": 157.3,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "humerus_left": {
+      "x_ras_mm": -187.0,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "humerus_right": {
+      "x_ras_mm": 188.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "metacarpal_left": {
+      "x_ras_mm": -157.1,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "metacarpal_right": {
+      "x_ras_mm": 177.5,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "metatarsal_left": {
+      "x_ras_mm": -25.4,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "metatarsal_right": {
+      "x_ras_mm": 48.1,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "patella_left": {
+      "x_ras_mm": -78.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "patella_right": {
+      "x_ras_mm": 96.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "radius_left": {
+      "x_ras_mm": -203.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "radius_right": {
+      "x_ras_mm": 207.7,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "scapula_left": {
+      "x_ras_mm": -114.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "scapula_right": {
+      "x_ras_mm": 119.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "tarsal_left": {
+      "x_ras_mm": -31.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "tarsal_right": {
+      "x_ras_mm": 41.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "tibia_left": {
+      "x_ras_mm": -60.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "tibia_right": {
+      "x_ras_mm": 70.5,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "toes_left": {
+      "x_ras_mm": -16.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "toes_right": {
+      "x_ras_mm": 50.7,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "ulna_left": {
+      "x_ras_mm": -216.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "ulna_right": {
+      "x_ras_mm": 220.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     }
+    },
+    "mismatches": [],
+    "n": 30
+   },
+   "moose:vertebrae": {
+    "labels": {
+     "hip_left": {
+      "x_ras_mm": -72.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "hip_right": {
+      "x_ras_mm": 84.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     }
+    },
+    "mismatches": [],
+    "n": 2
+   },
+   "moose:ribs": {
+    "labels": {
+     "rib_left_1": {
+      "x_ras_mm": -49.9,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_2": {
+      "x_ras_mm": -68.4,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_3": {
+      "x_ras_mm": -78.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_4": {
+      "x_ras_mm": -84.0,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_5": {
+      "x_ras_mm": -91.1,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_6": {
+      "x_ras_mm": -95.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_7": {
+      "x_ras_mm": -90.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_8": {
+      "x_ras_mm": -86.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_9": {
+      "x_ras_mm": -82.7,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_10": {
+      "x_ras_mm": -83.3,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_11": {
+      "x_ras_mm": -79.9,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_left_12": {
+      "x_ras_mm": -56.7,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "rib_right_1": {
+      "x_ras_mm": 55.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_2": {
+      "x_ras_mm": 73.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_3": {
+      "x_ras_mm": 80.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_4": {
+      "x_ras_mm": 87.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_5": {
+      "x_ras_mm": 90.2,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_6": {
+      "x_ras_mm": 88.3,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_7": {
+      "x_ras_mm": 91.3,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_8": {
+      "x_ras_mm": 90.9,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_9": {
+      "x_ras_mm": 89.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_10": {
+      "x_ras_mm": 88.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_11": {
+      "x_ras_mm": 84.4,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "rib_right_12": {
+      "x_ras_mm": 60.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     }
+    },
+    "mismatches": [],
+    "n": 24
+   },
+   "skellytour": {
+    "labels": {
+     "LEFT_FEMUR": {
+      "x_ras_mm": -92.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "RIGHT_FEMUR": {
+      "x_ras_mm": 104.1,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "LEFT_HUMERUS": {
+      "x_ras_mm": -184.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "RIGHT_HUMERUS": {
+      "x_ras_mm": 186.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "LEFT_SCAPULA": {
+      "x_ras_mm": -112.5,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "RIGHT_SCAPULA": {
+      "x_ras_mm": 117.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "LEFT_CLAVICLE": {
+      "x_ras_mm": -66.9,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "RIGHT_CLAVICLE": {
+      "x_ras_mm": 67.3,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "LEFT_RIB_1": {
+      "x_ras_mm": -49.3,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_2": {
+      "x_ras_mm": -68.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_3": {
+      "x_ras_mm": -78.0,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_4": {
+      "x_ras_mm": -87.1,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_5": {
+      "x_ras_mm": -93.9,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_6": {
+      "x_ras_mm": -91.9,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_7": {
+      "x_ras_mm": -90.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_8": {
+      "x_ras_mm": -90.2,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_9": {
+      "x_ras_mm": -88.7,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_10": {
+      "x_ras_mm": -87.8,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_11": {
+      "x_ras_mm": -78.0,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "LEFT_RIB_12": {
+      "x_ras_mm": -57.6,
+      "expected_side": "left",
+      "observed_side": "left",
+      "ok": true
+     },
+     "RIGHT_RIB_1": {
+      "x_ras_mm": 55.8,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_2": {
+      "x_ras_mm": 73.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_3": {
+      "x_ras_mm": 80.5,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_4": {
+      "x_ras_mm": 76.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_5": {
+      "x_ras_mm": 88.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_6": {
+      "x_ras_mm": 93.0,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_7": {
+      "x_ras_mm": 95.1,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_8": {
+      "x_ras_mm": 91.7,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_9": {
+      "x_ras_mm": 89.6,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_10": {
+      "x_ras_mm": 89.2,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_11": {
+      "x_ras_mm": 84.1,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     },
+     "RIGHT_RIB_12": {
+      "x_ras_mm": 61.4,
+      "expected_side": "right",
+      "observed_side": "right",
+      "ok": true
+     }
+    },
+    "mismatches": [],
+    "n": 32
+   }
+  },
+  "summary": {
+   "organ_anchor_ok": true,
+   "bone_side_mismatches": {
+    "totalseg": [],
+    "moose:peripheral_bones": [],
+    "moose:vertebrae": [],
+    "moose:ribs": [],
+    "skellytour": []
+   },
+   "ok": true
+  },
+  "denver_frame": {
+   "transform": "transforms/denver-aligned-ct-voxel-to-vhf.json",
+   "denver_frame_x_positive_is_subject_right": true,
+   "denver_mesh_centroids_mm": {
+    "Femur/Left": [
+     441.9,
+     453.7,
+     704.2
+    ],
+    "Fibula/Left": [
+     467.1,
+     405.9,
+     303.6
+    ],
+    "Patella/Left": [
+     464.8,
+     485.7,
+     521.9
+    ],
+    "Pelvis/Left": [
+     461.7,
+     441.2,
+     921.2
+    ],
+    "Talus/Left": [
+     496.2,
+     418.5,
+     160.7
+    ],
+    "Tibia/Left": [
+     485.9,
+     436.4,
+     344.2
+    ],
+    "Femur/Right": [
+     643.7,
+     438.0,
+     697.7
+    ],
+    "Fibula/Right": [
+     625.0,
+     385.3,
+     306.9
+    ],
+    "Patella/Right": [
+     634.7,
+     468.8,
+     517.6
+    ],
+    "Pelvis/Right": [
+     616.6,
+     435.6,
+     923.6
+    ],
+    "Talus/Right": [
+     589.3,
+     408.9,
+     153.7
+    ],
+    "Tibia/Right": [
+     611.1,
+     419.8,
+     343.7
+    ]
+   },
+   "bones": {
+    "femur_left@totalseg": {
+     "ct_in_denver_frame_mm": [
+      445.0,
+      454.2,
+      678.5
+     ],
+     "denver_mesh_mm": [
+      441.9,
+      453.7,
+      704.2
+     ],
+     "denver_part": "Femur/Left",
+     "offset_mm": 25.9,
+     "same_side_as_denver_mesh": true
+    },
+    "femur_left@moose": {
+     "ct_in_denver_frame_mm": [
+      445.0,
+      453.7,
+      680.7
+     ],
+     "denver_mesh_mm": [
+      441.9,
+      453.7,
+      704.2
+     ],
+     "denver_part": "Femur/Left",
+     "offset_mm": 23.7,
+     "same_side_as_denver_mesh": true
+    },
+    "femur_left@skellytour": {
+     "ct_in_denver_frame_mm": [
+      445.0,
+      454.2,
+      678.5
+     ],
+     "denver_mesh_mm": [
+      441.9,
+      453.7,
+      704.2
+     ],
+     "denver_part": "Femur/Left",
+     "offset_mm": 25.9,
+     "same_side_as_denver_mesh": true
+    },
+    "femur_right@totalseg": {
+     "ct_in_denver_frame_mm": [
+      641.4,
+      439.6,
+      679.7
+     ],
+     "denver_mesh_mm": [
+      643.7,
+      438.0,
+      697.7
+     ],
+     "denver_part": "Femur/Right",
+     "offset_mm": 18.2,
+     "same_side_as_denver_mesh": true
+    },
+    "femur_right@moose": {
+     "ct_in_denver_frame_mm": [
+      641.3,
+      439.3,
+      681.7
+     ],
+     "denver_mesh_mm": [
+      643.7,
+      438.0,
+      697.7
+     ],
+     "denver_part": "Femur/Right",
+     "offset_mm": 16.2,
+     "same_side_as_denver_mesh": true
+    },
+    "femur_right@skellytour": {
+     "ct_in_denver_frame_mm": [
+      641.5,
+      439.6,
+      679.3
+     ],
+     "denver_mesh_mm": [
+      643.7,
+      438.0,
+      697.7
+     ],
+     "denver_part": "Femur/Right",
+     "offset_mm": 18.6,
+     "same_side_as_denver_mesh": true
+    },
+    "hip_left@totalseg": {
+     "ct_in_denver_frame_mm": [
+      457.4,
+      437.2,
+      928.4
+     ],
+     "denver_mesh_mm": [
+      461.7,
+      441.2,
+      921.2
+     ],
+     "denver_part": "Pelvis/Left",
+     "offset_mm": 9.3,
+     "same_side_as_denver_mesh": true
+    },
+    "hip_left@moose": {
+     "ct_in_denver_frame_mm": [
+      461.6,
+      436.1,
+      934.3
+     ],
+     "denver_mesh_mm": [
+      461.7,
+      441.2,
+      921.2
+     ],
+     "denver_part": "Pelvis/Left",
+     "offset_mm": 14.1,
+     "same_side_as_denver_mesh": true
+    },
+    "hip_right@totalseg": {
+     "ct_in_denver_frame_mm": [
+      618.8,
+      431.4,
+      930.5
+     ],
+     "denver_mesh_mm": [
+      616.6,
+      435.6,
+      923.6
+     ],
+     "denver_part": "Pelvis/Right",
+     "offset_mm": 8.4,
+     "same_side_as_denver_mesh": true
+    },
+    "hip_right@moose": {
+     "ct_in_denver_frame_mm": [
+      618.6,
+      430.9,
+      931.8
+     ],
+     "denver_mesh_mm": [
+      616.6,
+      435.6,
+      923.6
+     ],
+     "denver_part": "Pelvis/Right",
+     "offset_mm": 9.7,
+     "same_side_as_denver_mesh": true
+    },
+    "patella_left@moose": {
+     "ct_in_denver_frame_mm": [
+      462.4,
+      493.6,
+      520.2
+     ],
+     "denver_mesh_mm": [
+      464.8,
+      485.7,
+      521.9
+     ],
+     "denver_part": "Patella/Left",
+     "offset_mm": 8.4,
+     "same_side_as_denver_mesh": true
+    },
+    "patella_right@moose": {
+     "ct_in_denver_frame_mm": [
+      636.7,
+      476.4,
+      516.9
+     ],
+     "denver_mesh_mm": [
+      634.7,
+      468.8,
+      517.6
+     ],
+     "denver_part": "Patella/Right",
+     "offset_mm": 7.8,
+     "same_side_as_denver_mesh": true
+    },
+    "tibia_left@moose": {
+     "ct_in_denver_frame_mm": [
+      480.9,
+      442.0,
+      367.5
+     ],
+     "denver_mesh_mm": [
+      485.9,
+      436.4,
+      344.2
+     ],
+     "denver_part": "Tibia/Left",
+     "offset_mm": 24.4,
+     "same_side_as_denver_mesh": true
+    },
+    "tibia_right@moose": {
+     "ct_in_denver_frame_mm": [
+      611.6,
+      424.4,
+      363.0
+     ],
+     "denver_mesh_mm": [
+      611.1,
+      419.8,
+      343.7
+     ],
+     "denver_part": "Tibia/Right",
+     "offset_mm": 19.9,
+     "same_side_as_denver_mesh": true
+    }
+   },
+   "organs": {
+    "liver": {
+     "x_denver_mm": 576.3,
+     "midline_x_mm": 539.1,
+     "expected_side_of": "Pelvis/Right",
+     "ok": true
+    },
+    "spleen": {
+     "x_denver_mm": 446.0,
+     "midline_x_mm": 539.1,
+     "expected_side_of": "Pelvis/Left",
+     "ok": true
+    }
+   },
+   "ok": true
+  }
+ }
+}

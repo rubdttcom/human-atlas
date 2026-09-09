@@ -57,3 +57,25 @@ Lectura. En huesos largos los dos modelos coinciden. En estructuras finas (costi
 3. Cualquier objeción a la regla de licencia sobre pesos NC o SA en el camino de etiquetas.
 
 Enlaces (rama `female-open-atlas`): plan B `docs/plans/vhf-cryosection-machine-driven-plan.md`; comparación `generated/moose-vs-totalseg.json`; centroides `generated/moose-vs-totalseg-vertebra-centroids.json`; estado del proyecto `docs/PROGRESS.md`.
+
+
+---
+
+# Segunda ronda (9 de septiembre de 2026, tras el commit 29171cb)
+
+Aceptamos los seis puntos y los tres restos del borrador. Cambios hechos y medidas nuevas:
+
+| Punto | Qué hemos hecho |
+|---|---|
+| 1. Misma referencia y procedimiento; forma frente a colocación | Nuevo `scripts/denver-ct-baseline.py`: huesos de Denver contra la isosuperficie HU = 300 del CT, banda de 20 mm, ajuste rígido por hueso anclado en el centroide. El mismo script medirá los huesos máquina. Resultado sobre 28 huesos: **forma** p95 mediana 1,96 mm, máximo 3,46 mm (22 huesos; pelvis 0,9 a 1,2; fémures 2,5 a 2,9; tibias 1,9 a 2,0; sacro 3,0). En seis huesos pequeños del pie (naviculares, cuneiformes intermedios, cuneiforme lateral derecho, cuboides izquierdo) el ajuste rígido diverge; esas clases no tienen línea base todavía. **Colocación** bajo la transformación global: pelvis 2,0 mm, sacro 3,3, fémures 5,8 a 6,1, tibias 8,6 a 10,0, pies 3 a 13 (mediana 7,3): las piernas se movieron entre el CT fresco y el bloque congelado. Ambas cifras van por separado en las secciones 2.2 y 6. |
+| 2. Original frente a final no es variabilidad humana | Sección 2.1 reescrita: mide el efecto del posprocesado de Denver. El plan B afirma concordancia con Denver, no equivalencia con el anatomista. |
+| 3. La auditoría acota rechazos de paneles | Sección 2.3 reescrita: dos estados, `inspected` (todos los paneles de la estructura graduados) y `batch-audited` (estructura de un estrato cuya muestra pasó). Un panel por estructura y ronda, separación de 20 mm, cota por estrato (4,9 % unilateral al 95 %), "minor" no cuenta como ausencia de error. Rondas de desarrollo registradas; auditoría final prerregistrada sobre salidas congeladas. Nunca "validado". |
+| 4. La intersección con la máscara CT borra lo que el CT no cubre | Era un error real del borrador. Nuevo `scripts/ct-coverage-mask.py` y `generated/nlm-ct-coverage.json`: el cuerpo toca el borde del campo de visión en 423 de 1.734 cortes, sobre todo z 290 a 679 mm (ambos brazos contra el círculo de 480 mm) y z 123 a 151 mm (cabeza contra el círculo de 250 mm del examen de cabeza). Fuera de la cobertura el prior CT significa desconocido: sin recorte, sin voto, sin cifra de concordancia; los prompts salen del centroide fotográfico. |
+| 5. Consenso no es verdad independiente | Matriz de cobertura modelo x estructura (`registry/ct-prior-coverage.json`), abstención en lugar de voto a fondo, consenso descrito como comprobación de consistencia. El CT deja de presentarse como comprobación final independiente. |
+| 6. Protocolo del conjunto sellado | Criterios prerregistrados en `registry/sealed-set-protocol.json`, márgenes de 10 mm a ambos lados de cada frontera, segundo conjunto para la versión final, huecos (manos, cabeza y cuello) nombrados. |
+| Licencias | Redactado como regla conservadora del proyecto sin lectura jurídica. Los modelos NC o SA no se ejecutan sobre datos del proyecto. |
+| Restos | Sección 6 corregida (sin p95 < 1 mm), CADS excluido, dos pasos humanos declarados (conjunto sellado y auditoría). |
+
+Datos descargados hoy para la fase 0: criosecciones NLM completas (5.186 láminas, 22,8 GB, manifiesto SHA-256), criosecciones alineadas de Denver (485 MB). El CT alineado de Denver y los mapas de etiquetas originales (2,1 GB) están en descarga.
+
+Lo que sigue: alinear las fotografías contra las de Denver (pelvis a pies), calcular `H_c` con los mapas originales, dibujar el conjunto sellado antes de entrenar, y el fold 0.

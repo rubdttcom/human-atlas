@@ -1,0 +1,40 @@
+{
+  "id": "denver-aligned-ct-voxel-to-vhf",
+  "type": "axis flips/permutation + rigid ICP (no scale) of the MOOSE pelvis onto the Denver final pelvis meshes",
+  "from": "voxel index (i, j, k) of data/derived/denver/aligned-ct-nii/denver_aligned_ct*.nii.gz (dcm2niix order, 673 x 670 x 1727, 0.722656 x 0.722656 x 1 mm)",
+  "to": "Denver label-map LPS frame (mm), the frame of the final STL meshes and of VHF_Full.mat",
+  "matrix_row_major": [
+    -0.7222500969912239,
+    0.022066051314798732,
+    -0.013808829647157062,
+    782.101912604413,
+    0.0222641144274043,
+    0.7221670208742242,
+    -0.020090980018899626,
+    206.22170409525097,
+    -0.009528952771985427,
+    0.014818153630673389,
+    0.9997027902059941,
+    -3.0953680172219924,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "rotation_deg": 2.245329518606646,
+  "p95_mm": 5.4259752412806534,
+  "rms_mm": 2.754652225382695,
+  "axis_choice": {
+    "flips": [
+      -1,
+      1,
+      1
+    ],
+    "perm": [
+      0,
+      1,
+      2
+    ]
+  },
+  "note": "A rotation near 0 deg confirms Denver aligned the CT to the cryosection frame; the residual mixes MOOSE segmentation error and Denver mesh error."
+}

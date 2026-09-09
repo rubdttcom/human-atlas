@@ -1,0 +1,2936 @@
+{
+ "method": "H_c and P_c: agreement between Denver's original hand-painted label maps and Denver's final STL meshes.\n\nPlan B section 2.1. This measures the effect of Denver's post-processing (smoothing, overclosure removal),\nnot human variability. It is the agreement level at which a machine label is indistinguishable from\nDenver's own two versions of the same structure.\n\nInput : data/raw/denver/extracted/Original Segmentation Labelmaps-mat_tif/VHF_Full.mat\n        (Slicer export: label_data 3533 x 434 x 666 uint8 at 0.666 x 0.666 x 0.333 mm, LPS, 131 labels)\n        public/atlases/denver-vhf.json + chunks (final STL meshes, viewer stage frame)\nOutput: generated/denver-noise-floor.json  per structure: Dice, surface p95 both directions, volumes;\n        per class (bone, muscle, cartilage, ligament) medians and 5th percentiles.\nMethod: each final mesh is carried to the label-map voxel grid and voxelised by slicing it with every\n        z plane of its extent (trimesh multiplane) and rasterising the section polygons; Dice against\n        the original label of the same name. Surface p95 uses the marching-cubes surface of the label\n        and the mesh surface, in millimetres, both directions.",
+ "frame": {
+  "axes": "LPS as stored in VHF_Full.mat (ijkToLpsTransform, transposed from the MATLAB column-major array)",
+  "offset_applied_mm": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "grid": {
+  "shape_ijk": [
+   666,
+   434,
+   3533
+  ],
+  "spacing_mm": [
+   0.666,
+   0.666,
+   0.333
+  ],
+  "ijk_to_ras": [
+   [
+    0.666,
+    4.69524419344225e-14,
+    0.0,
+    316.3499999999999
+   ],
+   [
+    0.0,
+    0.6659999999999704,
+    0.0,
+    311.02200000000005
+   ],
+   [
+    0.0,
+    0.0,
+    0.333,
+    -0.33299999999994306
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  ]
+ },
+ "structures": [
+  {
+   "structure": "Left_Bone_Calcaneous",
+   "label_value": 1,
+   "tissue_class": "Bone",
+   "dice": 0.9199371952585289,
+   "original_voxels": 472317,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 433984,
+   "original_volume_cm3": 69.76318007091602,
+   "final_volume_cm3": 69.57486735865155,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.714674533150472,
+     "p95_mm": 1.1546050863420743,
+     "max_mm": 1.7528342576819607
+    },
+    "final_to_original": {
+     "mean_mm": 0.5538085341766362,
+     "p95_mm": 0.9292073776295882,
+     "max_mm": 1.3249808962049932
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Coccyx",
+   "label_value": 2,
+   "tissue_class": "Bone",
+   "dice": 0.002456519603026432,
+   "original_voxels": 353,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 20001,
+   "original_volume_cm3": 0.052139564244000014,
+   "final_volume_cm3": 2.9486902462981903,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6561424999669062,
+     "p95_mm": 1.079094290046353,
+     "max_mm": 1.616567190141059
+    },
+    "final_to_original": {
+     "mean_mm": 3.4615273275172065,
+     "p95_mm": 8.572026025591779,
+     "max_mm": 9.226750922850254
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Cuboid",
+   "label_value": 3,
+   "tissue_class": "Bone",
+   "dice": 0.9332523710386306,
+   "original_voxels": 87038,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 85882,
+   "original_volume_cm3": 12.855873633624004,
+   "final_volume_cm3": 12.709712852933787,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6218603990770234,
+     "p95_mm": 1.1300947925363742,
+     "max_mm": 1.8855199236592357
+    },
+    "final_to_original": {
+     "mean_mm": 0.5430814480122217,
+     "p95_mm": 0.9552643037312027,
+     "max_mm": 1.394830077585686
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Femur",
+   "label_value": 4,
+   "tissue_class": "Bone",
+   "dice": 0.9443665350866224,
+   "original_voxels": 3079562,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2958081,
+   "original_volume_cm3": 454.8640814231761,
+   "final_volume_cm3": 455.14478940588566,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.956049522619699,
+     "p95_mm": 1.5520803828549057,
+     "max_mm": 7.301448070395961
+    },
+    "final_to_original": {
+     "mean_mm": 0.5601909964413119,
+     "p95_mm": 1.0004512439723945,
+     "max_mm": 3.2769473841888033
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Fibula",
+   "label_value": 5,
+   "tissue_class": "Bone",
+   "dice": 0.8865861791855886,
+   "original_voxels": 210550,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 213781,
+   "original_volume_cm3": 31.09910836140001,
+   "final_volume_cm3": 31.45074617532236,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7538788363278329,
+     "p95_mm": 1.1914420542537927,
+     "max_mm": 1.852842718819183
+    },
+    "final_to_original": {
+     "mean_mm": 0.5950852147208499,
+     "p95_mm": 0.9739952915758815,
+     "max_mm": 1.5405212426719626
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_IntermediateCuneiform",
+   "label_value": 6,
+   "tissue_class": "Bone",
+   "dice": 0.8952806585305296,
+   "original_voxels": 26358,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 26001,
+   "original_volume_cm3": 3.8931859329840006,
+   "final_volume_cm3": 3.8374592607176123,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6236717138677896,
+     "p95_mm": 1.136516565383197,
+     "max_mm": 1.3983979685488264
+    },
+    "final_to_original": {
+     "mean_mm": 0.5483853997377771,
+     "p95_mm": 0.9627534833065432,
+     "max_mm": 1.1793733728327889
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_LateralCuneiform",
+   "label_value": 7,
+   "tissue_class": "Bone",
+   "dice": 0.8893868960191397,
+   "original_voxels": 33178,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 32863,
+   "original_volume_cm3": 4.9005282223440005,
+   "final_volume_cm3": 4.849897360426407,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7039683816903014,
+     "p95_mm": 1.152995309891588,
+     "max_mm": 1.9078264231433877
+    },
+    "final_to_original": {
+     "mean_mm": 0.6264485834629966,
+     "p95_mm": 0.993423495444096,
+     "max_mm": 1.1921118989818973
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_MedialCuneiform",
+   "label_value": 8,
+   "tissue_class": "Bone",
+   "dice": 0.9193032517011069,
+   "original_voxels": 64025,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 63539,
+   "original_volume_cm3": 9.456758075700002,
+   "final_volume_cm3": 9.377155255473,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6661822311644865,
+     "p95_mm": 1.1220773890567044,
+     "max_mm": 1.54747289277284
+    },
+    "final_to_original": {
+     "mean_mm": 0.5848847000255052,
+     "p95_mm": 0.9528689968726195,
+     "max_mm": 1.1574863782805733
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Navicular",
+   "label_value": 9,
+   "tissue_class": "Bone",
+   "dice": 0.9298349567881609,
+   "original_voxels": 69713,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 68675,
+   "original_volume_cm3": 10.296899269524003,
+   "final_volume_cm3": 10.221848995462647,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5750606792518752,
+     "p95_mm": 1.0757235775322134,
+     "max_mm": 1.4981084052342764
+    },
+    "final_to_original": {
+     "mean_mm": 0.5046586856961988,
+     "p95_mm": 0.9197343443241084,
+     "max_mm": 1.1596034207577577
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Patella",
+   "label_value": 10,
+   "tissue_class": "Bone",
+   "dice": 0.9518387768865312,
+   "original_voxels": 133029,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 132392,
+   "original_volume_cm3": 19.648935104292008,
+   "final_volume_cm3": 19.538536608034452,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5415239973625728,
+     "p95_mm": 0.9861699544726831,
+     "max_mm": 1.335962092307724
+    },
+    "final_to_original": {
+     "mean_mm": 0.4755229057940577,
+     "p95_mm": 0.8484452662301225,
+     "max_mm": 1.132906747913059
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Pelvis",
+   "label_value": 11,
+   "tissue_class": "Bone",
+   "dice": 0.8571609370356433,
+   "original_voxels": 2362643,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2062162,
+   "original_volume_cm3": 348.9721713431641,
+   "final_volume_cm3": 358.10898021614037,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.1095151177433922,
+     "p95_mm": 1.9273249098858234,
+     "max_mm": 4.042018805851869
+    },
+    "final_to_original": {
+     "mean_mm": 0.7017241831098054,
+     "p95_mm": 1.4773606998153226,
+     "max_mm": 3.2313589850539968
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Phalanges",
+   "label_value": 12,
+   "tissue_class": "Bone",
+   "dice": 0.5154295390643738,
+   "original_voxels": 503539,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 188575,
+   "original_volume_cm3": 74.37479897977202,
+   "final_volume_cm3": 73.75879903547535,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7264305263064348,
+     "p95_mm": 1.207678586078983,
+     "max_mm": 2.018290419333727
+    },
+    "final_to_original": {
+     "mean_mm": 0.48371094794534497,
+     "p95_mm": 0.8964805027885548,
+     "max_mm": 1.2074975457328947
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Sacrum",
+   "label_value": 13,
+   "tissue_class": "Bone",
+   "dice": 0.24222107641679683,
+   "original_voxels": 227691,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 1091129,
+   "original_volume_cm3": 33.63090516226801,
+   "final_volume_cm3": 213.4238901703849,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 2.577923361866021,
+     "p95_mm": 8.860617582805643,
+     "max_mm": 13.829399418960232
+    },
+    "final_to_original": {
+     "mean_mm": 3.1948742220755495,
+     "p95_mm": 11.492842852690755,
+     "max_mm": 21.104510166226593
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Talus",
+   "label_value": 14,
+   "tissue_class": "Bone",
+   "dice": 0.9076157267653183,
+   "original_voxels": 254856,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 232110,
+   "original_volume_cm3": 37.64328834268801,
+   "final_volume_cm3": 37.50115695385992,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6658941147486963,
+     "p95_mm": 1.13138682644904,
+     "max_mm": 2.2144949956637565
+    },
+    "final_to_original": {
+     "mean_mm": 0.5391851816881004,
+     "p95_mm": 0.9265556374624061,
+     "max_mm": 1.535177970112296
+    }
+   }
+  },
+  {
+   "structure": "Left_Bone_Tibia",
+   "label_value": 15,
+   "tissue_class": "Bone",
+   "dice": 0.945755951098236,
+   "original_voxels": 1750739,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 1706396,
+   "original_volume_cm3": 258.59141236537204,
+   "final_volume_cm3": 258.30408738823377,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8970785328601969,
+     "p95_mm": 1.401593255243684,
+     "max_mm": 2.3417667987491146
+    },
+    "final_to_original": {
+     "mean_mm": 0.5824052827520647,
+     "p95_mm": 0.9555510976828687,
+     "max_mm": 1.5733219531555682
+    }
+   }
+  },
+  {
+   "structure": "Left_Cartilage_FemurDistal",
+   "label_value": 16,
+   "tissue_class": "Cartilage",
+   "dice": 0.13732668639975074,
+   "original_voxels": 70638,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 6390,
+   "original_volume_cm3": 10.433525606424002,
+   "final_volume_cm3": 9.993589275900106,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5817092322428759,
+     "p95_mm": 1.0304623837629359,
+     "max_mm": 1.79362328770452
+    },
+    "final_to_original": {
+     "mean_mm": 0.43871099371186206,
+     "p95_mm": 0.8192412584485503,
+     "max_mm": 1.086423879850891
+    }
+   }
+  },
+  {
+   "structure": "Left_Cartilage_FemurHead",
+   "label_value": 17,
+   "tissue_class": "Cartilage",
+   "dice": 0.3695443269939884,
+   "original_voxels": 32681,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 12066,
+   "original_volume_cm3": 4.827119260788002,
+   "final_volume_cm3": 4.411724212080146,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6601468717368597,
+     "p95_mm": 1.4079147041464146,
+     "max_mm": 6.059765751291201
+    },
+    "final_to_original": {
+     "mean_mm": 0.4695928286535035,
+     "p95_mm": 0.8922855553856113,
+     "max_mm": 1.15084772114945
+    }
+   }
+  },
+  {
+   "structure": "Left_Cartilage_Patella",
+   "label_value": 18,
+   "tissue_class": "Cartilage",
+   "dice": 0.7820767195767195,
+   "original_voxels": 18595,
+   "original_voxels_outside_final_box": 24,
+   "final_voxels": 17693,
+   "original_volume_cm3": 2.7465586320600006,
+   "final_volume_cm3": 2.6128880747706824,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5511328863162208,
+     "p95_mm": 0.9630163129317779,
+     "max_mm": 2.306866299955488
+    },
+    "final_to_original": {
+     "mean_mm": 0.4946087008377793,
+     "p95_mm": 0.8042683309033285,
+     "max_mm": 1.0330733953914633
+    }
+   }
+  },
+  {
+   "structure": "Left_Cartilage_PelvisAcetabulum",
+   "label_value": 19,
+   "tissue_class": "Cartilage",
+   "dice": 0.040665185484413925,
+   "original_voxels": 14451,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 402,
+   "original_volume_cm3": 2.1344726427480003,
+   "final_volume_cm3": 1.6864158791262889,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6799815748019392,
+     "p95_mm": 1.9196855795091519,
+     "max_mm": 7.0926111781942
+    },
+    "final_to_original": {
+     "mean_mm": 0.4086692205782621,
+     "p95_mm": 0.8343499323002522,
+     "max_mm": 1.1389962624899808
+    }
+   }
+  },
+  {
+   "structure": "Left_Cartilage_Talus",
+   "label_value": 20,
+   "tissue_class": "Cartilage",
+   "dice": 0.3176470588235294,
+   "original_voxels": 228,
+   "original_voxels_outside_final_box": 4,
+   "final_voxels": 112,
+   "original_volume_cm3": 0.03367654574400001,
+   "final_volume_cm3": 0.018018779908058908,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6518386123824983,
+     "p95_mm": 1.6009022180175776,
+     "max_mm": 3.42525912014597
+    },
+    "final_to_original": {
+     "mean_mm": 0.3356722753437707,
+     "p95_mm": 0.5774575956861504,
+     "max_mm": 0.739044024417359
+    }
+   }
+  },
+  {
+   "structure": "Left_Cartilage_TibiaDistal",
+   "label_value": 21,
+   "tissue_class": "Cartilage",
+   "dice": 0.6663524976437323,
+   "original_voxels": 5222,
+   "original_voxels_outside_final_box": 14,
+   "final_voxels": 3266,
+   "original_volume_cm3": 0.7713110608560002,
+   "final_volume_cm3": 0.59398991688362,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5800422796111754,
+     "p95_mm": 1.930379898314929,
+     "max_mm": 3.275398824163756
+    },
+    "final_to_original": {
+     "mean_mm": 0.37202196466015613,
+     "p95_mm": 0.7150042749187413,
+     "max_mm": 1.0530864458333076
+    }
+   }
+  },
+  {
+   "structure": "Left_Cartilage_TibiaLateral",
+   "label_value": 22,
+   "tissue_class": "Cartilage",
+   "dice": 0.8092314207071777,
+   "original_voxels": 10326,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 8566,
+   "original_volume_cm3": 1.5251930322480005,
+   "final_volume_cm3": 1.3363252684793714,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.4941818834641211,
+     "p95_mm": 1.6531939507131157,
+     "max_mm": 2.869220483582853
+    },
+    "final_to_original": {
+     "mean_mm": 0.37078055769453455,
+     "p95_mm": 0.6775900868363584,
+     "max_mm": 0.8940193933649093
+    }
+   }
+  },
+  {
+   "structure": "Left_Cartilage_TibiaMedial",
+   "label_value": 23,
+   "tissue_class": "Cartilage",
+   "dice": 0.7581502984044497,
+   "original_voxels": 12919,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 11712,
+   "original_volume_cm3": 1.9081898880120005,
+   "final_volume_cm3": 1.7428131269350822,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5630431922525769,
+     "p95_mm": 1.3556349069848272,
+     "max_mm": 2.826850826537555
+    },
+    "final_to_original": {
+     "mean_mm": 0.4623724708944383,
+     "p95_mm": 0.7137414856589887,
+     "max_mm": 1.0009774551066237
+    }
+   }
+  },
+  {
+   "structure": "Left_Ligament_ACL",
+   "label_value": 24,
+   "tissue_class": "Ligament",
+   "dice": 0.8861307734574485,
+   "original_voxels": 15835,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 15104,
+   "original_volume_cm3": 2.338895183580001,
+   "final_volume_cm3": 2.221128076497757,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.45541255246939477,
+     "p95_mm": 1.022121206260174,
+     "max_mm": 1.5898549336147092
+    },
+    "final_to_original": {
+     "mean_mm": 0.4330946897449776,
+     "p95_mm": 0.8648597951595776,
+     "max_mm": 1.1159982919470612
+    }
+   }
+  },
+  {
+   "structure": "Left_Ligament_LCL",
+   "label_value": 25,
+   "tissue_class": "Ligament",
+   "dice": 0.7195850715976998,
+   "original_voxels": 4638,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 4231,
+   "original_volume_cm3": 0.6850518384240002,
+   "final_volume_cm3": 0.6201210700122132,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5419384023222389,
+     "p95_mm": 0.9644289238685992,
+     "max_mm": 1.4197720185886238
+    },
+    "final_to_original": {
+     "mean_mm": 0.49040775547130183,
+     "p95_mm": 0.8014939223991276,
+     "max_mm": 1.1792429260258481
+    }
+   }
+  },
+  {
+   "structure": "Left_Ligament_MCL",
+   "label_value": 26,
+   "tissue_class": "Ligament",
+   "dice": 0.7084101227131748,
+   "original_voxels": 11459,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 10788,
+   "original_volume_cm3": 1.6925418319320005,
+   "final_volume_cm3": 1.579823166005003,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6861007713631787,
+     "p95_mm": 1.1484370748965855,
+     "max_mm": 1.859412841413787
+    },
+    "final_to_original": {
+     "mean_mm": 0.5943325083940015,
+     "p95_mm": 0.9072118597171307,
+     "max_mm": 1.2716130654515434
+    }
+   }
+  },
+  {
+   "structure": "Left_Ligament_PCL",
+   "label_value": 27,
+   "tissue_class": "Ligament",
+   "dice": 0.8950479804228876,
+   "original_voxels": 18325,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 18044,
+   "original_volume_cm3": 2.7066785121000008,
+   "final_volume_cm3": 2.657457635783482,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.47882456354203773,
+     "p95_mm": 0.9744267160868859,
+     "max_mm": 1.3570856326319953
+    },
+    "final_to_original": {
+     "mean_mm": 0.4436648506550062,
+     "p95_mm": 0.8429100969358839,
+     "max_mm": 1.0769877674862796
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_AdductorBrevis",
+   "label_value": 28,
+   "tissue_class": "Muscle",
+   "dice": 0.9603465549433035,
+   "original_voxels": 440589,
+   "original_voxels_outside_final_box": 62,
+   "final_voxels": 437771,
+   "original_volume_cm3": 65.07682286317201,
+   "final_volume_cm3": 64.63571519192985,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5986168368114393,
+     "p95_mm": 1.047279034623164,
+     "max_mm": 4.420914594721136
+    },
+    "final_to_original": {
+     "mean_mm": 0.3629084909319155,
+     "p95_mm": 0.7015713080122447,
+     "max_mm": 1.3754362239371314
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_AdductorLongus",
+   "label_value": 29,
+   "tissue_class": "Muscle",
+   "dice": 0.9534334991094431,
+   "original_voxels": 601936,
+   "original_voxels_outside_final_box": 71,
+   "final_voxels": 597875,
+   "original_volume_cm3": 88.90844403052802,
+   "final_volume_cm3": 88.25121131660148,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7082591537144021,
+     "p95_mm": 1.159431551843354,
+     "max_mm": 2.8181007728902676
+    },
+    "final_to_original": {
+     "mean_mm": 0.48112068906418043,
+     "p95_mm": 0.8493445801300489,
+     "max_mm": 1.3967974548114377
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_AdductorMagnus",
+   "label_value": 30,
+   "tissue_class": "Muscle",
+   "dice": 0.9702485409239792,
+   "original_voxels": 2876737,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2871250,
+   "original_volume_cm3": 424.9059876050761,
+   "final_volume_cm3": 424.13151225035176,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.9549357718829272,
+     "p95_mm": 1.5340305997808708,
+     "max_mm": 2.9037190330899185
+    },
+    "final_to_original": {
+     "mean_mm": 0.5654860040940619,
+     "p95_mm": 0.9626811888274948,
+     "max_mm": 1.2670305246203524
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_ExtensorDigitorumLongus",
+   "label_value": 33,
+   "tissue_class": "Muscle",
+   "dice": 0.8678760797106913,
+   "original_voxels": 221980,
+   "original_voxels_outside_final_box": 16,
+   "final_voxels": 215753,
+   "original_volume_cm3": 32.787366773040006,
+   "final_volume_cm3": 31.78654067657036,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8327437877070878,
+     "p95_mm": 1.2777047381884954,
+     "max_mm": 2.348335877689198
+    },
+    "final_to_original": {
+     "mean_mm": 0.6559098330603492,
+     "p95_mm": 1.0325437084388456,
+     "max_mm": 1.4077016492291685
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_ExtensorHallucisLongus",
+   "label_value": 34,
+   "tissue_class": "Muscle",
+   "dice": 0.8354857913472403,
+   "original_voxels": 84648,
+   "original_voxels_outside_final_box": 242,
+   "final_voxels": 79970,
+   "original_volume_cm3": 12.502860719904003,
+   "final_volume_cm3": 11.789747070751124,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.789217445328059,
+     "p95_mm": 1.2761501663421477,
+     "max_mm": 2.2075901895378736
+    },
+    "final_to_original": {
+     "mean_mm": 0.6614284154673427,
+     "p95_mm": 1.0598971965008213,
+     "max_mm": 1.344092192666907
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_FlexorDigitorumLongus",
+   "label_value": 35,
+   "tissue_class": "Muscle",
+   "dice": 0.8930536888795081,
+   "original_voxels": 163734,
+   "original_voxels_outside_final_box": 1,
+   "final_voxels": 158437,
+   "original_volume_cm3": 24.184190968632006,
+   "final_volume_cm3": 23.333760233965528,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7209634861242373,
+     "p95_mm": 1.2235027472151958,
+     "max_mm": 1.963221225018562
+    },
+    "final_to_original": {
+     "mean_mm": 0.576974552328667,
+     "p95_mm": 1.0233432169240468,
+     "max_mm": 1.4419007936262376
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_FlexorHallucisLongus",
+   "label_value": 36,
+   "tissue_class": "Muscle",
+   "dice": 0.9357868164514322,
+   "original_voxels": 372223,
+   "original_voxels_outside_final_box": 32,
+   "final_voxels": 366971,
+   "original_volume_cm3": 54.97888108100402,
+   "final_volume_cm3": 54.181831305097354,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7310061385807566,
+     "p95_mm": 1.2429784309993923,
+     "max_mm": 2.4565851754325028
+    },
+    "final_to_original": {
+     "mean_mm": 0.5515210683651394,
+     "p95_mm": 1.0002947965680211,
+     "max_mm": 1.3264648522973046
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_GastrocnemiusLateral",
+   "label_value": 37,
+   "tissue_class": "Muscle",
+   "dice": 0.9399671417031096,
+   "original_voxels": 592923,
+   "original_voxels_outside_final_box": 957,
+   "final_voxels": 580601,
+   "original_volume_cm3": 87.57718654460402,
+   "final_volume_cm3": 85.73711619463965,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8459350092626815,
+     "p95_mm": 1.4674061073100628,
+     "max_mm": 4.636417511165504
+    },
+    "final_to_original": {
+     "mean_mm": 0.5953474233063216,
+     "p95_mm": 1.100247234902912,
+     "max_mm": 1.9463256035126641
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_GastrocnemiusMedial",
+   "label_value": 38,
+   "tissue_class": "Muscle",
+   "dice": 0.9630093966017639,
+   "original_voxels": 1371183,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 1366296,
+   "original_volume_cm3": 202.52941676708403,
+   "final_volume_cm3": 201.77199853888646,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8301292776062219,
+     "p95_mm": 1.3326727349987786,
+     "max_mm": 2.1252585082035056
+    },
+    "final_to_original": {
+     "mean_mm": 0.5340704487855052,
+     "p95_mm": 0.9395171286479959,
+     "max_mm": 1.3167242862096282
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_GluteusMaximus",
+   "label_value": 39,
+   "tissue_class": "Muscle",
+   "dice": 0.9678245253325328,
+   "original_voxels": 5417970,
+   "original_voxels_outside_final_box": 115,
+   "final_voxels": 5378483,
+   "original_volume_cm3": 800.2566427395602,
+   "final_volume_cm3": 797.0153814891212,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.1767812246478746,
+     "p95_mm": 1.8724241788659381,
+     "max_mm": 3.18345855022122
+    },
+    "final_to_original": {
+     "mean_mm": 0.7042264409620962,
+     "p95_mm": 1.1846164631523088,
+     "max_mm": 1.7295608552860549
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_GluteusMedius",
+   "label_value": 40,
+   "tissue_class": "Muscle",
+   "dice": 0.9634848676853971,
+   "original_voxels": 2514459,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2504337,
+   "original_volume_cm3": 371.3960242759321,
+   "final_volume_cm3": 369.9090899106648,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.993314848676593,
+     "p95_mm": 1.5489021941612262,
+     "max_mm": 2.7567323181217724
+    },
+    "final_to_original": {
+     "mean_mm": 0.6227167296088784,
+     "p95_mm": 0.9861295317965637,
+     "max_mm": 1.488043014832976
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_GluteusMinimus",
+   "label_value": 41,
+   "tissue_class": "Muscle",
+   "dice": 0.9380379144132224,
+   "original_voxels": 895461,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 872943,
+   "original_volume_cm3": 132.26330407222804,
+   "final_volume_cm3": 129.8026003692178,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8934461838029707,
+     "p95_mm": 1.3568999964098272,
+     "max_mm": 4.888021382374534
+    },
+    "final_to_original": {
+     "mean_mm": 0.6210437997543258,
+     "p95_mm": 0.9738410121400471,
+     "max_mm": 1.5236548786667756
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Gracilis",
+   "label_value": 42,
+   "tissue_class": "Muscle",
+   "dice": 0.929402140827922,
+   "original_voxels": 475376,
+   "original_voxels_outside_final_box": 86,
+   "final_voxels": 470800,
+   "original_volume_cm3": 70.21500705964802,
+   "final_volume_cm3": 69.40275932411059,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7516580213456967,
+     "p95_mm": 1.2028540615798342,
+     "max_mm": 2.991214971102616
+    },
+    "final_to_original": {
+     "mean_mm": 0.5361213864878753,
+     "p95_mm": 0.9031978734368773,
+     "max_mm": 1.260995571251655
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Illiacus",
+   "label_value": 43,
+   "tissue_class": "Muscle",
+   "dice": 0.9047170745208479,
+   "original_voxels": 1009352,
+   "original_voxels_outside_final_box": 12,
+   "final_voxels": 970604,
+   "original_volume_cm3": 149.08547719209602,
+   "final_volume_cm3": 143.3476763385588,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.1463592750547982,
+     "p95_mm": 2.0269684861023713,
+     "max_mm": 3.784184802812184
+    },
+    "final_to_original": {
+     "mean_mm": 0.8264858101552418,
+     "p95_mm": 1.6975735011292066,
+     "max_mm": 3.3342340372876906
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_InferiorGemellus",
+   "label_value": 44,
+   "tissue_class": "Muscle",
+   "dice": 0.7988714470090345,
+   "original_voxels": 17416,
+   "original_voxels_outside_final_box": 26,
+   "final_voxels": 15901,
+   "original_volume_cm3": 2.5724154415680003,
+   "final_volume_cm3": 2.34816100135686,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.748460206043014,
+     "p95_mm": 1.3018576354503892,
+     "max_mm": 5.270441605132155
+    },
+    "final_to_original": {
+     "mean_mm": 0.590078694774957,
+     "p95_mm": 0.9698749162209962,
+     "max_mm": 1.3371702937665497
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_ObturatorExternus",
+   "label_value": 45,
+   "tissue_class": "Muscle",
+   "dice": 0.8997375398873629,
+   "original_voxels": 319210,
+   "original_voxels_outside_final_box": 279,
+   "final_voxels": 274023,
+   "original_volume_cm3": 47.14864108308001,
+   "final_volume_cm3": 44.52729086642195,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7448766048700155,
+     "p95_mm": 1.9429392022623,
+     "max_mm": 6.377065077258275
+    },
+    "final_to_original": {
+     "mean_mm": 0.536423854546361,
+     "p95_mm": 1.5207399974002782,
+     "max_mm": 3.2972467198926627
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_ObturatorInternus",
+   "label_value": 46,
+   "tissue_class": "Muscle",
+   "dice": 0.9017450915671323,
+   "original_voxels": 315247,
+   "original_voxels_outside_final_box": 333,
+   "final_voxels": 287644,
+   "original_volume_cm3": 46.563289544556014,
+   "final_volume_cm3": 42.78049422550671,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8973183801848514,
+     "p95_mm": 1.87135338777132,
+     "max_mm": 6.373526571083233
+    },
+    "final_to_original": {
+     "mean_mm": 0.6700754199086879,
+     "p95_mm": 1.497203577666348,
+     "max_mm": 3.075411130537894
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Pectineus",
+   "label_value": 47,
+   "tissue_class": "Muscle",
+   "dice": 0.9690988896338624,
+   "original_voxels": 313950,
+   "original_voxels_outside_final_box": 247,
+   "final_voxels": 310979,
+   "original_volume_cm3": 46.37171726460001,
+   "final_volume_cm3": 45.91673344887401,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.47586662531603907,
+     "p95_mm": 0.8861854526467481,
+     "max_mm": 3.330763497009282
+    },
+    "final_to_original": {
+     "mean_mm": 0.3410310270478164,
+     "p95_mm": 0.7299996587811217,
+     "max_mm": 1.3687261855111188
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_PeroneusLongus",
+   "label_value": 48,
+   "tissue_class": "Muscle",
+   "dice": 0.9184221859090453,
+   "original_voxels": 685053,
+   "original_voxels_outside_final_box": 108,
+   "final_voxels": 671051,
+   "original_volume_cm3": 101.18516969984402,
+   "final_volume_cm3": 99.10980610700639,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.9334219822900924,
+     "p95_mm": 1.3839263476185228,
+     "max_mm": 2.2856807185971815
+    },
+    "final_to_original": {
+     "mean_mm": 0.6871567487729432,
+     "p95_mm": 1.035813832455628,
+     "max_mm": 1.5545928572651524
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Piriformis",
+   "label_value": 49,
+   "tissue_class": "Muscle",
+   "dice": 0.9438394648829431,
+   "original_voxels": 299125,
+   "original_voxels_outside_final_box": 95,
+   "final_voxels": 298875,
+   "original_volume_cm3": 44.18200327050001,
+   "final_volume_cm3": 44.40848502820783,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7098311944590896,
+     "p95_mm": 1.2185885636602898,
+     "max_mm": 3.7109725584277515
+    },
+    "final_to_original": {
+     "mean_mm": 0.546601153476668,
+     "p95_mm": 1.0073356749758084,
+     "max_mm": 2.030252822107105
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Plantaris",
+   "label_value": 50,
+   "tissue_class": "Muscle",
+   "dice": 0.7706564851540201,
+   "original_voxels": 14957,
+   "original_voxels_outside_final_box": 685,
+   "final_voxels": 12020,
+   "original_volume_cm3": 2.2092109416360004,
+   "final_volume_cm3": 1.7735270104807435,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.784006477800803,
+     "p95_mm": 1.839253033099702,
+     "max_mm": 3.3576060922109323
+    },
+    "final_to_original": {
+     "mean_mm": 0.5189174518045275,
+     "p95_mm": 1.065000881100251,
+     "max_mm": 1.521735262518528
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Popliteus",
+   "label_value": 51,
+   "tissue_class": "Muscle",
+   "dice": 0.9272379902856219,
+   "original_voxels": 84474,
+   "original_voxels_outside_final_box": 31,
+   "final_voxels": 82495,
+   "original_volume_cm3": 12.477160198152003,
+   "final_volume_cm3": 12.1659718467187,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5237470558248019,
+     "p95_mm": 1.0541078316225627,
+     "max_mm": 2.407655985661442
+    },
+    "final_to_original": {
+     "mean_mm": 0.4383419002663878,
+     "p95_mm": 0.8580599216360802,
+     "max_mm": 1.2211807979829836
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_PsoasMajor",
+   "label_value": 52,
+   "tissue_class": "Muscle",
+   "dice": 0.9511389061062461,
+   "original_voxels": 1136352,
+   "original_voxels_outside_final_box": 143,
+   "final_voxels": 1128804,
+   "original_volume_cm3": 167.84390398809606,
+   "final_volume_cm3": 166.6806550172893,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8721851968545717,
+     "p95_mm": 1.374804294363305,
+     "max_mm": 5.338805913031708
+    },
+    "final_to_original": {
+     "mean_mm": 0.5783300874330304,
+     "p95_mm": 0.9598344309985941,
+     "max_mm": 1.2977385606433036
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_RectusFemoris",
+   "label_value": 54,
+   "tissue_class": "Muscle",
+   "dice": 0.9415156439961153,
+   "original_voxels": 918321,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 913468,
+   "original_volume_cm3": 135.63982089550802,
+   "final_volume_cm3": 134.74906601836852,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.9185148668666282,
+     "p95_mm": 1.3617185667406821,
+     "max_mm": 2.2640071695011588
+    },
+    "final_to_original": {
+     "mean_mm": 0.6753978484318288,
+     "p95_mm": 1.0193172448318761,
+     "max_mm": 1.400359582909584
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Sartorius",
+   "label_value": 55,
+   "tissue_class": "Muscle",
+   "dice": 0.9063292979743802,
+   "original_voxels": 650835,
+   "original_voxels_outside_final_box": 57,
+   "final_voxels": 642152,
+   "original_volume_cm3": 96.13102916358002,
+   "final_volume_cm3": 94.66821886447632,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.9230862987323345,
+     "p95_mm": 1.3837323401446497,
+     "max_mm": 2.3164050713685906
+    },
+    "final_to_original": {
+     "mean_mm": 0.65324856660388,
+     "p95_mm": 1.0040970253188823,
+     "max_mm": 1.327859902297961
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Semimembranosus",
+   "label_value": 56,
+   "tissue_class": "Muscle",
+   "dice": 0.9620619930172426,
+   "original_voxels": 1505301,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 1500102,
+   "original_volume_cm3": 222.33920168854806,
+   "final_volume_cm3": 221.46358670048767,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8728375951915529,
+     "p95_mm": 1.368115892483757,
+     "max_mm": 2.362956256802202
+    },
+    "final_to_original": {
+     "mean_mm": 0.5818832041509958,
+     "p95_mm": 0.9619838184051032,
+     "max_mm": 1.2445202747477868
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Semitendinosus",
+   "label_value": 57,
+   "tissue_class": "Muscle",
+   "dice": 0.9354687720456003,
+   "original_voxels": 672175,
+   "original_voxels_outside_final_box": 64,
+   "final_voxels": 667378,
+   "original_volume_cm3": 99.28303568190003,
+   "final_volume_cm3": 98.45363417253799,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8665428073978647,
+     "p95_mm": 1.3064330491668255,
+     "max_mm": 2.042769992639116
+    },
+    "final_to_original": {
+     "mean_mm": 0.6461096343516576,
+     "p95_mm": 0.9983411187051849,
+     "max_mm": 1.2387711900599088
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_Soleus",
+   "label_value": 58,
+   "tissue_class": "Muscle",
+   "dice": 0.9717414933211002,
+   "original_voxels": 2171900,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2166015,
+   "original_volume_cm3": 320.79863904120003,
+   "final_volume_cm3": 319.8764585714374,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8556024154487339,
+     "p95_mm": 1.4370091385476331,
+     "max_mm": 2.508862989137718
+    },
+    "final_to_original": {
+     "mean_mm": 0.476277242318898,
+     "p95_mm": 0.9284548466055007,
+     "max_mm": 1.6436525153444403
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_SuperiorGemellus",
+   "label_value": 59,
+   "tissue_class": "Muscle",
+   "dice": 0.8232494217812489,
+   "original_voxels": 15809,
+   "original_voxels_outside_final_box": 17,
+   "final_voxels": 14024,
+   "original_volume_cm3": 2.3350548757320007,
+   "final_volume_cm3": 2.1612351377530996,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7441244023646504,
+     "p95_mm": 1.7345967657205197,
+     "max_mm": 2.987447699720361
+    },
+    "final_to_original": {
+     "mean_mm": 0.5697139715381715,
+     "p95_mm": 0.9871311718488255,
+     "max_mm": 1.463774308230138
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_TensorFasciaeLatae",
+   "label_value": 60,
+   "tissue_class": "Muscle",
+   "dice": 0.9556759789100493,
+   "original_voxels": 397263,
+   "original_voxels_outside_final_box": 63,
+   "final_voxels": 394204,
+   "original_volume_cm3": 58.677392946924016,
+   "final_volume_cm3": 58.20329758128297,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6131823931360298,
+     "p95_mm": 1.074859761581087,
+     "max_mm": 3.0212623171410438
+    },
+    "final_to_original": {
+     "mean_mm": 0.42935226959673284,
+     "p95_mm": 0.8368456798835343,
+     "max_mm": 1.3771750584713858
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_TibialisAnterior",
+   "label_value": 61,
+   "tissue_class": "Muscle",
+   "dice": 0.9398830367458064,
+   "original_voxels": 560936,
+   "original_voxels_outside_final_box": 121,
+   "final_voxels": 555654,
+   "original_volume_cm3": 82.85257396252803,
+   "final_volume_cm3": 82.03850494803298,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7909568345044267,
+     "p95_mm": 1.2740691747326238,
+     "max_mm": 2.2146306637984403
+    },
+    "final_to_original": {
+     "mean_mm": 0.5735172897812832,
+     "p95_mm": 0.9893289202598305,
+     "max_mm": 1.301805584842038
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_TibialisPosterior",
+   "label_value": 62,
+   "tissue_class": "Muscle",
+   "dice": 0.9413276625873829,
+   "original_voxels": 415411,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 409407,
+   "original_volume_cm3": 61.35792782482802,
+   "final_volume_cm3": 60.387424197820486,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6989703237994568,
+     "p95_mm": 1.2191218795639014,
+     "max_mm": 1.950757758405421
+    },
+    "final_to_original": {
+     "mean_mm": 0.4996946159577803,
+     "p95_mm": 0.9691107504379873,
+     "max_mm": 1.289945315006721
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_VastusIntermedius",
+   "label_value": 63,
+   "tissue_class": "Muscle",
+   "dice": 0.9465691948452944,
+   "original_voxels": 1926106,
+   "original_voxels_outside_final_box": 3,
+   "final_voxels": 1907207,
+   "original_volume_cm3": 284.4938456876881,
+   "final_volume_cm3": 281.7284711514696,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.0005341551760136,
+     "p95_mm": 1.6320483059683348,
+     "max_mm": 5.4113062837699175
+    },
+    "final_to_original": {
+     "mean_mm": 0.5735584670991345,
+     "p95_mm": 0.9965945057402187,
+     "max_mm": 2.858227306569253
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_VastusLateralis",
+   "label_value": 64,
+   "tissue_class": "Muscle",
+   "dice": 0.9606281130828743,
+   "original_voxels": 2706141,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2693651,
+   "original_volume_cm3": 399.7082507728681,
+   "final_volume_cm3": 397.71008288723857,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.0070025689372608,
+     "p95_mm": 1.6745653095989304,
+     "max_mm": 7.38912956709146
+    },
+    "final_to_original": {
+     "mean_mm": 0.5402671099199322,
+     "p95_mm": 0.9683112265720131,
+     "max_mm": 3.5570395195075637
+    }
+   }
+  },
+  {
+   "structure": "Left_Muscle_VastusMedialis",
+   "label_value": 65,
+   "tissue_class": "Muscle",
+   "dice": 0.9575307454949429,
+   "original_voxels": 1815956,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 1807583,
+   "original_volume_cm3": 268.2242337854881,
+   "final_volume_cm3": 266.8531055278394,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.9425060008485996,
+     "p95_mm": 1.5007865160444605,
+     "max_mm": 2.6834446026821994
+    },
+    "final_to_original": {
+     "mean_mm": 0.5879597201694493,
+     "p95_mm": 0.9893388703570967,
+     "max_mm": 2.0668865742991898
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Calcaneous",
+   "label_value": 66,
+   "tissue_class": "Bone",
+   "dice": 0.9345134869334775,
+   "original_voxels": 483587,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 448834,
+   "original_volume_cm3": 71.42780581887602,
+   "final_volume_cm3": 71.14044452933233,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6130622139236824,
+     "p95_mm": 1.0995430625129399,
+     "max_mm": 1.6597399651926947
+    },
+    "final_to_original": {
+     "mean_mm": 0.4610012918470257,
+     "p95_mm": 0.895865263295429,
+     "max_mm": 1.142405104604118
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Cuboid",
+   "label_value": 68,
+   "tissue_class": "Bone",
+   "dice": 0.9345949049318368,
+   "original_voxels": 89228,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 88434,
+   "original_volume_cm3": 13.179345717744003,
+   "final_volume_cm3": 13.10382479679,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6064866245173387,
+     "p95_mm": 1.05026466845187,
+     "max_mm": 1.4177308948181053
+    },
+    "final_to_original": {
+     "mean_mm": 0.5362776370574172,
+     "p95_mm": 0.8911520955565321,
+     "max_mm": 1.1267646038065722
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Femur",
+   "label_value": 69,
+   "tissue_class": "Bone",
+   "dice": 0.9256561359495524,
+   "original_voxels": 2867899,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2769957,
+   "original_volume_cm3": 423.6005783450521,
+   "final_volume_cm3": 432.1593875051236,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.067595053809373,
+     "p95_mm": 1.7763902847718547,
+     "max_mm": 11.42175009914538
+    },
+    "final_to_original": {
+     "mean_mm": 0.7154657647482722,
+     "p95_mm": 1.2995681744982654,
+     "max_mm": 10.698852584486465
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Fibula",
+   "label_value": 70,
+   "tissue_class": "Bone",
+   "dice": 0.9074922342147509,
+   "original_voxels": 226757,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 223616,
+   "original_volume_cm3": 33.492949488036004,
+   "final_volume_cm3": 32.91201598296078,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6822855883660573,
+     "p95_mm": 1.1417185738722155,
+     "max_mm": 1.7680005092338318
+    },
+    "final_to_original": {
+     "mean_mm": 0.5196891235948665,
+     "p95_mm": 0.9213089334194031,
+     "max_mm": 1.1964889578460445
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_IntermediateCuneiform",
+   "label_value": 71,
+   "tissue_class": "Bone",
+   "dice": 0.9249333358911889,
+   "original_voxels": 26225,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 25902,
+   "original_volume_cm3": 3.8735412813000005,
+   "final_volume_cm3": 3.824677523439435,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.46430720841125045,
+     "p95_mm": 1.0606839745804635,
+     "max_mm": 2.0387960071812707
+    },
+    "final_to_original": {
+     "mean_mm": 0.42507221106961796,
+     "p95_mm": 0.914463342012458,
+     "max_mm": 1.1540374577456172
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_LateralCuneiform",
+   "label_value": 72,
+   "tissue_class": "Bone",
+   "dice": 0.9248455923638406,
+   "original_voxels": 35818,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 35422,
+   "original_volume_cm3": 5.290467173064001,
+   "final_volume_cm3": 5.238359802980706,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5103279118278762,
+     "p95_mm": 1.0091876901479795,
+     "max_mm": 1.3689544290571873
+    },
+    "final_to_original": {
+     "mean_mm": 0.47002294672404327,
+     "p95_mm": 0.8733506523849596,
+     "max_mm": 1.0845343039122364
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_MedialCuneiform",
+   "label_value": 73,
+   "tissue_class": "Bone",
+   "dice": 0.9507725967455217,
+   "original_voxels": 66099,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 65535,
+   "original_volume_cm3": 9.763096478652002,
+   "final_volume_cm3": 9.672394365491765,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.45470926877515594,
+     "p95_mm": 1.0225217455015954,
+     "max_mm": 1.3268862496043525
+    },
+    "final_to_original": {
+     "mean_mm": 0.4063885875635352,
+     "p95_mm": 0.8891601274678816,
+     "max_mm": 1.1197846009806254
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Navicular",
+   "label_value": 74,
+   "tissue_class": "Bone",
+   "dice": 0.9297196320366707,
+   "original_voxels": 64260,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 63144,
+   "original_volume_cm3": 9.491468550480002,
+   "final_volume_cm3": 9.412064671656326,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5353344132883127,
+     "p95_mm": 1.0243624264277793,
+     "max_mm": 1.4705042094164045
+    },
+    "final_to_original": {
+     "mean_mm": 0.4757346882848049,
+     "p95_mm": 0.8971293703553144,
+     "max_mm": 1.1390646666251278
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Patella",
+   "label_value": 75,
+   "tissue_class": "Bone",
+   "dice": 0.9314970170794391,
+   "original_voxels": 129900,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 129242,
+   "original_volume_cm3": 19.186768825200005,
+   "final_volume_cm3": 19.07783581106417,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7133924121636247,
+     "p95_mm": 1.104418098990524,
+     "max_mm": 1.387373329123938
+    },
+    "final_to_original": {
+     "mean_mm": 0.6162246166617305,
+     "p95_mm": 0.9446469323488341,
+     "max_mm": 1.194060106980858
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Pelvis",
+   "label_value": 76,
+   "tissue_class": "Bone",
+   "dice": 0.847281080254815,
+   "original_voxels": 2264489,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2040125,
+   "original_volume_cm3": 334.4744184003721,
+   "final_volume_cm3": 358.0843330599759,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.1820473091625705,
+     "p95_mm": 3.0505830604994117,
+     "max_mm": 5.036488863471542
+    },
+    "final_to_original": {
+     "mean_mm": 0.7335978668514852,
+     "p95_mm": 2.5768276722374006,
+     "max_mm": 4.411308566736326
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Phalanges",
+   "label_value": 77,
+   "tissue_class": "Bone",
+   "dice": 0.30531331601877854,
+   "original_voxels": 475551,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 92757,
+   "original_volume_cm3": 70.24085528554802,
+   "final_volume_cm3": 69.3957986110601,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7923695015839601,
+     "p95_mm": 1.2725544946820857,
+     "max_mm": 2.662326574039173
+    },
+    "final_to_original": {
+     "mean_mm": 0.5457980407648944,
+     "p95_mm": 0.9340983325877353,
+     "max_mm": 1.2309937141854694
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Talus",
+   "label_value": 79,
+   "tissue_class": "Bone",
+   "dice": 0.8519738792782408,
+   "original_voxels": 232987,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 188594,
+   "original_volume_cm3": 34.41314633007601,
+   "final_volume_cm3": 34.27430210247343,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6367031761692591,
+     "p95_mm": 1.156529327983733,
+     "max_mm": 3.2838799225543487
+    },
+    "final_to_original": {
+     "mean_mm": 0.501083201291742,
+     "p95_mm": 0.9243623699049774,
+     "max_mm": 1.2459872543067436
+    }
+   }
+  },
+  {
+   "structure": "Right_Bone_Tibia",
+   "label_value": 80,
+   "tissue_class": "Bone",
+   "dice": 0.9510046384194597,
+   "original_voxels": 1720320,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 1684288,
+   "original_volume_cm3": 254.09839988736005,
+   "final_volume_cm3": 254.24887574037038,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8557735454591119,
+     "p95_mm": 1.3984890662026035,
+     "max_mm": 3.426578721820879
+    },
+    "final_to_original": {
+     "mean_mm": 0.5371932293639125,
+     "p95_mm": 0.9494996473644712,
+     "max_mm": 2.808525671361899
+    }
+   }
+  },
+  {
+   "structure": "Right_Cartilage_FemurDistal",
+   "label_value": 81,
+   "tissue_class": "Cartilage",
+   "dice": 0.10034727964279808,
+   "original_voxels": 57074,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 3396,
+   "original_volume_cm3": 8.430066542952002,
+   "final_volume_cm3": 7.887703442985832,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6087459213927393,
+     "p95_mm": 1.0647046860552718,
+     "max_mm": 3.010453855354063
+    },
+    "final_to_original": {
+     "mean_mm": 0.470762848510944,
+     "p95_mm": 0.8460424325771689,
+     "max_mm": 1.0923103969009613
+    }
+   }
+  },
+  {
+   "structure": "Right_Cartilage_FemurHead",
+   "label_value": 82,
+   "tissue_class": "Cartilage",
+   "dice": 0.6015355464771147,
+   "original_voxels": 54444,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 36859,
+   "original_volume_cm3": 8.041604633712002,
+   "final_volume_cm3": 7.774152204289799,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.654980804875228,
+     "p95_mm": 1.123534607018404,
+     "max_mm": 4.2668229386459995
+    },
+    "final_to_original": {
+     "mean_mm": 0.5095827850387588,
+     "p95_mm": 0.9061436214622484,
+     "max_mm": 1.1392782158353199
+    }
+   }
+  },
+  {
+   "structure": "Right_Cartilage_Patella",
+   "label_value": 83,
+   "tissue_class": "Cartilage",
+   "dice": 0.6405266170578134,
+   "original_voxels": 13031,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 11427,
+   "original_volume_cm3": 1.9247327525880005,
+   "final_volume_cm3": 1.8102190274478804,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6886610616015887,
+     "p95_mm": 1.0892540012801248,
+     "max_mm": 2.346054839037301
+    },
+    "final_to_original": {
+     "mean_mm": 0.5925816084637883,
+     "p95_mm": 0.899941869309843,
+     "max_mm": 1.137234713087003
+    }
+   }
+  },
+  {
+   "structure": "Right_Cartilage_PelvisAcetabulum",
+   "label_value": 84,
+   "tissue_class": "Cartilage",
+   "dice": 0.2459227625814527,
+   "original_voxels": 22128,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 5035,
+   "original_volume_cm3": 3.2683973869440006,
+   "final_volume_cm3": 2.748560242349682,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7373553186576256,
+     "p95_mm": 1.9870389051572153,
+     "max_mm": 11.202235689194856
+    },
+    "final_to_original": {
+     "mean_mm": 0.4339059635890628,
+     "p95_mm": 0.8878177605514949,
+     "max_mm": 1.1851009298357436
+    }
+   }
+  },
+  {
+   "structure": "Right_Cartilage_Talus",
+   "label_value": 85,
+   "tissue_class": "Cartilage",
+   "dice": 0.5877867701157113,
+   "original_voxels": 9108,
+   "original_voxels_outside_final_box": 525,
+   "final_voxels": 5843,
+   "original_volume_cm3": 1.3452893799840004,
+   "final_volume_cm3": 1.1157451482460237,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5806154975389706,
+     "p95_mm": 1.5753708787121101,
+     "max_mm": 3.7209109655493617
+    },
+    "final_to_original": {
+     "mean_mm": 0.4325434194331435,
+     "p95_mm": 0.828733229934979,
+     "max_mm": 1.066542857811365
+    }
+   }
+  },
+  {
+   "structure": "Right_Cartilage_TibiaDistal",
+   "label_value": 86,
+   "tissue_class": "Cartilage",
+   "dice": 0.33651149747616377,
+   "original_voxels": 6897,
+   "original_voxels_outside_final_box": 174,
+   "final_voxels": 2018,
+   "original_volume_cm3": 1.0187155087560003,
+   "final_volume_cm3": 0.7948029070604425,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7462120940122797,
+     "p95_mm": 2.3814872239030325,
+     "max_mm": 5.603994567156443
+    },
+    "final_to_original": {
+     "mean_mm": 0.4293217435706878,
+     "p95_mm": 0.726241925774908,
+     "max_mm": 0.9497488139742075
+    }
+   }
+  },
+  {
+   "structure": "Right_Cartilage_TibiaLateral",
+   "label_value": 87,
+   "tissue_class": "Cartilage",
+   "dice": 0.7844060035614348,
+   "original_voxels": 16923,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 14525,
+   "original_volume_cm3": 2.499597296604001,
+   "final_volume_cm3": 2.4020017533277804,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5051475625378367,
+     "p95_mm": 0.9591597784176078,
+     "max_mm": 2.5959396188814305
+    },
+    "final_to_original": {
+     "mean_mm": 0.46194431051354523,
+     "p95_mm": 0.7549292928386392,
+     "max_mm": 1.0235602649408748
+    }
+   }
+  },
+  {
+   "structure": "Right_Cartilage_TibiaMedial",
+   "label_value": 88,
+   "tissue_class": "Cartilage",
+   "dice": 0.874562508749825,
+   "original_voxels": 22693,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 20165,
+   "original_volume_cm3": 3.351850230564001,
+   "final_volume_cm3": 3.194097990159605,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.366470300660186,
+     "p95_mm": 0.851325979548937,
+     "max_mm": 2.608541958920652
+    },
+    "final_to_original": {
+     "mean_mm": 0.3494182190443117,
+     "p95_mm": 0.5660716067741132,
+     "max_mm": 1.1141396819587879
+    }
+   }
+  },
+  {
+   "structure": "Right_Ligament_ACL",
+   "label_value": 89,
+   "tissue_class": "Ligament",
+   "dice": 0.8258868264371841,
+   "original_voxels": 20346,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 19628,
+   "original_volume_cm3": 3.0051885952080006,
+   "final_volume_cm3": 2.894811235504676,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7208903632954596,
+     "p95_mm": 1.1456313259080864,
+     "max_mm": 1.7277466120378822
+    },
+    "final_to_original": {
+     "mean_mm": 0.639861094098082,
+     "p95_mm": 0.9707516668969731,
+     "max_mm": 1.2950014921066317
+    }
+   }
+  },
+  {
+   "structure": "Right_Ligament_LCL",
+   "label_value": 90,
+   "tissue_class": "Ligament",
+   "dice": 0.7796084512502423,
+   "original_voxels": 5298,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 5020,
+   "original_volume_cm3": 0.7825365761040002,
+   "final_volume_cm3": 0.7324942795712801,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5067753778888142,
+     "p95_mm": 0.9826229738119242,
+     "max_mm": 1.594258905016544
+    },
+    "final_to_original": {
+     "mean_mm": 0.4634512048855176,
+     "p95_mm": 0.8093165334783871,
+     "max_mm": 1.104022618548357
+    }
+   }
+  },
+  {
+   "structure": "Right_Ligament_MCL",
+   "label_value": 91,
+   "tissue_class": "Ligament",
+   "dice": 0.6858280668340403,
+   "original_voxels": 6391,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 5160,
+   "original_volume_cm3": 0.9439772098680003,
+   "final_volume_cm3": 0.7580738933735168,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5735888043624242,
+     "p95_mm": 1.467370087060418,
+     "max_mm": 2.6196504975519
+    },
+    "final_to_original": {
+     "mean_mm": 0.41682673181365415,
+     "p95_mm": 0.8074385250951189,
+     "max_mm": 1.1079845579204364
+    }
+   }
+  },
+  {
+   "structure": "Right_Ligament_PCL",
+   "label_value": 92,
+   "tissue_class": "Ligament",
+   "dice": 0.8856122355527063,
+   "original_voxels": 16480,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 16277,
+   "original_volume_cm3": 2.4341643590400004,
+   "final_volume_cm3": 2.3969230619121684,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.4919582183642789,
+     "p95_mm": 0.883291578892453,
+     "max_mm": 1.4217027889299134
+    },
+    "final_to_original": {
+     "mean_mm": 0.45058984991088524,
+     "p95_mm": 0.7417125517515762,
+     "max_mm": 1.1020138108116588
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_AdductorBrevis",
+   "label_value": 93,
+   "tissue_class": "Muscle",
+   "dice": 0.9386377950394386,
+   "original_voxels": 535352,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 531624,
+   "original_volume_cm3": 79.07371104009603,
+   "final_volume_cm3": 78.50240959566167,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8184545311457442,
+     "p95_mm": 1.2342961272841975,
+     "max_mm": 2.3776292690709413
+    },
+    "final_to_original": {
+     "mean_mm": 0.6075857053635225,
+     "p95_mm": 0.9635181537078288,
+     "max_mm": 1.2688641210296399
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_AdductorLongus",
+   "label_value": 94,
+   "tissue_class": "Muscle",
+   "dice": 0.9394890001558339,
+   "original_voxels": 592580,
+   "original_voxels_outside_final_box": 168,
+   "final_voxels": 588164,
+   "original_volume_cm3": 87.52652402184002,
+   "final_volume_cm3": 86.81714935922861,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8002115536336203,
+     "p95_mm": 1.2519416869811517,
+     "max_mm": 2.497552825727556
+    },
+    "final_to_original": {
+     "mean_mm": 0.575797495361147,
+     "p95_mm": 0.9662994729097564,
+     "max_mm": 1.2792350701263888
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_AdductorMagnus",
+   "label_value": 95,
+   "tissue_class": "Muscle",
+   "dice": 0.9683906725597557,
+   "original_voxels": 2819943,
+   "original_voxels_outside_final_box": 11,
+   "final_voxels": 2816716,
+   "original_volume_cm3": 416.5172782235641,
+   "final_volume_cm3": 415.9554828432642,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.96698011645557,
+     "p95_mm": 1.5333569641220492,
+     "max_mm": 2.8520985178476534
+    },
+    "final_to_original": {
+     "mean_mm": 0.585478448023619,
+     "p95_mm": 0.9525955883365381,
+     "max_mm": 1.9965756947882023
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_BicepsFemorisLongHead",
+   "label_value": 96,
+   "tissue_class": "Muscle",
+   "dice": 0.9691983257992042,
+   "original_voxels": 1184835,
+   "original_voxels_outside_final_box": 29,
+   "final_voxels": 1179517,
+   "original_volume_cm3": 175.00504419558004,
+   "final_volume_cm3": 174.14120764237148,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7470318559433325,
+     "p95_mm": 1.2597463812886336,
+     "max_mm": 2.2693904025008194
+    },
+    "final_to_original": {
+     "mean_mm": 0.46824039939362166,
+     "p95_mm": 0.9202554779224863,
+     "max_mm": 1.4112275471579498
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_BicepsFemorisShortHead",
+   "label_value": 97,
+   "tissue_class": "Muscle",
+   "dice": 0.9176143949208359,
+   "original_voxels": 406022,
+   "original_voxels_outside_final_box": 5,
+   "final_voxels": 402930,
+   "original_volume_cm3": 59.97113357925601,
+   "final_volume_cm3": 59.46619681067348,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8292105060375364,
+     "p95_mm": 1.3109890881200845,
+     "max_mm": 5.491810772351877
+    },
+    "final_to_original": {
+     "mean_mm": 0.6280023447370231,
+     "p95_mm": 1.0272555854592191,
+     "max_mm": 5.045424585515031
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_ExtensorDigitorumLongus",
+   "label_value": 98,
+   "tissue_class": "Muscle",
+   "dice": 0.9138861226758812,
+   "original_voxels": 253524,
+   "original_voxels_outside_final_box": 74,
+   "final_voxels": 246558,
+   "original_volume_cm3": 37.44654641755201,
+   "final_volume_cm3": 36.3475815880424,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.677121009310779,
+     "p95_mm": 1.2173701923856683,
+     "max_mm": 3.287257615186393
+    },
+    "final_to_original": {
+     "mean_mm": 0.4678333171536205,
+     "p95_mm": 0.924142268931079,
+     "max_mm": 1.461614823762115
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_ExtensorHallucisLongus",
+   "label_value": 99,
+   "tissue_class": "Muscle",
+   "dice": 0.8865824308062575,
+   "original_voxels": 75794,
+   "original_voxels_outside_final_box": 161,
+   "final_voxels": 70462,
+   "original_volume_cm3": 11.195088193512003,
+   "final_volume_cm3": 10.396110752673877,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5957968926637042,
+     "p95_mm": 1.1906585471215012,
+     "max_mm": 2.2583826962852753
+    },
+    "final_to_original": {
+     "mean_mm": 0.4870748493178428,
+     "p95_mm": 0.9829971867414583,
+     "max_mm": 1.602027306460555
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_FlexorDigitorumLongus",
+   "label_value": 100,
+   "tissue_class": "Muscle",
+   "dice": 0.8830008775261621,
+   "original_voxels": 154865,
+   "original_voxels_outside_final_box": 12,
+   "final_voxels": 150539,
+   "original_volume_cm3": 22.874202880020007,
+   "final_volume_cm3": 22.17694658185947,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7281877512840645,
+     "p95_mm": 1.1938733893072848,
+     "max_mm": 2.4125983539019833
+    },
+    "final_to_original": {
+     "mean_mm": 0.5829763056192782,
+     "p95_mm": 0.977026199067205,
+     "max_mm": 1.4643817295235597
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_FlexorHallucisLongus",
+   "label_value": 101,
+   "tissue_class": "Muscle",
+   "dice": 0.9219713481723766,
+   "original_voxels": 346128,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 341158,
+   "original_volume_cm3": 51.12454133894401,
+   "final_volume_cm3": 50.34962165528003,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7889257258727759,
+     "p95_mm": 1.2372772044675042,
+     "max_mm": 1.7970012582656165
+    },
+    "final_to_original": {
+     "mean_mm": 0.6083541564386403,
+     "p95_mm": 1.0025637950847386,
+     "max_mm": 1.492248755516343
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_GastrocnemiusLateral",
+   "label_value": 102,
+   "tissue_class": "Muscle",
+   "dice": 0.9433607321861219,
+   "original_voxels": 569713,
+   "original_voxels_outside_final_box": 59,
+   "final_voxels": 565736,
+   "original_volume_cm3": 84.14897326952402,
+   "final_volume_cm3": 83.51616755523516,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.769910491416526,
+     "p95_mm": 1.193694692987824,
+     "max_mm": 4.271931726054991
+    },
+    "final_to_original": {
+     "mean_mm": 0.5501528660920997,
+     "p95_mm": 0.889969750504857,
+     "max_mm": 1.2307869676722567
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_GastrocnemiusMedial",
+   "label_value": 103,
+   "tissue_class": "Muscle",
+   "dice": 0.9575954098050706,
+   "original_voxels": 1198110,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 1192551,
+   "original_volume_cm3": 176.96581676028006,
+   "final_volume_cm3": 176.17764218838232,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8377390445588666,
+     "p95_mm": 1.3144862180027563,
+     "max_mm": 2.2547498137128263
+    },
+    "final_to_original": {
+     "mean_mm": 0.5480641243688626,
+     "p95_mm": 0.9081714939584659,
+     "max_mm": 1.1797316424013047
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_GluteusMaximus",
+   "label_value": 104,
+   "tissue_class": "Muscle",
+   "dice": 0.9764761657484389,
+   "original_voxels": 5582319,
+   "original_voxels_outside_final_box": 21,
+   "final_voxels": 5525309,
+   "original_volume_cm3": 824.5316717592121,
+   "final_volume_cm3": 821.3909409181573,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.0145961211205545,
+     "p95_mm": 1.7492879536458674,
+     "max_mm": 3.5701412510395722
+    },
+    "final_to_original": {
+     "mean_mm": 0.518651807512549,
+     "p95_mm": 1.0306309402308425,
+     "max_mm": 2.1243744423634396
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_GluteusMedius",
+   "label_value": 105,
+   "tissue_class": "Muscle",
+   "dice": 0.9675118576544425,
+   "original_voxels": 2061408,
+   "original_voxels_outside_final_box": 9,
+   "final_voxels": 2035102,
+   "original_volume_cm3": 304.4785123203841,
+   "final_volume_cm3": 301.3448100840891,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8895968163772611,
+     "p95_mm": 1.542291365289067,
+     "max_mm": 4.147530154022001
+    },
+    "final_to_original": {
+     "mean_mm": 0.5237720601838722,
+     "p95_mm": 1.042902530612237,
+     "max_mm": 3.4148814931740894
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Gracilis",
+   "label_value": 107,
+   "tissue_class": "Muscle",
+   "dice": 0.9192584604684482,
+   "original_voxels": 458203,
+   "original_voxels_outside_final_box": 59,
+   "final_voxels": 453360,
+   "original_volume_cm3": 67.678483726044,
+   "final_volume_cm3": 66.86880905005738,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7992529500660954,
+     "p95_mm": 1.2242053677552234,
+     "max_mm": 2.0140984273628435
+    },
+    "final_to_original": {
+     "mean_mm": 0.5933610272769811,
+     "p95_mm": 0.9313097842382457,
+     "max_mm": 1.301059412432844
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Illiacus",
+   "label_value": 108,
+   "tissue_class": "Muscle",
+   "dice": 0.8751339879709161,
+   "original_voxels": 1038111,
+   "original_voxels_outside_final_box": 8781,
+   "final_voxels": 864112,
+   "original_volume_cm3": 153.33330078442802,
+   "final_volume_cm3": 127.79316137257065,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.5657479943487491,
+     "p95_mm": 3.959765365848242,
+     "max_mm": 14.165233526739502
+    },
+    "final_to_original": {
+     "mean_mm": 0.9833648176762896,
+     "p95_mm": 3.012089680776866,
+     "max_mm": 4.50746863473023
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_InferiorGemellus",
+   "label_value": 109,
+   "tissue_class": "Muscle",
+   "dice": 0.8845582555997861,
+   "original_voxels": 17981,
+   "original_voxels_outside_final_box": 19,
+   "final_voxels": 15681,
+   "original_volume_cm3": 2.6558682851880007,
+   "final_volume_cm3": 2.314735580253445,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6694606349922869,
+     "p95_mm": 2.5539084832382355,
+     "max_mm": 6.220659029067704
+    },
+    "final_to_original": {
+     "mean_mm": 0.36856932992076485,
+     "p95_mm": 0.7191851622164495,
+     "max_mm": 1.596611023084364
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_ObturatorExternus",
+   "label_value": 110,
+   "tissue_class": "Muscle",
+   "dice": 0.9325119793255685,
+   "original_voxels": 343621,
+   "original_voxels_outside_final_box": 159,
+   "final_voxels": 325031,
+   "original_volume_cm3": 50.75424703990801,
+   "final_volume_cm3": 48.974217079729605,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7998378348921024,
+     "p95_mm": 1.889500137828285,
+     "max_mm": 5.0936883847569145
+    },
+    "final_to_original": {
+     "mean_mm": 0.5739947717762162,
+     "p95_mm": 1.3848388523829955,
+     "max_mm": 2.6834805997709394
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Pectineus",
+   "label_value": 112,
+   "tissue_class": "Muscle",
+   "dice": 0.9098892345042106,
+   "original_voxels": 265573,
+   "original_voxels_outside_final_box": 34,
+   "final_voxels": 261667,
+   "original_volume_cm3": 39.22623369680401,
+   "final_volume_cm3": 38.64778727485771,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8833029229075855,
+     "p95_mm": 1.2591421094236672,
+     "max_mm": 4.699415656605251
+    },
+    "final_to_original": {
+     "mean_mm": 0.7205184736531393,
+     "p95_mm": 1.026996216939387,
+     "max_mm": 1.4142216038422861
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_PeroneusLongus",
+   "label_value": 113,
+   "tissue_class": "Muscle",
+   "dice": 0.9481748695782708,
+   "original_voxels": 649333,
+   "original_voxels_outside_final_box": 48,
+   "final_voxels": 643013,
+   "original_volume_cm3": 95.90917753328402,
+   "final_volume_cm3": 94.88937659323581,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7261787489340694,
+     "p95_mm": 1.2282816545663988,
+     "max_mm": 2.0837684240545853
+    },
+    "final_to_original": {
+     "mean_mm": 0.45475192279862614,
+     "p95_mm": 0.8822243160148631,
+     "max_mm": 1.2824848210786335
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Piriformis",
+   "label_value": 114,
+   "tissue_class": "Muscle",
+   "dice": 0.9443443309328421,
+   "original_voxels": 304524,
+   "original_voxels_outside_final_box": 4264,
+   "final_voxels": 292576,
+   "original_volume_cm3": 44.979457965552015,
+   "final_volume_cm3": 43.459937476635616,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.6504358773296086,
+     "p95_mm": 1.1077696306153526,
+     "max_mm": 7.056926313099329
+    },
+    "final_to_original": {
+     "mean_mm": 0.4724695675199642,
+     "p95_mm": 0.8610540949263996,
+     "max_mm": 3.4049164836531585
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Plantaris",
+   "label_value": 115,
+   "tissue_class": "Muscle",
+   "dice": 0.8469906289247415,
+   "original_voxels": 27169,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 24586,
+   "original_volume_cm3": 4.012973997012001,
+   "final_volume_cm3": 3.760596388599455,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.5186673017305308,
+     "p95_mm": 1.0354234478219768,
+     "max_mm": 1.539502761696976
+    },
+    "final_to_original": {
+     "mean_mm": 0.4577013970187974,
+     "p95_mm": 0.8834040914635463,
+     "max_mm": 1.1839946185245867
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Popliteus",
+   "label_value": 116,
+   "tissue_class": "Muscle",
+   "dice": 0.8616321600906692,
+   "original_voxels": 88247,
+   "original_voxels_outside_final_box": 85,
+   "final_voxels": 86454,
+   "original_volume_cm3": 13.034447948556002,
+   "final_volume_cm3": 12.756062641961384,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8720971550044508,
+     "p95_mm": 1.207095456190115,
+     "max_mm": 2.5764193564728965
+    },
+    "final_to_original": {
+     "mean_mm": 0.7573481455449258,
+     "p95_mm": 1.0229157128606468,
+     "max_mm": 1.2591397945670542
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_PsoasMajor",
+   "label_value": 117,
+   "tissue_class": "Muscle",
+   "dice": 0.9496455571129852,
+   "original_voxels": 1049150,
+   "original_voxels_outside_final_box": 63,
+   "final_voxels": 1039762,
+   "original_volume_cm3": 154.96380687420003,
+   "final_volume_cm3": 153.5004398748614,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8783183429732168,
+     "p95_mm": 1.3658627736238698,
+     "max_mm": 3.452193952584148
+    },
+    "final_to_original": {
+     "mean_mm": 0.6020530731149916,
+     "p95_mm": 0.9671821810567535,
+     "max_mm": 2.3629830413416095
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_QuadratisFemoris",
+   "label_value": 118,
+   "tissue_class": "Muscle",
+   "dice": 0.9257275161253872,
+   "original_voxels": 219993,
+   "original_voxels_outside_final_box": 121,
+   "final_voxels": 213640,
+   "original_volume_cm3": 32.49387863096401,
+   "final_volume_cm3": 31.53764147461361,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7893680737131383,
+     "p95_mm": 1.5230400884399078,
+     "max_mm": 3.940870306829211
+    },
+    "final_to_original": {
+     "mean_mm": 0.5985637236451555,
+     "p95_mm": 1.1349268896870879,
+     "max_mm": 1.730744299358471
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_RectusFemoris",
+   "label_value": 119,
+   "tissue_class": "Muscle",
+   "dice": 0.9541930307087718,
+   "original_voxels": 829758,
+   "original_voxels_outside_final_box": 4,
+   "final_voxels": 825274,
+   "original_volume_cm3": 122.55869843618403,
+   "final_volume_cm3": 121.7250191530229,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.7782093592889925,
+     "p95_mm": 1.2526802064013651,
+     "max_mm": 2.2096705032118225
+    },
+    "final_to_original": {
+     "mean_mm": 0.5357571841078432,
+     "p95_mm": 0.9377857975907453,
+     "max_mm": 1.2230006645494573
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Sartorius",
+   "label_value": 120,
+   "tissue_class": "Muscle",
+   "dice": 0.9372114621654765,
+   "original_voxels": 669589,
+   "original_voxels_outside_final_box": 172,
+   "final_voxels": 661259,
+   "original_volume_cm3": 98.90107275517202,
+   "final_volume_cm3": 97.4995028717466,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.772810676166462,
+     "p95_mm": 1.273170126704548,
+     "max_mm": 3.187309502655475
+    },
+    "final_to_original": {
+     "mean_mm": 0.47541378681920127,
+     "p95_mm": 0.8575758397713094,
+     "max_mm": 1.2009452757903594
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Semimembranosus",
+   "label_value": 121,
+   "tissue_class": "Muscle",
+   "dice": 0.9626321469246873,
+   "original_voxels": 1409746,
+   "original_voxels_outside_final_box": 5,
+   "final_voxels": 1401708,
+   "original_volume_cm3": 208.22533182640805,
+   "final_volume_cm3": 206.93529110721065,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8506368029610116,
+     "p95_mm": 1.3564843113284517,
+     "max_mm": 2.534158059529861
+    },
+    "final_to_original": {
+     "mean_mm": 0.5588327424274745,
+     "p95_mm": 0.9823085543934913,
+     "max_mm": 2.1553836703789595
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Semitendonosus",
+   "label_value": 122,
+   "tissue_class": "Muscle",
+   "dice": 0.9543041647786776,
+   "original_voxels": 669551,
+   "original_voxels_outside_final_box": 113,
+   "final_voxels": 663437,
+   "original_volume_cm3": 98.89545999754802,
+   "final_volume_cm3": 97.84669570674143,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.728290937378726,
+     "p95_mm": 1.228026912242449,
+     "max_mm": 2.1056472565866136
+    },
+    "final_to_original": {
+     "mean_mm": 0.4929558513426271,
+     "p95_mm": 0.9437058029562133,
+     "max_mm": 1.7948054603319654
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_Soleus",
+   "label_value": 123,
+   "tissue_class": "Muscle",
+   "dice": 0.957019170106225,
+   "original_voxels": 2066458,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 2061010,
+   "original_volume_cm3": 305.2244182677841,
+   "final_volume_cm3": 304.29319207660535,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.985225116744673,
+     "p95_mm": 1.5076032553438639,
+     "max_mm": 2.655884165251396
+    },
+    "final_to_original": {
+     "mean_mm": 0.63458606189514,
+     "p95_mm": 0.9641069444436714,
+     "max_mm": 1.2629992642817314
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_SuperiorGemellus",
+   "label_value": 124,
+   "tissue_class": "Muscle",
+   "dice": 0.922484123397474,
+   "original_voxels": 21445,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 20598,
+   "original_volume_cm3": 3.167515453860001,
+   "final_volume_cm3": 3.0409302758298544,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.3882914729586997,
+     "p95_mm": 0.818646052152412,
+     "max_mm": 2.288317537096745
+    },
+    "final_to_original": {
+     "mean_mm": 0.3667593903821504,
+     "p95_mm": 0.6973455651513197,
+     "max_mm": 1.4565568962884152
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_TensorFasciaeLatae",
+   "label_value": 125,
+   "tissue_class": "Muscle",
+   "dice": 0.9291517322411172,
+   "original_voxels": 439432,
+   "original_voxels_outside_final_box": 6,
+   "final_voxels": 436341,
+   "original_volume_cm3": 64.90592916393602,
+   "final_volume_cm3": 64.40108959380088,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8471418723631015,
+     "p95_mm": 1.2351227739226887,
+     "max_mm": 2.1545063815868413
+    },
+    "final_to_original": {
+     "mean_mm": 0.6663193894781353,
+     "p95_mm": 0.9862036845239175,
+     "max_mm": 1.2642534556714378
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_TibialisAnterior",
+   "label_value": 126,
+   "tissue_class": "Muscle",
+   "dice": 0.9404566534143499,
+   "original_voxels": 527492,
+   "original_voxels_outside_final_box": 93,
+   "final_voxels": 515093,
+   "original_volume_cm3": 77.91275643681603,
+   "final_volume_cm3": 75.99522214282975,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.765229493612843,
+     "p95_mm": 1.2762620182768036,
+     "max_mm": 3.514785795451473
+    },
+    "final_to_original": {
+     "mean_mm": 0.5606436374990998,
+     "p95_mm": 0.9957383859555758,
+     "max_mm": 2.9839458985416725
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_TibialisPosterior",
+   "label_value": 127,
+   "tissue_class": "Muscle",
+   "dice": 0.925324947890807,
+   "original_voxels": 419172,
+   "original_voxels_outside_final_box": 8,
+   "final_voxels": 414654,
+   "original_volume_cm3": 61.91344312545601,
+   "final_volume_cm3": 61.12053598391728,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8233992623747591,
+     "p95_mm": 1.2197680303196146,
+     "max_mm": 1.9767891422607222
+    },
+    "final_to_original": {
+     "mean_mm": 0.6402204811478509,
+     "p95_mm": 0.9794943741581231,
+     "max_mm": 1.2644911947926978
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_VastusIntermedius",
+   "label_value": 128,
+   "tissue_class": "Muscle",
+   "dice": 0.9197793517365664,
+   "original_voxels": 1956378,
+   "original_voxels_outside_final_box": 282,
+   "final_voxels": 1822487,
+   "original_volume_cm3": 288.96514565594407,
+   "final_volume_cm3": 273.1863428363229,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.1847161819129433,
+     "p95_mm": 2.0809059833523222,
+     "max_mm": 11.988531567305502
+    },
+    "final_to_original": {
+     "mean_mm": 0.794000879198328,
+     "p95_mm": 1.699682423186567,
+     "max_mm": 9.684133610510226
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_VastusLateralis",
+   "label_value": 129,
+   "tissue_class": "Muscle",
+   "dice": 0.9488656151230039,
+   "original_voxels": 2685756,
+   "original_voxels_outside_final_box": 600,
+   "final_voxels": 2640699,
+   "original_volume_cm3": 396.6973017158881,
+   "final_volume_cm3": 390.0538600748316,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 1.1309239273033307,
+     "p95_mm": 1.9370363610337604,
+     "max_mm": 7.232796492889346
+    },
+    "final_to_original": {
+     "mean_mm": 0.7040391014989602,
+     "p95_mm": 1.3742560499798924,
+     "max_mm": 8.282967958570143
+    }
+   }
+  },
+  {
+   "structure": "Right_Muscle_VastusMedialis",
+   "label_value": 130,
+   "tissue_class": "Muscle",
+   "dice": 0.963054373958307,
+   "original_voxels": 1684172,
+   "original_voxels_outside_final_box": 0,
+   "final_voxels": 1678743,
+   "original_volume_cm3": 248.75919034545606,
+   "final_volume_cm3": 247.7769943713597,
+   "surface": {
+    "original_to_final": {
+     "mean_mm": 0.8733198272933855,
+     "p95_mm": 1.396930898318878,
+     "max_mm": 2.317049346604293
+    },
+    "final_to_original": {
+     "mean_mm": 0.5457639916473771,
+     "p95_mm": 0.9402124387282847,
+     "max_mm": 1.1922956061142471
+    }
+   }
+  }
+ ],
+ "unmatched": [
+  {
+   "part": "DENVER:VHF:Left_Muscle_BicepsFemorisLong",
+   "key": "Left_Muscle_BicepsFemorisLong"
+  },
+  {
+   "part": "DENVER:VHF:Left_Muscle_BicepsFemorisShort",
+   "key": "Left_Muscle_BicepsFemorisShort"
+  },
+  {
+   "part": "DENVER:VHF:Left_Muscle_QuadratusFemoris",
+   "key": "Left_Muscle_QuadratusFemoris"
+  },
+  {
+   "part": "DENVER:VHF:Right_Muscle_GluteusMinimus",
+   "key": "Right_Muscle_GluteusMinimus"
+  },
+  {
+   "part": "DENVER:VHF:Right_Muscle_ObturatorInternus",
+   "key": "Right_Muscle_ObturatorInternus"
+  }
+ ],
+ "per_class": {
+  "Bone": {
+   "n": 28,
+   "H_dice_median": 0.9223913938111847,
+   "H_dice_p05": 0.2643033602774904,
+   "H_dice_min": 0.002456519603026432,
+   "P_p95_mm_median": 1.1391175696277063,
+   "P_p95_mm_p95": 2.657442707784654
+  },
+  "Cartilage": {
+   "n": 16,
+   "H_dice_median": 0.594661158296413,
+   "H_dice_p05": 0.08542675610320204,
+   "H_dice_min": 0.040665185484413925,
+   "P_p95_mm_median": 1.381774805565621,
+   "P_p95_mm_p95": 2.0856509848436695
+  },
+  "Ligament": {
+   "n": 8,
+   "H_dice_median": 0.8027476388437131,
+   "H_dice_p05": 0.6937317863917374,
+   "H_dice_min": 0.6858280668340403,
+   "P_p95_mm_median": 1.002372090036049,
+   "P_p95_mm_p95": 1.3557435328030765
+  },
+  "Muscle": {
+   "n": 71,
+   "H_dice_median": 0.9394890001558339,
+   "H_dice_p05": 0.841238210135991,
+   "H_dice_min": 0.7706564851540201,
+   "P_p95_mm_median": 1.3064330491668255,
+   "P_p95_mm_p95": 1.9849538441823356
+  }
+ }
+}

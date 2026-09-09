@@ -1,0 +1,722 @@
+{
+ "method": "Baseline for the plan B bone-concordance criterion: Denver bones against the cortical edge of the same-donor CT.\n\nReference and procedure, identical for Denver bones today and for machine bones later:\n  1. The Denver bone (VHF-image-2022 frame) is carried into the CT frame with the inverse of nlm-ct-to-vhf\n     (global placement) and the residual to the CT cortical edge is measured: \"placement\" distances.\n  2. The bone is then fitted rigidly on its own (ICP, no scale) to the CT cortical edge within its own\n     neighbourhood: \"shape\" distances. Placement and shape are reported separately.\n  The CT cortical edge is the iso-surface HU = 300 of the fresh CT, extracted only inside a 20 mm band\n  around the bone so that the fit cannot latch onto other bones. Distances are bone surface -> CT edge\n  (one direction), because the band contains edges of neighbouring bones. Points whose nearest CT voxel\n  lies outside the acquired field of view (data/derived/nlm-vhf/ct-coverage-mask.nii.gz) are excluded.\n\nOutput: generated/denver-ct-baseline.json (per bone: placement p95, shape p95, rotation of the own fit).",
+ "hu_edge": 300,
+ "band_mm": 20,
+ "coverage_mask_used": true,
+ "bones": [
+  {
+   "bone": "Calcaneous_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Calcaneous",
+   "denver_volume_cm3": 69.57486735865189,
+   "ct_edge_points": 52815,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 3.836388748163011,
+    "rms_mm": 5.3231059103903835,
+    "p95_mm": 11.75949848723734,
+    "max_mm": 14.351037173526837,
+    "n": 31923
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 2.539995894151655,
+    "centroid_displacement_mm": 13.923113061589058,
+    "shape_residual": {
+     "mean_mm": 0.6518277587252786,
+     "rms_mm": 0.7524528815747057,
+     "p95_mm": 1.3331679663769618,
+     "max_mm": 4.079764181120057,
+     "n": 31923
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Calcaneous_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Calcaneous",
+   "denver_volume_cm3": 71.14044452933267,
+   "ct_edge_points": 56393,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 5.444611383288707,
+    "rms_mm": 6.933345048059033,
+    "p95_mm": 12.63066765091134,
+    "max_mm": 13.855849098925445,
+    "n": 31935
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 1.5115828058255711,
+    "centroid_displacement_mm": 13.4209329450278,
+    "shape_residual": {
+     "mean_mm": 0.6359607709760008,
+     "rms_mm": 0.7248980864578985,
+     "p95_mm": 1.306649402826265,
+     "max_mm": 3.4989026966302155,
+     "n": 31935
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Coccyx_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Coccyx",
+   "denver_volume_cm3": 2.948690246298201,
+   "ct_edge_points": 5621,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.56066504478414,
+    "rms_mm": 2.946427723468227,
+    "p95_mm": 4.9334012118972925,
+    "max_mm": 6.266133846393442,
+    "n": 30782
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 5.361626403807916,
+    "centroid_displacement_mm": 4.913901287977674,
+    "shape_residual": {
+     "mean_mm": 1.2054503170513875,
+     "rms_mm": 1.4389592500448602,
+     "p95_mm": 2.723673378431045,
+     "max_mm": 4.217809644451479,
+     "n": 30782
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Cuboid_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Cuboid",
+   "denver_volume_cm3": 12.709712852933857,
+   "ct_edge_points": 29435,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 3.536510270787233,
+    "rms_mm": 4.555909171207142,
+    "p95_mm": 9.257897370868475,
+    "max_mm": 11.348577147629758,
+    "n": 31293
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 16.569940569135643,
+    "centroid_displacement_mm": 11.523851390684975,
+    "shape_residual": {
+     "mean_mm": 1.1670086579747012,
+     "rms_mm": 1.417178271658878,
+     "p95_mm": 2.6705382741764834,
+     "max_mm": 5.935453964496656,
+     "n": 31293
+    },
+    "diverged": true
+   }
+  },
+  {
+   "bone": "Cuboid_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Cuboid",
+   "denver_volume_cm3": 13.103824796790066,
+   "ct_edge_points": 24908,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 4.764318623017538,
+    "rms_mm": 6.10369124609186,
+    "p95_mm": 12.47001685854676,
+    "max_mm": 14.142214691273535,
+    "n": 31202
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 12.483423893998264,
+    "centroid_displacement_mm": 13.334248560978716,
+    "shape_residual": {
+     "mean_mm": 1.046009051904506,
+     "rms_mm": 1.2645106254923921,
+     "p95_mm": 2.4451631077829674,
+     "max_mm": 5.3629954887315225,
+     "n": 31202
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Femur_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Femur",
+   "denver_volume_cm3": 455.1447894058881,
+   "ct_edge_points": 270556,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.4544976614029976,
+    "rms_mm": 3.1595882036045775,
+    "p95_mm": 6.097832756093472,
+    "max_mm": 13.96262176737032,
+    "n": 40109
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 3.403966250456753,
+    "centroid_displacement_mm": 4.173710758136053,
+    "shape_residual": {
+     "mean_mm": 1.1274747495935127,
+     "rms_mm": 1.4070157763065356,
+     "p95_mm": 2.8452495770168427,
+     "max_mm": 6.3894035317462485,
+     "n": 40109
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Femur_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Femur",
+   "denver_volume_cm3": 432.1593875051259,
+   "ct_edge_points": 272224,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.0308157550785535,
+    "rms_mm": 2.6713448444516827,
+    "p95_mm": 5.79766725512284,
+    "max_mm": 10.633891479847327,
+    "n": 39843
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 2.4839682378527153,
+    "centroid_displacement_mm": 3.635063230699657,
+    "shape_residual": {
+     "mean_mm": 1.1302960866068767,
+     "rms_mm": 1.3634286122169297,
+     "p95_mm": 2.535497724219193,
+     "max_mm": 6.444746071182007,
+     "n": 39843
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Fibula_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Fibula",
+   "denver_volume_cm3": 31.45074617532249,
+   "ct_edge_points": 54011,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 4.877126876248736,
+    "rms_mm": 5.880381421900515,
+    "p95_mm": 10.141743829981191,
+    "max_mm": 12.324365432644314,
+    "n": 32082
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 4.6029622243966655,
+    "centroid_displacement_mm": 9.040254855116878,
+    "shape_residual": {
+     "mean_mm": 0.9286367215157291,
+     "rms_mm": 1.068327188685644,
+     "p95_mm": 1.916270467366223,
+     "max_mm": 4.674006584113546,
+     "n": 32082
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Fibula_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Fibula",
+   "denver_volume_cm3": 32.91201598296094,
+   "ct_edge_points": 43813,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 5.110515104032211,
+    "rms_mm": 5.915889977490054,
+    "p95_mm": 9.606226700475197,
+    "max_mm": 11.183989767586224,
+    "n": 32144
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 10.762454352224186,
+    "centroid_displacement_mm": 8.923229755521477,
+    "shape_residual": {
+     "mean_mm": 0.9667062088717016,
+     "rms_mm": 1.136298190207837,
+     "p95_mm": 2.1427967306379396,
+     "max_mm": 4.208424269304507,
+     "n": 32144
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "IntermediateCuneiform_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_IntermediateCuneiform",
+   "denver_volume_cm3": 3.8374592607176297,
+   "ct_edge_points": 27722,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.2467132289184786,
+    "rms_mm": 2.7641941204153446,
+    "p95_mm": 5.639551724785521,
+    "max_mm": 7.616271399709342,
+    "n": 30709
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 55.125646513978495,
+    "centroid_displacement_mm": 5.599593241572333,
+    "shape_residual": {
+     "mean_mm": 1.1934233522076971,
+     "rms_mm": 1.416041607455475,
+     "p95_mm": 2.7261259497977113,
+     "max_mm": 4.081356542116821,
+     "n": 30709
+    },
+    "diverged": true
+   }
+  },
+  {
+   "bone": "IntermediateCuneiform_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_IntermediateCuneiform",
+   "denver_volume_cm3": 3.8246775234394597,
+   "ct_edge_points": 27227,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 1.326679397505568,
+    "rms_mm": 1.584023746160421,
+    "p95_mm": 2.9929917980741845,
+    "max_mm": 5.019870859892899,
+    "n": 30703
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 15.323995732896055,
+    "centroid_displacement_mm": 3.6303787244538386,
+    "shape_residual": {
+     "mean_mm": 1.1055230575546846,
+     "rms_mm": 1.3206362716070947,
+     "p95_mm": 2.5357960007079483,
+     "max_mm": 4.568008907959818,
+     "n": 30703
+    },
+    "diverged": true
+   }
+  },
+  {
+   "bone": "LateralCuneiform_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_LateralCuneiform",
+   "denver_volume_cm3": 4.849897360426433,
+   "ct_edge_points": 28715,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.1202163376604646,
+    "rms_mm": 2.7667730689606693,
+    "p95_mm": 6.177201982023254,
+    "max_mm": 8.310723544468138,
+    "n": 30768
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 14.281497273846261,
+    "centroid_displacement_mm": 6.767961613915848,
+    "shape_residual": {
+     "mean_mm": 1.1426649726193276,
+     "rms_mm": 1.3660246433391072,
+     "p95_mm": 2.6807974608997873,
+     "max_mm": 4.0930087292135555,
+     "n": 30768
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "LateralCuneiform_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_LateralCuneiform",
+   "denver_volume_cm3": 5.238359802980733,
+   "ct_edge_points": 23902,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.38770061532447,
+    "rms_mm": 2.971278199993461,
+    "p95_mm": 5.911921125712924,
+    "max_mm": 7.2552032814794885,
+    "n": 30899
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 23.824732683875713,
+    "centroid_displacement_mm": 6.008112554191179,
+    "shape_residual": {
+     "mean_mm": 1.2021982706143004,
+     "rms_mm": 1.5026473873543735,
+     "p95_mm": 3.135765383605817,
+     "max_mm": 5.538604538748105,
+     "n": 30899
+    },
+    "diverged": true
+   }
+  },
+  {
+   "bone": "MedialCuneiform_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_MedialCuneiform",
+   "denver_volume_cm3": 9.377155255473044,
+   "ct_edge_points": 23249,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 4.105299010272216,
+    "rms_mm": 5.449984265482691,
+    "p95_mm": 10.427432463626495,
+    "max_mm": 13.195758682796129,
+    "n": 30913
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 14.327972470303404,
+    "centroid_displacement_mm": 12.397183004340558,
+    "shape_residual": {
+     "mean_mm": 1.0012932142189026,
+     "rms_mm": 1.2161025660167082,
+     "p95_mm": 2.320751784509197,
+     "max_mm": 5.35039197373218,
+     "n": 30913
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "MedialCuneiform_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_MedialCuneiform",
+   "denver_volume_cm3": 9.672394365491806,
+   "ct_edge_points": 35345,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.4270171115251546,
+    "rms_mm": 3.1991168102954863,
+    "p95_mm": 7.075761759692751,
+    "max_mm": 10.311107145299617,
+    "n": 30976
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 13.567024677022085,
+    "centroid_displacement_mm": 8.73982543428657,
+    "shape_residual": {
+     "mean_mm": 1.5427667221593224,
+     "rms_mm": 1.8427312793118307,
+     "p95_mm": 3.459846223315937,
+     "max_mm": 5.299272046093623,
+     "n": 30976
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Navicular_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Navicular",
+   "denver_volume_cm3": 10.2218489954627,
+   "ct_edge_points": 32205,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 3.3183090003760785,
+    "rms_mm": 4.605860223975142,
+    "p95_mm": 10.46990435311863,
+    "max_mm": 12.873903766258625,
+    "n": 30963
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 30.722977339067835,
+    "centroid_displacement_mm": 11.037725410373277,
+    "shape_residual": {
+     "mean_mm": 1.3383789655009053,
+     "rms_mm": 1.62494611933819,
+     "p95_mm": 3.23949780195273,
+     "max_mm": 5.608305470082058,
+     "n": 30963
+    },
+    "diverged": true
+   }
+  },
+  {
+   "bone": "Navicular_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Navicular",
+   "denver_volume_cm3": 9.412064671656381,
+   "ct_edge_points": 34828,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.417818440134238,
+    "rms_mm": 3.104980532719998,
+    "p95_mm": 6.489313565526949,
+    "max_mm": 9.606761957924618,
+    "n": 31012
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 25.47530021928224,
+    "centroid_displacement_mm": 6.221481407482185,
+    "shape_residual": {
+     "mean_mm": 1.6298717864219605,
+     "rms_mm": 2.0113978565771844,
+     "p95_mm": 4.093287641628129,
+     "max_mm": 5.870129532546234,
+     "n": 31012
+    },
+    "diverged": true
+   }
+  },
+  {
+   "bone": "Patella_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Patella",
+   "denver_volume_cm3": 19.538536608034548,
+   "ct_edge_points": 25999,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 3.1658515777437493,
+    "rms_mm": 3.9323893235405665,
+    "p95_mm": 7.604062329997495,
+    "max_mm": 9.17461522484834,
+    "n": 30799
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 6.258469204406606,
+    "centroid_displacement_mm": 9.440380275256272,
+    "shape_residual": {
+     "mean_mm": 0.8289192644947065,
+     "rms_mm": 1.0083531155294956,
+     "p95_mm": 1.8100293991426446,
+     "max_mm": 4.83810505015285,
+     "n": 30799
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Patella_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Patella",
+   "denver_volume_cm3": 19.077835811064258,
+   "ct_edge_points": 22127,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.271819611290704,
+    "rms_mm": 2.739028376417587,
+    "p95_mm": 5.296622693462756,
+    "max_mm": 7.026442454601882,
+    "n": 30899
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 6.087052535838332,
+    "centroid_displacement_mm": 7.246967726870329,
+    "shape_residual": {
+     "mean_mm": 0.8115731793895212,
+     "rms_mm": 0.9674836533397135,
+     "p95_mm": 1.9137637277990447,
+     "max_mm": 3.8292554686126894,
+     "n": 30899
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Pelvis_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Pelvis",
+   "denver_volume_cm3": 358.10898021614224,
+   "ct_edge_points": 274872,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.8540265634650455,
+    "rms_mm": 0.998745723400906,
+    "p95_mm": 1.9810245023759105,
+    "max_mm": 3.7126825991979038,
+    "n": 40923
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.9679238606669847,
+    "centroid_displacement_mm": 1.1953094237127952,
+    "shape_residual": {
+     "mean_mm": 0.5218639255361179,
+     "rms_mm": 0.5839893884827839,
+     "p95_mm": 0.9272479034158562,
+     "max_mm": 4.1027705065636075,
+     "n": 40923
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Pelvis_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Pelvis",
+   "denver_volume_cm3": 358.0843330599777,
+   "ct_edge_points": 267882,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.9205178855095426,
+    "rms_mm": 1.0781849474753438,
+    "p95_mm": 1.9817210730136656,
+    "max_mm": 5.681390193756074,
+    "n": 40826
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 1.184799818242166,
+    "centroid_displacement_mm": 1.4775165889760211,
+    "shape_residual": {
+     "mean_mm": 0.63725355305117,
+     "rms_mm": 0.7229518165938371,
+     "p95_mm": 1.1905697761434562,
+     "max_mm": 4.95026386105697,
+     "n": 40826
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Phalanges_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Phalanges",
+   "denver_volume_cm3": 73.75879903547572,
+   "ct_edge_points": 79005,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 3.7054364263212665,
+    "rms_mm": 4.752609103734036,
+    "p95_mm": 9.475073925511067,
+    "max_mm": 13.724457924142964,
+    "n": 33835
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 2.2464108296961203,
+    "centroid_displacement_mm": 12.475738743092268,
+    "shape_residual": {
+     "mean_mm": 0.7100652826140333,
+     "rms_mm": 0.8774128585916803,
+     "p95_mm": 1.8374093910253748,
+     "max_mm": 5.212404057503794,
+     "n": 33835
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Phalanges_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Phalanges",
+   "denver_volume_cm3": 69.39579861106048,
+   "ct_edge_points": 72272,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.4613485901617844,
+    "rms_mm": 3.2478209390326027,
+    "p95_mm": 6.808729499326474,
+    "max_mm": 12.272518960870572,
+    "n": 33974
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 1.8649788963323986,
+    "centroid_displacement_mm": 11.172447339575603,
+    "shape_residual": {
+     "mean_mm": 0.661547789392796,
+     "rms_mm": 0.7924714626699296,
+     "p95_mm": 1.4423020218089957,
+     "max_mm": 4.853170460253505,
+     "n": 33974
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Sacrum_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Sacrum",
+   "denver_volume_cm3": 213.42389017038596,
+   "ct_edge_points": 197375,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 1.2986645783423063,
+    "rms_mm": 1.6539951035695364,
+    "p95_mm": 3.333306095028732,
+    "max_mm": 7.736285470832386,
+    "n": 35620
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 1.4106101230734007,
+    "centroid_displacement_mm": 2.0422283614616084,
+    "shape_residual": {
+     "mean_mm": 1.0794397765954982,
+     "rms_mm": 1.4191747566999633,
+     "p95_mm": 2.9671267142464512,
+     "max_mm": 7.73778245824476,
+     "n": 35620
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Talus_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Talus",
+   "denver_volume_cm3": 37.5011569538601,
+   "ct_edge_points": 59532,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 3.415953685977869,
+    "rms_mm": 4.62170173680869,
+    "p95_mm": 10.640945050743476,
+    "max_mm": 14.356786481577128,
+    "n": 31355
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 2.9505705723918507,
+    "centroid_displacement_mm": 13.33682598496363,
+    "shape_residual": {
+     "mean_mm": 0.7910392537689356,
+     "rms_mm": 0.9698394063720024,
+     "p95_mm": 1.8790665054698328,
+     "max_mm": 4.458350044410996,
+     "n": 31355
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Talus_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Talus",
+   "denver_volume_cm3": 34.27430210247357,
+   "ct_edge_points": 60390,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 2.22549266745547,
+    "rms_mm": 2.9288060055524823,
+    "p95_mm": 5.928024815405602,
+    "max_mm": 11.25718314390275,
+    "n": 31439
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 13.593664801999145,
+    "centroid_displacement_mm": 10.093954333533476,
+    "shape_residual": {
+     "mean_mm": 1.3509944104165397,
+     "rms_mm": 1.6397788602198013,
+     "p95_mm": 3.2730671550412755,
+     "max_mm": 5.310025318006217,
+     "n": 31439
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Tibia_Left",
+   "denver_id": "DENVER:VHF:Left_Bone_Tibia",
+   "denver_volume_cm3": 258.30408738823513,
+   "ct_edge_points": 152371,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 3.961327955072051,
+    "rms_mm": 5.128189088624071,
+    "p95_mm": 10.016967065134603,
+    "max_mm": 13.292152996805982,
+    "n": 36542
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 1.5968295505253045,
+    "centroid_displacement_mm": 10.202950554242499,
+    "shape_residual": {
+     "mean_mm": 0.9395128450245995,
+     "rms_mm": 1.093024355688767,
+     "p95_mm": 1.921905757882149,
+     "max_mm": 6.378868767307092,
+     "n": 36542
+    },
+    "diverged": false
+   }
+  },
+  {
+   "bone": "Tibia_Right",
+   "denver_id": "DENVER:VHF:Right_Bone_Tibia",
+   "denver_volume_cm3": 254.2488757403718,
+   "ct_edge_points": 165557,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 3.202628913805745,
+    "rms_mm": 4.1222236091936395,
+    "p95_mm": 8.588626939070823,
+    "max_mm": 10.026618657188976,
+    "n": 36641
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 1.5900921473954244,
+    "centroid_displacement_mm": 8.841201579663466,
+    "shape_residual": {
+     "mean_mm": 0.9466481434054702,
+     "rms_mm": 1.0942817797820392,
+     "p95_mm": 1.9987255559925985,
+     "max_mm": 4.960206321360446,
+     "n": 36641
+    },
+    "diverged": false
+   }
+  }
+ ],
+ "summary": {
+  "bones_measured": 22,
+  "bones_diverged": [
+   "Cuboid_Left",
+   "IntermediateCuneiform_Left",
+   "IntermediateCuneiform_Right",
+   "LateralCuneiform_Right",
+   "Navicular_Left",
+   "Navicular_Right"
+  ],
+  "shape_p95_mm_median": 1.9603156569373739,
+  "shape_p95_mm_max": 3.459846223315937,
+  "placement_p95_mm_median": 7.339912044845123
+ }
+}
