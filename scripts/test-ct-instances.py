@@ -256,6 +256,26 @@ try:
     v = by_z(js10)
     check('T10 small body seen by all models stays a full instance', js10['instance_count']['vertebra_consensus_full'] == 7 and js10['instance_count']['vertebra_pieces'] == 0
           and v[-1].get('small_but_fully_supported') is True and not any(i.get('fragments') for i in js10['instances']), js10['instance_count'])
+    # T11 chained pieces A -> B -> body: A is near B only, B is near body 2 only; both TS+MOOSE, absent in Skellytour.
+    # Both must end in body 2 with their voxels and provenance, no exception, six full instances.
+    ts, mo, sk = base()
+    A = np.zeros(SHAPE, bool); B = np.zeros(SHAPE, bool)
+    B[48:70, XY, Z_TOP[1] + 12:Z_TOP[1] + BODY] = True          # 3.1 mL, 2.8 mm lateral to body 2's upper half
+    A[74:96, XY, Z_TOP[1] + 12:Z_TOP[1] + BODY] = True          # 3.1 mL, 2.8 mm lateral to B, 21 mm from body 2
+    for arr, lab in [(ts, TS_CLASS[TS_NAMES[1]]), (mo, MO_IDS[MO_NAMES[1]])]:
+        arr[A] = lab
+        arr[B] = lab
+    d = tmp / 't11'
+    write_case(d, ts, mo, sk)
+    js11, cons11 = run(d)
+    v = by_z(js11)
+    body = max(v[:3], key=lambda i: i['union_ml'])      # the pieces sit at the same height as body 2's upper half
+    frags = body.get('fragments') or []
+    expect_union = round((BODY * BODY * BODY + 2 * 22 * 24 * 12) * 0.49 / 1000, 2)
+    check('T11 chained pieces both merged into body 2, voxels and provenance kept', js11['instance_count']['vertebra_consensus_full'] == 6 and js11['instance_count']['vertebra_pieces'] == 0
+          and len(frags) == 2 and abs(body['union_ml'] - expect_union) < 0.05 and abs(body['consensus_ml'] - expect_union) < 0.05,
+          (js11['instance_count'], len(frags), body['union_ml'], body['consensus_ml'], expect_union))
+    check('T11 consensus map contains both pieces under body 2', int((cons11 == body['index']).sum()) == BODY ** 3 + 2 * 22 * 24 * 12, int((cons11 == body['index']).sum()))
 finally:
     shutil.rmtree(tmp, ignore_errors=True)
 

@@ -3991,6 +3991,7 @@
      "volume_ml": 3.54,
      "surface_distance_mm": 0.0,
      "next_instance_mm": 8.9,
+     "via_piece": false,
      "same_labels_as_target": false
     }
    ],
@@ -4162,6 +4163,7 @@
      "volume_ml": 6.85,
      "surface_distance_mm": 0.0,
      "next_instance_mm": null,
+     "via_piece": false,
      "same_labels_as_target": false
     }
    ],
@@ -4249,6 +4251,7 @@
      "volume_ml": 3.39,
      "surface_distance_mm": 0.0,
      "next_instance_mm": null,
+     "via_piece": false,
      "same_labels_as_target": false
     }
    ],

@@ -8676,6 +8676,7 @@
      "volume_ml": 5.0,
      "surface_distance_mm": 0.0,
      "next_instance_mm": 3.0,
+     "via_piece": false,
      "same_labels_as_target": false
     }
    ],
@@ -8758,6 +8759,7 @@
    "union_ml_before_merge": 7.3,
    "ambiguous_near": {
     "22": 0.0,
+    "23": 8.48,
     "25": 0.0,
     "26": 0.0
    },
@@ -9006,6 +9008,7 @@
    "role": "vertebra",
    "id": "V27",
    "index": 27,
+   "size_class": "full",
    "fragments": [
     {
      "piece_labels": {
@@ -9014,10 +9017,10 @@
      "volume_ml": 10.21,
      "surface_distance_mm": 0.0,
      "next_instance_mm": 1.23,
+     "via_piece": false,
      "same_labels_as_target": false
     }
    ],
-   "size_class": "full",
    "consensus_ml": 63.99,
    "union_ml": 80.88,
    "agreement_ratio": 0.791,

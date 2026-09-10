@@ -499,6 +499,8 @@ member_vols = [v for k, v in union_vol.items() if instances[k - 1]['role'] == ME
 med_vol = float(np.median(member_vols)) if member_vols else 0.0
 pad_vox = np.ceil(FRAG_MM / SPACING).astype(int) + 1
 merged_piece = {}
+# pass 1: classify. A piece is small and not segmented by every eligible model.
+piece_ids = []
 for k in range(1, n_inst + 1):
     inst = instances[k - 1]
     if inst['role'] != MEMBER_ROLE or union_vol[k] == 0 or union_vol[k] >= PIECE_RATIO * med_vol:
@@ -511,11 +513,19 @@ for k in range(1, n_inst + 1):
         inst['size_class'] = 'full'
         inst['small_but_fully_supported'] = True
         continue
+    inst['size_class'] = 'piece'
+    inst['union_ml_before_merge'] = round(union_vol[k] * vox_ml, 2)
+    piece_ids.append(k)
+# pass 2: merge by surface distance. Full instances are preferred targets; another piece is a target only when no
+# full instance is in reach (chains piece -> piece -> body are then resolved to the final body below).
+for k in piece_ids:
+    inst = instances[k - 1]
+    um = union_mask(k)
     obj = ndimage.find_objects(um.astype(np.uint8))[0]
     box = tuple(slice(max(0, o.start - pad_vox[d]), min(ts.shape[d], o.stop + pad_vox[d])) for d, o in enumerate(obj))
     near = {}
     for j in range(1, n_inst + 1):
-        if j == k or union_vol[j] == 0 or j in merged_piece:
+        if j == k or union_vol[j] == 0 or instances[j - 1]['role'] != MEMBER_ROLE and instances[j - 1]['role'] != 'sacrum':
             continue
         uj = union_mask(j)[box]
         if not uj.any():
@@ -524,9 +534,9 @@ for k in range(1, n_inst + 1):
         dmin = float(dist[um[box]].min())
         if dmin <= FRAG_MM:
             near[j] = round(dmin, 2)
-    inst['size_class'] = 'piece'
-    inst['union_ml_before_merge'] = round(union_vol[k] * vox_ml, 2)
-    ranked = sorted(near.items(), key=lambda kv: kv[1])
+    full_near = {j: d for j, d in near.items() if instances[j - 1]['size_class'] != 'piece'}
+    pool = full_near if full_near else near
+    ranked = sorted(pool.items(), key=lambda kv: kv[1])
     # unambiguous when one instance is in reach, or the nearest is at least AMBIG_RATIO times closer than the next
     if len(ranked) == 1 or (len(ranked) >= 2 and ranked[1][1] >= AMBIG_RATIO * max(ranked[0][1], 0.5)):
         j = ranked[0][0]
@@ -534,7 +544,7 @@ for k in range(1, n_inst + 1):
         labels_k = {m: by_id[c]['label'] for m, c in inst['members'].items()}
         labels_j = {m: by_id[c]['label'] for m, c in instances[j - 1]['members'].items()}
         instances[j - 1].setdefault('fragments', []).append({'piece_labels': labels_k, 'volume_ml': round(union_vol[k] * vox_ml, 2), 'surface_distance_mm': near[j],
-                                                              'next_instance_mm': ranked[1][1] if len(ranked) > 1 else None,
+                                                              'next_instance_mm': ranked[1][1] if len(ranked) > 1 else None, 'via_piece': instances[j - 1]['size_class'] == 'piece',
                                                               'same_labels_as_target': all(labels_j.get(m) == l for m, l in labels_k.items())})
         for c in inst['members'].values():
             assign[c] = (j - 1, 'fragment')
@@ -543,9 +553,23 @@ for k in range(1, n_inst + 1):
     else:
         inst['nearest_instance_mm'] = None
 if merged_piece:
+    # resolve chains A -> B -> C to their final target before touching maps, ids or provenance
+    def final(j):
+        seen = set()
+        while j in merged_piece and j not in seen:
+            seen.add(j)
+            j = merged_piece[j]
+        return j
+    for k in list(merged_piece):
+        merged_piece[k] = final(merged_piece[k])
     for k, j in merged_piece.items():
+        if instances[k - 1].get('fragments'):           # a piece that had absorbed pieces hands their provenance to the final target
+            instances[j - 1].setdefault('fragments', []).extend(instances[k - 1].pop('fragments'))
         for m in models:
             inst_map[m][inst_map[m] == k] = j
+    for cid, (kk, st) in list(assign.items()):
+        if st == 'fragment' and (kk + 1) in merged_piece:
+            assign[cid] = (merged_piece[kk + 1] - 1, st)
     keep = [k for k in range(1, n_inst + 1) if k not in merged_piece]
     lut = np.zeros(n_inst + 1, np.uint8)
     for new, old in enumerate(keep, start=1):
