@@ -48,5 +48,7 @@ PY
   $PY "$(dirname "$0")/merge-skellytour.py" "$IN" "$OUT" || { echo "MERGE FAILED $(date -Is)"; return 1; }
 }
 echo "START $(date -Is) CORE=$CORE OV=$OV targets=$*"
-for t in "$@"; do case $t in nlm) run_one $BASE/nlm-vhf/derived/vhf-fresh-ct.nii.gz $BASE/skellytour/nlm;; denver) run_one $BASE/denver/aligned-ct-nii/denver_aligned_ct_hu.nii.gz $BASE/skellytour/denver;; esac; done
-echo "END $(date -Is)"
+STATUS=0
+for t in "$@"; do case $t in nlm) run_one $BASE/nlm-vhf/derived/vhf-fresh-ct.nii.gz $BASE/skellytour/nlm || STATUS=1;; denver) run_one $BASE/denver/aligned-ct-nii/denver_aligned_ct_hu.nii.gz $BASE/skellytour/denver || STATUS=1;; esac; done
+echo "END $(date -Is) status=$STATUS"
+exit $STATUS

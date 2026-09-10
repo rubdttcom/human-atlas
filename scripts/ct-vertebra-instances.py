@@ -60,6 +60,12 @@ from scipy import ndimage
 
 ROOT = Path(__file__).resolve().parents[1]
 ARGS = [a for a in sys.argv[1:] if not a.startswith('--')]
+OPTS = {a.split('=')[0]: (a.split('=', 1)[1] if '=' in a else True) for a in sys.argv[1:] if a.startswith('--')}
+INPUTS = Path(OPTS['--inputs']) if '--inputs' in OPTS else None     # test harness: directory with ts.nii.gz, moose.nii.gz, moose_indices.json, hu.nii.gz, skellytour/{plan.json,skellytour_high.json,skellytour_high.nii.gz}
+OUT_DIR = Path(OPTS['--out']) if '--out' in OPTS else None
+NO_PANELS = '--no-panels' in OPTS
+NO_HRA = '--no-hra' in OPTS or INPUTS is not None
+ALLOW_INCOMPLETE = '--allow-incomplete' in OPTS
 CT = ARGS[0] if ARGS else 'nlm'
 FAMILY = ARGS[1] if len(ARGS) > 1 else 'vertebrae'
 if FAMILY not in ('vertebrae', 'ribs_left', 'ribs_right'):
@@ -76,7 +82,16 @@ COVER_PART = 0.20     # a candidate covering >= 20 % of two partners is a split/
 MODEL_ORDER = ['totalseg', 'skellytour', 'moose']   # tie-break for the partition model
 OVERSIZE = 1.4        # a candidate > 1.4 x the mean of its two neighbours (same model) is treated as a merge of bodies
 
-if CT == 'nlm':
+if INPUTS is not None:
+    TS = INPUTS / 'ts.nii.gz'
+    MOOSE = INPUTS / 'moose.nii.gz'
+    MOOSE_IDX = INPUTS / 'moose_indices.json'
+    SKELLY_DIR = INPUTS / 'skellytour'
+    HU = INPUTS / 'hu.nii.gz'
+    OUT_NII = (OUT_DIR or INPUTS / 'out') / 'nii'
+    RAS_TO_VHF = np.eye(4)
+    VOX_TO_VHF = None
+elif CT == 'nlm':
     TS = ROOT / 'data/derived/nlm-vhf/totalseg.nii'
     MOOSE = ROOT / f'data/derived/nlm-vhf/moose/segmentations/clin_CT_{MOOSE_TASK}_segmentation_CT_vhf.nii.gz'
     MOOSE_IDX = ROOT / f'data/derived/nlm-vhf/moose/segmentations/clin_CT_{MOOSE_TASK}_organ_indices.json'
@@ -97,11 +112,17 @@ elif CT == 'denver':
     VOX_TO_VHF = np.array(json.loads((ROOT / 'transforms/denver-aligned-ct-voxel-to-vhf.json').read_text())['matrix_row_major']).reshape(4, 4)
 else:
     sys.exit('usage: ct-vertebra-instances.py nlm|denver [--selftest]')
-if FAMILY == 'vertebrae':
+if OUT_DIR is not None or INPUTS is not None:
+    base = OUT_DIR or INPUTS / 'out'
+    OUT_JSON = base / f'{FAMILY}.json'
+    OUT_PNG = base / f'{FAMILY}-panels'
+    NII_STEM = FAMILY
+    OUT_NII = base / 'nii'
+elif FAMILY == 'vertebrae':
     OUT_JSON = ROOT / f'generated/ct-vertebra-instances-{CT}.json'
     OUT_PNG = ROOT / f'generated/ct-vertebra-instances-{CT}'
     NII_STEM = 'vertebra'
-else:
+elif FAMILY != 'vertebrae':
     OUT_JSON = ROOT / f'generated/ct-rib-instances-{CT}-{SIDE}.json'
     OUT_PNG = ROOT / f'generated/ct-rib-instances-{CT}-{SIDE}'
     NII_STEM = f'rib-{SIDE}'
@@ -122,6 +143,13 @@ SK_PELVIS = 2
 ROLE = lambda label: 'sacrum' if label == 'sacrum' else MEMBER_ROLE   # noqa: E731
 
 
+def rel(path):
+    try:
+        return str(Path(path).relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def load(path):
     im = nib.load(path)
     a = np.asanyarray(im.dataobj)
@@ -140,6 +168,24 @@ plan = json.loads((SKELLY_DIR / 'plan.json').read_text())
 i0, i1, j0, j1 = plan['crop']
 seams = [p['core0'] for p in plan['chunks'][1:]]
 vox_ml = float(abs(np.linalg.det(affine[:3, :3])) / 1000)
+SPACING = np.linalg.norm(affine[:3, :3], axis=0)   # mm per voxel along each array axis (orthogonal grids)
+# Skellytour processed region: the crop of plan.json in-plane, and along z only the chunk cores that the merge manifest
+# reports as done. An incomplete manifest (missing chunks) is refused unless --allow-incomplete: a missing block must
+# never count as a negative prediction.
+manifest_path = SKELLY_DIR / 'skellytour_high.json'
+manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+if 'complete' in manifest:
+    if manifest.get('chunks_planned') != len(plan['chunks']):
+        sys.exit(f'Skellytour manifest plans {manifest.get("chunks_planned")} chunks, plan.json has {len(plan["chunks"])}')
+    if not manifest['complete'] and not ALLOW_INCOMPLETE:
+        sys.exit(f'Skellytour manifest incomplete (missing chunks {manifest.get("missing")}); rerun the merge or pass --allow-incomplete')
+    done_cores = [(c['core0'], c['core1']) for c in manifest['chunks']]
+    skelly_manifest_info = {'format': 'manifest', 'complete': manifest['complete'], 'missing_chunks': manifest.get('missing', []), 'merged_sha256': manifest.get('merged_sha256')}
+else:
+    done_cores = [(p['core0'], p['core1']) for p in plan['chunks']]
+    skelly_manifest_info = {'format': 'legacy (plan.json only; completeness not verifiable)', 'complete': None, 'missing_chunks': None, 'merged_sha256': None}
+if 'crop_ijk' in manifest and (manifest['crop_ijk']['i'] != [i0, i1] or manifest['crop_ijk']['j'] != [j0, j1]):
+    sys.exit('Skellytour manifest crop differs from plan.json')
 
 # region of interest: union bounding box of every vertebral label of every model, padded
 def label_box(arr, ids):
@@ -156,7 +202,8 @@ print('roi', [(s.start, s.stop) for s in roi], 'voxels', int(np.prod([s.stop - s
 ts, mo, sk = ts_full[roi], mo_full[roi], sk_full[roi]
 del ts_full, mo_full
 processed = {'totalseg': np.ones(ts.shape, bool), 'moose': np.ones(ts.shape, bool), 'skellytour': np.zeros(ts.shape, bool)}
-processed['skellytour'][max(0, i0 - off[0]):max(0, i1 - off[0]), max(0, j0 - off[1]):max(0, j1 - off[1]), :] = True
+for z0, z1 in done_cores:
+    processed['skellytour'][max(0, i0 - off[0]):max(0, i1 - off[0]), max(0, j0 - off[1]):max(0, j1 - off[1]), max(0, z0 - off[2]):max(0, z1 - off[2])] = True
 supports_sacrum = {'totalseg': True, 'moose': True, 'skellytour': False}
 arrays = {'totalseg': (ts, TS_LABELS), 'moose': (mo, MO_LABELS), 'skellytour': (sk, SK_LABELS)}
 
@@ -397,53 +444,6 @@ for g in groups:
                 instances.append({'members': {m: cid}, 'seed_cids': [cid], 'partition_model': None, 'group_kind': 'single'})
                 assign[cid] = (len(instances) - 1, 'single')
 
-# fragments: an instance whose members all carry the same label as the members of one other, larger instance of the
-# same models (a second component of rib_left_6 in TotalSegmentator and MOOSE, next to the main rib_left_6) and lie
-# within that instance's z range (+/- FRAG_MM) is a detached piece of it, not another bone: merge it in, state `fragment`
-FRAG_MM = 25.0
-def z_range(inst):
-    zs = []
-    for c in inst['members'].values():
-        b = by_id[c]['box']
-        zs += [to_ras([b[0][0], b[1][0], b[2][0]])[2], to_ras([b[0][1], b[1][1], b[2][1]])[2]]
-    return min(zs), max(zs)
-merged_into = {}
-for k, inst in enumerate(instances):
-    targets = set()
-    for m, cid in inst['members'].items():
-        label = by_id[cid]['label']
-        t = [j for j, other in enumerate(instances) if j != k and m in other['members'] and by_id[other['members'][m]]['label'] == label
-             and by_id[other['members'][m]]['voxels'] > by_id[cid]['voxels']]
-        if len(t) != 1:
-            targets = set()
-            break
-        targets.add(t[0])
-    if len(targets) == 1:
-        j = targets.pop()
-        while j in merged_into:
-            j = merged_into[j]
-        lo, hi = z_range(instances[j])
-        zc = np.mean([by_id[c]['z_ras_mm'] for c in inst['members'].values()])
-        # two or more models naming the piece like the main instance is enough; a single model's fragment must also lie near it
-        if len(inst['members']) >= 2 or (lo - FRAG_MM <= zc <= hi + FRAG_MM):
-            merged_into[k] = j
-            instances[j].setdefault('fragments', []).append({m: f"{by_id[c]['label']}#{by_id[c]['component']}" for m, c in inst['members'].items()})
-            for c in inst['members'].values():
-                assign[c] = (j, 'fragment')
-old_to_new, n = {}, 0
-for k in range(len(instances)):
-    if k not in merged_into:
-        old_to_new[k] = n
-        n += 1
-for k in merged_into:
-    j = merged_into[k]
-    while j in merged_into:
-        j = merged_into[j]
-    old_to_new[k] = old_to_new[j]
-instances = [inst for k, inst in enumerate(instances) if k not in merged_into]
-for cid, (k, st) in list(assign.items()):
-    assign[cid] = ([old_to_new[x] for x in k] if isinstance(k, list) else old_to_new[k], st)
-
 # order cranial -> caudal by the z (RAS) of the seed centroid; ids V01.. ; sacrum role from the members' labels
 for inst in instances:
     zs = [by_id[c]['z_ras_mm'] for c in inst['seed_cids']]
@@ -473,7 +473,7 @@ for cid, (k, s) in assign.items():
                 seed_map[cand_map[by_id[sc]['model']] == sc] = kk + 1
         sub = seed_map[box]
         if (sub > 0).any():
-            idx = ndimage.distance_transform_edt(sub == 0, return_indices=True)[1]
+            idx = ndimage.distance_transform_edt(sub == 0, sampling=SPACING, return_indices=True)[1]
             nearest = sub[tuple(idx)]
             inst_map[m][box][mask[box]] = nearest[mask[box]]
     elif s != 'extra':
@@ -481,15 +481,100 @@ for cid, (k, s) in assign.items():
     else:
         inst_map[m][mask] = k + 1   # extra candidate of the same model on the same instance: same instance vote (one model, one vote per voxel)
 
+# 3b. detached pieces, geometric only (names never decide). A piece is an instance whose union volume is below
+# PIECE_RATIO x the median union volume of the family and that at least one eligible model does not segment as its own
+# object (a small object seen by every eligible model is a small bone). It is merged into the one instance whose union lies within
+# FRAG_MM of it (surface distance in mm, anisotropic spacing honoured). With two instances in reach it merges only when
+# the nearest is at least AMBIG_RATIO times closer than the next; otherwise it stays a separate `ambiguous` proposal,
+# and with none in reach a separate `piece`. Label agreement with the target is recorded as evidence, never used.
+PIECE_RATIO, FRAG_MM, AMBIG_RATIO = 0.5, 10.0, 2.0
+n_inst = len(instances)
+def union_mask(k):
+    m = np.zeros(ts.shape, bool)
+    for mm in models:
+        m |= inst_map[mm] == k
+    return m
+union_vol = {k: int(union_mask(k).sum()) for k in range(1, n_inst + 1)}
+member_vols = [v for k, v in union_vol.items() if instances[k - 1]['role'] == MEMBER_ROLE and v > 0]
+med_vol = float(np.median(member_vols)) if member_vols else 0.0
+pad_vox = np.ceil(FRAG_MM / SPACING).astype(int) + 1
+merged_piece = {}
+for k in range(1, n_inst + 1):
+    inst = instances[k - 1]
+    if inst['role'] != MEMBER_ROLE or union_vol[k] == 0 or union_vol[k] >= PIECE_RATIO * med_vol:
+        inst['size_class'] = 'full' if union_vol[k] else 'empty'
+        continue
+    um = union_mask(k)
+    # a small object that every eligible model segments as its own object is a small bone (rib 12, C3), not a piece
+    n_eligible = sum(1 for m in models if float(processed[m][um].mean()) >= 0.5)
+    if len(inst['members']) >= n_eligible:
+        inst['size_class'] = 'full'
+        inst['small_but_fully_supported'] = True
+        continue
+    obj = ndimage.find_objects(um.astype(np.uint8))[0]
+    box = tuple(slice(max(0, o.start - pad_vox[d]), min(ts.shape[d], o.stop + pad_vox[d])) for d, o in enumerate(obj))
+    near = {}
+    for j in range(1, n_inst + 1):
+        if j == k or union_vol[j] == 0 or j in merged_piece:
+            continue
+        uj = union_mask(j)[box]
+        if not uj.any():
+            continue
+        dist = ndimage.distance_transform_edt(~uj, sampling=SPACING)
+        dmin = float(dist[um[box]].min())
+        if dmin <= FRAG_MM:
+            near[j] = round(dmin, 2)
+    inst['size_class'] = 'piece'
+    inst['union_ml_before_merge'] = round(union_vol[k] * vox_ml, 2)
+    ranked = sorted(near.items(), key=lambda kv: kv[1])
+    # unambiguous when one instance is in reach, or the nearest is at least AMBIG_RATIO times closer than the next
+    if len(ranked) == 1 or (len(ranked) >= 2 and ranked[1][1] >= AMBIG_RATIO * max(ranked[0][1], 0.5)):
+        j = ranked[0][0]
+        merged_piece[k] = j
+        labels_k = {m: by_id[c]['label'] for m, c in inst['members'].items()}
+        labels_j = {m: by_id[c]['label'] for m, c in instances[j - 1]['members'].items()}
+        instances[j - 1].setdefault('fragments', []).append({'piece_labels': labels_k, 'volume_ml': round(union_vol[k] * vox_ml, 2), 'surface_distance_mm': near[j],
+                                                              'next_instance_mm': ranked[1][1] if len(ranked) > 1 else None,
+                                                              'same_labels_as_target': all(labels_j.get(m) == l for m, l in labels_k.items())})
+        for c in inst['members'].values():
+            assign[c] = (j - 1, 'fragment')
+    elif near:
+        inst['ambiguous_near'] = near
+    else:
+        inst['nearest_instance_mm'] = None
+if merged_piece:
+    for k, j in merged_piece.items():
+        for m in models:
+            inst_map[m][inst_map[m] == k] = j
+    keep = [k for k in range(1, n_inst + 1) if k not in merged_piece]
+    lut = np.zeros(n_inst + 1, np.uint8)
+    for new, old in enumerate(keep, start=1):
+        lut[old] = new
+    for m in models:
+        inst_map[m] = lut[inst_map[m]]
+    instances = [instances[k - 1] for k in keep]
+    remap = {old - 1: new - 1 for new, old in enumerate(keep, start=1)}
+    for cid, (kk, st) in list(assign.items()):
+        if st == 'fragment':
+            assign[cid] = (remap[kk], st)
+        else:
+            assign[cid] = ([remap[x] for x in kk] if isinstance(kk, list) else remap[kk], st)
+    for k, inst in enumerate(instances):
+        inst['index'] = k + 1
+        inst['id'] = f'{ID_PREFIX}{k + 1:02d}' if inst['role'] == MEMBER_ROLE else f'S{k + 1:02d}'
+    print('pieces merged geometrically:', len(merged_piece), flush=True)
+
 # 4. vote --------------------------------------------------------------------------------------------
 n_inst = len(instances)
 best_votes = np.zeros(ts.shape, np.uint8)
 winner = np.zeros(ts.shape, np.uint8)
+n_distinct = np.zeros(ts.shape, np.uint8)   # how many different instance ids the models put on a voxel (conflict when > 1)
 for k in range(1, n_inst + 1):
     v = sum((inst_map[m] == k).astype(np.uint8) for m in models)
     better = v > best_votes
     winner[better] = k
     best_votes[better] = v[better]
+    n_distinct += (v > 0).astype(np.uint8)
 eligible = sum(processed[m].astype(np.uint8) for m in models)
 sacrum_ids = [inst['index'] for inst in instances if inst['role'] == 'sacrum']
 if sacrum_ids:
@@ -498,22 +583,27 @@ if sacrum_ids:
         if not supports_sacrum[m]:
             eligible = eligible - (sac_vox & processed[m]).astype(np.uint8)
 consensus = np.where((best_votes > 0) & (best_votes * 2 > eligible), winner, 0).astype(np.uint8)
-review = np.where(best_votes > 0, winner, 0).astype(np.uint8)
-print('instances', n_inst, 'consensus voxels', int((consensus > 0).sum()), 'review-only voxels', int(((review > 0) & (consensus == 0)).sum()), flush=True)
+review = np.where(best_votes > 0, winner, 0).astype(np.uint8)   # winner-takes-all view only; the per-model maps keep every alternative
+print('instances', n_inst, 'consensus voxels', int((consensus > 0).sum()), 'review-only voxels', int(((review > 0) & (consensus == 0)).sum()),
+      'conflict voxels', int((n_distinct > 1).sum()), flush=True)
 
 # per-instance table
 skelly_pelvis = sk == SK_PELVIS
 for inst in instances:
     k = inst['index']
     cm = consensus == k
-    rm = review == k
+    rm = union_mask(k)                       # true union: every voxel where any model votes this instance
+    votes_k = sum((inst_map[m] == k).astype(np.uint8) for m in models)
     n_c, n_r = int(cm.sum()), int(rm.sum())
     inst['consensus_ml'] = round(n_c * vox_ml, 2)
     inst['union_ml'] = round(n_r * vox_ml, 2)
     inst['agreement_ratio'] = round(n_c / n_r, 3) if n_r else None
     inst['unanimous_fraction'] = round(float((best_votes[cm] == eligible[cm]).mean()), 3) if n_c else None
     inst['eligible_models_on_consensus'] = {str(e): int((eligible[cm] == e).sum()) for e in np.unique(eligible[cm])} if n_c else {}
-    inst['votes_histogram_on_union'] = {str(v): int((best_votes[rm] == v).sum()) for v in np.unique(best_votes[rm])} if n_r else {}
+    inst['votes_histogram_on_union'] = {str(v): int((votes_k[rm] == v).sum()) for v in np.unique(votes_k[rm])} if n_r else {}
+    inst['conflict_voxels'] = int(((n_distinct > 1) & rm).sum())            # union voxels where another model votes a different instance
+    inst['lost_to_other_winner_ml'] = round(float((rm & (winner != k) & (winner > 0)).sum()) * vox_ml, 2)   # union voxels the winner map gives to another instance
+    inst.setdefault('size_class', 'full' if n_r else 'empty')
     if n_c:
         c = np.array(ndimage.center_of_mass(cm))
         inst['consensus_centroid_ras_mm'] = to_ras(c).round(1).tolist()
@@ -559,9 +649,10 @@ for inst in instances:
     if not inst.get('fragments'):
         inst.pop('fragments', None)
 
-our_vert = [inst for inst in instances if inst['role'] == MEMBER_ROLE and inst['consensus_ml'] > 0]
+our_vert = [inst for inst in instances if inst['role'] == MEMBER_ROLE and inst['consensus_ml'] > 0 and inst['size_class'] == 'full']
+pieces = [inst for inst in instances if inst['role'] == MEMBER_ROLE and inst['size_class'] == 'piece']
 hra_evidence, lumbar_block = None, []
-if FAMILY == 'vertebrae':
+if FAMILY == 'vertebrae' and not NO_HRA:
     # 5. HRA same-donor chain (evidence, not decision) ------------------------------------------------------
     hra = json.loads((ROOT / 'public/atlases/hra-female.json').read_text())
     hra_names = {'vertebral bone 1': 'C1', 'vertebral bone 2': 'C2'}
@@ -620,171 +711,186 @@ save(f'{NII_STEM}-instances.nii.gz', consensus)
 save(f'{NII_STEM}-review.nii.gz', review)
 save(f'{NII_STEM}-votes.nii.gz', best_votes)
 save(f'{NII_STEM}-eligible.nii.gz', eligible)
+for m in models:   # every alternative is kept: instance id voted by each model
+    save(f'{NII_STEM}-model-{m}.nii.gz', inst_map[m])
 
-out = {'ct': CT, 'family': FAMILY, 'inputs': {'totalseg': str(TS.relative_to(ROOT)), 'moose': str(MOOSE.relative_to(ROOT)), 'skellytour': str((SKELLY_DIR / 'skellytour_high.nii.gz').relative_to(ROOT)), 'ct_hu': str(HU.relative_to(ROOT))},
+out = {'ct': CT, 'family': FAMILY, 'inputs': {'totalseg': rel(TS), 'moose': rel(MOOSE), 'skellytour': rel(SKELLY_DIR / 'skellytour_high.nii.gz'), 'ct_hu': rel(HU)},
        'grid': {'shape': list(ts_im.shape), 'axcodes': list(nib.aff2axcodes(affine)), 'voxel_ml': vox_ml, 'roi': [[s.start, s.stop] for s in roi]},
-       'parameters': {'min_candidate_ml': MIN_ML, 'iou_group': IOU_GROUP, 'iou_match': IOU_MATCH, 'cover_part': COVER_PART, 'connectivity': 26, 'vote': 'strict majority of eligible models per voxel',
+       'parameters': {'min_candidate_ml': MIN_ML, 'iou_group': IOU_GROUP, 'iou_match': IOU_MATCH, 'cover_part': COVER_PART, 'oversize': OVERSIZE, 'piece_ratio': PIECE_RATIO, 'fragment_mm': FRAG_MM,
+                      'connectivity': 26, 'vote': 'strict majority of eligible models per voxel', 'tie_rule': 'winner map: equal votes go to the lower instance index (cranial); such voxels are never consensus and are counted in conflict_voxels',
+                      'spacing_mm': SPACING.round(4).tolist(),
                       'eligibility': {'totalseg': 'whole grid', 'moose': 'whole grid', 'skellytour': f'body crop i {i0}:{i1} j {j0}:{j1} (plan.json); no sacrum class'}},
        'label_vocabulary': {'totalseg': sorted(TS_LABELS), 'moose': sorted(MO_LABELS), 'skellytour': sorted(SK_LABELS)},
        'candidates': cands, 'fragments_below_min': fragments, 'pairwise_correspondence': pairwise,
-       'instances': instances, 'instance_count': {f'{MEMBER_ROLE}_consensus': len(our_vert), f'{MEMBER_ROLE}_any': sum(1 for i in instances if i['role'] == MEMBER_ROLE), 'sacrum': len(sacrum_ids)},
+       'skellytour_manifest': skelly_manifest_info,
+       'instances': instances, 'instance_count': {f'{MEMBER_ROLE}_consensus_full': len(our_vert), f'{MEMBER_ROLE}_pieces': len(pieces),
+                                                   f'{MEMBER_ROLE}_any': sum(1 for i in instances if i['role'] == MEMBER_ROLE), 'sacrum': len(sacrum_ids),
+                                                   'conflict_voxels': int((n_distinct > 1).sum())},
        'lumbar_type_block_below_T12': lumbar_block, 'hra_same_donor_evidence': hra_evidence,
        'skellytour_seams_z': seams,
-       'volumes': {k: str((OUT_NII / f'{NII_STEM}-{k}.nii.gz').relative_to(ROOT)) for k in ['instances', 'review', 'votes', 'eligible']},
+       'volumes': {k: rel(OUT_NII / f'{NII_STEM}-{k}.nii.gz') for k in ['instances', 'review', 'votes', 'eligible'] + [f'model-{m}' for m in models]},
        'naming': 'Every instance id is provisional and geometric. hra_name_by_order is external same-donor evidence for the count and order, not a decision; name_status stays pending until an anatomist or a documented reference confirms the levels.'}
 OUT_JSON.write_text(json.dumps(out, indent=1, default=float) + '\n')
-print('->', OUT_JSON.relative_to(ROOT), flush=True)
+print('->', rel(OUT_JSON), flush=True)
 
 # 7. panels ---------------------------------------------------------------------------------------------
-import matplotlib  # noqa: E402
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt  # noqa: E402
-from matplotlib import colors  # noqa: E402
+def make_panels():
+    import matplotlib  # noqa: E402
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt  # noqa: E402
+    from matplotlib import colors  # noqa: E402
 
-OUT_PNG.mkdir(parents=True, exist_ok=True)
-hu = np.asanyarray(nib.load(HU).dataobj)[roi].astype(np.float32)
-T = ornt_transform(io_orientation(affine), axcodes2ornt(('R', 'A', 'S')))
-R = lambda a: apply_orientation(a, T)   # noqa: E731
-hu_r, cons_r, rev_r = R(hu), R(consensus), R(review)
-mod_r = {m: R(arrays[m][0]) for m in models}
-votes_r, elig_r = R(best_votes), R(eligible)
-# seam z (voxel index along the original k axis) -> RAS-array index
-flip_k = T[2, 1] < 0
-seam_idx = [(ts.shape[2] - 1 - (z - off[2])) if flip_k else (z - off[2]) for z in seams if off[2] <= z < off[2] + ts.shape[2]]
-cmap = colors.ListedColormap(plt.get_cmap('tab20').colors + plt.get_cmap('tab20b').colors)
-norm = colors.BoundaryNorm(np.arange(0.5, n_inst + 1.5), cmap.N)
-occ = np.argwhere(cons_r > 0)
-x_mid = int(np.median(occ[:, 0])) if len(occ) else cons_r.shape[0] // 2
-y_mid = int(np.median(occ[:, 1])) if len(occ) else cons_r.shape[1] // 2
-sp = np.abs(np.diag(affine)[:3])
-aspect_sag = sp[2] / sp[1]
-aspect_cor = sp[2] / sp[0]
-
-
-def centroid_r(inst_index, arr=cons_r):
-    m = arr == inst_index
-    return np.array(ndimage.center_of_mass(m)) if m.any() else None
+    OUT_PNG.mkdir(parents=True, exist_ok=True)
+    hu = np.asanyarray(nib.load(HU).dataobj)[roi].astype(np.float32)
+    T = ornt_transform(io_orientation(affine), axcodes2ornt(('R', 'A', 'S')))
+    R = lambda a: apply_orientation(a, T)   # noqa: E731
+    hu_r, cons_r, rev_r = R(hu), R(consensus), R(review)
+    mod_r = {m: R(arrays[m][0]) for m in models}
+    votes_r, elig_r = R(best_votes), R(eligible)
+    # seam z (voxel index along the original k axis) -> RAS-array index
+    flip_k = T[2, 1] < 0
+    seam_idx = [(ts.shape[2] - 1 - (z - off[2])) if flip_k else (z - off[2]) for z in seams if off[2] <= z < off[2] + ts.shape[2]]
+    cmap = colors.ListedColormap(plt.get_cmap('tab20').colors + plt.get_cmap('tab20b').colors)
+    norm = colors.BoundaryNorm(np.arange(0.5, n_inst + 1.5), cmap.N)
+    occ = np.argwhere(cons_r > 0)
+    x_mid = int(np.median(occ[:, 0])) if len(occ) else cons_r.shape[0] // 2
+    y_mid = int(np.median(occ[:, 1])) if len(occ) else cons_r.shape[1] // 2
+    sp = np.abs(np.diag(affine)[:3])
+    aspect_sag = sp[2] / sp[1]
+    aspect_cor = sp[2] / sp[0]
 
 
-def overlay(ax, img, lab, aspect, title):
-    ax.imshow(img.T, cmap='gray', vmin=-200, vmax=1200, origin='lower', aspect=aspect)
-    ax.imshow(np.ma.masked_equal(lab.T, 0), cmap=cmap, norm=norm, alpha=0.55, origin='lower', aspect=aspect, interpolation='nearest')
-    ax.set_title(title, fontsize=9)
-    ax.set_xticks([])
-    ax.set_yticks([])
-    for z in seam_idx:
-        ax.axhline(z, color='cyan', lw=0.6, ls='--')
+    def centroid_r(inst_index, arr=cons_r):
+        m = arr == inst_index
+        return np.array(ndimage.center_of_mass(m)) if m.any() else None
 
 
-# sagittal: max-projection of the instance labels over a slab around the mid-sagittal plane keeps thin bodies visible
-slab = slice(max(0, x_mid - 12), min(cons_r.shape[0], x_mid + 12))
-def slab_labels(lab):
-    if FAMILY != 'vertebrae':   # ribs: coronal projection along y (anterior-posterior), labels of the most posterior voxel win
-        out = np.zeros((lab.shape[0], lab.shape[2]), lab.dtype)
-        for dy in range(lab.shape[1] - 1, -1, -1):
-            m = lab[:, dy, :] > 0
-            out[m] = lab[:, dy, :][m]
+    def overlay(ax, img, lab, aspect, title):
+        ax.imshow(img.T, cmap='gray', vmin=-200, vmax=1200, origin='lower', aspect=aspect)
+        ax.imshow(np.ma.masked_equal(lab.T, 0), cmap=cmap, norm=norm, alpha=0.55, origin='lower', aspect=aspect, interpolation='nearest')
+        ax.set_title(title, fontsize=9)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        for z in seam_idx:
+            ax.axhline(z, color='cyan', lw=0.6, ls='--')
+
+
+    # sagittal: max-projection of the instance labels over a slab around the mid-sagittal plane keeps thin bodies visible
+    slab = slice(max(0, x_mid - 12), min(cons_r.shape[0], x_mid + 12))
+    def slab_labels(lab):
+        if FAMILY != 'vertebrae':   # ribs: coronal projection along y (anterior-posterior), labels of the most posterior voxel win
+            out = np.zeros((lab.shape[0], lab.shape[2]), lab.dtype)
+            for dy in range(lab.shape[1] - 1, -1, -1):
+                m = lab[:, dy, :] > 0
+                out[m] = lab[:, dy, :][m]
+            return out
+        s = lab[slab]
+        # per (y, z) take the label of the voxel nearest to the mid plane
+        out = np.zeros(s.shape[1:], lab.dtype)
+        for dx in sorted(range(s.shape[0]), key=lambda i: abs(i - (x_mid - slab.start)), reverse=True):
+            m = s[dx] > 0
+            out[m] = s[dx][m]
         return out
-    s = lab[slab]
-    # per (y, z) take the label of the voxel nearest to the mid plane
-    out = np.zeros(s.shape[1:], lab.dtype)
-    for dx in sorted(range(s.shape[0]), key=lambda i: abs(i - (x_mid - slab.start)), reverse=True):
-        m = s[dx] > 0
-        out[m] = s[dx][m]
-    return out
-if FAMILY != 'vertebrae':
-    hu_r_view = hu_r.max(axis=1)     # coronal MIP of the CT for the rib panels
-    aspect_sag = aspect_cor
+    if FAMILY != 'vertebrae':
+        hu_r_view = hu_r.max(axis=1)     # coronal MIP of the CT for the rib panels
+        aspect_sag = aspect_cor
+    else:
+        hu_r_view = hu_r[x_mid]
+
+    fig, ax = plt.subplots(figsize=(6, 16))
+    overlay(ax, hu_r_view, slab_labels(cons_r), aspect_sag, f'{CT} {FAMILY}: consensus instances (strict majority), ' + ('sagittal slab' if FAMILY == 'vertebrae' else 'coronal projection') + '; cyan = Skellytour chunk seams')
+    for inst in instances:
+        if inst['consensus_ml'] <= 0:
+            continue
+        c = centroid_r(inst['index'])
+        if c is not None:
+            hn = inst.get('hra_name_by_order')
+            ax.text((c[1] if FAMILY == 'vertebrae' else c[0]) + 25, c[2], f"{inst['id']}  {inst['consensus_ml']:.0f} mL  {inst['unanimous_fraction']:.2f}" + (f'  HRA {hn}' if hn else ''), fontsize=6, color='yellow', va='center')
+    fig.tight_layout()
+    fig.savefig(OUT_PNG / 'sagittal.png', dpi=130)
+    plt.close(fig)
+
+    # models: each model's own labels with its own names, then the consensus
+    fig, axes = plt.subplots(1, 4, figsize=(20, 16) if FAMILY == 'vertebrae' else (24, 14))
+    for ax, m in zip(axes, models):
+        lab = slab_labels(mod_r[m])
+        ids = arrays[m][1]
+        inv = {v: k for k, v in ids.items()}
+        show = np.zeros_like(lab)
+        for v in np.unique(lab):
+            if v in inv:
+                show[lab == v] = v
+        ax.imshow(hu_r_view.T, cmap='gray', vmin=-200, vmax=1200, origin='lower', aspect=aspect_sag)
+        ax.imshow(np.ma.masked_equal(show.T, 0), cmap='nipy_spectral', alpha=0.55, origin='lower', aspect=aspect_sag, interpolation='nearest')
+        for z in seam_idx:
+            ax.axhline(z, color='cyan', lw=0.6, ls='--')
+        for v in np.unique(show):
+            if v and v in inv:
+                c = np.array(ndimage.center_of_mass(show == v))
+                ax.text(c[0] + 25, c[1], inv[v].replace('vertebrae_', '').replace('vertebra_', '').replace(f'rib_{SIDE}_', 'r').replace(f'{str(SIDE).upper()}_RIB_', 'R'), fontsize=6, color='yellow', va='center')
+        ax.set_title(f'{m}: own labels', fontsize=9)
+        ax.set_xticks([])
+        ax.set_yticks([])
+    overlay(axes[3], hu_r_view, slab_labels(cons_r), aspect_sag, 'consensus instances')
+    for inst in instances:
+        c = centroid_r(inst['index'])
+        if c is not None:
+            axes[3].text((c[1] if FAMILY == 'vertebrae' else c[0]) + 25, c[2], inst['id'], fontsize=6, color='yellow', va='center')
+    fig.tight_layout()
+    fig.savefig(OUT_PNG / 'models.png', dpi=110)
+    plt.close(fig)
+
+    # coronal
+    fig, ax = plt.subplots(figsize=(8, 16))
+    cor = np.zeros(cons_r.shape[::2], cons_r.dtype)
+    for dy in range(max(0, y_mid - 15), min(cons_r.shape[1], y_mid + 15)):
+        m = cons_r[:, dy, :] > 0
+        cor[m] = cons_r[:, dy, :][m]
+    overlay(ax, hu_r[:, y_mid, :], cor, aspect_cor, f'{CT}: consensus instances, coronal slab')
+    for inst in instances:
+        c = centroid_r(inst['index'])
+        if c is not None:
+            ax.text(c[0] + 30, c[2], inst['id'], fontsize=6, color='yellow', va='center')
+    fig.tight_layout()
+    fig.savefig(OUT_PNG / 'coronal.png', dpi=130)
+    plt.close(fig)
+
+    # axial: one tile per instance at its consensus centroid, consensus fill + model contours
+    shown = [inst for inst in instances if inst['consensus_ml'] > 0]
+    cols = 6
+    rows = int(np.ceil(len(shown) / cols)) or 1
+    fig, axes = plt.subplots(rows, cols, figsize=(3 * cols, 3 * rows))
+    axes = np.atleast_1d(axes).ravel()
+    colours = {'totalseg': 'red', 'moose': 'lime', 'skellytour': 'deepskyblue'}
+    inst_r = {m: R(inst_map[m]) for m in models}
+    for ax in axes:
+        ax.axis('off')
+    for ax, inst in zip(axes, shown):
+        c = centroid_r(inst['index'])
+        z = int(round(c[2]))
+        half = 45
+        xs = slice(max(0, int(c[0]) - half), int(c[0]) + half)
+        ys = slice(max(0, int(c[1]) - half), int(c[1]) + half)
+        ax.imshow(hu_r[xs, ys, z].T, cmap='gray', vmin=-200, vmax=1200, origin='lower')
+        ax.imshow(np.ma.masked_not_equal(cons_r[xs, ys, z].T, inst['index']), cmap=cmap, norm=norm, alpha=0.4, origin='lower', interpolation='nearest')
+        for m in models:
+            lab = inst_r[m][xs, ys, z]
+            if (lab == inst['index']).any():
+                ax.contour((lab == inst['index']).T.astype(float), levels=[0.5], colors=colours[m], linewidths=0.8)
+        st = ' '.join(f"{m[:2]}:{inst['models'][m]['state'][:4]}" for m in models)
+        ax.set_title(f"{inst['id']} z{inst['consensus_z_vox'][0]}-{inst['consensus_z_vox'][1]} {inst['consensus_ml']:.0f} mL\n{st}", fontsize=7)
+    fig.suptitle(f'{CT}: axial at each instance centroid; fill = consensus; contours: red TotalSegmentator, green MOOSE, blue Skellytour', fontsize=9)
+    fig.tight_layout()
+    fig.savefig(OUT_PNG / 'axial.png', dpi=110)
+    plt.close(fig)
+    print('panels ->', rel(OUT_PNG), flush=True)
+
+
+
+if NO_PANELS:
+    print('panels skipped', flush=True)
 else:
-    hu_r_view = hu_r[x_mid]
-
-fig, ax = plt.subplots(figsize=(6, 16))
-overlay(ax, hu_r_view, slab_labels(cons_r), aspect_sag, f'{CT} {FAMILY}: consensus instances (strict majority), ' + ('sagittal slab' if FAMILY == 'vertebrae' else 'coronal projection') + '; cyan = Skellytour chunk seams')
-for inst in instances:
-    if inst['consensus_ml'] <= 0:
-        continue
-    c = centroid_r(inst['index'])
-    if c is not None:
-        hn = inst.get('hra_name_by_order')
-        ax.text((c[1] if FAMILY == 'vertebrae' else c[0]) + 25, c[2], f"{inst['id']}  {inst['consensus_ml']:.0f} mL  {inst['unanimous_fraction']:.2f}" + (f'  HRA {hn}' if hn else ''), fontsize=6, color='yellow', va='center')
-fig.tight_layout()
-fig.savefig(OUT_PNG / 'sagittal.png', dpi=130)
-plt.close(fig)
-
-# models: each model's own labels with its own names, then the consensus
-fig, axes = plt.subplots(1, 4, figsize=(20, 16) if FAMILY == 'vertebrae' else (24, 14))
-for ax, m in zip(axes, models):
-    lab = slab_labels(mod_r[m])
-    ids = arrays[m][1]
-    inv = {v: k for k, v in ids.items()}
-    show = np.zeros_like(lab)
-    for v in np.unique(lab):
-        if v in inv:
-            show[lab == v] = v
-    ax.imshow(hu_r_view.T, cmap='gray', vmin=-200, vmax=1200, origin='lower', aspect=aspect_sag)
-    ax.imshow(np.ma.masked_equal(show.T, 0), cmap='nipy_spectral', alpha=0.55, origin='lower', aspect=aspect_sag, interpolation='nearest')
-    for z in seam_idx:
-        ax.axhline(z, color='cyan', lw=0.6, ls='--')
-    for v in np.unique(show):
-        if v and v in inv:
-            c = np.array(ndimage.center_of_mass(show == v))
-            ax.text(c[0] + 25, c[1], inv[v].replace('vertebrae_', '').replace('vertebra_', '').replace(f'rib_{SIDE}_', 'r').replace(f'{str(SIDE).upper()}_RIB_', 'R'), fontsize=6, color='yellow', va='center')
-    ax.set_title(f'{m}: own labels', fontsize=9)
-    ax.set_xticks([])
-    ax.set_yticks([])
-overlay(axes[3], hu_r_view, slab_labels(cons_r), aspect_sag, 'consensus instances')
-for inst in instances:
-    c = centroid_r(inst['index'])
-    if c is not None:
-        axes[3].text((c[1] if FAMILY == 'vertebrae' else c[0]) + 25, c[2], inst['id'], fontsize=6, color='yellow', va='center')
-fig.tight_layout()
-fig.savefig(OUT_PNG / 'models.png', dpi=110)
-plt.close(fig)
-
-# coronal
-fig, ax = plt.subplots(figsize=(8, 16))
-cor = np.zeros(cons_r.shape[::2], cons_r.dtype)
-for dy in range(max(0, y_mid - 15), min(cons_r.shape[1], y_mid + 15)):
-    m = cons_r[:, dy, :] > 0
-    cor[m] = cons_r[:, dy, :][m]
-overlay(ax, hu_r[:, y_mid, :], cor, aspect_cor, f'{CT}: consensus instances, coronal slab')
-for inst in instances:
-    c = centroid_r(inst['index'])
-    if c is not None:
-        ax.text(c[0] + 30, c[2], inst['id'], fontsize=6, color='yellow', va='center')
-fig.tight_layout()
-fig.savefig(OUT_PNG / 'coronal.png', dpi=130)
-plt.close(fig)
-
-# axial: one tile per instance at its consensus centroid, consensus fill + model contours
-shown = [inst for inst in instances if inst['consensus_ml'] > 0]
-cols = 6
-rows = int(np.ceil(len(shown) / cols)) or 1
-fig, axes = plt.subplots(rows, cols, figsize=(3 * cols, 3 * rows))
-axes = np.atleast_1d(axes).ravel()
-colours = {'totalseg': 'red', 'moose': 'lime', 'skellytour': 'deepskyblue'}
-inst_r = {m: R(inst_map[m]) for m in models}
-for ax in axes:
-    ax.axis('off')
-for ax, inst in zip(axes, shown):
-    c = centroid_r(inst['index'])
-    z = int(round(c[2]))
-    half = 45
-    xs = slice(max(0, int(c[0]) - half), int(c[0]) + half)
-    ys = slice(max(0, int(c[1]) - half), int(c[1]) + half)
-    ax.imshow(hu_r[xs, ys, z].T, cmap='gray', vmin=-200, vmax=1200, origin='lower')
-    ax.imshow(np.ma.masked_not_equal(cons_r[xs, ys, z].T, inst['index']), cmap=cmap, norm=norm, alpha=0.4, origin='lower', interpolation='nearest')
-    for m in models:
-        lab = inst_r[m][xs, ys, z]
-        if (lab == inst['index']).any():
-            ax.contour((lab == inst['index']).T.astype(float), levels=[0.5], colors=colours[m], linewidths=0.8)
-    st = ' '.join(f"{m[:2]}:{inst['models'][m]['state'][:4]}" for m in models)
-    ax.set_title(f"{inst['id']} z{inst['consensus_z_vox'][0]}-{inst['consensus_z_vox'][1]} {inst['consensus_ml']:.0f} mL\n{st}", fontsize=7)
-fig.suptitle(f'{CT}: axial at each instance centroid; fill = consensus; contours: red TotalSegmentator, green MOOSE, blue Skellytour', fontsize=9)
-fig.tight_layout()
-fig.savefig(OUT_PNG / 'axial.png', dpi=110)
-plt.close(fig)
-print('panels ->', OUT_PNG.relative_to(ROOT), flush=True)
+    make_panels()
 
 # 8. self-test of the correspondence states on perturbed copies of the MOOSE candidates -----------------------
 if SELFTEST:
@@ -852,7 +958,7 @@ if SELFTEST:
                                   'pass': r['state_counts'] == base['state_counts'] and r['order'] == base['order']}
     # (e) shift: one body moved 15 mm caudally -> IoU with its TS partner drops below the match threshold ('partial') or the order breaks
     pm_e = pm.copy()
-    shift = int(round(15 / sp[2]))
+    shift = int(round(15 / SPACING[2]))
     m = pm == ids[1]
     pm_e[m] = 0
     moved = np.zeros_like(m)

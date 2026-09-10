@@ -213,8 +213,19 @@ label maps `rib-<side>-{instances,review,votes,eligible}.nii.gz`; no HRA chain, 
 no rib meshes). Outputs `generated/ct-vertebra-instances-{nlm,denver}.json` (candidates, pairwise
 correspondence with states matched/split/merge/partial/unmatched, instance table with per-model state
 `seed | matched | merge | partial | single | negative | absorbed | unsupported | unprocessed`, votes,
-HRA same-donor chain by order, self-test results), review panels in
+HRA same-donor chain by order, self-test results, per-instance `size_class`, `fragments`, `conflict_voxels`,
+`lost_to_other_winner_ml` computed on the true per-model union), review panels in
 `generated/ct-vertebra-instances-{nlm,denver}/` and the label maps `vertebra-{instances,review,votes,eligible}.nii.gz`
-under `data/derived/nlm-vhf/consensus/` and `data/derived/denver/priors/consensus/`. The self-test perturbs
-the MOOSE candidates (merge two bodies, split one, delete one, swap two names, shift one by 15 mm) and
-must report the expected states; the run exits non-zero if it does not.
+under `data/derived/nlm-vhf/consensus/` and `data/derived/denver/priors/consensus/`. The `--selftest` perturbs
+one model's candidates (merge two bodies, split one, delete one, swap two names, shift one by 15 mm) and
+must report the expected correspondence states; it covers only `correspondence()`. The procedure as a whole is
+covered by `python scripts/test-ct-instances.py` (24 end-to-end scenarios on synthetic volumes through
+`--inputs/--out/--no-panels/--no-hra`: baseline, label names permuted in every model, a model merging two
+bodies, a model splitting one body, a missing body, a missing Skellytour chunk with and without
+`--allow-incomplete`, near and far detached pieces, a small body seen by every model, contested boundaries
+with per-model maps, and the anisotropic nearest-seed split). Run it after any change to the script.
+Label maps written per run: `<stem>-{instances,review,votes,eligible}.nii.gz` plus `<stem>-model-<model>.nii.gz`
+(the instance id each model votes, so every alternative can be rebuilt; `review` is a winner-takes-all view,
+ties go to the lower instance index and never enter the consensus). Skellytour eligibility is read from the
+merge manifest (completed chunk cores inside the crop); a manifest with `complete: false` stops the run unless
+`--allow-incomplete` is given.

@@ -39,8 +39,17 @@
   "iou_group": 0.2,
   "iou_match": 0.5,
   "cover_part": 0.2,
+  "oversize": 1.4,
+  "piece_ratio": 0.5,
+  "fragment_mm": 10.0,
   "connectivity": 26,
   "vote": "strict majority of eligible models per voxel",
+  "tie_rule": "winner map: equal votes go to the lower instance index (cranial); such voxels are never consensus and are counted in conflict_voxels",
+  "spacing_mm": [
+   0.7227,
+   0.7227,
+   1.0
+  ],
   "eligibility": {
    "totalseg": "whole grid",
    "moose": "whole grid",
@@ -3585,6 +3594,12 @@
    }
   }
  },
+ "skellytour_manifest": {
+  "format": "manifest",
+  "complete": true,
+  "missing_chunks": [],
+  "merged_sha256": "f8c64fa4a295117aa18c4ddb133896032c06eb570fe2b2554577c858bafd7513"
+ },
  "instances": [
   {
    "partition_model": null,
@@ -3593,6 +3608,7 @@
    "role": "rib",
    "id": "RL01",
    "index": 1,
+   "size_class": "full",
    "consensus_ml": 9.21,
    "union_ml": 17.64,
    "agreement_ratio": 0.522,
@@ -3605,6 +3621,8 @@
     "2": 10253,
     "3": 7377
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     -51.6,
     4.2,
@@ -3664,6 +3682,7 @@
    "role": "rib",
    "id": "RL02",
    "index": 2,
+   "size_class": "full",
    "consensus_ml": 11.95,
    "union_ml": 21.85,
    "agreement_ratio": 0.547,
@@ -3676,6 +3695,8 @@
     "2": 13030,
     "3": 9855
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     -72.0,
     -2.3,
@@ -3735,6 +3756,7 @@
    "role": "rib",
    "id": "RL03",
    "index": 3,
+   "size_class": "full",
    "consensus_ml": 12.71,
    "union_ml": 22.64,
    "agreement_ratio": 0.561,
@@ -3747,6 +3769,8 @@
     "2": 13537,
     "3": 10801
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     -82.0,
     -8.9,
@@ -3806,6 +3830,7 @@
    "role": "rib",
    "id": "RL04",
    "index": 4,
+   "size_class": "full",
    "consensus_ml": 14.73,
    "union_ml": 24.31,
    "agreement_ratio": 0.606,
@@ -3818,6 +3843,8 @@
     "2": 13280,
     "3": 14934
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     -89.2,
     -12.2,
@@ -3875,27 +3902,25 @@
   {
    "partition_model": null,
    "group_kind": "clean",
-   "fragments": [
-    {
-     "moose": "rib_left_5#2"
-    }
-   ],
    "z_ras_mm": 496.4,
    "role": "rib",
    "id": "RL05",
    "index": 5,
+   "size_class": "full",
    "consensus_ml": 16.87,
-   "union_ml": 27.87,
-   "agreement_ratio": 0.605,
+   "union_ml": 26.49,
+   "agreement_ratio": 0.637,
    "unanimous_fraction": 0.534,
    "eligible_models_on_consensus": {
     "3": 32311
    },
    "votes_histogram_on_union": {
-    "1": 21063,
+    "1": 18415,
     "2": 15067,
     "3": 17244
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     -93.4,
     -11.0,
@@ -3929,7 +3954,7 @@
      "label": "rib_left_5",
      "candidate_ml": 18.52,
      "components_of_label": 2,
-     "iou_with_consensus": 0.469,
+     "iou_with_consensus": 0.541,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -3957,27 +3982,41 @@
    "role": "rib",
    "id": "RL06",
    "index": 6,
-   "consensus_ml": 17.53,
-   "union_ml": 26.17,
-   "agreement_ratio": 0.67,
-   "unanimous_fraction": 0.459,
+   "size_class": "full",
+   "fragments": [
+    {
+     "piece_labels": {
+      "moose": "rib_left_5"
+     },
+     "volume_ml": 3.54,
+     "surface_distance_mm": 0.0,
+     "next_instance_mm": 8.9,
+     "same_labels_as_target": false
+    }
+   ],
+   "consensus_ml": 17.92,
+   "union_ml": 27.55,
+   "agreement_ratio": 0.65,
+   "unanimous_fraction": 0.569,
    "eligible_models_on_consensus": {
-    "3": 33573
+    "3": 34322
    },
    "votes_histogram_on_union": {
-    "1": 16542,
-    "2": 18172,
-    "3": 15401
+    "1": 18441,
+    "2": 14793,
+    "3": 19529
    },
+   "conflict_voxels": 3,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
-    -93.1,
-    -19.5,
-    476.5
+    -93.2,
+    -17.8,
+    475.2
    ],
    "consensus_centroid_vhf_mm": [
-    434.7,
-    411.7,
-    1336.1
+    434.6,
+    413.4,
+    1334.9
    ],
    "consensus_z_vox": [
     1263,
@@ -3993,7 +4032,7 @@
      "label": "rib_left_6",
      "candidate_ml": 15.71,
      "components_of_label": 2,
-     "iou_with_consensus": 0.803,
+     "iou_with_consensus": 0.802,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -4002,7 +4041,7 @@
      "label": "rib_left_6",
      "candidate_ml": 16.79,
      "components_of_label": 2,
-     "iou_with_consensus": 0.495,
+     "iou_with_consensus": 0.571,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -4011,7 +4050,7 @@
      "label": "LEFT_RIB_6",
      "candidate_ml": 19.63,
      "components_of_label": 1,
-     "iou_with_consensus": 0.838,
+     "iou_with_consensus": 0.842,
      "extra_candidates": [],
      "seed_components": null
     }
@@ -4030,44 +4069,40 @@
     "rib_left_7#1",
     "rib_left_6#2"
    ],
-   "fragments": [
-    {
-     "totalseg": "rib_left_7#2",
-     "moose": "rib_left_7#2"
-    }
-   ],
    "z_ras_mm": 437.2,
    "role": "rib",
    "id": "RL07",
    "index": 7,
-   "consensus_ml": 21.87,
-   "union_ml": 34.48,
-   "agreement_ratio": 0.634,
-   "unanimous_fraction": 0.487,
+   "size_class": "full",
+   "consensus_ml": 19.21,
+   "union_ml": 29.71,
+   "agreement_ratio": 0.647,
+   "unanimous_fraction": 0.554,
    "eligible_models_on_consensus": {
-    "3": 41874
+    "3": 36784
    },
    "votes_histogram_on_union": {
-    "1": 24145,
-    "2": 21500,
+    "1": 20099,
+    "2": 16410,
     "3": 20374
    },
+   "conflict_voxels": 3,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
-    -96.2,
-    -16.5,
-    439.6
+    -92.5,
+    -24.4,
+    452.1
    ],
    "consensus_centroid_vhf_mm": [
-    432.2,
-    415.6,
-    1299.3
+    435.5,
+    407.3,
+    1311.6
    ],
    "consensus_z_vox": [
-    1192,
+    1233,
     1354
    ],
    "crosses_skellytour_seam_z": [
-    1200,
     1350
    ],
    "skellytour_pelvis_overlap_ml": 0.0,
@@ -4077,7 +4112,7 @@
      "label": "rib_left_7",
      "candidate_ml": 14.47,
      "components_of_label": 2,
-     "iou_with_consensus": 0.744,
+     "iou_with_consensus": 0.733,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -4086,7 +4121,7 @@
      "label": "rib_left_7",
      "candidate_ml": 15.36,
      "components_of_label": 2,
-     "iou_with_consensus": 0.571,
+     "iou_with_consensus": 0.604,
      "extra_candidates": [],
      "seed_components": [
       "rib_left_7#1",
@@ -4098,7 +4133,7 @@
      "label": "LEFT_RIB_7",
      "candidate_ml": 21.79,
      "components_of_label": 2,
-     "iou_with_consensus": 0.757,
+     "iou_with_consensus": 0.848,
      "extra_candidates": [],
      "seed_components": null
     }
@@ -4117,33 +4152,50 @@
    "role": "rib",
    "id": "RL08",
    "index": 8,
-   "consensus_ml": 16.85,
-   "union_ml": 23.62,
-   "agreement_ratio": 0.714,
-   "unanimous_fraction": 0.462,
+   "size_class": "full",
+   "fragments": [
+    {
+     "piece_labels": {
+      "totalseg": "rib_left_7",
+      "moose": "rib_left_7"
+     },
+     "volume_ml": 6.85,
+     "surface_distance_mm": 0.0,
+     "next_instance_mm": null,
+     "same_labels_as_target": false
+    }
+   ],
+   "consensus_ml": 19.89,
+   "union_ml": 28.39,
+   "agreement_ratio": 0.7,
+   "unanimous_fraction": 0.524,
    "eligible_models_on_consensus": {
-    "3": 32270
+    "3": 38081
    },
    "votes_histogram_on_union": {
-    "1": 12954,
-    "2": 17361,
-    "3": 14909
+    "1": 16282,
+    "2": 18126,
+    "3": 19955
    },
+   "conflict_voxels": 11,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
-    -89.3,
-    -40.1,
-    431.2
+    -94.5,
+    -28.1,
+    419.4
    ],
    "consensus_centroid_vhf_mm": [
-    438.5,
-    391.9,
-    1290.5
+    433.8,
+    404.3,
+    1278.8
    ],
    "consensus_z_vox": [
-    1229,
+    1192,
     1327
    ],
-   "crosses_skellytour_seam_z": [],
+   "crosses_skellytour_seam_z": [
+    1200
+   ],
    "skellytour_pelvis_overlap_ml": 0.0,
    "models": {
     "totalseg": {
@@ -4151,7 +4203,7 @@
      "label": "rib_left_8",
      "candidate_ml": 14.24,
      "components_of_label": 2,
-     "iou_with_consensus": 0.802,
+     "iou_with_consensus": 0.803,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -4160,7 +4212,7 @@
      "label": "rib_left_8",
      "candidate_ml": 15.13,
      "components_of_label": 2,
-     "iou_with_consensus": 0.523,
+     "iou_with_consensus": 0.635,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -4169,7 +4221,7 @@
      "label": "LEFT_RIB_8",
      "candidate_ml": 19.82,
      "components_of_label": 2,
-     "iou_with_consensus": 0.833,
+     "iou_with_consensus": 0.79,
      "extra_candidates": [],
      "seed_components": null
     }
@@ -4188,30 +4240,44 @@
    "role": "rib",
    "id": "RL09",
    "index": 9,
-   "consensus_ml": 15.54,
-   "union_ml": 24.22,
-   "agreement_ratio": 0.642,
-   "unanimous_fraction": 0.532,
+   "size_class": "full",
+   "fragments": [
+    {
+     "piece_labels": {
+      "moose": "rib_left_8"
+     },
+     "volume_ml": 3.39,
+     "surface_distance_mm": 0.0,
+     "next_instance_mm": null,
+     "same_labels_as_target": false
+    }
+   ],
+   "consensus_ml": 16.92,
+   "union_ml": 25.59,
+   "agreement_ratio": 0.661,
+   "unanimous_fraction": 0.527,
    "eligible_models_on_consensus": {
-    "3": 29762
+    "3": 32391
    },
    "votes_histogram_on_union": {
-    "1": 16624,
-    "2": 13936,
-    "3": 15826
+    "1": 16615,
+    "2": 15307,
+    "3": 17084
    },
+   "conflict_voxels": 11,
+   "lost_to_other_winner_ml": 0.01,
    "consensus_centroid_ras_mm": [
-    -87.6,
-    -48.5,
-    403.9
+    -90.9,
+    -43.0,
+    397.3
    ],
    "consensus_centroid_vhf_mm": [
-    440.3,
-    384.1,
-    1263.0
+    437.2,
+    389.8,
+    1256.5
    ],
    "consensus_z_vox": [
-    1194,
+    1166,
     1303
    ],
    "crosses_skellytour_seam_z": [
@@ -4224,7 +4290,7 @@
      "label": "rib_left_9",
      "candidate_ml": 13.0,
      "components_of_label": 2,
-     "iou_with_consensus": 0.771,
+     "iou_with_consensus": 0.714,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -4233,7 +4299,7 @@
      "label": "rib_left_9",
      "candidate_ml": 15.97,
      "components_of_label": 3,
-     "iou_with_consensus": 0.58,
+     "iou_with_consensus": 0.6,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -4242,7 +4308,7 @@
      "label": "LEFT_RIB_9",
      "candidate_ml": 19.07,
      "components_of_label": 1,
-     "iou_with_consensus": 0.797,
+     "iou_with_consensus": 0.865,
      "extra_candidates": [],
      "seed_components": null
     }
@@ -4261,6 +4327,7 @@
    "role": "rib",
    "id": "RL10",
    "index": 10,
+   "size_class": "full",
    "consensus_ml": 13.86,
    "union_ml": 19.96,
    "agreement_ratio": 0.694,
@@ -4273,6 +4340,8 @@
     "2": 11400,
     "3": 15131
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     -89.9,
     -50.5,
@@ -4338,6 +4407,7 @@
    "role": "rib",
    "id": "RL11",
    "index": 11,
+   "size_class": "full",
    "consensus_ml": 9.23,
    "union_ml": 13.99,
    "agreement_ratio": 0.66,
@@ -4350,6 +4420,8 @@
     "2": 6898,
     "3": 10780
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     -81.5,
     -58.5,
@@ -4409,53 +4481,13 @@
   },
   {
    "partition_model": null,
-   "group_kind": "single",
-   "z_ras_mm": 322.6,
-   "role": "rib",
-   "id": "RL12",
-   "index": 12,
-   "consensus_ml": 0.0,
-   "union_ml": 1.36,
-   "agreement_ratio": 0.0,
-   "unanimous_fraction": null,
-   "eligible_models_on_consensus": {},
-   "votes_histogram_on_union": {
-    "1": 2609
-   },
-   "skellytour_pelvis_overlap_ml": 0.0,
-   "models": {
-    "totalseg": {
-     "state": "absorbed",
-     "absorbed_into": "rib_left_8",
-     "fraction_of_union": 0.569
-    },
-    "moose": {
-     "state": "single",
-     "label": "rib_left_8",
-     "candidate_ml": 3.39,
-     "components_of_label": 2,
-     "iou_with_consensus": 0.0,
-     "extra_candidates": [],
-     "seed_components": null
-    },
-    "skellytour": {
-     "state": "absorbed",
-     "absorbed_into": "LEFT_RIB_8",
-     "fraction_of_union": 0.505
-    }
-   },
-   "source_labels": {
-    "moose": "rib_left_8"
-   },
-   "name_status": "pending"
-  },
-  {
-   "partition_model": null,
    "group_kind": "clean",
    "z_ras_mm": 313.9,
    "role": "rib",
-   "id": "RL13",
-   "index": 13,
+   "id": "RL12",
+   "index": 12,
+   "size_class": "full",
+   "small_but_fully_supported": true,
    "consensus_ml": 5.53,
    "union_ml": 8.32,
    "agreement_ratio": 0.665,
@@ -4468,6 +4500,8 @@
     "2": 4689,
     "3": 5898
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     -59.3,
     -63.2,
@@ -4524,9 +4558,11 @@
   }
  ],
  "instance_count": {
-  "rib_consensus": 12,
-  "rib_any": 13,
-  "sacrum": 0
+  "rib_consensus_full": 12,
+  "rib_pieces": 0,
+  "rib_any": 12,
+  "sacrum": 0,
+  "conflict_voxels": 14
  },
  "lumbar_type_block_below_T12": [],
  "hra_same_donor_evidence": null,
@@ -4547,7 +4583,10 @@
   "instances": "data/derived/denver/priors/consensus/rib-left-instances.nii.gz",
   "review": "data/derived/denver/priors/consensus/rib-left-review.nii.gz",
   "votes": "data/derived/denver/priors/consensus/rib-left-votes.nii.gz",
-  "eligible": "data/derived/denver/priors/consensus/rib-left-eligible.nii.gz"
+  "eligible": "data/derived/denver/priors/consensus/rib-left-eligible.nii.gz",
+  "model-totalseg": "data/derived/denver/priors/consensus/rib-left-model-totalseg.nii.gz",
+  "model-moose": "data/derived/denver/priors/consensus/rib-left-model-moose.nii.gz",
+  "model-skellytour": "data/derived/denver/priors/consensus/rib-left-model-skellytour.nii.gz"
  },
  "naming": "Every instance id is provisional and geometric. hra_name_by_order is external same-donor evidence for the count and order, not a decision; name_status stays pending until an anatomist or a documented reference confirms the levels.",
  "selftest": {

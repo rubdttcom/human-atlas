@@ -39,8 +39,17 @@
   "iou_group": 0.2,
   "iou_match": 0.5,
   "cover_part": 0.2,
+  "oversize": 1.4,
+  "piece_ratio": 0.5,
+  "fragment_mm": 10.0,
   "connectivity": 26,
   "vote": "strict majority of eligible models per voxel",
+  "tie_rule": "winner map: equal votes go to the lower instance index (cranial); such voxels are never consensus and are counted in conflict_voxels",
+  "spacing_mm": [
+   0.9375,
+   0.9375,
+   1.0
+  ],
   "eligibility": {
    "totalseg": "whole grid",
    "moose": "whole grid",
@@ -2977,6 +2986,12 @@
    }
   }
  },
+ "skellytour_manifest": {
+  "format": "manifest",
+  "complete": true,
+  "missing_chunks": [],
+  "merged_sha256": "5c697360eb31c7828e7e593f9b166a9b99922bfa6a72f8192c53a1bac3d64ddd"
+ },
  "instances": [
   {
    "partition_model": null,
@@ -2985,6 +3000,7 @@
    "role": "rib",
    "id": "RR01",
    "index": 1,
+   "size_class": "full",
    "consensus_ml": 10.55,
    "union_ml": 14.91,
    "agreement_ratio": 0.707,
@@ -2997,6 +3013,8 @@
     "2": 4597,
     "3": 7401
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     59.4,
     2.3,
@@ -3056,6 +3074,7 @@
    "role": "rib",
    "id": "RR02",
    "index": 2,
+   "size_class": "full",
    "consensus_ml": 12.01,
    "union_ml": 17.13,
    "agreement_ratio": 0.701,
@@ -3068,6 +3087,8 @@
     "2": 4618,
     "3": 9052
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     78.6,
     -6.7,
@@ -3127,6 +3148,7 @@
    "role": "rib",
    "id": "RR03",
    "index": 3,
+   "size_class": "full",
    "consensus_ml": 13.24,
    "union_ml": 18.5,
    "agreement_ratio": 0.715,
@@ -3139,6 +3161,8 @@
     "2": 5341,
     "3": 9718
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     86.4,
     -9.0,
@@ -3198,6 +3222,7 @@
    "role": "rib",
    "id": "RR04",
    "index": 4,
+   "size_class": "full",
    "consensus_ml": 15.64,
    "union_ml": 20.88,
    "agreement_ratio": 0.749,
@@ -3210,6 +3235,8 @@
     "2": 6009,
     "3": 11784
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     93.3,
     -10.8,
@@ -3269,6 +3296,7 @@
    "role": "rib",
    "id": "RR05",
    "index": 5,
+   "size_class": "full",
    "consensus_ml": 19.13,
    "union_ml": 24.69,
    "agreement_ratio": 0.775,
@@ -3281,6 +3309,8 @@
     "2": 6848,
     "3": 14916
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     96.3,
     -11.3,
@@ -3340,6 +3370,7 @@
    "role": "rib",
    "id": "RR06",
    "index": 6,
+   "size_class": "full",
    "consensus_ml": 21.13,
    "union_ml": 26.67,
    "agreement_ratio": 0.792,
@@ -3352,6 +3383,8 @@
     "2": 8049,
     "3": 15991
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     94.5,
     -17.8,
@@ -3411,6 +3444,7 @@
    "role": "rib",
    "id": "RR07",
    "index": 7,
+   "size_class": "full",
    "consensus_ml": 22.89,
    "union_ml": 28.81,
    "agreement_ratio": 0.794,
@@ -3423,6 +3457,8 @@
     "2": 10887,
     "3": 15157
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     96.5,
     -19.7,
@@ -3482,6 +3518,7 @@
    "role": "rib",
    "id": "RR08",
    "index": 8,
+   "size_class": "full",
    "consensus_ml": 18.09,
    "union_ml": 24.3,
    "agreement_ratio": 0.745,
@@ -3494,6 +3531,8 @@
     "2": 8346,
     "3": 12237
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     94.3,
     -36.1,
@@ -3555,6 +3594,7 @@
    "role": "rib",
    "id": "RR09",
    "index": 9,
+   "size_class": "full",
    "consensus_ml": 18.28,
    "union_ml": 23.29,
    "agreement_ratio": 0.785,
@@ -3567,6 +3607,8 @@
     "2": 8985,
     "3": 11809
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     94.2,
     -42.1,
@@ -3628,6 +3670,7 @@
    "role": "rib",
    "id": "RR10",
    "index": 10,
+   "size_class": "full",
    "consensus_ml": 13.82,
    "union_ml": 18.03,
    "agreement_ratio": 0.767,
@@ -3640,6 +3683,8 @@
     "2": 6273,
     "3": 9451
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     94.0,
     -51.8,
@@ -3701,6 +3746,7 @@
    "role": "rib",
    "id": "RR11",
    "index": 11,
+   "size_class": "full",
    "consensus_ml": 10.59,
    "union_ml": 13.92,
    "agreement_ratio": 0.761,
@@ -3713,6 +3759,8 @@
     "2": 4117,
     "3": 7931
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     89.1,
     -58.4,
@@ -3774,6 +3822,8 @@
    "role": "rib",
    "id": "RR12",
    "index": 12,
+   "size_class": "full",
+   "small_but_fully_supported": true,
    "consensus_ml": 6.54,
    "union_ml": 8.61,
    "agreement_ratio": 0.759,
@@ -3786,6 +3836,8 @@
     "2": 2948,
     "3": 4488
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     64.6,
     -62.7,
@@ -3842,9 +3894,11 @@
   }
  ],
  "instance_count": {
-  "rib_consensus": 12,
+  "rib_consensus_full": 12,
+  "rib_pieces": 0,
   "rib_any": 12,
-  "sacrum": 0
+  "sacrum": 0,
+  "conflict_voxels": 0
  },
  "lumbar_type_block_below_T12": [],
  "hra_same_donor_evidence": null,
@@ -3860,7 +3914,10 @@
   "instances": "data/derived/nlm-vhf/consensus/rib-right-instances.nii.gz",
   "review": "data/derived/nlm-vhf/consensus/rib-right-review.nii.gz",
   "votes": "data/derived/nlm-vhf/consensus/rib-right-votes.nii.gz",
-  "eligible": "data/derived/nlm-vhf/consensus/rib-right-eligible.nii.gz"
+  "eligible": "data/derived/nlm-vhf/consensus/rib-right-eligible.nii.gz",
+  "model-totalseg": "data/derived/nlm-vhf/consensus/rib-right-model-totalseg.nii.gz",
+  "model-moose": "data/derived/nlm-vhf/consensus/rib-right-model-moose.nii.gz",
+  "model-skellytour": "data/derived/nlm-vhf/consensus/rib-right-model-skellytour.nii.gz"
  },
  "naming": "Every instance id is provisional and geometric. hra_name_by_order is external same-donor evidence for the count and order, not a decision; name_status stays pending until an anatomist or a documented reference confirms the levels.",
  "selftest": {

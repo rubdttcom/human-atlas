@@ -39,8 +39,17 @@
   "iou_group": 0.2,
   "iou_match": 0.5,
   "cover_part": 0.2,
+  "oversize": 1.4,
+  "piece_ratio": 0.5,
+  "fragment_mm": 10.0,
   "connectivity": 26,
   "vote": "strict majority of eligible models per voxel",
+  "tie_rule": "winner map: equal votes go to the lower instance index (cranial); such voxels are never consensus and are counted in conflict_voxels",
+  "spacing_mm": [
+   0.7227,
+   0.7227,
+   1.0
+  ],
   "eligibility": {
    "totalseg": "whole grid",
    "moose": "whole grid",
@@ -3192,6 +3201,12 @@
    }
   }
  },
+ "skellytour_manifest": {
+  "format": "manifest",
+  "complete": true,
+  "missing_chunks": [],
+  "merged_sha256": "f8c64fa4a295117aa18c4ddb133896032c06eb570fe2b2554577c858bafd7513"
+ },
  "instances": [
   {
    "partition_model": null,
@@ -3200,6 +3215,7 @@
    "role": "rib",
    "id": "RR01",
    "index": 1,
+   "size_class": "full",
    "consensus_ml": 9.75,
    "union_ml": 17.71,
    "agreement_ratio": 0.55,
@@ -3212,6 +3228,8 @@
     "2": 10382,
     "3": 8287
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     57.5,
     4.5,
@@ -3271,6 +3289,7 @@
    "role": "rib",
    "id": "RR02",
    "index": 2,
+   "size_class": "full",
    "consensus_ml": 11.11,
    "union_ml": 20.23,
    "agreement_ratio": 0.549,
@@ -3283,6 +3302,8 @@
     "2": 11346,
     "3": 9935
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     77.5,
     -4.1,
@@ -3342,6 +3363,7 @@
    "role": "rib",
    "id": "RR03",
    "index": 3,
+   "size_class": "full",
    "consensus_ml": 12.26,
    "union_ml": 21.54,
    "agreement_ratio": 0.569,
@@ -3354,6 +3376,8 @@
     "2": 12072,
     "3": 11397
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     85.1,
     -6.7,
@@ -3419,6 +3443,7 @@
    "role": "rib",
    "id": "RR04",
    "index": 4,
+   "size_class": "full",
    "consensus_ml": 12.54,
    "union_ml": 22.74,
    "agreement_ratio": 0.552,
@@ -3431,6 +3456,8 @@
     "2": 14204,
     "3": 9811
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     88.3,
     -7.9,
@@ -3499,6 +3526,7 @@
    "role": "rib",
    "id": "RR05",
    "index": 5,
+   "size_class": "full",
    "consensus_ml": 17.02,
    "union_ml": 26.86,
    "agreement_ratio": 0.634,
@@ -3511,6 +3539,8 @@
     "2": 17214,
     "3": 15371
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     92.7,
     -5.9,
@@ -3575,6 +3605,7 @@
    "role": "rib",
    "id": "RR06",
    "index": 6,
+   "size_class": "full",
    "consensus_ml": 19.13,
    "union_ml": 29.01,
    "agreement_ratio": 0.659,
@@ -3587,6 +3618,8 @@
     "2": 17982,
     "3": 18650
    },
+   "conflict_voxels": 13,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     94.1,
     -10.9,
@@ -3648,18 +3681,21 @@
    "role": "rib",
    "id": "RR07",
    "index": 7,
+   "size_class": "full",
    "consensus_ml": 22.36,
-   "union_ml": 31.18,
+   "union_ml": 31.19,
    "agreement_ratio": 0.717,
    "unanimous_fraction": 0.6,
    "eligible_models_on_consensus": {
     "3": 42824
    },
    "votes_histogram_on_union": {
-    "1": 16879,
+    "1": 16892,
     "2": 17110,
     "3": 25714
    },
+   "conflict_voxels": 13,
+   "lost_to_other_winner_ml": 0.01,
    "consensus_centroid_ras_mm": [
     95.1,
     -14.7,
@@ -3719,6 +3755,7 @@
    "role": "rib",
    "id": "RR08",
    "index": 8,
+   "size_class": "full",
    "consensus_ml": 16.88,
    "union_ml": 25.7,
    "agreement_ratio": 0.657,
@@ -3731,6 +3768,8 @@
     "2": 14945,
     "3": 17383
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     93.8,
     -32.1,
@@ -3790,6 +3829,7 @@
    "role": "rib",
    "id": "RR09",
    "index": 9,
+   "size_class": "full",
    "consensus_ml": 17.15,
    "union_ml": 25.14,
    "agreement_ratio": 0.682,
@@ -3802,6 +3842,8 @@
     "2": 14783,
     "3": 18065
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     93.5,
     -39.0,
@@ -3863,6 +3905,7 @@
    "role": "rib",
    "id": "RR10",
    "index": 10,
+   "size_class": "full",
    "consensus_ml": 13.05,
    "union_ml": 19.46,
    "agreement_ratio": 0.67,
@@ -3875,6 +3918,8 @@
     "2": 10969,
     "3": 14014
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     92.2,
     -49.5,
@@ -3936,6 +3981,7 @@
    "role": "rib",
    "id": "RR11",
    "index": 11,
+   "size_class": "full",
    "consensus_ml": 9.89,
    "union_ml": 14.84,
    "agreement_ratio": 0.666,
@@ -3948,6 +3994,8 @@
     "2": 7791,
     "3": 11141
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     86.9,
     -56.5,
@@ -4009,6 +4057,8 @@
    "role": "rib",
    "id": "RR12",
    "index": 12,
+   "size_class": "full",
+   "small_but_fully_supported": true,
    "consensus_ml": 6.09,
    "union_ml": 9.28,
    "agreement_ratio": 0.656,
@@ -4021,6 +4071,8 @@
     "2": 5525,
     "3": 6143
    },
+   "conflict_voxels": 0,
+   "lost_to_other_winner_ml": 0.0,
    "consensus_centroid_ras_mm": [
     63.3,
     -60.7,
@@ -4077,9 +4129,11 @@
   }
  ],
  "instance_count": {
-  "rib_consensus": 12,
+  "rib_consensus_full": 12,
+  "rib_pieces": 0,
   "rib_any": 12,
-  "sacrum": 0
+  "sacrum": 0,
+  "conflict_voxels": 13
  },
  "lumbar_type_block_below_T12": [],
  "hra_same_donor_evidence": null,
@@ -4100,7 +4154,10 @@
   "instances": "data/derived/denver/priors/consensus/rib-right-instances.nii.gz",
   "review": "data/derived/denver/priors/consensus/rib-right-review.nii.gz",
   "votes": "data/derived/denver/priors/consensus/rib-right-votes.nii.gz",
-  "eligible": "data/derived/denver/priors/consensus/rib-right-eligible.nii.gz"
+  "eligible": "data/derived/denver/priors/consensus/rib-right-eligible.nii.gz",
+  "model-totalseg": "data/derived/denver/priors/consensus/rib-right-model-totalseg.nii.gz",
+  "model-moose": "data/derived/denver/priors/consensus/rib-right-model-moose.nii.gz",
+  "model-skellytour": "data/derived/denver/priors/consensus/rib-right-model-skellytour.nii.gz"
  },
  "naming": "Every instance id is provisional and geometric. hra_name_by_order is external same-donor evidence for the count and order, not a decision; name_status stays pending until an anatomist or a documented reference confirms the levels.",
  "selftest": {

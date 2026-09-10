@@ -39,8 +39,17 @@
   "iou_group": 0.2,
   "iou_match": 0.5,
   "cover_part": 0.2,
+  "oversize": 1.4,
+  "piece_ratio": 0.5,
+  "fragment_mm": 10.0,
   "connectivity": 26,
   "vote": "strict majority of eligible models per voxel",
+  "tie_rule": "winner map: equal votes go to the lower instance index (cranial); such voxels are never consensus and are counted in conflict_voxels",
+  "spacing_mm": [
+   0.9375,
+   0.9375,
+   1.0
+  ],
   "eligibility": {
    "totalseg": "whole grid",
    "moose": "whole grid",
@@ -6746,6 +6755,12 @@
    }
   }
  },
+ "skellytour_manifest": {
+  "format": "manifest",
+  "complete": true,
+  "missing_chunks": [],
+  "merged_sha256": "5c697360eb31c7828e7e593f9b166a9b99922bfa6a72f8192c53a1bac3d64ddd"
+ },
  "instances": [
   {
    "partition_model": null,
@@ -6754,18 +6769,21 @@
    "role": "vertebra",
    "id": "V01",
    "index": 1,
+   "size_class": "full",
    "consensus_ml": 17.62,
-   "union_ml": 25.98,
-   "agreement_ratio": 0.678,
+   "union_ml": 26.05,
+   "agreement_ratio": 0.676,
    "unanimous_fraction": 0.551,
    "eligible_models_on_consensus": {
     "3": 20042
    },
    "votes_histogram_on_union": {
-    "1": 9519,
+    "1": 9599,
     "2": 8990,
     "3": 11052
    },
+   "conflict_voxels": 1411,
+   "lost_to_other_winner_ml": 0.07,
    "consensus_centroid_ras_mm": [
     8.6,
     9.8,
@@ -6827,18 +6845,21 @@
    "role": "vertebra",
    "id": "V02",
    "index": 2,
+   "size_class": "full",
    "consensus_ml": 18.44,
-   "union_ml": 23.68,
-   "agreement_ratio": 0.779,
+   "union_ml": 25.01,
+   "agreement_ratio": 0.737,
    "unanimous_fraction": 0.623,
    "eligible_models_on_consensus": {
     "3": 20981
    },
    "votes_histogram_on_union": {
-    "1": 5956,
+    "1": 7477,
     "2": 7904,
     "3": 13077
    },
+   "conflict_voxels": 3120,
+   "lost_to_other_winner_ml": 1.34,
    "consensus_centroid_ras_mm": [
     10.1,
     8.9,
@@ -6900,18 +6921,21 @@
    "role": "vertebra",
    "id": "V03",
    "index": 3,
+   "size_class": "full",
    "consensus_ml": 11.43,
-   "union_ml": 15.54,
-   "agreement_ratio": 0.735,
+   "union_ml": 16.97,
+   "agreement_ratio": 0.673,
    "unanimous_fraction": 0.574,
    "eligible_models_on_consensus": {
     "3": 13003
    },
    "votes_histogram_on_union": {
-    "1": 4677,
+    "1": 6308,
     "2": 5539,
     "3": 7464
    },
+   "conflict_voxels": 3372,
+   "lost_to_other_winner_ml": 1.43,
    "consensus_centroid_ras_mm": [
     10.4,
     8.1,
@@ -6973,18 +6997,21 @@
    "role": "vertebra",
    "id": "V04",
    "index": 4,
+   "size_class": "full",
    "consensus_ml": 11.58,
-   "union_ml": 15.61,
-   "agreement_ratio": 0.742,
+   "union_ml": 17.06,
+   "agreement_ratio": 0.678,
    "unanimous_fraction": 0.523,
    "eligible_models_on_consensus": {
     "3": 13173
    },
    "votes_histogram_on_union": {
-    "1": 4591,
+    "1": 6243,
     "2": 6278,
     "3": 6895
    },
+   "conflict_voxels": 3355,
+   "lost_to_other_winner_ml": 1.45,
    "consensus_centroid_ras_mm": [
     11.2,
     5.1,
@@ -7046,18 +7073,21 @@
    "role": "vertebra",
    "id": "V05",
    "index": 5,
+   "size_class": "full",
    "consensus_ml": 12.41,
-   "union_ml": 17.47,
-   "agreement_ratio": 0.71,
+   "union_ml": 18.92,
+   "agreement_ratio": 0.656,
    "unanimous_fraction": 0.518,
    "eligible_models_on_consensus": {
     "3": 14118
    },
    "votes_histogram_on_union": {
-    "1": 5764,
+    "1": 7409,
     "2": 6807,
     "3": 7311
    },
+   "conflict_voxels": 3131,
+   "lost_to_other_winner_ml": 1.45,
    "consensus_centroid_ras_mm": [
     9.9,
     1.1,
@@ -7119,18 +7149,21 @@
    "role": "vertebra",
    "id": "V06",
    "index": 6,
+   "size_class": "full",
    "consensus_ml": 12.94,
-   "union_ml": 18.36,
-   "agreement_ratio": 0.705,
+   "union_ml": 19.63,
+   "agreement_ratio": 0.659,
    "unanimous_fraction": 0.557,
    "eligible_models_on_consensus": {
     "3": 14725
    },
    "votes_histogram_on_union": {
-    "1": 6159,
+    "1": 7613,
     "2": 6521,
     "3": 8204
    },
+   "conflict_voxels": 2479,
+   "lost_to_other_winner_ml": 1.28,
    "consensus_centroid_ras_mm": [
     8.1,
     -5.5,
@@ -7192,18 +7225,21 @@
    "role": "vertebra",
    "id": "V07",
    "index": 7,
+   "size_class": "full",
    "consensus_ml": 17.42,
-   "union_ml": 23.92,
-   "agreement_ratio": 0.728,
+   "union_ml": 24.89,
+   "agreement_ratio": 0.7,
    "unanimous_fraction": 0.617,
    "eligible_models_on_consensus": {
     "3": 19820
    },
    "votes_histogram_on_union": {
-    "1": 7398,
+    "1": 8494,
     "2": 7582,
     "3": 12238
    },
+   "conflict_voxels": 2482,
+   "lost_to_other_winner_ml": 0.96,
    "consensus_centroid_ras_mm": [
     8.1,
     -15.5,
@@ -7267,18 +7303,21 @@
    "role": "vertebra",
    "id": "V08",
    "index": 8,
+   "size_class": "full",
    "consensus_ml": 21.11,
-   "union_ml": 28.1,
-   "agreement_ratio": 0.751,
+   "union_ml": 29.29,
+   "agreement_ratio": 0.721,
    "unanimous_fraction": 0.661,
    "eligible_models_on_consensus": {
     "3": 24023
    },
    "votes_histogram_on_union": {
-    "1": 7951,
+    "1": 9307,
     "2": 8139,
     "3": 15884
    },
+   "conflict_voxels": 2198,
+   "lost_to_other_winner_ml": 1.19,
    "consensus_centroid_ras_mm": [
     6.7,
     -24.1,
@@ -7342,18 +7381,21 @@
    "role": "vertebra",
    "id": "V09",
    "index": 9,
+   "size_class": "full",
    "consensus_ml": 21.66,
-   "union_ml": 28.97,
-   "agreement_ratio": 0.748,
+   "union_ml": 29.65,
+   "agreement_ratio": 0.73,
    "unanimous_fraction": 0.707,
    "eligible_models_on_consensus": {
     "3": 24640
    },
    "votes_histogram_on_union": {
-    "1": 8316,
+    "1": 9096,
     "2": 7220,
     "3": 17420
    },
+   "conflict_voxels": 1901,
+   "lost_to_other_winner_ml": 0.69,
    "consensus_centroid_ras_mm": [
     5.6,
     -33.4,
@@ -7415,18 +7457,21 @@
    "role": "vertebra",
    "id": "V10",
    "index": 10,
+   "size_class": "full",
    "consensus_ml": 21.44,
-   "union_ml": 27.73,
-   "agreement_ratio": 0.773,
+   "union_ml": 28.74,
+   "agreement_ratio": 0.746,
    "unanimous_fraction": 0.732,
    "eligible_models_on_consensus": {
     "3": 24392
    },
    "votes_histogram_on_union": {
-    "1": 7160,
+    "1": 8313,
     "2": 6539,
     "3": 17853
    },
+   "conflict_voxels": 2601,
+   "lost_to_other_winner_ml": 1.01,
    "consensus_centroid_ras_mm": [
     5.1,
     -43.2,
@@ -7488,18 +7533,21 @@
    "role": "vertebra",
    "id": "V11",
    "index": 11,
+   "size_class": "full",
    "consensus_ml": 21.48,
-   "union_ml": 27.1,
-   "agreement_ratio": 0.793,
+   "union_ml": 28.35,
+   "agreement_ratio": 0.758,
    "unanimous_fraction": 0.734,
    "eligible_models_on_consensus": {
     "3": 24443
    },
    "votes_histogram_on_union": {
-    "1": 6388,
+    "1": 7812,
     "2": 6511,
     "3": 17932
    },
+   "conflict_voxels": 2702,
+   "lost_to_other_winner_ml": 1.25,
    "consensus_centroid_ras_mm": [
     5.1,
     -49.4,
@@ -7561,18 +7609,21 @@
    "role": "vertebra",
    "id": "V12",
    "index": 12,
+   "size_class": "full",
    "consensus_ml": 22.12,
-   "union_ml": 27.57,
-   "agreement_ratio": 0.802,
+   "union_ml": 28.64,
+   "agreement_ratio": 0.772,
    "unanimous_fraction": 0.739,
    "eligible_models_on_consensus": {
     "3": 25167
    },
    "votes_histogram_on_union": {
-    "1": 6198,
+    "1": 7414,
     "2": 6571,
     "3": 18596
    },
+   "conflict_voxels": 2593,
+   "lost_to_other_winner_ml": 1.07,
    "consensus_centroid_ras_mm": [
     5.2,
     -52.7,
@@ -7634,18 +7685,21 @@
    "role": "vertebra",
    "id": "V13",
    "index": 13,
+   "size_class": "full",
    "consensus_ml": 23.4,
-   "union_ml": 28.93,
-   "agreement_ratio": 0.809,
+   "union_ml": 30.11,
+   "agreement_ratio": 0.777,
    "unanimous_fraction": 0.759,
    "eligible_models_on_consensus": {
     "3": 26624
    },
    "votes_histogram_on_union": {
-    "1": 6290,
+    "1": 7639,
     "2": 6411,
     "3": 20213
    },
+   "conflict_voxels": 2140,
+   "lost_to_other_winner_ml": 1.19,
    "consensus_centroid_ras_mm": [
     5.6,
     -55.1,
@@ -7707,18 +7761,21 @@
    "role": "vertebra",
    "id": "V14",
    "index": 14,
+   "size_class": "full",
    "consensus_ml": 25.39,
-   "union_ml": 31.23,
-   "agreement_ratio": 0.813,
+   "union_ml": 31.92,
+   "agreement_ratio": 0.795,
    "unanimous_fraction": 0.757,
    "eligible_models_on_consensus": {
     "3": 28889
    },
    "votes_histogram_on_union": {
-    "1": 6639,
+    "1": 7432,
     "2": 7021,
     "3": 21868
    },
+   "conflict_voxels": 1478,
+   "lost_to_other_winner_ml": 0.7,
    "consensus_centroid_ras_mm": [
     5.3,
     -56.2,
@@ -7780,18 +7837,21 @@
    "role": "vertebra",
    "id": "V15",
    "index": 15,
+   "size_class": "full",
    "consensus_ml": 26.82,
-   "union_ml": 33.23,
-   "agreement_ratio": 0.807,
+   "union_ml": 33.82,
+   "agreement_ratio": 0.793,
    "unanimous_fraction": 0.773,
    "eligible_models_on_consensus": {
     "3": 30511
    },
    "votes_histogram_on_union": {
-    "1": 7298,
+    "1": 7974,
     "2": 6929,
     "3": 23582
    },
+   "conflict_voxels": 928,
+   "lost_to_other_winner_ml": 0.59,
    "consensus_centroid_ras_mm": [
     5.1,
     -56.4,
@@ -7853,18 +7913,21 @@
    "role": "vertebra",
    "id": "V16",
    "index": 16,
+   "size_class": "full",
    "consensus_ml": 28.69,
-   "union_ml": 34.85,
-   "agreement_ratio": 0.823,
+   "union_ml": 35.07,
+   "agreement_ratio": 0.818,
    "unanimous_fraction": 0.773,
    "eligible_models_on_consensus": {
     "3": 32642
    },
    "votes_histogram_on_union": {
-    "1": 7010,
+    "1": 7265,
     "2": 7417,
     "3": 25225
    },
+   "conflict_voxels": 461,
+   "lost_to_other_winner_ml": 0.22,
    "consensus_centroid_ras_mm": [
     4.5,
     -55.3,
@@ -7926,18 +7989,21 @@
    "role": "vertebra",
    "id": "V17",
    "index": 17,
+   "size_class": "full",
    "consensus_ml": 34.13,
-   "union_ml": 40.9,
-   "agreement_ratio": 0.835,
+   "union_ml": 41.09,
+   "agreement_ratio": 0.831,
    "unanimous_fraction": 0.803,
    "eligible_models_on_consensus": {
     "3": 38837
    },
    "votes_histogram_on_union": {
-    "1": 7695,
+    "1": 7912,
     "2": 7665,
     "3": 31172
    },
+   "conflict_voxels": 503,
+   "lost_to_other_winner_ml": 0.19,
    "consensus_centroid_ras_mm": [
     3.9,
     -54.5,
@@ -7999,18 +8065,21 @@
    "role": "vertebra",
    "id": "V18",
    "index": 18,
+   "size_class": "full",
    "consensus_ml": 37.18,
-   "union_ml": 44.53,
-   "agreement_ratio": 0.835,
+   "union_ml": 44.81,
+   "agreement_ratio": 0.83,
    "unanimous_fraction": 0.791,
    "eligible_models_on_consensus": {
     "3": 42300
    },
    "votes_histogram_on_union": {
-    "1": 8365,
+    "1": 8683,
     "2": 8832,
     "3": 33468
    },
+   "conflict_voxels": 568,
+   "lost_to_other_winner_ml": 0.28,
    "consensus_centroid_ras_mm": [
     3.4,
     -52.2,
@@ -8072,18 +8141,21 @@
    "role": "vertebra",
    "id": "V19",
    "index": 19,
+   "size_class": "full",
    "consensus_ml": 42.18,
-   "union_ml": 50.12,
-   "agreement_ratio": 0.842,
+   "union_ml": 50.34,
+   "agreement_ratio": 0.838,
    "unanimous_fraction": 0.805,
    "eligible_models_on_consensus": {
     "3": 47997
    },
    "votes_histogram_on_union": {
-    "1": 9028,
+    "1": 9275,
     "2": 9371,
     "3": 38626
    },
+   "conflict_voxels": 373,
+   "lost_to_other_winner_ml": 0.22,
    "consensus_centroid_ras_mm": [
     3.4,
     -49.8,
@@ -8147,18 +8219,21 @@
    "role": "vertebra",
    "id": "V20",
    "index": 20,
+   "size_class": "full",
    "consensus_ml": 48.66,
-   "union_ml": 59.37,
-   "agreement_ratio": 0.82,
+   "union_ml": 59.45,
+   "agreement_ratio": 0.819,
    "unanimous_fraction": 0.816,
    "eligible_models_on_consensus": {
     "3": 55364
    },
    "votes_histogram_on_union": {
-    "1": 12188,
+    "1": 12275,
     "2": 10198,
     "3": 45166
    },
+   "conflict_voxels": 130,
+   "lost_to_other_winner_ml": 0.08,
    "consensus_centroid_ras_mm": [
     2.5,
     -47.7,
@@ -8220,27 +8295,25 @@
     "vertebrae_L2#3",
     "vertebrae_L1#3"
    ],
-   "fragments": [
-    {
-     "moose": "vertebra_L2#9"
-    }
-   ],
    "z_ras_mm": -587.6,
    "role": "vertebra",
    "id": "V21",
    "index": 21,
+   "size_class": "full",
    "consensus_ml": 49.93,
-   "union_ml": 64.65,
-   "agreement_ratio": 0.772,
+   "union_ml": 63.86,
+   "agreement_ratio": 0.782,
    "unanimous_fraction": 0.645,
    "eligible_models_on_consensus": {
     "3": 56810
    },
    "votes_histogram_on_union": {
-    "1": 16746,
+    "1": 15850,
     "2": 20188,
     "3": 36622
    },
+   "conflict_voxels": 98,
+   "lost_to_other_winner_ml": 0.06,
    "consensus_centroid_ras_mm": [
     2.3,
     -42.6,
@@ -8275,7 +8348,7 @@
      "label": "vertebra_L2",
      "candidate_ml": 55.79,
      "components_of_label": 10,
-     "iou_with_consensus": 0.74,
+     "iou_with_consensus": 0.814,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -8305,18 +8378,21 @@
    "role": "vertebra",
    "id": "V22",
    "index": 22,
+   "size_class": "full",
    "consensus_ml": 60.75,
-   "union_ml": 71.02,
-   "agreement_ratio": 0.855,
+   "union_ml": 71.45,
+   "agreement_ratio": 0.85,
    "unanimous_fraction": 0.672,
    "eligible_models_on_consensus": {
     "3": 69117
    },
    "votes_histogram_on_union": {
-    "1": 11691,
+    "1": 12172,
     "2": 22680,
     "3": 46437
    },
+   "conflict_voxels": 6168,
+   "lost_to_other_winner_ml": 0.02,
    "consensus_centroid_ras_mm": [
     2.4,
     -36.1,
@@ -8372,24 +8448,130 @@
    "hra_z_offset_mm": 4.6
   },
   {
+   "partition_model": null,
+   "group_kind": "single",
+   "z_ras_mm": -637.8,
+   "role": "vertebra",
+   "id": "V23",
+   "index": 23,
+   "size_class": "piece",
+   "union_ml_before_merge": 5.81,
+   "ambiguous_near": {
+    "21": 5.48,
+    "22": 0.0,
+    "24": 1.88,
+    "25": 0.94
+   },
+   "consensus_ml": 0.0,
+   "union_ml": 5.81,
+   "agreement_ratio": 0.0,
+   "unanimous_fraction": null,
+   "eligible_models_on_consensus": {},
+   "votes_histogram_on_union": {
+    "1": 6611
+   },
+   "conflict_voxels": 6110,
+   "lost_to_other_winner_ml": 5.37,
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "absorbed",
+     "absorbed_into": "vertebrae_L2",
+     "fraction_of_union": 0.905
+    },
+    "moose": {
+     "state": "single",
+     "label": "vertebra_L2",
+     "candidate_ml": 5.81,
+     "components_of_label": 10,
+     "iou_with_consensus": 0.0,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "absorbed",
+     "absorbed_into": "VERT_21",
+     "fraction_of_union": 0.907
+    }
+   },
+   "source_labels": {
+    "moose": "vertebra_L2"
+   },
+   "name_status": "pending"
+  },
+  {
+   "partition_model": null,
+   "group_kind": "single",
+   "z_ras_mm": -643.3,
+   "role": "vertebra",
+   "id": "V24",
+   "index": 24,
+   "size_class": "piece",
+   "union_ml_before_merge": 5.64,
+   "ambiguous_near": {
+    "22": 0.94,
+    "23": 1.88,
+    "25": 0.0
+   },
+   "consensus_ml": 0.0,
+   "union_ml": 5.64,
+   "agreement_ratio": 0.0,
+   "unanimous_fraction": null,
+   "eligible_models_on_consensus": {},
+   "votes_histogram_on_union": {
+    "1": 6419
+   },
+   "conflict_voxels": 4955,
+   "lost_to_other_winner_ml": 3.93,
+   "skellytour_pelvis_overlap_ml": 0.0,
+   "models": {
+    "totalseg": {
+     "state": "absorbed",
+     "absorbed_into": "vertebrae_L3",
+     "fraction_of_union": 0.73
+    },
+    "moose": {
+     "state": "single",
+     "label": "vertebra_L4",
+     "candidate_ml": 5.64,
+     "components_of_label": 2,
+     "iou_with_consensus": 0.0,
+     "extra_candidates": [],
+     "seed_components": null
+    },
+    "skellytour": {
+     "state": "absorbed",
+     "absorbed_into": "VERT_22",
+     "fraction_of_union": 0.738
+    }
+   },
+   "source_labels": {
+    "moose": "vertebra_L4"
+   },
+   "name_status": "pending"
+  },
+  {
    "partition_model": "totalseg",
    "group_kind": "partitioned",
    "z_ras_mm": -656.8,
    "role": "vertebra",
-   "id": "V23",
-   "index": 23,
+   "id": "V25",
+   "index": 25,
+   "size_class": "full",
    "consensus_ml": 65.98,
-   "union_ml": 74.38,
+   "union_ml": 74.39,
    "agreement_ratio": 0.887,
    "unanimous_fraction": 0.786,
    "eligible_models_on_consensus": {
     "3": 75070
    },
    "votes_histogram_on_union": {
-    "1": 9558,
+    "1": 9567,
     "2": 16028,
     "3": 59042
    },
+   "conflict_voxels": 5072,
+   "lost_to_other_winner_ml": 0.43,
    "consensus_centroid_ras_mm": [
     2.5,
     -31.4,
@@ -8447,27 +8629,25 @@
   {
    "partition_model": null,
    "group_kind": "clean",
-   "fragments": [
-    {
-     "moose": "vertebra_L4#2"
-    }
-   ],
    "z_ras_mm": -689.0,
    "role": "vertebra",
-   "id": "V24",
-   "index": 24,
+   "id": "V26",
+   "index": 26,
+   "size_class": "full",
    "consensus_ml": 64.54,
-   "union_ml": 75.64,
-   "agreement_ratio": 0.853,
+   "union_ml": 74.5,
+   "agreement_ratio": 0.866,
    "unanimous_fraction": 0.853,
    "eligible_models_on_consensus": {
     "3": 73427
    },
    "votes_histogram_on_union": {
-    "1": 12636,
+    "1": 11341,
     "2": 10764,
     "3": 62663
    },
+   "conflict_voxels": 285,
+   "lost_to_other_winner_ml": 0.15,
    "consensus_centroid_ras_mm": [
     4.0,
     -26.3,
@@ -8499,7 +8679,7 @@
      "label": "vertebra_L4",
      "candidate_ml": 64.09,
      "components_of_label": 2,
-     "iou_with_consensus": 0.753,
+     "iou_with_consensus": 0.813,
      "extra_candidates": [],
      "seed_components": null
     },
@@ -8527,20 +8707,23 @@
    "group_kind": "clean",
    "z_ras_mm": -720.2,
    "role": "vertebra",
-   "id": "V25",
-   "index": 25,
+   "id": "V27",
+   "index": 27,
+   "size_class": "full",
    "consensus_ml": 64.89,
-   "union_ml": 75.76,
-   "agreement_ratio": 0.857,
+   "union_ml": 75.86,
+   "agreement_ratio": 0.855,
    "unanimous_fraction": 0.84,
    "eligible_models_on_consensus": {
     "3": 73831
    },
    "votes_histogram_on_union": {
-    "1": 12365,
+    "1": 12482,
     "2": 11832,
     "3": 61999
    },
+   "conflict_voxels": 860,
+   "lost_to_other_winner_ml": 0.1,
    "consensus_centroid_ras_mm": [
     7.3,
     -24.8,
@@ -8600,16 +8783,19 @@
    "group_kind": "single",
    "z_ras_mm": -746.9,
    "role": "vertebra",
-   "id": "V26",
-   "index": 26,
+   "id": "V28",
+   "index": 28,
+   "size_class": "full",
    "consensus_ml": 0.0,
-   "union_ml": 49.45,
+   "union_ml": 49.47,
    "agreement_ratio": 0.0,
    "unanimous_fraction": null,
    "eligible_models_on_consensus": {},
    "votes_histogram_on_union": {
-    "1": 56259
+    "1": 56291
    },
+   "conflict_voxels": 50899,
+   "lost_to_other_winner_ml": 0.03,
    "skellytour_pelvis_overlap_ml": 48.75,
    "models": {
     "totalseg": {
@@ -8642,19 +8828,22 @@
    "group_kind": "clean",
    "z_ras_mm": -763.6,
    "role": "sacrum",
-   "id": "S27",
-   "index": 27,
+   "id": "S29",
+   "index": 29,
+   "size_class": "full",
    "consensus_ml": 154.62,
-   "union_ml": 194.83,
-   "agreement_ratio": 0.794,
+   "union_ml": 240.11,
+   "agreement_ratio": 0.644,
    "unanimous_fraction": 1.0,
    "eligible_models_on_consensus": {
     "2": 175918
    },
    "votes_histogram_on_union": {
-    "1": 45757,
+    "1": 97279,
     "2": 175918
    },
+   "conflict_voxels": 51527,
+   "lost_to_other_winner_ml": 45.28,
    "consensus_centroid_ras_mm": [
     7.2,
     -54.0,
@@ -8672,7 +8861,7 @@
    "crosses_skellytour_seam_z": [
     780
    ],
-   "skellytour_pelvis_overlap_ml": 175.68,
+   "skellytour_pelvis_overlap_ml": 220.13,
    "models": {
     "totalseg": {
      "state": "matched",
@@ -8704,17 +8893,19 @@
   }
  ],
  "instance_count": {
-  "vertebra_consensus": 25,
-  "vertebra_any": 26,
-  "sacrum": 1
+  "vertebra_consensus_full": 25,
+  "vertebra_pieces": 2,
+  "vertebra_any": 28,
+  "sacrum": 1,
+  "conflict_voxels": 81950
  },
  "lumbar_type_block_below_T12": [
   "V20",
   "V21",
   "V22",
-  "V23",
-  "V24",
-  "V25"
+  "V25",
+  "V26",
+  "V27"
  ],
  "hra_same_donor_evidence": {
   "source": "HRA united-female v1.5 (public/atlases/hra-female.json), modelled on the Visible Human Female; NIH 3D 3DPX-020988: \"The Visible Human Female has 6 lumbar vertebrae\"",
@@ -9070,17 +9261,17 @@
     "z_offset_mm": 4.6
    },
    {
-    "instance": "V23",
+    "instance": "V25",
     "hra_name_by_order": "L4",
     "z_offset_mm": 0.5
    },
    {
-    "instance": "V24",
+    "instance": "V26",
     "hra_name_by_order": "L5",
     "z_offset_mm": -3.6
    },
    {
-    "instance": "V25",
+    "instance": "V27",
     "hra_name_by_order": "L6",
     "z_offset_mm": -6.0
    }
@@ -9100,7 +9291,10 @@
   "instances": "data/derived/nlm-vhf/consensus/vertebra-instances.nii.gz",
   "review": "data/derived/nlm-vhf/consensus/vertebra-review.nii.gz",
   "votes": "data/derived/nlm-vhf/consensus/vertebra-votes.nii.gz",
-  "eligible": "data/derived/nlm-vhf/consensus/vertebra-eligible.nii.gz"
+  "eligible": "data/derived/nlm-vhf/consensus/vertebra-eligible.nii.gz",
+  "model-totalseg": "data/derived/nlm-vhf/consensus/vertebra-model-totalseg.nii.gz",
+  "model-moose": "data/derived/nlm-vhf/consensus/vertebra-model-moose.nii.gz",
+  "model-skellytour": "data/derived/nlm-vhf/consensus/vertebra-model-skellytour.nii.gz"
  },
  "naming": "Every instance id is provisional and geometric. hra_name_by_order is external same-donor evidence for the count and order, not a decision; name_status stays pending until an anatomist or a documented reference confirms the levels.",
  "selftest": {
