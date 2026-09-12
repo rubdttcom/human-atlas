@@ -47,7 +47,8 @@ def bone_instances(report):
                          'eligible_models_on_consensus': e['eligible_models_on_consensus'], 'votes_histogram_on_union': e['votes_histogram_on_union'], 'conflict_voxels': e['conflict_voxels'],
                          'lost_to_other_winner_ml': None, 'size_class': None, 'models': e['models'], 'source_labels': voted, 'name_status': 'pending',
                          'gates': e['gates'], 'consensus_status': e['status'], 'review_status': e['review_status'],
-                         'versus_nlm_vhf_ct_label': e.get('versus_nlm_vhf_ct_label'), 'versus_denver_mesh': e.get('versus_denver_mesh'), 'denver_mesh': e.get('denver_mesh')})
+                         'versus_nlm_vhf_ct_label': e.get('versus_nlm_vhf_ct_label'), 'versus_denver_mesh': e.get('versus_denver_mesh'), 'denver_mesh': e.get('denver_mesh'),
+                         'shape_check': e.get('shape_check')})
         elif e.get('status') not in (None, 'excluded'):
             review.append({'family': 'bones', 'id': cls, 'role': 'bone', 'status': e['status'], 'reasons': e.get('not_accepted_reasons'), 'models': {m: v['state'] for m, v in e.get('models', {}).items()},
                            'agreement_ratio': e.get('agreement_ratio'), 'unanimous_fraction': e.get('unanimous_fraction'), 'candidate_index': e.get('candidate_index'),
@@ -188,11 +189,14 @@ for family, nii_path, table_path in FAMILIES:
         if family == 'bones':
             metadata.update({'bone_class': inst['bone_class'], 'review_status': inst['review_status'], 'consensus_status': inst['consensus_status'], 'gates': inst['gates'],
                              'versus_nlm_vhf_ct_label': inst['versus_nlm_vhf_ct_label'], 'versus_denver_mesh': inst['versus_denver_mesh'], 'denver_mesh': inst['denver_mesh'],
+                             'shape_check': inst['shape_check'],
                              'segmentation_models': 'TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)',
                              'vote_rule': 'one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)',
                              'notes': ('Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components '
                                        'correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; '
-                                       'Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.')})
+                                       'Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source. '
+                                       + ('Shape check of plan B 2.6 (rigid fit to the HU = 300 edge, same procedure as the Denver baseline): ' + inst['shape_check']['decision'] + '.' if inst.get('shape_check')
+                                          else 'Shape check of plan B 2.6 not run: candidate pending the shape check, not an accepted atlas candidate.'))})
         part = {'id': identity, 'name': name, 'conceptId': identity, 'system': 'skeletal', 'chunk': len(chunks), 'positions': append(pos), 'normals': append(normal),
                 'indices': append(indices), 'vertexCount': len(pos), 'indexCount': len(indices), 'bounds': [pos.min(axis=0).tolist(), pos.max(axis=0).tolist()], 'source_metadata': metadata}
         parts.append(part)

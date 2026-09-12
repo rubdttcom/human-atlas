@@ -76,6 +76,19 @@ def manifest_gate_fail(row):
     row['gates']['laterality']['passed'] = False
 
 
+def shape_check_other_geometry(prov):
+    prov['shape_check']['geometry_sha256'] = '0' * 64
+
+
+def shape_check_flipped(prov):
+    if prov['shape_check']['decision'] == 'above-denver-baseline':
+        prov['shape_check']['decision'] = 'reaches-denver-baseline'; prov['shape_check']['passed'] = True
+
+
+def shape_check_dropped(prov):
+    prov['shape_check'] = None
+
+
 cases = [
     ('unchanged files pass', None, None, True),
     ('versus_nlm_vhf_ct_label None', set_ct_none, None, False),
@@ -85,6 +98,9 @@ cases = [
     ('one model on the other side', flip_side, None, False),
     ('Denver mesh dropped but comparison kept', drop_denver_mesh, None, False),
     ('manifest copy with a failed gate', None, manifest_gate_fail, False),
+    ('shape check bound to another geometry', shape_check_other_geometry, None, False),
+    ('shape check decision flipped to reaches-baseline', shape_check_flipped, None, False),
+    ('shape check dropped', shape_check_dropped, None, False),
 ]
 failures = []
 for name, ma, mm, expect_ok in cases:

@@ -80534,6 +80534,6 @@
     }
   ],
   "anatomical_review": "pending",
-  "self_intersections": "measured for 4474 of 4474 meshes (4474 carried over from identical geometry); 0 not-assessed until qa-anatomy.py runs",
+  "self_intersections": "measured per mesh (see structures[].self_intersections and generated/anatomy-qa.json)",
   "notes": "Open or nonmanifold surfaces are reported individually; absence of failures is not anatomical validation."
 }

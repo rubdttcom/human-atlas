@@ -78,6 +78,23 @@ if (bone) {
   if (!/Registration and posture differences are included/.test(br['Denver mesh (cryosections)'])) fail('Denver comparison must state that placement error is included');
   if (!br['Candidate name'].includes('status pending')) fail('bone candidate name must stay pending');
   for (const m of Object.keys(bone.provenance.models)) if (!br[m] || !br[m].startsWith('voted: voted')) fail('bone per-model row ' + m + ': ' + br[m]);
+  // 4. Shape check section: present for every bone candidate; wording never reads as validation; missing record says "not run".
+  if (!titles.includes('Shape check (plan B 2.6)')) fail('bone candidate must show the shape check section: ' + titles);
+  for (const p of atlas.parts.filter(p => p.provenance.instance_family === 'bones')) {
+    const r = rows(p.provenance);
+    const sc = p.provenance.shape_check;
+    if (!sc) { if (r['Shape check'] !== 'not run: candidate pending the shape check of plan B 2.6, not an accepted atlas candidate') fail('missing shape check wording: ' + r['Shape check']); continue; }
+    const t = r['Shape (own rigid fit to the HU = 300 edge)'];
+    if (!t || /validated|confirmed|correct\b/.test(t)) fail('shape check wording: ' + t);
+    if (sc.decision === 'reaches-denver-baseline' && !t.includes('reaches the Denver baseline')) fail('reaches text: ' + t);
+    if (sc.decision === 'above-denver-baseline' && !t.includes('not met')) fail('above text: ' + t);
+    if (sc.decision === 'no-class-baseline' && !t.includes('no acceptance')) fail('no-baseline text: ' + t);
+    if (/NaN|undefined|null/.test(t)) fail('shape check leaks raw values: ' + t);
+  }
+  const notRun = rows({...bone.provenance, shape_check: null});
+  if (!notRun['Shape check'] || !notRun['Shape check'].startsWith('not run')) fail('shape_check null must render as not run: ' + notRun['Shape check']);
+  const oddDecision = rows({...bone.provenance, shape_check: {decision: 'wizardry', passed: null}});
+  if (!oddDecision['Shape (own rigid fit to the HU = 300 edge)'].includes('not in the documented vocabulary')) fail('unknown shape decision gloss');
 }
 const noGates = agreementSections({vote_rule: 'x'}).map(s => s.title);
 if (noGates.includes('Gates before the vote (plan B 2.6)') || noGates.includes('Comparison, not substitution')) fail('gates/comparison sections must be absent without data');

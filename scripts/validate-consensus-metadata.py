@@ -16,9 +16,17 @@ Checks (no metric is recomputed from voxels; the instance tables written by ct-v
    the manifest; the gate records are internally consistent (every pair passed, every voting model is class-equivalent, laterality per
    model equals the expected side); the CT-label comparison is mandatory for every candidate and the Denver comparison for every
    candidate with a Denver mesh, both with figures in range. These fields are compared, never recomputed.
+8. Shape check of plan B section 2.6 (`shape_check`, scripts/ct-candidate-shape-check.py): mandatory for every bone candidate, bound by
+   SHA-256 to the shipped geometry, HU = 300 edge with a 20 mm band, decision in the documented vocabulary, passed flag equal to
+   shape p95 <= the Denver baseline figure of generated/denver-ct-baseline.json (or None where no class baseline exists).
 """
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from ct_edge_fit import read_part  # noqa: E402
+from qa_identity import geometry_digest  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 VOTE_STATES = {'matched', 'split', 'merge', 'partial', 'seed', 'single', 'voted'}
@@ -27,8 +35,9 @@ FIELDS = ('instance_id', 'instance_family', 'role', 'consensus_ml', 'union_ml', 
           'votes_histogram_on_union', 'conflict_voxels', 'lost_to_other_winner_ml', 'size_class', 'models', 'source_labels', 'candidate_name', 'candidate_evidence',
           'name_status', 'hra_name_by_order', 'hra_z_offset_mm', 'crosses_skellytour_seam_z', 'vote_rule', 'segmentation_models', 'registration_p95_mm')
 # Bone-candidate fields (plan B 2.6): copied from the bone report and compared between copies; a laxer copy would hide a failed gate or a lost comparison.
-BONE_FIELDS = ('gates', 'versus_nlm_vhf_ct_label', 'versus_denver_mesh', 'denver_mesh', 'bone_class', 'label_name', 'review_status', 'consensus_status')
-BONE_TABLE_FIELDS = ('gates', 'versus_nlm_vhf_ct_label', 'versus_denver_mesh', 'denver_mesh', 'bone_class', 'review_status')
+BONE_FIELDS = ('gates', 'versus_nlm_vhf_ct_label', 'versus_denver_mesh', 'denver_mesh', 'bone_class', 'label_name', 'review_status', 'consensus_status', 'shape_check')
+BONE_TABLE_FIELDS = ('gates', 'versus_nlm_vhf_ct_label', 'versus_denver_mesh', 'denver_mesh', 'bone_class', 'review_status', 'shape_check')
+SHAPE_DECISIONS = {'reaches-denver-baseline': True, 'above-denver-baseline': False, 'no-class-baseline': None, 'diverged': None, 'no-ct-edge': None, 'baseline-diverged': None}
 GATES = ('class_equivalence', 'geometric_correspondence', 'laterality', 'coverage_eligibility')
 
 atlas = json.loads((ROOT / 'public/atlases/ct-consensus.json').read_text())
@@ -45,9 +54,13 @@ for family, entry in atlas['instance_maps'].items():
             if e.get('status') == 'candidate-consensus':
                 tables[family][f"B{e['candidate_index']:02d}"] = {**e, 'role': 'bone', 'bone_class': cls, 'source_labels': {m: v['label'] for m, v in e['models'].items() if v['state'] == 'voted'},
                                                                  'lost_to_other_winner_ml': None, 'hra_name_by_order': None, 'hra_z_offset_mm': None, 'crosses_skellytour_seam_z': None,
-                                                                 'versus_nlm_vhf_ct_label': e.get('versus_nlm_vhf_ct_label'), 'versus_denver_mesh': e.get('versus_denver_mesh'), 'denver_mesh': e.get('denver_mesh')}
+                                                                 'versus_nlm_vhf_ct_label': e.get('versus_nlm_vhf_ct_label'), 'versus_denver_mesh': e.get('versus_denver_mesh'), 'denver_mesh': e.get('denver_mesh'),
+                                                                 'shape_check': e.get('shape_check')}
     else:
         tables[family] = {inst['id']: inst for inst in table['instances']}
+buffers = [(ROOT / 'public' / c['url'].lstrip('/')).read_bytes() for c in atlas['chunks']]
+_baseline_path = ROOT / 'generated/denver-ct-baseline.json'
+baseline_bones = {b['bone']: b for b in json.loads(_baseline_path.read_text())['bones'] if 'own_rigid_fit' in b} if _baseline_path.exists() else {}
 nlm_terms = {p['provenance']['label_name']: p['provenance']['structure_id'] for p in json.loads((ROOT / 'public/atlases/nlm-vhf-ct.json').read_text())['parts']}
 vox_ml = float(atlas['voxel_spacing_mm'][0] * atlas['voxel_spacing_mm'][1] * atlas['voxel_spacing_mm'][2]) / 1000.0
 review_only = {r['id'] for r in atlas['review_only_instances']}
@@ -163,6 +176,25 @@ for part in atlas['parts']:
             check(dv and 'not a substitution decision' in dv.get('note', ''), f'{pid}: Denver comparison note must state it is not a substitution decision')
         else:
             check(dv is None, f'{pid}: Denver comparison recorded without a Denver mesh')
+        # shape check of plan B 2.6: mandatory, bound to the shipped geometry, decision from the documented vocabulary and consistent with the figures
+        sc = prov.get('shape_check')
+        check(isinstance(sc, dict), f'{pid}: shape_check missing (plan B 2.6 shape check not run; the candidate is not acceptable without it)')
+        if isinstance(sc, dict):
+            check(sc.get('decision') in SHAPE_DECISIONS and sc.get('passed') == SHAPE_DECISIONS.get(sc.get('decision')), f'{pid}: shape_check decision {sc.get("decision")} / passed {sc.get("passed")} inconsistent')
+            check(sc.get('hu_edge') == 300 and sc.get('band_mm') == 20, f'{pid}: shape_check reference is not the HU = 300 edge with a 20 mm band')
+            digest = geometry_digest(*read_part(buffers, part))
+            check(sc.get('geometry_sha256') == digest, f'{pid}: shape_check is bound to another geometry ({sc.get("geometry_sha256")} != shipped {digest})')
+            if sc.get('decision') in ('reaches-denver-baseline', 'above-denver-baseline'):
+                check(sc.get('baseline_bone') and sc.get('baseline_shape_p95_mm') is not None and sc.get('shape_p95_mm') is not None
+                      and (sc['shape_p95_mm'] <= sc['baseline_shape_p95_mm']) == sc['passed'], f'{pid}: shape_check passed flag does not follow shape p95 versus the baseline')
+                check(sc.get('diverged') is False, f'{pid}: shape_check compared to the baseline although the fit diverged')
+                base = baseline_bones.get(sc.get('baseline_bone'))
+                check(base is not None and base['own_rigid_fit']['shape_residual']['p95_mm'] == sc['baseline_shape_p95_mm'], f'{pid}: baseline figure differs from generated/denver-ct-baseline.json')
+            if sc.get('decision') == 'no-class-baseline':
+                check(sc.get('baseline_bone') is None and prov['denver_mesh'] is None, f'{pid}: no-class-baseline recorded although a Denver bone or mesh exists')
+            if sc.get('shape_p95_mm') is not None:
+                check(0 <= sc['shape_p95_mm'] and 0 <= sc.get('placement_p95_mm', -1), f'{pid}: shape_check figures out of range')
+            check('not anatomical validation' in sc.get('note', '') or 'no acceptance' in sc.get('note', '') or sc.get('passed') is None, f'{pid}: shape_check note must not read as validation')
     else:
         check(prov['structure_id'].startswith('CTCONS:') and prov.get('ontology_term_label') in (None, ''), f'{pid}: consensus instance carries a resolved ontology term or non-geometric id')
     check(prov['candidate_name'] not in (None, '') or prov['role'] == 'sacrum' or prov['candidate_evidence'], f'{pid}: no candidate name and no evidence text')

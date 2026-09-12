@@ -59,6 +59,8 @@ python3 scripts/build-registry.py                   # also refreshes QA metadata
 node --experimental-strip-types scripts/test-agreement-panel.mjs   # viewer wording and null/zero/missing rendering of the agreement panel
 .venv/bin/python scripts/ct-bone-consensus.py --selftest
 .venv/bin/python scripts/ct-bone-consensus.py nlm        # about 4 min: gated per-name bone candidates (plan B 2.6), generated/ct-bone-consensus-nlm.json; nothing is composed
+.venv/bin/python scripts/denver-ct-baseline.py            # about 5 min: Denver bones against the HU = 300 edge of the fresh CT (shape baseline), generated/denver-ct-baseline.json
+.venv/bin/python scripts/ct-candidate-shape-check.py nlm  # about 1 min: the same procedure on the shipped bone candidates; writes generated/ct-candidate-shape-check-nlm.json and shape_check into the bone report; re-run ingest afterwards
 .venv/bin/python scripts/summarize-reports.py
 ```
 
@@ -312,7 +314,22 @@ the manifest, checks the gate records internally (one passed pair per pair of vo
 class-equivalent voting models, per-model side equal to the expected side, coverage figures in
 range), requires the CT-label comparison for every candidate and the Denver comparison for every
 candidate with a Denver mesh (p50 <= p95, note stating it is not a substitution decision);
-`scripts/test-consensus-metadata.py` corrupts those fields in memory and expects the validator to fail. Not-accepted and single-model candidates are listed in
+`scripts/test-consensus-metadata.py` corrupts those fields in memory and expects the validator to fail.
+
+Shape check (plan B section 2.6, 13 September 2026): `scripts/ct_edge_fit.py` holds the one procedure
+(HU = 300 iso-surface of the fresh CT inside a 20 mm band, coverage mask, placement residual as
+registered, own rigid ICP anchored at the centroid in 8 mm then 4 mm bands, divergence at 15 deg or
+15 mm). `denver-ct-baseline.py` runs it on the 28 Denver bones (figures unchanged by the refactor) and
+`ct-candidate-shape-check.py nlm` on the shipped candidate meshes, binding each result to the
+`geometry_sha256` of the mesh. The criterion is shape p95 <= the Denver bone of the same class and
+side; classes Denver does not cover get `no-class-baseline` and no acceptance. Order:
+`ct-bone-consensus.py nlm` -> `ingest` -> `optimize` (the shipped mesh must exist) ->
+`ct-candidate-shape-check.py nlm` -> `ingest` again (copies `shape_check` into the provenance) ->
+`optimize` -> `build-registry` -> `compose` -> QA -> `build-registry` -> validators;
+`validate-consensus-metadata.py` requires `shape_check` on every candidate, checks the digest against
+the shipped buffer and the baseline figure against `generated/denver-ct-baseline.json`. A candidate
+is segmented on the same CT it is compared with, so a small residual measures the label boundary
+against the HU threshold, not independent geometry. Not-accepted and single-model candidates are listed in
 `review_only_bone_candidates` of the atlas and are not meshed. Order after the batch:
 `ct-bone-consensus.py nlm` -> `ingest-ct-consensus.py` -> `optimize-anatomy.mjs atlas-ct-consensus.json ct-consensus-lod`
 -> `build-registry.py` -> `compose-female.py` -> QA passes -> `build-registry.py` -> validators.

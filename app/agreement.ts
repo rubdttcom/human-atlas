@@ -10,11 +10,14 @@ export interface Gates {class_equivalence?:{equivalent_models:string[];passed:bo
  laterality?:{applicable:boolean;expected?:string;per_model_side?:Record<string,string>;passed:boolean};
  coverage_eligibility?:{eligible_models_on_union_majority:number;fov_edge_contact_fraction_of_surface:number;fov_edge_contact_ml:number;union_outside_coverage_fraction:number;truncated:boolean}}
 export interface DistanceStats {p50:number;p95:number}
+export interface ShapeCheck {geometry_sha256?:string;hu_edge?:number;band_mm?:number;decision:string;passed:boolean|null;placement_p95_mm?:number|null;shape_p95_mm?:number|null;
+ own_fit_rotation_deg?:number|null;own_fit_centroid_displacement_mm?:number|null;diverged?:boolean|null;baseline_bone?:string|null;baseline_shape_p95_mm?:number|null;report?:string;note?:string}
 export interface ModelAgreement {
  geometry_type?:string;vote_rule?:string;segmentation_models?:string;instance_id?:string;instance_family?:string;role?:string;
  bone_class?:string;review_status?:string;consensus_status?:string;gates?:Gates|null;denver_mesh?:string|null;
  versus_nlm_vhf_ct_label?:{dice:number;volume_ratio_candidate_over_label:number}|null;
  versus_denver_mesh?:{mesh:string;candidate_surface_to_denver_vertices_mm:DistanceStats;denver_vertices_to_candidate_surface_mm:DistanceStats;note:string}|null;
+ shape_check?:ShapeCheck|null;
  candidate_name?:string|null;candidate_evidence?:string|null;name_status?:string;hra_name_by_order?:string|null;hra_z_offset_mm?:number|null;
  consensus_ml?:number|null;union_ml?:number|null;agreement_ratio?:number|null;unanimous_fraction?:number|null;
  eligible_models_on_consensus?:Record<string,number>|null;votes_histogram_on_union?:Record<string,number>|null;
@@ -24,6 +27,14 @@ export interface ModelAgreement {
 export type Row=[string,string];
 export interface AgreementSection {title:string;note?:string;rows:Row[]}
 
+export const SHAPE_DECISIONS:Record<string,string>={
+ 'reaches-denver-baseline':'reaches the Denver baseline for this class (shape criterion of 2.6 met; not anatomical validation)',
+ 'above-denver-baseline':'above the Denver baseline for this class (shape criterion of 2.6 not met)',
+ 'no-class-baseline':'no class baseline: figure for information only, no acceptance',
+ 'diverged':'own rigid fit diverged; shape figure not usable',
+ 'no-ct-edge':'no CT cortical edge in the band (outside the field of view or below the threshold)',
+ 'baseline-diverged':'the Denver bone of this class has no usable baseline',
+};
 export const AGREEMENT_TITLE='Model agreement (CT consensus)';
 export const AGREEMENT_DISCLAIMER='Agreement between three open CT bone segmentation models on this donor\'s fresh CT, voted per geometric instance. It is not a probability of being anatomically right, not an anatomical confidence and not an independent validation: the models share training conventions and the same CT. The candidate name is evidence with status pending.';
 
@@ -122,6 +133,20 @@ export function agreementSections(record:ModelAgreement):AgreementSection[] {
   const d=record.versus_denver_mesh;
   rows.push(['Denver mesh (cryosections)',d?`${d.mesh}: candidate surface to Denver vertices p50 ${num(d.candidate_surface_to_denver_vertices_mm.p50,1,' mm')} · p95 ${num(d.candidate_surface_to_denver_vertices_mm.p95,1,' mm')}; Denver vertices to candidate surface p50 ${num(d.denver_vertices_to_candidate_surface_mm.p50,1,' mm')} · p95 ${num(d.denver_vertices_to_candidate_surface_mm.p95,1,' mm')}. Registration and posture differences are included in these distances; they do not separate segmentation error from placement.`:record.denver_mesh?`${record.denver_mesh} not compared`:'no Denver mesh for this bone']);
   sections.push({title:'Comparison, not substitution',note:'Denver measured geometry stays the atlas reference where it exists; any replacement is a recorded per-bone decision (plan B 2.6).',rows});
+ }
+ if(record.instance_family==='bones'){
+  const sc=record.shape_check;
+  const rows:Row[]=[];
+  if(!sc){
+   rows.push(['Shape check','not run: candidate pending the shape check of plan B 2.6, not an accepted atlas candidate']);
+  }else{
+   const shape=sc.shape_p95_mm===null||sc.shape_p95_mm===undefined?'not measured':num(sc.shape_p95_mm,2,' mm');
+   const base=sc.baseline_bone?`Denver ${sc.baseline_bone} ${num(sc.baseline_shape_p95_mm??NaN,2,' mm')}`:'no Denver bone of this class (pelvis to feet only)';
+   rows.push(['Shape (own rigid fit to the HU = 300 edge)',`p95 ${shape} · baseline ${base} · ${SHAPE_DECISIONS[sc.decision]??`decision ${sc.decision} (not in the documented vocabulary)`}`]);
+   rows.push(['Placement (as registered)',sc.placement_p95_mm===null||sc.placement_p95_mm===undefined?'not measured':`p95 ${num(sc.placement_p95_mm,2,' mm')} to the CT edge under nlm-ct-to-vhf`]);
+   if(sc.own_fit_rotation_deg!==null&&sc.own_fit_rotation_deg!==undefined) rows.push(['Own fit',`rotation ${num(sc.own_fit_rotation_deg,1,' deg')} · centroid shift ${num(sc.own_fit_centroid_displacement_mm??NaN,1,' mm')}${sc.diverged?' · diverged':''}`]);
+  }
+  sections.push({title:'Shape check (plan B 2.6)',note:'The candidate was segmented on this same CT, so a small residual to the CT edge measures the label boundary against the HU threshold, not independent geometry. Same procedure as the Denver baseline (scripts/ct_edge_fit.py). Not anatomical validation; acceptance under 2.6 needs the class baseline, and substitution stays a recorded decision.',rows});
  }
  return sections;
 }

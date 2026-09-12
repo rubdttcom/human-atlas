@@ -1,0 +1,331 @@
+{
+ "method": "Per-bone shape check of plan B section 2.6 for the machine bone candidates of source `ct-consensus` (family `bones`).\n\nUsage: .venv/bin/python scripts/ct-candidate-shape-check.py nlm\n\nSame reference and same code as the Denver baseline (scripts/ct_edge_fit.py, scripts/denver-ct-baseline.py): the shipped\ncandidate mesh is carried into the CT frame, its residual to the HU = 300 cortical edge is measured as placed\n(\"placement\", registration and posture included) and after its own rigid fit (\"shape\"). The criterion of section 2.6 is\nshape p95 <= the shape p95 Denver's bone of the same class and side reaches with this procedure\n(generated/denver-ct-baseline.json). Classes Denver does not cover (clavicles, scapulae, skull, sternum) have no baseline:\ntheir figures are reported against the overall Denver median and maximum for information and the decision stays\n`no-class-baseline`; nothing is accepted on that basis.\n\nWrites generated/ct-candidate-shape-check-nlm.json and adds a `shape_check` record to each candidate-consensus entry of\ngenerated/ct-bone-consensus-nlm.json (bound to the SHA-256 of the shipped geometry, scripts/qa_identity.py). Nothing here\nis anatomical validation: a segmentation surface close to an intensity iso-surface is still a machine label.",
+ "ct": "nlm",
+ "hu_edge": 300,
+ "band_mm": 20,
+ "coverage_mask_used": true,
+ "baseline": {
+  "file": "generated/denver-ct-baseline.json",
+  "shape_p95_mm_median": 1.9603156569373739,
+  "shape_p95_mm_max": 3.459846223315937,
+  "bones_measured": 22
+ },
+ "candidates": [
+  {
+   "instance_id": "B01",
+   "part_id": "CTCONS:VHF:B01",
+   "bone_class": "femur_left",
+   "geometry_sha256": "1a9d08b056c528d5b153cfbd6fc6a43d5d9b463956f797194fa5d9b82b29b7f6",
+   "candidate_volume_cm3": 506.5903936766964,
+   "baseline_bone": "Femur_Left",
+   "baseline_shape_p95_mm": 2.8452495770168427,
+   "baseline_placement_p95_mm": 6.097832756093472,
+   "ct_edge_points": 280320,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.8078590123536332,
+    "rms_mm": 1.0192269137993653,
+    "p95_mm": 1.8437965400172949,
+    "max_mm": 6.887244287321593,
+    "n": 50491
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.1760843431078106,
+    "centroid_displacement_mm": 0.08601282233722607,
+    "shape_residual": {
+     "mean_mm": 0.8079231409577532,
+     "rms_mm": 1.0143442744001092,
+     "p95_mm": 1.826282024714335,
+     "max_mm": 6.820482226396881,
+     "n": 50491
+    },
+    "diverged": false
+   },
+   "decision": "reaches-denver-baseline",
+   "passed": true,
+   "note": "shape p95 1.83 mm versus Denver Femur_Left 2.85 mm with the same procedure; shape only (posture removed by the per-bone fit); not anatomical validation"
+  },
+  {
+   "instance_id": "B04",
+   "part_id": "CTCONS:VHF:B04",
+   "bone_class": "clavicle_left",
+   "geometry_sha256": "ea5c08fb70a1c4822247a839a488f0a0c9fc28642f07f307e882e819d95a0178",
+   "candidate_volume_cm3": 28.20351414356544,
+   "baseline_bone": null,
+   "baseline_shape_p95_mm": null,
+   "baseline_placement_p95_mm": null,
+   "ct_edge_points": 39756,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.6752427382329624,
+    "rms_mm": 0.7756627515918346,
+    "p95_mm": 1.3481055351551663,
+    "max_mm": 3.8536342081830792,
+    "n": 33533
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.49079235126165854,
+    "centroid_displacement_mm": 0.17622210105567734,
+    "shape_residual": {
+     "mean_mm": 0.6693185986372402,
+     "rms_mm": 0.7636121977820635,
+     "p95_mm": 1.3142084092995803,
+     "max_mm": 3.7538037536642523,
+     "n": 33533
+    },
+    "diverged": false
+   },
+   "decision": "no-class-baseline",
+   "passed": null,
+   "note": "Denver has no clavicle_left (pelvis to feet only): shape p95 1.31 mm versus the overall Denver median 1.96 mm and maximum 3.46 mm, for information; no acceptance without a class baseline"
+  },
+  {
+   "instance_id": "B05",
+   "part_id": "CTCONS:VHF:B05",
+   "bone_class": "hip_left",
+   "geometry_sha256": "cdbd26a8a7287963e0f3bc8252b66cacceab26bf9cdcaec92fb126823f5b5f54",
+   "candidate_volume_cm3": 360.77868165312094,
+   "baseline_bone": "Pelvis_Left",
+   "baseline_shape_p95_mm": 0.9272479034158562,
+   "baseline_placement_p95_mm": 1.9810245023759105,
+   "ct_edge_points": 273602,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.7361861751300038,
+    "rms_mm": 0.8572630322979548,
+    "p95_mm": 1.5384897601761882,
+    "max_mm": 4.403326457526382,
+    "n": 51818
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.09322890663692543,
+    "centroid_displacement_mm": 0.9728393741158733,
+    "shape_residual": {
+     "mean_mm": 0.6610924035798311,
+     "rms_mm": 0.7716715865183401,
+     "p95_mm": 1.3836871306278045,
+     "max_mm": 4.303264395131573,
+     "n": 51818
+    },
+    "diverged": false
+   },
+   "decision": "above-denver-baseline",
+   "passed": false,
+   "note": "shape p95 1.38 mm versus Denver Pelvis_Left 0.93 mm with the same procedure; shape only (posture removed by the per-bone fit); not anatomical validation"
+  },
+  {
+   "instance_id": "B17",
+   "part_id": "CTCONS:VHF:B17",
+   "bone_class": "femur_right",
+   "geometry_sha256": "8a40c5d9cc7e544f52432cfac34f78b31789da5a2b847ff481c239f007f8037a",
+   "candidate_volume_cm3": 518.7565779212192,
+   "baseline_bone": "Femur_Right",
+   "baseline_shape_p95_mm": 2.535497724219193,
+   "baseline_placement_p95_mm": 5.79766725512284,
+   "ct_edge_points": 283109,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.796850997731564,
+    "rms_mm": 1.008520158786932,
+    "p95_mm": 1.8645212105345979,
+    "max_mm": 6.495409123193483,
+    "n": 50848
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.17893294137215357,
+    "centroid_displacement_mm": 0.06487360652518427,
+    "shape_residual": {
+     "mean_mm": 0.7962181164040558,
+     "rms_mm": 1.0038903895333522,
+     "p95_mm": 1.8649918313907636,
+     "max_mm": 6.409919680855053,
+     "n": 50848
+    },
+    "diverged": false
+   },
+   "decision": "reaches-denver-baseline",
+   "passed": true,
+   "note": "shape p95 1.86 mm versus Denver Femur_Right 2.54 mm with the same procedure; shape only (posture removed by the per-bone fit); not anatomical validation"
+  },
+  {
+   "instance_id": "B19",
+   "part_id": "CTCONS:VHF:B19",
+   "bone_class": "scapula_right",
+   "geometry_sha256": "8363116d2f197ff477df9b162b60c46574656a9d5e3a5e82a97cbf9140c3ced3",
+   "candidate_volume_cm3": 83.62741266093715,
+   "baseline_bone": null,
+   "baseline_shape_p95_mm": null,
+   "baseline_placement_p95_mm": null,
+   "ct_edge_points": 115863,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.8348965852117541,
+    "rms_mm": 0.9589168448348603,
+    "p95_mm": 1.7528007830233405,
+    "max_mm": 3.534929962824985,
+    "n": 41069
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.16342439008612708,
+    "centroid_displacement_mm": 0.37686020832221245,
+    "shape_residual": {
+     "mean_mm": 0.8283714134189201,
+     "rms_mm": 0.9264922289274365,
+     "p95_mm": 1.6155463611909133,
+     "max_mm": 3.8260272164649565,
+     "n": 41069
+    },
+    "diverged": false
+   },
+   "decision": "no-class-baseline",
+   "passed": null,
+   "note": "Denver has no scapula_right (pelvis to feet only): shape p95 1.62 mm versus the overall Denver median 1.96 mm and maximum 3.46 mm, for information; no acceptance without a class baseline"
+  },
+  {
+   "instance_id": "B20",
+   "part_id": "CTCONS:VHF:B20",
+   "bone_class": "clavicle_right",
+   "geometry_sha256": "078ff58e784e3f86075a73940b7061faeba2942eec52aabefb61df4718ecab67",
+   "candidate_volume_cm3": 32.58552252998135,
+   "baseline_bone": null,
+   "baseline_shape_p95_mm": null,
+   "baseline_placement_p95_mm": null,
+   "ct_edge_points": 43529,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.7217001903562272,
+    "rms_mm": 0.8732453868179392,
+    "p95_mm": 1.6131578758069105,
+    "max_mm": 4.687497420625258,
+    "n": 33525
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.16443148364327131,
+    "centroid_displacement_mm": 0.2600684928904901,
+    "shape_residual": {
+     "mean_mm": 0.7166076774957157,
+     "rms_mm": 0.8505266462836629,
+     "p95_mm": 1.4954939120942967,
+     "max_mm": 4.673339884454505,
+     "n": 33525
+    },
+    "diverged": false
+   },
+   "decision": "no-class-baseline",
+   "passed": null,
+   "note": "Denver has no clavicle_right (pelvis to feet only): shape p95 1.50 mm versus the overall Denver median 1.96 mm and maximum 3.46 mm, for information; no acceptance without a class baseline"
+  },
+  {
+   "instance_id": "B21",
+   "part_id": "CTCONS:VHF:B21",
+   "bone_class": "hip_right",
+   "geometry_sha256": "1000ce277e47e614daaccf7c36895dff9e32182075fa359f1d3f562aeee0617f",
+   "candidate_volume_cm3": 357.7280984655541,
+   "baseline_bone": "Pelvis_Right",
+   "baseline_shape_p95_mm": 1.1905697761434562,
+   "baseline_placement_p95_mm": 1.9817210730136656,
+   "ct_edge_points": 267556,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.7564737527947649,
+    "rms_mm": 0.9045827858323942,
+    "p95_mm": 1.6620418224751068,
+    "max_mm": 5.31876527823429,
+    "n": 51557
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.04273810280831391,
+    "centroid_displacement_mm": 1.0182860917313066,
+    "shape_residual": {
+     "mean_mm": 0.6673185114987044,
+     "rms_mm": 0.7974137456316918,
+     "p95_mm": 1.4329587956528087,
+     "max_mm": 5.023152843809679,
+     "n": 51557
+    },
+    "diverged": false
+   },
+   "decision": "above-denver-baseline",
+   "passed": false,
+   "note": "shape p95 1.43 mm versus Denver Pelvis_Right 1.19 mm with the same procedure; shape only (posture removed by the per-bone fit); not anatomical validation"
+  },
+  {
+   "instance_id": "B33",
+   "part_id": "CTCONS:VHF:B33",
+   "bone_class": "skull",
+   "geometry_sha256": "a2f32f119b0ad9666e0d6624a1aaebbdcb7e0df7668d5473ea6874d6dcc5113f",
+   "candidate_volume_cm3": 707.5717678586623,
+   "baseline_bone": null,
+   "baseline_shape_p95_mm": null,
+   "baseline_placement_p95_mm": null,
+   "ct_edge_points": 408819,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.8118365889387047,
+    "rms_mm": 1.0186036902200464,
+    "p95_mm": 1.9532327591138898,
+    "max_mm": 6.597029062172247,
+    "n": 94633
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.023419605956792235,
+    "centroid_displacement_mm": 0.3258984261333551,
+    "shape_residual": {
+     "mean_mm": 0.8259505889825807,
+     "rms_mm": 0.9926335242395686,
+     "p95_mm": 1.808028866693101,
+     "max_mm": 6.470463081622926,
+     "n": 94633
+    },
+    "diverged": false
+   },
+   "decision": "no-class-baseline",
+   "passed": null,
+   "note": "Denver has no skull (pelvis to feet only): shape p95 1.81 mm versus the overall Denver median 1.96 mm and maximum 3.46 mm, for information; no acceptance without a class baseline"
+  },
+  {
+   "instance_id": "B34",
+   "part_id": "CTCONS:VHF:B34",
+   "bone_class": "sternum",
+   "geometry_sha256": "4cef89ff27ff13fdfcebdc14211bafb16a15c6a74bca44193f09115e68ecac59",
+   "candidate_volume_cm3": 48.41949142132584,
+   "baseline_bone": null,
+   "baseline_shape_p95_mm": null,
+   "baseline_placement_p95_mm": null,
+   "ct_edge_points": 49828,
+   "placement_under_nlm_ct_to_vhf": {
+    "mean_mm": 0.8880889354308346,
+    "rms_mm": 1.038872866434636,
+    "p95_mm": 1.9850307723991893,
+    "max_mm": 3.958915931598415,
+    "n": 34285
+   },
+   "own_rigid_fit": {
+    "rotation_deg": 0.20803954235268174,
+    "centroid_displacement_mm": 0.6581610318416526,
+    "shape_residual": {
+     "mean_mm": 0.8835609421318028,
+     "rms_mm": 1.0203808058802983,
+     "p95_mm": 1.9325664069593775,
+     "max_mm": 3.886936854618322,
+     "n": 34285
+    },
+    "diverged": false
+   },
+   "decision": "no-class-baseline",
+   "passed": null,
+   "note": "Denver has no sternum (pelvis to feet only): shape p95 1.93 mm versus the overall Denver median 1.96 mm and maximum 3.46 mm, for information; no acceptance without a class baseline"
+  }
+ ],
+ "summary": {
+  "candidates": 9,
+  "decisions": {
+   "above-denver-baseline": 2,
+   "no-class-baseline": 5,
+   "reaches-denver-baseline": 2
+  },
+  "shape_p95_mm": {
+   "B01": 1.826282024714335,
+   "B04": 1.3142084092995803,
+   "B05": 1.3836871306278045,
+   "B17": 1.8649918313907636,
+   "B19": 1.6155463611909133,
+   "B20": 1.4954939120942967,
+   "B21": 1.4329587956528087,
+   "B33": 1.808028866693101,
+   "B34": 1.9325664069593775
+  }
+ }
+}
