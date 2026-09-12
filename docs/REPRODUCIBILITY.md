@@ -52,7 +52,8 @@ python3 scripts/build-registry.py
 .venv/bin/python scripts/qa-geometry.py
 .venv/bin/python scripts/qa-anatomy.py               # about 45 min on 20 cores from scratch; reuses measurements of byte-identical meshes (geometry_sha256), so a rebuild that changes one source takes minutes
 .venv/bin/python scripts/compare-bmftoolkit.py       # needs sources/BMFToolkit checked out; nothing is shipped
-python3 scripts/build-registry.py
+python3 scripts/build-registry.py                   # also refreshes QA metadata in composed.json
+.venv/bin/python scripts/test-qa-carryover.py
 .venv/bin/python scripts/summarize-reports.py
 ```
 
@@ -136,10 +137,19 @@ components far from the main component and measures bounding-box continuity of t
 composite. Run it after every `qa-geometry.py`: the geometry pass only carries measured
 self-intersection and component counts over for meshes whose geometry is byte-identical to
 the previous report and marks everything else `not-assessed`, so a rebuild that skips the
-anatomy pass ships `not-assessed` into the manifests. The anatomy pass reuses previous
-measurements of identical meshes and recomputes the rest; the spine selector accepts
-`role: vertebra` (ct-consensus instances `V01..V25`) as well as `vertebrae_*` labels and
-stops if CT parts exist but no vertebra matches. `compare-bmftoolkit.py` aligns every BMFToolkit bone to its Denver counterpart
+anatomy pass ships `not-assessed` into the manifests. Identity is the SHA-256 of the shipped
+bytes (`geometry_sha256`, `scripts/qa_identity.py`); aggregate statistics never count, and a
+row without a digest is never carried over. A report that predates the field is migrated
+with `scripts/qa-hash-revision.py REV REPORT OUT`, which digests the buffers of the git
+revision that produced it (the 4,415 rows measured at f830ea5 were checked this way: all
+carried rows are byte-identical to that revision). `scripts/test-qa-carryover.py` is the
+regression test (two boxes with equal statistics and different geometry). The anatomy pass
+reuses previous measurements of identical meshes and recomputes the rest; the spine selector
+accepts `role: vertebra` (ct-consensus instances `V01..V25`) as well as `vertebrae_*` labels
+and stops if CT parts exist but no vertebra matches. `build-registry.py`, run after both
+passes, refreshes `public/atlases/composed.json`: every composed part carries `geometry_qa`
+(the source mesh) and `composed_geometry_qa` (the transformed copy) from the current report,
+and `validate-composition.py` checks both digests against the shipped buffers. `compare-bmftoolkit.py` aligns every BMFToolkit bone to its Denver counterpart
 by rigid ICP and records the residuals; BMFToolkit geometry is never written to `public/`.
 
 ## Verification

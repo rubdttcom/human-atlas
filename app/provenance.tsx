@@ -26,6 +26,12 @@ export function ProvenanceDetails({record,onCompare}:{record:Provenance;onCompar
    ['Components',record.geometry_qa.connected_components??'not measured'],['Outlier components',record.geometry_qa.outlier_components??'not measured'],
    ['Anatomical review',record.geometry_qa.anatomical_review],
   ].map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></details>}
+  {record.composed_geometry_qa&&<details><summary>Composed geometry checks (after registration)</summary><dl>{[
+   ['Open boundary edges',record.composed_geometry_qa.boundary_edges],['Nonmanifold edges',record.composed_geometry_qa.nonmanifold_edges],
+   ['Degenerate triangles',record.composed_geometry_qa.degenerate_faces],['Self-intersections',record.composed_geometry_qa.self_intersections],
+   ['Components',record.composed_geometry_qa.connected_components??'not measured'],['Outlier components',record.composed_geometry_qa.outlier_components??'not measured'],
+   ['Geometry SHA-256',record.composed_geometry_qa.geometry_sha256],
+  ].map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></details>}
   <h4>Alternative geometries</h4>
   {record.alternatives.length?<><ul>{record.alternatives.map(id=><li key={id}>{id}</li>)}</ul>{onCompare&&<button className="compare-button" onClick={onCompare}><Columns2 size={15}/>Compare sources side by side</button>}</>:<p>No verified matching alternative imported.</p>}
   <div className="provenance-links"><a href={record.source_url} target="_blank" rel="noreferrer">Dataset <ExternalLink size={14}/></a><a href={record.license_url} target="_blank" rel="noreferrer">License <ExternalLink size={14}/></a><button onClick={download} aria-label="Download structure provenance" title="Download structure provenance"><Download size={16}/></button></div>

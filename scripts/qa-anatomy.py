@@ -14,11 +14,10 @@ Checks
 3. Composite continuity: vertical gap between the HRA head structures and the CT skull/vertebrae in the
    canonical stage, and between the CT vertebral column and the Denver sacrum.
 
-Meshes whose geometry is byte-identical (`geometry_sha256`, or the qa-geometry fingerprint for older
-reports) to an entry already in generated/anatomy-qa.json are reused, not recomputed, unless
-`--recompute` is given. Entries of atlases not named on the command line are kept.
+Meshes whose `geometry_sha256` equals that of an entry already in generated/anatomy-qa.json are reused,
+not recomputed, unless `--recompute` is given (scripts/qa_identity.py; entries without a digest are
+never reused). Entries of atlases not named on the command line are kept.
 """
-import hashlib
 import json
 import sys
 from pathlib import Path
@@ -30,7 +29,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTLIER_MM = 60.0
 CONTINUITY_ONLY = '--continuity-only' in sys.argv
 RECOMPUTE = '--recompute' in sys.argv
-FINGERPRINT = ('triangles', 'degenerate_faces', 'boundary_edges', 'nonmanifold_edges', 'signed_volume_m3')
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from qa_identity import geometry_digest, reusable  # noqa: E402
 atlases = [] if CONTINUITY_ONLY else ([a for a in sys.argv[1:] if not a.startswith('--')] or ['denver-vhf', 'tcia', 'nlm-vhf-ct', 'ct-consensus', 'hra-female', 'composed', 'bodyparts3d'])
 
 
@@ -147,27 +147,13 @@ qa = json.loads(qa_path.read_text())
 qa_index = {(r['atlas'], r['structure']): r for r in qa['structures']}
 
 
-def reusable(name, part, digest):
-    """Previous measurement of byte-identical geometry: same sha256, or the qa-geometry fingerprint when the old entry predates the field."""
-    old = existing_index.get((name, part['id']))
-    if RECOMPUTE or old is None:
-        return None
-    if 'geometry_sha256' in old:
-        return old if old['geometry_sha256'] == digest else None
-    qa_row = qa_index.get((name, part['id']))
-    if qa_row is None or qa_row.get('self_intersections', 'not-assessed') == 'not-assessed' or old['triangles'] != qa_row['triangles']:
-        return None
-    # qa-geometry already matched this row against the previous report on the full fingerprint before carrying the value over.
-    return old if qa_row['self_intersections'].startswith(f"{old['self_intersecting_pairs']} intersecting") else None
-
-
 for name in atlases:
     count = reused = 0
     for part, vertices, faces in load(name):
-        digest = hashlib.sha256(vertices.astype(np.float32).tobytes() + faces.astype(np.uint32).tobytes()).hexdigest()
-        old = reusable(name, part, digest)
+        digest = geometry_digest(vertices, faces)
+        old = reusable(existing_index.get((name, part['id'])), digest, RECOMPUTE)
         if old is not None:
-            entry = {**old, 'geometry_sha256': digest}
+            entry = dict(old)
             reused += 1
         else:
             hits, coplanar, candidates = self_intersections(vertices, faces)

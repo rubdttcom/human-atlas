@@ -1,35 +1,22 @@
 """Measure shipped geometry without turning unperformed anatomy checks into passes.
 
 Specialised results already measured by qa-anatomy.py (self-intersections, connected components)
-are carried over only for meshes whose geometry is byte-identical to the previous report
-(`geometry_sha256`; for reports written before that field existed, an exact match of triangle
-count, edge counts, degenerate faces and signed volume). Everything else is `not-assessed`
-until qa-anatomy.py runs. `--previous PATH` reads another report as the carry-over source.
+are carried over only for meshes whose `geometry_sha256` equals the one in the previous report
+(scripts/qa_identity.py). Rows without a digest are never carried over: migrate an old report with
+scripts/qa-hash-revision.py first. Everything else is `not-assessed` until qa-anatomy.py runs.
+`--previous PATH` reads another report as the carry-over source.
 """
-import hashlib
 import json
 import sys
 from pathlib import Path
 import numpy as np
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from qa_identity import carry_over, geometry_digest  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
-FINGERPRINT = ('triangles', 'degenerate_faces', 'boundary_edges', 'nonmanifold_edges', 'signed_volume_m3')
-CARRIED = ('self_intersections', 'connected_components', 'outlier_components')
 previous_path = Path(sys.argv[sys.argv.index('--previous') + 1]) if '--previous' in sys.argv else ROOT / 'generated/qa-report.json'
 previous = {(r['atlas'], r['structure']): r for r in json.loads(previous_path.read_text())['structures']} if previous_path.exists() else {}
-
-
-def carry_over(record):
-    old = previous.get((record['atlas'], record['structure']))
-    if old is None or old.get('self_intersections', 'not-assessed') == 'not-assessed':
-        return False
-    same = old['geometry_sha256'] == record['geometry_sha256'] if 'geometry_sha256' in old else all(old.get(k) == record[k] for k in FINGERPRINT)
-    if not same:
-        return False
-    record.update({k: old[k] for k in CARRIED if k in old})
-    return True
-
-
 reports = []
 carried = 0
 for source in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 'ct-consensus', 'composed'):
@@ -50,7 +37,7 @@ for source in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 
         # Edge incidence distinguishes open boundaries from non-manifold junctions.
         edges = np.sort(np.concatenate([faces[:, [0, 1]], faces[:, [1, 2]], faces[:, [2, 0]]]), axis=1)
         _, counts = np.unique(edges, axis=0, return_counts=True)
-        digest = hashlib.sha256(vertices.tobytes() + faces.tobytes()).hexdigest()
+        digest = geometry_digest(vertices, faces)
         reports.append({'atlas': source, 'structure': part['id'], 'finite_vertices': True, 'valid_indices': True, 'geometry_sha256': digest,
                         'triangles': len(faces), 'degenerate_faces': int(np.count_nonzero(areas < 1e-14)),
                         'zero_normals': int(np.count_nonzero(lengths < 1e-4)),
@@ -59,7 +46,7 @@ for source in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 
                         'nonmanifold_edges': int(np.count_nonzero(counts > 2)),
                         'signed_volume_m3': float(np.einsum('ij,ij->i', face_vertices[:, 0], cross).sum() / 6),
                         'self_intersections': 'not-assessed', 'anatomical_review': 'pending'})
-        carried += carry_over(reports[-1])
+        carried += carry_over(previous.get((source, part['id'])), reports[-1])
     print(f'{source}: geometry measurements complete', flush=True)
 pending = sum(r['self_intersections'] == 'not-assessed' for r in reports)
 report = {'structures': reports, 'anatomical_review': 'pending',

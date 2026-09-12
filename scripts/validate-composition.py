@@ -149,7 +149,30 @@ box = np.array([brain_bounds[:, 0].min(axis=0), brain_bounds[:, 1].max(axis=0)])
 ct_brain = next(p for p in atlas['parts'] if p['provenance']['source'] == 'nlm-vhf-ct' and p['provenance']['label_name'] == 'brain')
 target_box = np.array(ct_brain['bounds'])
 assert np.all(box[0] >= target_box[0] - 1e-3) and np.all(box[1] <= target_box[1] + 1e-3), 'Brain bounds leave the CT brain envelope'
+# QA metadata shipped with the composite must be present for every part and name the exact geometry it describes:
+# `geometry_qa` the source mesh (digest of the source atlas buffer), `composed_geometry_qa` the transformed copy (digest of the composed buffer).
+import sys
+sys.path.insert(0, str(ROOT / 'scripts'))
+from qa_identity import geometry_digest  # noqa: E402
+qa_rows = {(r['atlas'], r['structure']): r for r in json.loads((ROOT / 'generated/qa-report.json').read_text())['structures']}
+
+
+def faces_of(atlas_, part):
+    data = buffer(atlas_['chunks'][part['chunk']]['url'])
+    return np.frombuffer(data, '<u4', count=part['indexCount'], offset=part['indices']).reshape(-1, 3)
+
+
+for part in atlas['parts']:
+    prov = part['provenance']
+    source_qa, composed_qa = prov.get('geometry_qa'), prov.get('composed_geometry_qa')
+    assert source_qa and composed_qa, f"{part['id']}: composed part without geometry_qa / composed_geometry_qa (run build-registry after the QA passes)"
+    assert composed_qa['geometry_sha256'] == geometry_digest(vertices_of(atlas, part), faces_of(atlas, part)), f"{part['id']}: composed_geometry_qa describes other bytes than the shipped composed buffer"
+    src_atlas = source_atlases[prov['source']]
+    src_part = source_parts[part['id']]
+    assert source_qa['geometry_sha256'] == geometry_digest(vertices_of(src_atlas, src_part), faces_of(src_atlas, src_part)), f"{part['id']}: geometry_qa describes other bytes than the source buffer"
+    assert source_qa == qa_rows[(prov['source'], prov['source_asset'])] and composed_qa == qa_rows[('composed', part['id'])], f"{part['id']}: composed QA metadata is stale against generated/qa-report.json"
+    assert source_qa['self_intersections'] != 'not-assessed' and composed_qa['self_intersections'] != 'not-assessed', f"{part['id']}: QA shipped as not-assessed (qa-anatomy.py did not run on this geometry)"
 by_donor = atlas['registration_report']['composition']['meshes_by_donor']
-print(f"Verified {len(ids)} composed meshes in {CANONICAL}: unchanged topology, Denver and NLM CT identity (same donor, rigid pelvis fit p95 {nlm_ct_to_vhf['p95_mm']:.2f} mm, "
+print(f"Verified {len(ids)} composed meshes in {CANONICAL}: unchanged topology, source and composed QA digests match the shipped buffers, Denver and NLM CT identity (same donor, rigid pelvis fit p95 {nlm_ct_to_vhf['p95_mm']:.2f} mm, "
       f"frame rotation {nlm_ct_to_vhf['rotation_deg']:.2f} deg), HRA organ-proxy fit RMS {transforms['hra-stage-to-vhf']['rms_mm']:.2f} mm; donors {by_donor}. "
       f"Landmarks and anatomy remain unreviewed; acceptance: {', '.join(k + '=' + str(v['met']) for k, v in acceptance.items() if isinstance(v, dict) and 'met' in v)}.")

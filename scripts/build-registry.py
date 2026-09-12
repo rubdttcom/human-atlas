@@ -249,6 +249,25 @@ for source_id, filename, transform, revision in configs:
     atlas_summaries.append({'source': source_id, 'meshes': len(records), 'source_concepts': len(atlas['concepts']),
                             'triangles': atlas['triangles'], 'chunk_hashes': hashes})
 
+# The composite copies each source part's provenance at compose time, before the QA passes run on the new
+# buffers. Refresh it here from the current qa-report so the viewer never shows stale or missing checks:
+# `geometry_qa` is the QA of the source geometry, `composed_geometry_qa` the QA of the transformed copy.
+composed_path = ROOT / 'public/atlases/composed.json'
+if composed_path.exists() and qa_records:
+    composed = json.loads(composed_path.read_text())
+    missing = []
+    for part in composed['parts']:
+        prov = part['provenance']
+        source_qa = qa_records.get((prov['source'], prov['source_asset']))
+        composed_qa = qa_records.get(('composed', part['id']))
+        if source_qa is None or composed_qa is None:
+            missing.append(part['id'])
+        prov['geometry_qa'] = source_qa
+        prov['composed_geometry_qa'] = composed_qa
+    if missing:
+        raise SystemExit(f'build-registry: {len(missing)} composed parts have no QA row for their source or transformed geometry (run qa-geometry.py and qa-anatomy.py after compose-female.py); first: {missing[:5]}')
+    write_json('public/atlases/composed.json', composed)
+
 by_structure = {}
 for record in all_records:
     by_structure.setdefault(record['structure_id'], []).append(record)
