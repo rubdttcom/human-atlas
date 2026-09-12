@@ -55,6 +55,7 @@ python3 scripts/build-registry.py
 python3 scripts/build-registry.py                   # also refreshes QA metadata in composed.json
 .venv/bin/python scripts/test-qa-carryover.py
 .venv/bin/python scripts/validate-consensus-metadata.py   # model-agreement metadata of ct-consensus: source = manifest = composite = instance tables
+.venv/bin/python scripts/test-consensus-metadata.py       # regression: corrupted gates / CT / Denver comparison fields in memory must fail the validator
 node --experimental-strip-types scripts/test-agreement-panel.mjs   # viewer wording and null/zero/missing rendering of the agreement panel
 .venv/bin/python scripts/ct-bone-consensus.py --selftest
 .venv/bin/python scripts/ct-bone-consensus.py nlm        # about 4 min: gated per-name bone candidates (plan B 2.6), generated/ct-bone-consensus-nlm.json; nothing is composed
@@ -304,7 +305,14 @@ alternative of the same catalogue entry as the `nlm-vhf-ct` label and the Denver
 side-by-side comparison); machine-unverified records never become `best_available` ahead of a
 source of equal priority, `compose-female.py` never composes them, and `validate-composition.py`
 and `validate-consensus-metadata.py` fail if they are composed, if a gate did not pass, or if the
-comparison is missing. Not-accepted and single-model candidates are listed in
+comparison is missing. Since 2026-09-12 (audit finding on f28467f) the validator also compares
+`gates`, `versus_nlm_vhf_ct_label`, `versus_denver_mesh`, `denver_mesh`, `bone_class`,
+`review_status` and `consensus_status` field by field between the bone report, the source atlas and
+the manifest, checks the gate records internally (one passed pair per pair of voting models,
+class-equivalent voting models, per-model side equal to the expected side, coverage figures in
+range), requires the CT-label comparison for every candidate and the Denver comparison for every
+candidate with a Denver mesh (p50 <= p95, note stating it is not a substitution decision);
+`scripts/test-consensus-metadata.py` corrupts those fields in memory and expects the validator to fail. Not-accepted and single-model candidates are listed in
 `review_only_bone_candidates` of the atlas and are not meshed. Order after the batch:
 `ct-bone-consensus.py nlm` -> `ingest-ct-consensus.py` -> `optimize-anatomy.mjs atlas-ct-consensus.json ct-consensus-lod`
 -> `build-registry.py` -> `compose-female.py` -> QA passes -> `build-registry.py` -> validators.

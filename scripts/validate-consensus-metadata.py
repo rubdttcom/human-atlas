@@ -11,6 +11,11 @@ Checks (no metric is recomputed from voxels; the instance tables written by ct-v
 4. Naming stays pending: name_status == 'pending' everywhere, structure ids are geometric (CTCONS:), no ontology term.
 5. Review-only instances (no strict-majority voxels) are listed and not meshed; their ids never appear as parts.
 6. The composite carries geometry_qa and composed_geometry_qa for every consensus part (QA separation preserved).
+7. Bone candidates (family `bones`, plan B section 2.6): gates, versus_nlm_vhf_ct_label, versus_denver_mesh, denver_mesh, bone_class,
+   label_name, review_status and consensus_status are copied unchanged from generated/ct-bone-consensus-nlm.json into the source atlas and
+   the manifest; the gate records are internally consistent (every pair passed, every voting model is class-equivalent, laterality per
+   model equals the expected side); the CT-label comparison is mandatory for every candidate and the Denver comparison for every
+   candidate with a Denver mesh, both with figures in range. These fields are compared, never recomputed.
 """
 import json
 from pathlib import Path
@@ -21,6 +26,10 @@ NO_VOTE_STATES = {'unsupported', 'unprocessed', 'absorbed', 'negative', 'unmatch
 FIELDS = ('instance_id', 'instance_family', 'role', 'consensus_ml', 'union_ml', 'agreement_ratio', 'unanimous_fraction', 'eligible_models_on_consensus',
           'votes_histogram_on_union', 'conflict_voxels', 'lost_to_other_winner_ml', 'size_class', 'models', 'source_labels', 'candidate_name', 'candidate_evidence',
           'name_status', 'hra_name_by_order', 'hra_z_offset_mm', 'crosses_skellytour_seam_z', 'vote_rule', 'segmentation_models', 'registration_p95_mm')
+# Bone-candidate fields (plan B 2.6): copied from the bone report and compared between copies; a laxer copy would hide a failed gate or a lost comparison.
+BONE_FIELDS = ('gates', 'versus_nlm_vhf_ct_label', 'versus_denver_mesh', 'denver_mesh', 'bone_class', 'label_name', 'review_status', 'consensus_status')
+BONE_TABLE_FIELDS = ('gates', 'versus_nlm_vhf_ct_label', 'versus_denver_mesh', 'denver_mesh', 'bone_class', 'review_status')
+GATES = ('class_equivalence', 'geometric_correspondence', 'laterality', 'coverage_eligibility')
 
 atlas = json.loads((ROOT / 'public/atlases/ct-consensus.json').read_text())
 manifest = {r['source_asset']: r for r in json.loads((ROOT / 'manifests/ct-consensus.json').read_text())}
@@ -35,7 +44,8 @@ for family, entry in atlas['instance_maps'].items():
         for cls, e in table['bones'].items():
             if e.get('status') == 'candidate-consensus':
                 tables[family][f"B{e['candidate_index']:02d}"] = {**e, 'role': 'bone', 'bone_class': cls, 'source_labels': {m: v['label'] for m, v in e['models'].items() if v['state'] == 'voted'},
-                                                                 'lost_to_other_winner_ml': None, 'hra_name_by_order': None, 'hra_z_offset_mm': None, 'crosses_skellytour_seam_z': None}
+                                                                 'lost_to_other_winner_ml': None, 'hra_name_by_order': None, 'hra_z_offset_mm': None, 'crosses_skellytour_seam_z': None,
+                                                                 'versus_nlm_vhf_ct_label': e.get('versus_nlm_vhf_ct_label'), 'versus_denver_mesh': e.get('versus_denver_mesh'), 'denver_mesh': e.get('denver_mesh')}
     else:
         tables[family] = {inst['id']: inst for inst in table['instances']}
 nlm_terms = {p['provenance']['label_name']: p['provenance']['structure_id'] for p in json.loads((ROOT / 'public/atlases/nlm-vhf-ct.json').read_text())['parts']}
@@ -54,15 +64,18 @@ for part in atlas['parts']:
     prov = part['provenance']
     pid = part['id']
     meshed.add(prov['instance_id'])
-    for f in FIELDS:
+    fields = FIELDS + BONE_FIELDS if prov.get('instance_family') == 'bones' else FIELDS
+    for f in fields:
         check(f in prov, f'{pid}: source atlas lacks {f}')
     check(pid in manifest, f'{pid}: not in manifests/ct-consensus.json')
     check(pid in composed or prov['role'] in ('sacrum', 'bone'), f'{pid}: not in the composite')
     if pid in manifest:
-        check(all(manifest[pid].get(f) == prov.get(f) for f in FIELDS), f'{pid}: manifest copy differs from the source atlas')
+        for f in fields:
+            check(manifest[pid].get(f) == prov.get(f), f'{pid}: manifest copy of {f} differs from the source atlas')
     if pid in composed:
         cp = composed[pid]['provenance']
-        check(all(cp.get(f) == prov.get(f) for f in FIELDS), f'{pid}: composite copy differs from the source atlas')
+        for f in fields:
+            check(cp.get(f) == prov.get(f), f'{pid}: composite copy of {f} differs from the source atlas')
         check(cp.get('geometry_qa') and cp.get('composed_geometry_qa'), f'{pid}: composite copy lacks geometry_qa / composed_geometry_qa')
         check(cp.get('geometry_qa', {}).get('geometry_sha256') and cp.get('composed_geometry_qa', {}).get('geometry_sha256'), f'{pid}: QA copies lack digests')
     inst = tables.get(prov['instance_family'], {}).get(prov['instance_id'])
@@ -113,12 +126,43 @@ for part in atlas['parts']:
         check(prov.get('review_status') == 'machine-unverified' and prov.get('consensus_status') == 'candidate-consensus', f'{pid}: bone candidate must be machine-unverified candidate-consensus')
         check(prov['structure_id'] == nlm_terms.get(prov['label_name']), f'{pid}: bone candidate structure id {prov["structure_id"]} differs from the nlm-vhf-ct label {prov["label_name"]} ({nlm_terms.get(prov["label_name"])})')
         check(pid not in composed, f'{pid}: bone candidate composed automatically')
+        if inst:
+            for f in BONE_TABLE_FIELDS:
+                check(prov.get(f) == inst.get(f), f'{pid}: {f} differs from the bone report')
+            check(prov['label_name'] == inst['source_labels'].get('totalseg'), f'{pid}: label_name {prov["label_name"]} is not the TotalSegmentator label of the report')
         g = prov.get('gates') or {}
-        check(all(g.get(k, {}).get('passed') for k in ('class_equivalence', 'geometric_correspondence', 'laterality')), f'{pid}: a gate did not pass')
-        check(not g.get('coverage_eligibility', {}).get('truncated') and g.get('coverage_eligibility', {}).get('eligible_models_on_union_majority', 0) >= 2, f'{pid}: coverage gate failed')
+        check(isinstance(g, dict) and all(k in g for k in GATES), f'{pid}: gates record incomplete (needs {GATES})')
+        check(all(g.get(k, {}).get('passed') is True for k in ('class_equivalence', 'geometric_correspondence', 'laterality')), f'{pid}: a gate did not pass')
+        pairs = g.get('geometric_correspondence', {}).get('pairs') or {}
+        n_models = len(voting)
+        check(len(pairs) == n_models * (n_models - 1) // 2 and n_models >= 2, f'{pid}: geometric correspondence has {len(pairs)} pairs for {n_models} voting models')
+        for pair, v in pairs.items():
+            check(set(pair.split('|')) <= set(voting) and len(pair.split('|')) == 2, f'{pid}: correspondence pair {pair} names a non-voting model')
+            check(v.get('passed') is True and 0 <= v.get('iou_largest_components', -1) <= 1 and v.get('centroid_offset_mm', -1) >= 0,
+                  f'{pid}: correspondence pair {pair} did not pass or has figures out of range')
+        check(set(voting) <= set(g.get('class_equivalence', {}).get('equivalent_models') or []), f'{pid}: a voting model is not class-equivalent')
+        lat = g.get('laterality', {})
+        if lat.get('applicable'):
+            check(lat.get('expected') == prov['laterality'] and set(lat.get('per_model_side', {})) == set(voting)
+                  and all(side == lat.get('expected') for side in lat.get('per_model_side', {}).values()), f'{pid}: laterality gate inconsistent with the voting models or the part laterality')
+        else:
+            check(prov['laterality'] in (None, '', 'midline', 'bilateral', 'unpaired'), f'{pid}: laterality gate not applicable but part is lateralised ({prov["laterality"]})')
+        cov = g.get('coverage_eligibility', {})
+        check(cov.get('truncated') is False and cov.get('eligible_models_on_union_majority', 0) >= 2, f'{pid}: coverage gate failed')
+        check(0 <= cov.get('fov_edge_contact_fraction_of_surface', -1) <= 1 and 0 <= cov.get('union_outside_coverage_fraction', -1) <= 1, f'{pid}: coverage figures out of range')
         check(prov['agreement_ratio'] >= 0.70 and prov['unanimous_fraction'] >= 0.60, f'{pid}: below the acceptance floor')
+        ct = prov.get('versus_nlm_vhf_ct_label')
+        check(isinstance(ct, dict) and 0 <= ct.get('dice', -1) <= 1 and ct.get('volume_ratio_candidate_over_label', 0) > 0,
+              f'{pid}: comparison against the nlm-vhf-ct label is mandatory and must carry dice in [0, 1] and a positive volume ratio')
+        dv = prov.get('versus_denver_mesh')
         if prov.get('denver_mesh'):
-            check(prov.get('versus_denver_mesh') and prov['versus_denver_mesh']['mesh'] == prov['denver_mesh'], f'{pid}: Denver comparison missing')
+            check(isinstance(dv, dict) and dv.get('mesh') == prov['denver_mesh'], f'{pid}: Denver comparison missing or names another mesh')
+            for k in ('candidate_surface_to_denver_vertices_mm', 'denver_vertices_to_candidate_surface_mm'):
+                d = (dv or {}).get(k) or {}
+                check(0 <= d.get('p50', -1) <= d.get('p95', -1), f'{pid}: Denver comparison {k} lacks p50 <= p95')
+            check(dv and 'not a substitution decision' in dv.get('note', ''), f'{pid}: Denver comparison note must state it is not a substitution decision')
+        else:
+            check(dv is None, f'{pid}: Denver comparison recorded without a Denver mesh')
     else:
         check(prov['structure_id'].startswith('CTCONS:') and prov.get('ontology_term_label') in (None, ''), f'{pid}: consensus instance carries a resolved ontology term or non-geometric id')
     check(prov['candidate_name'] not in (None, '') or prov['role'] == 'sacrum' or prov['candidate_evidence'], f'{pid}: no candidate name and no evidence text')
