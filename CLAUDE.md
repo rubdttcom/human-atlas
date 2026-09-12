@@ -23,13 +23,27 @@ Spanish.
 - Names of consensus instances stay `name_status: pending` until a decision is recorded in
   `registry/review-status.json`. Never impose 24/25 vertebrae or five/six lumbar as truth; the donor has
   six lumbar-type bodies and the lumbosacral transition is open.
-- Work order: exhaust documentation and automatic checks before escalating a question to an anatomist.
-  The final blinded audit (plan B §2.3) and the review registries stay; they are the only path to
-  `inspected` / `batch-audited`.
-- New machine outputs enter as `machine-unverified` candidates and alternatives. Nothing replaces the
-  composite automatically; substitution is a recorded per-bone decision (`registry/composition-recipe.json`).
-  Denver (measured from the cryosections) stays wherever it is used unless a documented comparison and a
+- No anatomist (user decision, 13 September 2026, agreed by Claude and the Codex auditor): no human
+  anatomical review is expected during this project. The blinded audit and the sealed test set drawn by a
+  human (plan B §2.3, §2.4) move to an optional final stage 8 that happens only if the project gains
+  attention. Nothing waits for it. `inspected` and `batch-audited` are not granted now and stay reserved
+  for stage 8. Documentation and automatic checks are exhausted before any question is parked as open.
+- Terminal status without an anatomist: `machine-accepted` (plan B §2.7) = a frozen result that passes a
+  versioned automatic protocol for a stated region, set of classes and use, with no human anatomical
+  review. It is bound by hash to the images, masks and meshes it graded; its criteria are fixed before
+  evaluation and include negative controls; it is scored on frozen Denver bands where Denver exists and,
+  elsewhere, reports consistency, never anatomical accuracy. Technical acceptance (`machine-accepted` /
+  `machine-failed` / `machine-not-assessable`), name (`pending` / `documented`) and placement carry
+  separate states. Never call it validation.
+- New machine outputs enter as `machine-unverified` candidates and alternatives. `machine-accepted`
+  enables a recorded per-structure decision to enter the composite with its status and limits visible;
+  it never substitutes automatically (`registry/composition-recipe.json`). `machine-unverified`,
+  `machine-failed` and `machine-not-assessable` stay in a separate layer, off by default. Denver
+  (measured from the cryosections) stays wherever it is used unless a documented comparison and a
   recorded decision say otherwise.
+- Work order (13 September 2026): block C, the cryosection segmentation (plan B stages 0 to 7), is the
+  current work. The CT atlas is touched only when it is a prerequisite of the stage in progress. Audit
+  findings that do not compromise provenance or data go to the backlog and do not stop block C.
 - Sex rule: no male anatomy anywhere in the label path (no BodyParts3D as prior, no Denver male, no
   Voxel-Man). Mixed-sex CT segmentation tools are fine as naming tools on the female donor's own CT.
 - Licence rule: only redistributable, commercial-use-compatible sources ship (`datasets.csv`,

@@ -60,6 +60,7 @@ node --experimental-strip-types scripts/test-agreement-panel.mjs   # viewer word
 .venv/bin/python scripts/ct-bone-consensus.py --selftest
 .venv/bin/python scripts/ct-bone-consensus.py nlm        # about 4 min: gated per-name bone candidates (plan B 2.6), generated/ct-bone-consensus-nlm.json; nothing is composed
 .venv/bin/python scripts/denver-ct-baseline.py            # about 5 min: Denver bones against the HU = 300 edge of the fresh CT (shape baseline), generated/denver-ct-baseline.json
+python3 scripts/inventory-cryosections.py /media/rub/Backups/VHF/Female-Images --workers 12   # on rub-pc, about 2.5 min: SHA-256, decompressed size, planar RGB statistics, missing and placeholder slices -> fullbody-inventory.json (copied to generated/cryosection-inventory.json)
 .venv/bin/python scripts/ct-candidate-shape-check.py nlm  # about 1 min: the same procedure on the shipped bone candidates; writes generated/ct-candidate-shape-check-nlm.json and shape_check into the bone report; re-run ingest afterwards
 .venv/bin/python scripts/summarize-reports.py
 ```

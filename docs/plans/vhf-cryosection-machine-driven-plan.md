@@ -41,7 +41,9 @@ A machine label of structure `s` in class `c` is *concordant* (with Denver where
 | Slice continuity | every structure | centroid jump between consecutive slices < 2 mm; area change < 30 % except at anatomical ends |
 | Blinded audit | every stratum | section 2.3 |
 
-### 2.3 Blinded audit (the only human step)
+### 2.3 Blinded audit (optional final stage 8; not expected during this project)
+
+**Status 13 September 2026 (user decision, agreed by both agents):** no anatomist will take part in this project unless it gains attention later. This section describes stage 8, which may never run. Nothing below is a gate for stages 0 to 7; the terminal status of the project without an anatomist is `machine-accepted` (section 2.7).
 
 The anatomist does not draw. They grade panels. Each panel shows one slice, one structure, one outline and a 3D thumbnail. The panel does not say whether the outline is machine, Denver or a deliberately perturbed control (2 mm dilation, wrong neighbour). Grades: accept, minor (< 2 mm), reject.
 
@@ -58,11 +60,13 @@ Two statuses follow from this, and the atlas shows them differently:
 - `batch-audited`: the structure belongs to a stratum whose sample passed; the structure itself may not have been seen.
 Neither is called "validated".
 
-Development rounds versus the final audit: during development the anatomist may grade as many rounds as needed, but each round is logged, and retraining after a failed round resets that stratum. The **final** audit is one pre-registered pass on frozen outputs with fresh random panels; only its result confers `inspected` or `batch-audited`. Grades and panel identifiers go to `registry/review-status.json`. Nothing enters the composite without one of the two statuses; the rest ships as a separate `machine-unverified` layer with a visible flag.
+Development rounds versus the final audit: during development the anatomist may grade as many rounds as needed, but each round is logged, and retraining after a failed round resets that stratum. The **final** audit is one pre-registered pass on frozen outputs with fresh random panels; only its result confers `inspected` or `batch-audited`. Grades and panel identifiers go to `registry/review-status.json`. Until stage 8 happens, neither status is granted to anything; entry into the composite follows section 2.7 (`machine-accepted` plus a recorded per-structure decision), and the rest ships as a separate layer, off by default, with a visible flag.
 
-### 2.4 Sealed test set in unlabelled regions (about 4 hours, anatomist)
+### 2.4 Reserved evaluation without a human reference (revised 13 September 2026)
 
-Held-out Denver bands answer only "does the model complete a region whose anatomy it has seen". Transfer to the forearm, hand and trunk needs a reference there. Before any training, the anatomist draws a small sealed set: 3 bones and 3 muscles in one forearm block, 2 organs and 2 muscles in one trunk block, on the original photographs, about 4 hours. The set is hashed and never opened during development. Acceptance criteria are written down before the first scoring (Dice and p95 thresholds per structure, in `registry/sealed-set-protocol.json`). Each release is scored once; once a result has been seen and the system is changed, the set has informed development, and the report says so (a second sealed set of the same size is drawn for the final release). It does not yet cover hands, head and neck; those regions are covered by the audit only until a second set exists. Spatial separation everywhere: held-out bands and sealed blocks carry a 10 mm buffer on both sides that belongs to neither training nor test. The clock also records **human minutes per accepted structure** for every human step (sealed set, audit), which is the metric that decides whether plan B beats plan A.
+Without an anatomist nobody draws a reference in unlabelled regions. The reserved evaluation is therefore machine-prepared from Denver's **original** label maps: the machine selects frozen slice bands (spatially separated, 10 mm buffers, excluded from training and pseudo-labelling) and prepares the evaluation set from Denver's labels; it never draws its own reference. This replaces the evaluation available where Denver exists. It does not replace an external test in unlabelled regions: there the report measures consistency (three-model agreement, CT physical checks, symmetry, adjacency), states so, and does not estimate anatomical accuracy. The human sealed set described next moves to stage 8.
+
+Original text (stage 8 only). Held-out Denver bands answer only "does the model complete a region whose anatomy it has seen". Transfer to the forearm, hand and trunk needs a reference there. Before any training, the anatomist draws a small sealed set: 3 bones and 3 muscles in one forearm block, 2 organs and 2 muscles in one trunk block, on the original photographs, about 4 hours. The set is hashed and never opened during development. Acceptance criteria are written down before the first scoring (Dice and p95 thresholds per structure, in `registry/sealed-set-protocol.json`). Each release is scored once; once a result has been seen and the system is changed, the set has informed development, and the report says so (a second sealed set of the same size is drawn for the final release). It does not yet cover hands, head and neck; those regions are covered by the audit only until a second set exists. Spatial separation everywhere: held-out bands and sealed blocks carry a 10 mm buffer on both sides that belongs to neither training nor test. The clock also records **human minutes per accepted structure** for every human step (sealed set, audit), which is the metric that decides whether plan B beats plan A.
 
 
 ### 2.5 Closing questions without a new anatomist review
@@ -76,6 +80,20 @@ Order of evidence for any anatomical question the pipeline raises (the six lumba
 5. **External evaluation of the vertebra procedure** on a public set with variants (VerSe, arXiv:2103.06360) is optional and only after checking that none of the three models trained on it; CT results do not transfer to cryosections.
 6. **Explicit abstention.** Where the evidence does not close a question, the instance keeps its provisional id, `name_status: pending`, and the atlas reports measured error and the share of structures resolved; no accuracy percentage for this donor is derived from model agreement, and several language models looking at the same images add nothing here.
 7. **Targeted consultation, last.** If a question stays open: a short dossier (slices, coordinates, provisional ids, one question) to the HRA team responsible for the six-lumbar statement, to the Denver authors (lower-limb specialists; ask for documentation or a referral), to a sectional-anatomy referral through the Sociedad Anatómica Española, or to Biology Stack Exchange (anatomy tag) for nomenclature and references. None of these has been contacted; nothing here authorises contact.
+
+### 2.7 Terminal status without an anatomist: `machine-accepted` (agreed 13 September 2026)
+
+Definition (Codex, adopted verbatim): a frozen result that meets a versioned automatic protocol for a specified region, set of classes and use. No human anatomical review.
+
+Requirements, all recorded in the report and in the provenance of every mesh:
+- Identity by hash of the images, masks and meshes graded, with model versions, transformations and seeds.
+- Criteria fixed before evaluation (`registry/machine-acceptance-protocol.json`, versioned), with negative controls that must fail (perturbed masks, wrong neighbour, mirrored side).
+- Reserved evaluation against Denver's original labels where Denver exists (section 2.4); elsewhere the report states that it measures consistency and indirect evidence and does not estimate anatomical accuracy.
+- Separate states: technical acceptance `machine-accepted` / `machine-failed` / `machine-not-assessable`; name `pending` / `documented` (a mask can finish its evaluation with its name still pending); placement with its own uncertainty.
+- An iteration limit; closure lists accepted, failed and not-assessable results; no category disappears from the report.
+- `inspected` and `batch-audited` are never granted by this protocol; they stay reserved for stage 8. Automatic acceptance is never presented as anatomical validation.
+
+Entry into the composite: `machine-accepted` enables a recorded per-structure decision (`registry/composition-recipe.json`), never an automatic substitution; the status and its limits stay visible; Denver is kept wherever it exists. `machine-unverified`, `machine-failed` and `machine-not-assessable` ship in a separate layer, off by default.
 
 ### 2.6 Extending the consensus to bones the models name alike: acceptance and substitution criteria (fixed 12 September 2026, before the batch runs)
 
@@ -172,7 +190,7 @@ Every stage is a seeded, versioned script under `scripts/`, with a JSON report u
 
 ### Stage 0. Data and alignment (2 weeks)
 
-- Download the 5,189 colour slices with a SHA-256 manifest (extend `fetch-nlm-vhf.py`); compare with the IDC manifest as a second path.
+- Download the 5,189 colour slices with a SHA-256 manifest (extend `fetch-nlm-vhf.py`); compare with the IDC manifest as a second path. **Done and inventoried 13 September 2026** (`scripts/inventory-cryosections.py`, `generated/cryosection-inventory.json`): 5,186 files on rub-pc, all hashes and sizes correct, planar RGB 2,048 x 1,216; 1,730 mm positions x 3 sub-slices; 4 absent and 21 black placeholder slices in three gaps (about 5.7 mm at 1492 to 1497 mm, 1 mm at 1977 to 1978 mm, 1.7 mm at 2328 to 2330 mm); 5,165 usable slices. The gaps are recorded as unknown, never interpolated silently.
 - Reproduce the alignment for the whole body with two automatic features per slice: the block and body outline, and the corresponding slice of Denver's aligned CT (bone and skin contours). Validate on pelvis to feet against Denver's aligned slices.
 - Criterion: mean in-plane error < 1 pixel (0.33 mm) against Denver's aligned photographs on pelvis to feet (an image-to-image check; mask-to-mesh agreement only verifies the conversion, not the alignment). Above the pelvis no aligned photographs exist: the check is photograph-to-CT (body outline and bone contours per slice, reported per region), and the residual is published as alignment uncertainty, separate from segmentation error.
 - These transforms are the load-bearing dependency for the agentic-review experiment (section 3.6): a zoom step must not corrupt the screen-to-physical coordinate chain.
@@ -219,7 +237,12 @@ Status 9 September 2026, later: all three models ran on the NLM fresh CT and Tot
 - External comparison, distances only, nothing copied: AustinWoman tissue classes (same donor, female) and NEVA VHP-Female if its terms allow.
 - Structures that fail return to stage 3 with the failing constraint as a hard penalty; after two failures they stay `machine-unverified`.
 
-### Stage 6. Blinded audit (3 sessions of about 3 hours, anatomist)
+### Stage 6. Machine acceptance (1 week; replaces the anatomist audit as the closing stage, 13 September 2026)
+
+- Apply the protocol of section 2.7 to the frozen outputs of stage 5: hash binding, negative controls, reserved Denver evaluation, consistency report elsewhere; write `generated/machine-acceptance.json` with one of the three technical states per structure, name state and placement uncertainty.
+- Structures that fail return to stage 3 once; after the iteration limit they close as `machine-failed` or `machine-not-assessable` and stay in the report.
+
+### Stage 8 (optional, only if the project gains attention). Blinded audit by an anatomist (3 sessions of about 3 hours)
 
 - Panels generated by stratified random sampling (section 2.3), served in the atlas viewer's review panel, decisions exported to `registry/review-status.json`.
 - Failing strata are retrained and re-sampled; passing strata are frozen.
@@ -229,7 +252,7 @@ Status 9 September 2026, later: all three models ran on the NLM fresh CT and Tot
 ### Stage 7. Integration (1 week)
 
 - New source `nlm-vhf-cryo` through the existing pipeline. Names resolve to UBERON/FMA through `registry/ontology-crosswalk-reviewed.json`; MOOSE and Skellytour label names need crosswalk entries (one-off).
-- In the composite the cryosection replaces the CT of the same donor for every `inspected` or `batch-audited` structure; the CT stays as an alternative; `machine-unverified` is a separate layer, off by default.
+- In the composite the cryosection may replace the CT of the same donor for `machine-accepted` structures through a recorded per-structure decision (section 2.7); the CT stays as an alternative; `machine-unverified`, `machine-failed` and `machine-not-assessable` form a separate layer, off by default. Stage 8, if it happens, upgrades statuses; it is not needed to ship.
 - Any future review UI (including the agentic experiment, section 3.6) colours structures deterministically by instance id, never by name.
 
 ## 5. Where the machine is expected to win, tie and lose
@@ -247,15 +270,16 @@ Status 9 September 2026, later: all three models ran on the NLM fresh CT and Tot
 | Held-out lower limb | Dice >= `H_c` and p95 <= `P_c` for every class |
 | Bone concordance | shape p95 and placement p95 against the CT cortical edge (HU = 300), same script as the Denver baseline, <= Denver's figures per bone class; only inside the CT coverage mask |
 | Skeleton naming | every instance identified once, observed counts recorded and reconciled with the textbook and same-donor references (variants documented, not forced), adjacency graph equal to the reference except at documented variants, per-instance three-model consensus and uncertainty recorded, name status per instance (`confirmed` with source, or `pending`) |
-| Audit | final pre-registered pass: 0 rejects in 60 per stratum (panel reject rate < 4.9 %); machine panels no worse than Denver panels; controls rejected; statuses `inspected` or `batch-audited`, never "validated" |
+| Machine acceptance | protocol of section 2.7 applied once to frozen outputs: hash-bound, pre-registered criteria, negative controls fail, reserved Denver bands scored, consistency-only report outside Denver; every structure closes as `machine-accepted`, `machine-failed` or `machine-not-assessable`; never "validated" |
+| Audit (stage 8, optional) | final pre-registered pass: 0 rejects in 60 per stratum (panel reject rate < 4.9 %); machine panels no worse than Denver panels; controls rejected; statuses `inspected` or `batch-audited`, never "validated" |
 | Licences | every model and dataset in `datasets.csv` with weight licence, version and verification date; no NC or SA weights in the label path |
-| Publication | only `inspected` or `batch-audited` structures in the composite, each with its status visible; every mesh carries stage versions, seeds, proof values, coverage flag and panel identifiers |
+| Publication | only `machine-accepted` structures with a recorded per-structure decision (or, after stage 8, `inspected` / `batch-audited`) in the composite, each with its status and limits visible; every mesh carries stage versions, seeds, proof values, coverage flag and, where they exist, panel identifiers |
 
 ## 7. Resources
 
 - GPU: the available RTX 3080 (10 GB) is enough for stage 1 inference (minutes per model) and for 2D nnU-Net at full resolution and 3D at 1 mm with a reduced patch size. About 10 GPU-days on a 24 GB card becomes 2 to 3 weeks on the 3080. 3D at 0.33 mm is not planned on either card. Without a GPU, stage 1 runs on CPU in about an hour per model; stages 2 to 4 do not.
 - Disk: 40 GB photographs, 40 GB RGB volume, 150 GB priors, predictions and folds.
-- People: one engineer for 12 to 14 weeks; one anatomist for 15 to 25 hours of audit.
+- People: one engineer for 12 to 14 weeks. No anatomist during the project (13 September 2026); stage 8 would need 15 to 25 hours of one if it ever happens.
 - Licences: outputs CC BY 4.0 with the NLM attribution and the statement that they are not the current NLM data; attribution lines for Denver, Voxel-Man, TotalSegmentator, MOOSE, Skellytour; SAM 3 acknowledged in any publication.
 
 ## 8. Risks specific to plan B
@@ -265,7 +289,7 @@ Status 9 September 2026, later: all three models ran on the NLM fresh CT and Tot
 - **No female cryosection organ labels exist.** Organ colour is learned only from this donor through CT priors. The "trunk organs" audit stratum is the gate; if it fails twice, trunk organs stay CT-derived in the composite and the cryosection organs ship as `machine-unverified`.
 - **SAM 3 on cryosections is untested.** No paper applies it to cadaver photographs. It is a second opinion, never the sole source of a label.
 - **Confirmation bias in self-training.** Guarded by frozen held-out bands and by the physical CT check, which the network cannot learn to satisfy falsely.
-- **The guarantee is statistical.** The atlas must say "audited to < 5 % reject rate at 95 % confidence by a blinded anatomist", never "validated".
+- **The guarantee is automatic, not anatomical.** Without stage 8 the atlas says "machine-accepted under protocol vN: passes the listed automatic checks; no human anatomical review", never "validated". If stage 8 happens it may add "audited to < 5 % reject rate at 95 % confidence by a blinded anatomist".
 - **Trunk posture.** The CT was acquired on a table, the block was frozen in another posture. The prior is a prior; the colour edge decides. Stage 0 measures the offset before any CT label guides the trunk (moved forward from stage 1 on 12 September 2026); stage 5 rejects structures whose CT concordance fails.
 
 ## 9. First concrete milestone (2 weeks, replaces plan A section 7)
