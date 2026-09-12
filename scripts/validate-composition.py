@@ -16,7 +16,7 @@ landmarks = {name: json.loads((ROOT / 'transforms/landmarks' / (name + '.json'))
 matrices = {t['id']: np.array(t['matrix_row_major']).reshape(4, 4) for t in transforms.values()}
 for regional in transforms['hra-stage-to-vhf']['regional_transforms']:
     matrices[regional['id']] = np.array(regional['matrix_row_major']).reshape(4, 4)
-source_atlases = {key: json.loads((ROOT / 'public/atlases' / (key + '.json')).read_text()) for key in ('hra-female', 'tcia', 'denver-vhf', 'nlm-vhf-ct')}
+source_atlases = {key: json.loads((ROOT / 'public/atlases' / (key + '.json')).read_text()) for key in ('hra-female', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 'ct-consensus')}
 source_parts = {p['provenance']['id']: p for a in source_atlases.values() for p in a['parts']}
 cache = {}
 
@@ -52,7 +52,8 @@ for chunk in atlas['chunks']:
     assert len(data) == chunk['bytes']
     assert hashlib.sha256(data).hexdigest() == chunk['sha256']
 ids = set()
-expected_ids = {'denver-vhf': {'denver-stage-to-vhf'}, 'nlm-vhf-ct': {'nlm-stage-to-vhf'}, 'tcia': {'tcia003-stage-to-vhf'}, 'hra-female': {'hra-stage-to-vhf', 'hra-head-to-vhf'}}
+expected_ids = {'denver-vhf': {'denver-stage-to-vhf'}, 'nlm-vhf-ct': {'nlm-stage-to-vhf'}, 'ct-consensus': {'nlm-stage-to-vhf'}, 'tcia': {'tcia003-stage-to-vhf'}, 'hra-female': {'hra-stage-to-vhf', 'hra-head-to-vhf'}}
+assert source_atlases['ct-consensus']['labels_sha256'] == nlm_ct_to_vhf['labels_sha256'] and np.allclose(np.array(source_atlases['ct-consensus']['voxel_to_stage']), np.array(nlm_atlas['voxel_to_stage']))
 for part in atlas['parts']:
     record = part['provenance']
     original = source_parts[record['id']]
@@ -71,7 +72,7 @@ for part in atlas['parts']:
     assert transform_id in expected_ids[record['source']], part['id']
     active_matrix = matrices[transform_id]
     expected = original_vertices @ active_matrix[:3, :3].T + active_matrix[:3, 3]
-    if record['source'] in ('denver-vhf', 'nlm-vhf-ct'):
+    if record['source'] in ('denver-vhf', 'nlm-vhf-ct', 'ct-consensus'):
         assert np.array_equal(vertices, original_vertices), part['id']
     assert np.allclose(vertices, expected, rtol=1e-6, atol=1e-7), part['id']
     assert np.isfinite(vertices).all()
@@ -132,7 +133,12 @@ denver_ids = {p['id'] for p in atlas['parts'] if p['provenance']['source'] == 'd
 assert len(denver_ids) == len(source_atlases['denver-vhf']['parts']), 'Every Denver mesh should be in the composition'
 ct_labels = {p['provenance']['label_name'] for p in atlas['parts'] if p['provenance']['source'] == 'nlm-vhf-ct'}
 assert not ct_labels & {'hip_left', 'hip_right', 'sacrum', 'femur_left', 'femur_right'}, 'CT pelvis and femora must be replaced by Denver bones'
-assert {'skull', 'brain', 'heart', 'liver', 'vertebrae_L1'} <= ct_labels, 'trunk and head CT labels expected in the composite'
+assert {'skull', 'brain', 'heart', 'liver'} <= ct_labels, 'trunk and head CT labels expected in the composite'
+assert not any(l.startswith(('vertebrae_', 'rib_')) for l in ct_labels), 'single-model CT vertebra and rib labels must be replaced by the consensus instances'
+cons_parts = [p for p in atlas['parts'] if p['provenance']['source'] == 'ct-consensus']
+assert sum(p['provenance']['role'] == 'vertebra' for p in cons_parts) == 25 and sum(p['provenance']['role'] == 'rib' for p in cons_parts) == 24, 'expected 25 consensus vertebrae and 24 consensus ribs'
+assert not any(p['provenance']['role'] == 'sacrum' for p in cons_parts), 'the consensus sacrum yields to the Denver sacrum'
+assert all(p['provenance']['name_status'] == 'pending' and p['provenance']['structure_id'].startswith('CTCONS:') for p in cons_parts), 'consensus instances carry geometric ids and pending names'
 ct_terms = {p['provenance']['structure_id'].split('|')[0] for p in atlas['parts'] if p['provenance']['source'] == 'nlm-vhf-ct'}
 for part in atlas['parts']:
     if part['provenance']['source'] == 'hra-female':

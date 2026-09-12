@@ -107,6 +107,7 @@
     "registered_sources": {
       "denver-vhf": "denver-stage-to-vhf (identity)",
       "nlm-vhf-ct": "nlm-ct-to-vhf (rigid same-donor pelvis registration)",
+      "ct-consensus": "nlm-ct-to-vhf (same registration; instance maps on the NLM CT grid)",
       "hra-female": "hra-stage-to-vhf (organ proxies onto same-donor CT organs, experimental)",
       "tcia": "tcia003-stage-to-vhf (pelvic landmark similarity, experimental; alternative source, not composed)"
     }
@@ -2298,7 +2299,7 @@
         }
       ],
       "acceptance": {
-        "criteria_source": "docs/female-open-human-atlas-plan.md section 29.2 and 29.3 item 3",
+        "criteria_source": "docs/plans/female-open-human-atlas-plan.md section 29.2 and 29.3 item 3",
         "nlm_ct_pelvis_rigid_p95_below_5_mm": {
           "value_mm": 4.716855714034616,
           "met": true
@@ -2336,7 +2337,7 @@
     }
   ],
   "acceptance": {
-    "criteria_source": "docs/female-open-human-atlas-plan.md section 29.2 and 29.3 item 3",
+    "criteria_source": "docs/plans/female-open-human-atlas-plan.md section 29.2 and 29.3 item 3",
     "nlm_ct_pelvis_rigid_p95_below_5_mm": {
       "value_mm": 4.716855714034616,
       "met": true
@@ -2374,7 +2375,8 @@
   "composition": {
     "meshes_by_source": {
       "hra-female": 786,
-      "nlm-vhf-ct": 101,
+      "nlm-vhf-ct": 52,
+      "ct-consensus": 49,
       "denver-vhf": 128
     },
     "meshes_by_donor": {

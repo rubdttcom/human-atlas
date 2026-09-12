@@ -51,6 +51,8 @@ Time: 7 strata x 100 panels x 10 to 15 s is about 3 hours per round; three round
 
 What the audit proves and what it does not. The unit graded is a panel (one slice of one structure), not a structure. Zero rejects in 60 panels of a stratum bounds the panel reject rate of that stratum at 4.9 % (one-sided 95 %); it does not inspect every structure of the stratum, and "minor" counts as not rejected, so the bound covers rejects, not all errors. Panels of the same structure or of neighbouring slices are dependent; the sampler therefore draws at most one panel per structure per round and at least 20 mm apart, and the bound is stated per stratum only.
 
+Agent-prepared dossiers (section 3.6) may target which panels get a closer look but never replace or narrow this pre-registered random sample.
+
 Two statuses follow from this, and the atlas shows them differently:
 - `inspected`: every panel of that structure was graded (used for large or critical structures, and for anything the automatic proofs flagged).
 - `batch-audited`: the structure belongs to a stratum whose sample passed; the structure itself may not have been seen.
@@ -130,6 +132,22 @@ Consequence for plan B: the bar "as good as the anatomist" cannot be read from D
 - MuscleMap (MIT code, Zenodo weights): 113 muscles and bones, CT and MRI, neck to foot; arm, forearm and hand muscles announced but not released. Candidate fourth prior vote for muscles when released.
 - No published work segments the whole VHF or VHM from colour with deep learning and free labels. The gap plan A identified stands.
 
+### 3.6 Agentic visual review (optional experiment)
+
+Source: `docs/plans/vhf-agent-review-ideas.md` (10 September 2026), reporting an unverified public demo (Ryan Peters, a Qwen3-VL-2B agent driving a labelling app to draw cell polygons). No code or weights were located; no anatomical accuracy evidence exists; the base model's Apache-2.0 licence covers only the base weights, not any third-party fine-tune; no transfer from cells to cryosections is assumed. Nothing has been run in this project. Treated here as an optional experiment, staged like any other addition to the pipeline: it earns a place only by clearing the criteria below, and it does not relax any criterion in section 2 or 6.
+
+**Two roles, never confused.** (a) A driver agent that selects crops, prompts, zoom and navigation for SAM3 (stage 3 second opinion); its output stays dependent on SAM3. (b) An independent verifier agent that produces its own proposal (polygon, mask or a localised incident) on the raw photograph and neighbouring slices, without seeing SAM3's masks or candidate names first; comparison against SAM3 happens afterwards, with the first read frozen so anchoring can be measured. Geometry, identity (name) and placement (registration) are graded separately, as in section 2.5 item 2: a correct mask can carry a wrong name. The verifier also checks neighbouring-slice continuity and must exercise the deliberate-fault controls (leaks, omissions, merges, splits, discontinuity, swapped names, shifted outlines).
+
+**Dependencies (must exist first).** Stage 0 alignment, with exact screen -> crop -> image -> physical-coordinate transforms and a documented check that zoom does not corrupt measurement. The stage 3 SAM3 second opinion already running (the driver agent has nothing to drive otherwise). The per-instance consensus machinery of `scripts/ct-vertebra-instances.py` (per-model maps, conflict metrics) as the place verifier incidents are logged, so agent findings join the same evidence trail as CT-model disagreement. The deliberate-fault control suite (`scripts/test-ct-instances.py` style) extended to the agent-specific failure modes above before any pilot counts.
+
+**What is measured.** A Denver pilot of 50 sections, spatially separated from any training or pseudo-label block and their buffers (section 2.4's 10 mm rule). RGB photographs against Denver labels first (Denver's aligned DICOMs are greyscale). Three arms on the same cases: SAM3 with current controls; SAM3 plus verifier; verifier corrections, if tried, scored separately against the reference. Metrics: errors caught by the verifier that pass current controls; errors accepted by both SAM3 and the verifier (shared blind spot); false alarms; contour/point distances in mm (the coordinate chain must be exact end to end); abstention rate; cost as GPU time and human minutes per accepted structure (section 2.4's clock). Contiguous slices are not independent samples; uncertainty is reported per block.
+
+**Protections, non-negotiable regardless of pilot result.** The verifier is never trained on SAM3 outputs and then presented as independent validation. SAM3-agent agreement alone is never sufficient to admit pseudo-labels into stage 4 (same caveat as the prior-consensus rule in section 2.2: agreement among similar models is not independence). Full provenance kept (version, prompt, coordinates, action, abstention) alongside stage 3/4 provenance. Evidence used to tune the agent is not reused to grade it (section 2.5 item 3). Any review UI colours a structure from its instance id by a deterministic palette, never from its candidate name, so renaming never changes what the reviewer sees and the reviewer cannot infer the name from the colour. The blinded audit (section 2.3) keeps its pre-registered random sampling unchanged; agent incidents may prepare targeted dossiers for the anatomist but never substitute for or narrow that sample. `inspected` and `batch-audited` are granted only by the anatomist's final pass, never by a model's approval; verbal explanations or declared confidence are not evidence. The sex rule and the licence rule apply unchanged: no male anatomy in the label path; a licence check on the actual fine-tune weights used, if any, is required before any run, and NC/SA weights stay excluded.
+
+**Adoption criteria.** The experiment earns a place in the pipeline only if the pilot shows the verifier role reduces errors that pass current controls at a GPU-time-plus-human-minutes cost that section 2.4's clock shows is net favourable, with thresholds fixed before the final pilot evaluation. Increased SAM3-agent agreement is not sufficient by itself. Adoption is staged: localisation and flagging first; automatic correction only after a separate net-benefit measurement.
+
+**Abandonment criteria.** Drop the experiment if the verifier's frozen first read is not measurably independent of SAM3 (anchoring test fails); errors accepted by both exceed errors caught; cost exceeds the blinded audit's own human-minutes budget without a compensating drop in audit workload; no licence-clean weights exist for the fine-tune actually used; or extending the pilot needs regions with no Denver reference (forearm, hand, trunk stay unproven there, per section 2.5 item 6 on abstention).
+
 ## 4. Pipeline
 
 Every stage is a seeded, versioned script under `scripts/`, with a JSON report under `generated/`. No stage has a manual input except stage 6.
@@ -139,6 +157,7 @@ Every stage is a seeded, versioned script under `scripts/`, with a JSON report u
 - Download the 5,189 colour slices with a SHA-256 manifest (extend `fetch-nlm-vhf.py`); compare with the IDC manifest as a second path.
 - Reproduce the alignment for the whole body with two automatic features per slice: the block and body outline, and the corresponding slice of Denver's aligned CT (bone and skin contours). Validate on pelvis to feet against Denver's aligned slices.
 - Criterion: mean in-plane error < 1 pixel (0.33 mm) against Denver's aligned photographs on pelvis to feet (an image-to-image check; mask-to-mesh agreement only verifies the conversion, not the alignment). Above the pelvis no aligned photographs exist: the check is photograph-to-CT (body outline and bone contours per slice, reported per region), and the residual is published as alignment uncertainty, separate from segmentation error.
+- These transforms are the load-bearing dependency for the agentic-review experiment (section 3.6): a zoom step must not corrupt the screen-to-physical coordinate chain.
 
 ### Stage 1. Named priors in the cryosection frame (1 week, CPU or one GPU)
 
@@ -167,11 +186,13 @@ Status 9 September 2026, later: all three models ran on the NLM fresh CT and Tot
 - **Organs.** Named prior plus colour refinement; boundary snap by graph cut with the prior as unary term and the colour gradient as pairwise term.
 - **Muscles.** The weakest link. The network gives the muscle voxel set and the fascial planes (visible colour edges). Names come from the CT muscle priors where they exist (TotalSegmentator, MOOSE, later MuscleMap) and from Denver (female, lower limb) and HRA female shape priors registered by the bones elsewhere. Every muscle carries an explicit uncertainty; muscles that fail section 2.2 stay `machine-unverified`.
 - **Second opinion on colour.** SAM 3 with exemplar prompts cut from Denver slices and text prompts for tissue, prompted per structure with a box plus the centre point taken from the prior centroid, propagated through the stack by its video memory in both directions. Biomedisa interpolates between the slices where SAM 3 and nnU-Net agree. Where the three disagree by more than 1 mm the voxel is marked uncertain.
+- Optional: an agentic driver/verifier pair as a further check on SAM3's proposals here, gated by the adoption criteria in section 3.6, with incidents logged through `scripts/ct-vertebra-instances.py`'s conflict machinery.
 
 ### Stage 4. Self-training rounds (2 weeks, GPU)
 
 - Voxels where the ensemble agrees and all checks of section 2.2 pass become pseudo-labels for trunk, arms and head. Retrain. Three rounds at most; stop when the held-out Denver Dice changes by less than 0.005.
 - The held-out Denver bands are frozen from stage 2 and never enter pseudo-labelling.
+- If the agentic verifier (section 3.6) is running, its agreement with SAM3 alone is still not sufficient to admit a pseudo-label; the section 2.2 checks still decide.
 
 ### Stage 5. Automatic proofs (1 week)
 
@@ -184,11 +205,13 @@ Status 9 September 2026, later: all three models ran on the NLM fresh CT and Tot
 - Panels generated by stratified random sampling (section 2.3), served in the atlas viewer's review panel, decisions exported to `registry/review-status.json`.
 - Failing strata are retrained and re-sampled; passing strata are frozen.
 - Every audit decision binds to the SHA-256 of the exact label volume and mesh it graded, plus model version and seed. A retrained prediction is a new *proposal* with a new hash; it inherits no status. An `inspected` or `batch-audited` structure is replaced only when its successor passes its own final audit.
+- No model's approval, agentic or otherwise, grants `inspected` or `batch-audited` (section 3.6).
 
 ### Stage 7. Integration (1 week)
 
 - New source `nlm-vhf-cryo` through the existing pipeline. Names resolve to UBERON/FMA through `registry/ontology-crosswalk-reviewed.json`; MOOSE and Skellytour label names need crosswalk entries (one-off).
 - In the composite the cryosection replaces the CT of the same donor for every `inspected` or `batch-audited` structure; the CT stays as an alternative; `machine-unverified` is a separate layer, off by default.
+- Any future review UI (including the agentic experiment, section 3.6) colours structures deterministically by instance id, never by name.
 
 ## 5. Where the machine is expected to win, tie and lose
 
@@ -308,3 +331,6 @@ Promptable and foundation models
 Statistics
 - Rule of three: Hanley and Lippman-Hand, JAMA 1983, 249(13):1743-1745
 - Learning with noisy labels in medical segmentation: Karimi et al., Medical Image Analysis 2020, https://doi.org/10.1016/j.media.2020.101759
+
+Agentic review (10 September 2026, proposal, not validated)
+- `docs/plans/vhf-agent-review-ideas.md`: research note on a Ryan Peters demo (Qwen3-VL-2B driving a labelling app), feeding section 3.6. Primary links it cites: https://x.com/ryanpirl/status/2097734029080694963 ; base model https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct ; author's repositories https://github.com/ryanirl?tab=repositories (implementation not located) ; SAM3 agent example https://github.com/facebookresearch/sam3 (`sam3_agent.ipynb`).

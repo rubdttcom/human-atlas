@@ -15,7 +15,7 @@ if args.target in ('open-sharealike', 'research-full'):
 if args.target == 'research-full':
     allowed |= {'CC-BY-NC-4.0', 'CC-BY-NC-SA-4.0'}
 errors, records = [], []
-for filename in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 'composed'):
+for filename in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 'ct-consensus', 'composed'):
     atlas = json.loads((ROOT / 'public/atlases' / (filename + '.json')).read_text())
     for part in atlas['parts']:
         record = part.get('provenance', {})

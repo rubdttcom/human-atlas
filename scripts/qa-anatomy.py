@@ -24,7 +24,7 @@ from scipy.spatial import cKDTree
 ROOT = Path(__file__).resolve().parents[1]
 OUTLIER_MM = 60.0
 CONTINUITY_ONLY = '--continuity-only' in sys.argv
-atlases = [] if CONTINUITY_ONLY else (sys.argv[1:] or ['denver-vhf', 'tcia', 'nlm-vhf-ct', 'hra-female', 'composed', 'bodyparts3d'])
+atlases = [] if CONTINUITY_ONLY else (sys.argv[1:] or ['denver-vhf', 'tcia', 'nlm-vhf-ct', 'ct-consensus', 'hra-female', 'composed', 'bodyparts3d'])
 
 
 def load(name):
@@ -160,7 +160,7 @@ def bounds_of(selector):
     boxes = np.array([p['bounds'] for p in parts if selector(p)])
     return None if len(boxes) == 0 else np.array([boxes[:, 0].min(axis=0), boxes[:, 1].max(axis=0)])
 head = bounds_of(lambda p: p['provenance']['source'] == 'hra-female' and p['provenance']['registration']['transform_id'] == 'hra-head-to-vhf')
-ct = lambda p: p['provenance']['source'] in ('nlm-vhf-ct', 'tcia')
+ct = lambda p: p['provenance']['source'] in ('nlm-vhf-ct', 'ct-consensus', 'tcia')
 skull = bounds_of(lambda p: ct(p) and p['provenance'].get('label_name', '').lower() == 'skull')
 spine = bounds_of(lambda p: ct(p) and (p['provenance'].get('label_name', '').startswith('vertebrae_') or p['provenance'].get('label_name') == 'Spine'))
 sacrum = bounds_of(lambda p: p['provenance']['source'] == 'denver-vhf' and p['provenance'].get('source_label') == 'Sacrum')

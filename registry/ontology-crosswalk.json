@@ -23798,5 +23798,355 @@
     "source_term": "NLMCT:VHF:costal_cartilages",
     "canonical_id": "UBERON:0002236",
     "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V01",
+    "source_term": "CTCONS:VHF:V01",
+    "canonical_id": "CTCONS:VHF:V01",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V02",
+    "source_term": "CTCONS:VHF:V02",
+    "canonical_id": "CTCONS:VHF:V02",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V03",
+    "source_term": "CTCONS:VHF:V03",
+    "canonical_id": "CTCONS:VHF:V03",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V04",
+    "source_term": "CTCONS:VHF:V04",
+    "canonical_id": "CTCONS:VHF:V04",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V05",
+    "source_term": "CTCONS:VHF:V05",
+    "canonical_id": "CTCONS:VHF:V05",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V06",
+    "source_term": "CTCONS:VHF:V06",
+    "canonical_id": "CTCONS:VHF:V06",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V07",
+    "source_term": "CTCONS:VHF:V07",
+    "canonical_id": "CTCONS:VHF:V07",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V08",
+    "source_term": "CTCONS:VHF:V08",
+    "canonical_id": "CTCONS:VHF:V08",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V09",
+    "source_term": "CTCONS:VHF:V09",
+    "canonical_id": "CTCONS:VHF:V09",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V10",
+    "source_term": "CTCONS:VHF:V10",
+    "canonical_id": "CTCONS:VHF:V10",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V11",
+    "source_term": "CTCONS:VHF:V11",
+    "canonical_id": "CTCONS:VHF:V11",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V12",
+    "source_term": "CTCONS:VHF:V12",
+    "canonical_id": "CTCONS:VHF:V12",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V13",
+    "source_term": "CTCONS:VHF:V13",
+    "canonical_id": "CTCONS:VHF:V13",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V14",
+    "source_term": "CTCONS:VHF:V14",
+    "canonical_id": "CTCONS:VHF:V14",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V15",
+    "source_term": "CTCONS:VHF:V15",
+    "canonical_id": "CTCONS:VHF:V15",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V16",
+    "source_term": "CTCONS:VHF:V16",
+    "canonical_id": "CTCONS:VHF:V16",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V17",
+    "source_term": "CTCONS:VHF:V17",
+    "canonical_id": "CTCONS:VHF:V17",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V18",
+    "source_term": "CTCONS:VHF:V18",
+    "canonical_id": "CTCONS:VHF:V18",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V19",
+    "source_term": "CTCONS:VHF:V19",
+    "canonical_id": "CTCONS:VHF:V19",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V20",
+    "source_term": "CTCONS:VHF:V20",
+    "canonical_id": "CTCONS:VHF:V20",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V21",
+    "source_term": "CTCONS:VHF:V21",
+    "canonical_id": "CTCONS:VHF:V21",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V22",
+    "source_term": "CTCONS:VHF:V22",
+    "canonical_id": "CTCONS:VHF:V22",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V25",
+    "source_term": "CTCONS:VHF:V25",
+    "canonical_id": "CTCONS:VHF:V25",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V26",
+    "source_term": "CTCONS:VHF:V26",
+    "canonical_id": "CTCONS:VHF:V26",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V27",
+    "source_term": "CTCONS:VHF:V27",
+    "canonical_id": "CTCONS:VHF:V27",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:S29",
+    "source_term": "CTCONS:VHF:S29",
+    "canonical_id": "CTCONS:VHF:S29",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL01",
+    "source_term": "CTCONS:VHF:RL01",
+    "canonical_id": "CTCONS:VHF:RL01|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL02",
+    "source_term": "CTCONS:VHF:RL02",
+    "canonical_id": "CTCONS:VHF:RL02|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL03",
+    "source_term": "CTCONS:VHF:RL03",
+    "canonical_id": "CTCONS:VHF:RL03|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL04",
+    "source_term": "CTCONS:VHF:RL04",
+    "canonical_id": "CTCONS:VHF:RL04|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL05",
+    "source_term": "CTCONS:VHF:RL05",
+    "canonical_id": "CTCONS:VHF:RL05|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL06",
+    "source_term": "CTCONS:VHF:RL06",
+    "canonical_id": "CTCONS:VHF:RL06|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL07",
+    "source_term": "CTCONS:VHF:RL07",
+    "canonical_id": "CTCONS:VHF:RL07|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL08",
+    "source_term": "CTCONS:VHF:RL08",
+    "canonical_id": "CTCONS:VHF:RL08|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL09",
+    "source_term": "CTCONS:VHF:RL09",
+    "canonical_id": "CTCONS:VHF:RL09|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL10",
+    "source_term": "CTCONS:VHF:RL10",
+    "canonical_id": "CTCONS:VHF:RL10|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL11",
+    "source_term": "CTCONS:VHF:RL11",
+    "canonical_id": "CTCONS:VHF:RL11|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL12",
+    "source_term": "CTCONS:VHF:RL12",
+    "canonical_id": "CTCONS:VHF:RL12|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR01",
+    "source_term": "CTCONS:VHF:RR01",
+    "canonical_id": "CTCONS:VHF:RR01|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR02",
+    "source_term": "CTCONS:VHF:RR02",
+    "canonical_id": "CTCONS:VHF:RR02|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR03",
+    "source_term": "CTCONS:VHF:RR03",
+    "canonical_id": "CTCONS:VHF:RR03|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR04",
+    "source_term": "CTCONS:VHF:RR04",
+    "canonical_id": "CTCONS:VHF:RR04|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR05",
+    "source_term": "CTCONS:VHF:RR05",
+    "canonical_id": "CTCONS:VHF:RR05|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR06",
+    "source_term": "CTCONS:VHF:RR06",
+    "canonical_id": "CTCONS:VHF:RR06|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR07",
+    "source_term": "CTCONS:VHF:RR07",
+    "canonical_id": "CTCONS:VHF:RR07|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR08",
+    "source_term": "CTCONS:VHF:RR08",
+    "canonical_id": "CTCONS:VHF:RR08|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR09",
+    "source_term": "CTCONS:VHF:RR09",
+    "canonical_id": "CTCONS:VHF:RR09|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR10",
+    "source_term": "CTCONS:VHF:RR10",
+    "canonical_id": "CTCONS:VHF:RR10|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR11",
+    "source_term": "CTCONS:VHF:RR11",
+    "canonical_id": "CTCONS:VHF:RR11|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR12",
+    "source_term": "CTCONS:VHF:RR12",
+    "canonical_id": "CTCONS:VHF:RR12|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
   }
 ]

@@ -36,6 +36,7 @@ hra = json.loads((ROOT / 'public/atlases/hra-female.json').read_text())
 tcia = json.loads((ROOT / 'public/atlases/tcia.json').read_text())
 denver = json.loads((ROOT / 'public/atlases/denver-vhf.json').read_text())
 nlm = json.loads((ROOT / 'public/atlases/nlm-vhf-ct.json').read_text())
+cons = json.loads((ROOT / 'public/atlases/ct-consensus.json').read_text())
 stage = json.loads((ROOT / 'transforms/source-to-stage.json').read_text())
 nlm_ct_to_vhf = json.loads((ROOT / 'transforms/nlm-ct-to-vhf.json').read_text())
 nlm_registration = json.loads((ROOT / 'generated/nlm-ct-registration.json').read_text())
@@ -45,6 +46,7 @@ hra_parts = {p['id']: p for p in hra['parts']}
 nlm_by_label = {p['source_metadata']['label_name']: p for p in nlm['parts']}
 PELVIC = ('anterior_superior_iliac_spine', 'iliac_crest_apex', 'ischial_tuberosity', 'pubic_symphysis_facet', 'femoral_head_centre')
 assert nlm['labels_sha256'] == nlm_ct_to_vhf['labels_sha256'], 'NLM atlas and nlm-ct-to-vhf were built from different label maps'
+assert cons['labels_sha256'] == nlm['labels_sha256'], 'consensus atlas and NLM atlas were built against different label frames'
 
 
 def load_buffers(atlas):
@@ -319,7 +321,7 @@ canonical_space = {'id': CANONICAL, 'definition': 'Aligned Visible Human Female 
                    'status': ('defined from the Denver aligned image frame; verified against the NLM VHF CT header frame by a rigid same-donor pelvis fit '
                               f"(rotation {nlm_registration['canonical_space_verification']['rotation_deg']:.2f} deg, free scale {nlm_registration['canonical_space_verification']['free_scale']:.4f}, pelvis p95 {nlm_ct_to_vhf['p95_mm']:.1f} mm)"),
                    'nlm_verification': nlm_registration['canonical_space_verification'],
-                   'registered_sources': {'denver-vhf': 'denver-stage-to-vhf (identity)', 'nlm-vhf-ct': 'nlm-ct-to-vhf (rigid same-donor pelvis registration)',
+                   'registered_sources': {'denver-vhf': 'denver-stage-to-vhf (identity)', 'nlm-vhf-ct': 'nlm-ct-to-vhf (rigid same-donor pelvis registration)', 'ct-consensus': 'nlm-ct-to-vhf (same registration; instance maps on the NLM CT grid)',
                                           'hra-female': 'hra-stage-to-vhf (organ proxies onto same-donor CT organs, experimental)', 'tcia': 'tcia003-stage-to-vhf (pelvic landmark similarity, experimental; alternative source, not composed)'}}
 (ROOT / 'transforms/canonical-space.json').write_text(json.dumps(canonical_space, indent=2) + '\n')
 (ROOT / 'transforms/denver-stage-to-vhf.json').write_text(json.dumps(denver_transform, indent=2) + '\n')
@@ -328,7 +330,7 @@ canonical_space = {'id': CANONICAL, 'definition': 'Aligned Visible Human Female 
 (ROOT / 'transforms/hra-stage-to-vhf.json').write_text(json.dumps(hra_transform, indent=2) + '\n')
 chunks, parts, concepts, recipe = [], [], [], []
 overrides = json.loads((ROOT / 'registry/composition-overrides.json').read_text())
-known = {p['provenance']['id'] for a in (hra, tcia, denver, nlm) for p in a['parts']}
+known = {p['provenance']['id'] for a in (hra, tcia, denver, nlm, cons) for p in a['parts']}
 assert set(overrides) <= known, 'Unknown structure in composition overrides'
 assert all(isinstance(value, bool) for value in overrides.values()), 'Overrides must be true or false'
 blob = bytearray()
@@ -368,8 +370,12 @@ def term_of(part):
 
 DENVER_REPLACES_CT = {'hip_left', 'hip_right', 'sacrum', 'femur_left', 'femur_right', 'gluteus_maximus_left', 'gluteus_maximus_right', 'gluteus_medius_left', 'gluteus_medius_right',
                       'gluteus_minimus_left', 'gluteus_minimus_right', 'iliopsoas_left', 'iliopsoas_right'}
-ct_included_terms = {term_of(p) for p in nlm['parts'] if p['source_metadata']['label_name'] not in DENVER_REPLACES_CT and not term_of(p).startswith('NLMCT:')}
-for atlas, buffers, source_id in [(hra, hra_buffers, 'hra-female'), (nlm, nlm_buffers, 'nlm-vhf-ct'), (denver, denver_buffers, 'denver-vhf'), (tcia, tcia_buffers, 'tcia')]:
+# Since composition 0.5 the vertebrae, sacrum and ribs of the CT come from the per-instance three-model consensus (ct-consensus);
+# the single-model TotalSegmentator vertebra and rib labels are not composed. The consensus sacrum yields to the Denver sacrum.
+CONSENSUS_REPLACES_CT = lambda label: label.startswith('vertebrae_') or label.startswith('rib_')  # noqa: E731
+ct_included_terms = {term_of(p) for p in nlm['parts'] if p['source_metadata']['label_name'] not in DENVER_REPLACES_CT and not CONSENSUS_REPLACES_CT(p['source_metadata']['label_name']) and not term_of(p).startswith('NLMCT:')}
+cons_buffers = load_buffers(cons)
+for atlas, buffers, source_id in [(hra, hra_buffers, 'hra-female'), (nlm, nlm_buffers, 'nlm-vhf-ct'), (cons, cons_buffers, 'ct-consensus'), (denver, denver_buffers, 'denver-vhf'), (tcia, tcia_buffers, 'tcia')]:
     id_map = {}
     for original in atlas['parts']:
         if source_id == 'hra-female':
@@ -382,10 +388,17 @@ for atlas, buffers, source_id in [(hra, hra_buffers, 'hra-female'), (nlm, nlm_bu
                 include = False
                 reason = 'Reference organ replaced by the same-donor NLM VHF CT label with the same reviewed ontology term.'
         elif source_id == 'nlm-vhf-ct':
-            include = original['source_metadata']['label_name'] not in DENVER_REPLACES_CT
+            label = original['source_metadata']['label_name']
+            include = label not in DENVER_REPLACES_CT and not CONSENSUS_REPLACES_CT(label)
             reason = 'Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame.'
-            if not include:
+            if label in DENVER_REPLACES_CT:
                 reason = 'CT label replaced by the Denver VHF manual segmentation of the same donor (bones and gluteal/iliopsoas muscles).'
+            elif CONSENSUS_REPLACES_CT(label):
+                reason = 'Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus).'
+        elif source_id == 'ct-consensus':
+            include = original['source_metadata']['role'] != 'sacrum'
+            reason = ('Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source.' if include
+                      else 'Consensus sacrum replaced by the Denver VHF manual sacrum of the same donor.')
         elif source_id == 'denver-vhf':
             include = True
             reason = 'Denver VHF lower-limb bones, muscles, cartilage and ligaments: measured female geometry in the canonical frame, best available source for the region.'
@@ -415,11 +428,11 @@ for atlas, buffers, source_id in [(hra, hra_buffers, 'hra-female'), (nlm, nlm_bu
                                       'canonical_registration': True, 'review_status': 'unreviewed'}
             record['notes'] += (' Experimental head bounding-box fit into the VHF CT brain envelope; cranial and cervical continuity unreviewed.' if regional
                                 else f" Experimental registration into the VHF canonical space on organ proxies (RMS {hra_transform['rms_mm']:.1f} mm). Not anatomically reviewed.")
-        elif source_id == 'nlm-vhf-ct':
+        elif source_id in ('nlm-vhf-ct', 'ct-consensus'):
             record['registration'] = {'type': 'rigid same-donor pelvis registration (nlm-ct-to-vhf); identity in the canonical stage', 'transform_id': nlm_transform['id'],
                                       'display_transform_id': nlm_transform['id'], 'rms_mm': nlm_transform['rms_mm'], 'canonical_registration': True,
                                       'review_status': 'automatic same-donor registration; anatomy unreviewed'}
-            record['notes'] += f" Composite placement by the rigid pelvis fit of the same donor (p95 {nlm_ct_to_vhf['p95_mm']:.1f} mm). Automatic label, not anatomically reviewed."
+            record['notes'] += f" Composite placement by the rigid pelvis fit of the same donor (p95 {nlm_ct_to_vhf['p95_mm']:.1f} mm). " + ('Automatic label, not anatomically reviewed.' if source_id == 'nlm-vhf-ct' else 'Consensus instance, name pending, not anatomically reviewed.')
         elif source_id == 'tcia':
             pos, normals = transform_geometry(tcia_matrix, pos, normals)
             record['registration'] = {'type': 'experimental similarity on automatic pelvic bone landmarks', 'transform_id': tcia_transform['id'],
@@ -449,8 +462,8 @@ for part in parts:
     by_donor[part['provenance']['source_donor']] = by_donor.get(part['provenance']['source_donor'], 0) + 1
 report = {'canonical_space': canonical_space, 'transforms': [hra_transform, nlm_transform, denver_transform, tcia_transform], 'acceptance': acceptance,
           'composition': {'meshes_by_source': by_source, 'meshes_by_donor': by_donor}}
-composed = {'version': 'Female composition 0.4 experimental', 'sex': 'female', 'source': 'Denver VHF + NLM VHF CT + HRA',
-            'scope': 'Experimental multi-source assembly in canonical space VHF-image-2022: one donor (VHF) for the skeleton, lower limb and trunk organs, HRA reference detail registered experimentally; automatic labels and fits, unreviewed',
+composed = {'version': 'Female composition 0.5 experimental', 'sex': 'female', 'source': 'Denver VHF + NLM VHF CT + CT consensus + HRA',
+            'scope': 'Experimental multi-source assembly in canonical space VHF-image-2022: one donor (VHF) for the skeleton, lower limb and trunk organs (vertebrae and ribs as three-model consensus instances with pending names), HRA reference detail registered experimentally; automatic labels and fits, unreviewed',
             'parts': parts, 'concepts': concepts, 'chunks': chunks, 'triangles': sum(p['indexCount'] // 3 for p in parts),
             'canonical_space': CANONICAL, 'registration_report': report}
 (ROOT / 'public/atlases/composed.json').write_text(json.dumps(composed, indent=2) + '\n')

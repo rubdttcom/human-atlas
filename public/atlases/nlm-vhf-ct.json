@@ -113,10 +113,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 7,
           "signed_volume_m3": 0.0001582205239276511,
-          "self_intersections": "14 intersecting triangle pairs (Moller test; 20 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 5,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-9"
@@ -232,10 +230,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.00015537191217044138,
-          "self_intersections": "13 intersecting triangle pairs (Moller test; 76 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -349,10 +345,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.00020597116897657513,
-          "self_intersections": "18 intersecting triangle pairs (Moller test; 26 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -466,10 +460,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.4210081317652381e-05,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 10 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_gallbladder"
@@ -585,10 +577,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 3,
           "signed_volume_m3": 0.0021631775529596686,
-          "self_intersections": "23 intersecting triangle pairs (Moller test; 40 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 3,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-7"
@@ -704,10 +694,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 0.0010856074316721639,
-          "self_intersections": "22 intersecting triangle pairs (Moller test; 15 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -821,10 +809,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 6.860621454848105e-05,
-          "self_intersections": "8 intersecting triangle pairs (Moller test; 30 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-8"
@@ -940,10 +926,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.806152618193393e-06,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 44 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3130"
@@ -1059,10 +1043,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.499046326646345e-06,
-          "self_intersections": "2 intersecting triangle pairs (Moller test; 20 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3129"
@@ -1178,10 +1160,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 3,
           "signed_volume_m3": 0.0006637224543276651,
-          "self_intersections": "13 intersecting triangle pairs (Moller test; 30 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -1295,10 +1275,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 25,
           "signed_volume_m3": 0.0002973713129408205,
-          "self_intersections": "18 intersecting triangle pairs (Moller test; 11 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 18,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -1412,10 +1390,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0005658418760201282,
-          "self_intersections": "7 intersecting triangle pairs (Moller test; 40 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -1529,10 +1505,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 2,
           "signed_volume_m3": 0.00017816591572182637,
-          "self_intersections": "12 intersecting triangle pairs (Moller test; 81 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -1646,10 +1620,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 2,
           "signed_volume_m3": 0.00047403106027242895,
-          "self_intersections": "12 intersecting triangle pairs (Moller test; 45 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -1763,10 +1735,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 22,
           "signed_volume_m3": 2.9785509041892758e-05,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 22 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 12,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -1880,10 +1850,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 3.933288170353003e-06,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 22 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_trachea"
@@ -1999,10 +1967,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 7.720715912868093e-06,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 38 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-10"
@@ -2118,10 +2084,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 9,
           "signed_volume_m3": 0.001119130087687298,
-          "self_intersections": "39 intersecting triangle pairs (Moller test; 119 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 5,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -2235,10 +2199,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 8.490669993318189e-05,
-          "self_intersections": "11 intersecting triangle pairs (Moller test; 61 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -2352,10 +2314,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 19,
           "signed_volume_m3": 0.0007765256969364797,
-          "self_intersections": "26 intersecting triangle pairs (Moller test; 56 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 11,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -2469,10 +2429,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.772955278103417e-05,
-          "self_intersections": "9 intersecting triangle pairs (Moller test; 62 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-3"
@@ -2588,10 +2546,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 33,
           "signed_volume_m3": 0.00017100285366392055,
-          "self_intersections": "36 intersecting triangle pairs (Moller test; 96 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 13,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_sacrum",
@@ -2708,10 +2664,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.9386802632077864e-05,
-          "self_intersections": "12 intersecting triangle pairs (Moller test; 71 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -2825,10 +2779,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 6.409618196892301e-05,
-          "self_intersections": "9 intersecting triangle pairs (Moller test; 84 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_lumbar_vertebra_5"
@@ -2944,10 +2896,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 6.426669202484529e-05,
-          "self_intersections": "11 intersecting triangle pairs (Moller test; 63 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_lumbar_vertebra_4"
@@ -3063,10 +3013,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 6.622799778535545e-05,
-          "self_intersections": "5 intersecting triangle pairs (Moller test; 92 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_lumbar_vertebra_3"
@@ -3182,10 +3130,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 8.595895643850747e-05,
-          "self_intersections": "19 intersecting triangle pairs (Moller test; 85 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 3,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_lumbar_vertebra_2"
@@ -3301,10 +3247,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 7.695554643023686e-05,
-          "self_intersections": "18 intersecting triangle pairs (Moller test; 96 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 3,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_lumbar_vertebra_1"
@@ -3420,10 +3364,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.154523667926969e-05,
-          "self_intersections": "6 intersecting triangle pairs (Moller test; 63 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_12"
@@ -3539,10 +3481,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 3.656692079437541e-05,
-          "self_intersections": "5 intersecting triangle pairs (Moller test; 57 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_11"
@@ -3658,10 +3598,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 3.3933398262966593e-05,
-          "self_intersections": "2 intersecting triangle pairs (Moller test; 69 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_10"
@@ -3777,10 +3715,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.8086617447362673e-05,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 49 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_9"
@@ -3896,10 +3832,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.669363812448097e-05,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 74 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_8"
@@ -4015,10 +3949,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.5373450346007938e-05,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 65 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_7"
@@ -4134,10 +4066,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.329669012815252e-05,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 38 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_6"
@@ -4253,10 +4183,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.1964050831753268e-05,
-          "self_intersections": "10 intersecting triangle pairs (Moller test; 31 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_5"
@@ -4372,10 +4300,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.1454581602297042e-05,
-          "self_intersections": "6 intersecting triangle pairs (Moller test; 38 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_4"
@@ -4491,10 +4417,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.1377930759492583e-05,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 44 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_3"
@@ -4610,10 +4534,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.1780064393001688e-05,
-          "self_intersections": "10 intersecting triangle pairs (Moller test; 53 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_2"
@@ -4729,10 +4651,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.1285179903636503e-05,
-          "self_intersections": "5 intersecting triangle pairs (Moller test; 62 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_thoracic_vertebra_1"
@@ -4848,10 +4768,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.7416924298288238e-05,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 43 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_cervical_vertebra_7"
@@ -4967,10 +4885,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.28577387480652e-05,
-          "self_intersections": "11 intersecting triangle pairs (Moller test; 43 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_cervical_vertebra_6"
@@ -5086,10 +5002,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.2423853421020435e-05,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 49 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_cervical_vertebra_5"
@@ -5205,10 +5119,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.1227812830526038e-05,
-          "self_intersections": "6 intersecting triangle pairs (Moller test; 56 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_cervical_vertebra_4"
@@ -5324,10 +5236,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.141793717089537e-05,
-          "self_intersections": "8 intersecting triangle pairs (Moller test; 44 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_cervical_vertebra_3"
@@ -5443,10 +5353,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.791350308863961e-05,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 89 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_cervical_vertebra_2"
@@ -5562,10 +5470,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 2,
           "signed_volume_m3": 1.702456068219896e-05,
-          "self_intersections": "13 intersecting triangle pairs (Moller test; 38 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_cervical_vertebra_1"
@@ -5681,10 +5587,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0005920230008422032,
-          "self_intersections": "16 intersecting triangle pairs (Moller test; 60 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 4,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-5"
@@ -5800,10 +5704,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 0.00018202042155773758,
-          "self_intersections": "14 intersecting triangle pairs (Moller test; 136 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-2"
@@ -5919,10 +5821,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.4975537586520789e-05,
-          "self_intersections": "2 intersecting triangle pairs (Moller test; 20 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -6036,10 +5936,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.4796865619701268e-06,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 13 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_brachiocephalic_artery_b",
@@ -6156,10 +6054,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 8.009546897587767e-06,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 20 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3579"
@@ -6275,10 +6171,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 8.64015899457529e-06,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 18 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3479"
@@ -6394,10 +6288,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.907751652072643e-06,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 40 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -6511,10 +6403,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.826843911082241e-06,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 50 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -6628,10 +6518,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 9.707959411496868e-06,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 39 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3482"
@@ -6747,10 +6635,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 6.612636622398641e-06,
-          "self_intersections": "1 intersecting triangle pairs (Moller test; 42 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3583"
@@ -6866,10 +6752,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 6.3011327585903355e-06,
-          "self_intersections": "5 intersecting triangle pairs (Moller test; 4 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -6983,10 +6867,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.927573196029522e-05,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 74 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -7100,10 +6982,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 5.6964547788033364e-05,
-          "self_intersections": "9 intersecting triangle pairs (Moller test; 104 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-11"
@@ -7219,10 +7099,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.1882226548361763e-05,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 14 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -7336,10 +7214,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 9.744176857240143e-06,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 11 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3464"
@@ -7455,10 +7331,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.0109434444979997e-05,
-          "self_intersections": "1 intersecting triangle pairs (Moller test; 26 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3565"
@@ -7574,10 +7448,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.270661719603127e-05,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 22 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_left_common_iliac_vein",
@@ -7694,10 +7566,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.0025548765973136e-05,
-          "self_intersections": "1 intersecting triangle pairs (Moller test; 29 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_right_common_iliac_vein",
@@ -7814,10 +7684,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.00016820009430456242,
-          "self_intersections": "5 intersecting triangle pairs (Moller test; 11 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3262"
@@ -7933,10 +7801,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.00015534250641646485,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 7 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3368"
@@ -8052,10 +7918,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 2,
           "signed_volume_m3": 8.358482735655095e-05,
-          "self_intersections": "11 intersecting triangle pairs (Moller test; 7 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3279"
@@ -8171,10 +8035,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 8.975838546587484e-05,
-          "self_intersections": "7 intersecting triangle pairs (Moller test; 15 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3384"
@@ -8290,10 +8152,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.7941858662427113e-05,
-          "self_intersections": "13 intersecting triangle pairs (Moller test; 20 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3237"
@@ -8409,10 +8269,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 3.205082468820976e-05,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 20 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3362"
@@ -8530,10 +8388,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0005097893581357443,
-          "self_intersections": "6 intersecting triangle pairs (Moller test; 111 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_femur_L",
@@ -8653,10 +8509,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0005261668871958497,
-          "self_intersections": "9 intersecting triangle pairs (Moller test; 103 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "hra-female:VH_F_femur_R",
@@ -8774,10 +8628,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 0.00038200663754179394,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 63 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3288",
@@ -8894,10 +8746,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 0.00038061654288136276,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 55 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3152",
@@ -9014,10 +8864,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 9.878335081046333e-05,
-          "self_intersections": "7 intersecting triangle pairs (Moller test; 155 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -9131,10 +8979,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0006092906337821874,
-          "self_intersections": "15 intersecting triangle pairs (Moller test; 10 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ1418M",
@@ -9251,10 +9097,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0006347545862110898,
-          "self_intersections": "8 intersecting triangle pairs (Moller test; 17 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ1418",
@@ -9371,10 +9215,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0002828909552525635,
-          "self_intersections": "1 intersecting triangle pairs (Moller test; 34 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ1419M",
@@ -9491,10 +9333,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0002751978826895601,
-          "self_intersections": "13 intersecting triangle pairs (Moller test; 23 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ1419",
@@ -9611,10 +9451,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 7.587898005833393e-05,
-          "self_intersections": "10 intersecting triangle pairs (Moller test; 23 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ1420M",
@@ -9731,10 +9569,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 7.916645773045275e-05,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 58 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ1420",
@@ -9851,10 +9687,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0005462434684154208,
-          "self_intersections": "9 intersecting triangle pairs (Moller test; 25 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -9968,10 +9802,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0005644309607871315,
-          "self_intersections": "12 intersecting triangle pairs (Moller test; 34 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -10085,10 +9917,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 0.00024649148983181345,
-          "self_intersections": "10 intersecting triangle pairs (Moller test; 57 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -10202,10 +10032,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 4,
           "signed_volume_m3": 0.0002343243898490964,
-          "self_intersections": "14 intersecting triangle pairs (Moller test; 89 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 3,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }
@@ -10319,10 +10147,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.001288292877225937,
-          "self_intersections": "8 intersecting triangle pairs (Moller test; 34 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-4"
@@ -10438,10 +10264,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 17,
           "signed_volume_m3": 0.0007548216920901376,
-          "self_intersections": "35 intersecting triangle pairs (Moller test; 86 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 7,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-26"
@@ -10557,10 +10381,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 8.672794694189965e-06,
-          "self_intersections": "1 intersecting triangle pairs (Moller test; 21 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3228"
@@ -10676,10 +10498,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.0941178602554515e-05,
-          "self_intersections": "8 intersecting triangle pairs (Moller test; 7 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3229"
@@ -10795,10 +10615,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 5,
           "signed_volume_m3": 1.1307536473521368e-05,
-          "self_intersections": "6 intersecting triangle pairs (Moller test; 3 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 3,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3230"
@@ -10914,10 +10732,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 1.3281513719014046e-05,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 1 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3231"
@@ -11033,10 +10849,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 1.7815393141950165e-05,
-          "self_intersections": "5 intersecting triangle pairs (Moller test; 2 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3232"
@@ -11152,10 +10966,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 2,
           "signed_volume_m3": 1.954563099860621e-05,
-          "self_intersections": "5 intersecting triangle pairs (Moller test; 2 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 3,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3233"
@@ -11271,10 +11083,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 3,
           "signed_volume_m3": 1.7131239431158906e-05,
-          "self_intersections": "1 intersecting triangle pairs (Moller test; 7 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 4,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3234"
@@ -11390,10 +11200,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 3,
           "signed_volume_m3": 1.565573777863713e-05,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 2 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 4,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3235"
@@ -11509,10 +11317,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 4,
           "signed_volume_m3": 1.319483745684557e-05,
-          "self_intersections": "2 intersecting triangle pairs (Moller test; 0 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 4,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3236"
@@ -11628,10 +11434,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 1.11697263158962e-05,
-          "self_intersections": "8 intersecting triangle pairs (Moller test; 4 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3225"
@@ -11747,10 +11551,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 8.729403921366763e-06,
-          "self_intersections": "1 intersecting triangle pairs (Moller test; 0 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3226"
@@ -11866,10 +11668,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 4.385560419359876e-06,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 0 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3227"
@@ -11985,10 +11785,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 9.526171815927313e-06,
-          "self_intersections": "2 intersecting triangle pairs (Moller test; 17 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3334"
@@ -12104,10 +11902,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 1.0351390748515124e-05,
-          "self_intersections": "7 intersecting triangle pairs (Moller test; 15 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3336"
@@ -12223,10 +12019,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.1104760965308758e-05,
-          "self_intersections": "11 intersecting triangle pairs (Moller test; 9 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3338"
@@ -12342,10 +12136,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 2,
           "signed_volume_m3": 1.354291953102736e-05,
-          "self_intersections": "17 intersecting triangle pairs (Moller test; 2 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3340"
@@ -12461,10 +12253,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.652358552462177e-05,
-          "self_intersections": "6 intersecting triangle pairs (Moller test; 7 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3342"
@@ -12580,10 +12370,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 1.7757237879429394e-05,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 4 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3344"
@@ -12699,10 +12487,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 4,
           "signed_volume_m3": 2.062686927875537e-05,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 0 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 5,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3346"
@@ -12818,10 +12604,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 5,
           "signed_volume_m3": 1.4346979793667253e-05,
-          "self_intersections": "8 intersecting triangle pairs (Moller test; 6 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 5,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3347"
@@ -12937,10 +12721,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 6,
           "signed_volume_m3": 1.4346275107044988e-05,
-          "self_intersections": "3 intersecting triangle pairs (Moller test; 7 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 3,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3348"
@@ -13056,10 +12838,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 1.1326571953099893e-05,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 12 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3330"
@@ -13175,10 +12955,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 8.83937895665749e-06,
-          "self_intersections": "0 intersecting triangle pairs (Moller test; 3 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 2,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3331"
@@ -13294,10 +13072,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 4.971019012917006e-06,
-          "self_intersections": "2 intersecting triangle pairs (Moller test; 0 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "bodyparts3d:FJ3332"
@@ -13413,10 +13189,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.824506991306456e-05,
-          "self_intersections": "4 intersecting triangle pairs (Moller test; 25 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 1,
-          "outlier_components": 0
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": [
           "tcia:TCIA:003:label-28"
@@ -13532,10 +13306,8 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 69,
           "signed_volume_m3": 0.00012937225359182367,
-          "self_intersections": "13 intersecting triangle pairs (Moller test; 34 coplanar candidates not resolved)",
-          "anatomical_review": "pending",
-          "connected_components": 54,
-          "outlier_components": 15
+          "self_intersections": "not-assessed",
+          "anatomical_review": "pending"
         },
         "alternatives": []
       }

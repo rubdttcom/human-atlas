@@ -4262,3 +4262,57 @@ NLMCT:VHF:group:rib_9,Rib 9 (both sides),,NLMCT:VHF:group:rib_9,,aggregate,unspe
 NLMCT:VHF:group:rib_10,Rib 10 (both sides),,NLMCT:VHF:group:rib_10,,aggregate,unspecified,source-hierarchy-concept
 NLMCT:VHF:group:rib_11,Rib 11 (both sides),,NLMCT:VHF:group:rib_11,,aggregate,unspecified,source-hierarchy-concept
 NLMCT:VHF:group:rib_12,Rib 12 (both sides),,NLMCT:VHF:group:rib_12,,aggregate,unspecified,source-hierarchy-concept
+CTCONS:VHF:V01,Vertebra instance V01 · candidate C1,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V02,Vertebra instance V02 · candidate C2,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V03,Vertebra instance V03 · candidate C3,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V04,Vertebra instance V04 · candidate C4,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V05,Vertebra instance V05 · candidate C5,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V06,Vertebra instance V06 · candidate C6,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V07,Vertebra instance V07 · candidate C7,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V08,Vertebra instance V08 · candidate T1,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V09,Vertebra instance V09 · candidate T2,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V10,Vertebra instance V10 · candidate T3,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V11,Vertebra instance V11 · candidate T4,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V12,Vertebra instance V12 · candidate T5,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V13,Vertebra instance V13 · candidate T6,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V14,Vertebra instance V14 · candidate T7,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V15,Vertebra instance V15 · candidate T8,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V16,Vertebra instance V16 · candidate T9,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V17,Vertebra instance V17 · candidate T10,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V18,Vertebra instance V18 · candidate T11,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V19,Vertebra instance V19 · candidate T12,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V20,Vertebra instance V20 · candidate L1,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V21,Vertebra instance V21 · candidate L2,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V22,Vertebra instance V22 · candidate L3,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V25,Vertebra instance V25 · candidate L4,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V26,Vertebra instance V26 · candidate L5,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:V27,Vertebra instance V27 · candidate L6,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:S29,Sacrum · consensus instance S29,,,,skeletal,unspecified,direct-source-geometry
+CTCONS:VHF:RL01|left,Left rib instance RL01 · candidate rib 1,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL02|left,Left rib instance RL02 · candidate rib 2,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL03|left,Left rib instance RL03 · candidate rib 3,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL04|left,Left rib instance RL04 · candidate rib 4,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL05|left,Left rib instance RL05 · candidate rib 5,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL06|left,Left rib instance RL06 · candidate rib 6,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL07|left,Left rib instance RL07 · candidate rib 7,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL08|left,Left rib instance RL08 · candidate rib 8,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL09|left,Left rib instance RL09 · candidate rib 9,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL10|left,Left rib instance RL10 · candidate rib 10,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL11|left,Left rib instance RL11 · candidate rib 11,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RL12|left,Left rib instance RL12 · candidate rib 12,,,,skeletal,left,direct-source-geometry
+CTCONS:VHF:RR01|right,Right rib instance RR01 · candidate rib 1,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR02|right,Right rib instance RR02 · candidate rib 2,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR03|right,Right rib instance RR03 · candidate rib 3,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR04|right,Right rib instance RR04 · candidate rib 4,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR05|right,Right rib instance RR05 · candidate rib 5,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR06|right,Right rib instance RR06 · candidate rib 6,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR07|right,Right rib instance RR07 · candidate rib 7,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR08|right,Right rib instance RR08 · candidate rib 8,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR09|right,Right rib instance RR09 · candidate rib 9,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR10|right,Right rib instance RR10 · candidate rib 10,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR11|right,Right rib instance RR11 · candidate rib 11,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:RR12|right,Right rib instance RR12 · candidate rib 12,,,,skeletal,right,direct-source-geometry
+CTCONS:VHF:group:Vertebral column (consensus instances),Vertebral column (consensus instances),,CTCONS:VHF:group:Vertebral column (consensus instances),,aggregate,unspecified,source-hierarchy-concept
+CTCONS:VHF:group:Ribs (consensus instances),Ribs (consensus instances),,CTCONS:VHF:group:Ribs (consensus instances),,aggregate,unspecified,source-hierarchy-concept
+CTCONS:VHF:group:Left ribs (consensus instances),Left ribs (consensus instances),,CTCONS:VHF:group:Left ribs (consensus instances),,aggregate,left,source-hierarchy-concept
+CTCONS:VHF:group:Right ribs (consensus instances),Right ribs (consensus instances),,CTCONS:VHF:group:Right ribs (consensus instances),,aggregate,right,source-hierarchy-concept

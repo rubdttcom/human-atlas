@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 records = {}
 for source, filename in [('hra-female', 'atlas-female.json'), ('bodyparts3d', 'atlas.json'), ('tcia', 'atlas-tcia-female.json'),
-                         ('denver-vhf', 'atlas-denver-female.json'), ('nlm-vhf-ct', 'atlas-nlm-vhf-ct.json')]:
+                         ('denver-vhf', 'atlas-denver-female.json'), ('nlm-vhf-ct', 'atlas-nlm-vhf-ct.json'), ('ct-consensus', 'atlas-ct-consensus.json')]:
     if not (ROOT / 'public/models' / filename).exists():
         continue
     original = json.loads((ROOT / 'public/models' / filename).read_text())
@@ -23,7 +23,7 @@ for source, filename in [('hra-female', 'atlas-female.json'), ('bodyparts3d', 'a
         if source == 'denver-vhf':
             assert record['canonical_space'] == 'VHF-image-2022' and record['registration']['transform_id'] == 'denver-stage-to-vhf'
             assert record['registration']['canonical_registration'] is True
-        elif source == 'nlm-vhf-ct':
+        elif source in ('nlm-vhf-ct', 'ct-consensus'):
             assert record['canonical_space'] == 'VHF-image-2022' and record['registration']['transform_id'] == 'nlm-ct-to-vhf'
             assert record['registration']['canonical_registration'] is True and record['source_donor'] == 'VHF'
         else:
@@ -36,7 +36,7 @@ coverage = json.loads((ROOT / 'generated/coverage-matrix.json').read_text())
 used = set()
 for entry in coverage:
     assert entry['best_available'] in entry['candidates'] or entry['best_available'] is None
-    assert entry['registration_ready'] == any(records[c]['source'] in ('denver-vhf', 'nlm-vhf-ct') for c in entry['candidates']), entry['canonical_id']
+    assert entry['registration_ready'] == any(records[c]['source'] in ('denver-vhf', 'nlm-vhf-ct', 'ct-consensus') for c in entry['candidates']), entry['canonical_id']
     measured = [c for c in entry['candidates'] if records[c]['geometry_type'] == 'manual_segmentation' and records[c]['source_sex'] == 'female']
     assert entry['female_measured'] == bool(measured), entry['canonical_id']
     for candidate in measured:

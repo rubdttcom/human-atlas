@@ -51,6 +51,9 @@ def resolve_term(source_id, part):
     elif source_id == 'nlm-vhf-ct':
         key = meta['label_name']
         side = meta['laterality'] if meta['laterality'] in ('left', 'right') else 'unspecified'
+    elif source_id == 'ct-consensus':
+        key = meta['instance_id']   # geometric id; no ontology term until the name is documented
+        side = meta['laterality'] if meta['laterality'] in ('left', 'right') else 'unspecified'
     else:
         key = normalize(part['conceptId'])
         side = laterality(part['name'])
@@ -159,6 +162,11 @@ if nlm_path.exists():
             donor['datasets'] = sorted(set(donor.get('datasets', [])) | {'denver-vhf', 'nlm-vhf-ct'})
             donor['evidence'] = sorted(set(donor.get('evidence', [])) | {'data/raw/nlm-vhf/download-manifest.json', 'https://www.nlm.nih.gov/research/visible/visible_human.html'})
     write_json('registry/donors.json', donors)
+cons_path = ROOT / 'public/models/atlas-ct-consensus.json'
+if cons_path.exists() and 'nlm-ct-to-stage' in transforms:
+    cons = json.loads(cons_path.read_text())
+    assert cons['labels_sha256'] == nlm['labels_sha256'], 'consensus atlas and NLM atlas were built against different label frames'
+    configs.append(('ct-consensus', 'atlas-ct-consensus.json', 'nlm-ct-to-stage', cons['labels_sha256']))
 write_json('transforms/source-to-stage.json', transforms)
 all_records = []
 catalog = {}
@@ -198,10 +206,10 @@ for source_id, filename, transform, revision in configs:
             'reference_sex': atlas['sex'],
             'source_donor': 'TARO' if source_id == 'bodyparts3d' else 'hra-female-assembly',
             'geometry_type': 'reference_template' if source_id == 'bodyparts3d' else 'reference_assembly',
-            'canonical_space': 'VHF-image-2022' if source_id in ('denver-vhf', 'nlm-vhf-ct') else None, 'display_space': transforms[transform]['to'],
+            'canonical_space': 'VHF-image-2022' if source_id in ('denver-vhf', 'nlm-vhf-ct', 'ct-consensus') else None, 'display_space': transforms[transform]['to'],
             'registration': ({'type': 'native VHF image frame; identity to canonical space VHF-image-2022', 'display_transform_id': transform, 'transform_id': 'denver-stage-to-vhf', 'canonical_registration': True} if source_id == 'denver-vhf'
                              else {'type': 'rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)', 'display_transform_id': transform, 'transform_id': 'nlm-ct-to-vhf',
-                                   'rms_mm': transforms[transform]['rms_mm'], 'canonical_registration': True, 'review_status': 'automatic; anatomy unreviewed'} if source_id == 'nlm-vhf-ct'
+                                   'rms_mm': transforms[transform]['rms_mm'], 'canonical_registration': True, 'review_status': 'automatic; anatomy unreviewed'} if source_id in ('nlm-vhf-ct', 'ct-consensus')
                              else {'type': 'unregistered-to-VHF', 'display_transform_id': transform, 'transform_id': None, 'canonical_registration': False}),
             'confidence': None, 'confidence_basis': 'anatomical review pending',
             'license': source['license'], 'license_url': source['license_url'],
@@ -215,6 +223,7 @@ for source_id, filename, transform, revision in configs:
             'adaptations': atlas.get('optimized', {}),
             'notes': 'Male reference template; not registered to a female donor.' if source_id == 'bodyparts3d'
             else 'Same donor as the Denver VHF meshes (NLM Visible Human Female); automatic CT segmentation placed by a rigid pelvis registration; not anatomically reviewed.' if source_id == 'nlm-vhf-ct'
+            else 'Same donor (NLM Visible Human Female); three-model consensus voted per geometric instance on the fresh CT; geometric id, candidate name pending; placed by the same rigid pelvis registration; not anatomically reviewed.' if source_id == 'ct-consensus'
             else 'Female reference assembly; component donor and biological sex are not established by the assembly label.',
         }
         record.update(part.get('source_metadata', {}))
@@ -263,11 +272,11 @@ for canonical, structure in sorted(catalog.items()):
                                        else 'partial-grouped' if grouped else 'none'),
                      'female_segmented_grouped_partial': any(r['source'] == 'tcia' for r in grouped),
                      'female_measured': any(r['geometry_type'] == 'manual_segmentation' and r['source_sex'] == 'female' for r in candidates),
-                     'female_segmented_unreviewed': any(r['geometry_type'] == 'automatic_segmentation' and r['source_sex'] == 'female' for r in candidates),
+                     'female_segmented_unreviewed': any(r['geometry_type'] in ('automatic_segmentation', 'automatic_segmentation_consensus') and r['source_sex'] == 'female' for r in candidates),
                      'female_reference': any(r['source'] == 'hra-female' for r in candidates),
                      'template_only': bool(candidates) and all(r['source'] == 'bodyparts3d' for r in candidates),
-                     'registration_ready': any(r['source'] in ('denver-vhf', 'nlm-vhf-ct') for r in candidates),
-                     'female_ct_same_donor': any(r['source'] == 'nlm-vhf-ct' for r in candidates),
+                     'registration_ready': any(r['source'] in ('denver-vhf', 'nlm-vhf-ct', 'ct-consensus') for r in candidates),
+                     'female_ct_same_donor': any(r['source'] in ('nlm-vhf-ct', 'ct-consensus') for r in candidates),
                      'status': 'direct-geometry' if candidates else 'no-direct-geometry'})
 for source_id, *_ in configs:
     path = ROOT / 'public/atlases' / (source_id + '.json')

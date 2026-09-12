@@ -106,6 +106,7 @@
   "registered_sources": {
     "denver-vhf": "denver-stage-to-vhf (identity)",
     "nlm-vhf-ct": "nlm-ct-to-vhf (rigid same-donor pelvis registration)",
+    "ct-consensus": "nlm-ct-to-vhf (same registration; instance maps on the NLM CT grid)",
     "hra-female": "hra-stage-to-vhf (organ proxies onto same-donor CT organs, experimental)",
     "tcia": "tcia003-stage-to-vhf (pelvic landmark similarity, experimental; alternative source, not composed)"
   }

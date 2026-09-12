@@ -2,7 +2,7 @@
 
 Canonical space: Aligned Visible Human Female image frame of the Denver 2022 release (Andreassen et al. 2022): +x subject right, +y anterior, +z superior, millimetres.
 Status: defined from the Denver aligned image frame; verified against the NLM VHF CT header frame by a rigid same-donor pelvis fit (rotation 2.17 deg, free scale 1.0013, pelvis p95 4.7 mm).
-Composition: {'hra-female': 786, 'nlm-vhf-ct': 101, 'denver-vhf': 128} meshes by source; {'hra-female-assembly': 786, 'VHF': 229} by donor.
+Composition: {'hra-female': 786, 'nlm-vhf-ct': 52, 'ct-consensus': 49, 'denver-vhf': 128} meshes by source; {'hra-female-assembly': 786, 'VHF': 229} by donor.
 
 ## Same donor: NLM VHF fresh CT -> Denver frame
 

@@ -2,15 +2,15 @@
 
 | Metric | Count |
 | --- | ---: |
-| canonical_catalog_entries | 4263 |
-| source_meshes | 3400 |
+| canonical_catalog_entries | 4317 |
+| source_meshes | 3450 |
 | female_measured | 128 |
-| registered_female | 231 |
-| female_ct_same_donor | 114 |
-| female_segmented_unreviewed | 139 |
+| registered_female | 281 |
+| female_ct_same_donor | 164 |
+| female_segmented_unreviewed | 189 |
 | female_reference | 717 |
 | template_only | 1461 |
-| without_direct_geometry | 1880 |
+| without_direct_geometry | 1884 |
 | multi_source_entries | 248 |
 | denver_hra_merged_entries | 22 |
 | crosswalk_applied_meshes | 1712 |

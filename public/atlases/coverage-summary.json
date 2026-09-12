@@ -1,13 +1,13 @@
 {
-  "canonical_catalog_entries": 4263,
-  "source_meshes": 3400,
+  "canonical_catalog_entries": 4317,
+  "source_meshes": 3450,
   "female_measured": 128,
-  "registered_female": 231,
-  "female_segmented_unreviewed": 139,
-  "female_ct_same_donor": 114,
+  "registered_female": 281,
+  "female_segmented_unreviewed": 189,
+  "female_ct_same_donor": 164,
   "female_reference": 717,
   "template_only": 1461,
-  "without_direct_geometry": 1880,
+  "without_direct_geometry": 1884,
   "partial_grouped_only": 0,
   "multi_source_entries": 248,
   "denver_hra_merged_entries": 22,
@@ -91,6 +91,17 @@
         "/models/nlm-vhf-ct-lod-4.bin": "d0824438122890c478bcfd73385734b35e3c766a1d64772130d08fa5107105b4",
         "/models/nlm-vhf-ct-lod-5.bin": "63d13cc5cee60416f2ec3a50d7fdb402d7c31b3e7483348446fbd94d8047e9f1",
         "/models/nlm-vhf-ct-lod-6.bin": "65920e644997899d5e3d95744b931d5621bc462914ed25932b9ccc473bfea2ca"
+      }
+    },
+    {
+      "source": "ct-consensus",
+      "meshes": 50,
+      "source_concepts": 54,
+      "triangles": 411968,
+      "chunk_hashes": {
+        "/models/ct-consensus-lod-0.bin": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
+        "/models/ct-consensus-lod-1.bin": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
+        "/models/ct-consensus-lod-2.bin": "292f0de53a0c106b645d249a012623968e7e7d760947bec2724ddc0884fb0906"
       }
     }
   ],

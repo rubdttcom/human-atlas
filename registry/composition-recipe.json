@@ -5462,152 +5462,152 @@
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_S1",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_L5",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_L4",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_L3",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_L2",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_L1",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T12",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T11",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T10",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T9",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T8",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T7",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T6",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T5",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T4",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T3",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T2",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_T1",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_C7",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_C6",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_C5",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_C4",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_C3",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_C2",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:vertebrae_C1",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
@@ -5858,146 +5858,146 @@
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_1",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_2",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_3",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_4",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_5",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_6",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_7",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_8",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_9",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_10",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_11",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_left_12",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_1",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_2",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_3",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_4",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_5",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_6",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_7",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_8",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_9",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_10",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_11",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
     "source_asset": "NLMCT:VHF:rib_right_12",
-    "included": true,
-    "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+    "included": false,
+    "reason": "Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus)."
   },
   {
     "source": "nlm-vhf-ct",
@@ -6010,6 +6010,306 @@
     "source_asset": "NLMCT:VHF:costal_cartilages",
     "included": true,
     "reason": "Same-donor automatic CT label (trunk, upper limb, head); rigid pelvis registration to the Denver frame."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V01",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V02",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V03",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V04",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V05",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V06",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V07",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V08",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V09",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V10",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V11",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V12",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V13",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V14",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V15",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V16",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V17",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V18",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V19",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V20",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V21",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V22",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V25",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V26",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:V27",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:S29",
+    "included": false,
+    "reason": "Consensus sacrum replaced by the Denver VHF manual sacrum of the same donor."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL01",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL02",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL03",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL04",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL05",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL06",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL07",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL08",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL09",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL10",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL11",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RL12",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR01",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR02",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR03",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR04",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR05",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR06",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR07",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR08",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR09",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR10",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR11",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:RR12",
+    "included": true,
+    "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
   },
   {
     "source": "denver-vhf",

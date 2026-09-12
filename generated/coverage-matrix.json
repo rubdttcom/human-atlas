@@ -1,5 +1,1547 @@
 [
   {
+    "canonical_id": "CTCONS:VHF:RL01|left",
+    "name": "Left rib instance RL01 · candidate rib 1",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL01",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL01"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL02|left",
+    "name": "Left rib instance RL02 · candidate rib 2",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL02",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL02"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL03|left",
+    "name": "Left rib instance RL03 · candidate rib 3",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL03",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL03"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL04|left",
+    "name": "Left rib instance RL04 · candidate rib 4",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL04",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL04"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL05|left",
+    "name": "Left rib instance RL05 · candidate rib 5",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL05",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL05"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL06|left",
+    "name": "Left rib instance RL06 · candidate rib 6",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL06",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL06"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL07|left",
+    "name": "Left rib instance RL07 · candidate rib 7",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL07",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL07"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL08|left",
+    "name": "Left rib instance RL08 · candidate rib 8",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL08",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL08"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL09|left",
+    "name": "Left rib instance RL09 · candidate rib 9",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL09",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL09"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL10|left",
+    "name": "Left rib instance RL10 · candidate rib 10",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL10",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL10"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL11|left",
+    "name": "Left rib instance RL11 · candidate rib 11",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL11",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL11"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RL12|left",
+    "name": "Left rib instance RL12 · candidate rib 12",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "left",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RL12",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RL12"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR01|right",
+    "name": "Right rib instance RR01 · candidate rib 1",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR01",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR01"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR02|right",
+    "name": "Right rib instance RR02 · candidate rib 2",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR02",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR02"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR03|right",
+    "name": "Right rib instance RR03 · candidate rib 3",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR03",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR03"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR04|right",
+    "name": "Right rib instance RR04 · candidate rib 4",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR04",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR04"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR05|right",
+    "name": "Right rib instance RR05 · candidate rib 5",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR05",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR05"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR06|right",
+    "name": "Right rib instance RR06 · candidate rib 6",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR06",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR06"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR07|right",
+    "name": "Right rib instance RR07 · candidate rib 7",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR07",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR07"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR08|right",
+    "name": "Right rib instance RR08 · candidate rib 8",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR08",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR08"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR09|right",
+    "name": "Right rib instance RR09 · candidate rib 9",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR09",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR09"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR10|right",
+    "name": "Right rib instance RR10 · candidate rib 10",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR10",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR10"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR11|right",
+    "name": "Right rib instance RR11 · candidate rib 11",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR11",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR11"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:RR12|right",
+    "name": "Right rib instance RR12 · candidate rib 12",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "right",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:RR12",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:RR12"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:S29",
+    "name": "Sacrum · consensus instance S29",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:S29",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:S29"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V01",
+    "name": "Vertebra instance V01 · candidate C1",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V01",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V01"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V02",
+    "name": "Vertebra instance V02 · candidate C2",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V02",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V02"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V03",
+    "name": "Vertebra instance V03 · candidate C3",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V03",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V03"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V04",
+    "name": "Vertebra instance V04 · candidate C4",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V04",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V04"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V05",
+    "name": "Vertebra instance V05 · candidate C5",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V05",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V05"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V06",
+    "name": "Vertebra instance V06 · candidate C6",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V06",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V06"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V07",
+    "name": "Vertebra instance V07 · candidate C7",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V07",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V07"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V08",
+    "name": "Vertebra instance V08 · candidate T1",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V08",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V08"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V09",
+    "name": "Vertebra instance V09 · candidate T2",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V09",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V09"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V10",
+    "name": "Vertebra instance V10 · candidate T3",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V10",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V10"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V11",
+    "name": "Vertebra instance V11 · candidate T4",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V11",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V11"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V12",
+    "name": "Vertebra instance V12 · candidate T5",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V12",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V12"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V13",
+    "name": "Vertebra instance V13 · candidate T6",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V13",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V13"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V14",
+    "name": "Vertebra instance V14 · candidate T7",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V14",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V14"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V15",
+    "name": "Vertebra instance V15 · candidate T8",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V15",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V15"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V16",
+    "name": "Vertebra instance V16 · candidate T9",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V16",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V16"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V17",
+    "name": "Vertebra instance V17 · candidate T10",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V17",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V17"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V18",
+    "name": "Vertebra instance V18 · candidate T11",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V18",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V18"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V19",
+    "name": "Vertebra instance V19 · candidate T12",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V19",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V19"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V20",
+    "name": "Vertebra instance V20 · candidate L1",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V20",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V20"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V21",
+    "name": "Vertebra instance V21 · candidate L2",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V21",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V21"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V22",
+    "name": "Vertebra instance V22 · candidate L3",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V22",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V22"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V25",
+    "name": "Vertebra instance V25 · candidate L4",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V25",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V25"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V26",
+    "name": "Vertebra instance V26 · candidate L5",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V26",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V26"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:V27",
+    "name": "Vertebra instance V27 · candidate L6",
+    "uberon": "",
+    "fma": "",
+    "ta2": "",
+    "system": "skeletal",
+    "laterality": "unspecified",
+    "scope": "direct-source-geometry",
+    "granularity": "individual",
+    "crosswalk_review": "no-crosswalk: source identifier used as is",
+    "best_available": "ct-consensus:CTCONS:VHF:V27",
+    "candidates": [
+      "ct-consensus:CTCONS:VHF:V27"
+    ],
+    "grouped_candidates": [],
+    "sources": [
+      "ct-consensus"
+    ],
+    "coverage_kind": "individual",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": true,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": true,
+    "female_ct_same_donor": true,
+    "status": "direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:group:Left ribs (consensus instances)",
+    "name": "Left ribs (consensus instances)",
+    "fma": "CTCONS:VHF:group:Left ribs (consensus instances)",
+    "uberon": "",
+    "ta2": "",
+    "system": "aggregate",
+    "laterality": "left",
+    "scope": "source-hierarchy-concept",
+    "best_available": null,
+    "candidates": [],
+    "grouped_candidates": [],
+    "sources": [],
+    "coverage_kind": "none",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": false,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": false,
+    "female_ct_same_donor": false,
+    "status": "no-direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:group:Ribs (consensus instances)",
+    "name": "Ribs (consensus instances)",
+    "fma": "CTCONS:VHF:group:Ribs (consensus instances)",
+    "uberon": "",
+    "ta2": "",
+    "system": "aggregate",
+    "laterality": "unspecified",
+    "scope": "source-hierarchy-concept",
+    "best_available": null,
+    "candidates": [],
+    "grouped_candidates": [],
+    "sources": [],
+    "coverage_kind": "none",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": false,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": false,
+    "female_ct_same_donor": false,
+    "status": "no-direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:group:Right ribs (consensus instances)",
+    "name": "Right ribs (consensus instances)",
+    "fma": "CTCONS:VHF:group:Right ribs (consensus instances)",
+    "uberon": "",
+    "ta2": "",
+    "system": "aggregate",
+    "laterality": "right",
+    "scope": "source-hierarchy-concept",
+    "best_available": null,
+    "candidates": [],
+    "grouped_candidates": [],
+    "sources": [],
+    "coverage_kind": "none",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": false,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": false,
+    "female_ct_same_donor": false,
+    "status": "no-direct-geometry"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:group:Vertebral column (consensus instances)",
+    "name": "Vertebral column (consensus instances)",
+    "fma": "CTCONS:VHF:group:Vertebral column (consensus instances)",
+    "uberon": "",
+    "ta2": "",
+    "system": "aggregate",
+    "laterality": "unspecified",
+    "scope": "source-hierarchy-concept",
+    "best_available": null,
+    "candidates": [],
+    "grouped_candidates": [],
+    "sources": [],
+    "coverage_kind": "none",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": false,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": false,
+    "female_ct_same_donor": false,
+    "status": "no-direct-geometry"
+  },
+  {
     "canonical_id": "DENVER:VHF:group:Bone",
     "name": "Lower limb bones",
     "fma": "DENVER:VHF:group:Bone",

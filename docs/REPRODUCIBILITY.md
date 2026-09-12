@@ -36,6 +36,14 @@ OMP_NUM_THREADS=20 .venv-seg/bin/TotalSegmentator -i data/derived/nlm-vhf/vhf-fr
 node scripts/optimize-anatomy.mjs atlas-nlm-vhf-ct.json nlm-vhf-ct-lod
 node scripts/compress-models.mjs atlas-nlm-vhf-ct.json
 
+# CT consensus source (vertebrae, sacrum, ribs voted per geometric instance; needs the MOOSE and Skellytour copies described below)
+.venv-seg/bin/python scripts/ct-vertebra-instances.py nlm vertebrae --selftest
+.venv-seg/bin/python scripts/ct-vertebra-instances.py nlm ribs_left --selftest
+.venv-seg/bin/python scripts/ct-vertebra-instances.py nlm ribs_right --selftest
+.venv/bin/python scripts/ingest-ct-consensus.py
+node scripts/optimize-anatomy.mjs atlas-ct-consensus.json ct-consensus-lod
+node scripts/compress-models.mjs atlas-ct-consensus.json
+
 # Ontology crosswalk (OLS evidence), registry, landmarks, composition, QA, reports
 .venv/bin/python scripts/build-crosswalk.py          # add --offline to reuse generated/ols-cache.json
 python3 scripts/build-registry.py

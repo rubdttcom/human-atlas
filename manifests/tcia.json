@@ -55,10 +55,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 4.9480663368538575e-06,
-      "self_intersections": "2 intersecting triangle pairs (Moller test; 274 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -118,10 +116,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.00018583908224384426,
-      "self_intersections": "14 intersecting triangle pairs (Moller test; 4301 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:aorta"
@@ -183,10 +179,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 6.515950511884747e-05,
-      "self_intersections": "5 intersecting triangle pairs (Moller test; 1756 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:urinary_bladder"
@@ -248,10 +242,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.0012653819881401683,
-      "self_intersections": "73 intersecting triangle pairs (Moller test; 11864 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:brain"
@@ -313,10 +305,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.0004239903429038242,
-      "self_intersections": "22 intersecting triangle pairs (Moller test; 8194 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:heart"
@@ -378,10 +368,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.0002847533069518166,
-      "self_intersections": "12 intersecting triangle pairs (Moller test; 3173 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -441,10 +429,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.001424897726817726,
-      "self_intersections": "67 intersecting triangle pairs (Moller test; 19546 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:liver"
@@ -506,10 +492,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 5.5405211513108666e-05,
-      "self_intersections": "6 intersecting triangle pairs (Moller test; 1554 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:pancreas"
@@ -571,10 +555,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.0002440283470882795,
-      "self_intersections": "21 intersecting triangle pairs (Moller test; 3697 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:spleen"
@@ -636,10 +618,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 9.405514144628416e-06,
-      "self_intersections": "3 intersecting triangle pairs (Moller test; 494 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:thyroid_gland"
@@ -701,10 +681,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 5.619074851906701e-05,
-      "self_intersections": "11 intersecting triangle pairs (Moller test; 1250 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:inferior_vena_cava"
@@ -766,10 +744,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.002727436067363975,
-      "self_intersections": "105 intersecting triangle pairs (Moller test; 21937 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -829,10 +805,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 4.46989747834879e-05,
-      "self_intersections": "6 intersecting triangle pairs (Moller test; 1363 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -892,10 +866,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 5.597654940604701e-05,
-      "self_intersections": "8 intersecting triangle pairs (Moller test; 2393 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -955,10 +927,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.0009561398409726938,
-      "self_intersections": "62 intersecting triangle pairs (Moller test; 14614 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1018,10 +988,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.00011207550739034929,
-      "self_intersections": "10 intersecting triangle pairs (Moller test; 2369 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1081,10 +1049,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 1,
       "signed_volume_m3": 0.00034704925994339465,
-      "self_intersections": "41 intersecting triangle pairs (Moller test; 4649 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 3,
-      "outlier_components": 2
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1144,10 +1110,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 6.299209233942347e-05,
-      "self_intersections": "16 intersecting triangle pairs (Moller test; 2217 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 3,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1207,10 +1171,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 3,
       "signed_volume_m3": 0.00011337467122980376,
-      "self_intersections": "16 intersecting triangle pairs (Moller test; 2932 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 3,
-      "outlier_components": 2
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1270,10 +1232,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 3.3820845520372824e-05,
-      "self_intersections": "8 intersecting triangle pairs (Moller test; 570 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1333,10 +1293,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.0006814582810089424,
-      "self_intersections": "101 intersecting triangle pairs (Moller test; 11482 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1396,10 +1354,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 3.613733350750319e-05,
-      "self_intersections": "6 intersecting triangle pairs (Moller test; 1657 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 10,
-      "outlier_components": 5
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1459,10 +1415,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 8.881756357286084e-05,
-      "self_intersections": "11 intersecting triangle pairs (Moller test; 2644 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1522,10 +1476,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 14,
       "signed_volume_m3": 0.0003404580907305651,
-      "self_intersections": "92 intersecting triangle pairs (Moller test; 16512 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 49,
-      "outlier_components": 23
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1585,10 +1537,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 5,
       "signed_volume_m3": 0.0001793506331267873,
-      "self_intersections": "37 intersecting triangle pairs (Moller test; 4810 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 6,
-      "outlier_components": 3
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1648,10 +1598,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 11,
       "signed_volume_m3": 0.0007789905443660378,
-      "self_intersections": "143 intersecting triangle pairs (Moller test; 26390 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 3,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:skull"
@@ -1713,10 +1661,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 7,
       "signed_volume_m3": 0.001089958609337828,
-      "self_intersections": "80 intersecting triangle pairs (Moller test; 13554 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 5,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1776,10 +1722,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 5.371726997672278e-05,
-      "self_intersections": "20 intersecting triangle pairs (Moller test; 1612 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 1,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": [
       "nlm-vhf-ct:NLMCT:VHF:sternum"
@@ -1841,10 +1785,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.0003243829797957226,
-      "self_intersections": "23 intersecting triangle pairs (Moller test; 5485 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1904,10 +1846,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.000580993297138504,
-      "self_intersections": "38 intersecting triangle pairs (Moller test; 10464 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -1967,10 +1907,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 2.3524053912179446e-05,
-      "self_intersections": "4 intersecting triangle pairs (Moller test; 722 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 14,
-      "outlier_components": 10
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -2030,10 +1968,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 8.95292041566977e-05,
-      "self_intersections": "9 intersecting triangle pairs (Moller test; 1876 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -2093,10 +2029,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 3939,
       "signed_volume_m3": 0.021526253645152333,
-      "self_intersections": "594 intersecting triangle pairs (Moller test; 8835 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2563,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -2156,10 +2090,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 4432,
       "signed_volume_m3": 0.038443230620495476,
-      "self_intersections": "782 intersecting triangle pairs (Moller test; 15941 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2804,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -2219,10 +2151,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 1284,
       "signed_volume_m3": 0.006502561286317571,
-      "self_intersections": "245 intersecting triangle pairs (Moller test; 5788 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 795,
-      "outlier_components": 0
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   },
@@ -2282,10 +2212,8 @@
       "boundary_edges": 0,
       "nonmanifold_edges": 0,
       "signed_volume_m3": 0.0002800491895398564,
-      "self_intersections": "30 intersecting triangle pairs (Moller test; 3672 coplanar candidates not resolved)",
-      "anatomical_review": "pending",
-      "connected_components": 2,
-      "outlier_components": 1
+      "self_intersections": "not-assessed",
+      "anatomical_review": "pending"
     },
     "alternatives": []
   }

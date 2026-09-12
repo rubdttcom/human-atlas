@@ -3,7 +3,8 @@
 | Atlas | Meshes | Open boundaries | Nonmanifold edges | Degenerate triangles | Self-intersecting meshes | Meshes with outlier components |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | bodyparts3d | 2234 | 2059 | 43 | 10 | 2060 of 2234 | 59 |
-| composed | 1015 | 402 | 80 | 84 | 175 of 1015 | 5 |
+| composed | 1015 | 402 | 80 | 85 | 131 of 966 | 5 |
+| ct-consensus | 50 | 0 | 22 | 43 | not measured | not measured |
 | denver-vhf | 128 | 0 | 3 | 0 | 1 of 128 | 0 |
 | hra-female | 888 | 449 | 43 | 0 | 89 of 888 | 4 |
 | nlm-vhf-ct | 114 | 0 | 41 | 95 | 101 of 114 | 1 |

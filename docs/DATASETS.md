@@ -19,6 +19,7 @@ Candidate status is not proof of import. Detailed metadata, verification dates a
 | [Z-Anatomy](https://github.com/Z-Anatomy/Models-of-human-anatomy) | male | multiple-or-unknown | CC-BY-SA-4.0 | 7 |
 | [AnatomyTOOL Open3Dmodel](https://anatomytool.org/) | unknown | unknown | PER-ASSET | 8 |
 | [CADS](https://github.com/murong-xu/CADS/releases) | not-applicable | not-applicable | PER-MODEL | 3 |
+| [NLM VHF fresh CT, three-model consensus by geometric instance (vertebrae, ribs)](https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/) | female | VHF | NLM-Terms-and-Conditions | 2 |
 
 Imported: HRA female, BodyParts3D male, TCIA 003 published segmentations, the Denver VHF final STL models (128 lower-limb meshes) and the
 TotalSegmentator labels of the NLM Visible Human Female fresh CT (same donor as Denver). BMFToolkit is compared locally but not shipped (data licence

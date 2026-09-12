@@ -7,7 +7,7 @@ status = json.loads((ROOT / 'registry/review-status.json').read_text())
 landmark_reviews = json.loads((ROOT / 'registry/landmark-review.json').read_text())
 allowed = set(status['allowed_status'])
 mesh_ids = set()
-for name in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 'composed'):
+for name in ('hra-female', 'bodyparts3d', 'tcia', 'denver-vhf', 'nlm-vhf-ct', 'ct-consensus', 'composed'):
     path = ROOT / 'public/atlases' / (name + '.json')
     if path.exists():
         mesh_ids |= {p['provenance']['id'] for p in json.loads(path.read_text())['parts']}

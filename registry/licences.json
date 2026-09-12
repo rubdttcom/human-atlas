@@ -103,5 +103,12 @@
     "redistributable": "unknown",
     "commercial_use": "unknown",
     "review_status": "pending-per-asset-review"
+  },
+  "ct-consensus": {
+    "license": "NLM-Terms-and-Conditions",
+    "url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": "true",
+    "commercial_use": "true",
+    "review_status": "pending-per-asset-review"
   }
 }
