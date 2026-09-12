@@ -54,6 +54,10 @@ python3 scripts/build-registry.py
 .venv/bin/python scripts/compare-bmftoolkit.py       # needs sources/BMFToolkit checked out; nothing is shipped
 python3 scripts/build-registry.py                   # also refreshes QA metadata in composed.json
 .venv/bin/python scripts/test-qa-carryover.py
+.venv/bin/python scripts/validate-consensus-metadata.py   # model-agreement metadata of ct-consensus: source = manifest = composite = instance tables
+node --experimental-strip-types scripts/test-agreement-panel.mjs   # viewer wording and null/zero/missing rendering of the agreement panel
+.venv/bin/python scripts/ct-bone-consensus.py --selftest
+.venv/bin/python scripts/ct-bone-consensus.py nlm        # about 4 min: gated per-name bone candidates (plan B 2.6), generated/ct-bone-consensus-nlm.json; nothing is composed
 .venv/bin/python scripts/summarize-reports.py
 ```
 
@@ -253,3 +257,40 @@ Label maps written per run: `<stem>-{instances,review,votes,eligible}.nii.gz` pl
 ties go to the lower instance index and never enter the consensus). Skellytour eligibility is read from the
 merge manifest (completed chunk cores inside the crop); a manifest with `complete: false` stops the run unless
 `--allow-incomplete` is given.
+
+## Model agreement of the consensus instances
+
+`scripts/ingest-ct-consensus.py` copies the per-instance vote figures of
+`generated/ct-vertebra-instances-nlm.json` and `generated/ct-rib-instances-nlm-{left,right}.json`
+into the provenance of every `ct-consensus` mesh (`consensus_ml`, `union_ml`, `agreement_ratio`,
+`unanimous_fraction`, `eligible_models_on_consensus`, `votes_histogram_on_union`,
+`conflict_voxels`, `lost_to_other_winner_ml`, `models`, `source_labels`, `candidate_name`,
+`name_status`). `build-registry.py` carries them into `manifests/ct-consensus.json` and
+`compose-female.py` into the composite unchanged (they describe the CT grid, registration does
+not alter them). The viewer renders them in the "Model agreement (CT consensus)" panel
+(`app/agreement.ts`, `app/provenance.tsx`) with every denominator spelled out: agreement ratio =
+consensus / union voxels; unanimous fraction over consensus voxels; the state of each model, where
+`unsupported` (no class), `unprocessed` (outside the model's processed region) and `absorbed`
+(another label of that model) are shown apart from `negative`. The wording is agreement between
+models, never probability of correctness, anatomical confidence or independent validation, and
+the candidate name stays `pending`. `validate-consensus-metadata.py` fails if any copy drifts,
+any figure contradicts the instance table or its own totals, a state leaves the documented
+vocabulary, a name status changes, or a review-only instance gets meshed.
+
+## Per-name bone candidates (plan B section 2.6)
+
+`scripts/ct-bone-consensus.py nlm` reads `registry/ct-label-equivalence.json` (class equivalence
+between the TotalSegmentator, MOOSE and Skellytour vocabularies, with evidence; group labels never
+meet individual bones) and, per class, applies the four gates before any vote: geometric
+correspondence of the largest components (IoU >= 0.50, centroid <= 15 mm per pair), laterality
+(anchored by the organ test of `ct-prior-consensus.py`), coverage and eligibility (Skellytour
+crop, class support, contact with the CT field-of-view edge). The vote and its figures are those
+of the instance tables, so the viewer panel and `validate-consensus-metadata.py` apply unchanged
+if a candidate is ever ingested. Every result is a candidate with `review_status:
+machine-unverified`: `candidate-consensus`, `candidate-single-model` (MOOSE-only bones and groups,
+whose agreement figures are undefined, not perfect), `disputed`, `laterality-failed` or
+`not-accepted`. The report compares each candidate with the current TotalSegmentator label of
+`nlm-vhf-ct` (Dice, volume ratio) and, where a Denver mesh exists, with that mesh (surface-to-vertex
+distances in the canonical stage, both directions). No candidate replaces anything in the
+composite; substitution is a separate recorded decision per bone (plan B section 2.6). Label maps:
+`data/derived/nlm-vhf/consensus/bone-consensus.nii.gz` and `bone-single-model.nii.gz`.

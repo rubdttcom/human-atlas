@@ -1,0 +1,498 @@
+{
+  "purpose": "Class equivalence between the label vocabularies of the three open CT bone models on the VHF donor CT, used by scripts/ct-bone-consensus.py (plan B section 2.6, gate 1). Name equality is the starting point only: the script still checks geometric correspondence, laterality and eligibility per bone before any vote.",
+  "evidence": {
+    "totalseg": "TotalSegmentator 2.18.0 task total (Apache-2.0): class names from data/derived/nlm-vhf/totalseg-classmap.json; *_left / *_right are subject sides in RAS (+x = right checked by the organ anchor of ct-prior-consensus.py).",
+    "moose": "MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs organ_indices.json shipped with the run (Apache-2.0 code, CC BY 4.0 weights); *_left / *_right subject sides, checked by the same organ anchor.",
+    "skellytour": "Skellytour high label table (SKULL, PELVIS, STERNUM, LEFT_/RIGHT_ FEMUR, HUMERUS, SCAPULA, CLAVICLE, RIB_1..12, VERT_1..24); LEFT_/RIGHT_ subject sides, checked by the same organ anchor. PELVIS is a group label (both hip bones and the sacrum) and is never equated with an individual hip."
+  },
+  "rules": [
+    "A group label never votes with or against an individual bone.",
+    "Vertebrae and ribs are excluded here: their correspondence is per geometric instance (ct-vertebra-instances.py), because the models disagree on names.",
+    "null means the model has no class for the bone (state unsupported, never negative)."
+  ],
+  "review_status": "machine-curated from the model documentation; no anatomist review",
+  "classes": [
+    {
+      "class": "femur_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "femur_left",
+        "moose": [
+          "peripheral_bones",
+          "femur_left"
+        ],
+        "skellytour": "LEFT_FEMUR"
+      },
+      "denver_mesh": "DENVER:VHF:Left_Bone_Femur"
+    },
+    {
+      "class": "humerus_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "humerus_left",
+        "moose": [
+          "peripheral_bones",
+          "humerus_left"
+        ],
+        "skellytour": "LEFT_HUMERUS"
+      },
+      "denver_mesh": null
+    },
+    {
+      "class": "scapula_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "scapula_left",
+        "moose": [
+          "peripheral_bones",
+          "scapula_left"
+        ],
+        "skellytour": "LEFT_SCAPULA"
+      },
+      "denver_mesh": null
+    },
+    {
+      "class": "clavicle_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "clavicula_left",
+        "moose": [
+          "peripheral_bones",
+          "clavicle_left"
+        ],
+        "skellytour": "LEFT_CLAVICLE"
+      },
+      "denver_mesh": null,
+      "note": "TotalSegmentator spells the class clavicula_*."
+    },
+    {
+      "class": "hip_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "hip_left",
+        "moose": [
+          "vertebrae",
+          "hip_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Left_Bone_Pelvis",
+      "note": "Skellytour PELVIS is a group (both hips and sacrum): not equivalent, recorded as absorbed_into PELVIS, not as a vote."
+    },
+    {
+      "class": "patella_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "patella_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Left_Bone_Patella",
+      "note": "MOOSE only: TotalSegmentator ships it in the licensed appendicular_bones task (not used); Skellytour high has no class."
+    },
+    {
+      "class": "tibia_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "tibia_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Left_Bone_Tibia",
+      "note": "MOOSE only (same reason)."
+    },
+    {
+      "class": "fibula_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "fibula_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Left_Bone_Fibula",
+      "note": "MOOSE only (same reason)."
+    },
+    {
+      "class": "radius_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "radius_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE only. The right forearm touches the CT field-of-view edge (generated/nlm-ct-coverage.json)."
+    },
+    {
+      "class": "ulna_left",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "ulna_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE only. The right forearm touches the CT field-of-view edge."
+    },
+    {
+      "class": "carpal_left",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "carpal_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "metacarpal_left",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "metacarpal_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "fingers_left",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "fingers_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "tarsal_left",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "tarsal_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "metatarsal_left",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "metatarsal_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "toes_left",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "toes_left"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "femur_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "femur_right",
+        "moose": [
+          "peripheral_bones",
+          "femur_right"
+        ],
+        "skellytour": "RIGHT_FEMUR"
+      },
+      "denver_mesh": "DENVER:VHF:Right_Bone_Femur"
+    },
+    {
+      "class": "humerus_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "humerus_right",
+        "moose": [
+          "peripheral_bones",
+          "humerus_right"
+        ],
+        "skellytour": "RIGHT_HUMERUS"
+      },
+      "denver_mesh": null
+    },
+    {
+      "class": "scapula_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "scapula_right",
+        "moose": [
+          "peripheral_bones",
+          "scapula_right"
+        ],
+        "skellytour": "RIGHT_SCAPULA"
+      },
+      "denver_mesh": null
+    },
+    {
+      "class": "clavicle_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "clavicula_right",
+        "moose": [
+          "peripheral_bones",
+          "clavicle_right"
+        ],
+        "skellytour": "RIGHT_CLAVICLE"
+      },
+      "denver_mesh": null,
+      "note": "TotalSegmentator spells the class clavicula_*."
+    },
+    {
+      "class": "hip_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "hip_right",
+        "moose": [
+          "vertebrae",
+          "hip_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Right_Bone_Pelvis",
+      "note": "Skellytour PELVIS is a group (both hips and sacrum): not equivalent, recorded as absorbed_into PELVIS, not as a vote."
+    },
+    {
+      "class": "patella_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "patella_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Right_Bone_Patella",
+      "note": "MOOSE only: TotalSegmentator ships it in the licensed appendicular_bones task (not used); Skellytour high has no class."
+    },
+    {
+      "class": "tibia_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "tibia_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Right_Bone_Tibia",
+      "note": "MOOSE only (same reason)."
+    },
+    {
+      "class": "fibula_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "fibula_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Right_Bone_Fibula",
+      "note": "MOOSE only (same reason)."
+    },
+    {
+      "class": "radius_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "radius_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE only. The right forearm touches the CT field-of-view edge (generated/nlm-ct-coverage.json)."
+    },
+    {
+      "class": "ulna_right",
+      "kind": "individual",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "ulna_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE only. The right forearm touches the CT field-of-view edge."
+    },
+    {
+      "class": "carpal_right",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "carpal_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "metacarpal_right",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "metacarpal_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "fingers_right",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "fingers_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "tarsal_right",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "tarsal_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "metatarsal_right",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "metatarsal_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "toes_right",
+      "kind": "group",
+      "labels": {
+        "totalseg": null,
+        "moose": [
+          "peripheral_bones",
+          "toes_right"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": null,
+      "note": "MOOSE group label (several bones); never equated with an individual bone of another model."
+    },
+    {
+      "class": "skull",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "skull",
+        "moose": [
+          "peripheral_bones",
+          "skull"
+        ],
+        "skellytour": "SKULL"
+      },
+      "denver_mesh": null
+    },
+    {
+      "class": "sternum",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "sternum",
+        "moose": [
+          "ribs",
+          "sternum"
+        ],
+        "skellytour": "STERNUM"
+      },
+      "denver_mesh": null
+    },
+    {
+      "class": "sacrum",
+      "kind": "individual",
+      "labels": {
+        "totalseg": "sacrum",
+        "moose": [
+          "vertebrae",
+          "sacrum"
+        ],
+        "skellytour": null
+      },
+      "denver_mesh": "DENVER:VHF:Left_Bone_Sacrum",
+      "note": "Handled by the instance consensus (scripts/ct-vertebra-instances.py, instance S29); excluded from the per-name batch. Skellytour PELVIS absorbs it."
+    }
+  ]
+}

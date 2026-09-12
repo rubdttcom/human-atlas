@@ -1,0 +1,2940 @@
+{
+  "ct": "nlm",
+  "inputs_sha256": {
+    "data/derived/nlm-vhf/totalseg.nii": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "data/derived/nlm-vhf/skellytour/skellytour_high.nii.gz": "5c697360eb31c7828e7e593f9b166a9b99922bfa6a72f8192c53a1bac3d64ddd",
+    "data/derived/nlm-vhf/ct-coverage-mask.nii.gz": "9d3c934e33af5c3f26be10feb7cee34b9fdcc4665a0205e3ad2c70ec13442ca6",
+    "data/derived/nlm-vhf/moose/segmentations/clin_CT_peripheral_bones_segmentation_CT_vhf.nii.gz": "db04d370604173365ac4cd0e7b6c7ffde127efc0b3f3239856dd307becc5fb78",
+    "data/derived/nlm-vhf/moose/segmentations/clin_CT_vertebrae_segmentation_CT_vhf.nii.gz": "d7ddaa8f5727094f2059031218cb35da5816cae2922f2752c9d800a7db2af511",
+    "data/derived/nlm-vhf/moose/segmentations/clin_CT_ribs_segmentation_CT_vhf.nii.gz": "c8f2c1580673bbedfba1c81baf74be37ab43c99153dfac5589f0abab8757d13e"
+  },
+  "registry": "registry/ct-label-equivalence.json",
+  "thresholds": {
+    "iou_min": 0.5,
+    "centroid_max_mm": 15.0,
+    "accept_agreement_ratio": 0.7,
+    "accept_unanimous_fraction": 0.6
+  },
+  "laterality_anchor": {
+    "organ_anchor_ok": true,
+    "organ_anchor_n": 4,
+    "midline_assumption": "x = 0 of the CT RAS frame is taken as the midline; valid only because the anchors and the paired bones straddle it (checked by the bone-side test)",
+    "bone_side_mismatches": {
+      "totalseg": [],
+      "moose:peripheral_bones": [],
+      "moose:vertebrae": [],
+      "moose:ribs": [],
+      "skellytour": []
+    },
+    "ok": true
+  },
+  "vote_rule": "one label per model per class; strict majority of the eligible models per voxel; unsupported (no class), unprocessed (outside the Skellytour crop) and absorbed (group label PELVIS) kept apart from negative",
+  "status_vocabulary": "candidate-consensus | candidate-single-model | disputed | laterality-failed | not-accepted (metrics below floor or truncated) | excluded (instance consensus)",
+  "bones": {
+    "femur_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "femur_left",
+          "candidate_ml": 510.34,
+          "largest_component_ml": 510.34,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -93.6,
+            9.9,
+            -1049.9
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "femur_left",
+          "candidate_ml": 518.81,
+          "largest_component_ml": 518.81,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -93.6,
+            9.7,
+            -1049.4
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "LEFT_FEMUR",
+          "candidate_ml": 497.13,
+          "largest_component_ml": 497.13,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -93.6,
+            9.9,
+            -1049.8
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.9328,
+              "centroid_offset_mm": 0.44,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.9452,
+              "centroid_offset_mm": 0.05,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.9346,
+              "centroid_offset_mm": 0.44,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "totalseg": "left",
+            "moose": "left",
+            "skellytour": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 506.87,
+      "union_ml": 534.32,
+      "agreement_ratio": 0.949,
+      "unanimous_fraction": 0.957,
+      "eligible_models_on_consensus": {
+        "3": 576703
+      },
+      "votes_histogram_on_union": {
+        "1": 31237,
+        "2": 24782,
+        "3": 551921
+      },
+      "conflict_voxels": 1485,
+      "denver_mesh": "DENVER:VHF:Left_Bone_Femur",
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 1,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.9853,
+        "volume_ratio_candidate_over_label": 0.9932
+      },
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Left_Bone_Femur",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 3.2,
+          "p95": 8.4
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 2.45,
+          "p95": 7.4
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "humerus_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "humerus_left",
+          "candidate_ml": 169.3,
+          "largest_component_ml": 168.42,
+          "fragments": 5,
+          "fragments_ml": 0.88,
+          "centroid_ras_mm": [
+            -183.8,
+            -29.8,
+            -359.9
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "humerus_left",
+          "candidate_ml": 166.94,
+          "largest_component_ml": 166.94,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -184.1,
+            -29.5,
+            -358.1
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "LEFT_HUMERUS",
+          "candidate_ml": 150.26,
+          "largest_component_ml": 150.26,
+          "fragments": 2,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -181.8,
+            -27.8,
+            -350.4
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.8663,
+              "centroid_offset_mm": 1.79,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.8526,
+              "centroid_offset_mm": 9.91,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.8168,
+              "centroid_offset_mm": 8.25,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "totalseg": "left",
+            "moose": "left",
+            "skellytour": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0687,
+          "fov_edge_contact_ml": 1.8,
+          "union_outside_coverage_fraction": 0.0028,
+          "truncated": true
+        }
+      },
+      "consensus_ml": 163.37,
+      "union_ml": 182.34,
+      "agreement_ratio": 0.896,
+      "unanimous_fraction": 0.862,
+      "eligible_models_on_consensus": {
+        "3": 185883
+      },
+      "votes_histogram_on_union": {
+        "1": 21583,
+        "2": 25704,
+        "3": 160179
+      },
+      "conflict_voxels": 3009,
+      "denver_mesh": null,
+      "not_accepted_reasons": [
+        "6.9% of the surface touches the CT field-of-view edge (>= 2%): the bone is cut by the acquisition; only the cryosections can complete it"
+      ],
+      "status": "not-accepted",
+      "review_status": "machine-unverified",
+      "candidate_index": 2,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.9712,
+        "volume_ratio_candidate_over_label": 0.965
+      }
+    },
+    "scapula_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "scapula_left",
+          "candidate_ml": 83.82,
+          "largest_component_ml": 83.82,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -107.0,
+            -51.2,
+            -289.1
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "scapula_left",
+          "candidate_ml": 90.88,
+          "largest_component_ml": 90.88,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -112.2,
+            -43.3,
+            -277.8
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "LEFT_SCAPULA",
+          "candidate_ml": 81.21,
+          "largest_component_ml": 81.21,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -109.8,
+            -44.2,
+            -280.7
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.5708,
+              "centroid_offset_mm": 14.63,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.6772,
+              "centroid_offset_mm": 11.23,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.6171,
+              "centroid_offset_mm": 3.8,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "totalseg": "left",
+            "moose": "left",
+            "skellytour": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 81.88,
+      "union_ml": 117.07,
+      "agreement_ratio": 0.699,
+      "unanimous_fraction": 0.696,
+      "eligible_models_on_consensus": {
+        "3": 93159
+      },
+      "votes_histogram_on_union": {
+        "1": 40038,
+        "2": 28360,
+        "3": 64799
+      },
+      "conflict_voxels": 342,
+      "denver_mesh": null,
+      "not_accepted_reasons": [
+        "agreement_ratio 0.699 below 0.7"
+      ],
+      "status": "not-accepted",
+      "review_status": "machine-unverified",
+      "candidate_index": 3,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.8831,
+        "volume_ratio_candidate_over_label": 0.9769
+      }
+    },
+    "clavicle_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "clavicula_left",
+          "candidate_ml": 28.04,
+          "largest_component_ml": 28.04,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -64.8,
+            17.9,
+            -272.8
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "clavicle_left",
+          "candidate_ml": 30.07,
+          "largest_component_ml": 30.07,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -64.9,
+            18.0,
+            -271.2
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "LEFT_CLAVICLE",
+          "candidate_ml": 28.53,
+          "largest_component_ml": 28.53,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -64.5,
+            18.2,
+            -273.2
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.7077,
+              "centroid_offset_mm": 1.6,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.8856,
+              "centroid_offset_mm": 0.58,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.719,
+              "centroid_offset_mm": 2.02,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "totalseg": "left",
+            "moose": "left",
+            "skellytour": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 28.3,
+      "union_ml": 34.91,
+      "agreement_ratio": 0.811,
+      "unanimous_fraction": 0.828,
+      "eligible_models_on_consensus": {
+        "3": 32195
+      },
+      "votes_histogram_on_union": {
+        "1": 7526,
+        "2": 5535,
+        "3": 26660
+      },
+      "conflict_voxels": 66,
+      "denver_mesh": null,
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 4,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.9663,
+        "volume_ratio_candidate_over_label": 1.0092
+      }
+    },
+    "hip_left": {
+      "kind": "individual",
+      "models": {
+        "skellytour": {
+          "state": "absorbed",
+          "absorbed_into": "PELVIS",
+          "fraction_of_union": 0.875
+        },
+        "totalseg": {
+          "state": "voted",
+          "label": "hip_left",
+          "candidate_ml": 382.49,
+          "largest_component_ml": 382.41,
+          "fragments": 1,
+          "fragments_ml": 0.08,
+          "centroid_ras_mm": [
+            -73.6,
+            -3.8,
+            -797.9
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "hip_left",
+          "candidate_ml": 400.34,
+          "largest_component_ml": 391.5,
+          "fragments": 1,
+          "fragments_ml": 8.84,
+          "centroid_ras_mm": [
+            -73.7,
+            -3.9,
+            -797.3
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.8749,
+              "centroid_offset_mm": 0.64,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "totalseg": "left",
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 2,
+          "fov_edge_contact_fraction_of_surface": 0.0194,
+          "fov_edge_contact_ml": 1.19,
+          "union_outside_coverage_fraction": 0.0008,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 361.15,
+      "union_ml": 421.68,
+      "agreement_ratio": 0.856,
+      "unanimous_fraction": 1.0,
+      "eligible_models_on_consensus": {
+        "2": 410907
+      },
+      "votes_histogram_on_union": {
+        "1": 68873,
+        "2": 410907
+      },
+      "conflict_voxels": 7038,
+      "denver_mesh": "DENVER:VHF:Left_Bone_Pelvis",
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 5,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.9713,
+        "volume_ratio_candidate_over_label": 0.9442
+      },
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Left_Bone_Pelvis",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 1.61,
+          "p95": 3.11
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 0.92,
+          "p95": 2.94
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "patella_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "patella_left",
+          "candidate_ml": 24.94,
+          "largest_component_ml": 24.94,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -82.1,
+            48.2,
+            -1212.1
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 24.94,
+      "union_ml": 24.94,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 28373
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": "DENVER:VHF:Left_Bone_Patella",
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 6,
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Left_Bone_Patella",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 4.82,
+          "p95": 8.62
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 3.73,
+          "p95": 7.5
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "tibia_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "tibia_left",
+          "candidate_ml": 303.03,
+          "largest_component_ml": 303.03,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -64.0,
+            -6.2,
+            -1364.0
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 303.03,
+      "union_ml": 303.03,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 344776
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": "DENVER:VHF:Left_Bone_Tibia",
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 7,
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Left_Bone_Tibia",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 5.54,
+          "p95": 11.92
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 4.9,
+          "p95": 9.96
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "fibula_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "fibula_left",
+          "candidate_ml": 55.09,
+          "largest_component_ml": 55.09,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -78.7,
+            -36.3,
+            -1431.2
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 55.09,
+      "union_ml": 55.09,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 62679
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": "DENVER:VHF:Left_Bone_Fibula",
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 8,
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Left_Bone_Fibula",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 7.07,
+          "p95": 13.57
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 5.29,
+          "p95": 10.53
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "radius_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "radius_left",
+          "candidate_ml": 46.87,
+          "largest_component_ml": 46.87,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -201.4,
+            22.9,
+            -599.6
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0564,
+          "fov_edge_contact_ml": 0.65,
+          "union_outside_coverage_fraction": 0.0033,
+          "truncated": true
+        }
+      },
+      "consensus_ml": 46.87,
+      "union_ml": 46.87,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 53328
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 9
+    },
+    "ulna_left": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "ulna_left",
+          "candidate_ml": 50.86,
+          "largest_component_ml": 50.85,
+          "fragments": 1,
+          "fragments_ml": 0.01,
+          "centroid_ras_mm": [
+            -214.3,
+            -25.2,
+            -578.9
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.1197,
+          "fov_edge_contact_ml": 1.52,
+          "union_outside_coverage_fraction": 0.0067,
+          "truncated": true
+        }
+      },
+      "consensus_ml": 50.86,
+      "union_ml": 50.86,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 57867
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 10
+    },
+    "carpal_left": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "carpal_left",
+          "candidate_ml": 23.04,
+          "largest_component_ml": 23.04,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -166.0,
+            83.6,
+            -693.2
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 23.04,
+      "union_ml": 23.04,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 26217
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 11
+    },
+    "metacarpal_left": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "metacarpal_left",
+          "candidate_ml": 32.76,
+          "largest_component_ml": 32.76,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -154.7,
+            106.6,
+            -725.8
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 32.76,
+      "union_ml": 32.76,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 37275
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 12
+    },
+    "fingers_left": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "fingers_left",
+          "candidate_ml": 21.38,
+          "largest_component_ml": 13.85,
+          "fragments": 2,
+          "fragments_ml": 7.52,
+          "centroid_ras_mm": [
+            -130.5,
+            113.2,
+            -781.4
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 21.38,
+      "union_ml": 21.38,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 24321
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 13
+    },
+    "tarsal_left": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "tarsal_left",
+          "candidate_ml": 166.28,
+          "largest_component_ml": 166.28,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -34.5,
+            -20.9,
+            -1606.1
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 166.28,
+      "union_ml": 166.28,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 189194
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 14
+    },
+    "metatarsal_left": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "metatarsal_left",
+          "candidate_ml": 54.99,
+          "largest_component_ml": 54.99,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            -28.7,
+            37.5,
+            -1664.0
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 54.99,
+      "union_ml": 54.99,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 62567
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 15
+    },
+    "toes_left": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "toes_left",
+          "candidate_ml": 17.09,
+          "largest_component_ml": 8.98,
+          "fragments": 2,
+          "fragments_ml": 8.11,
+          "centroid_ras_mm": [
+            -2.6,
+            84.2,
+            -1694.7
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "left",
+          "per_model_side": {
+            "moose": "left"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 17.09,
+      "union_ml": 17.09,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 19439
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 16
+    },
+    "femur_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "femur_right",
+          "candidate_ml": 525.46,
+          "largest_component_ml": 525.46,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            103.2,
+            1.3,
+            -1051.2
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "femur_right",
+          "candidate_ml": 531.59,
+          "largest_component_ml": 531.59,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            103.1,
+            1.3,
+            -1050.3
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "RIGHT_FEMUR",
+          "candidate_ml": 508.21,
+          "largest_component_ml": 508.21,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            103.2,
+            1.4,
+            -1051.4
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.9246,
+              "centroid_offset_mm": 0.91,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.9424,
+              "centroid_offset_mm": 0.21,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.9323,
+              "centroid_offset_mm": 1.11,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "totalseg": "right",
+            "moose": "right",
+            "skellytour": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 519.02,
+      "union_ml": 550.24,
+      "agreement_ratio": 0.943,
+      "unanimous_fraction": 0.956,
+      "eligible_models_on_consensus": {
+        "3": 590526
+      },
+      "votes_histogram_on_union": {
+        "1": 35530,
+        "2": 26183,
+        "3": 564343
+      },
+      "conflict_voxels": 1989,
+      "denver_mesh": "DENVER:VHF:Right_Bone_Femur",
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 17,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.9829,
+        "volume_ratio_candidate_over_label": 0.9877
+      },
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Right_Bone_Femur",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 2.94,
+          "p95": 7.29
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 2.22,
+          "p95": 6.47
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "humerus_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "humerus_right",
+          "candidate_ml": 155.56,
+          "largest_component_ml": 155.56,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            190.1,
+            -24.7,
+            -360.7
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "humerus_right",
+          "candidate_ml": 163.01,
+          "largest_component_ml": 161.76,
+          "fragments": 2,
+          "fragments_ml": 1.25,
+          "centroid_ras_mm": [
+            191.4,
+            -25.9,
+            -365.0
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "RIGHT_HUMERUS",
+          "candidate_ml": 142.0,
+          "largest_component_ml": 142.0,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            189.1,
+            -22.5,
+            -352.6
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.8531,
+              "centroid_offset_mm": 4.6,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.8442,
+              "centroid_offset_mm": 8.45,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.8003,
+              "centroid_offset_mm": 13.02,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "totalseg": "right",
+            "moose": "right",
+            "skellytour": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.1585,
+          "fov_edge_contact_ml": 4.04,
+          "union_outside_coverage_fraction": 0.0062,
+          "truncated": true
+        }
+      },
+      "consensus_ml": 154.12,
+      "union_ml": 174.85,
+      "agreement_ratio": 0.881,
+      "unanimous_fraction": 0.854,
+      "eligible_models_on_consensus": {
+        "3": 175354
+      },
+      "votes_histogram_on_union": {
+        "1": 23591,
+        "2": 25619,
+        "3": 149735
+      },
+      "conflict_voxels": 228,
+      "denver_mesh": null,
+      "not_accepted_reasons": [
+        "15.9% of the surface touches the CT field-of-view edge (>= 2%): the bone is cut by the acquisition; only the cryosections can complete it"
+      ],
+      "status": "not-accepted",
+      "review_status": "machine-unverified",
+      "candidate_index": 18,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.9732,
+        "volume_ratio_candidate_over_label": 0.9907
+      }
+    },
+    "scapula_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "scapula_right",
+          "candidate_ml": 89.96,
+          "largest_component_ml": 89.96,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            120.1,
+            -50.2,
+            -299.3
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "scapula_right",
+          "candidate_ml": 91.87,
+          "largest_component_ml": 91.87,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            122.2,
+            -45.3,
+            -291.3
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "RIGHT_SCAPULA",
+          "candidate_ml": 82.21,
+          "largest_component_ml": 82.21,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            120.8,
+            -45.9,
+            -294.2
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.626,
+              "centroid_offset_mm": 9.52,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.7351,
+              "centroid_offset_mm": 6.64,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.6493,
+              "centroid_offset_mm": 3.23,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "totalseg": "right",
+            "moose": "right",
+            "skellytour": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 83.89,
+      "union_ml": 116.35,
+      "agreement_ratio": 0.721,
+      "unanimous_fraction": 0.761,
+      "eligible_models_on_consensus": {
+        "3": 95445
+      },
+      "votes_histogram_on_union": {
+        "1": 36941,
+        "2": 22857,
+        "3": 72588
+      },
+      "conflict_voxels": 401,
+      "denver_mesh": null,
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 19,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.9106,
+        "volume_ratio_candidate_over_label": 0.9325
+      }
+    },
+    "clavicle_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "clavicula_right",
+          "candidate_ml": 32.14,
+          "largest_component_ml": 32.14,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            72.7,
+            14.2,
+            -280.5
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "clavicle_right",
+          "candidate_ml": 34.35,
+          "largest_component_ml": 34.35,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            70.5,
+            15.3,
+            -280.2
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "RIGHT_CLAVICLE",
+          "candidate_ml": 32.63,
+          "largest_component_ml": 32.63,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            70.8,
+            15.3,
+            -281.8
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.7268,
+              "centroid_offset_mm": 2.46,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.8573,
+              "centroid_offset_mm": 2.56,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.7477,
+              "centroid_offset_mm": 1.63,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "totalseg": "right",
+            "moose": "right",
+            "skellytour": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 32.68,
+      "union_ml": 39.51,
+      "agreement_ratio": 0.827,
+      "unanimous_fraction": 0.824,
+      "eligible_models_on_consensus": {
+        "3": 37182
+      },
+      "votes_histogram_on_union": {
+        "1": 7770,
+        "2": 6545,
+        "3": 30637
+      },
+      "conflict_voxels": 182,
+      "denver_mesh": null,
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 20,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.955,
+        "volume_ratio_candidate_over_label": 1.0167
+      }
+    },
+    "hip_right": {
+      "kind": "individual",
+      "models": {
+        "skellytour": {
+          "state": "absorbed",
+          "absorbed_into": "PELVIS",
+          "fraction_of_union": 0.876
+        },
+        "totalseg": {
+          "state": "voted",
+          "label": "hip_right",
+          "candidate_ml": 381.13,
+          "largest_component_ml": 381.13,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            87.6,
+            -4.8,
+            -797.7
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "hip_right",
+          "candidate_ml": 393.55,
+          "largest_component_ml": 387.26,
+          "fragments": 6,
+          "fragments_ml": 6.29,
+          "centroid_ras_mm": [
+            88.0,
+            -4.8,
+            -796.7
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.8733,
+              "centroid_offset_mm": 1.11,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "totalseg": "right",
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 2,
+          "fov_edge_contact_fraction_of_surface": 0.001,
+          "fov_edge_contact_ml": 0.06,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 358.2,
+      "union_ml": 416.48,
+      "agreement_ratio": 0.86,
+      "unanimous_fraction": 1.0,
+      "eligible_models_on_consensus": {
+        "2": 407553
+      },
+      "votes_histogram_on_union": {
+        "1": 66307,
+        "2": 407553
+      },
+      "conflict_voxels": 5134,
+      "denver_mesh": "DENVER:VHF:Right_Bone_Pelvis",
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 21,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.969,
+        "volume_ratio_candidate_over_label": 0.9398
+      },
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Right_Bone_Pelvis",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 1.68,
+          "p95": 3.09
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 0.99,
+          "p95": 2.91
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "patella_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "patella_right",
+          "candidate_ml": 25.36,
+          "largest_component_ml": 25.36,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            92.6,
+            36.3,
+            -1217.6
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 25.36,
+      "union_ml": 25.36,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 28851
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": "DENVER:VHF:Right_Bone_Patella",
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 22,
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Right_Bone_Patella",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 3.22,
+          "p95": 7.11
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 2.83,
+          "p95": 6.44
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "tibia_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "tibia_right",
+          "candidate_ml": 307.08,
+          "largest_component_ml": 307.08,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            67.1,
+            -20.0,
+            -1369.3
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 307.08,
+      "union_ml": 307.08,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 349394
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": "DENVER:VHF:Right_Bone_Tibia",
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 23,
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Right_Bone_Tibia",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 5.1,
+          "p95": 10.85
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 4.11,
+          "p95": 9.07
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "fibula_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "fibula_right",
+          "candidate_ml": 54.96,
+          "largest_component_ml": 54.96,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            77.1,
+            -53.6,
+            -1437.5
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 54.96,
+      "union_ml": 54.96,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 62532
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": "DENVER:VHF:Right_Bone_Fibula",
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 24,
+      "versus_denver_mesh": {
+        "mesh": "DENVER:VHF:Right_Bone_Fibula",
+        "candidate_surface_to_denver_vertices_mm": {
+          "p50": 7.18,
+          "p95": 12.59
+        },
+        "denver_vertices_to_candidate_surface_mm": {
+          "p50": 5.25,
+          "p95": 9.34
+        },
+        "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+      }
+    },
+    "radius_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "radius_right",
+          "candidate_ml": 37.08,
+          "largest_component_ml": 37.08,
+          "fragments": 2,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            209.7,
+            33.4,
+            -643.9
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0467,
+          "fov_edge_contact_ml": 0.45,
+          "union_outside_coverage_fraction": 0.003,
+          "truncated": true
+        }
+      },
+      "consensus_ml": 37.08,
+      "union_ml": 37.08,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 42191
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 25
+    },
+    "ulna_right": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "ulna_right",
+          "candidate_ml": 23.06,
+          "largest_component_ml": 21.97,
+          "fragments": 2,
+          "fragments_ml": 1.09,
+          "centroid_ras_mm": [
+            222.4,
+            10.2,
+            -656.1
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0657,
+          "fov_edge_contact_ml": 0.48,
+          "union_outside_coverage_fraction": 0.0011,
+          "truncated": true
+        }
+      },
+      "consensus_ml": 23.06,
+      "union_ml": 23.06,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 26237
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 26
+    },
+    "carpal_right": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "carpal_right",
+          "candidate_ml": 22.65,
+          "largest_component_ml": 22.65,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            186.9,
+            70.7,
+            -723.7
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 22.65,
+      "union_ml": 22.65,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 25768
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 27
+    },
+    "metacarpal_right": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "metacarpal_right",
+          "candidate_ml": 34.8,
+          "largest_component_ml": 34.8,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            180.1,
+            93.2,
+            -758.7
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 34.8,
+      "union_ml": 34.8,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 39594
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 28
+    },
+    "fingers_right": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "fingers_right",
+          "candidate_ml": 23.12,
+          "largest_component_ml": 19.99,
+          "fragments": 1,
+          "fragments_ml": 3.13,
+          "centroid_ras_mm": [
+            164.4,
+            102.0,
+            -813.0
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 23.12,
+      "union_ml": 23.12,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 26311
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 29
+    },
+    "tarsal_right": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "tarsal_right",
+          "candidate_ml": 164.59,
+          "largest_component_ml": 164.59,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            38.3,
+            -34.1,
+            -1614.5
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 164.59,
+      "union_ml": 164.59,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 187269
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 30
+    },
+    "metatarsal_right": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "metatarsal_right",
+          "candidate_ml": 56.88,
+          "largest_component_ml": 56.88,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            44.9,
+            22.3,
+            -1674.2
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 56.88,
+      "union_ml": 56.88,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 64721
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 31
+    },
+    "toes_right": {
+      "kind": "group",
+      "models": {
+        "totalseg": {
+          "state": "unsupported"
+        },
+        "skellytour": {
+          "state": "unsupported"
+        },
+        "moose": {
+          "state": "voted",
+          "label": "toes_right",
+          "candidate_ml": 16.59,
+          "largest_component_ml": 7.79,
+          "fragments": 2,
+          "fragments_ml": 8.8,
+          "centroid_ras_mm": [
+            29.5,
+            73.8,
+            -1707.6
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {},
+          "passed": true
+        },
+        "laterality": {
+          "applicable": true,
+          "expected": "right",
+          "per_model_side": {
+            "moose": "right"
+          },
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 1,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 16.59,
+      "union_ml": 16.59,
+      "agreement_ratio": null,
+      "unanimous_fraction": null,
+      "eligible_models_on_consensus": {},
+      "votes_histogram_on_union": {
+        "1": 18874
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-single-model",
+      "review_status": "machine-unverified",
+      "agreement_note": "single model: no agreement is measurable; consensus_ml is that model's label volume",
+      "candidate_index": 32
+    },
+    "skull": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "skull",
+          "candidate_ml": 756.61,
+          "largest_component_ml": 756.56,
+          "fragments": 8,
+          "fragments_ml": 0.05,
+          "centroid_ras_mm": [
+            7.0,
+            15.0,
+            -89.8
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "skull",
+          "candidate_ml": 749.15,
+          "largest_component_ml": 749.08,
+          "fragments": 6,
+          "fragments_ml": 0.08,
+          "centroid_ras_mm": [
+            6.9,
+            16.1,
+            -88.7
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "SKULL",
+          "candidate_ml": 644.79,
+          "largest_component_ml": 639.92,
+          "fragments": 32,
+          "fragments_ml": 4.87,
+          "centroid_ras_mm": [
+            7.0,
+            16.8,
+            -90.3
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.7266,
+              "centroid_offset_mm": 1.55,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.7728,
+              "centroid_offset_mm": 1.92,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.6558,
+              "centroid_offset_mm": 1.76,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": false,
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 708.23,
+      "union_ml": 900.18,
+      "agreement_ratio": 0.787,
+      "unanimous_fraction": 0.766,
+      "eligible_models_on_consensus": {
+        "3": 805803
+      },
+      "votes_histogram_on_union": {
+        "1": 218398,
+        "2": 188951,
+        "3": 616852
+      },
+      "conflict_voxels": 5448,
+      "denver_mesh": null,
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 33,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.956,
+        "volume_ratio_candidate_over_label": 0.9361
+      }
+    },
+    "sternum": {
+      "kind": "individual",
+      "models": {
+        "totalseg": {
+          "state": "voted",
+          "label": "sternum",
+          "candidate_ml": 48.38,
+          "largest_component_ml": 48.38,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            1.6,
+            55.6,
+            -365.4
+          ]
+        },
+        "moose": {
+          "state": "voted",
+          "label": "sternum",
+          "candidate_ml": 53.61,
+          "largest_component_ml": 53.61,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            1.4,
+            55.6,
+            -363.9
+          ]
+        },
+        "skellytour": {
+          "state": "voted",
+          "label": "STERNUM",
+          "candidate_ml": 47.94,
+          "largest_component_ml": 47.94,
+          "fragments": 0,
+          "fragments_ml": 0.0,
+          "centroid_ras_mm": [
+            1.5,
+            55.7,
+            -367.2
+          ]
+        }
+      },
+      "gates": {
+        "class_equivalence": {
+          "equivalent_models": [
+            "moose",
+            "skellytour",
+            "totalseg"
+          ],
+          "passed": true
+        },
+        "geometric_correspondence": {
+          "pairs": {
+            "totalseg|moose": {
+              "iou_largest_components": 0.7899,
+              "centroid_offset_mm": 1.6,
+              "passed": true
+            },
+            "totalseg|skellytour": {
+              "iou_largest_components": 0.8661,
+              "centroid_offset_mm": 1.74,
+              "passed": true
+            },
+            "moose|skellytour": {
+              "iou_largest_components": 0.773,
+              "centroid_offset_mm": 3.33,
+              "passed": true
+            }
+          },
+          "passed": true
+        },
+        "laterality": {
+          "applicable": false,
+          "passed": true
+        },
+        "coverage_eligibility": {
+          "eligible_models_on_union_majority": 3,
+          "fov_edge_contact_fraction_of_surface": 0.0,
+          "fov_edge_contact_ml": 0.0,
+          "union_outside_coverage_fraction": 0.0,
+          "truncated": false
+        }
+      },
+      "consensus_ml": 48.54,
+      "union_ml": 58.67,
+      "agreement_ratio": 0.827,
+      "unanimous_fraction": 0.88,
+      "eligible_models_on_consensus": {
+        "3": 55223
+      },
+      "votes_histogram_on_union": {
+        "1": 11528,
+        "2": 6609,
+        "3": 48614
+      },
+      "conflict_voxels": 0,
+      "denver_mesh": null,
+      "status": "candidate-consensus",
+      "review_status": "machine-unverified",
+      "candidate_index": 34,
+      "versus_nlm_vhf_ct_label": {
+        "dice": 0.9697,
+        "volume_ratio_candidate_over_label": 1.0033
+      }
+    },
+    "sacrum": {
+      "status": "excluded",
+      "reason": "Handled by the instance consensus (scripts/ct-vertebra-instances.py, instance S29); excluded from the per-name batch. Skellytour PELVIS absorbs it."
+    }
+  },
+  "outputs": {
+    "bone-consensus.nii.gz": {
+      "path": "data/derived/nlm-vhf/consensus/bone-consensus.nii.gz",
+      "sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838"
+    },
+    "bone-single-model.nii.gz": {
+      "path": "data/derived/nlm-vhf/consensus/bone-single-model.nii.gz",
+      "sha256": "6a853c2a5af57a69fee3452dbd4f93988ec2a07d2ae0c7eb6e769f90d4388306"
+    }
+  },
+  "candidate_index": {
+    "1": "femur_left",
+    "2": "humerus_left",
+    "3": "scapula_left",
+    "4": "clavicle_left",
+    "5": "hip_left",
+    "6": "patella_left",
+    "7": "tibia_left",
+    "8": "fibula_left",
+    "9": "radius_left",
+    "10": "ulna_left",
+    "11": "carpal_left",
+    "12": "metacarpal_left",
+    "13": "fingers_left",
+    "14": "tarsal_left",
+    "15": "metatarsal_left",
+    "16": "toes_left",
+    "17": "femur_right",
+    "18": "humerus_right",
+    "19": "scapula_right",
+    "20": "clavicle_right",
+    "21": "hip_right",
+    "22": "patella_right",
+    "23": "tibia_right",
+    "24": "fibula_right",
+    "25": "radius_right",
+    "26": "ulna_right",
+    "27": "carpal_right",
+    "28": "metacarpal_right",
+    "29": "fingers_right",
+    "30": "tarsal_right",
+    "31": "metatarsal_right",
+    "32": "toes_right",
+    "33": "skull",
+    "34": "sternum"
+  },
+  "summary": {
+    "candidate-consensus": 9,
+    "not-accepted": 3,
+    "candidate-single-model": 22,
+    "excluded": 1
+  }
+}

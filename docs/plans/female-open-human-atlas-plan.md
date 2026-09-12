@@ -1724,16 +1724,20 @@ Local implementation: fork `human-atlas/`, branch `female-open-atlas`. Per-phase
 | 0 Survey | Almost complete | `datasets.csv` with 15 sources; licences verified with URL and date for 13 (NLM terms, SPIDER/OpenEar/HiP-CT CC BY 4.0, Teeth3DS CC BY-NC-ND, Z-Anatomy CC BY-SA, SPARC per dataset, BMFToolkit zlib with unconfirmed data scope). |
 | 1 Ontology | Crosswalk with evidence | `registry/crosswalk-proposals.json` -> `scripts/build-crosswalk.py` (OLS) -> `registry/ontology-crosswalk-reviewed.json`: Denver 69/69, TCIA 35/36, NLM CT 114/117, HRA lateralized FMA 176/201, BodyParts3D 1,221/1,360; 168 unresolved. No anatomist review. |
 | 2 Coverage | Automatic, merged | 4,263 entries; 248 with several sources; 22 merge Denver with HRA; individual / grouped / partial kinds; filters in the viewer. |
-| 3 VHF base | Verified and extended | `VHF-image-2022` frame verified against the NLM CT headers (rigid same-donor pelvis registration: rotation 2.17°, free scale 1.0013, p95 4.72 mm). Trunk, upper limb and head of the VHF donor from the CT (114 TotalSegmentator labels, Apache-2.0). Denver at identity. |
-| 4 CT scaffold | Two CTs | TCIA 003 (alternative source, not composed) and NLM VHF CT (composed). No mask review. |
+| 3 VHF base | Verified and extended | `VHF-image-2022` frame verified against the NLM CT headers (rigid same-donor pelvis registration: rotation 2.17°, free scale 1.0013, p95 4.72 mm). Trunk, upper limb and head of the VHF donor from the CT (114 TotalSegmentator labels, Apache-2.0). Denver at identity. Denver-versus-CT shape baseline per bone (p95 median 1.96 mm). |
+| 4 CT scaffold | Two CTs, three models, instance consensus | TCIA 003 (alternative source, not composed) and NLM VHF CT (composed). TotalSegmentator, MOOSE and Skellytour compared on the NLM and Denver CTs with laterality checks. Vertebrae and ribs voted per geometric instance (25 vertebrae, 24 ribs, sacrum) and ingested as source `ct-consensus` with candidate names pending (composition 0.5, 2026-09-10); the model agreement of every instance is shown in the viewer (2026-09-12). No mask review. |
 | 5 Specialised | Licences verified | SPIDER, OpenEar, HiP-CT CC BY 4.0; Teeth3DS not distributable. Not imported. |
 | 6 Fallback | Audited | BodyParts3D merged through the crosswalk as male reference; Z-Anatomy only fit for `open-sharealike`. |
-| 7 QA | Extended automatic | Geometry, self-intersections, components, outliers (`Toes`), composite continuity, licences (3 targets, 4,415 references), review registries (`registry/review-status.json`, `registry/landmark-review.json`). No anatomical review. |
-| 8 Web | Operational | Six sources, donor filter, registration review panel with 3D landmarks and exported decisions, side-by-side comparison, coverage with filters, ontology in provenance. |
+| 7 QA | Extended automatic | Geometry, self-intersections, components, outliers (`Toes`), composite continuity, licences (3 targets, 4,465 references), review registries (`registry/review-status.json`, `registry/landmark-review.json`). QA results follow a mesh only under its SHA-256 (`scripts/qa_identity.py`, regression test, migration from git revisions); the composite carries source and transformed QA per part and the validator checks both digests. Consensus agreement metadata validated field by field (`validate-consensus-metadata.py`). No anatomical review. |
+| 8 Web | Operational | Seven sources (HRA, TCIA, Denver, NLM CT, CT consensus, composite, BodyParts3D), donor filter, registration review panel with 3D landmarks and exported decisions, side-by-side comparison, coverage with filters, ontology in provenance, source and composed geometry checks, model-agreement panel for consensus instances. |
 
-Current KPIs (§24): 4,263 catalogued concepts; 128 female measured (Denver); 231 native in the canonical space (Denver + NLM CT); 114 female segmented from the same donor; 139 female segmented unreviewed; 717 female reference; 1,461 male template only; 1,880 without direct geometry; 1,712 meshes with an applied crosswalk; 4,415 clean mesh references for `open-clean`.
+Current KPIs (§24, 2026-09-12): 128 female measured (Denver); 281 native in the canonical space (Denver + NLM CT + CT consensus); 114 CT labels and 50 consensus instances segmented from the same donor, unreviewed; composite 1,015 meshes (229 from the VHF donor, 786 HRA); 1,712 meshes with an applied crosswalk; 4,465 clean mesh references for `open-clean`; 50 consensus instances with `name_status: pending`.
 
 ## 29.2 Immediate next step
+
+**Done (2026-09-10 to 2026-09-12): composition 0.5 with per-instance CT consensus, QA identity and agreement exposed.**
+
+0. Composition 0.5 (2026-09-10): the consensus instances replace the single-model CT vertebra and rib labels (Denver sacrum kept); 1,015 meshes. Two external code audits (2026-09-12) found and led to fixing a QA regression (`not-assessed` shipped, fingerprint carry-over) and missing QA metadata in the composite; both are now validator failures. The viewer shows the model agreement of every consensus instance with explicit denominators and non-vote states; names stay pending.
 
 **Done (2026-09-05): the VHF frame is verified and the trunk comes from the same donor.**
 
@@ -1741,16 +1745,21 @@ Current KPIs (§24): 4,263 catalogued concepts; 128 female measured (Denver); 23
 2. Composition 0.4: 1,015 meshes; Denver (128) + NLM CT (101; Denver replaces hip bones, sacrum, femora and gluteal/iliopsoas labels) + HRA (786; without skeleton or organs already covered by the CT). HRA fitted by six organ proxies onto the CT organs: RMS 7.42 mm (was 29.1 mm through TCIA). Head by the CT brain bounding box.
 3. Acceptance: CT-Denver pelvis p95 < 5 mm **met** (4.72); scale 1 ± 1 % **met** (1.0013); rotation < 5° **met** (2.17); HRA proxy RMS < 30 mm **met** (7.42). TCIA lower-limb landmarks with one similarity **not met** (43.6 mm, pose), as before.
 
-Pending in this phase: anatomical review of landmarks and labels, trunk posture between fresh CT and frozen block (unmeasured), appendicular bones and hands of the VHF donor (the TotalSegmentator `appendicular_bones` task needs a licence and is not used).
+Pending in this phase: trunk posture between fresh CT and frozen block (unmeasured), appendicular bones and hands of the VHF donor (the TotalSegmentator `appendicular_bones` task needs a licence and is not used; MOOSE peripheral bones are run but not ingested), the lumbosacral `S1` question, and the anatomist review of what the automatic checks cannot settle.
 
 ## 29.3 Next steps, in order
 
-1. **Anatomical review**: landmarks (viewer export -> `registry/landmark-review.json`), CT label boundaries, HRA placement; refit only from confirmed landmarks.
-2. **VHF cryosections with AI** (own project, `docs/plans/vhf-cryosection-segmentation-plan.md`): appendicular bones, hands, trunk and head of the same donor at 0.33 mm; measure the trunk posture between fresh CT and frozen block (vertebral landmarks).
-3. **BMFToolkit**: send the request drafted in `docs/LICENSING.md`; import as a comparison source if the authors confirm.
-4. **Specialised sources (MVP 2)**: select one female SPIDER study and one OpenEar specimen with documented sex; import as registered overlays in their own frames.
-5. **Ontology**: review the 168 unresolved entries; import TA2.
-6. **Dependencies**: assess the 11 upstream npm vulnerabilities.
+Working rule (2026-09-09, confirmed 2026-09-12): documentation and automatic checks are exhausted before any unresolved question is escalated to an anatomist (plan B section 2.5). This orders the work; it does not remove the final blinded audit (plan B section 2.3) or the review registries, which stay as the only path to `inspected` / `batch-audited`.
+
+1. **Consensus for the remaining bones, by name, under plan B section 2.6.** Name agreement between models is the starting point, not the proof: per bone, the candidates must correspond geometrically (overlap on the CT grid), agree in laterality, be equivalent classes across the three label vocabularies, and have enough eligible models covering the region. Outputs are `machine-unverified` candidates with their disagreement kept and alternatives preserved; they are compared with the current source (`nlm-vhf-ct`; Denver where it exists) and never replace the composite by majority alone. Denver stays where it is used unless a documented comparison and a recorded decision replace it. Acceptance and substitution criteria: section 2.6 of plan B, fixed before the batch is run.
+2. **Lumbosacral `S1` dossier** (`docs/plans/vhf-s1-lumbosacral-dossier.md`): cryosections, same-donor references (HRA skeleton, NIH 3D entry, Denver sacrum), nomenclature alternatives (sixth lumbar, lumbarised S1, transitional segment). Goal: resolve if the evidence allows; otherwise keep geometric ids and pending names. Does not block items 1 or 3.
+3. **Trunk posture, fresh CT versus frozen block, measured first.** Vertebral and rib landmarks from the CT consensus against Denver's aligned CT and the cryosections; result published as a per-level offset before any CT label is used as a trunk guide in the cryosection project (plan B stage 0 and 1). Segmenter agreement does not correct registration or posture.
+4. **VHF cryosections with AI** (own project, `docs/plans/vhf-cryosection-machine-driven-plan.md`): appendicular bones, hands, trunk and head of the same donor at 0.33 mm. No training, large download or specialised import starts without a separate decision.
+5. **Anatomical review** of what remains: landmarks (viewer export -> `registry/landmark-review.json`), CT label boundaries, HRA placement, instance names; refit only from confirmed landmarks.
+6. **BMFToolkit**: send the request drafted in `docs/LICENSING.md`; import as a comparison source if the authors confirm.
+7. **Specialised sources (MVP 2)**: select one female SPIDER study and one OpenEar specimen with documented sex; import as registered overlays in their own frames.
+8. **Ontology**: review the 168 unresolved entries; import TA2.
+9. **Dependencies**: assess the 11 upstream npm vulnerabilities.
 
 ## 29.4 Blockers and warnings
 
@@ -1758,6 +1767,7 @@ Pending in this phase: anatomical review of landmarks and labels, trunk posture 
 - BMFToolkit: data licence scope unconfirmed; do not distribute.
 - NLM VHF: terms verified; mandatory attribution "Courtesy of the U.S. National Library of Medicine"; derived data must state that they are not the current NLM data.
 - TotalSegmentator: only the `total` task (Apache-2.0); licensed subtasks (appendicular_bones, tissue_types) are not used.
-- The fits are automatic: the CT-Denver registration is rigid and tight at the pelvis, but the CT sacrum differs by 9.8 mm p95 and the femora rotated 1.6-3.0° at the hip between acquisitions; the trunk posture between fresh CT and cryosections is unmeasured.
+- The fits are automatic: the CT-Denver registration is rigid and tight at the pelvis, but the CT sacrum differs by 9.8 mm p95 and the femora rotated 1.6-3.0° at the hip between acquisitions; the trunk posture between fresh CT and cryosections is unmeasured, so the composite trunk above the pelvis inherits an unknown posture offset (item 3 of §29.3).
+- Model agreement (consensus instances) is agreement between similar CT models on one CT: it is neither a probability of correctness nor validation, and `name_status` stays `pending` for all 50 instances until the S1 dossier and, where needed, an anatomist settle the names.
 - TCIA 003 has a different lower-limb pose (flexed knees) and is no longer part of the composite.
 - `npm ci` reports 11 unassessed upstream vulnerabilities.

@@ -1,4 +1,5 @@
 import type {Provenance} from './anatomy';
+import {AGREEMENT_DISCLAIMER,AGREEMENT_TITLE,agreementSections,hasModelAgreement} from './agreement';
 import {Columns2,Download, ExternalLink} from 'lucide-react';
 
 export function ProvenanceDetails({record,onCompare}:{record:Provenance;onCompare?:()=>void}) {
@@ -32,6 +33,8 @@ export function ProvenanceDetails({record,onCompare}:{record:Provenance;onCompar
    ['Components',record.composed_geometry_qa.connected_components??'not measured'],['Outlier components',record.composed_geometry_qa.outlier_components??'not measured'],
    ['Geometry SHA-256',record.composed_geometry_qa.geometry_sha256],
   ].map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></details>}
+  {hasModelAgreement(record)&&<details className="agreement"><summary>{AGREEMENT_TITLE}</summary><p>{AGREEMENT_DISCLAIMER}</p>
+   {agreementSections(record).map(section=><div key={section.title}><h4>{section.title}</h4>{section.note&&<p>{section.note}</p>}<dl>{section.rows.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div>)}</details>}
   <h4>Alternative geometries</h4>
   {record.alternatives.length?<><ul>{record.alternatives.map(id=><li key={id}>{id}</li>)}</ul>{onCompare&&<button className="compare-button" onClick={onCompare}><Columns2 size={15}/>Compare sources side by side</button>}</>:<p>No verified matching alternative imported.</p>}
   <div className="provenance-links"><a href={record.source_url} target="_blank" rel="noreferrer">Dataset <ExternalLink size={14}/></a><a href={record.license_url} target="_blank" rel="noreferrer">License <ExternalLink size={14}/></a><button onClick={download} aria-label="Download structure provenance" title="Download structure provenance"><Download size={16}/></button></div>
