@@ -51,6 +51,14 @@ def resolve_term(source_id, part):
     elif source_id == 'nlm-vhf-ct':
         key = meta['label_name']
         side = meta['laterality'] if meta['laterality'] in ('left', 'right') else 'unspecified'
+    elif source_id == 'ct-consensus' and meta.get('instance_family') == 'bones':
+        # per-name candidate: the voting models share the label, so it resolves like the nlm-vhf-ct label of the same bone
+        # (becomes an alternative of that structure for comparison); machine-unverified, name_status pending
+        side = meta['laterality'] if meta['laterality'] in ('left', 'right') else 'unspecified'
+        entry = crosswalk_lookup.get(('nlm-vhf-ct', meta['label_name']))
+        if entry is None:
+            return normalize(part['conceptId']), None, side, 'individual', None
+        return entry['canonical_term'], entry['term']['label'], side, entry.get('granularity', 'individual'), entry
     elif source_id == 'ct-consensus':
         key = meta['instance_id']   # geometric id; no ontology term until the name is documented
         side = meta['laterality'] if meta['laterality'] in ('left', 'right') else 'unspecified'
@@ -277,7 +285,8 @@ for record in all_records:
         grouped_by_term.setdefault(record['structure_id'], []).append(record)
 coverage = []
 for canonical, structure in sorted(catalog.items()):
-    candidates = sorted(by_structure.get(canonical, []), key=lambda r: int(source_map[r['source']]['priority']))
+    # machine-unverified candidates never become best_available ahead of a measured or accepted source of equal priority
+    candidates = sorted(by_structure.get(canonical, []), key=lambda r: (int(source_map[r['source']]['priority']), r.get('review_status') == 'machine-unverified'))
     term = canonical.split('|')[0]
     # A grouped bilateral label (e.g. TCIA "Femur") covers each lateral entry only partially; it is listed separately.
     grouped = grouped_by_term.get(term, []) if '|' in canonical else []

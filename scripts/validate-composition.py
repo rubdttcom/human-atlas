@@ -138,6 +138,7 @@ assert not any(l.startswith(('vertebrae_', 'rib_')) for l in ct_labels), 'single
 cons_parts = [p for p in atlas['parts'] if p['provenance']['source'] == 'ct-consensus']
 assert sum(p['provenance']['role'] == 'vertebra' for p in cons_parts) == 25 and sum(p['provenance']['role'] == 'rib' for p in cons_parts) == 24, 'expected 25 consensus vertebrae and 24 consensus ribs'
 assert not any(p['provenance']['role'] == 'sacrum' for p in cons_parts), 'the consensus sacrum yields to the Denver sacrum'
+assert not any(p['provenance'].get('instance_family') == 'bones' or p['provenance'].get('review_status') == 'machine-unverified' for p in cons_parts), 'per-name bone candidates are machine-unverified alternatives and must not be composed automatically'
 assert all(p['provenance']['name_status'] == 'pending' and p['provenance']['structure_id'].startswith('CTCONS:') for p in cons_parts), 'consensus instances carry geometric ids and pending names'
 ct_terms = {p['provenance']['structure_id'].split('|')[0] for p in atlas['parts'] if p['provenance']['source'] == 'nlm-vhf-ct'}
 for part in atlas['parts']:

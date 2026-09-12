@@ -458,7 +458,8 @@
         "alternatives": [
           "hra-female:VH_F_femur_L",
           "bodyparts3d:FJ3259",
-          "nlm-vhf-ct:NLMCT:VHF:femur_left"
+          "nlm-vhf-ct:NLMCT:VHF:femur_left",
+          "ct-consensus:CTCONS:VHF:B01"
         ]
       }
     },
@@ -1259,7 +1260,8 @@
         },
         "alternatives": [
           "bodyparts3d:FJ3288",
-          "nlm-vhf-ct:NLMCT:VHF:hip_left"
+          "nlm-vhf-ct:NLMCT:VHF:hip_left",
+          "ct-consensus:CTCONS:VHF:B05"
         ]
       }
     },
@@ -7749,7 +7751,8 @@
         "alternatives": [
           "hra-female:VH_F_femur_R",
           "bodyparts3d:FJ3365",
-          "nlm-vhf-ct:NLMCT:VHF:femur_right"
+          "nlm-vhf-ct:NLMCT:VHF:femur_right",
+          "ct-consensus:CTCONS:VHF:B17"
         ]
       }
     },
@@ -8550,7 +8553,8 @@
         },
         "alternatives": [
           "bodyparts3d:FJ3152",
-          "nlm-vhf-ct:NLMCT:VHF:hip_right"
+          "nlm-vhf-ct:NLMCT:VHF:hip_right",
+          "ct-consensus:CTCONS:VHF:B21"
         ]
       }
     },

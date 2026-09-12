@@ -90304,7 +90304,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "bodyparts3d:FJ3384"
+          "bodyparts3d:FJ3384",
+          "ct-consensus:CTCONS:VHF:B19"
         ],
         "derived_chunk_sha256": "9fe015b2556c8df0fdf343ba588662731623f7c30740e7140bc764062688c972",
         "composed_geometry_qa": {
@@ -90443,7 +90444,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "bodyparts3d:FJ3237"
+          "bodyparts3d:FJ3237",
+          "ct-consensus:CTCONS:VHF:B04"
         ],
         "derived_chunk_sha256": "9fe015b2556c8df0fdf343ba588662731623f7c30740e7140bc764062688c972",
         "composed_geometry_qa": {
@@ -90582,7 +90584,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "bodyparts3d:FJ3362"
+          "bodyparts3d:FJ3362",
+          "ct-consensus:CTCONS:VHF:B20"
         ],
         "derived_chunk_sha256": "9fe015b2556c8df0fdf343ba588662731623f7c30740e7140bc764062688c972",
         "composed_geometry_qa": {
@@ -91271,7 +91274,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "tcia:TCIA:003:label-26"
+          "tcia:TCIA:003:label-26",
+          "ct-consensus:CTCONS:VHF:B33"
         ],
         "derived_chunk_sha256": "9fe015b2556c8df0fdf343ba588662731623f7c30740e7140bc764062688c972",
         "composed_geometry_qa": {
@@ -91410,7 +91414,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "tcia:TCIA:003:label-28"
+          "tcia:TCIA:003:label-28",
+          "ct-consensus:CTCONS:VHF:B34"
         ],
         "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
@@ -91680,7 +91685,7 @@
         "source_asset": "CTCONS:VHF:V01",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -91711,7 +91716,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -91785,8 +91790,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V01",
@@ -91805,6 +91808,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V01",
@@ -91935,7 +91940,7 @@
         "source_asset": "CTCONS:VHF:V02",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -91966,7 +91971,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -92040,8 +92045,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V02",
@@ -92060,6 +92063,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V02",
@@ -92190,7 +92195,7 @@
         "source_asset": "CTCONS:VHF:V03",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -92221,7 +92226,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -92295,8 +92300,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V03",
@@ -92315,6 +92318,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V03",
@@ -92445,7 +92450,7 @@
         "source_asset": "CTCONS:VHF:V04",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -92476,7 +92481,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -92550,8 +92555,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V04",
@@ -92570,6 +92573,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V04",
@@ -92700,7 +92705,7 @@
         "source_asset": "CTCONS:VHF:V05",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -92731,7 +92736,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -92805,8 +92810,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V05",
@@ -92825,6 +92828,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V05",
@@ -92955,7 +92960,7 @@
         "source_asset": "CTCONS:VHF:V06",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -92986,7 +92991,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -93060,8 +93065,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V06",
@@ -93080,6 +93083,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V06",
@@ -93212,7 +93217,7 @@
         "source_asset": "CTCONS:VHF:V07",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -93243,7 +93248,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -93319,8 +93324,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V07",
@@ -93339,6 +93342,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V07",
@@ -93471,7 +93476,7 @@
         "source_asset": "CTCONS:VHF:V08",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -93502,7 +93507,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -93578,8 +93583,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V08",
@@ -93598,6 +93601,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V08",
@@ -93728,7 +93733,7 @@
         "source_asset": "CTCONS:VHF:V09",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -93759,7 +93764,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -93833,8 +93838,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V09",
@@ -93853,6 +93856,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V09",
@@ -93983,7 +93988,7 @@
         "source_asset": "CTCONS:VHF:V10",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -94014,7 +94019,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -94088,8 +94093,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V10",
@@ -94108,6 +94111,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V10",
@@ -94238,7 +94243,7 @@
         "source_asset": "CTCONS:VHF:V11",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -94269,7 +94274,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -94343,8 +94348,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V11",
@@ -94363,6 +94366,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V11",
@@ -94493,7 +94498,7 @@
         "source_asset": "CTCONS:VHF:V12",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -94524,7 +94529,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -94598,8 +94603,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V12",
@@ -94618,6 +94621,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V12",
@@ -94748,7 +94753,7 @@
         "source_asset": "CTCONS:VHF:V13",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -94779,7 +94784,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -94853,8 +94858,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V13",
@@ -94873,6 +94876,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V13",
@@ -95003,7 +95008,7 @@
         "source_asset": "CTCONS:VHF:V14",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -95034,7 +95039,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -95108,8 +95113,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V14",
@@ -95128,6 +95131,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V14",
@@ -95258,7 +95263,7 @@
         "source_asset": "CTCONS:VHF:V15",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -95289,7 +95294,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -95363,8 +95368,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V15",
@@ -95383,6 +95386,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V15",
@@ -95513,7 +95518,7 @@
         "source_asset": "CTCONS:VHF:V16",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -95544,7 +95549,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -95618,8 +95623,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V16",
@@ -95638,6 +95641,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V16",
@@ -95768,7 +95773,7 @@
         "source_asset": "CTCONS:VHF:V17",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -95799,7 +95804,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -95873,8 +95878,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V17",
@@ -95893,6 +95896,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V17",
@@ -96023,7 +96028,7 @@
         "source_asset": "CTCONS:VHF:V18",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -96054,7 +96059,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -96128,8 +96133,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V18",
@@ -96148,6 +96151,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V18",
@@ -96280,7 +96285,7 @@
         "source_asset": "CTCONS:VHF:V19",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -96311,7 +96316,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -96387,8 +96392,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V19",
@@ -96407,6 +96410,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V19",
@@ -96537,7 +96542,7 @@
         "source_asset": "CTCONS:VHF:V20",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -96568,7 +96573,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -96642,8 +96647,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V20",
@@ -96662,6 +96665,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "0ec9d0a0c71ecd1bed13477dacea417ff832ea88bb46c31f839e5b51b18a7af2",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V20",
@@ -96798,7 +96803,7 @@
         "source_asset": "CTCONS:VHF:V21",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -96829,7 +96834,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -96909,8 +96914,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V21",
@@ -96929,6 +96932,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V21",
@@ -97059,7 +97064,7 @@
         "source_asset": "CTCONS:VHF:V22",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -97090,7 +97095,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -97164,8 +97169,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V22",
@@ -97184,6 +97187,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V22",
@@ -97314,7 +97319,7 @@
         "source_asset": "CTCONS:VHF:V25",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -97345,7 +97350,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -97419,8 +97424,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V25",
@@ -97439,6 +97442,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V25",
@@ -97569,7 +97574,7 @@
         "source_asset": "CTCONS:VHF:V26",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-0.bin",
         "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
         "source_sex": "female",
@@ -97600,7 +97605,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -97674,8 +97679,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V26",
@@ -97694,6 +97697,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V26",
@@ -97824,7 +97829,7 @@
         "source_asset": "CTCONS:VHF:V27",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -97855,7 +97860,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -97929,8 +97934,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:V27",
@@ -97949,6 +97952,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:V27",
@@ -98079,7 +98084,7 @@
         "source_asset": "CTCONS:VHF:RL01",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -98110,7 +98115,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -98184,8 +98189,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL01",
@@ -98204,6 +98207,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL01",
@@ -98334,7 +98339,7 @@
         "source_asset": "CTCONS:VHF:RL02",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -98365,7 +98370,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -98439,8 +98444,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL02",
@@ -98459,6 +98462,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL02",
@@ -98589,7 +98594,7 @@
         "source_asset": "CTCONS:VHF:RL03",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -98620,7 +98625,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -98694,8 +98699,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL03",
@@ -98714,6 +98717,8 @@
           "connected_components": 3,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL03",
@@ -98844,7 +98849,7 @@
         "source_asset": "CTCONS:VHF:RL04",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -98875,7 +98880,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -98949,8 +98954,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL04",
@@ -98969,6 +98972,8 @@
           "connected_components": 5,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL04",
@@ -99099,7 +99104,7 @@
         "source_asset": "CTCONS:VHF:RL05",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -99130,7 +99135,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -99204,8 +99209,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL05",
@@ -99224,6 +99227,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL05",
@@ -99365,7 +99370,7 @@
         "source_asset": "CTCONS:VHF:RL06",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -99396,7 +99401,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -99481,8 +99486,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL06",
@@ -99501,6 +99504,8 @@
           "connected_components": 3,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL06",
@@ -99643,7 +99648,7 @@
         "source_asset": "CTCONS:VHF:RL07",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -99674,7 +99679,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -99760,8 +99765,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL07",
@@ -99780,6 +99783,8 @@
           "connected_components": 3,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL07",
@@ -99924,7 +99929,7 @@
         "source_asset": "CTCONS:VHF:RL08",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -99955,7 +99960,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -100043,8 +100048,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL08",
@@ -100063,6 +100066,8 @@
           "connected_components": 3,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL08",
@@ -100206,7 +100211,7 @@
         "source_asset": "CTCONS:VHF:RL09",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -100237,7 +100242,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -100324,8 +100329,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL09",
@@ -100344,6 +100347,8 @@
           "connected_components": 8,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL09",
@@ -100476,7 +100481,7 @@
         "source_asset": "CTCONS:VHF:RL10",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -100507,7 +100512,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -100583,8 +100588,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL10",
@@ -100603,6 +100606,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL10",
@@ -100735,7 +100740,7 @@
         "source_asset": "CTCONS:VHF:RL11",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -100766,7 +100771,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -100842,8 +100847,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL11",
@@ -100862,6 +100865,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL11",
@@ -100994,7 +100999,7 @@
         "source_asset": "CTCONS:VHF:RL12",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -101025,7 +101030,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -101101,8 +101106,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RL12",
@@ -101121,6 +101124,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RL12",
@@ -101251,7 +101256,7 @@
         "source_asset": "CTCONS:VHF:RR01",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -101282,7 +101287,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -101356,8 +101361,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR01",
@@ -101376,6 +101379,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR01",
@@ -101506,7 +101511,7 @@
         "source_asset": "CTCONS:VHF:RR02",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -101537,7 +101542,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -101611,8 +101616,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR02",
@@ -101631,6 +101634,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR02",
@@ -101761,7 +101766,7 @@
         "source_asset": "CTCONS:VHF:RR03",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -101792,7 +101797,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -101866,8 +101871,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR03",
@@ -101886,6 +101889,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR03",
@@ -102016,7 +102021,7 @@
         "source_asset": "CTCONS:VHF:RR04",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -102047,7 +102052,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -102121,8 +102126,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR04",
@@ -102141,6 +102144,8 @@
           "connected_components": 4,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR04",
@@ -102271,7 +102276,7 @@
         "source_asset": "CTCONS:VHF:RR05",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -102302,7 +102307,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -102376,8 +102381,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR05",
@@ -102396,6 +102399,8 @@
           "connected_components": 3,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR05",
@@ -102526,7 +102531,7 @@
         "source_asset": "CTCONS:VHF:RR06",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -102557,7 +102562,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -102631,8 +102636,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR06",
@@ -102651,6 +102654,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR06",
@@ -102781,7 +102786,7 @@
         "source_asset": "CTCONS:VHF:RR07",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -102812,7 +102817,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -102886,8 +102891,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR07",
@@ -102906,6 +102909,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "bf5321628d4e81ec74481e30b6006353e6be7dac33df8bf635fd6d5957f012ab",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR07",
@@ -103038,7 +103043,7 @@
         "source_asset": "CTCONS:VHF:RR08",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -103069,7 +103074,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -103145,8 +103150,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR08",
@@ -103165,6 +103168,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR08",
@@ -103297,7 +103302,7 @@
         "source_asset": "CTCONS:VHF:RR09",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-1.bin",
         "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
         "source_sex": "female",
@@ -103328,7 +103333,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -103404,8 +103409,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR09",
@@ -103424,6 +103427,8 @@
           "connected_components": 5,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR09",
@@ -103556,9 +103561,9 @@
         "source_asset": "CTCONS:VHF:RR10",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-2.bin",
-        "source_chunk_sha256": "292f0de53a0c106b645d249a012623968e7e7d760947bec2724ddc0884fb0906",
+        "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
         "source_sex": "female",
         "reference_sex": "female",
         "source_donor": "VHF",
@@ -103587,7 +103592,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -103663,8 +103668,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR10",
@@ -103683,6 +103686,8 @@
           "connected_components": 3,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR10",
@@ -103815,9 +103820,9 @@
         "source_asset": "CTCONS:VHF:RR11",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-2.bin",
-        "source_chunk_sha256": "292f0de53a0c106b645d249a012623968e7e7d760947bec2724ddc0884fb0906",
+        "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
         "source_sex": "female",
         "reference_sex": "female",
         "source_donor": "VHF",
@@ -103846,7 +103851,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -103922,8 +103927,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR11",
@@ -103942,6 +103945,8 @@
           "connected_components": 1,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR11",
@@ -104074,9 +104079,9 @@
         "source_asset": "CTCONS:VHF:RR12",
         "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
         "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-        "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+        "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
         "source_chunk": "/models/ct-consensus-lod-2.bin",
-        "source_chunk_sha256": "292f0de53a0c106b645d249a012623968e7e7d760947bec2724ddc0884fb0906",
+        "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
         "source_sex": "female",
         "reference_sex": "female",
         "source_donor": "VHF",
@@ -104105,7 +104110,7 @@
         "adaptations": {
           "method": "meshoptimizer quadric simplification",
           "maximumRelativeError": 0.002,
-          "preservedMeshes": 50
+          "preservedMeshes": 59
         },
         "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed. Composite placement by the rigid pelvis fit of the same donor (p95 4.7 mm). Consensus instance, name pending, not anatomically reviewed.",
         "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -104181,8 +104186,6 @@
         "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
         "registration_transform": "nlm-ct-to-vhf",
         "registration_p95_mm": 4.716855714034616,
-        "alternatives": [],
-        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "geometry_qa": {
           "atlas": "ct-consensus",
           "structure": "CTCONS:VHF:RR12",
@@ -104201,6 +104204,8 @@
           "connected_components": 2,
           "outlier_components": 0
         },
+        "alternatives": [],
+        "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "composed_geometry_qa": {
           "atlas": "composed",
           "structure": "ct-consensus:CTCONS:VHF:RR12",
@@ -104740,7 +104745,8 @@
         "alternatives": [
           "hra-female:VH_F_femur_L",
           "bodyparts3d:FJ3259",
-          "nlm-vhf-ct:NLMCT:VHF:femur_left"
+          "nlm-vhf-ct:NLMCT:VHF:femur_left",
+          "ct-consensus:CTCONS:VHF:B01"
         ],
         "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "composed_geometry_qa": {
@@ -105688,7 +105694,8 @@
         },
         "alternatives": [
           "bodyparts3d:FJ3288",
-          "nlm-vhf-ct:NLMCT:VHF:hip_left"
+          "nlm-vhf-ct:NLMCT:VHF:hip_left",
+          "ct-consensus:CTCONS:VHF:B05"
         ],
         "derived_chunk_sha256": "aabbff586f38685dc787d69e87d660938731cd56f6e8a7cf4e1c1eb58b4c2502",
         "composed_geometry_qa": {
@@ -113375,7 +113382,8 @@
         "alternatives": [
           "hra-female:VH_F_femur_R",
           "bodyparts3d:FJ3365",
-          "nlm-vhf-ct:NLMCT:VHF:femur_right"
+          "nlm-vhf-ct:NLMCT:VHF:femur_right",
+          "ct-consensus:CTCONS:VHF:B17"
         ],
         "derived_chunk_sha256": "a5247ae084a0ec0f6a44b144cb2576a5203f6b7dd0bc66a2eaacfd03f3d646f5",
         "composed_geometry_qa": {
@@ -114323,7 +114331,8 @@
         },
         "alternatives": [
           "bodyparts3d:FJ3152",
-          "nlm-vhf-ct:NLMCT:VHF:hip_right"
+          "nlm-vhf-ct:NLMCT:VHF:hip_right",
+          "ct-consensus:CTCONS:VHF:B21"
         ],
         "derived_chunk_sha256": "a5247ae084a0ec0f6a44b144cb2576a5203f6b7dd0bc66a2eaacfd03f3d646f5",
         "composed_geometry_qa": {

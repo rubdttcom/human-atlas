@@ -5,8 +5,16 @@
 // name stays pending until an anatomist decides.
 
 export interface ModelVote {state:string;label?:string|null;candidate_ml?:number|null;components_of_label?:number|null;iou_with_consensus?:number|null;extra_candidates?:string[]|null;seed_components?:unknown;processed_fraction?:number|null;absorbed_into?:string|null;fraction_of_union?:number|null}
+export interface GatePair {iou_largest_components:number;centroid_offset_mm:number;passed:boolean}
+export interface Gates {class_equivalence?:{equivalent_models:string[];passed:boolean};geometric_correspondence?:{pairs:Record<string,GatePair>;passed:boolean};
+ laterality?:{applicable:boolean;expected?:string;per_model_side?:Record<string,string>;passed:boolean};
+ coverage_eligibility?:{eligible_models_on_union_majority:number;fov_edge_contact_fraction_of_surface:number;fov_edge_contact_ml:number;union_outside_coverage_fraction:number;truncated:boolean}}
+export interface DistanceStats {p50:number;p95:number}
 export interface ModelAgreement {
  geometry_type?:string;vote_rule?:string;segmentation_models?:string;instance_id?:string;instance_family?:string;role?:string;
+ bone_class?:string;review_status?:string;consensus_status?:string;gates?:Gates|null;denver_mesh?:string|null;
+ versus_nlm_vhf_ct_label?:{dice:number;volume_ratio_candidate_over_label:number}|null;
+ versus_denver_mesh?:{mesh:string;candidate_surface_to_denver_vertices_mm:DistanceStats;denver_vertices_to_candidate_surface_mm:DistanceStats;note:string}|null;
  candidate_name?:string|null;candidate_evidence?:string|null;name_status?:string;hra_name_by_order?:string|null;hra_z_offset_mm?:number|null;
  consensus_ml?:number|null;union_ml?:number|null;agreement_ratio?:number|null;unanimous_fraction?:number|null;
  eligible_models_on_consensus?:Record<string,number>|null;votes_histogram_on_union?:Record<string,number>|null;
@@ -22,6 +30,7 @@ export const AGREEMENT_DISCLAIMER='Agreement between three open CT bone segmenta
 // Correspondence states of a model's candidate with the instance (scripts/ct-vertebra-instances.py). Only the
 // first group are votes for the instance; the second group are reasons a model cast no vote that are not a negative.
 export const VOTE_STATES:Record<string,string>={
+ voted:'voted; the model labels this bone and its largest component passed the correspondence gates (per-name candidate)',
  matched:'voted; its candidate matches the instance (IoU above the match threshold)',
  split:'voted; its one label spans this and another instance (merged label on its side)',
  merge:'voted; another model\'s label spans this instance and another of this model\'s candidates',
@@ -96,5 +105,23 @@ export function agreementSections(record:ModelAgreement):AgreementSection[] {
  const placement:AgreementSection={title:'Placement',rows:[
   ['Registration',record.registration_p95_mm===null||record.registration_p95_mm===undefined?'not recorded':`rigid same-donor pelvis fit, p95 ${num(record.registration_p95_mm,2,' mm')}; agreement is computed on the CT grid and does not change with registration`],
  ]};
- return [identity,vote,perModel,placement];
+ const sections=[identity,vote,perModel,placement];
+ if(record.gates){
+  const g=record.gates;
+  const rows:Row[]=[];
+  if(g.class_equivalence) rows.push(['Class equivalence',`${g.class_equivalence.passed?'passed':'failed'}: ${g.class_equivalence.equivalent_models.join(', ')} (registry/ct-label-equivalence.json; group labels never meet individual bones)`]);
+  if(g.geometric_correspondence){const pairs=Object.entries(g.geometric_correspondence.pairs);rows.push(['Geometric correspondence',`${g.geometric_correspondence.passed?'passed':'failed'}: `+(pairs.length?pairs.map(([k,v])=>`${k} IoU ${num(v.iou_largest_components)} · centroid ${num(v.centroid_offset_mm,1,' mm')}${v.passed?'':' (failed)'}`).join('; '):'single model, no pair')+' (largest components; IoU >= 0.50 and <= 15 mm per pair)']);}
+  if(g.laterality) rows.push(['Laterality',g.laterality.applicable?`${g.laterality.passed?'passed':'failed'}: expected ${g.laterality.expected}; ${Object.entries(g.laterality.per_model_side??{}).map(([m,s])=>`${m} ${s}`).join(', ')} (RAS +x = subject right, organ anchor)`:'not applicable (midline bone)']);
+  if(g.coverage_eligibility){const c=g.coverage_eligibility;rows.push(['Coverage',`${c.eligible_models_on_union_majority} eligible models on the union; ${pct(c.fov_edge_contact_fraction_of_surface)} of the surface on the CT field-of-view edge (${num(c.fov_edge_contact_ml,2,' mL')})${c.truncated?' · truncated: the acquisition cuts this bone':''}`]);}
+  sections.push({title:'Gates before the vote (plan B 2.6)',note:record.consensus_status?`status ${record.consensus_status} · ${record.review_status??'review status not recorded'}`:undefined,rows});
+ }
+ if(record.versus_nlm_vhf_ct_label||record.versus_denver_mesh){
+  const rows:Row[]=[];
+  const t=record.versus_nlm_vhf_ct_label;
+  rows.push(['Current CT label (nlm-vhf-ct)',t?`Dice ${num(t.dice)} · volume ratio candidate/label ${num(t.volume_ratio_candidate_over_label)}`:'no TotalSegmentator label for this bone']);
+  const d=record.versus_denver_mesh;
+  rows.push(['Denver mesh (cryosections)',d?`${d.mesh}: candidate surface to Denver vertices p50 ${num(d.candidate_surface_to_denver_vertices_mm.p50,1,' mm')} · p95 ${num(d.candidate_surface_to_denver_vertices_mm.p95,1,' mm')}; Denver vertices to candidate surface p50 ${num(d.denver_vertices_to_candidate_surface_mm.p50,1,' mm')} · p95 ${num(d.denver_vertices_to_candidate_surface_mm.p95,1,' mm')}. Registration and posture differences are included in these distances; they do not separate segmentation error from placement.`:record.denver_mesh?`${record.denver_mesh} not compared`:'no Denver mesh for this bone']);
+  sections.push({title:'Comparison, not substitution',note:'Denver measured geometry stays the atlas reference where it exists; any replacement is a recorded per-bone decision (plan B 2.6).',rows});
+ }
+ return sections;
 }

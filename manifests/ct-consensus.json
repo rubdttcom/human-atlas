@@ -7,7 +7,7 @@
     "source_asset": "CTCONS:VHF:V01",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -38,7 +38,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -140,7 +140,7 @@
     "source_asset": "CTCONS:VHF:V02",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -171,7 +171,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -273,7 +273,7 @@
     "source_asset": "CTCONS:VHF:V03",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -304,7 +304,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -406,7 +406,7 @@
     "source_asset": "CTCONS:VHF:V04",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -437,7 +437,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -539,7 +539,7 @@
     "source_asset": "CTCONS:VHF:V05",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -570,7 +570,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -672,7 +672,7 @@
     "source_asset": "CTCONS:VHF:V06",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -703,7 +703,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -805,7 +805,7 @@
     "source_asset": "CTCONS:VHF:V07",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -836,7 +836,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -940,7 +940,7 @@
     "source_asset": "CTCONS:VHF:V08",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -971,7 +971,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -1075,7 +1075,7 @@
     "source_asset": "CTCONS:VHF:V09",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1106,7 +1106,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -1208,7 +1208,7 @@
     "source_asset": "CTCONS:VHF:V10",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1239,7 +1239,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -1341,7 +1341,7 @@
     "source_asset": "CTCONS:VHF:V11",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1372,7 +1372,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -1474,7 +1474,7 @@
     "source_asset": "CTCONS:VHF:V12",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1505,7 +1505,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -1607,7 +1607,7 @@
     "source_asset": "CTCONS:VHF:V13",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1638,7 +1638,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -1740,7 +1740,7 @@
     "source_asset": "CTCONS:VHF:V14",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1771,7 +1771,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -1873,7 +1873,7 @@
     "source_asset": "CTCONS:VHF:V15",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1904,7 +1904,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -2006,7 +2006,7 @@
     "source_asset": "CTCONS:VHF:V16",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2037,7 +2037,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -2139,7 +2139,7 @@
     "source_asset": "CTCONS:VHF:V17",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2170,7 +2170,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -2272,7 +2272,7 @@
     "source_asset": "CTCONS:VHF:V18",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2303,7 +2303,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -2405,7 +2405,7 @@
     "source_asset": "CTCONS:VHF:V19",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2436,7 +2436,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -2540,7 +2540,7 @@
     "source_asset": "CTCONS:VHF:V20",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2571,7 +2571,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -2673,7 +2673,7 @@
     "source_asset": "CTCONS:VHF:V21",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2704,7 +2704,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -2812,7 +2812,7 @@
     "source_asset": "CTCONS:VHF:V22",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2843,7 +2843,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -2945,7 +2945,7 @@
     "source_asset": "CTCONS:VHF:V25",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2976,7 +2976,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -3078,7 +3078,7 @@
     "source_asset": "CTCONS:VHF:V26",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -3109,7 +3109,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -3211,7 +3211,7 @@
     "source_asset": "CTCONS:VHF:V27",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3242,7 +3242,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -3344,7 +3344,7 @@
     "source_asset": "CTCONS:VHF:S29",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3375,7 +3375,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -3471,7 +3471,7 @@
     "source_asset": "CTCONS:VHF:RL01",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3502,7 +3502,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -3604,7 +3604,7 @@
     "source_asset": "CTCONS:VHF:RL02",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3635,7 +3635,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -3737,7 +3737,7 @@
     "source_asset": "CTCONS:VHF:RL03",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3768,7 +3768,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -3870,7 +3870,7 @@
     "source_asset": "CTCONS:VHF:RL04",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3901,7 +3901,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -4003,7 +4003,7 @@
     "source_asset": "CTCONS:VHF:RL05",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4034,7 +4034,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -4136,7 +4136,7 @@
     "source_asset": "CTCONS:VHF:RL06",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4167,7 +4167,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -4280,7 +4280,7 @@
     "source_asset": "CTCONS:VHF:RL07",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4311,7 +4311,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -4425,7 +4425,7 @@
     "source_asset": "CTCONS:VHF:RL08",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4456,7 +4456,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -4572,7 +4572,7 @@
     "source_asset": "CTCONS:VHF:RL09",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4603,7 +4603,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -4718,7 +4718,7 @@
     "source_asset": "CTCONS:VHF:RL10",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4749,7 +4749,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -4853,7 +4853,7 @@
     "source_asset": "CTCONS:VHF:RL11",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4884,7 +4884,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -4988,7 +4988,7 @@
     "source_asset": "CTCONS:VHF:RL12",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5019,7 +5019,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -5123,7 +5123,7 @@
     "source_asset": "CTCONS:VHF:RR01",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5154,7 +5154,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -5256,7 +5256,7 @@
     "source_asset": "CTCONS:VHF:RR02",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5287,7 +5287,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -5389,7 +5389,7 @@
     "source_asset": "CTCONS:VHF:RR03",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5420,7 +5420,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -5522,7 +5522,7 @@
     "source_asset": "CTCONS:VHF:RR04",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5553,7 +5553,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -5655,7 +5655,7 @@
     "source_asset": "CTCONS:VHF:RR05",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5686,7 +5686,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -5788,7 +5788,7 @@
     "source_asset": "CTCONS:VHF:RR06",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5819,7 +5819,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -5921,7 +5921,7 @@
     "source_asset": "CTCONS:VHF:RR07",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5952,7 +5952,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -6054,7 +6054,7 @@
     "source_asset": "CTCONS:VHF:RR08",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -6085,7 +6085,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -6189,7 +6189,7 @@
     "source_asset": "CTCONS:VHF:RR09",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -6220,7 +6220,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -6324,9 +6324,9 @@
     "source_asset": "CTCONS:VHF:RR10",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
-    "source_chunk_sha256": "292f0de53a0c106b645d249a012623968e7e7d760947bec2724ddc0884fb0906",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
     "reference_sex": "female",
     "source_donor": "VHF",
@@ -6355,7 +6355,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -6459,9 +6459,9 @@
     "source_asset": "CTCONS:VHF:RR11",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
-    "source_chunk_sha256": "292f0de53a0c106b645d249a012623968e7e7d760947bec2724ddc0884fb0906",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
     "reference_sex": "female",
     "source_donor": "VHF",
@@ -6490,7 +6490,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -6594,9 +6594,9 @@
     "source_asset": "CTCONS:VHF:RR12",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "e99a2247f2693f8a57dabfb977c2ef8fe273850ba282b66ff5d32206cf40d18b",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
-    "source_chunk_sha256": "292f0de53a0c106b645d249a012623968e7e7d760947bec2724ddc0884fb0906",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
     "reference_sex": "female",
     "source_donor": "VHF",
@@ -6625,7 +6625,7 @@
     "adaptations": {
       "method": "meshoptimizer quadric simplification",
       "maximumRelativeError": 0.002,
-      "preservedMeshes": 50
+      "preservedMeshes": 59
     },
     "notes": "Consensus of three open CT bone models on the NLM Visible Human Female fresh CT, voted per geometric instance so that a body every model names differently still gets one mask. The id is geometric (cranial to caudal). The candidate name is evidence, not a decision: this donor has six lumbar-type vertebral bodies and the lumbosacral transition is an open question. Placed in the canonical space by the same rigid same-donor pelvis registration as the NLM CT source. Not anatomically reviewed.",
     "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
@@ -6720,5 +6720,1835 @@
       "outlier_components": 0
     },
     "alternatives": []
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B01",
+    "structure_id": "UBERON:0000981|left",
+    "name": "Left femur · consensus candidate B01 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B01",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-2.bin",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "left",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "femur",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B01",
+    "instance_index": 1,
+    "role": "bone",
+    "label_name": "femur_left",
+    "lod_step_voxels": 1,
+    "voxel_count": 576703,
+    "volume_cm3": 506.86787109375,
+    "consensus_ml": 506.87,
+    "union_ml": 534.32,
+    "agreement_ratio": 0.949,
+    "unanimous_fraction": 0.957,
+    "conflict_voxels": 1485,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "3": 576703
+    },
+    "votes_histogram_on_union": {
+      "1": 31237,
+      "2": 24782,
+      "3": 551921
+    },
+    "models": {
+      "totalseg": {
+        "state": "voted",
+        "label": "femur_left",
+        "candidate_ml": 510.34,
+        "largest_component_ml": 510.34,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          -93.6,
+          9.9,
+          -1049.9
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "femur_left",
+        "candidate_ml": 518.81,
+        "largest_component_ml": 518.81,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          -93.6,
+          9.7,
+          -1049.4
+        ]
+      },
+      "skellytour": {
+        "state": "voted",
+        "label": "LEFT_FEMUR",
+        "candidate_ml": 497.13,
+        "largest_component_ml": 497.13,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          -93.6,
+          9.9,
+          -1049.8
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "femur_left",
+      "moose": "femur_left",
+      "skellytour": "LEFT_FEMUR"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "femur_left",
+    "candidate_evidence": "the 3 models name this bone alike ({'totalseg': 'femur_left', 'moose': 'femur_left', 'skellytour': 'LEFT_FEMUR'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.93 to 0.95, centroid offsets <= 0.4 mm), laterality checked, 3 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "femur_left",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "skellytour",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.9328,
+            "centroid_offset_mm": 0.44,
+            "passed": true
+          },
+          "totalseg|skellytour": {
+            "iou_largest_components": 0.9452,
+            "centroid_offset_mm": 0.05,
+            "passed": true
+          },
+          "moose|skellytour": {
+            "iou_largest_components": 0.9346,
+            "centroid_offset_mm": 0.44,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": true,
+        "expected": "left",
+        "per_model_side": {
+          "totalseg": "left",
+          "moose": "left",
+          "skellytour": "left"
+        },
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 3,
+        "fov_edge_contact_fraction_of_surface": 0,
+        "fov_edge_contact_ml": 0,
+        "union_outside_coverage_fraction": 0,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.9853,
+      "volume_ratio_candidate_over_label": 0.9932
+    },
+    "versus_denver_mesh": {
+      "mesh": "DENVER:VHF:Left_Bone_Femur",
+      "candidate_surface_to_denver_vertices_mm": {
+        "p50": 3.2,
+        "p95": 8.4
+      },
+      "denver_vertices_to_candidate_surface_mm": {
+        "p50": 2.45,
+        "p95": 7.4
+      },
+      "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+    },
+    "denver_mesh": "DENVER:VHF:Left_Bone_Femur",
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B01",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "1a9d08b056c528d5b153cfbd6fc6a43d5d9b463956f797194fa5d9b82b29b7f6",
+      "triangles": 40978,
+      "degenerate_faces": 11,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 4,
+      "signed_volume_m3": 0.0005065903936766938,
+      "self_intersections": "35 intersecting triangle pairs (Moller test; 330 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 5,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "hra-female:VH_F_femur_L",
+      "bodyparts3d:FJ3259",
+      "denver-vhf:DENVER:VHF:Left_Bone_Femur",
+      "nlm-vhf-ct:NLMCT:VHF:femur_left"
+    ]
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B04",
+    "structure_id": "UBERON:0001105|left",
+    "name": "Left clavicle · consensus candidate B04 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B04",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-2.bin",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "left",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "clavicle bone",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B04",
+    "instance_index": 4,
+    "role": "bone",
+    "label_name": "clavicula_left",
+    "lod_step_voxels": 1,
+    "voxel_count": 32195,
+    "volume_cm3": 28.29638671875,
+    "consensus_ml": 28.3,
+    "union_ml": 34.91,
+    "agreement_ratio": 0.811,
+    "unanimous_fraction": 0.828,
+    "conflict_voxels": 66,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "3": 32195
+    },
+    "votes_histogram_on_union": {
+      "1": 7526,
+      "2": 5535,
+      "3": 26660
+    },
+    "models": {
+      "totalseg": {
+        "state": "voted",
+        "label": "clavicula_left",
+        "candidate_ml": 28.04,
+        "largest_component_ml": 28.04,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          -64.8,
+          17.9,
+          -272.8
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "clavicle_left",
+        "candidate_ml": 30.07,
+        "largest_component_ml": 30.07,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          -64.9,
+          18,
+          -271.2
+        ]
+      },
+      "skellytour": {
+        "state": "voted",
+        "label": "LEFT_CLAVICLE",
+        "candidate_ml": 28.53,
+        "largest_component_ml": 28.53,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          -64.5,
+          18.2,
+          -273.2
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "clavicula_left",
+      "moose": "clavicle_left",
+      "skellytour": "LEFT_CLAVICLE"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "clavicle_left",
+    "candidate_evidence": "the 3 models name this bone alike ({'totalseg': 'clavicula_left', 'moose': 'clavicle_left', 'skellytour': 'LEFT_CLAVICLE'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.71 to 0.89, centroid offsets <= 2.0 mm), laterality checked, 3 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "clavicle_left",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "skellytour",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.7077,
+            "centroid_offset_mm": 1.6,
+            "passed": true
+          },
+          "totalseg|skellytour": {
+            "iou_largest_components": 0.8856,
+            "centroid_offset_mm": 0.58,
+            "passed": true
+          },
+          "moose|skellytour": {
+            "iou_largest_components": 0.719,
+            "centroid_offset_mm": 2.02,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": true,
+        "expected": "left",
+        "per_model_side": {
+          "totalseg": "left",
+          "moose": "left",
+          "skellytour": "left"
+        },
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 3,
+        "fov_edge_contact_fraction_of_surface": 0,
+        "fov_edge_contact_ml": 0,
+        "union_outside_coverage_fraction": 0,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.9663,
+      "volume_ratio_candidate_over_label": 1.0092
+    },
+    "versus_denver_mesh": null,
+    "denver_mesh": null,
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B04",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "ea5c08fb70a1c4822247a839a488f0a0c9fc28642f07f307e882e819d95a0178",
+      "triangles": 7062,
+      "degenerate_faces": 3,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "signed_volume_m3": 2.82035141435653e-05,
+      "self_intersections": "18 intersecting triangle pairs (Moller test; 16 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 1,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "bodyparts3d:FJ3237",
+      "nlm-vhf-ct:NLMCT:VHF:clavicula_left"
+    ]
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B05",
+    "structure_id": "UBERON:0001272|left",
+    "name": "Left hip · consensus candidate B05 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B05",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-2.bin",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "left",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "innominate bone",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B05",
+    "instance_index": 5,
+    "role": "bone",
+    "label_name": "hip_left",
+    "lod_step_voxels": 1,
+    "voxel_count": 410777,
+    "volume_cm3": 361.03447265625,
+    "consensus_ml": 361.15,
+    "union_ml": 421.68,
+    "agreement_ratio": 0.856,
+    "unanimous_fraction": 1,
+    "conflict_voxels": 7038,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "2": 410907
+    },
+    "votes_histogram_on_union": {
+      "1": 68873,
+      "2": 410907
+    },
+    "models": {
+      "skellytour": {
+        "state": "absorbed",
+        "absorbed_into": "PELVIS",
+        "fraction_of_union": 0.875
+      },
+      "totalseg": {
+        "state": "voted",
+        "label": "hip_left",
+        "candidate_ml": 382.49,
+        "largest_component_ml": 382.41,
+        "fragments": 1,
+        "fragments_ml": 0.08,
+        "centroid_ras_mm": [
+          -73.6,
+          -3.8,
+          -797.9
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "hip_left",
+        "candidate_ml": 400.34,
+        "largest_component_ml": 391.5,
+        "fragments": 1,
+        "fragments_ml": 8.84,
+        "centroid_ras_mm": [
+          -73.7,
+          -3.9,
+          -797.3
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "hip_left",
+      "moose": "hip_left"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "hip_left",
+    "candidate_evidence": "the 2 models name this bone alike ({'totalseg': 'hip_left', 'moose': 'hip_left'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.87 to 0.87, centroid offsets <= 0.6 mm), laterality checked, 2 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "hip_left",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.8749,
+            "centroid_offset_mm": 0.64,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": true,
+        "expected": "left",
+        "per_model_side": {
+          "totalseg": "left",
+          "moose": "left"
+        },
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 2,
+        "fov_edge_contact_fraction_of_surface": 0.0194,
+        "fov_edge_contact_ml": 1.19,
+        "union_outside_coverage_fraction": 0.0008,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.9713,
+      "volume_ratio_candidate_over_label": 0.9442
+    },
+    "versus_denver_mesh": {
+      "mesh": "DENVER:VHF:Left_Bone_Pelvis",
+      "candidate_surface_to_denver_vertices_mm": {
+        "p50": 1.61,
+        "p95": 3.11
+      },
+      "denver_vertices_to_candidate_surface_mm": {
+        "p50": 0.92,
+        "p95": 2.94
+      },
+      "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+    },
+    "denver_mesh": "DENVER:VHF:Left_Bone_Pelvis",
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B05",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "cdbd26a8a7287963e0f3bc8252b66cacceab26bf9cdcaec92fb126823f5b5f54",
+      "triangles": 43638,
+      "degenerate_faces": 1,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 8,
+      "signed_volume_m3": 0.00036077868165311906,
+      "self_intersections": "9 intersecting triangle pairs (Moller test; 68 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 9,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "bodyparts3d:FJ3288",
+      "denver-vhf:DENVER:VHF:Left_Bone_Pelvis",
+      "nlm-vhf-ct:NLMCT:VHF:hip_left"
+    ]
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B17",
+    "structure_id": "UBERON:0000981|right",
+    "name": "Right femur · consensus candidate B17 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B17",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-2.bin",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "right",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "femur",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B17",
+    "instance_index": 17,
+    "role": "bone",
+    "label_name": "femur_right",
+    "lod_step_voxels": 1,
+    "voxel_count": 590526,
+    "volume_cm3": 519.0169921875,
+    "consensus_ml": 519.02,
+    "union_ml": 550.24,
+    "agreement_ratio": 0.943,
+    "unanimous_fraction": 0.956,
+    "conflict_voxels": 1989,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "3": 590526
+    },
+    "votes_histogram_on_union": {
+      "1": 35530,
+      "2": 26183,
+      "3": 564343
+    },
+    "models": {
+      "totalseg": {
+        "state": "voted",
+        "label": "femur_right",
+        "candidate_ml": 525.46,
+        "largest_component_ml": 525.46,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          103.2,
+          1.3,
+          -1051.2
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "femur_right",
+        "candidate_ml": 531.59,
+        "largest_component_ml": 531.59,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          103.1,
+          1.3,
+          -1050.3
+        ]
+      },
+      "skellytour": {
+        "state": "voted",
+        "label": "RIGHT_FEMUR",
+        "candidate_ml": 508.21,
+        "largest_component_ml": 508.21,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          103.2,
+          1.4,
+          -1051.4
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "femur_right",
+      "moose": "femur_right",
+      "skellytour": "RIGHT_FEMUR"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "femur_right",
+    "candidate_evidence": "the 3 models name this bone alike ({'totalseg': 'femur_right', 'moose': 'femur_right', 'skellytour': 'RIGHT_FEMUR'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.92 to 0.94, centroid offsets <= 1.1 mm), laterality checked, 3 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "femur_right",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "skellytour",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.9246,
+            "centroid_offset_mm": 0.91,
+            "passed": true
+          },
+          "totalseg|skellytour": {
+            "iou_largest_components": 0.9424,
+            "centroid_offset_mm": 0.21,
+            "passed": true
+          },
+          "moose|skellytour": {
+            "iou_largest_components": 0.9323,
+            "centroid_offset_mm": 1.11,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": true,
+        "expected": "right",
+        "per_model_side": {
+          "totalseg": "right",
+          "moose": "right",
+          "skellytour": "right"
+        },
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 3,
+        "fov_edge_contact_fraction_of_surface": 0,
+        "fov_edge_contact_ml": 0,
+        "union_outside_coverage_fraction": 0,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.9829,
+      "volume_ratio_candidate_over_label": 0.9877
+    },
+    "versus_denver_mesh": {
+      "mesh": "DENVER:VHF:Right_Bone_Femur",
+      "candidate_surface_to_denver_vertices_mm": {
+        "p50": 2.94,
+        "p95": 7.29
+      },
+      "denver_vertices_to_candidate_surface_mm": {
+        "p50": 2.22,
+        "p95": 6.47
+      },
+      "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+    },
+    "denver_mesh": "DENVER:VHF:Right_Bone_Femur",
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B17",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "8a40c5d9cc7e544f52432cfac34f78b31789da5a2b847ff481c239f007f8037a",
+      "triangles": 41696,
+      "degenerate_faces": 12,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 4,
+      "signed_volume_m3": 0.0005187565779212164,
+      "self_intersections": "36 intersecting triangle pairs (Moller test; 269 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 4,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "hra-female:VH_F_femur_R",
+      "bodyparts3d:FJ3365",
+      "denver-vhf:DENVER:VHF:Right_Bone_Femur",
+      "nlm-vhf-ct:NLMCT:VHF:femur_right"
+    ]
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B19",
+    "structure_id": "UBERON:0006849|right",
+    "name": "Right scapula · consensus candidate B19 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B19",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-2.bin",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "right",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "scapula",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B19",
+    "instance_index": 19,
+    "role": "bone",
+    "label_name": "scapula_right",
+    "lod_step_voxels": 1,
+    "voxel_count": 95445,
+    "volume_cm3": 83.88720703125,
+    "consensus_ml": 83.89,
+    "union_ml": 116.35,
+    "agreement_ratio": 0.721,
+    "unanimous_fraction": 0.761,
+    "conflict_voxels": 401,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "3": 95445
+    },
+    "votes_histogram_on_union": {
+      "1": 36941,
+      "2": 22857,
+      "3": 72588
+    },
+    "models": {
+      "totalseg": {
+        "state": "voted",
+        "label": "scapula_right",
+        "candidate_ml": 89.96,
+        "largest_component_ml": 89.96,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          120.1,
+          -50.2,
+          -299.3
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "scapula_right",
+        "candidate_ml": 91.87,
+        "largest_component_ml": 91.87,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          122.2,
+          -45.3,
+          -291.3
+        ]
+      },
+      "skellytour": {
+        "state": "voted",
+        "label": "RIGHT_SCAPULA",
+        "candidate_ml": 82.21,
+        "largest_component_ml": 82.21,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          120.8,
+          -45.9,
+          -294.2
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "scapula_right",
+      "moose": "scapula_right",
+      "skellytour": "RIGHT_SCAPULA"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "scapula_right",
+    "candidate_evidence": "the 3 models name this bone alike ({'totalseg': 'scapula_right', 'moose': 'scapula_right', 'skellytour': 'RIGHT_SCAPULA'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.63 to 0.74, centroid offsets <= 9.5 mm), laterality checked, 3 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "scapula_right",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "skellytour",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.626,
+            "centroid_offset_mm": 9.52,
+            "passed": true
+          },
+          "totalseg|skellytour": {
+            "iou_largest_components": 0.7351,
+            "centroid_offset_mm": 6.64,
+            "passed": true
+          },
+          "moose|skellytour": {
+            "iou_largest_components": 0.6493,
+            "centroid_offset_mm": 3.23,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": true,
+        "expected": "right",
+        "per_model_side": {
+          "totalseg": "right",
+          "moose": "right",
+          "skellytour": "right"
+        },
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 3,
+        "fov_edge_contact_fraction_of_surface": 0,
+        "fov_edge_contact_ml": 0,
+        "union_outside_coverage_fraction": 0,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.9106,
+      "volume_ratio_candidate_over_label": 0.9325
+    },
+    "versus_denver_mesh": null,
+    "denver_mesh": null,
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B19",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "8363116d2f197ff477df9b162b60c46574656a9d5e3a5e82a97cbf9140c3ced3",
+      "triangles": 22198,
+      "degenerate_faces": 6,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 21,
+      "signed_volume_m3": 8.362741266093674e-05,
+      "self_intersections": "15 intersecting triangle pairs (Moller test; 38 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 9,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "bodyparts3d:FJ3384",
+      "nlm-vhf-ct:NLMCT:VHF:scapula_right"
+    ]
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B20",
+    "structure_id": "UBERON:0001105|right",
+    "name": "Right clavicle · consensus candidate B20 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B20",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-2.bin",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "right",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "clavicle bone",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B20",
+    "instance_index": 20,
+    "role": "bone",
+    "label_name": "clavicula_right",
+    "lod_step_voxels": 1,
+    "voxel_count": 37182,
+    "volume_cm3": 32.6794921875,
+    "consensus_ml": 32.68,
+    "union_ml": 39.51,
+    "agreement_ratio": 0.827,
+    "unanimous_fraction": 0.824,
+    "conflict_voxels": 182,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "3": 37182
+    },
+    "votes_histogram_on_union": {
+      "1": 7770,
+      "2": 6545,
+      "3": 30637
+    },
+    "models": {
+      "totalseg": {
+        "state": "voted",
+        "label": "clavicula_right",
+        "candidate_ml": 32.14,
+        "largest_component_ml": 32.14,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          72.7,
+          14.2,
+          -280.5
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "clavicle_right",
+        "candidate_ml": 34.35,
+        "largest_component_ml": 34.35,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          70.5,
+          15.3,
+          -280.2
+        ]
+      },
+      "skellytour": {
+        "state": "voted",
+        "label": "RIGHT_CLAVICLE",
+        "candidate_ml": 32.63,
+        "largest_component_ml": 32.63,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          70.8,
+          15.3,
+          -281.8
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "clavicula_right",
+      "moose": "clavicle_right",
+      "skellytour": "RIGHT_CLAVICLE"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "clavicle_right",
+    "candidate_evidence": "the 3 models name this bone alike ({'totalseg': 'clavicula_right', 'moose': 'clavicle_right', 'skellytour': 'RIGHT_CLAVICLE'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.73 to 0.86, centroid offsets <= 2.6 mm), laterality checked, 3 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "clavicle_right",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "skellytour",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.7268,
+            "centroid_offset_mm": 2.46,
+            "passed": true
+          },
+          "totalseg|skellytour": {
+            "iou_largest_components": 0.8573,
+            "centroid_offset_mm": 2.56,
+            "passed": true
+          },
+          "moose|skellytour": {
+            "iou_largest_components": 0.7477,
+            "centroid_offset_mm": 1.63,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": true,
+        "expected": "right",
+        "per_model_side": {
+          "totalseg": "right",
+          "moose": "right",
+          "skellytour": "right"
+        },
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 3,
+        "fov_edge_contact_fraction_of_surface": 0,
+        "fov_edge_contact_ml": 0,
+        "union_outside_coverage_fraction": 0,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.955,
+      "volume_ratio_candidate_over_label": 1.0167
+    },
+    "versus_denver_mesh": null,
+    "denver_mesh": null,
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B20",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "078ff58e784e3f86075a73940b7061faeba2942eec52aabefb61df4718ecab67",
+      "triangles": 7046,
+      "degenerate_faces": 0,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 1,
+      "signed_volume_m3": 3.2585522529981165e-05,
+      "self_intersections": "1 intersecting triangle pairs (Moller test; 24 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 2,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "bodyparts3d:FJ3362",
+      "nlm-vhf-ct:NLMCT:VHF:clavicula_right"
+    ]
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B21",
+    "structure_id": "UBERON:0001272|right",
+    "name": "Right hip · consensus candidate B21 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B21",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-2.bin",
+    "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "right",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "innominate bone",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B21",
+    "instance_index": 21,
+    "role": "bone",
+    "label_name": "hip_right",
+    "lod_step_voxels": 1,
+    "voxel_count": 407389,
+    "volume_cm3": 358.05673828125,
+    "consensus_ml": 358.2,
+    "union_ml": 416.48,
+    "agreement_ratio": 0.86,
+    "unanimous_fraction": 1,
+    "conflict_voxels": 5134,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "2": 407553
+    },
+    "votes_histogram_on_union": {
+      "1": 66307,
+      "2": 407553
+    },
+    "models": {
+      "skellytour": {
+        "state": "absorbed",
+        "absorbed_into": "PELVIS",
+        "fraction_of_union": 0.876
+      },
+      "totalseg": {
+        "state": "voted",
+        "label": "hip_right",
+        "candidate_ml": 381.13,
+        "largest_component_ml": 381.13,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          87.6,
+          -4.8,
+          -797.7
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "hip_right",
+        "candidate_ml": 393.55,
+        "largest_component_ml": 387.26,
+        "fragments": 6,
+        "fragments_ml": 6.29,
+        "centroid_ras_mm": [
+          88,
+          -4.8,
+          -796.7
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "hip_right",
+      "moose": "hip_right"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "hip_right",
+    "candidate_evidence": "the 2 models name this bone alike ({'totalseg': 'hip_right', 'moose': 'hip_right'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.87 to 0.87, centroid offsets <= 1.1 mm), laterality checked, 2 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "hip_right",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.8733,
+            "centroid_offset_mm": 1.11,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": true,
+        "expected": "right",
+        "per_model_side": {
+          "totalseg": "right",
+          "moose": "right"
+        },
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 2,
+        "fov_edge_contact_fraction_of_surface": 0.001,
+        "fov_edge_contact_ml": 0.06,
+        "union_outside_coverage_fraction": 0,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.969,
+      "volume_ratio_candidate_over_label": 0.9398
+    },
+    "versus_denver_mesh": {
+      "mesh": "DENVER:VHF:Right_Bone_Pelvis",
+      "candidate_surface_to_denver_vertices_mm": {
+        "p50": 1.68,
+        "p95": 3.09
+      },
+      "denver_vertices_to_candidate_surface_mm": {
+        "p50": 0.99,
+        "p95": 2.91
+      },
+      "note": "vertex-to-surface-voxel distances in the canonical stage under nlm-ct-to-vhf; posture and registration error included; a comparison, not a substitution decision"
+    },
+    "denver_mesh": "DENVER:VHF:Right_Bone_Pelvis",
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B21",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "1000ce277e47e614daaccf7c36895dff9e32182075fa359f1d3f562aeee0617f",
+      "triangles": 43116,
+      "degenerate_faces": 6,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 4,
+      "signed_volume_m3": 0.00035772809846555225,
+      "self_intersections": "17 intersecting triangle pairs (Moller test; 48 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 4,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "bodyparts3d:FJ3152",
+      "denver-vhf:DENVER:VHF:Right_Bone_Pelvis",
+      "nlm-vhf-ct:NLMCT:VHF:hip_right"
+    ]
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B33",
+    "structure_id": "UBERON:0003129",
+    "name": "skull · consensus candidate B33 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B33",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-3.bin",
+    "source_chunk_sha256": "d36b50ac2bb605f7b77e0cd9f24fc036dc8d07be41f83fb68921618d4006345c",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "midline",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "skull",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B33",
+    "instance_index": 33,
+    "role": "bone",
+    "label_name": "skull",
+    "lod_step_voxels": 1,
+    "voxel_count": 805803,
+    "volume_cm3": 708.22529296875,
+    "consensus_ml": 708.23,
+    "union_ml": 900.18,
+    "agreement_ratio": 0.787,
+    "unanimous_fraction": 0.766,
+    "conflict_voxels": 5448,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "3": 805803
+    },
+    "votes_histogram_on_union": {
+      "1": 218398,
+      "2": 188951,
+      "3": 616852
+    },
+    "models": {
+      "totalseg": {
+        "state": "voted",
+        "label": "skull",
+        "candidate_ml": 756.61,
+        "largest_component_ml": 756.56,
+        "fragments": 8,
+        "fragments_ml": 0.05,
+        "centroid_ras_mm": [
+          7,
+          15,
+          -89.8
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "skull",
+        "candidate_ml": 749.15,
+        "largest_component_ml": 749.08,
+        "fragments": 6,
+        "fragments_ml": 0.08,
+        "centroid_ras_mm": [
+          6.9,
+          16.1,
+          -88.7
+        ]
+      },
+      "skellytour": {
+        "state": "voted",
+        "label": "SKULL",
+        "candidate_ml": 644.79,
+        "largest_component_ml": 639.92,
+        "fragments": 32,
+        "fragments_ml": 4.87,
+        "centroid_ras_mm": [
+          7,
+          16.8,
+          -90.3
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "skull",
+      "moose": "skull",
+      "skellytour": "SKULL"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "skull",
+    "candidate_evidence": "the 3 models name this bone alike ({'totalseg': 'skull', 'moose': 'skull', 'skellytour': 'SKULL'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.66 to 0.77, centroid offsets <= 1.9 mm), laterality not applicable, 3 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "skull",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "skellytour",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.7266,
+            "centroid_offset_mm": 1.55,
+            "passed": true
+          },
+          "totalseg|skellytour": {
+            "iou_largest_components": 0.7728,
+            "centroid_offset_mm": 1.92,
+            "passed": true
+          },
+          "moose|skellytour": {
+            "iou_largest_components": 0.6558,
+            "centroid_offset_mm": 1.76,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": false,
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 3,
+        "fov_edge_contact_fraction_of_surface": 0,
+        "fov_edge_contact_ml": 0,
+        "union_outside_coverage_fraction": 0,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.956,
+      "volume_ratio_candidate_over_label": 0.9361
+    },
+    "versus_denver_mesh": null,
+    "denver_mesh": null,
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B33",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "a2f32f119b0ad9666e0d6624a1aaebbdcb7e0df7668d5473ea6874d6dcc5113f",
+      "triangles": 129500,
+      "degenerate_faces": 43,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 77,
+      "signed_volume_m3": 0.0007075717678586584,
+      "self_intersections": "130 intersecting triangle pairs (Moller test; 210 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 43,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "tcia:TCIA:003:label-26",
+      "nlm-vhf-ct:NLMCT:VHF:skull"
+    ]
+  },
+  {
+    "id": "ct-consensus:CTCONS:VHF:B34",
+    "structure_id": "UBERON:0000975",
+    "name": "sternum · consensus candidate B34 (machine-unverified)",
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B34",
+    "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
+    "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+    "source_manifest_sha256": "9bbb35eeacbaeae8d7af4aa576dc0f6c68bf844f82c00a9d0ae49dbdd226b54f",
+    "source_chunk": "/models/ct-consensus-lod-3.bin",
+    "source_chunk_sha256": "d36b50ac2bb605f7b77e0cd9f24fc036dc8d07be41f83fb68921618d4006345c",
+    "source_sex": "female",
+    "reference_sex": "female",
+    "source_donor": "VHF",
+    "geometry_type": "automatic_segmentation_consensus",
+    "canonical_space": "VHF-image-2022",
+    "display_space": "VHF-image-2022 canonical stage",
+    "registration": {
+      "type": "rigid same-donor surface registration of the CT pelvis onto the Denver pelvis (no scale)",
+      "display_transform_id": "nlm-ct-to-stage",
+      "transform_id": "nlm-ct-to-vhf",
+      "rms_mm": 2.718263889149958,
+      "canonical_registration": true,
+      "review_status": "automatic; anatomy unreviewed"
+    },
+    "confidence": null,
+    "confidence_basis": "anatomical review pending",
+    "license": "NLM-Terms-and-Conditions",
+    "license_url": "https://www.nlm.nih.gov/databases/download/terms_and_conditions.html",
+    "redistributable": true,
+    "commercial_use": true,
+    "laterality": "midline",
+    "granularity": "individual",
+    "ontology_mapping": "shared label of the voting models resolved through the reviewed crosswalk of nlm-vhf-ct; machine-unverified",
+    "ontology_term_label": "sternum",
+    "qa_status": "source-buffer-checked; anatomical-review-pending",
+    "adaptations": {
+      "method": "meshoptimizer quadric simplification",
+      "maximumRelativeError": 0.002,
+      "preservedMeshes": 59
+    },
+    "notes": "Per-name consensus candidate of three open CT bone models on the NLM Visible Human Female fresh CT (plan B section 2.6). The models agree on the name and their largest components correspond; this is agreement between similar models on one CT, not anatomical verification. Machine-unverified: an alternative for comparison, never composed automatically; Denver measured geometry stays the atlas reference where it exists. Placed by the same rigid same-donor pelvis registration as the NLM CT source.",
+    "input_sha256": "5284a87267a83911f0174a07fb3f755301376eb5658daf12d95455cc2ecad26f",
+    "labels_sha256": "b3df8f7a47d3c29b2b53b4fba8b011814a748de2620227d2a2d0b8d66bb24838",
+    "instance_family": "bones",
+    "instance_id": "B34",
+    "instance_index": 34,
+    "role": "bone",
+    "label_name": "sternum",
+    "lod_step_voxels": 1,
+    "voxel_count": 55223,
+    "volume_cm3": 48.53583984375,
+    "consensus_ml": 48.54,
+    "union_ml": 58.67,
+    "agreement_ratio": 0.827,
+    "unanimous_fraction": 0.88,
+    "conflict_voxels": 0,
+    "lost_to_other_winner_ml": null,
+    "size_class": null,
+    "eligible_models_on_consensus": {
+      "3": 55223
+    },
+    "votes_histogram_on_union": {
+      "1": 11528,
+      "2": 6609,
+      "3": 48614
+    },
+    "models": {
+      "totalseg": {
+        "state": "voted",
+        "label": "sternum",
+        "candidate_ml": 48.38,
+        "largest_component_ml": 48.38,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          1.6,
+          55.6,
+          -365.4
+        ]
+      },
+      "moose": {
+        "state": "voted",
+        "label": "sternum",
+        "candidate_ml": 53.61,
+        "largest_component_ml": 53.61,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          1.4,
+          55.6,
+          -363.9
+        ]
+      },
+      "skellytour": {
+        "state": "voted",
+        "label": "STERNUM",
+        "candidate_ml": 47.94,
+        "largest_component_ml": 47.94,
+        "fragments": 0,
+        "fragments_ml": 0,
+        "centroid_ras_mm": [
+          1.5,
+          55.7,
+          -367.2
+        ]
+      }
+    },
+    "source_labels": {
+      "totalseg": "sternum",
+      "moose": "sternum",
+      "skellytour": "STERNUM"
+    },
+    "fragments": null,
+    "seed_merged_from": null,
+    "candidate_name": "sternum",
+    "candidate_evidence": "the 3 models name this bone alike ({'totalseg': 'sternum', 'moose': 'sternum', 'skellytour': 'STERNUM'}); gates of plan B 2.6 passed: class equivalence, largest-component correspondence (IoU 0.77 to 0.87, centroid offsets <= 3.3 mm), laterality not applicable, 3 eligible models; name agreement is not anatomical verification",
+    "name_status": "pending",
+    "hra_name_by_order": null,
+    "hra_z_offset_mm": null,
+    "crosses_skellytour_seam_z": null,
+    "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
+    "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
+    "registration_transform": "nlm-ct-to-vhf",
+    "registration_p95_mm": 4.716855714034616,
+    "bone_class": "sternum",
+    "review_status": "machine-unverified",
+    "consensus_status": "candidate-consensus",
+    "gates": {
+      "class_equivalence": {
+        "equivalent_models": [
+          "moose",
+          "skellytour",
+          "totalseg"
+        ],
+        "passed": true
+      },
+      "geometric_correspondence": {
+        "pairs": {
+          "totalseg|moose": {
+            "iou_largest_components": 0.7899,
+            "centroid_offset_mm": 1.6,
+            "passed": true
+          },
+          "totalseg|skellytour": {
+            "iou_largest_components": 0.8661,
+            "centroid_offset_mm": 1.74,
+            "passed": true
+          },
+          "moose|skellytour": {
+            "iou_largest_components": 0.773,
+            "centroid_offset_mm": 3.33,
+            "passed": true
+          }
+        },
+        "passed": true
+      },
+      "laterality": {
+        "applicable": false,
+        "passed": true
+      },
+      "coverage_eligibility": {
+        "eligible_models_on_union_majority": 3,
+        "fov_edge_contact_fraction_of_surface": 0,
+        "fov_edge_contact_ml": 0,
+        "union_outside_coverage_fraction": 0,
+        "truncated": false
+      }
+    },
+    "versus_nlm_vhf_ct_label": {
+      "dice": 0.9697,
+      "volume_ratio_candidate_over_label": 1.0033
+    },
+    "versus_denver_mesh": null,
+    "denver_mesh": null,
+    "geometry_qa": {
+      "atlas": "ct-consensus",
+      "structure": "CTCONS:VHF:B34",
+      "finite_vertices": true,
+      "valid_indices": true,
+      "geometry_sha256": "4cef89ff27ff13fdfcebdc14211bafb16a15c6a74bca44193f09115e68ecac59",
+      "triangles": 8568,
+      "degenerate_faces": 2,
+      "zero_normals": 0,
+      "nonunit_normals": 0,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 1,
+      "signed_volume_m3": 4.8419491421325594e-05,
+      "self_intersections": "7 intersecting triangle pairs (Moller test; 35 coplanar candidates not resolved)",
+      "anatomical_review": "pending",
+      "connected_components": 2,
+      "outlier_components": 0
+    },
+    "alternatives": [
+      "tcia:TCIA:003:label-28",
+      "nlm-vhf-ct:NLMCT:VHF:sternum"
+    ]
   }
 ]

@@ -111600,7 +111600,8 @@
     },
     "alternatives": [
       "denver-vhf:DENVER:VHF:Right_Bone_Pelvis",
-      "nlm-vhf-ct:NLMCT:VHF:hip_right"
+      "nlm-vhf-ct:NLMCT:VHF:hip_right",
+      "ct-consensus:CTCONS:VHF:B21"
     ]
   },
   {
@@ -116728,7 +116729,8 @@
       "outlier_components": 0
     },
     "alternatives": [
-      "nlm-vhf-ct:NLMCT:VHF:clavicula_left"
+      "nlm-vhf-ct:NLMCT:VHF:clavicula_left",
+      "ct-consensus:CTCONS:VHF:B04"
     ]
   },
   {
@@ -117996,7 +117998,8 @@
     "alternatives": [
       "hra-female:VH_F_femur_L",
       "denver-vhf:DENVER:VHF:Left_Bone_Femur",
-      "nlm-vhf-ct:NLMCT:VHF:femur_left"
+      "nlm-vhf-ct:NLMCT:VHF:femur_left",
+      "ct-consensus:CTCONS:VHF:B01"
     ]
   },
   {
@@ -119764,7 +119767,8 @@
     },
     "alternatives": [
       "denver-vhf:DENVER:VHF:Left_Bone_Pelvis",
-      "nlm-vhf-ct:NLMCT:VHF:hip_left"
+      "nlm-vhf-ct:NLMCT:VHF:hip_left",
+      "ct-consensus:CTCONS:VHF:B05"
     ]
   },
   {
@@ -124236,7 +124240,8 @@
       "outlier_components": 0
     },
     "alternatives": [
-      "nlm-vhf-ct:NLMCT:VHF:clavicula_right"
+      "nlm-vhf-ct:NLMCT:VHF:clavicula_right",
+      "ct-consensus:CTCONS:VHF:B20"
     ]
   },
   {
@@ -124362,7 +124367,8 @@
     "alternatives": [
       "hra-female:VH_F_femur_R",
       "denver-vhf:DENVER:VHF:Right_Bone_Femur",
-      "nlm-vhf-ct:NLMCT:VHF:femur_right"
+      "nlm-vhf-ct:NLMCT:VHF:femur_right",
+      "ct-consensus:CTCONS:VHF:B17"
     ]
   },
   {
@@ -125522,7 +125528,8 @@
       "outlier_components": 0
     },
     "alternatives": [
-      "nlm-vhf-ct:NLMCT:VHF:scapula_right"
+      "nlm-vhf-ct:NLMCT:VHF:scapula_right",
+      "ct-consensus:CTCONS:VHF:B19"
     ]
   },
   {

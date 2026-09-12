@@ -16,7 +16,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VOTE_STATES = {'matched', 'split', 'merge', 'partial', 'seed', 'single'}
+VOTE_STATES = {'matched', 'split', 'merge', 'partial', 'seed', 'single', 'voted'}
 NO_VOTE_STATES = {'unsupported', 'unprocessed', 'absorbed', 'negative', 'unmatched'}
 FIELDS = ('instance_id', 'instance_family', 'role', 'consensus_ml', 'union_ml', 'agreement_ratio', 'unanimous_fraction', 'eligible_models_on_consensus',
           'votes_histogram_on_union', 'conflict_voxels', 'lost_to_other_winner_ml', 'size_class', 'models', 'source_labels', 'candidate_name', 'candidate_evidence',
@@ -26,9 +26,19 @@ atlas = json.loads((ROOT / 'public/atlases/ct-consensus.json').read_text())
 manifest = {r['source_asset']: r for r in json.loads((ROOT / 'manifests/ct-consensus.json').read_text())}
 composed = {p['provenance']['source_asset']: p for p in json.loads((ROOT / 'public/atlases/composed.json').read_text())['parts'] if p['provenance']['source'] == 'ct-consensus'}
 tables = {}
+bone_report = None
 for family, entry in atlas['instance_maps'].items():
     table = json.loads((ROOT / entry['table']).read_text())
-    tables[family] = {inst['id']: inst for inst in table['instances']}
+    if family == 'bones':
+        bone_report = table
+        tables[family] = {}
+        for cls, e in table['bones'].items():
+            if e.get('status') == 'candidate-consensus':
+                tables[family][f"B{e['candidate_index']:02d}"] = {**e, 'role': 'bone', 'bone_class': cls, 'source_labels': {m: v['label'] for m, v in e['models'].items() if v['state'] == 'voted'},
+                                                                 'lost_to_other_winner_ml': None, 'hra_name_by_order': None, 'hra_z_offset_mm': None, 'crosses_skellytour_seam_z': None}
+    else:
+        tables[family] = {inst['id']: inst for inst in table['instances']}
+nlm_terms = {p['provenance']['label_name']: p['provenance']['structure_id'] for p in json.loads((ROOT / 'public/atlases/nlm-vhf-ct.json').read_text())['parts']}
 vox_ml = float(atlas['voxel_spacing_mm'][0] * atlas['voxel_spacing_mm'][1] * atlas['voxel_spacing_mm'][2]) / 1000.0
 review_only = {r['id'] for r in atlas['review_only_instances']}
 problems = []
@@ -47,7 +57,7 @@ for part in atlas['parts']:
     for f in FIELDS:
         check(f in prov, f'{pid}: source atlas lacks {f}')
     check(pid in manifest, f'{pid}: not in manifests/ct-consensus.json')
-    check(pid in composed or prov['role'] == 'sacrum', f'{pid}: not in the composite')
+    check(pid in composed or prov['role'] in ('sacrum', 'bone'), f'{pid}: not in the composite')
     if pid in manifest:
         check(all(manifest[pid].get(f) == prov.get(f) for f in FIELDS), f'{pid}: manifest copy differs from the source atlas')
     if pid in composed:
@@ -60,6 +70,8 @@ for part in atlas['parts']:
     if inst:
         for f in ('consensus_ml', 'union_ml', 'agreement_ratio', 'unanimous_fraction', 'eligible_models_on_consensus', 'votes_histogram_on_union', 'conflict_voxels',
                   'lost_to_other_winner_ml', 'models', 'source_labels', 'hra_name_by_order', 'hra_z_offset_mm', 'role'):
+            if prov['instance_family'] == 'bones' and f in ('role',):
+                continue
             check(prov.get(f) == inst.get(f), f'{pid}: {f} differs from the instance table')
         check(prov.get('crosses_skellytour_seam_z') == inst.get('crosses_skellytour_seam_z'), f'{pid}: seam list differs from the instance table')
     c, u = prov['consensus_ml'], prov['union_ml']
@@ -97,7 +109,18 @@ for part in atlas['parts']:
     check(len(voting) >= 1, f'{pid}: no voting model')
     check(max(int(k) for k in elig) <= len(prov['models']), f'{pid}: more eligible models than models')
     check(prov['name_status'] == 'pending', f'{pid}: name_status {prov["name_status"]} (must stay pending)')
-    check(prov['structure_id'].startswith('CTCONS:') and prov.get('ontology_term_label') in (None, ''), f'{pid}: consensus instance carries a resolved ontology term or non-geometric id')
+    if prov['instance_family'] == 'bones':
+        check(prov.get('review_status') == 'machine-unverified' and prov.get('consensus_status') == 'candidate-consensus', f'{pid}: bone candidate must be machine-unverified candidate-consensus')
+        check(prov['structure_id'] == nlm_terms.get(prov['label_name']), f'{pid}: bone candidate structure id {prov["structure_id"]} differs from the nlm-vhf-ct label {prov["label_name"]} ({nlm_terms.get(prov["label_name"])})')
+        check(pid not in composed, f'{pid}: bone candidate composed automatically')
+        g = prov.get('gates') or {}
+        check(all(g.get(k, {}).get('passed') for k in ('class_equivalence', 'geometric_correspondence', 'laterality')), f'{pid}: a gate did not pass')
+        check(not g.get('coverage_eligibility', {}).get('truncated') and g.get('coverage_eligibility', {}).get('eligible_models_on_union_majority', 0) >= 2, f'{pid}: coverage gate failed')
+        check(prov['agreement_ratio'] >= 0.70 and prov['unanimous_fraction'] >= 0.60, f'{pid}: below the acceptance floor')
+        if prov.get('denver_mesh'):
+            check(prov.get('versus_denver_mesh') and prov['versus_denver_mesh']['mesh'] == prov['denver_mesh'], f'{pid}: Denver comparison missing')
+    else:
+        check(prov['structure_id'].startswith('CTCONS:') and prov.get('ontology_term_label') in (None, ''), f'{pid}: consensus instance carries a resolved ontology term or non-geometric id')
     check(prov['candidate_name'] not in (None, '') or prov['role'] == 'sacrum' or prov['candidate_evidence'], f'{pid}: no candidate name and no evidence text')
     check(prov['geometry_type'] == 'automatic_segmentation_consensus' and 'strict majority' in prov['vote_rule'], f'{pid}: geometry_type or vote_rule wording changed')
     check('unsupported' in prov['vote_rule'] and 'negative' in prov['vote_rule'], f'{pid}: vote_rule must state that unsupported/unprocessed/absorbed are kept apart from negative')
@@ -108,9 +131,17 @@ for r in atlas['review_only_instances']:
     check(inst is not None and inst['consensus_ml'] == 0, f'review-only {r["id"]}: instance table shows consensus voxels or is missing')
 for family, table in tables.items():
     for iid, inst in table.items():
-        if inst['role'] in ('vertebra', 'rib', 'sacrum') and inst['consensus_ml'] > 0:
+        if family != 'bones' and inst['role'] in ('vertebra', 'rib', 'sacrum') and inst['consensus_ml'] > 0:
             check(iid in meshed, f'{family} {iid}: has consensus voxels but is not meshed')
-check(len(composed) == 49 and len(atlas['parts']) == 50, f'expected 50 source meshes and 49 composed (sacrum yields to Denver); got {len(atlas["parts"])}/{len(composed)}')
+instances_meshed = sum(1 for p in atlas['parts'] if p['provenance']['instance_family'] != 'bones')
+bones_meshed = sum(1 for p in atlas['parts'] if p['provenance']['instance_family'] == 'bones')
+check(len(composed) == 49 and instances_meshed == 50, f'expected 50 instance meshes and 49 composed (sacrum yields to Denver); got {instances_meshed}/{len(composed)}')
+if bone_report:
+    accepted = sum(1 for e in bone_report['bones'].values() if e.get('status') == 'candidate-consensus')
+    check(bones_meshed == accepted, f'{bones_meshed} bone candidates meshed, {accepted} candidate-consensus in the report')
+    listed = {r['id'] for r in atlas.get('review_only_bone_candidates', [])}
+    others = {cls for cls, e in bone_report['bones'].items() if e.get('status') not in (None, 'excluded', 'candidate-consensus')}
+    check(listed == others, f'review-only bone candidates listed {sorted(listed ^ others)} differ from the report')
 sacra = [p['id'] for p in atlas['parts'] if p['provenance']['role'] == 'sacrum']
 check(all(s not in composed for s in sacra), f'consensus sacrum composed: {sacra}')
 

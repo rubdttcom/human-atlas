@@ -4316,3 +4316,4 @@ CTCONS:VHF:group:Vertebral column (consensus instances),Vertebral column (consen
 CTCONS:VHF:group:Ribs (consensus instances),Ribs (consensus instances),,CTCONS:VHF:group:Ribs (consensus instances),,aggregate,unspecified,source-hierarchy-concept
 CTCONS:VHF:group:Left ribs (consensus instances),Left ribs (consensus instances),,CTCONS:VHF:group:Left ribs (consensus instances),,aggregate,left,source-hierarchy-concept
 CTCONS:VHF:group:Right ribs (consensus instances),Right ribs (consensus instances),,CTCONS:VHF:group:Right ribs (consensus instances),,aggregate,right,source-hierarchy-concept
+"CTCONS:VHF:group:Bones (consensus candidates, machine-unverified)","Bones (consensus candidates, machine-unverified)",,"CTCONS:VHF:group:Bones (consensus candidates, machine-unverified)",,aggregate,unspecified,source-hierarchy-concept

@@ -67,4 +67,18 @@ if (!hasModelAgreement({vote_rule: 'x'}) || hasModelAgreement({}) || hasModelAgr
 if (histogramText({'2': 1, '1': 3}, 'model') !== '1 model: 3 voxels (75.0 %); 2 models: 1 voxels (25.0 %)') fail('histogram order/percent: ' + histogramText({'2': 1, '1': 3}, 'model'));
 if (!stateText({state: 'wizardry'}).includes('state not in the documented vocabulary')) fail('unknown state gloss');
 if (!stateText({state: 'absorbed', absorbed_into: 'sacrum', fraction_of_union: 0.9}).includes('absorbed into sacrum (90.0 % of the union)')) fail('absorbed text');
-console.log(JSON.stringify({instances_rendered: atlas.parts.length, source_equals_composed: true, null_zero_missing_cases: 'ok', wording_rule: 'ok'}));
+// 3. Per-name bone candidates: gates and comparison sections render; comparison never claims substitution.
+const bone = atlas.parts.find(p => p.provenance.instance_family === 'bones');
+if (bone) {
+  const secs = agreementSections(bone.provenance);
+  const titles = secs.map(s => s.title);
+  if (!titles.includes('Gates before the vote (plan B 2.6)') || !titles.includes('Comparison, not substitution')) fail('bone candidate must show gates and comparison: ' + titles);
+  const br = rows(bone.provenance);
+  if (!br['Geometric correspondence'].startsWith('passed') || !br['Class equivalence'].startsWith('passed')) fail('gates text: ' + br['Geometric correspondence']);
+  if (!/Registration and posture differences are included/.test(br['Denver mesh (cryosections)'])) fail('Denver comparison must state that placement error is included');
+  if (!br['Candidate name'].includes('status pending')) fail('bone candidate name must stay pending');
+  for (const m of Object.keys(bone.provenance.models)) if (!br[m] || !br[m].startsWith('voted: voted')) fail('bone per-model row ' + m + ': ' + br[m]);
+}
+const noGates = agreementSections({vote_rule: 'x'}).map(s => s.title);
+if (noGates.includes('Gates before the vote (plan B 2.6)') || noGates.includes('Comparison, not substitution')) fail('gates/comparison sections must be absent without data');
+console.log(JSON.stringify({bone_candidates_rendered: atlas.parts.filter(p => p.provenance.instance_family === 'bones').length, instances_rendered: atlas.parts.length, source_equals_composed: true, null_zero_missing_cases: 'ok', wording_rule: 'ok'}));

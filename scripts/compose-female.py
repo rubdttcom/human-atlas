@@ -395,6 +395,9 @@ for atlas, buffers, source_id in [(hra, hra_buffers, 'hra-female'), (nlm, nlm_bu
                 reason = 'CT label replaced by the Denver VHF manual segmentation of the same donor (bones and gluteal/iliopsoas muscles).'
             elif CONSENSUS_REPLACES_CT(label):
                 reason = 'Single-model vertebra or rib label replaced by the three-model per-instance consensus (ct-consensus).'
+        elif source_id == 'ct-consensus' and original['source_metadata'].get('instance_family') == 'bones':
+            include = False
+            reason = 'Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision.'
         elif source_id == 'ct-consensus':
             include = original['source_metadata']['role'] != 'sacrum'
             reason = ('Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source.' if include

@@ -48034,5 +48034,15 @@
     "system": "aggregate",
     "laterality": "right",
     "scope": "source-hierarchy-concept"
+  },
+  {
+    "canonical_id": "CTCONS:VHF:group:Bones (consensus candidates, machine-unverified)",
+    "name": "Bones (consensus candidates, machine-unverified)",
+    "fma": "CTCONS:VHF:group:Bones (consensus candidates, machine-unverified)",
+    "uberon": "",
+    "ta2": "",
+    "system": "aggregate",
+    "laterality": "unspecified",
+    "scope": "source-hierarchy-concept"
   }
 ]

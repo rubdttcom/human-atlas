@@ -8246,7 +8246,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "bodyparts3d:FJ3384"
+          "bodyparts3d:FJ3384",
+          "ct-consensus:CTCONS:VHF:B19"
         ]
       }
     },
@@ -8366,7 +8367,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "bodyparts3d:FJ3237"
+          "bodyparts3d:FJ3237",
+          "ct-consensus:CTCONS:VHF:B04"
         ]
       }
     },
@@ -8486,7 +8488,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "bodyparts3d:FJ3362"
+          "bodyparts3d:FJ3362",
+          "ct-consensus:CTCONS:VHF:B20"
         ]
       }
     },
@@ -8610,7 +8613,8 @@
         "alternatives": [
           "hra-female:VH_F_femur_L",
           "bodyparts3d:FJ3259",
-          "denver-vhf:DENVER:VHF:Left_Bone_Femur"
+          "denver-vhf:DENVER:VHF:Left_Bone_Femur",
+          "ct-consensus:CTCONS:VHF:B01"
         ]
       }
     },
@@ -8734,7 +8738,8 @@
         "alternatives": [
           "hra-female:VH_F_femur_R",
           "bodyparts3d:FJ3365",
-          "denver-vhf:DENVER:VHF:Right_Bone_Femur"
+          "denver-vhf:DENVER:VHF:Right_Bone_Femur",
+          "ct-consensus:CTCONS:VHF:B17"
         ]
       }
     },
@@ -8855,7 +8860,8 @@
         },
         "alternatives": [
           "bodyparts3d:FJ3288",
-          "denver-vhf:DENVER:VHF:Left_Bone_Pelvis"
+          "denver-vhf:DENVER:VHF:Left_Bone_Pelvis",
+          "ct-consensus:CTCONS:VHF:B05"
         ]
       }
     },
@@ -8976,7 +8982,8 @@
         },
         "alternatives": [
           "bodyparts3d:FJ3152",
-          "denver-vhf:DENVER:VHF:Right_Bone_Pelvis"
+          "denver-vhf:DENVER:VHF:Right_Bone_Pelvis",
+          "ct-consensus:CTCONS:VHF:B21"
         ]
       }
     },
@@ -10532,7 +10539,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "tcia:TCIA:003:label-26"
+          "tcia:TCIA:003:label-26",
+          "ct-consensus:CTCONS:VHF:B33"
         ]
       }
     },
@@ -13532,7 +13540,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "tcia:TCIA:003:label-28"
+          "tcia:TCIA:003:label-28",
+          "ct-consensus:CTCONS:VHF:B34"
         ]
       }
     },

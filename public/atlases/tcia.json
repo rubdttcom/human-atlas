@@ -2594,7 +2594,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "nlm-vhf-ct:NLMCT:VHF:skull"
+          "nlm-vhf-ct:NLMCT:VHF:skull",
+          "ct-consensus:CTCONS:VHF:B33"
         ]
       }
     },
@@ -2794,7 +2795,8 @@
           "outlier_components": 0
         },
         "alternatives": [
-          "nlm-vhf-ct:NLMCT:VHF:sternum"
+          "nlm-vhf-ct:NLMCT:VHF:sternum",
+          "ct-consensus:CTCONS:VHF:B34"
         ]
       }
     },

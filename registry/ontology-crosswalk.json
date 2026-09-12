@@ -24148,5 +24148,68 @@
     "source_term": "CTCONS:VHF:RR12",
     "canonical_id": "CTCONS:VHF:RR12|right",
     "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B01",
+    "source_term": "CTCONS:VHF:B01",
+    "canonical_id": "UBERON:0000981|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B04",
+    "source_term": "CTCONS:VHF:B04",
+    "canonical_id": "UBERON:0001105|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B05",
+    "source_term": "CTCONS:VHF:B05",
+    "canonical_id": "UBERON:0001272|left",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B17",
+    "source_term": "CTCONS:VHF:B17",
+    "canonical_id": "UBERON:0000981|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B19",
+    "source_term": "CTCONS:VHF:B19",
+    "canonical_id": "UBERON:0006849|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B20",
+    "source_term": "CTCONS:VHF:B20",
+    "canonical_id": "UBERON:0001105|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B21",
+    "source_term": "CTCONS:VHF:B21",
+    "canonical_id": "UBERON:0001272|right",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B33",
+    "source_term": "CTCONS:VHF:B33",
+    "canonical_id": "UBERON:0003129",
+    "method": "identifier-format-normalization; explicit-name-laterality"
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B34",
+    "source_term": "CTCONS:VHF:B34",
+    "canonical_id": "UBERON:0000975",
+    "method": "identifier-format-normalization; explicit-name-laterality"
   }
 ]

@@ -294,3 +294,17 @@ whose agreement figures are undefined, not perfect), `disputed`, `laterality-fai
 distances in the canonical stage, both directions). No candidate replaces anything in the
 composite; substitution is a separate recorded decision per bone (plan B section 2.6). Label maps:
 `data/derived/nlm-vhf/consensus/bone-consensus.nii.gz` and `bone-single-model.nii.gz`.
+
+Since 2026-09-12 night `ingest-ct-consensus.py` also meshes the `candidate-consensus` bones as a
+fourth family (`bones`, ids `CTCONS:VHF:B01..`) of source `ct-consensus`: same vote fields,
+plus `gates`, `consensus_status`, `review_status: machine-unverified`, the comparison with the
+`nlm-vhf-ct` label and with the Denver mesh, and `name_status: pending`. Their structure id is
+the one the reviewed crosswalk gives the shared TotalSegmentator label, so each candidate is an
+alternative of the same catalogue entry as the `nlm-vhf-ct` label and the Denver mesh (viewer
+side-by-side comparison); machine-unverified records never become `best_available` ahead of a
+source of equal priority, `compose-female.py` never composes them, and `validate-composition.py`
+and `validate-consensus-metadata.py` fail if they are composed, if a gate did not pass, or if the
+comparison is missing. Not-accepted and single-model candidates are listed in
+`review_only_bone_candidates` of the atlas and are not meshed. Order after the batch:
+`ct-bone-consensus.py nlm` -> `ingest-ct-consensus.py` -> `optimize-anatomy.mjs atlas-ct-consensus.json ct-consensus-lod`
+-> `build-registry.py` -> `compose-female.py` -> QA passes -> `build-registry.py` -> validators.

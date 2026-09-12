@@ -1450,6 +1450,29 @@
     "status": "direct-geometry"
   },
   {
+    "canonical_id": "CTCONS:VHF:group:Bones (consensus candidates, machine-unverified)",
+    "name": "Bones (consensus candidates, machine-unverified)",
+    "fma": "CTCONS:VHF:group:Bones (consensus candidates, machine-unverified)",
+    "uberon": "",
+    "ta2": "",
+    "system": "aggregate",
+    "laterality": "unspecified",
+    "scope": "source-hierarchy-concept",
+    "best_available": null,
+    "candidates": [],
+    "grouped_candidates": [],
+    "sources": [],
+    "coverage_kind": "none",
+    "female_segmented_grouped_partial": false,
+    "female_measured": false,
+    "female_segmented_unreviewed": false,
+    "female_reference": false,
+    "template_only": false,
+    "registration_ready": false,
+    "female_ct_same_donor": false,
+    "status": "no-direct-geometry"
+  },
+  {
     "canonical_id": "CTCONS:VHF:group:Left ribs (consensus instances)",
     "name": "Left ribs (consensus instances)",
     "fma": "CTCONS:VHF:group:Left ribs (consensus instances)",
@@ -81749,10 +81772,12 @@
     "best_available": "nlm-vhf-ct:NLMCT:VHF:sternum",
     "candidates": [
       "nlm-vhf-ct:NLMCT:VHF:sternum",
+      "ct-consensus:CTCONS:VHF:B34",
       "tcia:TCIA:003:label-28"
     ],
     "grouped_candidates": [],
     "sources": [
+      "ct-consensus",
       "nlm-vhf-ct",
       "tcia"
     ],
@@ -82004,6 +82029,7 @@
     "candidates": [
       "denver-vhf:DENVER:VHF:Left_Bone_Femur",
       "nlm-vhf-ct:NLMCT:VHF:femur_left",
+      "ct-consensus:CTCONS:VHF:B01",
       "hra-female:VH_F_femur_L",
       "bodyparts3d:FJ3259"
     ],
@@ -82012,6 +82038,7 @@
     ],
     "sources": [
       "bodyparts3d",
+      "ct-consensus",
       "denver-vhf",
       "hra-female",
       "nlm-vhf-ct"
@@ -82041,6 +82068,7 @@
     "candidates": [
       "denver-vhf:DENVER:VHF:Right_Bone_Femur",
       "nlm-vhf-ct:NLMCT:VHF:femur_right",
+      "ct-consensus:CTCONS:VHF:B17",
       "hra-female:VH_F_femur_R",
       "bodyparts3d:FJ3365"
     ],
@@ -82049,6 +82077,7 @@
     ],
     "sources": [
       "bodyparts3d",
+      "ct-consensus",
       "denver-vhf",
       "hra-female",
       "nlm-vhf-ct"
@@ -82808,6 +82837,7 @@
     "best_available": "nlm-vhf-ct:NLMCT:VHF:clavicula_left",
     "candidates": [
       "nlm-vhf-ct:NLMCT:VHF:clavicula_left",
+      "ct-consensus:CTCONS:VHF:B04",
       "bodyparts3d:FJ3237"
     ],
     "grouped_candidates": [
@@ -82815,6 +82845,7 @@
     ],
     "sources": [
       "bodyparts3d",
+      "ct-consensus",
       "nlm-vhf-ct"
     ],
     "coverage_kind": "individual",
@@ -82841,6 +82872,7 @@
     "best_available": "nlm-vhf-ct:NLMCT:VHF:clavicula_right",
     "candidates": [
       "nlm-vhf-ct:NLMCT:VHF:clavicula_right",
+      "ct-consensus:CTCONS:VHF:B20",
       "bodyparts3d:FJ3362"
     ],
     "grouped_candidates": [
@@ -82848,6 +82880,7 @@
     ],
     "sources": [
       "bodyparts3d",
+      "ct-consensus",
       "nlm-vhf-ct"
     ],
     "coverage_kind": "individual",
@@ -85322,11 +85355,13 @@
     "candidates": [
       "denver-vhf:DENVER:VHF:Left_Bone_Pelvis",
       "nlm-vhf-ct:NLMCT:VHF:hip_left",
+      "ct-consensus:CTCONS:VHF:B05",
       "bodyparts3d:FJ3288"
     ],
     "grouped_candidates": [],
     "sources": [
       "bodyparts3d",
+      "ct-consensus",
       "denver-vhf",
       "nlm-vhf-ct"
     ],
@@ -85355,11 +85390,13 @@
     "candidates": [
       "denver-vhf:DENVER:VHF:Right_Bone_Pelvis",
       "nlm-vhf-ct:NLMCT:VHF:hip_right",
+      "ct-consensus:CTCONS:VHF:B21",
       "bodyparts3d:FJ3152"
     ],
     "grouped_candidates": [],
     "sources": [
       "bodyparts3d",
+      "ct-consensus",
       "denver-vhf",
       "nlm-vhf-ct"
     ],
@@ -99282,10 +99319,12 @@
     "best_available": "nlm-vhf-ct:NLMCT:VHF:skull",
     "candidates": [
       "nlm-vhf-ct:NLMCT:VHF:skull",
+      "ct-consensus:CTCONS:VHF:B33",
       "tcia:TCIA:003:label-26"
     ],
     "grouped_candidates": [],
     "sources": [
+      "ct-consensus",
       "nlm-vhf-ct",
       "tcia"
     ],
@@ -106809,6 +106848,7 @@
     "best_available": "nlm-vhf-ct:NLMCT:VHF:scapula_right",
     "candidates": [
       "nlm-vhf-ct:NLMCT:VHF:scapula_right",
+      "ct-consensus:CTCONS:VHF:B19",
       "bodyparts3d:FJ3384"
     ],
     "grouped_candidates": [
@@ -106816,6 +106856,7 @@
     ],
     "sources": [
       "bodyparts3d",
+      "ct-consensus",
       "nlm-vhf-ct"
     ],
     "coverage_kind": "individual",

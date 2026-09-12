@@ -6312,6 +6312,60 @@
     "reason": "Three-model consensus instance of the same donor (vertebrae and ribs); geometric id, candidate name pending; same rigid pelvis registration as the CT source."
   },
   {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B01",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B04",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B05",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B17",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B19",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B20",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B21",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B33",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
+    "source": "ct-consensus",
+    "source_asset": "CTCONS:VHF:B34",
+    "included": false,
+    "reason": "Per-name bone consensus candidate (plan B 2.6): machine-unverified alternative for comparison; substitution needs a recorded per-bone decision."
+  },
+  {
     "source": "denver-vhf",
     "source_asset": "DENVER:VHF:Left_Bone_Calcaneous",
     "included": true,

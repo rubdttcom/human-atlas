@@ -70760,7 +70760,8 @@
         "alternatives": [
           "bodyparts3d:FJ3365",
           "denver-vhf:DENVER:VHF:Right_Bone_Femur",
-          "nlm-vhf-ct:NLMCT:VHF:femur_right"
+          "nlm-vhf-ct:NLMCT:VHF:femur_right",
+          "ct-consensus:CTCONS:VHF:B17"
         ]
       }
     },
@@ -72986,7 +72987,8 @@
         "alternatives": [
           "bodyparts3d:FJ3259",
           "denver-vhf:DENVER:VHF:Left_Bone_Femur",
-          "nlm-vhf-ct:NLMCT:VHF:femur_left"
+          "nlm-vhf-ct:NLMCT:VHF:femur_left",
+          "ct-consensus:CTCONS:VHF:B01"
         ]
       }
     },

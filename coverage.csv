@@ -3449,3 +3449,12 @@ CTCONS:VHF:RR09|right,ct-consensus,True,female,VHF,automatic_segmentation_consen
 CTCONS:VHF:RR10|right,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
 CTCONS:VHF:RR11|right,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
 CTCONS:VHF:RR12|right,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0000981|left,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0001105|left,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0001272|left,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0000981|right,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0006849|right,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0001105|right,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0001272|right,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0003129,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
+UBERON:0000975,ct-consensus,True,female,VHF,automatic_segmentation_consensus,source-buffer-checked; anatomical-review-pending,NLM-Terms-and-Conditions,2
