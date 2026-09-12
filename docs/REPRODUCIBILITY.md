@@ -50,7 +50,7 @@ python3 scripts/build-registry.py
 .venv/bin/python scripts/extract-landmarks.py
 .venv/bin/python scripts/compose-female.py
 .venv/bin/python scripts/qa-geometry.py
-.venv/bin/python scripts/qa-anatomy.py               # about 45 min on 20 cores (self-intersections of every mesh)
+.venv/bin/python scripts/qa-anatomy.py               # about 45 min on 20 cores from scratch; reuses measurements of byte-identical meshes (geometry_sha256), so a rebuild that changes one source takes minutes
 .venv/bin/python scripts/compare-bmftoolkit.py       # needs sources/BMFToolkit checked out; nothing is shipped
 python3 scripts/build-registry.py
 .venv/bin/python scripts/summarize-reports.py
@@ -133,7 +133,13 @@ composed. It writes `transforms/*-stage-to-vhf.json`, `public/atlases/composed.j
 
 `qa-anatomy.py` counts self-intersecting triangle pairs per mesh, flags connected
 components far from the main component and measures bounding-box continuity of the
-composite. `compare-bmftoolkit.py` aligns every BMFToolkit bone to its Denver counterpart
+composite. Run it after every `qa-geometry.py`: the geometry pass only carries measured
+self-intersection and component counts over for meshes whose geometry is byte-identical to
+the previous report and marks everything else `not-assessed`, so a rebuild that skips the
+anatomy pass ships `not-assessed` into the manifests. The anatomy pass reuses previous
+measurements of identical meshes and recomputes the rest; the spine selector accepts
+`role: vertebra` (ct-consensus instances `V01..V25`) as well as `vertebrae_*` labels and
+stops if CT parts exist but no vertebra matches. `compare-bmftoolkit.py` aligns every BMFToolkit bone to its Denver counterpart
 by rigid ICP and records the residuals; BMFToolkit geometry is never written to `public/`.
 
 ## Verification

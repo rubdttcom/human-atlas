@@ -87,6 +87,7 @@
           "structure": "TCIA:003:label-1",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "c6ff62346e30471e184432b010e057da21ce5ffc2512b1d459f6616064496535",
           "triangles": 1946,
           "degenerate_faces": 1,
           "zero_normals": 0,
@@ -94,8 +95,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.9480663368538575e-06,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "2 intersecting triangle pairs (Moller test; 274 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -183,6 +186,7 @@
           "structure": "TCIA:003:label-2",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "801f78a90c0f07608c69c341586e395ea0226eb34ca79f377a7b0df1e120915c",
           "triangles": 11516,
           "degenerate_faces": 3,
           "zero_normals": 0,
@@ -190,8 +194,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.00018583908224384426,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "14 intersecting triangle pairs (Moller test; 4301 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:aorta"
@@ -281,6 +287,7 @@
           "structure": "TCIA:003:label-3",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "0b76fd88ae3f4100842fcafa75438021483b4f9e8eec066c88b21c83751233f6",
           "triangles": 4032,
           "degenerate_faces": 1,
           "zero_normals": 0,
@@ -288,8 +295,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 6.515950511884747e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "5 intersecting triangle pairs (Moller test; 1756 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:urinary_bladder"
@@ -379,6 +388,7 @@
           "structure": "TCIA:003:label-4",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "d5a6899bda27c34b3aa885990f457b7433ed9545f6fb8d59f1deacc0de0abb48",
           "triangles": 27632,
           "degenerate_faces": 18,
           "zero_normals": 0,
@@ -386,8 +396,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0012653819881401683,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "73 intersecting triangle pairs (Moller test; 11864 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:brain"
@@ -477,6 +489,7 @@
           "structure": "TCIA:003:label-5",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "ab039f92001363c0a63925e253a763a14dea8e6d6593dffcda1baed369774837",
           "triangles": 16302,
           "degenerate_faces": 6,
           "zero_normals": 0,
@@ -484,8 +497,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0004239903429038242,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "22 intersecting triangle pairs (Moller test; 8194 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:heart"
@@ -575,6 +590,7 @@
           "structure": "TCIA:003:label-6",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "3a9618e12319b7a3206411f9f3fd57d930ab18307c318af10ff295c939d4b350",
           "triangles": 13800,
           "degenerate_faces": 3,
           "zero_normals": 0,
@@ -582,8 +598,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0002847533069518166,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "12 intersecting triangle pairs (Moller test; 3173 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -671,6 +689,7 @@
           "structure": "TCIA:003:label-7",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "f5b3c79f05201565b31956ec5abb466e8136029520dda7b78e568e30c97faf72",
           "triangles": 35694,
           "degenerate_faces": 25,
           "zero_normals": 0,
@@ -678,8 +697,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.001424897726817726,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "67 intersecting triangle pairs (Moller test; 19546 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:liver"
@@ -769,6 +790,7 @@
           "structure": "TCIA:003:label-8",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "a70454fc35082548d3ee0c8b05e08436a109bcdbeb7bd14f3e8d4570c051c1b5",
           "triangles": 5086,
           "degenerate_faces": 3,
           "zero_normals": 0,
@@ -776,8 +798,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 5.5405211513108666e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "6 intersecting triangle pairs (Moller test; 1554 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:pancreas"
@@ -867,6 +891,7 @@
           "structure": "TCIA:003:label-9",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "2b7bc78a82c3263ca670a955b289d76c74007a133465e824be80d51801576204",
           "triangles": 10966,
           "degenerate_faces": 11,
           "zero_normals": 0,
@@ -874,8 +899,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0002440283470882795,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "21 intersecting triangle pairs (Moller test; 3697 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:spleen"
@@ -965,6 +992,7 @@
           "structure": "TCIA:003:label-10",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "4ae438cd05fd18ab69ed34265a551edc4f8a15d0e95253849c8b7488407d663f",
           "triangles": 1564,
           "degenerate_faces": 1,
           "zero_normals": 0,
@@ -972,8 +1000,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 9.405514144628416e-06,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "3 intersecting triangle pairs (Moller test; 494 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:thyroid_gland"
@@ -1063,6 +1093,7 @@
           "structure": "TCIA:003:label-11",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "0155953b5a571fef79237740bf9b1b73d04d032c44088f81ce60a97acff5c047",
           "triangles": 4966,
           "degenerate_faces": 2,
           "zero_normals": 0,
@@ -1070,8 +1101,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 5.619074851906701e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "11 intersecting triangle pairs (Moller test; 1250 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:inferior_vena_cava"
@@ -1161,6 +1194,7 @@
           "structure": "TCIA:003:label-12",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "8c9b45d99e117cb923e946eff18a55974a71ab17e62f77b970d38f5afd5ca572",
           "triangles": 76806,
           "degenerate_faces": 41,
           "zero_normals": 0,
@@ -1168,8 +1202,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.002727436067363975,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "105 intersecting triangle pairs (Moller test; 21937 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -1257,6 +1293,7 @@
           "structure": "TCIA:003:label-13",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "c19694629a777964fcd82ad35f58102f4086dbcbffc0f90eae8edb38398b3147",
           "triangles": 5494,
           "degenerate_faces": 1,
           "zero_normals": 0,
@@ -1264,8 +1301,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 4.46989747834879e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "6 intersecting triangle pairs (Moller test; 1363 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -1353,6 +1392,7 @@
           "structure": "TCIA:003:label-14",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "f45a6b9b18e706811d4d7b666ebaa2672d2080e57863c14fe8b4523bd369f4bc",
           "triangles": 6880,
           "degenerate_faces": 3,
           "zero_normals": 0,
@@ -1360,8 +1400,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 5.597654940604701e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "8 intersecting triangle pairs (Moller test; 2393 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -1449,6 +1491,7 @@
           "structure": "TCIA:003:label-15",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "1aaf225d1468b9c531bb356026bb8a261c8d492ed7fd34631a4bc8e09ad61ddc",
           "triangles": 41360,
           "degenerate_faces": 22,
           "zero_normals": 0,
@@ -1456,8 +1499,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0009561398409726938,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "62 intersecting triangle pairs (Moller test; 14614 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -1545,6 +1590,7 @@
           "structure": "TCIA:003:label-16",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "384d879630a4453ef61984197f2d582f361d8a4211d7e22272becfb28bf9d5dd",
           "triangles": 10954,
           "degenerate_faces": 5,
           "zero_normals": 0,
@@ -1552,8 +1598,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.00011207550739034929,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "10 intersecting triangle pairs (Moller test; 2369 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -1641,6 +1689,7 @@
           "structure": "TCIA:003:label-17",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "c25642610f7c6ec717f9310101f3991a3134182b800ded4afa3c172764df86eb",
           "triangles": 23682,
           "degenerate_faces": 8,
           "zero_normals": 0,
@@ -1648,8 +1697,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1,
           "signed_volume_m3": 0.00034704925994339465,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "41 intersecting triangle pairs (Moller test; 4649 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 3,
+          "outlier_components": 2
         },
         "alternatives": []
       }
@@ -1737,6 +1788,7 @@
           "structure": "TCIA:003:label-18",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "f5bf9ea7e440a52b8b95e601a7d74b99d0c7c1b2249c0f957561084670740796",
           "triangles": 10608,
           "degenerate_faces": 6,
           "zero_normals": 0,
@@ -1744,8 +1796,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 6.299209233942347e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "16 intersecting triangle pairs (Moller test; 2217 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 3,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -1833,6 +1887,7 @@
           "structure": "TCIA:003:label-19",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "e8317ce844ae396aa03ea398bfb05c6d6964dc6b2b81174e62bf41954c45aa09",
           "triangles": 11300,
           "degenerate_faces": 6,
           "zero_normals": 0,
@@ -1840,8 +1895,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 3,
           "signed_volume_m3": 0.00011337467122980376,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "16 intersecting triangle pairs (Moller test; 2932 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 3,
+          "outlier_components": 2
         },
         "alternatives": []
       }
@@ -1929,6 +1986,7 @@
           "structure": "TCIA:003:label-20",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "95ea533c3e4588724cfca479b1026bbc28e4fd8f8a32c30b9b2c374f9ac236d2",
           "triangles": 2852,
           "degenerate_faces": 3,
           "zero_normals": 0,
@@ -1936,8 +1994,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 3.3820845520372824e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "8 intersecting triangle pairs (Moller test; 570 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -2025,6 +2085,7 @@
           "structure": "TCIA:003:label-21",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "7f2f50aa1e8d90c74bdc74e7c64581742e1c6ed03203cb2ee1ab0cfcd2c61892",
           "triangles": 44100,
           "degenerate_faces": 33,
           "zero_normals": 0,
@@ -2032,8 +2093,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0006814582810089424,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "101 intersecting triangle pairs (Moller test; 11482 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -2121,6 +2184,7 @@
           "structure": "TCIA:003:label-22",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "08a3951b93ea2ea0539362caee7620e0fd98955a642db03c7fe110f3cbd2a18b",
           "triangles": 7398,
           "degenerate_faces": 2,
           "zero_normals": 0,
@@ -2128,8 +2192,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 3.613733350750319e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "6 intersecting triangle pairs (Moller test; 1657 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 10,
+          "outlier_components": 5
         },
         "alternatives": []
       }
@@ -2217,6 +2283,7 @@
           "structure": "TCIA:003:label-23",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "9c41edb9c46ce60577c97b92ecb21f92754cad8306e14914d67097c25b67625a",
           "triangles": 10072,
           "degenerate_faces": 1,
           "zero_normals": 0,
@@ -2224,8 +2291,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 8.881756357286084e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "11 intersecting triangle pairs (Moller test; 2644 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -2313,6 +2382,7 @@
           "structure": "TCIA:003:label-24",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "bf3080811092f28797f755e4f81ed859ce88ba9582b1d1543c59963f3219c183",
           "triangles": 69738,
           "degenerate_faces": 28,
           "zero_normals": 0,
@@ -2320,8 +2390,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 14,
           "signed_volume_m3": 0.0003404580907305651,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "92 intersecting triangle pairs (Moller test; 16512 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 49,
+          "outlier_components": 23
         },
         "alternatives": []
       }
@@ -2409,6 +2481,7 @@
           "structure": "TCIA:003:label-25",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "c513e11b8d16b99ca754b34ae9493cd0e22d4d4b8279554163b1228d43da269e",
           "triangles": 23140,
           "degenerate_faces": 13,
           "zero_normals": 0,
@@ -2416,8 +2489,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 5,
           "signed_volume_m3": 0.0001793506331267873,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "37 intersecting triangle pairs (Moller test; 4810 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 6,
+          "outlier_components": 3
         },
         "alternatives": []
       }
@@ -2505,6 +2580,7 @@
           "structure": "TCIA:003:label-26",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "bb4fa7ff5d3e4f3bc48dfaeea2b10301ed9e5e06f63976ad12a093f70d89bf18",
           "triangles": 74736,
           "degenerate_faces": 37,
           "zero_normals": 0,
@@ -2512,8 +2588,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 11,
           "signed_volume_m3": 0.0007789905443660378,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "143 intersecting triangle pairs (Moller test; 26390 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 3,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:skull"
@@ -2603,6 +2681,7 @@
           "structure": "TCIA:003:label-27",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "ef0ed81658b1d15b941654ee1f0082b92a4db74bf44742e60d0649429086ea6c",
           "triangles": 67936,
           "degenerate_faces": 31,
           "zero_normals": 0,
@@ -2610,8 +2689,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 7,
           "signed_volume_m3": 0.001089958609337828,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "80 intersecting triangle pairs (Moller test; 13554 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 5,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -2699,6 +2780,7 @@
           "structure": "TCIA:003:label-28",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "e41e2f387785bf9585572780845263dc0f5e2c9c8b915284739199267e1125ff",
           "triangles": 5206,
           "degenerate_faces": 3,
           "zero_normals": 0,
@@ -2706,8 +2788,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 5.371726997672278e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "20 intersecting triangle pairs (Moller test; 1612 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 1,
+          "outlier_components": 0
         },
         "alternatives": [
           "nlm-vhf-ct:NLMCT:VHF:sternum"
@@ -2797,6 +2881,7 @@
           "structure": "TCIA:003:label-29",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "7f96543629e1cc05d68c4bcab43aaf431e7e34d98a5702962171f2730d859415",
           "triangles": 16470,
           "degenerate_faces": 11,
           "zero_normals": 0,
@@ -2804,8 +2889,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0003243829797957226,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "23 intersecting triangle pairs (Moller test; 5485 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -2893,6 +2980,7 @@
           "structure": "TCIA:003:label-30",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "b34538b59ab0815b7f88ab4ac53be8b283850465b1ad0281b22f308ec10fd9d2",
           "triangles": 29002,
           "degenerate_faces": 10,
           "zero_normals": 0,
@@ -2900,8 +2988,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.000580993297138504,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "38 intersecting triangle pairs (Moller test; 10464 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -2989,6 +3079,7 @@
           "structure": "TCIA:003:label-31",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "7b589e2e7d825f9c29e8fb6eaf91e581ada3ee635b59b441f43beb83a9386ba4",
           "triangles": 4766,
           "degenerate_faces": 0,
           "zero_normals": 0,
@@ -2996,8 +3087,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 2.3524053912179446e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "4 intersecting triangle pairs (Moller test; 722 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 14,
+          "outlier_components": 10
         },
         "alternatives": []
       }
@@ -3085,6 +3178,7 @@
           "structure": "TCIA:003:label-32",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "5bbf8eb7a6d637efe82d2eb47c1771f3372a34751f0c10000784e94e7e8cc8e6",
           "triangles": 10082,
           "degenerate_faces": 3,
           "zero_normals": 0,
@@ -3092,8 +3186,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 8.95292041566977e-05,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "9 intersecting triangle pairs (Moller test; 1876 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }
@@ -3181,6 +3277,7 @@
           "structure": "TCIA:003:label-33",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "a4c9c91cd1f5a48332ecfad0adff2daaaa42132ea5fc78fd2b4ae292a7f03d82",
           "triangles": 123856,
           "degenerate_faces": 36,
           "zero_normals": 0,
@@ -3188,8 +3285,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 3939,
           "signed_volume_m3": 0.021526253645152333,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "594 intersecting triangle pairs (Moller test; 8835 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2563,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -3277,6 +3376,7 @@
           "structure": "TCIA:003:label-34",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "71be6b7ec8cbf4496372928cabf351ce34a49b064864b8411e13ee1af7a7c865",
           "triangles": 165180,
           "degenerate_faces": 47,
           "zero_normals": 0,
@@ -3284,8 +3384,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 4432,
           "signed_volume_m3": 0.038443230620495476,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "782 intersecting triangle pairs (Moller test; 15941 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2804,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -3373,6 +3475,7 @@
           "structure": "TCIA:003:label-35",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "0de660b0ab7b974bb4afc8ccf124503d05df8b2ba0568e597997536c7c4b0154",
           "triangles": 59586,
           "degenerate_faces": 23,
           "zero_normals": 0,
@@ -3380,8 +3483,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 1284,
           "signed_volume_m3": 0.006502561286317571,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "245 intersecting triangle pairs (Moller test; 5788 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 795,
+          "outlier_components": 0
         },
         "alternatives": []
       }
@@ -3469,6 +3574,7 @@
           "structure": "TCIA:003:label-36",
           "finite_vertices": true,
           "valid_indices": true,
+          "geometry_sha256": "b7f3c86f14cf756a459f6b84dd6024247a90e655d1250e0a84831db49b854fcb",
           "triangles": 14862,
           "degenerate_faces": 14,
           "zero_normals": 0,
@@ -3476,8 +3582,10 @@
           "boundary_edges": 0,
           "nonmanifold_edges": 0,
           "signed_volume_m3": 0.0002800491895398564,
-          "self_intersections": "not-assessed",
-          "anatomical_review": "pending"
+          "self_intersections": "30 intersecting triangle pairs (Moller test; 3672 coplanar candidates not resolved)",
+          "anatomical_review": "pending",
+          "connected_components": 2,
+          "outlier_components": 1
         },
         "alternatives": []
       }

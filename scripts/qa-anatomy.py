@@ -13,7 +13,12 @@ Checks
    than `OUTLIER_MM` or above the top of the largest component by more than `OUTLIER_MM`.
 3. Composite continuity: vertical gap between the HRA head structures and the CT skull/vertebrae in the
    canonical stage, and between the CT vertebral column and the Denver sacrum.
+
+Meshes whose geometry is byte-identical (`geometry_sha256`, or the qa-geometry fingerprint for older
+reports) to an entry already in generated/anatomy-qa.json are reused, not recomputed, unless
+`--recompute` is given. Entries of atlases not named on the command line are kept.
 """
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -24,7 +29,9 @@ from scipy.spatial import cKDTree
 ROOT = Path(__file__).resolve().parents[1]
 OUTLIER_MM = 60.0
 CONTINUITY_ONLY = '--continuity-only' in sys.argv
-atlases = [] if CONTINUITY_ONLY else (sys.argv[1:] or ['denver-vhf', 'tcia', 'nlm-vhf-ct', 'ct-consensus', 'hra-female', 'composed', 'bodyparts3d'])
+RECOMPUTE = '--recompute' in sys.argv
+FINGERPRINT = ('triangles', 'degenerate_faces', 'boundary_edges', 'nonmanifold_edges', 'signed_volume_m3')
+atlases = [] if CONTINUITY_ONLY else ([a for a in sys.argv[1:] if not a.startswith('--')] or ['denver-vhf', 'tcia', 'nlm-vhf-ct', 'ct-consensus', 'hra-female', 'composed', 'bodyparts3d'])
 
 
 def load(name):
@@ -130,27 +137,53 @@ def outliers(vertices, faces):
     return {'components': len(components), 'main_component_faces': len(main.faces), 'outlier_components': flagged}
 
 
-report = json.loads((ROOT / 'generated/anatomy-qa.json').read_text()) if CONTINUITY_ONLY else {'method': __doc__.strip(), 'outlier_threshold_mm': OUTLIER_MM, 'structures': []}
+anatomy_path = ROOT / 'generated/anatomy-qa.json'
+existing = json.loads(anatomy_path.read_text()) if anatomy_path.exists() else {'structures': []}
+existing_index = {(r['atlas'], r['structure']): r for r in existing['structures']}
+report = existing if CONTINUITY_ONLY else {'method': __doc__.strip(), 'outlier_threshold_mm': OUTLIER_MM,
+                                            'structures': [r for r in existing['structures'] if r['atlas'] not in atlases]}
 qa_path = ROOT / 'generated/qa-report.json'
 qa = json.loads(qa_path.read_text())
 qa_index = {(r['atlas'], r['structure']): r for r in qa['structures']}
+
+
+def reusable(name, part, digest):
+    """Previous measurement of byte-identical geometry: same sha256, or the qa-geometry fingerprint when the old entry predates the field."""
+    old = existing_index.get((name, part['id']))
+    if RECOMPUTE or old is None:
+        return None
+    if 'geometry_sha256' in old:
+        return old if old['geometry_sha256'] == digest else None
+    qa_row = qa_index.get((name, part['id']))
+    if qa_row is None or qa_row.get('self_intersections', 'not-assessed') == 'not-assessed' or old['triangles'] != qa_row['triangles']:
+        return None
+    # qa-geometry already matched this row against the previous report on the full fingerprint before carrying the value over.
+    return old if qa_row['self_intersections'].startswith(f"{old['self_intersecting_pairs']} intersecting") else None
+
+
 for name in atlases:
-    count = 0
+    count = reused = 0
     for part, vertices, faces in load(name):
-        hits, coplanar, candidates = self_intersections(vertices, faces)
-        outlier = outliers(vertices, faces)
-        entry = {'atlas': name, 'structure': part['id'], 'triangles': len(faces), 'self_intersecting_pairs': hits, 'coplanar_candidates': coplanar,
-                 'candidate_pairs_tested': candidates, **outlier}
+        digest = hashlib.sha256(vertices.astype(np.float32).tobytes() + faces.astype(np.uint32).tobytes()).hexdigest()
+        old = reusable(name, part, digest)
+        if old is not None:
+            entry = {**old, 'geometry_sha256': digest}
+            reused += 1
+        else:
+            hits, coplanar, candidates = self_intersections(vertices, faces)
+            outlier = outliers(vertices, faces)
+            entry = {'atlas': name, 'structure': part['id'], 'geometry_sha256': digest, 'triangles': len(faces), 'self_intersecting_pairs': hits,
+                     'coplanar_candidates': coplanar, 'candidate_pairs_tested': candidates, **outlier}
         report['structures'].append(entry)
         if (name, part['id']) in qa_index:
-            qa_index[(name, part['id'])]['self_intersections'] = f'{hits} intersecting triangle pairs (Moller test; {coplanar} coplanar candidates not resolved)'
-            qa_index[(name, part['id'])]['connected_components'] = outlier['components']
-            qa_index[(name, part['id'])]['outlier_components'] = len(outlier['outlier_components'])
+            qa_index[(name, part['id'])]['self_intersections'] = f"{entry['self_intersecting_pairs']} intersecting triangle pairs (Moller test; {entry['coplanar_candidates']} coplanar candidates not resolved)"
+            qa_index[(name, part['id'])]['connected_components'] = entry['components']
+            qa_index[(name, part['id'])]['outlier_components'] = len(entry['outlier_components'])
         count += 1
         if count % 100 == 0:
             print(f'{name}: {count} meshes', flush=True)
     rows = [r for r in report['structures'] if r['atlas'] == name]
-    print(f"{name}: {len(rows)} meshes, {sum(r['self_intersecting_pairs'] > 0 for r in rows)} with self-intersections, "
+    print(f"{name}: {len(rows)} meshes ({reused} reused from identical geometry), {sum(r['self_intersecting_pairs'] > 0 for r in rows)} with self-intersections, "
           f"{sum(bool(r['outlier_components']) for r in rows)} with outlier components", flush=True)
 
 # Composite continuity in the canonical stage (metres, +y superior).
@@ -162,7 +195,13 @@ def bounds_of(selector):
 head = bounds_of(lambda p: p['provenance']['source'] == 'hra-female' and p['provenance']['registration']['transform_id'] == 'hra-head-to-vhf')
 ct = lambda p: p['provenance']['source'] in ('nlm-vhf-ct', 'ct-consensus', 'tcia')
 skull = bounds_of(lambda p: ct(p) and p['provenance'].get('label_name', '').lower() == 'skull')
-spine = bounds_of(lambda p: ct(p) and (p['provenance'].get('label_name', '').startswith('vertebrae_') or p['provenance'].get('label_name') == 'Spine'))
+# Single-model CT sources name vertebrae by label (`vertebrae_L1`, TCIA `Spine`); the ct-consensus source names
+# instances `V01..V25` and carries `role: vertebra` instead, because the names are still an open question.
+is_vertebra = lambda p: p['provenance'].get('role') == 'vertebra' or p['provenance'].get('label_name', '').startswith('vertebrae_') or p['provenance'].get('label_name') == 'Spine'
+spine = bounds_of(lambda p: ct(p) and is_vertebra(p))
+vertebra_parts = sum(1 for p in parts if ct(p) and is_vertebra(p))
+if vertebra_parts == 0 and any(ct(p) for p in parts):
+    sys.exit('qa-anatomy: CT parts present but no vertebra matched the spine selector; refusing to write null spine measurements')
 sacrum = bounds_of(lambda p: p['provenance']['source'] == 'denver-vhf' and p['provenance'].get('source_label') == 'Sacrum')
 brain_like = bounds_of(lambda p: p['provenance']['source'] == 'hra-female' and p['id'].startswith('hra-female:Allen_'))
 continuity = {
@@ -170,6 +209,7 @@ continuity = {
     'hra_head_structures_bounds': head.tolist() if head is not None else None,
     'ct_skull_bounds': skull.tolist() if skull is not None else None,
     'ct_spine_bounds': spine.tolist() if spine is not None else None,
+    'ct_vertebra_parts': vertebra_parts,
     'denver_sacrum_bounds': sacrum.tolist() if sacrum is not None else None,
     'hra_brain_inside_ct_skull_box': bool(np.all(brain_like[0] >= skull[0] - 1e-3) and np.all(brain_like[1] <= skull[1] + 1e-3)) if brain_like is not None and skull is not None else None,
     'hra_head_bottom_minus_spine_top_mm': float((head[0][1] - spine[1][1]) * 1000) if head is not None and spine is not None else None,
@@ -178,8 +218,10 @@ continuity = {
     'interpretation': 'Bounding-box gaps only. A negative head-bottom minus spine-top value means the HRA head structures overlap the top of the CT spine vertically; it does not establish cervical continuity, which needs anatomical review.',
 }
 report['composite_continuity'] = continuity
-(ROOT / 'generated/anatomy-qa.json').write_text(json.dumps(report, indent=2) + '\n')
+anatomy_path.write_text(json.dumps(report, indent=2) + '\n')
 if not CONTINUITY_ONLY:
-    qa['self_intersections'] = 'measured per mesh (see structures[].self_intersections and generated/anatomy-qa.json)'
+    pending = sum(r['self_intersections'] == 'not-assessed' for r in qa['structures'])
+    qa['self_intersections'] = ('measured per mesh (see structures[].self_intersections and generated/anatomy-qa.json)' if pending == 0
+                                else f'measured for {len(qa["structures"]) - pending} of {len(qa["structures"])} meshes; {pending} not-assessed (run qa-anatomy.py without atlas arguments)')
     qa_path.write_text(json.dumps(qa, indent=2) + '\n')
 print(json.dumps(continuity, indent=1))
