@@ -1,0 +1,4711 @@
+{
+ "summary": {
+  "bands": {
+   "feet_start": {
+    "k_range": [
+     7,
+     39
+    ],
+    "description": "start of the feet-knee block",
+    "measured": 16,
+    "interior_slices": 16,
+    "baseline_non_tissue": {
+     "median": 0.0,
+     "mad": 0.01,
+     "threshold": 0.1
+    },
+    "flagged_k": [],
+    "profile": [
+     {
+      "k": 24,
+      "nlm": "avf2724c.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 25,
+      "nlm": "avf2724b.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 26,
+      "nlm": "avf2724a.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 27,
+      "nlm": "avf2723c.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 28,
+      "nlm": "avf2723b.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 29,
+      "nlm": "avf2723a.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 30,
+      "nlm": "avf2722c.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 31,
+      "nlm": "avf2722b.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 32,
+      "nlm": "avf2722a.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 33,
+      "nlm": "avf2721c.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 34,
+      "nlm": "avf2721b.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 35,
+      "nlm": "avf2721a.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 36,
+      "nlm": "avf2720c.raw.Z",
+      "non_tissue": 0.0,
+      "block": 0.0,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 37,
+      "nlm": "avf2720b.raw.Z",
+      "non_tissue": 0.0031,
+      "block": 0.0031,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 38,
+      "nlm": "avf2720a.raw.Z",
+      "non_tissue": 0.0046,
+      "block": 0.0046,
+      "dark": 0.0,
+      "frost": 0.0
+     },
+     {
+      "k": 39,
+      "nlm": "avf2719c.raw.Z",
+      "non_tissue": 0.0056,
+      "block": 0.0056,
+      "dark": 0.0,
+      "frost": 0.0
+     }
+    ]
+   },
+   "knee_boundary": {
+    "k_range": [
+     1170,
+     1249
+    ],
+    "description": "feet-knee block end (k 1207) and knee-thigh block start (k 1210)",
+    "measured": 78,
+    "interior_slices": 58,
+    "baseline_non_tissue": {
+     "median": 0.0203,
+     "mad": 0.0066,
+     "threshold": 0.1203
+    },
+    "flagged_k": [
+     1205,
+     1206,
+     1207,
+     1210,
+     1211
+    ],
+    "profile": [
+     {
+      "k": 1170,
+      "nlm": "avf2342c.raw.Z",
+      "non_tissue": 0.0072,
+      "block": 0.0,
+      "dark": 0.0072,
+      "frost": 0.0
+     },
+     {
+      "k": 1171,
+      "nlm": "avf2342b.raw.Z",
+      "non_tissue": 0.0088,
+      "block": 0.0,
+      "dark": 0.0088,
+      "frost": 0.0
+     },
+     {
+      "k": 1172,
+      "nlm": "avf2342a.raw.Z",
+      "non_tissue": 0.0119,
+      "block": 0.0,
+      "dark": 0.0119,
+      "frost": 0.0
+     },
+     {
+      "k": 1173,
+      "nlm": "avf2341c.raw.Z",
+      "non_tissue": 0.0102,
+      "block": 0.0,
+      "dark": 0.0102,
+      "frost": 0.0
+     },
+     {
+      "k": 1174,
+      "nlm": "avf2341b.raw.Z",
+      "non_tissue": 0.0128,
+      "block": 0.0,
+      "dark": 0.0128,
+      "frost": 0.0
+     },
+     {
+      "k": 1175,
+      "nlm": "avf2341a.raw.Z",
+      "non_tissue": 0.02,
+      "block": 0.0,
+      "dark": 0.02,
+      "frost": 0.0
+     },
+     {
+      "k": 1176,
+      "nlm": "avf2340c.raw.Z",
+      "non_tissue": 0.0117,
+      "block": 0.0,
+      "dark": 0.0117,
+      "frost": 0.0
+     },
+     {
+      "k": 1177,
+      "nlm": "avf2340b.raw.Z",
+      "non_tissue": 0.0177,
+      "block": 0.0,
+      "dark": 0.0177,
+      "frost": 0.0
+     },
+     {
+      "k": 1178,
+      "nlm": "avf2340a.raw.Z",
+      "non_tissue": 0.0081,
+      "block": 0.0,
+      "dark": 0.0081,
+      "frost": 0.0
+     },
+     {
+      "k": 1179,
+      "nlm": "avf2339c.raw.Z",
+      "non_tissue": 0.0098,
+      "block": 0.0,
+      "dark": 0.0098,
+      "frost": 0.0
+     },
+     {
+      "k": 1180,
+      "nlm": "avf2339b.raw.Z",
+      "non_tissue": 0.0104,
+      "block": 0.0,
+      "dark": 0.0104,
+      "frost": 0.0
+     },
+     {
+      "k": 1181,
+      "nlm": "avf2339a.raw.Z",
+      "non_tissue": 0.0103,
+      "block": 0.0,
+      "dark": 0.0103,
+      "frost": 0.0
+     },
+     {
+      "k": 1182,
+      "nlm": "avf2338c.raw.Z",
+      "non_tissue": 0.0136,
+      "block": 0.0,
+      "dark": 0.0136,
+      "frost": 0.0
+     },
+     {
+      "k": 1183,
+      "nlm": "avf2338b.raw.Z",
+      "non_tissue": 0.0134,
+      "block": 0.0,
+      "dark": 0.0134,
+      "frost": 0.0
+     },
+     {
+      "k": 1184,
+      "nlm": "avf2338a.raw.Z",
+      "non_tissue": 0.0155,
+      "block": 0.0,
+      "dark": 0.0155,
+      "frost": 0.0
+     },
+     {
+      "k": 1185,
+      "nlm": "avf2337c.raw.Z",
+      "non_tissue": 0.0134,
+      "block": 0.0,
+      "dark": 0.0134,
+      "frost": 0.0
+     },
+     {
+      "k": 1186,
+      "nlm": "avf2337b.raw.Z",
+      "non_tissue": 0.0134,
+      "block": 0.0,
+      "dark": 0.0134,
+      "frost": 0.0
+     },
+     {
+      "k": 1187,
+      "nlm": "avf2337a.raw.Z",
+      "non_tissue": 0.0158,
+      "block": 0.0,
+      "dark": 0.0158,
+      "frost": 0.0
+     },
+     {
+      "k": 1188,
+      "nlm": "avf2336c.raw.Z",
+      "non_tissue": 0.0163,
+      "block": 0.0,
+      "dark": 0.0163,
+      "frost": 0.0
+     },
+     {
+      "k": 1189,
+      "nlm": "avf2336b.raw.Z",
+      "non_tissue": 0.0185,
+      "block": 0.0,
+      "dark": 0.0185,
+      "frost": 0.0
+     },
+     {
+      "k": 1190,
+      "nlm": "avf2336a.raw.Z",
+      "non_tissue": 0.0236,
+      "block": 0.0,
+      "dark": 0.0236,
+      "frost": 0.0
+     },
+     {
+      "k": 1191,
+      "nlm": "avf2335c.raw.Z",
+      "non_tissue": 0.0197,
+      "block": 0.0,
+      "dark": 0.0197,
+      "frost": 0.0
+     },
+     {
+      "k": 1192,
+      "nlm": "avf2335b.raw.Z",
+      "non_tissue": 0.0247,
+      "block": 0.0,
+      "dark": 0.0247,
+      "frost": 0.0
+     },
+     {
+      "k": 1193,
+      "nlm": "avf2335a.raw.Z",
+      "non_tissue": 0.0229,
+      "block": 0.0,
+      "dark": 0.0229,
+      "frost": 0.0
+     },
+     {
+      "k": 1194,
+      "nlm": "avf2334c.raw.Z",
+      "non_tissue": 0.0221,
+      "block": 0.0,
+      "dark": 0.0221,
+      "frost": 0.0
+     },
+     {
+      "k": 1195,
+      "nlm": "avf2334b.raw.Z",
+      "non_tissue": 0.0469,
+      "block": 0.0,
+      "dark": 0.0469,
+      "frost": 0.0
+     },
+     {
+      "k": 1196,
+      "nlm": "avf2334a.raw.Z",
+      "non_tissue": 0.0169,
+      "block": 0.0,
+      "dark": 0.0169,
+      "frost": 0.0
+     },
+     {
+      "k": 1197,
+      "nlm": "avf2333c.raw.Z",
+      "non_tissue": 0.0247,
+      "block": 0.0006,
+      "dark": 0.0241,
+      "frost": 0.0
+     },
+     {
+      "k": 1198,
+      "nlm": "avf2333b.raw.Z",
+      "non_tissue": 0.029,
+      "block": 0.0022,
+      "dark": 0.0268,
+      "frost": 0.0
+     },
+     {
+      "k": 1199,
+      "nlm": "avf2333a.raw.Z",
+      "non_tissue": 0.0602,
+      "block": 0.0053,
+      "dark": 0.0549,
+      "frost": 0.0
+     },
+     {
+      "k": 1200,
+      "nlm": "avf2332c.raw.Z",
+      "non_tissue": 0.0641,
+      "block": 0.0091,
+      "dark": 0.0547,
+      "frost": 0.0004
+     },
+     {
+      "k": 1201,
+      "nlm": "avf2332b.raw.Z",
+      "non_tissue": 0.1177,
+      "block": 0.0162,
+      "dark": 0.1003,
+      "frost": 0.0018
+     },
+     {
+      "k": 1202,
+      "nlm": "avf2332a.raw.Z",
+      "non_tissue": 0.1131,
+      "block": 0.0269,
+      "dark": 0.0841,
+      "frost": 0.0029
+     },
+     {
+      "k": 1203,
+      "nlm": "avf2331c.raw.Z",
+      "non_tissue": 0.1055,
+      "block": 0.0363,
+      "dark": 0.0654,
+      "frost": 0.0046
+     },
+     {
+      "k": 1204,
+      "nlm": "avf2331b.raw.Z",
+      "non_tissue": 0.1038,
+      "block": 0.0482,
+      "dark": 0.0313,
+      "frost": 0.0263
+     },
+     {
+      "k": 1205,
+      "nlm": "avf2331a.raw.Z",
+      "non_tissue": 0.1794,
+      "block": 0.0788,
+      "dark": 0.0075,
+      "frost": 0.1024
+     },
+     {
+      "k": 1206,
+      "nlm": "avf2330c.raw.Z",
+      "non_tissue": 0.3492,
+      "block": 0.1179,
+      "dark": 0.0009,
+      "frost": 0.2491
+     },
+     {
+      "k": 1207,
+      "nlm": "avf2330b.raw.Z",
+      "non_tissue": 0.4923,
+      "block": 0.1246,
+      "dark": 0.0001,
+      "frost": 0.394
+     },
+     {
+      "k": 1210,
+      "nlm": "avf2328b.raw.Z",
+      "non_tissue": 0.4913,
+      "block": 0.3801,
+      "dark": 0.1296,
+      "frost": 0.0
+     },
+     {
+      "k": 1211,
+      "nlm": "avf2328a.raw.Z",
+      "non_tissue": 0.219,
+      "block": 0.1786,
+      "dark": 0.0537,
+      "frost": 0.0001
+     },
+     {
+      "k": 1212,
+      "nlm": "avf2327c.raw.Z",
+      "non_tissue": 0.0145,
+      "block": 0.0018,
+      "dark": 0.0143,
+      "frost": 0.0
+     },
+     {
+      "k": 1213,
+      "nlm": "avf2327b.raw.Z",
+      "non_tissue": 0.0057,
+      "block": 0.0,
+      "dark": 0.0057,
+      "frost": 0.0
+     },
+     {
+      "k": 1214,
+      "nlm": "avf2327a.raw.Z",
+      "non_tissue": 0.0038,
+      "block": 0.0,
+      "dark": 0.0038,
+      "frost": 0.0
+     },
+     {
+      "k": 1215,
+      "nlm": "avf2326c.raw.Z",
+      "non_tissue": 0.0058,
+      "block": 0.0,
+      "dark": 0.0058,
+      "frost": 0.0
+     },
+     {
+      "k": 1216,
+      "nlm": "avf2326b.raw.Z",
+      "non_tissue": 0.0066,
+      "block": 0.0,
+      "dark": 0.0066,
+      "frost": 0.0
+     },
+     {
+      "k": 1217,
+      "nlm": "avf2326a.raw.Z",
+      "non_tissue": 0.0116,
+      "block": 0.0,
+      "dark": 0.0116,
+      "frost": 0.0
+     },
+     {
+      "k": 1218,
+      "nlm": "avf2325c.raw.Z",
+      "non_tissue": 0.0138,
+      "block": 0.0,
+      "dark": 0.0138,
+      "frost": 0.0
+     },
+     {
+      "k": 1219,
+      "nlm": "avf2325b.raw.Z",
+      "non_tissue": 0.0186,
+      "block": 0.0,
+      "dark": 0.0186,
+      "frost": 0.0
+     },
+     {
+      "k": 1220,
+      "nlm": "avf2325a.raw.Z",
+      "non_tissue": 0.0235,
+      "block": 0.0,
+      "dark": 0.0235,
+      "frost": 0.0
+     },
+     {
+      "k": 1221,
+      "nlm": "avf2324c.raw.Z",
+      "non_tissue": 0.0195,
+      "block": 0.0,
+      "dark": 0.0195,
+      "frost": 0.0
+     },
+     {
+      "k": 1222,
+      "nlm": "avf2324b.raw.Z",
+      "non_tissue": 0.0254,
+      "block": 0.0,
+      "dark": 0.0254,
+      "frost": 0.0
+     },
+     {
+      "k": 1223,
+      "nlm": "avf2324a.raw.Z",
+      "non_tissue": 0.0287,
+      "block": 0.0,
+      "dark": 0.0287,
+      "frost": 0.0
+     },
+     {
+      "k": 1224,
+      "nlm": "avf2323c.raw.Z",
+      "non_tissue": 0.0205,
+      "block": 0.0,
+      "dark": 0.0205,
+      "frost": 0.0
+     },
+     {
+      "k": 1225,
+      "nlm": "avf2323b.raw.Z",
+      "non_tissue": 0.0268,
+      "block": 0.0,
+      "dark": 0.0268,
+      "frost": 0.0
+     },
+     {
+      "k": 1226,
+      "nlm": "avf2323a.raw.Z",
+      "non_tissue": 0.0245,
+      "block": 0.0,
+      "dark": 0.0245,
+      "frost": 0.0
+     },
+     {
+      "k": 1227,
+      "nlm": "avf2322c.raw.Z",
+      "non_tissue": 0.0183,
+      "block": 0.0,
+      "dark": 0.0183,
+      "frost": 0.0
+     },
+     {
+      "k": 1228,
+      "nlm": "avf2322b.raw.Z",
+      "non_tissue": 0.0155,
+      "block": 0.0,
+      "dark": 0.0155,
+      "frost": 0.0
+     },
+     {
+      "k": 1229,
+      "nlm": "avf2322a.raw.Z",
+      "non_tissue": 0.0123,
+      "block": 0.0,
+      "dark": 0.0123,
+      "frost": 0.0
+     },
+     {
+      "k": 1230,
+      "nlm": "avf2321c.raw.Z",
+      "non_tissue": 0.0342,
+      "block": 0.0,
+      "dark": 0.0342,
+      "frost": 0.0
+     },
+     {
+      "k": 1231,
+      "nlm": "avf2321b.raw.Z",
+      "non_tissue": 0.0431,
+      "block": 0.0,
+      "dark": 0.0431,
+      "frost": 0.0
+     },
+     {
+      "k": 1232,
+      "nlm": "avf2321a.raw.Z",
+      "non_tissue": 0.0307,
+      "block": 0.0,
+      "dark": 0.0307,
+      "frost": 0.0
+     },
+     {
+      "k": 1233,
+      "nlm": "avf2320c.raw.Z",
+      "non_tissue": 0.0397,
+      "block": 0.0,
+      "dark": 0.0397,
+      "frost": 0.0
+     },
+     {
+      "k": 1234,
+      "nlm": "avf2320b.raw.Z",
+      "non_tissue": 0.041,
+      "block": 0.0,
+      "dark": 0.041,
+      "frost": 0.0
+     },
+     {
+      "k": 1235,
+      "nlm": "avf2320a.raw.Z",
+      "non_tissue": 0.039,
+      "block": 0.0,
+      "dark": 0.039,
+      "frost": 0.0
+     },
+     {
+      "k": 1236,
+      "nlm": "avf2319c.raw.Z",
+      "non_tissue": 0.0387,
+      "block": 0.0,
+      "dark": 0.0387,
+      "frost": 0.0
+     },
+     {
+      "k": 1237,
+      "nlm": "avf2319b.raw.Z",
+      "non_tissue": 0.0365,
+      "block": 0.0,
+      "dark": 0.0365,
+      "frost": 0.0
+     },
+     {
+      "k": 1238,
+      "nlm": "avf2319a.raw.Z",
+      "non_tissue": 0.0297,
+      "block": 0.0,
+      "dark": 0.0297,
+      "frost": 0.0
+     },
+     {
+      "k": 1239,
+      "nlm": "avf2318c.raw.Z",
+      "non_tissue": 0.0294,
+      "block": 0.0,
+      "dark": 0.0294,
+      "frost": 0.0
+     },
+     {
+      "k": 1240,
+      "nlm": "avf2318b.raw.Z",
+      "non_tissue": 0.0232,
+      "block": 0.0,
+      "dark": 0.0232,
+      "frost": 0.0
+     },
+     {
+      "k": 1241,
+      "nlm": "avf2318a.raw.Z",
+      "non_tissue": 0.0316,
+      "block": 0.0,
+      "dark": 0.0316,
+      "frost": 0.0
+     },
+     {
+      "k": 1242,
+      "nlm": "avf2317c.raw.Z",
+      "non_tissue": 0.0238,
+      "block": 0.0,
+      "dark": 0.0238,
+      "frost": 0.0
+     },
+     {
+      "k": 1243,
+      "nlm": "avf2317b.raw.Z",
+      "non_tissue": 0.0216,
+      "block": 0.0,
+      "dark": 0.0216,
+      "frost": 0.0
+     },
+     {
+      "k": 1244,
+      "nlm": "avf2317a.raw.Z",
+      "non_tissue": 0.0228,
+      "block": 0.0,
+      "dark": 0.0228,
+      "frost": 0.0
+     },
+     {
+      "k": 1245,
+      "nlm": "avf2316c.raw.Z",
+      "non_tissue": 0.0206,
+      "block": 0.0,
+      "dark": 0.0206,
+      "frost": 0.0
+     },
+     {
+      "k": 1246,
+      "nlm": "avf2316b.raw.Z",
+      "non_tissue": 0.0215,
+      "block": 0.0,
+      "dark": 0.0215,
+      "frost": 0.0
+     },
+     {
+      "k": 1247,
+      "nlm": "avf2316a.raw.Z",
+      "non_tissue": 0.0183,
+      "block": 0.0,
+      "dark": 0.0183,
+      "frost": 0.0
+     },
+     {
+      "k": 1248,
+      "nlm": "avf2315c.raw.Z",
+      "non_tissue": 0.0176,
+      "block": 0.0,
+      "dark": 0.0176,
+      "frost": 0.0
+     },
+     {
+      "k": 1249,
+      "nlm": "avf2315b.raw.Z",
+      "non_tissue": 0.0136,
+      "block": 0.0,
+      "dark": 0.0136,
+      "frost": 0.0
+     }
+    ]
+   },
+   "thigh_boundary": {
+    "k_range": [
+     2225,
+     2259
+    ],
+    "description": "knee-thigh block end",
+    "measured": 35,
+    "interior_slices": 25,
+    "baseline_non_tissue": {
+     "median": 0.1717,
+     "mad": 0.0092,
+     "threshold": 0.2717
+    },
+    "flagged_k": [
+     2256,
+     2257,
+     2258,
+     2259
+    ],
+    "profile": [
+     {
+      "k": 2225,
+      "nlm": "avf1990a.raw.Z",
+      "non_tissue": 0.1825,
+      "block": 0.0,
+      "dark": 0.1825,
+      "frost": 0.0
+     },
+     {
+      "k": 2226,
+      "nlm": "avf1989c.raw.Z",
+      "non_tissue": 0.2024,
+      "block": 0.0,
+      "dark": 0.2024,
+      "frost": 0.0
+     },
+     {
+      "k": 2227,
+      "nlm": "avf1989b.raw.Z",
+      "non_tissue": 0.1947,
+      "block": 0.0,
+      "dark": 0.1947,
+      "frost": 0.0
+     },
+     {
+      "k": 2228,
+      "nlm": "avf1989a.raw.Z",
+      "non_tissue": 0.1809,
+      "block": 0.0,
+      "dark": 0.1809,
+      "frost": 0.0
+     },
+     {
+      "k": 2229,
+      "nlm": "avf1988c.raw.Z",
+      "non_tissue": 0.2034,
+      "block": 0.0,
+      "dark": 0.2034,
+      "frost": 0.0
+     },
+     {
+      "k": 2230,
+      "nlm": "avf1988b.raw.Z",
+      "non_tissue": 0.1778,
+      "block": 0.0,
+      "dark": 0.1778,
+      "frost": 0.0
+     },
+     {
+      "k": 2231,
+      "nlm": "avf1988a.raw.Z",
+      "non_tissue": 0.1734,
+      "block": 0.0,
+      "dark": 0.1734,
+      "frost": 0.0
+     },
+     {
+      "k": 2232,
+      "nlm": "avf1987c.raw.Z",
+      "non_tissue": 0.179,
+      "block": 0.0,
+      "dark": 0.179,
+      "frost": 0.0
+     },
+     {
+      "k": 2233,
+      "nlm": "avf1987b.raw.Z",
+      "non_tissue": 0.1782,
+      "block": 0.0,
+      "dark": 0.1782,
+      "frost": 0.0
+     },
+     {
+      "k": 2234,
+      "nlm": "avf1987a.raw.Z",
+      "non_tissue": 0.1888,
+      "block": 0.0,
+      "dark": 0.1888,
+      "frost": 0.0
+     },
+     {
+      "k": 2235,
+      "nlm": "avf1986c.raw.Z",
+      "non_tissue": 0.2228,
+      "block": 0.0,
+      "dark": 0.2228,
+      "frost": 0.0
+     },
+     {
+      "k": 2236,
+      "nlm": "avf1986b.raw.Z",
+      "non_tissue": 0.1556,
+      "block": 0.0,
+      "dark": 0.1556,
+      "frost": 0.0
+     },
+     {
+      "k": 2237,
+      "nlm": "avf1986a.raw.Z",
+      "non_tissue": 0.1696,
+      "block": 0.0,
+      "dark": 0.1696,
+      "frost": 0.0
+     },
+     {
+      "k": 2238,
+      "nlm": "avf1985c.raw.Z",
+      "non_tissue": 0.1568,
+      "block": 0.0,
+      "dark": 0.1568,
+      "frost": 0.0
+     },
+     {
+      "k": 2239,
+      "nlm": "avf1985b.raw.Z",
+      "non_tissue": 0.1717,
+      "block": 0.0,
+      "dark": 0.1717,
+      "frost": 0.0
+     },
+     {
+      "k": 2240,
+      "nlm": "avf1985a.raw.Z",
+      "non_tissue": 0.1676,
+      "block": 0.0,
+      "dark": 0.1676,
+      "frost": 0.0
+     },
+     {
+      "k": 2241,
+      "nlm": "avf1984c.raw.Z",
+      "non_tissue": 0.1699,
+      "block": 0.0,
+      "dark": 0.1699,
+      "frost": 0.0
+     },
+     {
+      "k": 2242,
+      "nlm": "avf1984b.raw.Z",
+      "non_tissue": 0.1934,
+      "block": 0.0,
+      "dark": 0.1934,
+      "frost": 0.0
+     },
+     {
+      "k": 2243,
+      "nlm": "avf1984a.raw.Z",
+      "non_tissue": 0.1632,
+      "block": 0.0,
+      "dark": 0.1632,
+      "frost": 0.0
+     },
+     {
+      "k": 2244,
+      "nlm": "avf1983c.raw.Z",
+      "non_tissue": 0.1621,
+      "block": 0.0,
+      "dark": 0.1621,
+      "frost": 0.0
+     },
+     {
+      "k": 2245,
+      "nlm": "avf1983b.raw.Z",
+      "non_tissue": 0.168,
+      "block": 0.0,
+      "dark": 0.168,
+      "frost": 0.0
+     },
+     {
+      "k": 2246,
+      "nlm": "avf1983a.raw.Z",
+      "non_tissue": 0.16,
+      "block": 0.0,
+      "dark": 0.16,
+      "frost": 0.0
+     },
+     {
+      "k": 2247,
+      "nlm": "avf1982c.raw.Z",
+      "non_tissue": 0.1557,
+      "block": 0.0,
+      "dark": 0.1557,
+      "frost": 0.0
+     },
+     {
+      "k": 2248,
+      "nlm": "avf1982b.raw.Z",
+      "non_tissue": 0.1628,
+      "block": 0.0,
+      "dark": 0.1628,
+      "frost": 0.0
+     },
+     {
+      "k": 2249,
+      "nlm": "avf1982a.raw.Z",
+      "non_tissue": 0.1641,
+      "block": 0.0,
+      "dark": 0.1641,
+      "frost": 0.0
+     },
+     {
+      "k": 2250,
+      "nlm": "avf1981c.raw.Z",
+      "non_tissue": 0.1682,
+      "block": 0.0,
+      "dark": 0.1682,
+      "frost": 0.0
+     },
+     {
+      "k": 2251,
+      "nlm": "avf1981b.raw.Z",
+      "non_tissue": 0.1785,
+      "block": 0.0,
+      "dark": 0.1785,
+      "frost": 0.0
+     },
+     {
+      "k": 2252,
+      "nlm": "avf1981a.raw.Z",
+      "non_tissue": 0.1754,
+      "block": 0.0,
+      "dark": 0.1754,
+      "frost": 0.0
+     },
+     {
+      "k": 2253,
+      "nlm": "avf1980c.raw.Z",
+      "non_tissue": 0.1193,
+      "block": 0.0002,
+      "dark": 0.1179,
+      "frost": 0.0014
+     },
+     {
+      "k": 2254,
+      "nlm": "avf1980b.raw.Z",
+      "non_tissue": 0.1289,
+      "block": 0.0007,
+      "dark": 0.0847,
+      "frost": 0.0439
+     },
+     {
+      "k": 2255,
+      "nlm": "avf1980a.raw.Z",
+      "non_tissue": 0.2454,
+      "block": 0.0022,
+      "dark": 0.1024,
+      "frost": 0.1427
+     },
+     {
+      "k": 2256,
+      "nlm": "avf1979c.raw.Z",
+      "non_tissue": 0.3739,
+      "block": 0.0045,
+      "dark": 0.1102,
+      "frost": 0.2631
+     },
+     {
+      "k": 2257,
+      "nlm": "avf1979b.raw.Z",
+      "non_tissue": 0.4664,
+      "block": 0.0118,
+      "dark": 0.1058,
+      "frost": 0.3593
+     },
+     {
+      "k": 2258,
+      "nlm": "avf1979a.raw.Z",
+      "non_tissue": 0.534,
+      "block": 0.0267,
+      "dark": 0.0826,
+      "frost": 0.4488
+     },
+     {
+      "k": 2259,
+      "nlm": "avf1978c.raw.Z",
+      "non_tissue": 0.5939,
+      "block": 0.0491,
+      "dark": 0.0148,
+      "frost": 0.5735
+     }
+    ]
+   },
+   "pelvis_start": {
+    "k_range": [
+     2285,
+     2329
+    ],
+    "description": "mid-thigh-pelvis block start",
+    "measured": 45,
+    "interior_slices": 35,
+    "baseline_non_tissue": {
+     "median": 0.1228,
+     "mad": 0.0216,
+     "threshold": 0.2228
+    },
+    "flagged_k": [
+     2326,
+     2327
+    ],
+    "profile": [
+     {
+      "k": 2285,
+      "nlm": "avf1970a.raw.Z",
+      "non_tissue": 0.1124,
+      "block": 0.0,
+      "dark": 0.1124,
+      "frost": 0.0
+     },
+     {
+      "k": 2286,
+      "nlm": "avf1969c.raw.Z",
+      "non_tissue": 0.096,
+      "block": 0.0,
+      "dark": 0.096,
+      "frost": 0.0
+     },
+     {
+      "k": 2287,
+      "nlm": "avf1969b.raw.Z",
+      "non_tissue": 0.1087,
+      "block": 0.0,
+      "dark": 0.1087,
+      "frost": 0.0
+     },
+     {
+      "k": 2288,
+      "nlm": "avf1969a.raw.Z",
+      "non_tissue": 0.1422,
+      "block": 0.0,
+      "dark": 0.1422,
+      "frost": 0.0
+     },
+     {
+      "k": 2289,
+      "nlm": "avf1968c.raw.Z",
+      "non_tissue": 0.1247,
+      "block": 0.0,
+      "dark": 0.1247,
+      "frost": 0.0
+     },
+     {
+      "k": 2290,
+      "nlm": "avf1968b.raw.Z",
+      "non_tissue": 0.0806,
+      "block": 0.0,
+      "dark": 0.0806,
+      "frost": 0.0
+     },
+     {
+      "k": 2291,
+      "nlm": "avf1968a.raw.Z",
+      "non_tissue": 0.1123,
+      "block": 0.0,
+      "dark": 0.1123,
+      "frost": 0.0
+     },
+     {
+      "k": 2292,
+      "nlm": "avf1967c.raw.Z",
+      "non_tissue": 0.1474,
+      "block": 0.0,
+      "dark": 0.1474,
+      "frost": 0.0
+     },
+     {
+      "k": 2293,
+      "nlm": "avf1967b.raw.Z",
+      "non_tissue": 0.0833,
+      "block": 0.0,
+      "dark": 0.0833,
+      "frost": 0.0
+     },
+     {
+      "k": 2294,
+      "nlm": "avf1967a.raw.Z",
+      "non_tissue": 0.091,
+      "block": 0.0,
+      "dark": 0.091,
+      "frost": 0.0
+     },
+     {
+      "k": 2295,
+      "nlm": "avf1966c.raw.Z",
+      "non_tissue": 0.0838,
+      "block": 0.0,
+      "dark": 0.0838,
+      "frost": 0.0
+     },
+     {
+      "k": 2296,
+      "nlm": "avf1966b.raw.Z",
+      "non_tissue": 0.0956,
+      "block": 0.0,
+      "dark": 0.0956,
+      "frost": 0.0
+     },
+     {
+      "k": 2297,
+      "nlm": "avf1966a.raw.Z",
+      "non_tissue": 0.0798,
+      "block": 0.0,
+      "dark": 0.0798,
+      "frost": 0.0
+     },
+     {
+      "k": 2298,
+      "nlm": "avf1965c.raw.Z",
+      "non_tissue": 0.1084,
+      "block": 0.0,
+      "dark": 0.1084,
+      "frost": 0.0
+     },
+     {
+      "k": 2299,
+      "nlm": "avf1965b.raw.Z",
+      "non_tissue": 0.1031,
+      "block": 0.0,
+      "dark": 0.1031,
+      "frost": 0.0
+     },
+     {
+      "k": 2300,
+      "nlm": "avf1965a.raw.Z",
+      "non_tissue": 0.0928,
+      "block": 0.0,
+      "dark": 0.0928,
+      "frost": 0.0
+     },
+     {
+      "k": 2301,
+      "nlm": "avf1964c.raw.Z",
+      "non_tissue": 0.1066,
+      "block": 0.0,
+      "dark": 0.1066,
+      "frost": 0.0
+     },
+     {
+      "k": 2302,
+      "nlm": "avf1964b.raw.Z",
+      "non_tissue": 0.1077,
+      "block": 0.0,
+      "dark": 0.1077,
+      "frost": 0.0
+     },
+     {
+      "k": 2303,
+      "nlm": "avf1964a.raw.Z",
+      "non_tissue": 0.1106,
+      "block": 0.0,
+      "dark": 0.1106,
+      "frost": 0.0
+     },
+     {
+      "k": 2304,
+      "nlm": "avf1963c.raw.Z",
+      "non_tissue": 0.1012,
+      "block": 0.0,
+      "dark": 0.1012,
+      "frost": 0.0
+     },
+     {
+      "k": 2305,
+      "nlm": "avf1963b.raw.Z",
+      "non_tissue": 0.1282,
+      "block": 0.0,
+      "dark": 0.1282,
+      "frost": 0.0
+     },
+     {
+      "k": 2306,
+      "nlm": "avf1963a.raw.Z",
+      "non_tissue": 0.1285,
+      "block": 0.0,
+      "dark": 0.1285,
+      "frost": 0.0
+     },
+     {
+      "k": 2307,
+      "nlm": "avf1962c.raw.Z",
+      "non_tissue": 0.1046,
+      "block": 0.0,
+      "dark": 0.1046,
+      "frost": 0.0
+     },
+     {
+      "k": 2308,
+      "nlm": "avf1962b.raw.Z",
+      "non_tissue": 0.1161,
+      "block": 0.0,
+      "dark": 0.1161,
+      "frost": 0.0
+     },
+     {
+      "k": 2309,
+      "nlm": "avf1962a.raw.Z",
+      "non_tissue": 0.1183,
+      "block": 0.0,
+      "dark": 0.1183,
+      "frost": 0.0
+     },
+     {
+      "k": 2310,
+      "nlm": "avf1961c.raw.Z",
+      "non_tissue": 0.1228,
+      "block": 0.0,
+      "dark": 0.1228,
+      "frost": 0.0
+     },
+     {
+      "k": 2311,
+      "nlm": "avf1961b.raw.Z",
+      "non_tissue": 0.1158,
+      "block": 0.0,
+      "dark": 0.1158,
+      "frost": 0.0
+     },
+     {
+      "k": 2312,
+      "nlm": "avf1961a.raw.Z",
+      "non_tissue": 0.1154,
+      "block": 0.0,
+      "dark": 0.1154,
+      "frost": 0.0
+     },
+     {
+      "k": 2313,
+      "nlm": "avf1960c.raw.Z",
+      "non_tissue": 0.1209,
+      "block": 0.0,
+      "dark": 0.1209,
+      "frost": 0.0
+     },
+     {
+      "k": 2314,
+      "nlm": "avf1960b.raw.Z",
+      "non_tissue": 0.1292,
+      "block": 0.0,
+      "dark": 0.1292,
+      "frost": 0.0
+     },
+     {
+      "k": 2315,
+      "nlm": "avf1960a.raw.Z",
+      "non_tissue": 0.1155,
+      "block": 0.0,
+      "dark": 0.1155,
+      "frost": 0.0
+     },
+     {
+      "k": 2316,
+      "nlm": "avf1959c.raw.Z",
+      "non_tissue": 0.1488,
+      "block": 0.0,
+      "dark": 0.1488,
+      "frost": 0.0
+     },
+     {
+      "k": 2317,
+      "nlm": "avf1959b.raw.Z",
+      "non_tissue": 0.1518,
+      "block": 0.0,
+      "dark": 0.1518,
+      "frost": 0.0
+     },
+     {
+      "k": 2318,
+      "nlm": "avf1959a.raw.Z",
+      "non_tissue": 0.1552,
+      "block": 0.0,
+      "dark": 0.1552,
+      "frost": 0.0
+     },
+     {
+      "k": 2319,
+      "nlm": "avf1958c.raw.Z",
+      "non_tissue": 0.1666,
+      "block": 0.0,
+      "dark": 0.1666,
+      "frost": 0.0
+     },
+     {
+      "k": 2320,
+      "nlm": "avf1958b.raw.Z",
+      "non_tissue": 0.1565,
+      "block": 0.0,
+      "dark": 0.1565,
+      "frost": 0.0
+     },
+     {
+      "k": 2321,
+      "nlm": "avf1958a.raw.Z",
+      "non_tissue": 0.1669,
+      "block": 0.0,
+      "dark": 0.1669,
+      "frost": 0.0
+     },
+     {
+      "k": 2322,
+      "nlm": "avf1957c.raw.Z",
+      "non_tissue": 0.1843,
+      "block": 0.0,
+      "dark": 0.1843,
+      "frost": 0.0
+     },
+     {
+      "k": 2323,
+      "nlm": "avf1957b.raw.Z",
+      "non_tissue": 0.1919,
+      "block": 0.0,
+      "dark": 0.1919,
+      "frost": 0.0
+     },
+     {
+      "k": 2324,
+      "nlm": "avf1957a.raw.Z",
+      "non_tissue": 0.2123,
+      "block": 0.0,
+      "dark": 0.2123,
+      "frost": 0.0
+     },
+     {
+      "k": 2325,
+      "nlm": "avf1956c.raw.Z",
+      "non_tissue": 0.2075,
+      "block": 0.0,
+      "dark": 0.2075,
+      "frost": 0.0
+     },
+     {
+      "k": 2326,
+      "nlm": "avf1956b.raw.Z",
+      "non_tissue": 0.2244,
+      "block": 0.0,
+      "dark": 0.2244,
+      "frost": 0.0
+     },
+     {
+      "k": 2327,
+      "nlm": "avf1956a.raw.Z",
+      "non_tissue": 0.2525,
+      "block": 0.0,
+      "dark": 0.2525,
+      "frost": 0.0
+     },
+     {
+      "k": 2328,
+      "nlm": "avf1955c.raw.Z",
+      "non_tissue": 0.2068,
+      "block": 0.0,
+      "dark": 0.2068,
+      "frost": 0.0
+     },
+     {
+      "k": 2329,
+      "nlm": "avf1955b.raw.Z",
+      "non_tissue": 0.1273,
+      "block": 0.0,
+      "dark": 0.1273,
+      "frost": 0.0
+     }
+    ]
+   },
+   "pelvis_end": {
+    "k_range": [
+     3490,
+     3532
+    ],
+    "description": "top of the Denver range",
+    "measured": 38,
+    "interior_slices": 33,
+    "baseline_non_tissue": {
+     "median": 0.1242,
+     "mad": 0.0323,
+     "threshold": 0.2242
+    },
+    "flagged_k": [
+     3516,
+     3520,
+     3522,
+     3527
+    ],
+    "profile": [
+     {
+      "k": 3490,
+      "nlm": "avf1568b.raw.Z",
+      "non_tissue": 0.0684,
+      "block": 0.0,
+      "dark": 0.0684,
+      "frost": 0.0
+     },
+     {
+      "k": 3491,
+      "nlm": "avf1568a.raw.Z",
+      "non_tissue": 0.0865,
+      "block": 0.0,
+      "dark": 0.0865,
+      "frost": 0.0
+     },
+     {
+      "k": 3492,
+      "nlm": "avf1567c.raw.Z",
+      "non_tissue": 0.0919,
+      "block": 0.0,
+      "dark": 0.0919,
+      "frost": 0.0
+     },
+     {
+      "k": 3493,
+      "nlm": "avf1567b.raw.Z",
+      "non_tissue": 0.0506,
+      "block": 0.0,
+      "dark": 0.0506,
+      "frost": 0.0
+     },
+     {
+      "k": 3494,
+      "nlm": "avf1567a.raw.Z",
+      "non_tissue": 0.0457,
+      "block": 0.0,
+      "dark": 0.0457,
+      "frost": 0.0
+     },
+     {
+      "k": 3495,
+      "nlm": "avf1566c.raw.Z",
+      "non_tissue": 0.0872,
+      "block": 0.0,
+      "dark": 0.0872,
+      "frost": 0.0
+     },
+     {
+      "k": 3496,
+      "nlm": "avf1566b.raw.Z",
+      "non_tissue": 0.0409,
+      "block": 0.0,
+      "dark": 0.0409,
+      "frost": 0.0
+     },
+     {
+      "k": 3497,
+      "nlm": "avf1566a.raw.Z",
+      "non_tissue": 0.1006,
+      "block": 0.0,
+      "dark": 0.1006,
+      "frost": 0.0
+     },
+     {
+      "k": 3498,
+      "nlm": "avf1565c.raw.Z",
+      "non_tissue": 0.0774,
+      "block": 0.0,
+      "dark": 0.0774,
+      "frost": 0.0
+     },
+     {
+      "k": 3499,
+      "nlm": "avf1565b.raw.Z",
+      "non_tissue": 0.1446,
+      "block": 0.0,
+      "dark": 0.1446,
+      "frost": 0.0
+     },
+     {
+      "k": 3500,
+      "nlm": "avf1565a.raw.Z",
+      "non_tissue": 0.0958,
+      "block": 0.0,
+      "dark": 0.0958,
+      "frost": 0.0
+     },
+     {
+      "k": 3501,
+      "nlm": "avf1564c.raw.Z",
+      "non_tissue": 0.189,
+      "block": 0.0,
+      "dark": 0.189,
+      "frost": 0.0
+     },
+     {
+      "k": 3502,
+      "nlm": "avf1564b.raw.Z",
+      "non_tissue": 0.0491,
+      "block": 0.0,
+      "dark": 0.0491,
+      "frost": 0.0
+     },
+     {
+      "k": 3503,
+      "nlm": "avf1564a.raw.Z",
+      "non_tissue": 0.1062,
+      "block": 0.0,
+      "dark": 0.1062,
+      "frost": 0.0
+     },
+     {
+      "k": 3504,
+      "nlm": "avf1563c.raw.Z",
+      "non_tissue": 0.1242,
+      "block": 0.0,
+      "dark": 0.1242,
+      "frost": 0.0
+     },
+     {
+      "k": 3505,
+      "nlm": "avf1563b.raw.Z",
+      "non_tissue": 0.1338,
+      "block": 0.0,
+      "dark": 0.1338,
+      "frost": 0.0
+     },
+     {
+      "k": 3506,
+      "nlm": "avf1563a.raw.Z",
+      "non_tissue": 0.141,
+      "block": 0.0,
+      "dark": 0.141,
+      "frost": 0.0
+     },
+     {
+      "k": 3507,
+      "nlm": "avf1562c.raw.Z",
+      "non_tissue": 0.1242,
+      "block": 0.0,
+      "dark": 0.1242,
+      "frost": 0.0
+     },
+     {
+      "k": 3508,
+      "nlm": "avf1562b.raw.Z",
+      "non_tissue": 0.1284,
+      "block": 0.0,
+      "dark": 0.1284,
+      "frost": 0.0
+     },
+     {
+      "k": 3509,
+      "nlm": "avf1562a.raw.Z",
+      "non_tissue": 0.15,
+      "block": 0.0,
+      "dark": 0.15,
+      "frost": 0.0
+     },
+     {
+      "k": 3510,
+      "nlm": "avf1561c.raw.Z",
+      "non_tissue": 0.1278,
+      "block": 0.0,
+      "dark": 0.1278,
+      "frost": 0.0
+     },
+     {
+      "k": 3511,
+      "nlm": "avf1561b.raw.Z",
+      "non_tissue": 0.1181,
+      "block": 0.0,
+      "dark": 0.1181,
+      "frost": 0.0
+     },
+     {
+      "k": 3512,
+      "nlm": "avf1561a.raw.Z",
+      "non_tissue": 0.1083,
+      "block": 0.0,
+      "dark": 0.1083,
+      "frost": 0.0
+     },
+     {
+      "k": 3513,
+      "nlm": "avf1560c.raw.Z",
+      "non_tissue": 0.1802,
+      "block": 0.0,
+      "dark": 0.1802,
+      "frost": 0.0
+     },
+     {
+      "k": 3514,
+      "nlm": "avf1560b.raw.Z",
+      "non_tissue": 0.1121,
+      "block": 0.0,
+      "dark": 0.1121,
+      "frost": 0.0
+     },
+     {
+      "k": 3515,
+      "nlm": "avf1560a.raw.Z",
+      "non_tissue": 0.1237,
+      "block": 0.0,
+      "dark": 0.1237,
+      "frost": 0.0
+     },
+     {
+      "k": 3516,
+      "nlm": "avf1559c.raw.Z",
+      "non_tissue": 0.2386,
+      "block": 0.0,
+      "dark": 0.2386,
+      "frost": 0.0
+     },
+     {
+      "k": 3517,
+      "nlm": "avf1559b.raw.Z",
+      "non_tissue": 0.1519,
+      "block": 0.0,
+      "dark": 0.1519,
+      "frost": 0.0
+     },
+     {
+      "k": 3518,
+      "nlm": "avf1559a.raw.Z",
+      "non_tissue": 0.2,
+      "block": 0.0,
+      "dark": 0.2,
+      "frost": 0.0
+     },
+     {
+      "k": 3519,
+      "nlm": "avf1558c.raw.Z",
+      "non_tissue": 0.1818,
+      "block": 0.0,
+      "dark": 0.1818,
+      "frost": 0.0
+     },
+     {
+      "k": 3520,
+      "nlm": "avf1558b.raw.Z",
+      "non_tissue": 0.3281,
+      "block": 0.0,
+      "dark": 0.3281,
+      "frost": 0.0
+     },
+     {
+      "k": 3521,
+      "nlm": "avf1558a.raw.Z",
+      "non_tissue": 0.1754,
+      "block": 0.0,
+      "dark": 0.1754,
+      "frost": 0.0
+     },
+     {
+      "k": 3522,
+      "nlm": "avf1557c.raw.Z",
+      "non_tissue": 0.3542,
+      "block": 0.0,
+      "dark": 0.3542,
+      "frost": 0.0
+     },
+     {
+      "k": 3523,
+      "nlm": "avf1557b.raw.Z",
+      "non_tissue": 0.0889,
+      "block": 0.0,
+      "dark": 0.0889,
+      "frost": 0.0
+     },
+     {
+      "k": 3524,
+      "nlm": "avf1557a.raw.Z",
+      "non_tissue": 0.1316,
+      "block": 0.0,
+      "dark": 0.1316,
+      "frost": 0.0
+     },
+     {
+      "k": 3525,
+      "nlm": "avf1556c.raw.Z",
+      "non_tissue": 0.0667,
+      "block": 0.0,
+      "dark": 0.0667,
+      "frost": 0.0
+     },
+     {
+      "k": 3526,
+      "nlm": "avf1556b.raw.Z",
+      "non_tissue": 0.0435,
+      "block": 0.0,
+      "dark": 0.0435,
+      "frost": 0.0
+     },
+     {
+      "k": 3527,
+      "nlm": "avf1556a.raw.Z",
+      "non_tissue": 0.2308,
+      "block": 0.0,
+      "dark": 0.2308,
+      "frost": 0.0
+     }
+    ]
+   }
+  },
+  "flagged_k": [
+   1205,
+   1206,
+   1207,
+   1210,
+   1211,
+   2256,
+   2257,
+   2258,
+   2259,
+   2326,
+   2327,
+   3516,
+   3520,
+   3522,
+   3527
+  ],
+  "rule": "non-tissue fraction under the original labels > max(median + 3 MAD, median + 0.10) of the band interior (>= 10 slices from a block boundary)",
+  "colour_classes": {
+   "block_like": "B > R + 10",
+   "dark": "max(R,G,B) < 60",
+   "frost_like": "min(R,G,B) > 140 and max - min < 45 and B >= R - 5"
+  },
+  "limits": [
+   "bands only; nothing is said about slices outside them",
+   "colour thresholds, not a universal artefact detector; a flagged slice is quarantined whole, unflagged slices are not thereby clean",
+   "Denver labels are measured where they exist; slices without original labels report no-denver-labels"
+  ],
+  "seconds": 3.8
+ },
+ "rows": [
+  {
+   "k": 7,
+   "status": "no-denver-labels",
+   "n": 5188
+  },
+  {
+   "k": 8,
+   "status": "no-denver-labels",
+   "n": 5187
+  },
+  {
+   "k": 9,
+   "status": "no-denver-labels",
+   "n": 5186
+  },
+  {
+   "k": 10,
+   "status": "no-denver-labels",
+   "n": 5185
+  },
+  {
+   "k": 11,
+   "status": "no-denver-labels",
+   "n": 5184
+  },
+  {
+   "k": 12,
+   "status": "no-denver-labels",
+   "n": 5183
+  },
+  {
+   "k": 13,
+   "status": "no-denver-labels",
+   "n": 5182
+  },
+  {
+   "k": 14,
+   "status": "no-denver-labels",
+   "n": 5181
+  },
+  {
+   "k": 15,
+   "status": "no-denver-labels",
+   "n": 5180
+  },
+  {
+   "k": 16,
+   "status": "no-denver-labels",
+   "n": 5179
+  },
+  {
+   "k": 17,
+   "status": "no-denver-labels",
+   "n": 5178
+  },
+  {
+   "k": 18,
+   "status": "no-denver-labels",
+   "n": 5177
+  },
+  {
+   "k": 19,
+   "status": "no-denver-labels",
+   "n": 5176
+  },
+  {
+   "k": 20,
+   "status": "no-denver-labels",
+   "n": 5175
+  },
+  {
+   "k": 21,
+   "status": "no-denver-labels",
+   "n": 5174
+  },
+  {
+   "k": 22,
+   "status": "no-denver-labels",
+   "n": 5173
+  },
+  {
+   "k": 23,
+   "status": "no-denver-labels",
+   "n": 5172
+  },
+  {
+   "k": 24,
+   "status": "measured",
+   "n": 5171,
+   "nlm": "avf2724c.raw.Z",
+   "photo_raw_sha256": "b7b6e173ef1e171a56886b71dda5495704f2f7c8adf04a4d75b6e3ba464aac61",
+   "labelled_px": 6,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 25,
+   "status": "measured",
+   "n": 5170,
+   "nlm": "avf2724b.raw.Z",
+   "photo_raw_sha256": "4b1ecd196a45b5c35788fe47c74f79d48245aa949ab37de44bd732244f268178",
+   "labelled_px": 36,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 26,
+   "status": "measured",
+   "n": 5169,
+   "nlm": "avf2724a.raw.Z",
+   "photo_raw_sha256": "9b449ea3633b6f73a3f1730529514c6cb5babd7396f591e5db22ebc4bee55b7e",
+   "labelled_px": 88,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 27,
+   "status": "measured",
+   "n": 5168,
+   "nlm": "avf2723c.raw.Z",
+   "photo_raw_sha256": "db7a82fb0a3a437c4fbd1e8ddfb55cb3f17abbf0d17f48b6bb9160194934d2fa",
+   "labelled_px": 166,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 28,
+   "status": "measured",
+   "n": 5167,
+   "nlm": "avf2723b.raw.Z",
+   "photo_raw_sha256": "e208cbc4fc3aef77abe7624ffd68c426424606ea6769dfec714c74f2c08fb454",
+   "labelled_px": 242,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 29,
+   "status": "measured",
+   "n": 5166,
+   "nlm": "avf2723a.raw.Z",
+   "photo_raw_sha256": "c58799920dab0a64911c390acff5082ea62797a386a7e96843183485f1d44b8c",
+   "labelled_px": 316,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 30,
+   "status": "measured",
+   "n": 5165,
+   "nlm": "avf2722c.raw.Z",
+   "photo_raw_sha256": "14aa8f3bccac2753bdad98da388adf92afebe52d12d55d5a5eec4758b97fbc9d",
+   "labelled_px": 376,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 31,
+   "status": "measured",
+   "n": 5164,
+   "nlm": "avf2722b.raw.Z",
+   "photo_raw_sha256": "2d255c374327d8405b1e644483fb4d53e685cab85d54e38d74c566392e917497",
+   "labelled_px": 440,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 32,
+   "status": "measured",
+   "n": 5163,
+   "nlm": "avf2722a.raw.Z",
+   "photo_raw_sha256": "a39c0fd18bcc41bcd30fd86132ed28895c9fa0cd83d067a6714d3e3154a901ca",
+   "labelled_px": 498,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 33,
+   "status": "measured",
+   "n": 5162,
+   "nlm": "avf2721c.raw.Z",
+   "photo_raw_sha256": "32e9b768e0bb06610e0cb98c361d61da6a5cf9d4a5c27e39d7e198d7189c1e9c",
+   "labelled_px": 547,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 34,
+   "status": "measured",
+   "n": 5161,
+   "nlm": "avf2721b.raw.Z",
+   "photo_raw_sha256": "a18bb6b923c342344c2b4626f977c1a68ae0d6d7b6ab77f1d0c73737cd2aea68",
+   "labelled_px": 579,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 35,
+   "status": "measured",
+   "n": 5160,
+   "nlm": "avf2721a.raw.Z",
+   "photo_raw_sha256": "1f7ffd58b271444f06ccc2b54e665af51e0cc4c7ffb90070c7b72918b7e749a0",
+   "labelled_px": 609,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 36,
+   "status": "measured",
+   "n": 5159,
+   "nlm": "avf2720c.raw.Z",
+   "photo_raw_sha256": "106317aed01c76c8c7c92c7abb3c16846be80d3bc98ef9b0102ec542d6317460",
+   "labelled_px": 622,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0,
+   "identity_status": "settled"
+  },
+  {
+   "k": 37,
+   "status": "measured",
+   "n": 5158,
+   "nlm": "avf2720b.raw.Z",
+   "photo_raw_sha256": "dc1c994dc27955d3e8532dd4d0d2629c8fea2ad9147b4cf0eeb8b9f075a19b18",
+   "labelled_px": 642,
+   "fraction_block_like": 0.0031,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0031,
+   "identity_status": "settled"
+  },
+  {
+   "k": 38,
+   "status": "measured",
+   "n": 5157,
+   "nlm": "avf2720a.raw.Z",
+   "photo_raw_sha256": "414d1bc4df3b53461df67a8e6b324f494c40d3819524d2d37a836114c9cafccd",
+   "labelled_px": 653,
+   "fraction_block_like": 0.0046,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0046,
+   "identity_status": "settled"
+  },
+  {
+   "k": 39,
+   "status": "measured",
+   "n": 5156,
+   "nlm": "avf2719c.raw.Z",
+   "photo_raw_sha256": "27184293ca495139eb54c32bdbb6af8f06bad600d3964743d4764f8386fb61ed",
+   "labelled_px": 713,
+   "fraction_block_like": 0.0056,
+   "fraction_dark": 0.0,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0056,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1170,
+   "status": "measured",
+   "n": 4025,
+   "nlm": "avf2342c.raw.Z",
+   "photo_raw_sha256": "d9902cfb64da8fc219fc98498dde6797afbc90333bbea3072ca69b2f1e9c6ce0",
+   "labelled_px": 27046,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0072,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0072,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1171,
+   "status": "measured",
+   "n": 4024,
+   "nlm": "avf2342b.raw.Z",
+   "photo_raw_sha256": "8303a2f9de7d7954e96a2350aca1cc4bb3160efe6e913f0176c8dd6ef97d34df",
+   "labelled_px": 27065,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0088,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0088,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1172,
+   "status": "measured",
+   "n": 4023,
+   "nlm": "avf2342a.raw.Z",
+   "photo_raw_sha256": "df0b4dddc04b921f2f960c51a0229e1bae93bc6f01a3287937badde133c64075",
+   "labelled_px": 27064,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0119,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0119,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1173,
+   "status": "measured",
+   "n": 4022,
+   "nlm": "avf2341c.raw.Z",
+   "photo_raw_sha256": "8a4936864c125a323fb65c1a29fe602f4fbfc00e1fca137e16e75f17d504ecfc",
+   "labelled_px": 27078,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0102,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0102,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1174,
+   "status": "measured",
+   "n": 4021,
+   "nlm": "avf2341b.raw.Z",
+   "photo_raw_sha256": "af6f147f5a95a1cf1f5b56805af598f32604c1eee4a97f77e371bc605e5e7708",
+   "labelled_px": 27089,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0128,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0128,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1175,
+   "status": "measured",
+   "n": 4020,
+   "nlm": "avf2341a.raw.Z",
+   "photo_raw_sha256": "fc6ec55a258fd5b28d3b74643446ce9e8abe8698111eb5563bba5273ede2061b",
+   "labelled_px": 27063,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.02,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.02,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1176,
+   "status": "measured",
+   "n": 4019,
+   "nlm": "avf2340c.raw.Z",
+   "photo_raw_sha256": "d367db68d220843cefb8e88ff3ad1781f74a1db050b6079a29acbfb621443bfb",
+   "labelled_px": 27066,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0117,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0117,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1177,
+   "status": "measured",
+   "n": 4018,
+   "nlm": "avf2340b.raw.Z",
+   "photo_raw_sha256": "9c2fee2cf6c588427108e26075927be90ce28733536bd501f8656da510f82862",
+   "labelled_px": 27049,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0177,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0177,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1178,
+   "status": "measured",
+   "n": 4017,
+   "nlm": "avf2340a.raw.Z",
+   "photo_raw_sha256": "47eaace8601eff8e74a34db7a1cedcb63b11b929e731cd6000e4287bf515bcf6",
+   "labelled_px": 27030,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0081,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0081,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1179,
+   "status": "measured",
+   "n": 4016,
+   "nlm": "avf2339c.raw.Z",
+   "photo_raw_sha256": "ec1355516867d8588e8c351d7b6c1ad441c48290821f60a0f79ac0fdc1c3441a",
+   "labelled_px": 27011,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0098,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0098,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1180,
+   "status": "measured",
+   "n": 4015,
+   "nlm": "avf2339b.raw.Z",
+   "photo_raw_sha256": "9d5df21a9f8550bfde5ba6cd0f232ee2175a43fb9e65d287da41bcd3d74d9bc8",
+   "labelled_px": 27005,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0104,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0104,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1181,
+   "status": "measured",
+   "n": 4014,
+   "nlm": "avf2339a.raw.Z",
+   "photo_raw_sha256": "538bf7d099e1e44635e0d8b86ce3979ce29304ac6fda62ea2e50b1d8b027edc4",
+   "labelled_px": 26983,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0103,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0103,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1182,
+   "status": "measured",
+   "n": 4013,
+   "nlm": "avf2338c.raw.Z",
+   "photo_raw_sha256": "22761444c30d2423c7220aa4b2cdc7fd99030723bbf3e957ba56e0d85b6bd464",
+   "labelled_px": 26987,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0136,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0136,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1183,
+   "status": "measured",
+   "n": 4012,
+   "nlm": "avf2338b.raw.Z",
+   "photo_raw_sha256": "8eccbb08b8d36fa8c6bd3ab1bf6061e00430db55e2b634c328fef1b26f167587",
+   "labelled_px": 26981,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0134,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0134,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1184,
+   "status": "measured",
+   "n": 4011,
+   "nlm": "avf2338a.raw.Z",
+   "photo_raw_sha256": "ae7c0014a0c1c53a119b9508b6ee24774569a5acf424b3cd8055f77a823a963b",
+   "labelled_px": 27003,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0155,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0155,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1185,
+   "status": "measured",
+   "n": 4010,
+   "nlm": "avf2337c.raw.Z",
+   "photo_raw_sha256": "ed3e48ca31bebae3c3ae7b72775cfc01cce0139f1c5132758ecb629635dfaf82",
+   "labelled_px": 27005,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0134,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0134,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1186,
+   "status": "measured",
+   "n": 4009,
+   "nlm": "avf2337b.raw.Z",
+   "photo_raw_sha256": "bca669a7e8ea6e0f4f87497ee2c4f5dcfd54e0f854cee3e5ac671d52550b192a",
+   "labelled_px": 26983,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0134,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0134,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1187,
+   "status": "measured",
+   "n": 4008,
+   "nlm": "avf2337a.raw.Z",
+   "photo_raw_sha256": "f828fc79b9d020734699272178c5f1f8449c20d62c34f5f4adb0626ed0e9405e",
+   "labelled_px": 26999,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0158,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0158,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1188,
+   "status": "measured",
+   "n": 4007,
+   "nlm": "avf2336c.raw.Z",
+   "photo_raw_sha256": "02201d406c1b6f3e66cf8245959d82faa120793cae828562d4a4d06c1ced72d6",
+   "labelled_px": 27027,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0163,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0163,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1189,
+   "status": "measured",
+   "n": 4006,
+   "nlm": "avf2336b.raw.Z",
+   "photo_raw_sha256": "be08c147f55527f039f373421113604750ddd385185515fab2dadf7df061fb40",
+   "labelled_px": 27053,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0185,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0185,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1190,
+   "status": "measured",
+   "n": 4005,
+   "nlm": "avf2336a.raw.Z",
+   "photo_raw_sha256": "239a736d1bc5b8c5ee01543a627dd91d7757009a6eecd45410bcca76a24083b8",
+   "labelled_px": 27099,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0236,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0236,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1191,
+   "status": "measured",
+   "n": 4004,
+   "nlm": "avf2335c.raw.Z",
+   "photo_raw_sha256": "817eedca6dfa3beba39817086cc72ddd608470b859252464a7ebeef5be426e53",
+   "labelled_px": 27093,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0197,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0197,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1192,
+   "status": "measured",
+   "n": 4003,
+   "nlm": "avf2335b.raw.Z",
+   "photo_raw_sha256": "a6bde4ede1ec4dd4b858ce374774c3db7ceeea4b2f3c6c74a566ce23a1a63c0b",
+   "labelled_px": 27094,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0247,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0247,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1193,
+   "status": "measured",
+   "n": 4002,
+   "nlm": "avf2335a.raw.Z",
+   "photo_raw_sha256": "f01f08c01006b407f5685a31a669ca43a6ad57bb105747236f4953176af72b36",
+   "labelled_px": 27093,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0229,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0229,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1194,
+   "status": "measured",
+   "n": 4001,
+   "nlm": "avf2334c.raw.Z",
+   "photo_raw_sha256": "f6ebbf052e0a3d79b83df4e19671f7a1e76f0556e6db8cc47823024748d26b23",
+   "labelled_px": 27118,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0221,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0221,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1195,
+   "status": "measured",
+   "n": 4000,
+   "nlm": "avf2334b.raw.Z",
+   "photo_raw_sha256": "129f6f1abf317b3ab5baf52bada112729207259248bfd561a58e9d4cb8343f55",
+   "labelled_px": 27098,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0469,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0469,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1196,
+   "status": "measured",
+   "n": 3999,
+   "nlm": "avf2334a.raw.Z",
+   "photo_raw_sha256": "af6776102f152f59568aa30f64cca158c48385fee4f205e8d19a47529bad0fe6",
+   "labelled_px": 27035,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0169,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0169,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1197,
+   "status": "measured",
+   "n": 3998,
+   "nlm": "avf2333c.raw.Z",
+   "photo_raw_sha256": "055136be37b549b9e870ab43e9f7820e64e7f37c3457a187ff780e4068f66663",
+   "labelled_px": 27035,
+   "fraction_block_like": 0.0006,
+   "fraction_dark": 0.0241,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0247,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1198,
+   "status": "measured",
+   "n": 3997,
+   "nlm": "avf2333b.raw.Z",
+   "photo_raw_sha256": "625470e489a8deb0d348c083a92997501f3b74a4821558081496c666c679c2c8",
+   "labelled_px": 26987,
+   "fraction_block_like": 0.0022,
+   "fraction_dark": 0.0268,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.029,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1199,
+   "status": "measured",
+   "n": 3996,
+   "nlm": "avf2333a.raw.Z",
+   "photo_raw_sha256": "09b057ba0da24fd573618785ed84f5b7060f7681abc9dbccbd5cbd3263b730aa",
+   "labelled_px": 26946,
+   "fraction_block_like": 0.0053,
+   "fraction_dark": 0.0549,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0602,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1200,
+   "status": "measured",
+   "n": 3995,
+   "nlm": "avf2332c.raw.Z",
+   "photo_raw_sha256": "838661876c9b7be41c3d1020114b56972067313cd799bdb5cd7c5e0b52b290af",
+   "labelled_px": 26908,
+   "fraction_block_like": 0.0091,
+   "fraction_dark": 0.0547,
+   "fraction_frost_like": 0.0004,
+   "fraction_non_tissue": 0.0641,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1201,
+   "status": "measured",
+   "n": 3994,
+   "nlm": "avf2332b.raw.Z",
+   "photo_raw_sha256": "7752a9ceb76c19afff685646ca117459d4c9aac3134d2c8231b58aa1e4d03f00",
+   "labelled_px": 26873,
+   "fraction_block_like": 0.0162,
+   "fraction_dark": 0.1003,
+   "fraction_frost_like": 0.0018,
+   "fraction_non_tissue": 0.1177,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1202,
+   "status": "measured",
+   "n": 3993,
+   "nlm": "avf2332a.raw.Z",
+   "photo_raw_sha256": "b5aa71821a60e6a0f4753339e5e31e4c1acab1122cd490a37bcf6e1db84cf3a0",
+   "labelled_px": 26851,
+   "fraction_block_like": 0.0269,
+   "fraction_dark": 0.0841,
+   "fraction_frost_like": 0.0029,
+   "fraction_non_tissue": 0.1131,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1203,
+   "status": "measured",
+   "n": 3992,
+   "nlm": "avf2331c.raw.Z",
+   "photo_raw_sha256": "65eebedf5eb27498d13fcdf5234796592eb2db458b4b524ecaf64ebf9c402479",
+   "labelled_px": 26842,
+   "fraction_block_like": 0.0363,
+   "fraction_dark": 0.0654,
+   "fraction_frost_like": 0.0046,
+   "fraction_non_tissue": 0.1055,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1204,
+   "status": "measured",
+   "n": 3991,
+   "nlm": "avf2331b.raw.Z",
+   "photo_raw_sha256": "c8544b02c6b62513d434cc008fbfd884080370e9e2aba61aa24a11c665a5c24e",
+   "labelled_px": 26885,
+   "fraction_block_like": 0.0482,
+   "fraction_dark": 0.0313,
+   "fraction_frost_like": 0.0263,
+   "fraction_non_tissue": 0.1038,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1205,
+   "status": "measured",
+   "n": 3990,
+   "nlm": "avf2331a.raw.Z",
+   "photo_raw_sha256": "8f0d321f8e83bdefa4a20f88cc97077773fd665f6c4f0f100dc8eef1a850c015",
+   "labelled_px": 26911,
+   "fraction_block_like": 0.0788,
+   "fraction_dark": 0.0075,
+   "fraction_frost_like": 0.1024,
+   "fraction_non_tissue": 0.1794,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1206,
+   "status": "measured",
+   "n": 3989,
+   "nlm": "avf2330c.raw.Z",
+   "photo_raw_sha256": "a56d8d9400573405fbaa3bb16a33a80184b931fdda20d213e7c0b14a6d640d10",
+   "labelled_px": 26954,
+   "fraction_block_like": 0.1179,
+   "fraction_dark": 0.0009,
+   "fraction_frost_like": 0.2491,
+   "fraction_non_tissue": 0.3492,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1207,
+   "status": "measured",
+   "n": 3988,
+   "nlm": "avf2330b.raw.Z",
+   "photo_raw_sha256": "6a3e84476687d026e6b97d18a07fed3b5c7a71edbf653be3bda1344a479bee1f",
+   "labelled_px": 27008,
+   "fraction_block_like": 0.1246,
+   "fraction_dark": 0.0001,
+   "fraction_frost_like": 0.394,
+   "fraction_non_tissue": 0.4923,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1208,
+   "status": "no-transform-row"
+  },
+  {
+   "k": 1209,
+   "status": "no-transform-row"
+  },
+  {
+   "k": 1210,
+   "status": "measured",
+   "n": 3982,
+   "nlm": "avf2328b.raw.Z",
+   "photo_raw_sha256": "b6660cfdd4416edf4aed8ff836ee65edd65ef486b954c1d271bbb15cd787a805",
+   "labelled_px": 27216,
+   "fraction_block_like": 0.3801,
+   "fraction_dark": 0.1296,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.4913,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1211,
+   "status": "measured",
+   "n": 3981,
+   "nlm": "avf2328a.raw.Z",
+   "photo_raw_sha256": "ee3ceb050837e676c0ed61e5e8f188ae77037d1ca6a7516d62b379a257a4ee59",
+   "labelled_px": 27246,
+   "fraction_block_like": 0.1786,
+   "fraction_dark": 0.0537,
+   "fraction_frost_like": 0.0001,
+   "fraction_non_tissue": 0.219,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 1212,
+   "status": "measured",
+   "n": 3980,
+   "nlm": "avf2327c.raw.Z",
+   "photo_raw_sha256": "4d99fa37bb7fdc4889c6c24fc61451b5bb796497c2b173cca9a60258cc2a0b3a",
+   "labelled_px": 27229,
+   "fraction_block_like": 0.0018,
+   "fraction_dark": 0.0143,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0145,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1213,
+   "status": "measured",
+   "n": 3979,
+   "nlm": "avf2327b.raw.Z",
+   "photo_raw_sha256": "d0cffeb0927290a7504f84bb2020fbe82d4bec8080c6362a04a9c1615b807b5a",
+   "labelled_px": 27205,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0057,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0057,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1214,
+   "status": "measured",
+   "n": 3978,
+   "nlm": "avf2327a.raw.Z",
+   "photo_raw_sha256": "5b504e9432971a57f8a953adb6a0982c928c9d6e1d8dc5a006b7f6e0eca4e275",
+   "labelled_px": 27190,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0038,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0038,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1215,
+   "status": "measured",
+   "n": 3977,
+   "nlm": "avf2326c.raw.Z",
+   "photo_raw_sha256": "365de477a97838d44675ce13a140725522101c19329e921efe73f85a107e5fe5",
+   "labelled_px": 27168,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0058,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0058,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1216,
+   "status": "measured",
+   "n": 3976,
+   "nlm": "avf2326b.raw.Z",
+   "photo_raw_sha256": "30001d4459aa9093ddc8e06606601d28cdc04e084703645dd593a5db79c171b9",
+   "labelled_px": 27120,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0066,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0066,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1217,
+   "status": "measured",
+   "n": 3975,
+   "nlm": "avf2326a.raw.Z",
+   "photo_raw_sha256": "e6610e9963c2929a2dccd24a7e157ecde7db2a44a3cda5be09bfa55463d40818",
+   "labelled_px": 27093,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0116,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0116,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1218,
+   "status": "measured",
+   "n": 3974,
+   "nlm": "avf2325c.raw.Z",
+   "photo_raw_sha256": "effe7c4987333123e0a16c8b277f9c8be6d66ebfeba4799471d0801ccc2ad3ae",
+   "labelled_px": 27050,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0138,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0138,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1219,
+   "status": "measured",
+   "n": 3973,
+   "nlm": "avf2325b.raw.Z",
+   "photo_raw_sha256": "332e0b145221c8c3eb3984e0f787e2bd56836137e7c2b31e06c9790d5de7e5ce",
+   "labelled_px": 27005,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0186,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0186,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1220,
+   "status": "measured",
+   "n": 3972,
+   "nlm": "avf2325a.raw.Z",
+   "photo_raw_sha256": "cd02638ac60059981118fcf93fd7d5e9ab16ea7339c8e44a2276764fadda7a07",
+   "labelled_px": 26981,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0235,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0235,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1221,
+   "status": "measured",
+   "n": 3971,
+   "nlm": "avf2324c.raw.Z",
+   "photo_raw_sha256": "56ef455130fcbcffdf917ff98fe1db8106c3845e52009686c95ecfc38a60f530",
+   "labelled_px": 26987,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0195,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0195,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1222,
+   "status": "measured",
+   "n": 3970,
+   "nlm": "avf2324b.raw.Z",
+   "photo_raw_sha256": "aa1ede6387242a5763e65710ed0c600426edc9ff8e1e279294152053139e319c",
+   "labelled_px": 26973,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0254,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0254,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1223,
+   "status": "measured",
+   "n": 3969,
+   "nlm": "avf2324a.raw.Z",
+   "photo_raw_sha256": "40bec2d8fb66b78b0f0012258431e015eac53c1f50289f4fe331b69ff0fc8b2b",
+   "labelled_px": 27002,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0287,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0287,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1224,
+   "status": "measured",
+   "n": 3968,
+   "nlm": "avf2323c.raw.Z",
+   "photo_raw_sha256": "880dfba6da80b8cefedb89e75cc3ecb573f3bbb754a4e2e41e9eb1df9b4dba42",
+   "labelled_px": 26994,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0205,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0205,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1225,
+   "status": "measured",
+   "n": 3967,
+   "nlm": "avf2323b.raw.Z",
+   "photo_raw_sha256": "85255316f7bf9b05352dabdfdc1c9984b49f93564086723f4714e1e8b8ce564a",
+   "labelled_px": 27024,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0268,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0268,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1226,
+   "status": "measured",
+   "n": 3966,
+   "nlm": "avf2323a.raw.Z",
+   "photo_raw_sha256": "4e4f719953a9b1125656e9dfda31532565f9e44e7380c4aa91a37bb1acc938be",
+   "labelled_px": 27069,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0245,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0245,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1227,
+   "status": "measured",
+   "n": 3965,
+   "nlm": "avf2322c.raw.Z",
+   "photo_raw_sha256": "a579d2fbfa792c3f8b38257d015c6cfce644d9b83ea9569d9a2ce9b01ba8c958",
+   "labelled_px": 27113,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0183,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0183,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1228,
+   "status": "measured",
+   "n": 3964,
+   "nlm": "avf2322b.raw.Z",
+   "photo_raw_sha256": "913736ca3325684196064d1e83b56116bd7b75f6dc503b27516c37bfd59be155",
+   "labelled_px": 27130,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0155,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0155,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1229,
+   "status": "measured",
+   "n": 3963,
+   "nlm": "avf2322a.raw.Z",
+   "photo_raw_sha256": "3d55f8d81849b931d2a4335b31118a64cd540d71be98b540704e074372a4e1b5",
+   "labelled_px": 27114,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0123,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0123,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1230,
+   "status": "measured",
+   "n": 3962,
+   "nlm": "avf2321c.raw.Z",
+   "photo_raw_sha256": "8fa11585ec512f77aca2d8c01b3a27c35c34d0676ee522764dd3ab1561badefe",
+   "labelled_px": 27119,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0342,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0342,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1231,
+   "status": "measured",
+   "n": 3961,
+   "nlm": "avf2321b.raw.Z",
+   "photo_raw_sha256": "747f0ad16d1bf9dd69ef85fece3f87128cee59195774822cf0b90819a086ad29",
+   "labelled_px": 27152,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0431,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0431,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1232,
+   "status": "measured",
+   "n": 3960,
+   "nlm": "avf2321a.raw.Z",
+   "photo_raw_sha256": "36f46b5bf873509f89a9aea28bc8a95c292e2602dc5862a38b437af208ff73f1",
+   "labelled_px": 27162,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0307,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0307,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1233,
+   "status": "measured",
+   "n": 3959,
+   "nlm": "avf2320c.raw.Z",
+   "photo_raw_sha256": "cc946ca2683ea41c8089df562c438cdbe3b6df6b9185c116c5293fcb941ad7fe",
+   "labelled_px": 27150,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0397,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0397,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1234,
+   "status": "measured",
+   "n": 3958,
+   "nlm": "avf2320b.raw.Z",
+   "photo_raw_sha256": "52f295b66d94832e73f6daad05ed8e6befa58311da5d580aaf497686d7c9e2c1",
+   "labelled_px": 27154,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.041,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.041,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1235,
+   "status": "measured",
+   "n": 3957,
+   "nlm": "avf2320a.raw.Z",
+   "photo_raw_sha256": "0117f2fcd18f4372e95bf2c200c9a86cbeffa3aec2918c4e835f04b1414bbc0d",
+   "labelled_px": 27152,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.039,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.039,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1236,
+   "status": "measured",
+   "n": 3956,
+   "nlm": "avf2319c.raw.Z",
+   "photo_raw_sha256": "11ab44598a762d849141db6de0f5eefc65062c25193bc406157d58d578505429",
+   "labelled_px": 27128,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0387,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0387,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1237,
+   "status": "measured",
+   "n": 3955,
+   "nlm": "avf2319b.raw.Z",
+   "photo_raw_sha256": "d5d9bc4006ed0a0db615a10423675d8a0b348d59894969e388fd3ffd89084603",
+   "labelled_px": 27089,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0365,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0365,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1238,
+   "status": "measured",
+   "n": 3954,
+   "nlm": "avf2319a.raw.Z",
+   "photo_raw_sha256": "5fd19ce3f062dd1c4f9c46b1b2f9ea9d7213b25713bd8f6c111c727ccf20060f",
+   "labelled_px": 27051,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0297,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0297,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1239,
+   "status": "measured",
+   "n": 3953,
+   "nlm": "avf2318c.raw.Z",
+   "photo_raw_sha256": "ab69dcf73cd9942a80adc6b4f955c7c85063f6ec195a219d4c37870c472a1cc2",
+   "labelled_px": 27047,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0294,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0294,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1240,
+   "status": "measured",
+   "n": 3952,
+   "nlm": "avf2318b.raw.Z",
+   "photo_raw_sha256": "1cafe473b48d5280d2a7e74f3ac11197e51962e257d13cd3ba26c8c88afebec0",
+   "labelled_px": 27023,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0232,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0232,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1241,
+   "status": "measured",
+   "n": 3951,
+   "nlm": "avf2318a.raw.Z",
+   "photo_raw_sha256": "f92d8e286bba2406517dbe31956f75fc5eba5106963492ad80f591a868d0ee52",
+   "labelled_px": 26994,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0316,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0316,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1242,
+   "status": "measured",
+   "n": 3950,
+   "nlm": "avf2317c.raw.Z",
+   "photo_raw_sha256": "3647e0267a443559d121ef210c36e19e480f1c39ae74307f87e516a62ebfc388",
+   "labelled_px": 26968,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0238,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0238,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1243,
+   "status": "measured",
+   "n": 3949,
+   "nlm": "avf2317b.raw.Z",
+   "photo_raw_sha256": "0b686c3bca7e174a89b2f026b2c64dfe193047f638ccc785fdd97df1030115df",
+   "labelled_px": 26964,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0216,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0216,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1244,
+   "status": "measured",
+   "n": 3948,
+   "nlm": "avf2317a.raw.Z",
+   "photo_raw_sha256": "01982133ec7c9ba62d6bda67ce529a20342a12052d62ce4365621054abc472d0",
+   "labelled_px": 26941,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0228,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0228,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1245,
+   "status": "measured",
+   "n": 3947,
+   "nlm": "avf2316c.raw.Z",
+   "photo_raw_sha256": "9f24272cca9565815504fe3fe1031aa775a20a2aed0308a5d18eb6bca99c2f09",
+   "labelled_px": 26920,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0206,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0206,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1246,
+   "status": "measured",
+   "n": 3946,
+   "nlm": "avf2316b.raw.Z",
+   "photo_raw_sha256": "78713b99abe6f8d095657dfba6fd74a45adb4b5348f2ac7dff54b04e20260bb5",
+   "labelled_px": 26888,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0215,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0215,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1247,
+   "status": "measured",
+   "n": 3945,
+   "nlm": "avf2316a.raw.Z",
+   "photo_raw_sha256": "8922af346446d6f35333ae6701924c4910bd66c4daefe1ac8c0e33b991897290",
+   "labelled_px": 26877,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0183,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0183,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1248,
+   "status": "measured",
+   "n": 3944,
+   "nlm": "avf2315c.raw.Z",
+   "photo_raw_sha256": "9e6b37f8cca970eba7f3016c385b12b6b2a590d5ee250bfc892f465f4b7dc949",
+   "labelled_px": 26848,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0176,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0176,
+   "identity_status": "settled"
+  },
+  {
+   "k": 1249,
+   "status": "measured",
+   "n": 3943,
+   "nlm": "avf2315b.raw.Z",
+   "photo_raw_sha256": "04d87e8114bef209f59354a668434a6c6e63757ead791659eecbe3a2ceecfda2",
+   "labelled_px": 26824,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0136,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0136,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2225,
+   "status": "measured",
+   "n": 2967,
+   "nlm": "avf1990a.raw.Z",
+   "photo_raw_sha256": "54bd91897893b86222cafce057e18b5d70905b1354dee9ce59aaf31a88ee6e7b",
+   "labelled_px": 51494,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1825,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1825,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2226,
+   "status": "measured",
+   "n": 2966,
+   "nlm": "avf1989c.raw.Z",
+   "photo_raw_sha256": "60802634f8124e95b8c2a23f3126ffea9965d902d1925ace9b73355bae16a541",
+   "labelled_px": 51455,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2024,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2024,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2227,
+   "status": "measured",
+   "n": 2965,
+   "nlm": "avf1989b.raw.Z",
+   "photo_raw_sha256": "7b8636dafee01b2626753452f84cd0d89f9ce4c1aa980427c735d7b9f9b29915",
+   "labelled_px": 51418,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1947,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1947,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2228,
+   "status": "measured",
+   "n": 2964,
+   "nlm": "avf1989a.raw.Z",
+   "photo_raw_sha256": "3edc5fe54f3f134219fcb8bb0ccc0feab4e0de629d205c680f2110c0cacf7c2c",
+   "labelled_px": 51366,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1809,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1809,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2229,
+   "status": "measured",
+   "n": 2963,
+   "nlm": "avf1988c.raw.Z",
+   "photo_raw_sha256": "f0e49ebb3863753f9601f6c0e00aa951bac38322d11b66604e6d4094c764c7a5",
+   "labelled_px": 51324,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2034,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2034,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2230,
+   "status": "measured",
+   "n": 2962,
+   "nlm": "avf1988b.raw.Z",
+   "photo_raw_sha256": "bc1b1b7d522b14f96a3e8d858707a26d6ba256640619f8d6e5eb5915be1e6d33",
+   "labelled_px": 51246,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1778,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1778,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2231,
+   "status": "measured",
+   "n": 2961,
+   "nlm": "avf1988a.raw.Z",
+   "photo_raw_sha256": "c739f682d740fdcb525ea873380162e43da9df92552dfa4c9b6c47cb825c84e6",
+   "labelled_px": 51127,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1734,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1734,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2232,
+   "status": "measured",
+   "n": 2960,
+   "nlm": "avf1987c.raw.Z",
+   "photo_raw_sha256": "8bd86a884749765e05704b8074e041785714cb5ef07ffdf4e0e876536cb8526e",
+   "labelled_px": 51103,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.179,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.179,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2233,
+   "status": "measured",
+   "n": 2959,
+   "nlm": "avf1987b.raw.Z",
+   "photo_raw_sha256": "ce0b03c469cd3eea9314bfb361a28740387d149a2a2a1d0055ad57445bf7ef30",
+   "labelled_px": 51037,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1782,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1782,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2234,
+   "status": "measured",
+   "n": 2958,
+   "nlm": "avf1987a.raw.Z",
+   "photo_raw_sha256": "d527e60aa11910b83a52ef6d93b9309312ed5a26ff459a075195e66427f997da",
+   "labelled_px": 50967,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1888,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1888,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2235,
+   "status": "measured",
+   "n": 2957,
+   "nlm": "avf1986c.raw.Z",
+   "photo_raw_sha256": "74c5001ab270fb0be9405fb571daf216308cb9c6f8a37bca872f1bf6e2139907",
+   "labelled_px": 50929,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2228,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2228,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2236,
+   "status": "measured",
+   "n": 2956,
+   "nlm": "avf1986b.raw.Z",
+   "photo_raw_sha256": "c75be0102468ef0dee6203a543e24e8c2616e324eb25b191af35c3ea51579ce2",
+   "labelled_px": 50890,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1556,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1556,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2237,
+   "status": "measured",
+   "n": 2955,
+   "nlm": "avf1986a.raw.Z",
+   "photo_raw_sha256": "a1e1fc5c09dab6f7ba4c5ffe80bdf2a81ef680f2da4bbdce61cb2e1d560c9962",
+   "labelled_px": 50852,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1696,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1696,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2238,
+   "status": "measured",
+   "n": 2954,
+   "nlm": "avf1985c.raw.Z",
+   "photo_raw_sha256": "005fb60615927ee24865c6f76f457d342465d6264fdf65acacd29c3065db6bb7",
+   "labelled_px": 50786,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1568,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1568,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2239,
+   "status": "measured",
+   "n": 2953,
+   "nlm": "avf1985b.raw.Z",
+   "photo_raw_sha256": "b8513f9a8951f796d6913bf58d51ad9a95fed69c65ff9bfb26785cc8037122bd",
+   "labelled_px": 50761,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1717,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1717,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2240,
+   "status": "measured",
+   "n": 2952,
+   "nlm": "avf1985a.raw.Z",
+   "photo_raw_sha256": "c27793ca55e0c22c50886807b61cfd1ee49c7663e632879825766f97c8f5434f",
+   "labelled_px": 50748,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1676,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1676,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2241,
+   "status": "measured",
+   "n": 2951,
+   "nlm": "avf1984c.raw.Z",
+   "photo_raw_sha256": "dcbcfe03aa40f341e6157c61296360e163121682e9b26f94bb31a0daf84119a3",
+   "labelled_px": 50726,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1699,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1699,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2242,
+   "status": "measured",
+   "n": 2950,
+   "nlm": "avf1984b.raw.Z",
+   "photo_raw_sha256": "4b72f25e10fb22ac6c9f28dfa9db43660c399669359e0020af9c74e1eb253f06",
+   "labelled_px": 50662,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1934,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1934,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2243,
+   "status": "measured",
+   "n": 2949,
+   "nlm": "avf1984a.raw.Z",
+   "photo_raw_sha256": "4f20acd60d56ff4894eb38eea8549afd5ac1b4996aa050fc1d8e07eb4c53984c",
+   "labelled_px": 50606,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1632,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1632,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2244,
+   "status": "measured",
+   "n": 2948,
+   "nlm": "avf1983c.raw.Z",
+   "photo_raw_sha256": "430d5967cdfeb4c87fba07e219a6c93574156865211ada6cd281d7a9dd05e5fd",
+   "labelled_px": 50553,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1621,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1621,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2245,
+   "status": "measured",
+   "n": 2947,
+   "nlm": "avf1983b.raw.Z",
+   "photo_raw_sha256": "f1a492bd4c33ce5657a2d82996d0bc72bbeba1f1349a742e67c270119c7bc239",
+   "labelled_px": 50472,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.168,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.168,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2246,
+   "status": "measured",
+   "n": 2946,
+   "nlm": "avf1983a.raw.Z",
+   "photo_raw_sha256": "3e4ff748a1bb5b6224bca7714bb3580230c1777718d7aa4c2551b167f5a1880c",
+   "labelled_px": 50432,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.16,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.16,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2247,
+   "status": "measured",
+   "n": 2945,
+   "nlm": "avf1982c.raw.Z",
+   "photo_raw_sha256": "8683a280aff18b5beee2c7aeb272c978c205d6128dadc9e46400514cbebaebf7",
+   "labelled_px": 50384,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1557,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1557,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2248,
+   "status": "measured",
+   "n": 2944,
+   "nlm": "avf1982b.raw.Z",
+   "photo_raw_sha256": "2352b4b8c9e7a83179723a0d1018d252f3d4bb85432f41a2d00795274c509b46",
+   "labelled_px": 50352,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1628,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1628,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2249,
+   "status": "measured",
+   "n": 2943,
+   "nlm": "avf1982a.raw.Z",
+   "photo_raw_sha256": "64e72efa9d51295ae885b2de17b1be9d3a6a0c5c0b8a29ea9072ec7e0dc8224a",
+   "labelled_px": 50372,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1641,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1641,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2250,
+   "status": "measured",
+   "n": 2942,
+   "nlm": "avf1981c.raw.Z",
+   "photo_raw_sha256": "0c181abf1d0db3a9d4921692b4459a0a1eb47db7c186ed9b3f99308326add64a",
+   "labelled_px": 50351,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1682,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1682,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2251,
+   "status": "measured",
+   "n": 2941,
+   "nlm": "avf1981b.raw.Z",
+   "photo_raw_sha256": "f28050f416e19989a2b811946bbc8a86f8927835c7d6a2c838622cd7646329f8",
+   "labelled_px": 50286,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1785,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1785,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2252,
+   "status": "measured",
+   "n": 2940,
+   "nlm": "avf1981a.raw.Z",
+   "photo_raw_sha256": "71a27aaf2f111ef7813286728036dc9364bc613e0c707b1c6022218687319880",
+   "labelled_px": 50278,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1754,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1754,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2253,
+   "status": "measured",
+   "n": 2939,
+   "nlm": "avf1980c.raw.Z",
+   "photo_raw_sha256": "04e2c63ea4ea27b28be3689e86740275912d85e539a258e31888436a77bdfd4f",
+   "labelled_px": 50199,
+   "fraction_block_like": 0.0002,
+   "fraction_dark": 0.1179,
+   "fraction_frost_like": 0.0014,
+   "fraction_non_tissue": 0.1193,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2254,
+   "status": "measured",
+   "n": 2938,
+   "nlm": "avf1980b.raw.Z",
+   "photo_raw_sha256": "7ec12c80907a6a79e5cdee3bb1e394854f98903b8de51f9c855c9b8b8d3da879",
+   "labelled_px": 50128,
+   "fraction_block_like": 0.0007,
+   "fraction_dark": 0.0847,
+   "fraction_frost_like": 0.0439,
+   "fraction_non_tissue": 0.1289,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2255,
+   "status": "measured",
+   "n": 2937,
+   "nlm": "avf1980a.raw.Z",
+   "photo_raw_sha256": "da4005a2b30a8e969632f248d5b6f12bd614f7cbf6ab1239f491475688aa6127",
+   "labelled_px": 50062,
+   "fraction_block_like": 0.0022,
+   "fraction_dark": 0.1024,
+   "fraction_frost_like": 0.1427,
+   "fraction_non_tissue": 0.2454,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2256,
+   "status": "measured",
+   "n": 2936,
+   "nlm": "avf1979c.raw.Z",
+   "photo_raw_sha256": "dc3432aaf0bf1721dce57aedc5874d8c7eb3346edd25c75ef50eaf485e56bf87",
+   "labelled_px": 50000,
+   "fraction_block_like": 0.0045,
+   "fraction_dark": 0.1102,
+   "fraction_frost_like": 0.2631,
+   "fraction_non_tissue": 0.3739,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2257,
+   "status": "measured",
+   "n": 2935,
+   "nlm": "avf1979b.raw.Z",
+   "photo_raw_sha256": "819328f277af27e5f35367e0bad47878cde77d27bb4176a7ab49ae4382f449e8",
+   "labelled_px": 49911,
+   "fraction_block_like": 0.0118,
+   "fraction_dark": 0.1058,
+   "fraction_frost_like": 0.3593,
+   "fraction_non_tissue": 0.4664,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 2258,
+   "status": "measured",
+   "n": 2934,
+   "nlm": "avf1979a.raw.Z",
+   "photo_raw_sha256": "a8626537de4dbe900e765347afeb1b05a9012a6be0b4332dd9a007300b792043",
+   "labelled_px": 49737,
+   "fraction_block_like": 0.0267,
+   "fraction_dark": 0.0826,
+   "fraction_frost_like": 0.4488,
+   "fraction_non_tissue": 0.534,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 2259,
+   "status": "measured",
+   "n": 2933,
+   "nlm": "avf1978c.raw.Z",
+   "photo_raw_sha256": "b619faa9a471afb787d5d086e86741269f5d67e4f366fe5dbe417093a2e65921",
+   "labelled_px": 49621,
+   "fraction_block_like": 0.0491,
+   "fraction_dark": 0.0148,
+   "fraction_frost_like": 0.5735,
+   "fraction_non_tissue": 0.5939,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 2285,
+   "status": "measured",
+   "n": 2907,
+   "nlm": "avf1970a.raw.Z",
+   "photo_raw_sha256": "dc3425ad46478f985289a0634e0b96a3ed011c0ee81fb4681bf3da39b1256117",
+   "labelled_px": 48630,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1124,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1124,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2286,
+   "status": "measured",
+   "n": 2906,
+   "nlm": "avf1969c.raw.Z",
+   "photo_raw_sha256": "2448921b530fbabd3177fede62fde1d02ddf7a4cb1a00d36a58d864795136455",
+   "labelled_px": 48643,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.096,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.096,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2287,
+   "status": "measured",
+   "n": 2905,
+   "nlm": "avf1969b.raw.Z",
+   "photo_raw_sha256": "f95ca13d04031955d5886c7bf3a8abd44412ce4ed54951ef919a4c9dce8df772",
+   "labelled_px": 48657,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1087,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1087,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2288,
+   "status": "measured",
+   "n": 2904,
+   "nlm": "avf1969a.raw.Z",
+   "photo_raw_sha256": "c013afd9cb75031e9f1c6081cf9ee7fcb3d502aa7e48af210c000edc9c8ef7e7",
+   "labelled_px": 48689,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1422,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1422,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2289,
+   "status": "measured",
+   "n": 2903,
+   "nlm": "avf1968c.raw.Z",
+   "photo_raw_sha256": "6eb65533390a446a8cd2353b6a4e59fbb7e548cb6fe5c9691cb9ca3be7aca387",
+   "labelled_px": 48691,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1247,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1247,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2290,
+   "status": "measured",
+   "n": 2902,
+   "nlm": "avf1968b.raw.Z",
+   "photo_raw_sha256": "289919cdfac6d4c03facbdf797f4ee210fe611bb6ef0e5082b21f688c694a94f",
+   "labelled_px": 48698,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0806,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0806,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2291,
+   "status": "measured",
+   "n": 2901,
+   "nlm": "avf1968a.raw.Z",
+   "photo_raw_sha256": "12f608f80b87b3b474ae10f52bc7b95d267b2e4fa4a0370778fa23ba2030248f",
+   "labelled_px": 48683,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1123,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1123,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2292,
+   "status": "measured",
+   "n": 2900,
+   "nlm": "avf1967c.raw.Z",
+   "photo_raw_sha256": "e25c36df423a7843df33c5a385455d65f35060185c442806d44c2b62dc5b9436",
+   "labelled_px": 48660,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1474,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1474,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2293,
+   "status": "measured",
+   "n": 2899,
+   "nlm": "avf1967b.raw.Z",
+   "photo_raw_sha256": "caec98b64d44178557ded7f13b772117022628c32732d51e41310ef5b80e53ac",
+   "labelled_px": 48635,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0833,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0833,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2294,
+   "status": "measured",
+   "n": 2898,
+   "nlm": "avf1967a.raw.Z",
+   "photo_raw_sha256": "ab50c90e0a54e33637851dd42f127f9c06f4b2c001a73e64a407d5aa0be25912",
+   "labelled_px": 48631,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.091,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.091,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2295,
+   "status": "measured",
+   "n": 2897,
+   "nlm": "avf1966c.raw.Z",
+   "photo_raw_sha256": "89cc1a62c0204b9a953fde6ffa7713c549226cd98a984de4b88ef5b7b1338bec",
+   "labelled_px": 48610,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0838,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0838,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2296,
+   "status": "measured",
+   "n": 2896,
+   "nlm": "avf1966b.raw.Z",
+   "photo_raw_sha256": "e8fe2597b8aab8c6f106c82895e765834260af9e25b211c5e183f0e99b8e1b81",
+   "labelled_px": 48597,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0956,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0956,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2297,
+   "status": "measured",
+   "n": 2895,
+   "nlm": "avf1966a.raw.Z",
+   "photo_raw_sha256": "3866494aa32766d12e39b4c6806f173ad97ce9f302bc02b25b1bd823e234364d",
+   "labelled_px": 48618,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0798,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0798,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2298,
+   "status": "measured",
+   "n": 2894,
+   "nlm": "avf1965c.raw.Z",
+   "photo_raw_sha256": "4e6bab6e3ed92afd2867ee828cbae561dacb20381c3decddc4a711dce33829d7",
+   "labelled_px": 48597,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1084,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1084,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2299,
+   "status": "measured",
+   "n": 2893,
+   "nlm": "avf1965b.raw.Z",
+   "photo_raw_sha256": "07199f63e955027ee7fce5cfef3c85a8d362579a1f2a7a8f6210264f79ab167b",
+   "labelled_px": 48572,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1031,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1031,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2300,
+   "status": "measured",
+   "n": 2892,
+   "nlm": "avf1965a.raw.Z",
+   "photo_raw_sha256": "03c6a490a3fda5672540ba0003b66a25a5ef13d79eaed70cd45d97310333907a",
+   "labelled_px": 48564,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0928,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0928,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2301,
+   "status": "measured",
+   "n": 2891,
+   "nlm": "avf1964c.raw.Z",
+   "photo_raw_sha256": "ad42b9a044558226304c5a1b8d292ba0ad452027e122c03014aa22997e7e2506",
+   "labelled_px": 48562,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1066,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1066,
+   "identity_status": "settled"
+  },
+  {
+   "k": 2302,
+   "status": "measured",
+   "n": 2890,
+   "nlm": "avf1964b.raw.Z",
+   "photo_raw_sha256": "f59c73bd73688d32e232e628232e48c3c5c7daeee0525d6f9a6c458747cb2c7a",
+   "labelled_px": 48570,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1077,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1077,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2303,
+   "status": "measured",
+   "n": 2889,
+   "nlm": "avf1964a.raw.Z",
+   "photo_raw_sha256": "473c1099f279c039d16e6347240208b4bfef7a23ed488fbb70cb416680155093",
+   "labelled_px": 48620,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1106,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1106,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2304,
+   "status": "measured",
+   "n": 2888,
+   "nlm": "avf1963c.raw.Z",
+   "photo_raw_sha256": "ab91af296b56d0c4531dab3d56f1c3228e6f657241748e5d3073fd7ab0dae76d",
+   "labelled_px": 48657,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1012,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1012,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2305,
+   "status": "measured",
+   "n": 2887,
+   "nlm": "avf1963b.raw.Z",
+   "photo_raw_sha256": "e83af3b38d05f8429177376e85be572d1fe5f3be53c5811eea9a2cd54acb82b7",
+   "labelled_px": 48638,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1282,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1282,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2306,
+   "status": "measured",
+   "n": 2886,
+   "nlm": "avf1963a.raw.Z",
+   "photo_raw_sha256": "476df804de694277cd4a6b3c7e0e8789739d104d50807f7d15b2980d5f99cb72",
+   "labelled_px": 48702,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1285,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1285,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2307,
+   "status": "measured",
+   "n": 2885,
+   "nlm": "avf1962c.raw.Z",
+   "photo_raw_sha256": "8160b2c5488faf97faca668fbbfd02f8efab7ccedf30db4f3a655690aef22cc1",
+   "labelled_px": 48727,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1046,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1046,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2308,
+   "status": "measured",
+   "n": 2884,
+   "nlm": "avf1962b.raw.Z",
+   "photo_raw_sha256": "898206866214931e06c27329c0bf226c00cce18e374b9009f197deb43f1db16c",
+   "labelled_px": 48703,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1161,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1161,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2309,
+   "status": "measured",
+   "n": 2883,
+   "nlm": "avf1962a.raw.Z",
+   "photo_raw_sha256": "e92dd9d60f3cfe9a45ccb39cda9d10d3f70742add49a10bc6fd845693e91466a",
+   "labelled_px": 48685,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1183,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1183,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2310,
+   "status": "measured",
+   "n": 2882,
+   "nlm": "avf1961c.raw.Z",
+   "photo_raw_sha256": "4968d0432cc906fdeb3eba58c6168df55839a7eb255d439ed92ce490ad65bae4",
+   "labelled_px": 48714,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1228,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1228,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2311,
+   "status": "measured",
+   "n": 2881,
+   "nlm": "avf1961b.raw.Z",
+   "photo_raw_sha256": "f5c4bf648d6d353fd0d6b67683070a07e24220e8661dbdde94b121244fd46084",
+   "labelled_px": 48703,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1158,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1158,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2312,
+   "status": "measured",
+   "n": 2880,
+   "nlm": "avf1961a.raw.Z",
+   "photo_raw_sha256": "e3798ddef68d59fba674abcad207d00188d9eccfae6c651304c2060872313e63",
+   "labelled_px": 48677,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1154,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1154,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2313,
+   "status": "measured",
+   "n": 2879,
+   "nlm": "avf1960c.raw.Z",
+   "photo_raw_sha256": "c51a6e10939ef9e357361ffe3cd5567311d0e39b02341bd92310e30cee58e4d3",
+   "labelled_px": 48673,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1209,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1209,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2314,
+   "status": "measured",
+   "n": 2878,
+   "nlm": "avf1960b.raw.Z",
+   "photo_raw_sha256": "83024e4b13900122eb02666ba5d5086d4836a6a64febf911b7e2b35fb3e4cb61",
+   "labelled_px": 48656,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1292,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1292,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2315,
+   "status": "measured",
+   "n": 2877,
+   "nlm": "avf1960a.raw.Z",
+   "photo_raw_sha256": "6403be3cd875f6f8915e811ef8c41ec7991a55dca42b662a381c8dcd0ebdacde",
+   "labelled_px": 48630,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1155,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1155,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2316,
+   "status": "measured",
+   "n": 2876,
+   "nlm": "avf1959c.raw.Z",
+   "photo_raw_sha256": "7947afafc0a8b483a8de9f6da4f7aa44191e95aeaca8e0d39c6098879b770dfd",
+   "labelled_px": 48636,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1488,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1488,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2317,
+   "status": "measured",
+   "n": 2875,
+   "nlm": "avf1959b.raw.Z",
+   "photo_raw_sha256": "2429656bc3dfa058fc2bc2cf2614387ba95cde54816d82bbacfeb9be18524b7c",
+   "labelled_px": 48582,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1518,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1518,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2318,
+   "status": "measured",
+   "n": 2874,
+   "nlm": "avf1959a.raw.Z",
+   "photo_raw_sha256": "f049fc4bcf1f90d8f6d6fc24f290a9c596df0cf7b993cff78155038172612361",
+   "labelled_px": 48535,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1552,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1552,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2319,
+   "status": "measured",
+   "n": 2873,
+   "nlm": "avf1958c.raw.Z",
+   "photo_raw_sha256": "de536c61c16738d1d7fae6494af7dd1e8d028e6376615becd76512d58489c54c",
+   "labelled_px": 48473,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1666,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1666,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2320,
+   "status": "measured",
+   "n": 2872,
+   "nlm": "avf1958b.raw.Z",
+   "photo_raw_sha256": "9e3cc153d3d71f6208943f579563d5f71f45fde87bc482f44892568409df03f4",
+   "labelled_px": 48434,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1565,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1565,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2321,
+   "status": "measured",
+   "n": 2871,
+   "nlm": "avf1958a.raw.Z",
+   "photo_raw_sha256": "9d989e6523f80f41ca11191f05a1b1f07f194ca15daf76ce90eac094e2616fa3",
+   "labelled_px": 48391,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1669,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1669,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2322,
+   "status": "measured",
+   "n": 2870,
+   "nlm": "avf1957c.raw.Z",
+   "photo_raw_sha256": "2729c315fd9ab82050b479c1192b9467175f89d56802915f29b9e44259dcd1cc",
+   "labelled_px": 48333,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1843,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1843,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2323,
+   "status": "measured",
+   "n": 2869,
+   "nlm": "avf1957b.raw.Z",
+   "photo_raw_sha256": "5c314c04f2277cd23f13c40a242edd6b938d653fcda941c31b05273ddd755b74",
+   "labelled_px": 48263,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1919,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1919,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2324,
+   "status": "measured",
+   "n": 2868,
+   "nlm": "avf1957a.raw.Z",
+   "photo_raw_sha256": "6cb9aec06f7d161f0dcabb7df3a3d9ea4b3ad75776740d323b39cd3bc033085e",
+   "labelled_px": 48181,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2123,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2123,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2325,
+   "status": "measured",
+   "n": 2867,
+   "nlm": "avf1956c.raw.Z",
+   "photo_raw_sha256": "3ee8157c38ae269ed71d49ab661b656bb5f16560efd7e19ec4ec7b12705e1b63",
+   "labelled_px": 48139,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2075,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2075,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2326,
+   "status": "measured",
+   "n": 2866,
+   "nlm": "avf1956b.raw.Z",
+   "photo_raw_sha256": "98db9a7b3a85a14293594c72961d16eb1e45400c193887ad208ea559b7789dfa",
+   "labelled_px": 48142,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2244,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2244,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2327,
+   "status": "measured",
+   "n": 2865,
+   "nlm": "avf1956a.raw.Z",
+   "photo_raw_sha256": "7f721a3508b1b2863036a569565c047c9a373e08e1f6037cf521769a591c22f0",
+   "labelled_px": 48100,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2525,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2525,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2328,
+   "status": "measured",
+   "n": 2864,
+   "nlm": "avf1955c.raw.Z",
+   "photo_raw_sha256": "cc2a08323dc6c3b4c641f063fce73575ab78a2c5fba00041c017493ae3cce431",
+   "labelled_px": 48078,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2068,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2068,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 2329,
+   "status": "measured",
+   "n": 2863,
+   "nlm": "avf1955b.raw.Z",
+   "photo_raw_sha256": "63f05d8733702017ab9dc71dd900098a6532838d0c8e3aa4cc5b054cf7f6aae6",
+   "labelled_px": 48037,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1273,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1273,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 3490,
+   "status": "measured",
+   "n": 1702,
+   "nlm": "avf1568b.raw.Z",
+   "photo_raw_sha256": "18b46a6a97dfcc4e2938cb8aadf5c5f88c366b8f59404b09656e9ced75529233",
+   "labelled_px": 190,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0684,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0684,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3491,
+   "status": "measured",
+   "n": 1701,
+   "nlm": "avf1568a.raw.Z",
+   "photo_raw_sha256": "83eac538ec9f0e5d8c8cc2733a707cb5bdf5fcca7097fab8c50ed34f2fbfbd44",
+   "labelled_px": 185,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0865,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0865,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3492,
+   "status": "measured",
+   "n": 1700,
+   "nlm": "avf1567c.raw.Z",
+   "photo_raw_sha256": "a2cb14149d443a15e37259a1309497b9fe4c78d960d5f2e22abe10de5812ff2d",
+   "labelled_px": 185,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0919,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0919,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3493,
+   "status": "measured",
+   "n": 1699,
+   "nlm": "avf1567b.raw.Z",
+   "photo_raw_sha256": "3682c26e4daaacd96c2206822bfcba157993e6b427a8700d92c08a230f47c327",
+   "labelled_px": 178,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0506,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0506,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3494,
+   "status": "measured",
+   "n": 1698,
+   "nlm": "avf1567a.raw.Z",
+   "photo_raw_sha256": "b979d7dc1cdaaee6c1ffc6445e513570fed4355c87428ce7aaf61d3c62054c37",
+   "labelled_px": 175,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0457,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0457,
+   "identity_status": "settled"
+  },
+  {
+   "k": 3495,
+   "status": "measured",
+   "n": 1697,
+   "nlm": "avf1566c.raw.Z",
+   "photo_raw_sha256": "bf5e52067b3bac1d0bf48cceb664fd51885600d85d4c320d88a767819b899e93",
+   "labelled_px": 172,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0872,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0872,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3496,
+   "status": "measured",
+   "n": 1696,
+   "nlm": "avf1566b.raw.Z",
+   "photo_raw_sha256": "18a5c635ec15e9fe1e9242d57673e18922596ec080098bca339271241d823997",
+   "labelled_px": 171,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0409,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0409,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3497,
+   "status": "measured",
+   "n": 1695,
+   "nlm": "avf1566a.raw.Z",
+   "photo_raw_sha256": "69ac23fa559d3bf8affbe11426d30fb81585989f102accb1aa76e3810cb97cbd",
+   "labelled_px": 169,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1006,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1006,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3498,
+   "status": "measured",
+   "n": 1694,
+   "nlm": "avf1565c.raw.Z",
+   "photo_raw_sha256": "3167a9c9c2a605e83f39e3cd567ac44e0f285f6c953d075b88d2d11e7fd1db5c",
+   "labelled_px": 168,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0774,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0774,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3499,
+   "status": "measured",
+   "n": 1693,
+   "nlm": "avf1565b.raw.Z",
+   "photo_raw_sha256": "3de0a02ce81797242c37d9b34e5412cc4cbaf95a636107463ed7e17cc2101668",
+   "labelled_px": 166,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1446,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1446,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3500,
+   "status": "measured",
+   "n": 1692,
+   "nlm": "avf1565a.raw.Z",
+   "photo_raw_sha256": "d593c24abbdc5c77905bdb825b43186de01406474673154620a9602b1a7c4d2d",
+   "labelled_px": 167,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0958,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0958,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3501,
+   "status": "measured",
+   "n": 1691,
+   "nlm": "avf1564c.raw.Z",
+   "photo_raw_sha256": "942986853c5ad158ee602dd416338a0103ea847f5afdd51102b502e55334972d",
+   "labelled_px": 164,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.189,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.189,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3502,
+   "status": "measured",
+   "n": 1690,
+   "nlm": "avf1564b.raw.Z",
+   "photo_raw_sha256": "786142668cae53769dce4e427e627bfdf13a34bd456b540ca0158e5216c42190",
+   "labelled_px": 163,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0491,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0491,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3503,
+   "status": "measured",
+   "n": 1689,
+   "nlm": "avf1564a.raw.Z",
+   "photo_raw_sha256": "f9369a524aa682282103117b117c8601f803189e1cd20caaa6676823870ab009",
+   "labelled_px": 160,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1062,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1062,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3504,
+   "status": "measured",
+   "n": 1688,
+   "nlm": "avf1563c.raw.Z",
+   "photo_raw_sha256": "a0b0b35c6142cfc8c7d534b66e7b7c79e47f85c6ee6fd31c891be2ba81d6bc7a",
+   "labelled_px": 161,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1242,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1242,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3505,
+   "status": "measured",
+   "n": 1687,
+   "nlm": "avf1563b.raw.Z",
+   "photo_raw_sha256": "f54829e0029f72492e54f3437194e46a295eb4ff7d1fc54f19a04c225a1577e3",
+   "labelled_px": 157,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1338,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1338,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3506,
+   "status": "measured",
+   "n": 1686,
+   "nlm": "avf1563a.raw.Z",
+   "photo_raw_sha256": "f00b0a106370da3e6d5b8fcc6519d3c0fb7afbe8162dc7d9664c2348dad1e8e9",
+   "labelled_px": 156,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.141,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.141,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3507,
+   "status": "measured",
+   "n": 1685,
+   "nlm": "avf1562c.raw.Z",
+   "photo_raw_sha256": "b5ed1ef767884327d9637a0c95830ea714e3abed46ef68059e11b8c5854249fa",
+   "labelled_px": 153,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1242,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1242,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3508,
+   "status": "measured",
+   "n": 1684,
+   "nlm": "avf1562b.raw.Z",
+   "photo_raw_sha256": "fd007416c86d37c6a7d48cde1f8c3162a4ead3592a317f0fc4f2abec8746ee2e",
+   "labelled_px": 148,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1284,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1284,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3509,
+   "status": "measured",
+   "n": 1683,
+   "nlm": "avf1562a.raw.Z",
+   "photo_raw_sha256": "14e3a2e5a78922a28ff0829dc73be719884c228665183571e7c7e91a74c845e2",
+   "labelled_px": 140,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.15,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.15,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3510,
+   "status": "measured",
+   "n": 1682,
+   "nlm": "avf1561c.raw.Z",
+   "photo_raw_sha256": "d154cb32a79a78f216eb423c7559927eea4e1a27ab4bbb0a61b3a5199305633e",
+   "labelled_px": 133,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1278,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1278,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3511,
+   "status": "measured",
+   "n": 1681,
+   "nlm": "avf1561b.raw.Z",
+   "photo_raw_sha256": "f1adbeb0f52df8efd550cd53be9d87fd9e3fd3795225a932055e7cb1a5cd5bd8",
+   "labelled_px": 127,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1181,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1181,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3512,
+   "status": "measured",
+   "n": 1680,
+   "nlm": "avf1561a.raw.Z",
+   "photo_raw_sha256": "1d4aef25c57e35f070fd91f9563590a518f623b15c16d5fbe3bce30b020e9c9c",
+   "labelled_px": 120,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1083,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1083,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3513,
+   "status": "measured",
+   "n": 1679,
+   "nlm": "avf1560c.raw.Z",
+   "photo_raw_sha256": "84bd64243fad8ad7edc1e2464070dacaa659f3badab0bd80dd71b655bfb00f4a",
+   "labelled_px": 111,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1802,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1802,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3514,
+   "status": "measured",
+   "n": 1678,
+   "nlm": "avf1560b.raw.Z",
+   "photo_raw_sha256": "17b18269cdd9ce0c0f66efa94e55ede5e4d532317746bc0e90530a00f754752e",
+   "labelled_px": 107,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1121,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1121,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3515,
+   "status": "measured",
+   "n": 1677,
+   "nlm": "avf1560a.raw.Z",
+   "photo_raw_sha256": "89d6a1abab171971ce3b69a7e219b33ec4ad6f06ecebd1e638ccb81ed224bd45",
+   "labelled_px": 97,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1237,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1237,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3516,
+   "status": "measured",
+   "n": 1676,
+   "nlm": "avf1559c.raw.Z",
+   "photo_raw_sha256": "df298633012f1a5d55d8af35426041c2753f3f1ae80693b93822346de593b697",
+   "labelled_px": 88,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2386,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2386,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3517,
+   "status": "measured",
+   "n": 1675,
+   "nlm": "avf1559b.raw.Z",
+   "photo_raw_sha256": "3a901a8ef90f1a7d0301c1c25699dedca8d77f30498877b556da9d2f380ac942",
+   "labelled_px": 79,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1519,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1519,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3518,
+   "status": "measured",
+   "n": 1674,
+   "nlm": "avf1559a.raw.Z",
+   "photo_raw_sha256": "4efcd6bf7fc3553f8848162bef639965ad47be017e13a62a498e03506df14d67",
+   "labelled_px": 70,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2,
+   "identity_status": "provisional-block-consistent"
+  },
+  {
+   "k": 3519,
+   "status": "measured",
+   "n": 1673,
+   "nlm": "avf1558c.raw.Z",
+   "photo_raw_sha256": "8b39eaffa5615067cf2cc30b62a9fd1e836c3b2b2df13e1b09df49c8b4592bb2",
+   "labelled_px": 66,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1818,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1818,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3520,
+   "status": "measured",
+   "n": 1672,
+   "nlm": "avf1558b.raw.Z",
+   "photo_raw_sha256": "2aebb6d45a39755c7f05b9380edb4e2387c3fd594aa8114c5090de96abbcf156",
+   "labelled_px": 64,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.3281,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.3281,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3521,
+   "status": "measured",
+   "n": 1671,
+   "nlm": "avf1558a.raw.Z",
+   "photo_raw_sha256": "b891c1e3cb16cdd04e74aef18c2945b0cfde65c1eb7f1a8dd43e73557f73fc49",
+   "labelled_px": 57,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1754,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1754,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3522,
+   "status": "measured",
+   "n": 1670,
+   "nlm": "avf1557c.raw.Z",
+   "photo_raw_sha256": "b709b53ad7af64603351efcda50d38ac1bd57fbc2f8226d4a3fbdfbeff79e00a",
+   "labelled_px": 48,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.3542,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.3542,
+   "identity_status": "settled"
+  },
+  {
+   "k": 3523,
+   "status": "measured",
+   "n": 1669,
+   "nlm": "avf1557b.raw.Z",
+   "photo_raw_sha256": "a390a2f4e683cd86130d6e332c3618fcf4727349c6e56ca2d74e63a64db72ee5",
+   "labelled_px": 45,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0889,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0889,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3524,
+   "status": "measured",
+   "n": 1668,
+   "nlm": "avf1557a.raw.Z",
+   "photo_raw_sha256": "b8e51be99b9858f01d72fa8bac9ae88fbc5c0135622ba9fee203bede01d44483",
+   "labelled_px": 38,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.1316,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.1316,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3525,
+   "status": "measured",
+   "n": 1667,
+   "nlm": "avf1556c.raw.Z",
+   "photo_raw_sha256": "4af4c32a9eb3cd838aa6181978f70aef55ea67ba774ed7f3e9593273b8b07c61",
+   "labelled_px": 30,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0667,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0667,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3526,
+   "status": "measured",
+   "n": 1666,
+   "nlm": "avf1556b.raw.Z",
+   "photo_raw_sha256": "fa990ac6c7e10ce316b7a825693da975ee588d68639cf7f89a7651dd389d9683",
+   "labelled_px": 23,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.0435,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.0435,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3527,
+   "status": "measured",
+   "n": 1665,
+   "nlm": "avf1556a.raw.Z",
+   "photo_raw_sha256": "f356412e9f8fc36eae2e45547a37ec12a0350ecd77239b39648b6bf6c2743b59",
+   "labelled_px": 13,
+   "fraction_block_like": 0.0,
+   "fraction_dark": 0.2308,
+   "fraction_frost_like": 0.0,
+   "fraction_non_tissue": 0.2308,
+   "identity_status": "frame-with-margin"
+  },
+  {
+   "k": 3528,
+   "status": "no-denver-labels",
+   "n": 1664
+  },
+  {
+   "k": 3529,
+   "status": "no-denver-labels",
+   "n": 1663
+  },
+  {
+   "k": 3530,
+   "status": "no-denver-labels",
+   "n": 1662
+  },
+  {
+   "k": 3531,
+   "status": "no-denver-labels",
+   "n": 1661
+  },
+  {
+   "k": 3532,
+   "status": "no-denver-labels",
+   "n": 1660
+  }
+ ]
+}

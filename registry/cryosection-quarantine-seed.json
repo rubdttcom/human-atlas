@@ -1,0 +1,9 @@
+{
+ "id": "cryosection-quarantine-seed",
+ "note": "Curated seed of the observability quarantine: slices where a reviewer saw tissue that is not observable in the photograph under Denver's original labels. Extent is delimited by scripts/cryosection-observability-band.py; scripts/build-cryosection-quarantine.py merges both into registry/cryosection-quarantine.json. Quarantined slices are ignore, never background; originals are untouched.",
+ "entries": [
+  {"k": 1207, "nlm": "avf2330b.raw.Z", "reason": "extensive surface alteration (frost or damaged block face) over both legs; Denver labels continue over it", "source": "codex-rgb-review-2026-09-13", "evidence": "docs/audits/2026-09-13-cryosection-rgb-review/panel-1207.jpg"},
+  {"k": 1210, "nlm": "avf2328b.raw.Z", "reason": "one leg shows blue granular material and dark zones instead of tissue; Denver muscle and bone labels lie over it", "source": "codex-rgb-review-2026-09-13", "evidence": "docs/audits/2026-09-13-cryosection-rgb-review/panel-1210.jpg"},
+  {"k": 2259, "nlm": "avf1978c.raw.Z", "reason": "whitish opaque surface hides most of one leg and part of the other; Denver labels lie over it", "source": "codex-rgb-review-2026-09-13", "evidence": "docs/audits/2026-09-13-cryosection-rgb-review/panel-2259.jpg"}
+ ]
+}

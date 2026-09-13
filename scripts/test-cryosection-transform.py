@@ -63,10 +63,11 @@ victim = next(x for x in r2['slices'] if x['status'] == 'matched' and x['identit
 victim['frame_choice']['margin'] = 0.001            # weaken the margin of a frame-only slice
 doc2 = bct.build(r2)
 p2 = next(p for p in doc2['per_slice'] if p['k'] == victim['k'])
-sel2 = scp.select(doc2)
+quar = json.loads((ROOT / 'registry/cryosection-quarantine.json').read_text())
+sel2 = scp.select(doc2, quar)
 ok2 = p2['identity_status'] == 'provisional-block-consistent' and p2['provisional'] and p2['frame_margin'] == 0.001 and 'ambiguity_set_n' in p2
-ok2 &= victim['k'] in {e['k'] for e in sel2['excluded']} and victim['k'] not in set(sel2['usable_k'])
-ok2 &= sel2['counts']['excluded'] == doc2['identity']['provisional_slices']
+ok2 &= victim['k'] in {e['k'] for e in sel2['excluded_identity']} and victim['k'] not in set(sel2['usable_k'])
+ok2 &= sel2['counts']['excluded_identity'] == doc2['identity']['provisional_slices'] - sum(1 for p in doc2['per_slice'] if p['provisional'] and p['k'] in {e['k'] for e in quar['entries']})
 print(f"{'ok' if ok2 else 'FAIL'}: weakened frame margin on k={victim['k']} survives to the transform (provisional, ambiguity set {p2.get('ambiguity_set_nlm')}) and is excluded by {sel2['policy']['id']}")
 results.append(ok2)
 # a label-settled slice cannot be demoted or promoted by residual: set a large residual, status stays settled and selection unchanged
@@ -77,9 +78,22 @@ doc3 = bct.build(r3); p3 = next(p for p in doc3['per_slice'] if p['k'] == lab['k
 ok3 = p3['identity_status'] == 'settled' and p3['residual_mean_nlm_px'] == 0.4
 print(f"{'ok' if ok3 else 'FAIL'}: identity status does not depend on the in-plane residual")
 results.append(ok3)
-sel = scp.select(doc)
-ok4 = sel['counts']['usable'] + sel['counts']['usable_flagged'] + sel['counts']['excluded'] + sel['counts']['no_reference_blank_denver'] == bct.DEN_N \
-    and sel['counts']['excluded'] == doc['identity']['provisional_slices'] and all(e.get('ambiguity_set_nlm') for e in sel['excluded'])
+sel = scp.select(doc, quar)
+ok4 = sel['counts']['usable'] + sel['counts']['usable_flagged'] + sel['counts']['excluded_identity'] + sel['counts']['excluded_observability'] + sel['counts']['no_reference_blank_denver'] == bct.DEN_N \
+    and all(e.get('ambiguity_set_nlm') for e in sel['excluded_identity'])
+# observability quarantine overrides a settled identity (k 1207 is settled and quarantined); a forged clean quarantine cannot re-admit it
+q_settled = [e['k'] for e in quar['entries'] if next(p for p in doc['per_slice'] if p['k'] == e['k'])['identity_status'] == 'settled']
+ok5 = bool(q_settled) and all(k in {e['k'] for e in sel['excluded_observability']} and k not in set(sel['usable_k']) for k in q_settled)
+ok5 &= sel['counts']['excluded_observability'] == len([e for e in quar['entries'] if e['status'] == 'quarantined'])
+print(f"{'ok' if ok5 else 'FAIL'}: quarantine overrides identity: settled-but-quarantined k {q_settled} excluded for observability")
+results.append(ok5)
+# a quarantine naming a slice the transform does not know must be refused
+try:
+    scp.select(doc, {**quar, 'entries': quar['entries'] + [{'k': 99999, 'status': 'quarantined', 'reason': 'x', 'source': 'x', 'photo_compressed_sha256': '', 'denver_sha256': ''}]}); ok6 = False
+except SystemExit:
+    ok6 = True
+print(f"{'ok' if ok6 else 'FAIL'}: quarantine of an unknown slice is refused")
+results.append(ok6)
 print(f"{'ok' if ok4 else 'FAIL'}: pair selection partitions all {bct.DEN_N} Denver slices: {sel['counts']}")
 results.append(ok4)
 print(json.dumps({'cases': len(results), 'all_as_expected': all(results)}))

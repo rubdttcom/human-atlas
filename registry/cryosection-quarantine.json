@@ -1,0 +1,283 @@
+{
+ "id": "cryosection-quarantine",
+ "version": 1,
+ "date": "2026-09-13",
+ "rule": "exclusion by observability of the tissue under the original labels, independent of the photograph identity status; quarantined slices are ignore (never background) in any RGB-label pairing; originals untouched; a later regional mask may recover observable tissue by a documented rule",
+ "sources": {
+  "seed": "registry/cryosection-quarantine-seed.json",
+  "band_report": "generated/cryosection-observability-band.json",
+  "band_report_sha256": "2331e9d3ece30cc8b11e5fdd373f0314dd0f5a3531adb5aaea6c39d9fb2cb0a3",
+  "band_rule": "non-tissue fraction under the original labels > max(median + 3 MAD, median + 0.10) of the band interior (>= 10 slices from a block boundary)",
+  "bands_checked": {
+   "feet_start": [
+    7,
+    39
+   ],
+   "knee_boundary": [
+    1170,
+    1249
+   ],
+   "thigh_boundary": [
+    2225,
+    2259
+   ],
+   "pelvis_start": [
+    2285,
+    2329
+   ],
+   "pelvis_end": [
+    3490,
+    3532
+   ]
+  }
+ },
+ "entries": [
+  {
+   "k": 1205,
+   "nlm": "avf2331a.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "knee_boundary",
+   "reason": "non-tissue fraction under the original labels 0.179 above the band threshold 0.120",
+   "denver_sha256": "84a11015fe1d14140a679bc74e40285c3eeb155fd69705b22760d3b1ab70e89f",
+   "photo_compressed_sha256": "20fe80d4bd58d5c77d1847cf5e3b7ee5de2692490281ad5d74d17d672a5cb1e1",
+   "band_metric": {
+    "fraction_non_tissue": 0.1794,
+    "fraction_block_like": 0.0788,
+    "fraction_dark": 0.0075,
+    "fraction_frost_like": 0.1024
+   }
+  },
+  {
+   "k": 1206,
+   "nlm": "avf2330c.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "knee_boundary",
+   "reason": "non-tissue fraction under the original labels 0.349 above the band threshold 0.120",
+   "denver_sha256": "e0c03df07758f3c0053e30562f11c522da43c7ea6f7035383e264828d8df52be",
+   "photo_compressed_sha256": "80e32a7941595628952c79d5321bfe6dd2248056399d09055b9e6b43ff8960e6",
+   "band_metric": {
+    "fraction_non_tissue": 0.3492,
+    "fraction_block_like": 0.1179,
+    "fraction_dark": 0.0009,
+    "fraction_frost_like": 0.2491
+   }
+  },
+  {
+   "k": 1207,
+   "nlm": "avf2330b.raw.Z",
+   "reason": "extensive surface alteration (frost or damaged block face) over both legs; Denver labels continue over it",
+   "source": "codex-rgb-review-2026-09-13",
+   "evidence": "docs/audits/2026-09-13-cryosection-rgb-review/panel-1207.jpg",
+   "status": "quarantined",
+   "denver_sha256": "7bb369ec1c3cad31e9ccb7a8b2416fc2cd4a064250917b643059cd0d45279b27",
+   "photo_compressed_sha256": "50aabb27217197d206d795058aea23a541288ccd40546fe0a39b4a5bd7ab0560",
+   "band_metric": {
+    "fraction_non_tissue": 0.4923,
+    "fraction_block_like": 0.1246,
+    "fraction_dark": 0.0001,
+    "fraction_frost_like": 0.394
+   },
+   "also_flagged_by_band": "knee_boundary"
+  },
+  {
+   "k": 1210,
+   "nlm": "avf2328b.raw.Z",
+   "reason": "one leg shows blue granular material and dark zones instead of tissue; Denver muscle and bone labels lie over it",
+   "source": "codex-rgb-review-2026-09-13",
+   "evidence": "docs/audits/2026-09-13-cryosection-rgb-review/panel-1210.jpg",
+   "status": "quarantined",
+   "denver_sha256": "5f1d3b756bbc56bc4e238b9e778f3427a736faa917610142b7e66008a29c94f2",
+   "photo_compressed_sha256": "8bf8f43ecb6ffb7496b090b7e4dc3e89bb1248855b0b2d84cc7a5902d839ee3b",
+   "band_metric": {
+    "fraction_non_tissue": 0.4913,
+    "fraction_block_like": 0.3801,
+    "fraction_dark": 0.1296,
+    "fraction_frost_like": 0.0
+   },
+   "also_flagged_by_band": "knee_boundary"
+  },
+  {
+   "k": 1211,
+   "nlm": "avf2328a.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "knee_boundary",
+   "reason": "non-tissue fraction under the original labels 0.219 above the band threshold 0.120",
+   "denver_sha256": "4d8240be814e2f9a61db750906a624318e566e5ce14c4ce5224e5df56d5eb564",
+   "photo_compressed_sha256": "614a6c7b0f021ae7e64b6e02109a94869698eb03f37faed2c852fd91d2c22832",
+   "band_metric": {
+    "fraction_non_tissue": 0.219,
+    "fraction_block_like": 0.1786,
+    "fraction_dark": 0.0537,
+    "fraction_frost_like": 0.0001
+   }
+  },
+  {
+   "k": 2256,
+   "nlm": "avf1979c.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "thigh_boundary",
+   "reason": "non-tissue fraction under the original labels 0.374 above the band threshold 0.272",
+   "denver_sha256": "d30d52e3a7d6babe6d85797b27a7094c5885741ad81d869d55eac5131ebee3ec",
+   "photo_compressed_sha256": "994714544d591c2920c509e102efef32cce447a5794027ab0c5bd6fd11e95a06",
+   "band_metric": {
+    "fraction_non_tissue": 0.3739,
+    "fraction_block_like": 0.0045,
+    "fraction_dark": 0.1102,
+    "fraction_frost_like": 0.2631
+   }
+  },
+  {
+   "k": 2257,
+   "nlm": "avf1979b.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "thigh_boundary",
+   "reason": "non-tissue fraction under the original labels 0.466 above the band threshold 0.272",
+   "denver_sha256": "c1742eb70e0d78303813acb9321c30d225d0a5863c01096a80cf4b1b171ee432",
+   "photo_compressed_sha256": "ccc53c9fb5c3fa3cf5d240d92a370de60f2ad2992d62b9550039549cd4f32037",
+   "band_metric": {
+    "fraction_non_tissue": 0.4664,
+    "fraction_block_like": 0.0118,
+    "fraction_dark": 0.1058,
+    "fraction_frost_like": 0.3593
+   }
+  },
+  {
+   "k": 2258,
+   "nlm": "avf1979a.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "thigh_boundary",
+   "reason": "non-tissue fraction under the original labels 0.534 above the band threshold 0.272",
+   "denver_sha256": "9c5adf5fbf533fe0e201dc1c58fda1f566794360853780980c6838250b04170e",
+   "photo_compressed_sha256": "fe54b1ca5ce4a207c3c130db0078046157dd6175e3826e80c9f54d3b0cda8d87",
+   "band_metric": {
+    "fraction_non_tissue": 0.534,
+    "fraction_block_like": 0.0267,
+    "fraction_dark": 0.0826,
+    "fraction_frost_like": 0.4488
+   }
+  },
+  {
+   "k": 2259,
+   "nlm": "avf1978c.raw.Z",
+   "reason": "whitish opaque surface hides most of one leg and part of the other; Denver labels lie over it",
+   "source": "codex-rgb-review-2026-09-13",
+   "evidence": "docs/audits/2026-09-13-cryosection-rgb-review/panel-2259.jpg",
+   "status": "quarantined",
+   "denver_sha256": "7223c45082c14e5d0614f2691d10d3d0aabce462d30bc9484f2fac7776eb4686",
+   "photo_compressed_sha256": "4dcc932eccd705b178c44c54ab948e0f22c6525cf213776a524517cedbb503e2",
+   "band_metric": {
+    "fraction_non_tissue": 0.5939,
+    "fraction_block_like": 0.0491,
+    "fraction_dark": 0.0148,
+    "fraction_frost_like": 0.5735
+   },
+   "also_flagged_by_band": "thigh_boundary"
+  },
+  {
+   "k": 2326,
+   "nlm": "avf1956b.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "pelvis_start",
+   "reason": "non-tissue fraction under the original labels 0.224 above the band threshold 0.223",
+   "denver_sha256": "e764d742d8e7967ba18c306cc4c04dfe6ddfa7b3df095b8da2d42cbbae60d6a0",
+   "photo_compressed_sha256": "0b3bbb87668221dff9e4f97a749a35042735c39f35fa98ffc9a655221ee53208",
+   "band_metric": {
+    "fraction_non_tissue": 0.2244,
+    "fraction_block_like": 0.0,
+    "fraction_dark": 0.2244,
+    "fraction_frost_like": 0.0
+   }
+  },
+  {
+   "k": 2327,
+   "nlm": "avf1956a.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "pelvis_start",
+   "reason": "non-tissue fraction under the original labels 0.253 above the band threshold 0.223",
+   "denver_sha256": "346824c64eb738486172edb763a4f780bf3445635961e8f527afceec1362267e",
+   "photo_compressed_sha256": "c18fa9cd739dc236b2f39f51fe08e4a8cac9b21df34491c2f0f3e10c2941a0d9",
+   "band_metric": {
+    "fraction_non_tissue": 0.2525,
+    "fraction_block_like": 0.0,
+    "fraction_dark": 0.2525,
+    "fraction_frost_like": 0.0
+   }
+  },
+  {
+   "k": 3516,
+   "nlm": "avf1559c.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "pelvis_end",
+   "reason": "non-tissue fraction under the original labels 0.239 above the band threshold 0.224",
+   "denver_sha256": "872727d558238a4370ba9b807550fa52e169fc4d2dc6fe6f37698149af45ad09",
+   "photo_compressed_sha256": "0f3e8839891227b7748a4594b3e5e187ea366e9bbfe1c8a27f9855b55d8fb57b",
+   "band_metric": {
+    "fraction_non_tissue": 0.2386,
+    "fraction_block_like": 0.0,
+    "fraction_dark": 0.2386,
+    "fraction_frost_like": 0.0
+   }
+  },
+  {
+   "k": 3520,
+   "nlm": "avf1558b.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "pelvis_end",
+   "reason": "non-tissue fraction under the original labels 0.328 above the band threshold 0.224",
+   "denver_sha256": "bee4e1fc60cd37b1e99250b0d2ad7771091ad105584a2d555c552a5b38055dff",
+   "photo_compressed_sha256": "58eceeb46afba6d1e83b835a0f9d0b40355aab6a21bd11c59eb1ef190e956931",
+   "band_metric": {
+    "fraction_non_tissue": 0.3281,
+    "fraction_block_like": 0.0,
+    "fraction_dark": 0.3281,
+    "fraction_frost_like": 0.0
+   }
+  },
+  {
+   "k": 3522,
+   "nlm": "avf1557c.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "pelvis_end",
+   "reason": "non-tissue fraction under the original labels 0.354 above the band threshold 0.224",
+   "denver_sha256": "5dfd2037cf8983f8c81e11197008d73d72797cc532e0ed5142c2f0a5159d46eb",
+   "photo_compressed_sha256": "1a6c665c363b52f60cdf5d8e72360f5b36ca5a80b46a4873ec64d17b7e4f2a50",
+   "band_metric": {
+    "fraction_non_tissue": 0.3542,
+    "fraction_block_like": 0.0,
+    "fraction_dark": 0.3542,
+    "fraction_frost_like": 0.0
+   }
+  },
+  {
+   "k": 3527,
+   "nlm": "avf1556a.raw.Z",
+   "status": "quarantined",
+   "source": "observability-band-metric",
+   "band": "pelvis_end",
+   "reason": "non-tissue fraction under the original labels 0.231 above the band threshold 0.224",
+   "denver_sha256": "97b9633ea745ac193c35d0e6f66540278748f6db45f9306bde1eeb0c3bcf4fc5",
+   "photo_compressed_sha256": "65c91b7e243db0b007746cb793cc22a36b67682da717b786e8c6032f07953a96",
+   "band_metric": {
+    "fraction_non_tissue": 0.2308,
+    "fraction_block_like": 0.0,
+    "fraction_dark": 0.2308,
+    "fraction_frost_like": 0.0
+   }
+  }
+ ],
+ "limits": [
+  "only the checked bands were measured; slices elsewhere are not thereby clean",
+  "colour thresholds delimit the extent; the seed entries are reviewer observations, not anatomy"
+ ]
+}

@@ -1,0 +1,762 @@
+{
+  "revision": "02d3f59 geometry, working transform identity states",
+  "samples": [
+    {
+      "k": 7,
+      "photo": "avf2730b.raw.Z",
+      "identity_status": "settled",
+      "frame_margin": 0.0517,
+      "ncc": 0.9780899734999747,
+      "mirror_ncc": 0.504921136925156,
+      "shift_6_rgb_px_ncc": 0.8781956452392512,
+      "neighbor_ncc": {
+        "8": 0.9141206515826188
+      },
+      "photometric_holdout_mae": 1.1320097548749322,
+      "photometric_holdout_p95": 3.1236308595193236,
+      "bones": [],
+      "labels": {}
+    },
+    {
+      "k": 500,
+      "photo": "avf2566a.raw.Z",
+      "identity_status": "settled",
+      "frame_margin": 0.022,
+      "ncc": 0.9928801437374328,
+      "mirror_ncc": 0.5168269913852144,
+      "shift_6_rgb_px_ncc": 0.9373546826713758,
+      "neighbor_ncc": {
+        "499": 0.9516944329113156,
+        "501": 0.9536801566818899
+      },
+      "photometric_holdout_mae": 1.2245539160287204,
+      "photometric_holdout_p95": 3.480154971395379,
+      "bones": [
+        {
+          "label": "Left_Bone_Fibula",
+          "pixels": 538,
+          "centroid_col": 255.9,
+          "centroid_row": 144.1
+        },
+        {
+          "label": "Left_Bone_Tibia",
+          "pixels": 2079,
+          "centroid_col": 288.6,
+          "centroid_row": 169.5
+        },
+        {
+          "label": "Right_Bone_Fibula",
+          "pixels": 366,
+          "centroid_col": 435.1,
+          "centroid_row": 114.4
+        },
+        {
+          "label": "Right_Bone_Tibia",
+          "pixels": 3130,
+          "centroid_col": 412.4,
+          "centroid_row": 146.4
+        }
+      ],
+      "labels": {
+        "Left_Bone_Fibula": 538,
+        "Left_Bone_Tibia": 2079,
+        "Left_Cartilage_TibiaDistal": 346,
+        "Left_Muscle_ExtensorDigitorumLongus": 83,
+        "Left_Muscle_ExtensorHallucisLongus": 28,
+        "Left_Muscle_FlexorDigitorumLongus": 11,
+        "Left_Muscle_FlexorHallucisLongus": 98,
+        "Left_Muscle_PeroneusLongus": 204,
+        "Right_Bone_Fibula": 366,
+        "Right_Bone_Tibia": 3130,
+        "Right_Muscle_ExtensorDigitorumLongus": 70,
+        "Right_Muscle_ExtensorHallucisLongus": 23,
+        "Right_Muscle_FlexorDigitorumLongus": 32,
+        "Right_Muscle_FlexorHallucisLongus": 208,
+        "Right_Muscle_PeroneusLongus": 181
+      }
+    },
+    {
+      "k": 1207,
+      "photo": "avf2330b.raw.Z",
+      "identity_status": "settled",
+      "frame_margin": 0.0699,
+      "ncc": 0.9943170511981262,
+      "mirror_ncc": 0.6885319770246366,
+      "shift_6_rgb_px_ncc": 0.9673198442927039,
+      "neighbor_ncc": {
+        "1206": 0.9219685661097342
+      },
+      "photometric_holdout_mae": 1.468789618471182,
+      "photometric_holdout_p95": 4.496682793717227,
+      "bones": [
+        {
+          "label": "Left_Bone_Fibula",
+          "pixels": 109,
+          "centroid_col": 202.8,
+          "centroid_row": 141.7
+        },
+        {
+          "label": "Left_Bone_Tibia",
+          "pixels": 1402,
+          "centroid_col": 240.1,
+          "centroid_row": 198.6
+        },
+        {
+          "label": "Right_Bone_Fibula",
+          "pixels": 132,
+          "centroid_col": 481.0,
+          "centroid_row": 110.6
+        },
+        {
+          "label": "Right_Bone_Tibia",
+          "pixels": 1431,
+          "centroid_col": 456.2,
+          "centroid_row": 171.5
+        }
+      ],
+      "labels": {
+        "Left_Bone_Fibula": 109,
+        "Left_Bone_Tibia": 1402,
+        "Left_Muscle_ExtensorDigitorumLongus": 381,
+        "Left_Muscle_GastrocnemiusLateral": 1341,
+        "Left_Muscle_GastrocnemiusMedial": 3211,
+        "Left_Muscle_PeroneusLongus": 1053,
+        "Left_Muscle_Popliteus": 2,
+        "Left_Muscle_Soleus": 4390,
+        "Left_Muscle_TibialisAnterior": 1140,
+        "Left_Muscle_TibialisPosterior": 935,
+        "Right_Bone_Fibula": 132,
+        "Right_Bone_Tibia": 1431,
+        "Right_Muscle_ExtensorDigitorumLongus": 403,
+        "Right_Muscle_GastrocnemiusLateral": 1232,
+        "Right_Muscle_GastrocnemiusMedial": 2901,
+        "Right_Muscle_PeroneusLongus": 1158,
+        "Right_Muscle_Soleus": 3749,
+        "Right_Muscle_TibialisAnterior": 1084,
+        "Right_Muscle_TibialisPosterior": 954
+      }
+    },
+    {
+      "k": 1210,
+      "photo": "avf2328b.raw.Z",
+      "identity_status": "settled",
+      "frame_margin": 0.3999,
+      "ncc": 0.9912474242815099,
+      "mirror_ncc": 0.1304578426147577,
+      "shift_6_rgb_px_ncc": 0.8828820295001412,
+      "neighbor_ncc": {
+        "1211": 0.5976301685700531
+      },
+      "photometric_holdout_mae": 1.6728632068550955,
+      "photometric_holdout_p95": 4.900183337831358,
+      "bones": [
+        {
+          "label": "Left_Bone_Fibula",
+          "pixels": 112,
+          "centroid_col": 202.9,
+          "centroid_row": 141.6
+        },
+        {
+          "label": "Left_Bone_Tibia",
+          "pixels": 1433,
+          "centroid_col": 239.8,
+          "centroid_row": 198.8
+        },
+        {
+          "label": "Right_Bone_Fibula",
+          "pixels": 143,
+          "centroid_col": 480.7,
+          "centroid_row": 110.7
+        },
+        {
+          "label": "Right_Bone_Tibia",
+          "pixels": 1457,
+          "centroid_col": 456.2,
+          "centroid_row": 171.6
+        }
+      ],
+      "labels": {
+        "Left_Bone_Fibula": 112,
+        "Left_Bone_Tibia": 1433,
+        "Left_Muscle_ExtensorDigitorumLongus": 378,
+        "Left_Muscle_GastrocnemiusLateral": 1363,
+        "Left_Muscle_GastrocnemiusMedial": 3239,
+        "Left_Muscle_PeroneusLongus": 1057,
+        "Left_Muscle_Popliteus": 14,
+        "Left_Muscle_Soleus": 4315,
+        "Left_Muscle_TibialisAnterior": 1128,
+        "Left_Muscle_TibialisPosterior": 930,
+        "Right_Bone_Fibula": 143,
+        "Right_Bone_Tibia": 1457,
+        "Right_Muscle_ExtensorDigitorumLongus": 413,
+        "Right_Muscle_GastrocnemiusLateral": 1308,
+        "Right_Muscle_GastrocnemiusMedial": 2962,
+        "Right_Muscle_PeroneusLongus": 1188,
+        "Right_Muscle_Soleus": 3776,
+        "Right_Muscle_TibialisAnterior": 1066,
+        "Right_Muscle_TibialisPosterior": 934
+      }
+    },
+    {
+      "k": 1550,
+      "photo": "avf2215a.raw.Z",
+      "identity_status": "settled",
+      "frame_margin": 0.0252,
+      "ncc": 0.9945232998328559,
+      "mirror_ncc": 0.5494566707359185,
+      "shift_6_rgb_px_ncc": 0.9410655310031133,
+      "neighbor_ncc": {
+        "1549": 0.9574223305204573,
+        "1551": 0.9615789200544188
+      },
+      "photometric_holdout_mae": 1.6524865099534674,
+      "photometric_holdout_p95": 4.373239996199544,
+      "bones": [
+        {
+          "label": "Left_Bone_Femur",
+          "pixels": 8181,
+          "centroid_col": 239.1,
+          "centroid_row": 207.4
+        },
+        {
+          "label": "Left_Bone_Patella",
+          "pixels": 1567,
+          "centroid_col": 222.6,
+          "centroid_row": 272.8
+        },
+        {
+          "label": "Right_Bone_Femur",
+          "pixels": 7998,
+          "centroid_col": 454.1,
+          "centroid_row": 185.2
+        },
+        {
+          "label": "Right_Bone_Patella",
+          "pixels": 1526,
+          "centroid_col": 483.1,
+          "centroid_row": 248.1
+        }
+      ],
+      "labels": {
+        "Left_Bone_Femur": 8181,
+        "Left_Bone_Patella": 1567,
+        "Left_Cartilage_FemurDistal": 213,
+        "Left_Cartilage_Patella": 305,
+        "Left_Ligament_ACL": 63,
+        "Left_Muscle_BicepsFemorisShortHead": 423,
+        "Left_Muscle_GastrocnemiusLateral": 275,
+        "Left_Muscle_GastrocnemiusMedial": 1774,
+        "Left_Muscle_Plantaris": 163,
+        "Left_Muscle_Sartorius": 180,
+        "Left_Muscle_Semimembranosus": 308,
+        "Right_Bone_Femur": 7998,
+        "Right_Bone_Patella": 1526,
+        "Right_Cartilage_FemurDistal": 180,
+        "Right_Cartilage_Patella": 243,
+        "Right_Ligament_ACL": 65,
+        "Right_Ligament_MCL": 14,
+        "Right_Muscle_BicepsFemorisShortHead": 356,
+        "Right_Muscle_GastrocnemiusLateral": 316,
+        "Right_Muscle_GastrocnemiusMedial": 1463,
+        "Right_Muscle_Plantaris": 111,
+        "Right_Muscle_Sartorius": 304,
+        "Right_Muscle_Semimembranosus": 183
+      }
+    },
+    {
+      "k": 1893,
+      "photo": "avf2100c.raw.Z",
+      "identity_status": "settled",
+      "frame_margin": 0.0328,
+      "ncc": 0.9926966691041735,
+      "mirror_ncc": 0.23727903136531567,
+      "shift_6_rgb_px_ncc": 0.9154701829236908,
+      "neighbor_ncc": {
+        "1892": 0.9566584594210719
+      },
+      "photometric_holdout_mae": 1.4021196999255872,
+      "photometric_holdout_p95": 4.442611547616167,
+      "bones": [
+        {
+          "label": "Left_Bone_Femur",
+          "pixels": 1275,
+          "centroid_col": 203.1,
+          "centroid_row": 231.6
+        },
+        {
+          "label": "Right_Bone_Femur",
+          "pixels": 1155,
+          "centroid_col": 483.1,
+          "centroid_row": 206.9
+        }
+      ],
+      "labels": {
+        "Left_Bone_Femur": 1275,
+        "Left_Muscle_AdductorMagnus": 773,
+        "Left_Muscle_BicepsFemorisLongHead": 2554,
+        "Left_Muscle_BicepsFemorisShortHead": 682,
+        "Left_Muscle_Gracilis": 350,
+        "Left_Muscle_RectusFemoris": 138,
+        "Left_Muscle_Sartorius": 547,
+        "Left_Muscle_Semimembranosus": 2901,
+        "Left_Muscle_Semitendinosus": 730,
+        "Left_Muscle_VastusIntermedius": 2192,
+        "Left_Muscle_VastusLateralis": 2446,
+        "Left_Muscle_VastusMedialis": 3197,
+        "Right_Bone_Femur": 1155,
+        "Right_Muscle_AdductorMagnus": 1024,
+        "Right_Muscle_BicepsFemorisLongHead": 2380,
+        "Right_Muscle_BicepsFemorisShortHead": 611,
+        "Right_Muscle_Gracilis": 391,
+        "Right_Muscle_RectusFemoris": 154,
+        "Right_Muscle_Sartorius": 537,
+        "Right_Muscle_Semimembranosus": 2680,
+        "Right_Muscle_Semitendonosus": 730,
+        "Right_Muscle_VastusIntermedius": 2272,
+        "Right_Muscle_VastusLateralis": 2437,
+        "Right_Muscle_VastusMedialis": 3033
+      }
+    },
+    {
+      "k": 1896,
+      "photo": "avf2099c.raw.Z",
+      "identity_status": "settled",
+      "frame_margin": 0.034,
+      "ncc": 0.9923670194703709,
+      "mirror_ncc": 0.2383010903216402,
+      "shift_6_rgb_px_ncc": 0.9127587529744032,
+      "neighbor_ncc": {
+        "1897": 0.9511985902460365
+      },
+      "photometric_holdout_mae": 1.4581531560555119,
+      "photometric_holdout_p95": 4.753670560248793,
+      "bones": [
+        {
+          "label": "Left_Bone_Femur",
+          "pixels": 1269,
+          "centroid_col": 202.8,
+          "centroid_row": 231.3
+        },
+        {
+          "label": "Right_Bone_Femur",
+          "pixels": 1127,
+          "centroid_col": 483.2,
+          "centroid_row": 206.7
+        }
+      ],
+      "labels": {
+        "Left_Bone_Femur": 1269,
+        "Left_Muscle_AdductorMagnus": 809,
+        "Left_Muscle_BicepsFemorisLongHead": 2583,
+        "Left_Muscle_BicepsFemorisShortHead": 667,
+        "Left_Muscle_Gracilis": 352,
+        "Left_Muscle_RectusFemoris": 147,
+        "Left_Muscle_Sartorius": 541,
+        "Left_Muscle_Semimembranosus": 2881,
+        "Left_Muscle_Semitendinosus": 747,
+        "Left_Muscle_VastusIntermedius": 2187,
+        "Left_Muscle_VastusLateralis": 2474,
+        "Left_Muscle_VastusMedialis": 3173,
+        "Right_Bone_Femur": 1127,
+        "Right_Muscle_AdductorMagnus": 1039,
+        "Right_Muscle_BicepsFemorisLongHead": 2419,
+        "Right_Muscle_BicepsFemorisShortHead": 607,
+        "Right_Muscle_Gracilis": 404,
+        "Right_Muscle_RectusFemoris": 162,
+        "Right_Muscle_Sartorius": 548,
+        "Right_Muscle_Semimembranosus": 2672,
+        "Right_Muscle_Semitendonosus": 728,
+        "Right_Muscle_VastusIntermedius": 2300,
+        "Right_Muscle_VastusLateralis": 2461,
+        "Right_Muscle_VastusMedialis": 3033
+      }
+    },
+    {
+      "k": 2259,
+      "photo": "avf1978c.raw.Z",
+      "identity_status": "frame-with-margin",
+      "frame_margin": 0.0863,
+      "ncc": 0.9925073242383364,
+      "mirror_ncc": 0.09191520895004054,
+      "shift_6_rgb_px_ncc": 0.9613444657754899,
+      "neighbor_ncc": {
+        "2258": 0.9031198711026075
+      },
+      "photometric_holdout_mae": 2.119414284620972,
+      "photometric_holdout_p95": 5.950357843700658,
+      "bones": [
+        {
+          "label": "Left_Bone_Femur",
+          "pixels": 1199,
+          "centroid_col": 161.1,
+          "centroid_row": 218.6
+        },
+        {
+          "label": "Right_Bone_Femur",
+          "pixels": 1148,
+          "centroid_col": 512.7,
+          "centroid_row": 194.8
+        }
+      ],
+      "labels": {
+        "Left_Bone_Femur": 1199,
+        "Left_Muscle_AdductorBrevis": 92,
+        "Left_Muscle_AdductorLongus": 1772,
+        "Left_Muscle_AdductorMagnus": 7335,
+        "Left_Muscle_BicepsFemorisLongHead": 1247,
+        "Left_Muscle_Gracilis": 980,
+        "Left_Muscle_RectusFemoris": 1610,
+        "Left_Muscle_Sartorius": 558,
+        "Left_Muscle_Semimembranosus": 394,
+        "Left_Muscle_Semitendinosus": 1332,
+        "Left_Muscle_VastusIntermedius": 3293,
+        "Left_Muscle_VastusLateralis": 4368,
+        "Left_Muscle_VastusMedialis": 1152,
+        "Right_Bone_Femur": 1148,
+        "Right_Muscle_AdductorBrevis": 623,
+        "Right_Muscle_AdductorLongus": 1634,
+        "Right_Muscle_AdductorMagnus": 6259,
+        "Right_Muscle_BicepsFemorisLongHead": 1428,
+        "Right_Muscle_GluteusMaximus": 187,
+        "Right_Muscle_Gracilis": 795,
+        "Right_Muscle_RectusFemoris": 1547,
+        "Right_Muscle_Sartorius": 629,
+        "Right_Muscle_Semimembranosus": 377,
+        "Right_Muscle_Semitendonosus": 1324,
+        "Right_Muscle_VastusIntermedius": 3558,
+        "Right_Muscle_VastusLateralis": 4025,
+        "Right_Muscle_VastusMedialis": 755
+      }
+    },
+    {
+      "k": 2285,
+      "photo": "avf1970a.raw.Z",
+      "identity_status": "provisional-block-consistent",
+      "frame_margin": 0.004,
+      "ncc": 0.9979913346175507,
+      "mirror_ncc": 0.7109168855548954,
+      "shift_6_rgb_px_ncc": 0.9628188670314448,
+      "neighbor_ncc": {
+        "2286": 0.9940754484091594
+      },
+      "photometric_holdout_mae": 1.4053638927163397,
+      "photometric_holdout_p95": 4.8632134500835775,
+      "bones": [
+        {
+          "label": "Left_Bone_Femur",
+          "pixels": 1448,
+          "centroid_col": 156.4,
+          "centroid_row": 217.0
+        },
+        {
+          "label": "Right_Bone_Femur",
+          "pixels": 1232,
+          "centroid_col": 515.6,
+          "centroid_row": 192.3
+        }
+      ],
+      "labels": {
+        "Left_Bone_Femur": 1448,
+        "Left_Muscle_AdductorBrevis": 508,
+        "Left_Muscle_AdductorLongus": 1710,
+        "Left_Muscle_AdductorMagnus": 7025,
+        "Left_Muscle_BicepsFemorisLongHead": 903,
+        "Left_Muscle_GluteusMaximus": 314,
+        "Left_Muscle_Gracilis": 1020,
+        "Left_Muscle_RectusFemoris": 1701,
+        "Left_Muscle_Sartorius": 542,
+        "Left_Muscle_Semimembranosus": 216,
+        "Left_Muscle_Semitendinosus": 1248,
+        "Left_Muscle_VastusIntermedius": 2885,
+        "Left_Muscle_VastusLateralis": 4104,
+        "Left_Muscle_VastusMedialis": 1054,
+        "Right_Bone_Femur": 1232,
+        "Right_Muscle_AdductorBrevis": 1420,
+        "Right_Muscle_AdductorLongus": 1654,
+        "Right_Muscle_AdductorMagnus": 5622,
+        "Right_Muscle_BicepsFemorisLongHead": 1090,
+        "Right_Muscle_GluteusMaximus": 496,
+        "Right_Muscle_Gracilis": 867,
+        "Right_Muscle_RectusFemoris": 1573,
+        "Right_Muscle_Sartorius": 628,
+        "Right_Muscle_Semimembranosus": 176,
+        "Right_Muscle_Semitendonosus": 1185,
+        "Right_Muscle_VastusIntermedius": 3321,
+        "Right_Muscle_VastusLateralis": 4068,
+        "Right_Muscle_VastusMedialis": 620
+      }
+    },
+    {
+      "k": 2295,
+      "photo": "avf1966c.raw.Z",
+      "identity_status": "provisional-block-consistent",
+      "frame_margin": 0.0024,
+      "ncc": 0.9978909013340013,
+      "mirror_ncc": 0.7191465031067859,
+      "shift_6_rgb_px_ncc": 0.9626113168282072,
+      "neighbor_ncc": {
+        "2294": 0.995425790363086,
+        "2296": 0.9950561685253075
+      },
+      "photometric_holdout_mae": 1.4589378006929015,
+      "photometric_holdout_p95": 4.992890654304105,
+      "bones": [
+        {
+          "label": "Left_Bone_Femur",
+          "pixels": 1412,
+          "centroid_col": 154.8,
+          "centroid_row": 215.7
+        },
+        {
+          "label": "Right_Bone_Femur",
+          "pixels": 1240,
+          "centroid_col": 516.4,
+          "centroid_row": 191.6
+        }
+      ],
+      "labels": {
+        "Left_Bone_Femur": 1412,
+        "Left_Muscle_AdductorBrevis": 726,
+        "Left_Muscle_AdductorLongus": 1670,
+        "Left_Muscle_AdductorMagnus": 6859,
+        "Left_Muscle_BicepsFemorisLongHead": 784,
+        "Left_Muscle_GluteusMaximus": 571,
+        "Left_Muscle_Gracilis": 1029,
+        "Left_Muscle_RectusFemoris": 1762,
+        "Left_Muscle_Sartorius": 545,
+        "Left_Muscle_Semimembranosus": 158,
+        "Left_Muscle_Semitendinosus": 1204,
+        "Left_Muscle_VastusIntermedius": 2815,
+        "Left_Muscle_VastusLateralis": 4058,
+        "Left_Muscle_VastusMedialis": 1032,
+        "Right_Bone_Femur": 1240,
+        "Right_Muscle_AdductorBrevis": 1530,
+        "Right_Muscle_AdductorLongus": 1677,
+        "Right_Muscle_AdductorMagnus": 5602,
+        "Right_Muscle_BicepsFemorisLongHead": 897,
+        "Right_Muscle_GluteusMaximus": 788,
+        "Right_Muscle_Gracilis": 875,
+        "Right_Muscle_RectusFemoris": 1683,
+        "Right_Muscle_Sartorius": 621,
+        "Right_Muscle_Semimembranosus": 138,
+        "Right_Muscle_Semitendonosus": 1133,
+        "Right_Muscle_VastusIntermedius": 3124,
+        "Right_Muscle_VastusLateralis": 4130,
+        "Right_Muscle_VastusMedialis": 547
+      }
+    },
+    {
+      "k": 2315,
+      "photo": "avf1960a.raw.Z",
+      "identity_status": "provisional-block-consistent",
+      "frame_margin": 0.0024,
+      "ncc": 0.9978382950402546,
+      "mirror_ncc": 0.725324663866902,
+      "shift_6_rgb_px_ncc": 0.961523156054566,
+      "neighbor_ncc": {
+        "2314": 0.9950773542217124,
+        "2316": 0.9944610154117766
+      },
+      "photometric_holdout_mae": 1.4713622744495232,
+      "photometric_holdout_p95": 4.982324879911246,
+      "bones": [
+        {
+          "label": "Left_Bone_Femur",
+          "pixels": 1451,
+          "centroid_col": 152.9,
+          "centroid_row": 214.4
+        },
+        {
+          "label": "Right_Bone_Femur",
+          "pixels": 1329,
+          "centroid_col": 518.3,
+          "centroid_row": 189.3
+        }
+      ],
+      "labels": {
+        "Left_Bone_Femur": 1451,
+        "Left_Muscle_AdductorBrevis": 911,
+        "Left_Muscle_AdductorLongus": 1593,
+        "Left_Muscle_AdductorMagnus": 6498,
+        "Left_Muscle_BicepsFemorisLongHead": 547,
+        "Left_Muscle_GluteusMaximus": 1214,
+        "Left_Muscle_Gracilis": 1075,
+        "Left_Muscle_RectusFemoris": 1862,
+        "Left_Muscle_Sartorius": 580,
+        "Left_Muscle_Semimembranosus": 90,
+        "Left_Muscle_Semitendinosus": 1041,
+        "Left_Muscle_VastusIntermedius": 2741,
+        "Left_Muscle_VastusLateralis": 3935,
+        "Left_Muscle_VastusMedialis": 929,
+        "Right_Bone_Femur": 1329,
+        "Right_Muscle_AdductorBrevis": 1974,
+        "Right_Muscle_AdductorLongus": 1626,
+        "Right_Muscle_AdductorMagnus": 5411,
+        "Right_Muscle_BicepsFemorisLongHead": 481,
+        "Right_Muscle_GluteusMaximus": 1579,
+        "Right_Muscle_Gracilis": 908,
+        "Right_Muscle_RectusFemoris": 1757,
+        "Right_Muscle_Sartorius": 617,
+        "Right_Muscle_Semimembranosus": 50,
+        "Right_Muscle_Semitendonosus": 936,
+        "Right_Muscle_VastusIntermedius": 2818,
+        "Right_Muscle_VastusLateralis": 4201,
+        "Right_Muscle_VastusMedialis": 476
+      }
+    },
+    {
+      "k": 2500,
+      "photo": "avf1898b.raw.Z",
+      "identity_status": "settled",
+      "frame_margin": 0.0047,
+      "ncc": 0.9950748570228914,
+      "mirror_ncc": 0.6812567128006836,
+      "shift_6_rgb_px_ncc": 0.943742602286273,
+      "neighbor_ncc": {
+        "2499": 0.9904641946527284,
+        "2501": 0.9897183413150034
+      },
+      "photometric_holdout_mae": 1.6558945741208466,
+      "photometric_holdout_p95": 5.58703955593797,
+      "bones": [
+        {
+          "label": "Left_Bone_Femur",
+          "pixels": 2981,
+          "centroid_col": 140.3,
+          "centroid_row": 198.6
+        },
+        {
+          "label": "Left_Bone_Pelvis",
+          "pixels": 1669,
+          "centroid_col": 244.3,
+          "centroid_row": 177.2
+        },
+        {
+          "label": "Right_Bone_Femur",
+          "pixels": 3068,
+          "centroid_col": 518.2,
+          "centroid_row": 173.4
+        },
+        {
+          "label": "Right_Bone_Pelvis",
+          "pixels": 1690,
+          "centroid_col": 422.8,
+          "centroid_row": 166.8
+        }
+      ],
+      "labels": {
+        "Left_Bone_Femur": 2981,
+        "Left_Bone_Pelvis": 1669,
+        "Left_Muscle_AdductorBrevis": 2164,
+        "Left_Muscle_AdductorLongus": 543,
+        "Left_Muscle_AdductorMagnus": 1681,
+        "Left_Muscle_GluteusMaximus": 10200,
+        "Left_Muscle_Illiacus": 769,
+        "Left_Muscle_ObturatorExternus": 504,
+        "Left_Muscle_Pectineus": 1877,
+        "Left_Muscle_QuadratisFemoris": 1992,
+        "Left_Muscle_RectusFemoris": 1860,
+        "Left_Muscle_Sartorius": 558,
+        "Left_Muscle_TensorFasciaeLatae": 1349,
+        "Left_Muscle_VastusIntermedius": 437,
+        "Left_Muscle_VastusLateralis": 2051,
+        "Right_Bone_Femur": 3068,
+        "Right_Bone_Pelvis": 1690,
+        "Right_Muscle_AdductorBrevis": 1624,
+        "Right_Muscle_AdductorLongus": 466,
+        "Right_Muscle_AdductorMagnus": 1491,
+        "Right_Muscle_GluteusMaximus": 10340,
+        "Right_Muscle_Illiacus": 947,
+        "Right_Muscle_ObturatorExternus": 670,
+        "Right_Muscle_OnturatorInternus": 35,
+        "Right_Muscle_Pectineus": 1753,
+        "Right_Muscle_QuadratisFemoris": 1396,
+        "Right_Muscle_RectusFemoris": 1585,
+        "Right_Muscle_Sartorius": 527,
+        "Right_Muscle_TensorFasciaeLatae": 1416,
+        "Right_Muscle_VastusIntermedius": 155,
+        "Right_Muscle_VastusLateralis": 2736
+      }
+    },
+    {
+      "k": 3000,
+      "photo": "avf1731c.raw.Z",
+      "identity_status": "frame-with-margin",
+      "frame_margin": 0.0059,
+      "ncc": 0.9950234495944565,
+      "mirror_ncc": 0.6153110306877528,
+      "shift_6_rgb_px_ncc": 0.9256143062339447,
+      "neighbor_ncc": {
+        "2999": 0.988771894497441,
+        "3001": 0.9888912114298105
+      },
+      "photometric_holdout_mae": 1.9302438273622209,
+      "photometric_holdout_p95": 6.276041911252875,
+      "bones": [
+        {
+          "label": "Left_Bone_Pelvis",
+          "pixels": 4362,
+          "centroid_col": 182.3,
+          "centroid_row": 169.3
+        },
+        {
+          "label": "Left_Bone_Sacrum",
+          "pixels": 953,
+          "centroid_col": 333.2,
+          "centroid_row": 114.5
+        },
+        {
+          "label": "Right_Bone_Pelvis",
+          "pixels": 4335,
+          "centroid_col": 469.0,
+          "centroid_row": 155.0
+        },
+        {
+          "label": "Right_Bone_Sacrum",
+          "pixels": 1522,
+          "centroid_col": 333.8,
+          "centroid_row": 131.3
+        }
+      ],
+      "labels": {
+        "Left_Bone_Pelvis": 4362,
+        "Left_Bone_Sacrum": 953,
+        "Left_Muscle_GluteusMedius": 4464,
+        "Left_Muscle_Illiacus": 1428,
+        "Left_Muscle_PsoasMajor": 2323,
+        "Right_Bone_Pelvis": 4335,
+        "Right_Bone_Sacrum": 1522,
+        "Right_Muscle_GluteusMaximus": 132,
+        "Right_Muscle_GluteusMedius": 4451,
+        "Right_Muscle_Illiacus": 1407,
+        "Right_Muscle_PsoasMajor": 2151
+      }
+    },
+    {
+      "k": 3532,
+      "photo": "avf1554b.raw.Z",
+      "identity_status": "frame-with-margin",
+      "frame_margin": 0.0056,
+      "ncc": 0.9893191292168373,
+      "mirror_ncc": 0.5475822846383683,
+      "shift_6_rgb_px_ncc": 0.913623332728836,
+      "neighbor_ncc": {
+        "3531": 0.9837030005370814
+      },
+      "photometric_holdout_mae": 1.8280235843486976,
+      "photometric_holdout_p95": 6.1415837491124705,
+      "bones": [],
+      "labels": {}
+    }
+  ],
+  "denver_blank_checks": [
+    0,
+    6,
+    1208,
+    1209,
+    1894,
+    1895,
+    2260,
+    2284
+  ]
+}

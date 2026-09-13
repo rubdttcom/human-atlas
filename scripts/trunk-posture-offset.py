@@ -1,4 +1,11 @@
-"""Trunk posture offset: the fresh NLM CT against Denver's aligned (frozen-block) CT, per vertebra and rib.
+"""Trunk posture offset: the fresh NLM CT against Denver's aligned CT, per vertebra and rib.
+
+CORRECTION (13 September 2026, after this script ran): Denver's aligned CT is the NLM fresh CT resampled into the
+cryosection frame, not a CT of the frozen block (NLM's female index has no frozen CT; the two volumes agree to NCC 0.998
+after a local shift). The premise below is therefore wrong: what this script measures is the inconsistency between two
+rigid pelvis placements of ONE acquisition (`nlm-ct-to-vhf` and `denver-aligned-ct-voxel-to-vhf`) plus resampling, not
+posture. The fresh-versus-frozen difference is measured by scripts/check-photo-ct-alignment.py against the photographs.
+The output fields keep their names until the pipeline-wide rename is decided (docs/PROGRESS.md backlog).
 
 Plan B stage 0, first item (moved forward 12 September 2026). Both CTs are of the same donor. The fresh CT was
 acquired on a table before freezing; Denver's aligned CT is the frozen block, resampled into the cryosection frame.
