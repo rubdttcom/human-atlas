@@ -1,0 +1,129 @@
+{
+ "id": "cryo-ct-prior-block2",
+ "date": "2026-09-13",
+ "block": {
+  "region": 2,
+  "k_first": 2285,
+  "k_last": 3532,
+  "slices": 1248,
+  "z_mm": [
+   760.572,
+   1175.823
+  ],
+  "nlm_first": "avf1554b",
+  "nlm_last": "avf1970a"
+ },
+ "inputs": {
+  "prior_map": "registry/cryo-ct-prior-map.json",
+  "prior_map_sha256": "514fd2bfba66cff89afc58dc9cbbc743262f5a599fd966aa5de862551a06a231",
+  "transform": "transforms/nlm-ct-to-vhf.json",
+  "transform_sha256": "92cb688b2a2c950ad30f081d9566409311059c0a61024ee33245b07817943be4",
+  "ct_labels": "data/derived/nlm-vhf/totalseg.nii",
+  "ct_labels_sha256": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+  "block_manifest_sha256": "dbb73030ca5a4961de164fc9c0dbb85e6c839eeb414969f1185a3d909061325e",
+  "tissue_classes_sha256": "a3d44efe5965e6b8d6ccbbf496c5407962f877737cf08c7d58013d319eccf812",
+  "bands": "registry/cryo-eval-bands-v1.json",
+  "bands_sha256": "9806cf37f211c7500477fd19328c41e30baef6bb29c5657d18416dbea9e65cd9"
+ },
+ "outputs": {
+  "prior": "discard-prior.nii.gz",
+  "prior_sha256": "f5bdf6be4b242faa9a27814da95ac66b807cee63dc9bfbeb373b076fdf574f19",
+  "dtype": "uint8",
+  "order": "(i, j, k)"
+ },
+ "method": {
+  "resampling": "nearest neighbour on the block voxel centres; no interpolation of label values",
+  "placement": {
+   "transform": "transforms/nlm-ct-to-vhf.json",
+   "type": "rigid, no scale, fitted on the pelvis (CT hip bones and sacrum onto the Denver pelvis)",
+   "rotation_deg": 2.1654,
+   "rms_mm": 2.7183,
+   "p95_mm": 4.7169,
+   "measured_error_by_structure_mm": {
+    "hip_bones": 2.4,
+    "sacrum": 9.8,
+    "femora_under_this_transform": [
+     7.5,
+     8.7
+    ],
+    "femora_under_their_own_rigid_fit": [
+     3.4,
+     4.4
+    ],
+    "source": "generated/nlm-ct-registration.json, docs/PROGRESS.md"
+   },
+   "limit": "the pilot block is mostly thigh, where this pelvis-fitted transform places the femora 7.5 to 8.7 mm off, not the 4.7 mm of the pelvis; the per-femur rigid fits are measured but not applied anywhere, so the prior is offset by that amount in the primary training slices. The prior is a prior; the colour edge decides."
+  },
+  "outside_field_of_view": "class 0 (none): the prior is silent, never background"
+ },
+ "coverage": {
+  "slices_with_any_ct_field_of_view": 1248,
+  "whole_block": {
+   "slices": 1248,
+   "prior_voxels": {
+    "bone": 11775897,
+    "cartilage": 95328,
+    "muscle": 20996244
+   },
+   "reference_voxels": {
+    "bone": 7918188,
+    "cartilage": 123458,
+    "muscle": 26058569
+   },
+   "prior_recall_of_reference": {
+    "bone": 0.9261,
+    "cartilage": 0.0,
+    "muscle": 0.5654
+   },
+   "prior_any_voxels": 32867469
+  },
+  "primary_training_slices": {
+   "slices": 197,
+   "prior_voxels": {
+    "bone": 1799573,
+    "cartilage": 0,
+    "muscle": 5444696
+   },
+   "reference_voxels": {
+    "bone": 1730136,
+    "cartilage": 31758,
+    "muscle": 9960627
+   },
+   "prior_recall_of_reference": {
+    "bone": 0.9196,
+    "cartilage": 0.0,
+    "muscle": 0.5232
+   },
+   "prior_any_voxels": 7244269
+  },
+  "band_scoring_slices": {
+   "slices": 300,
+   "prior_voxels": {
+    "bone": 5545695,
+    "cartilage": 0,
+    "muscle": 7277719
+   },
+   "reference_voxels": {
+    "bone": 4851480,
+    "cartilage": 55653,
+    "muscle": 10867010
+   },
+   "prior_recall_of_reference": {
+    "bone": 0.9299,
+    "cartilage": 0.0,
+    "muscle": 0.5732
+   },
+   "prior_any_voxels": 12823414
+  }
+ },
+ "limits": [
+  "one model, not the three-model consensus of plan B stage 1: no disagreement map and no uncertainty channel",
+  "TotalSegmentator \"total\" has no thigh muscle label, so the muscle prior is empty over most of the primary slices; the measured coverage is in generated/cryo-ct-prior-block2.json",
+  "costal_cartilages is the only cartilage label and it lies above the primary slices",
+  "the fresh CT was acquired on a table and the block was frozen in another posture; above the pelvis the photograph-to-CT mapping is extrapolated, which is why the auxiliary stratum stays off under protocol v1",
+  "nothing here is anatomy: a label name from an automatic tool on one CT",
+  "prior_recall_of_reference is the fraction of Denver reference voxels of a class that the placed CT prior also calls that class; it mixes segmentation difference, placement error and posture, and separates none of them",
+  "reference voxels here include every voxel of the class, ignored slices excluded only where the reference is 255"
+ ],
+ "seconds": 22.5
+}

@@ -1,0 +1,776 @@
+{
+ "id": "cryo-ct-prior-map",
+ "version": 1,
+ "date": "2026-09-13",
+ "purpose": "explicit, exhaustive mapping of every TotalSegmentator \"total\" label to one pilot tissue class, for the CT prior channels of the rgb-plus-ct-prior variant only (plan B stage 2). It never enters the loss target, the reference or the metrics: the target stays registry/cryo-tissue-map.json applied to the Denver original labels. Kept as a separate registry so the identity hashes of registry/machine-acceptance-protocol-v1.json stay valid; a change here is a new version of THIS file and of the prior volume, and invalidates any training run bound to the old hash.",
+ "prior_task": {
+  "tool": "TotalSegmentator",
+  "task": "total",
+  "licence": "Apache-2.0 weights, the only task this project ships",
+  "input": "data/derived/nlm-vhf/vhf-fresh-ct.nii.gz (NLM VHF fresh CT, this donor, female)",
+  "labels": "data/derived/nlm-vhf/totalseg.nii",
+  "note": "a naming tool run on the donor's own CT; mixed-sex training data is allowed for naming under the sex rule of CLAUDE.md"
+ },
+ "classes": [
+  {
+   "value": 1,
+   "name": "bone",
+   "channel": 0
+  },
+  {
+   "value": 2,
+   "name": "cartilage",
+   "channel": 1
+  },
+  {
+   "value": 3,
+   "name": "muscle",
+   "channel": 2
+  },
+  {
+   "value": 0,
+   "name": "none",
+   "channel": null,
+   "definition": "organs, vessels, nervous tissue and unlabelled CT voxels: all three prior channels are 0 there. Not background, not a negative: the prior says nothing."
+  }
+ ],
+ "encoding": "three binary uint8 channels in the fixed order bone, cartilage, muscle, appended after the three RGB channels; a voxel with no mapped label is 0 in all three. No distance channel and no uncertainty channel in this pilot: a single model gives no disagreement map, and plan B section 3.2 reserves those for the three-model consensus of stage 1.",
+ "placement": {
+  "transform": "transforms/nlm-ct-to-vhf.json",
+  "type": "rigid, no scale, fitted on the pelvis (CT hip bones and sacrum onto the Denver pelvis)",
+  "rotation_deg": 2.1654,
+  "rms_mm": 2.7183,
+  "p95_mm": 4.7169,
+  "measured_error_by_structure_mm": {
+   "hip_bones": 2.4,
+   "sacrum": 9.8,
+   "femora_under_this_transform": [
+    7.5,
+    8.7
+   ],
+   "femora_under_their_own_rigid_fit": [
+    3.4,
+    4.4
+   ],
+   "source": "generated/nlm-ct-registration.json, docs/PROGRESS.md"
+  },
+  "limit": "the pilot block is mostly thigh, where this pelvis-fitted transform places the femora 7.5 to 8.7 mm off, not the 4.7 mm of the pelvis; the per-femur rigid fits are measured but not applied anywhere, so the prior is offset by that amount in the primary training slices. The prior is a prior; the colour edge decides."
+ },
+ "limits": [
+  "one model, not the three-model consensus of plan B stage 1: no disagreement map and no uncertainty channel",
+  "TotalSegmentator \"total\" has no thigh muscle label, so the muscle prior is empty over most of the primary slices; the measured coverage is in generated/cryo-ct-prior-block2.json",
+  "costal_cartilages is the only cartilage label and it lies above the primary slices",
+  "the fresh CT was acquired on a table and the block was frozen in another posture; above the pelvis the photograph-to-CT mapping is extrapolated, which is why the auxiliary stratum stays off under protocol v1",
+  "nothing here is anatomy: a label name from an automatic tool on one CT"
+ ],
+ "label_counts_by_class": {
+  "none": 44,
+  "bone": 62,
+  "muscle": 10,
+  "cartilage": 1
+ },
+ "labels": [
+  {
+   "value": 1,
+   "name": "spleen",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 2,
+   "name": "kidney_right",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 3,
+   "name": "kidney_left",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 4,
+   "name": "gallbladder",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 5,
+   "name": "liver",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 6,
+   "name": "stomach",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 7,
+   "name": "pancreas",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 8,
+   "name": "adrenal_gland_right",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 9,
+   "name": "adrenal_gland_left",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 10,
+   "name": "lung_upper_lobe_left",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 11,
+   "name": "lung_lower_lobe_left",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 12,
+   "name": "lung_upper_lobe_right",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 13,
+   "name": "lung_middle_lobe_right",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 14,
+   "name": "lung_lower_lobe_right",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 15,
+   "name": "esophagus",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 16,
+   "name": "trachea",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 17,
+   "name": "thyroid_gland",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 18,
+   "name": "small_bowel",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 19,
+   "name": "duodenum",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 20,
+   "name": "colon",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 21,
+   "name": "urinary_bladder",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 22,
+   "name": "prostate",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 23,
+   "name": "kidney_cyst_left",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 24,
+   "name": "kidney_cyst_right",
+   "class": "none",
+   "reason": "viscus or fluid-filled organ: no pilot class"
+  },
+  {
+   "value": 25,
+   "name": "sacrum",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 26,
+   "name": "vertebrae_S1",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 27,
+   "name": "vertebrae_L5",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 28,
+   "name": "vertebrae_L4",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 29,
+   "name": "vertebrae_L3",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 30,
+   "name": "vertebrae_L2",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 31,
+   "name": "vertebrae_L1",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 32,
+   "name": "vertebrae_T12",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 33,
+   "name": "vertebrae_T11",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 34,
+   "name": "vertebrae_T10",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 35,
+   "name": "vertebrae_T9",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 36,
+   "name": "vertebrae_T8",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 37,
+   "name": "vertebrae_T7",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 38,
+   "name": "vertebrae_T6",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 39,
+   "name": "vertebrae_T5",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 40,
+   "name": "vertebrae_T4",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 41,
+   "name": "vertebrae_T3",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 42,
+   "name": "vertebrae_T2",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 43,
+   "name": "vertebrae_T1",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 44,
+   "name": "vertebrae_C7",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 45,
+   "name": "vertebrae_C6",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 46,
+   "name": "vertebrae_C5",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 47,
+   "name": "vertebrae_C4",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 48,
+   "name": "vertebrae_C3",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 49,
+   "name": "vertebrae_C2",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 50,
+   "name": "vertebrae_C1",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 51,
+   "name": "heart",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 52,
+   "name": "aorta",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 53,
+   "name": "pulmonary_vein",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 54,
+   "name": "brachiocephalic_trunk",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 55,
+   "name": "subclavian_artery_right",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 56,
+   "name": "subclavian_artery_left",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 57,
+   "name": "common_carotid_artery_right",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 58,
+   "name": "common_carotid_artery_left",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 59,
+   "name": "brachiocephalic_vein_left",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 60,
+   "name": "brachiocephalic_vein_right",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 61,
+   "name": "atrial_appendage_left",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 62,
+   "name": "superior_vena_cava",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 63,
+   "name": "inferior_vena_cava",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 64,
+   "name": "portal_vein_and_splenic_vein",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 65,
+   "name": "iliac_artery_left",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 66,
+   "name": "iliac_artery_right",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 67,
+   "name": "iliac_vena_left",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 68,
+   "name": "iliac_vena_right",
+   "class": "none",
+   "reason": "heart, vessel lumen or blood: no pilot class"
+  },
+  {
+   "value": 69,
+   "name": "humerus_left",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 70,
+   "name": "humerus_right",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 71,
+   "name": "scapula_left",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 72,
+   "name": "scapula_right",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 73,
+   "name": "clavicula_left",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 74,
+   "name": "clavicula_right",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 75,
+   "name": "femur_left",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 76,
+   "name": "femur_right",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 77,
+   "name": "hip_left",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 78,
+   "name": "hip_right",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 79,
+   "name": "spinal_cord",
+   "class": "none",
+   "reason": "spinal cord: nervous tissue, no pilot class"
+  },
+  {
+   "value": 80,
+   "name": "gluteus_maximus_left",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 81,
+   "name": "gluteus_maximus_right",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 82,
+   "name": "gluteus_medius_left",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 83,
+   "name": "gluteus_medius_right",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 84,
+   "name": "gluteus_minimus_left",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 85,
+   "name": "gluteus_minimus_right",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 86,
+   "name": "autochthon_left",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 87,
+   "name": "autochthon_right",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 88,
+   "name": "iliopsoas_left",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 89,
+   "name": "iliopsoas_right",
+   "class": "muscle",
+   "reason": "TotalSegmentator skeletal-muscle label"
+  },
+  {
+   "value": 90,
+   "name": "brain",
+   "class": "none",
+   "reason": "brain: nervous tissue, no pilot class"
+  },
+  {
+   "value": 91,
+   "name": "skull",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 92,
+   "name": "rib_left_1",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 93,
+   "name": "rib_left_2",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 94,
+   "name": "rib_left_3",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 95,
+   "name": "rib_left_4",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 96,
+   "name": "rib_left_5",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 97,
+   "name": "rib_left_6",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 98,
+   "name": "rib_left_7",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 99,
+   "name": "rib_left_8",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 100,
+   "name": "rib_left_9",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 101,
+   "name": "rib_left_10",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 102,
+   "name": "rib_left_11",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 103,
+   "name": "rib_left_12",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 104,
+   "name": "rib_right_1",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 105,
+   "name": "rib_right_2",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 106,
+   "name": "rib_right_3",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 107,
+   "name": "rib_right_4",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 108,
+   "name": "rib_right_5",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 109,
+   "name": "rib_right_6",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 110,
+   "name": "rib_right_7",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 111,
+   "name": "rib_right_8",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 112,
+   "name": "rib_right_9",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 113,
+   "name": "rib_right_10",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 114,
+   "name": "rib_right_11",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 115,
+   "name": "rib_right_12",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 116,
+   "name": "sternum",
+   "class": "bone",
+   "reason": "TotalSegmentator bone label"
+  },
+  {
+   "value": 117,
+   "name": "costal_cartilages",
+   "class": "cartilage",
+   "reason": "the only cartilage label of the total task"
+  }
+ ]
+}
