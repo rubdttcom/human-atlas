@@ -124,3 +124,48 @@ records. Still to come: the real predictions, then `scripts/cryo-pilot-evaluate.
 
 All large input data are outside Git under `data/raw/`, `data/derived/` or `sources/`. Nothing has
 been published, deployed externally, or represented as anatomically validated.
+
+## Scheduled pass when the GPU is free (written 2026-09-13, expected 2026-09-14 after about 18:30)
+
+Both pilot variants finish first: `rgb-only` about 06:15 and `rgb-plus-ct-prior` about 18:30 on
+2026-09-14 (fold 0, 1000 epochs, about 44 s per epoch on the RTX 3080 at a 290 W cap). The chain
+script starts the second variant on its own. Nothing below may run while a training is alive.
+
+Do the steps in this order. Step 1 must happen BEFORE step 2, and the reason is not cosmetic: the
+acceptance protocol exists to stop the criteria moving after a score is seen, so a change to it is
+legitimate only while no score exists. Once the evaluator has graded a variant, step 1 can no
+longer be done honestly and the path below stays published for good.
+
+1. **Acceptance protocol v2, and only then the privacy pass.** `generated/cryosection-rgb-block2-manifest.json`
+   records `photographs_dir: /media/rub/Backups/VHF/Female-Images/fullbody`, which publishes the
+   machine's user name in a public repository. That file is pinned by `rgb_block_manifest_sha256`
+   in `registry/machine-acceptance-protocol-v1.json`, so editing it makes the evaluator refuse to
+   score. Write `registry/machine-acceptance-protocol-v2.json`: identical criteria, identical
+   controls, identical thresholds, only the re-pinned hashes, and a `changed_from_v1` field that
+   states the diff is one path string and that it was made before any variant had been evaluated.
+   Point the evaluator and `validate-cryo-pilot.py` at v2, regenerate the reports that carry
+   `protocol_sha256`, and have the Codex auditor check the v1-to-v2 diff before any evaluation
+   runs. No retraining is needed: the training path never reads the protocol.
+2. **The rest of the privacy pass.** `scripts/gpu/cryo-nnunet-env.sh` already centralises the
+   paths; give it `: "${VHF_HOST:=rub-pc}"` and `: "${VHF_ROOT:=/media/rub/Backups/VHF}"` and make
+   the other seven launchers read those instead of literals. The seven Python scripts that hold the
+   same literals take the root from `os.environ.get('VHF_ROOT', ...)`. The five documents and
+   `CLAUDE.md` say `$VHF_ROOT`. This also makes the pipeline runnable on another machine, which is
+   worth more than the privacy gain. The GPU box must be free first: `run-cryo-train.sh` and
+   `run-cryo-chain.sh` are executed by a live bash, and their sha256 is recorded in the run
+   provenance, so editing them mid-run both corrupts the shell and desynchronises the record.
+3. **Launcher error handling, from the Codex audit of 1af1c60, deferred for the same reason.**
+   `run-cryo-train.sh` and `run-cryo-resume.sh` exit 1 before printing their sentinel when training
+   fails, so a watcher sees neither success nor failure; `run-cryo-chain.sh` waits forever if the
+   first sentinel never appears. Both need a sentinel on every exit path and a bounded wait.
+4. **A run record that a deleted log cannot hide, also from that audit.** `record-nnunet-run.py`
+   counts one `training_log_*.txt` per training start, which is a MINIMUM and not a proof: the
+   record is read at the end of a run, and a deleted log is invisible. A tamper-proof count needs a
+   line appended per start, outside the results folder that a retrain replaces. Until that exists,
+   the protocol's two-run limit rests on the logs being intact, and the manifest says so.
+
+Then the pilot itself continues: assemble each variant's prediction with
+`scripts/assemble-cryo-prediction.py`, write its manifest from the provenance that
+`scripts/record-nnunet-run.py` reads on the GPU box, and run `scripts/cryo-pilot-evaluate.py` once
+per variant (about 7.5 min each, measured in the rehearsal). Only then does a first Dice against
+the frozen bands exist, and only then can the plan B section 9 decision be taken.
