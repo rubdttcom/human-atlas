@@ -10,6 +10,19 @@ is checked against the training_log_*.txt files nnU-Net wrote: nnU-Net starts a 
 declaration that hides an attempt is refused here (audit of the uncommitted pilot code, finding 2). The protocol's
 iteration limit is worth nothing if the run count is free text.
 
+Two refusals were added after the Codex audit of 909e500.
+
+P1-2: --variant chose the dataset report and --provenance was any file, with nothing tying them together, so an rgb-only
+report combined with a provenance naming Dataset502 and six channels was written and then accepted. bind_gate() now
+compares the dataset the run actually used against the report: the results and preprocessed paths must name that
+dataset, the channel count of the plan's normalisation schemes must equal the report's, and the installed split must be
+the frozen one the report describes. Names chosen by the operator are not enough.
+
+P1-3: a manifest with problems was still WRITTEN before the script exited 1, and the evaluator's training gate reads
+neither consistency_problems nor runs_observed, so the rejected file passed it. The evaluator is frozen by hash and is
+not touched. Instead a rejected manifest is never written at the requested path: it goes to <out>.rejected.json, so no
+file exists that the evaluator could accept. The refusal now sits at the real acceptance boundary.
+
   .venv/bin/python scripts/write-cryo-train-manifest.py --variant rgb-only \
       --provenance generated/nnunet-run-provenance-501.json \
       --run '{"run": 1, "status": "completed", "date": "2026-09-14", "reason": "first run"}'
@@ -35,6 +48,33 @@ def sha256_file(p, chunk=1 << 24):
     return h.hexdigest()
 
 
+def bind_gate(ds, prov):
+    """Tie the provenance to the dataset report. Names alone prove nothing (Codex audit of 909e500, P1-2)."""
+    problems = []
+    name = ds['dataset_name']
+    for key in ('results', 'preprocessed'):
+        got = str(prov.get(key, ''))
+        if name not in got:
+            problems.append(f'provenance {key} path {got!r} does not name the report dataset {name}')
+    cfg = prov.get('configuration_2d') or {}
+    schemes = cfg.get('normalization_schemes')
+    if schemes is None:
+        problems.append('provenance has no configuration_2d.normalization_schemes: the trained channels are unknown')
+    elif len(schemes) != len(ds['channels']):
+        problems.append(f'the run trained {len(schemes)} channels, the report describes {len(ds["channels"])}')
+    folds = ds['split'].get('folds') or []
+    if prov.get('fold') != ds['split'].get('fold_trained'):
+        problems.append(f'the run trained fold {prov.get("fold")}, the report freezes fold {ds["split"].get("fold_trained")}')
+    obs = prov.get('split_counts')
+    if obs and folds:
+        want = [folds[prov['fold']]['train'], folds[prov['fold']]['val']]
+        if list(obs) != want:
+            problems.append(f'the installed split of the trained fold is {list(obs)}, the report freezes {want}')
+    elif not obs:
+        problems.append('provenance has no split_counts: the split actually installed is unknown')
+    return problems
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--variant', required=True)
@@ -50,7 +90,7 @@ def main():
 
     declared = [json.loads(r) for r in a.run]
     observed = prov.get('runs_observed', [])
-    problems = []
+    problems = bind_gate(ds, prov)
     if len(declared) != len(observed):
         problems.append(f'{len(declared)} runs declared against {len(observed)} training logs on the training box')
     if not prov.get('complete'):
@@ -86,8 +126,14 @@ def main():
     }
 
     out = Path(a.out) if a.out else ROOT / f'generated/cryo-nnunet-train-block2-{a.variant}.json'
-    out.write_text(json.dumps(man, indent=1) + '\n')
     missing = [f for f in REQUIRED if not man.get(f) and man.get(f) != 0]
+    # A rejected manifest is never written where the evaluator would read it. The evaluator's training gate
+    # reads neither consistency_problems nor runs_observed, and it is frozen by hash, so the refusal has to
+    # be here: no acceptable file is produced at all (Codex audit of 909e500, P1-3).
+    if missing or problems:
+        out = out.with_suffix('.rejected.json')
+        man['REJECTED'] = 'this manifest was refused; it is not a training record and the evaluator must not read it'
+    out.write_text(json.dumps(man, indent=1) + '\n')
     shown = out.relative_to(ROOT) if out.is_relative_to(ROOT) else out   # --out may point outside the repo
     print(json.dumps({'ok': not missing and not problems, 'out': str(shown),
                       'missing': missing, 'problems': problems,

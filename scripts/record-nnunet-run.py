@@ -30,8 +30,14 @@ import re
 import time
 from pathlib import Path
 
-SEED_LINE = re.compile(r'random\.seed\((\d+)\)')
-EPOCH_LINE = re.compile(r'^\s*(?:\d{4}-\d{1,2}-\d{1,2}[^:]*:\s*)?Epoch (\d+)\s*$', re.M)
+# nnU-Net writes "2026-09-13 17:50:20.236377: Epoch 0 ". The earlier pattern used [^:]* for the timestamp,
+# which cannot cross the colons of the clock, so it never matched and last_epoch_logged was always null
+# (Codex audit of 909e500). "Epoch time: 43.31 s" must still not match: digits are required before the end.
+EPOCH_LINE = re.compile(r'^(?:.*\s)?Epoch (\d+)\s*$', re.M)
+# every seeding call a launcher may make, not only random.seed: a launcher that seeded torch differently
+# used to be reported as a single clean seed (Codex audit of 909e500)
+SEED_LINE = re.compile(r'(?:random|np\.random|numpy\.random|torch|torch\.cuda)\.'
+                       r'(?:seed|manual_seed|manual_seed_all)\(\s*(\d+)\s*\)')
 
 
 def sha256_file(p, chunk=1 << 24):
@@ -93,6 +99,18 @@ def main():
                    ('splits', prep / 'splits_final.json'), ('dataset_json', prep / 'dataset.json')):
         if p.exists():
             rec[key + '_sha256'] = sha256_file(p)
+    # the split ACTUALLY installed, so the manifest writer can bind the run to the frozen one instead of
+    # trusting the dataset name the operator typed (Codex audit of 909e500, P1-2)
+    sp = prep / 'splits_final.json'
+    if sp.exists():
+        splits = json.loads(sp.read_text())
+        rec['splits_folds'] = len(splits)
+        if 0 <= a.fold < len(splits):
+            rec['split_counts'] = [len(splits[a.fold]['train']), len(splits[a.fold]['val'])]
+    if (prep / 'dataset.json').exists():
+        dj = json.loads((prep / 'dataset.json').read_text())
+        rec['dataset_channel_names'] = dj.get('channel_names')
+        rec['dataset_labels'] = dj.get('labels')
     if (prep / 'nnUNetPlans.json').exists():
         plans = json.loads((prep / 'nnUNetPlans.json').read_text())
         rec['plans_identifier'] = plans.get('plans_name', 'nnUNetPlans')
@@ -105,9 +123,13 @@ def main():
         text = launcher.read_text()
         seeds = sorted({int(m) for m in SEED_LINE.findall(text)})
         rec['launcher'] = {'path': str(launcher), 'sha256': sha256_file(launcher),
-                           'seed_in_launcher': seeds[0] if len(seeds) == 1 else seeds}
+                           'seeds_found_in_launcher': seeds}
+        # one value only is a seed; several different ones are not one seed and are not reported as one
         rec['seed'] = seeds[0] if len(seeds) == 1 else None
-    rec['seed_limits'] = [
+        if len(seeds) != 1:
+            rec.setdefault('seed_limits', []).append(
+                f'the launcher sets {len(seeds)} different seed values {seeds}; no single seed describes the run')
+    rec['seed_limits'] = rec.get('seed_limits', []) + [
         'nnUNetv2_train has no seed flag; the value is the one the launcher applies to random, numpy and torch in the main process',
         'nnU-Net passes seeds=None to its batch-generator workers, so augmentation is unseeded and the run is not bit-reproducible',
         'cuDNN benchmarking is on by default, which makes some kernels non-deterministic as well',

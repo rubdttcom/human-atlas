@@ -20,8 +20,12 @@ nothing else: the registry meaning of 4 (ligament-tendon) is not declared here a
 that already holds 4 or 5, so the remap cannot merge a real class into the ignore label. The network still outputs only
 classes 0 to 3, which is what the evaluator's prediction gate allows.
 
-The internal split is frozen and spatially blocked by the 50 mm bins of the bands file: fold f validates bin f, so two
-neighbouring slices never straddle train and validation. Fold 0 is trained because bin 0 holds the fewest primary slices
+The internal split is frozen and spatially blocked by the 50 mm bins of the bands file: fold f validates bin f. The
+earlier wording here claimed that two neighbouring slices never straddle train and validation. That is false and the
+Codex audit of 909e500 measured it: the primary slices run continuously across a bin boundary, so in all four folds the
+minimum distance between a training slice and a validation slice is one slice, 0.333 mm. What the blocking does give is
+that validation never samples INSIDE a training bin, which removes the shuffled-slice leak but not the boundary pair.
+The bands and their 10 mm buffers are a different mechanism and are unaffected: they are never sampled at all. Fold 0 is trained because bin 0 holds the fewest primary slices
 and therefore leaves the most for training (187 of 197); the rule is stated here before any score exists and is not a
 choice between measured results. Inference must use checkpoint_final, so the validation fold reports and never selects;
 the result that is graded is the frozen band prediction, not this split.
@@ -268,7 +272,11 @@ def main():
             'primary_slices': len(primary), 'band_scoring_slices': len(scoring), 'auxiliary_slices': len(aux),
             'bands_sha256': sha256_file(BANDS),
         },
-        'split': {'kind': 'frozen, spatially blocked by the 50 mm bins of the bands file',
+        'split': {'kind': 'frozen, blocked by the 50 mm bins of the bands file',
+                  'boundary_limit': ('a training slice and a validation slice can be adjacent across a bin boundary '
+                                     '(minimum distance 1 slice, 0.333 mm, in all four folds); the blocking stops a '
+                                     'shuffled-slice split, not the boundary pair. The graded bands keep their 10 mm '
+                                     'buffers and are never sampled.'),
                   'folds': [{'bin_k': f['bin_k'], 'val': len(f['val']), 'train': len(f['train'])} for f in folds],
                   'fold_trained': 0,
                   'fold_0_rationale': ('bin 0 holds the fewest primary slices, so fold 0 leaves the most for training; '
@@ -306,11 +314,19 @@ def main():
         report['inputs']['ct_prior_sha256'] = sha256_file(block / 'ct-prior-tissue.nii.gz')
         report['inputs']['ct_prior_map_sha256'] = sha256_file(PRIOR_MAP)
         report['prior_coverage'] = json.loads((ROOT / 'generated/cryo-ct-prior-block2.json').read_text())['coverage']
+    # same rule as the prior builder: a build into a scratch directory describes that build, and never
+    # replaces the committed report of the canonical one
     suffix = '' if a.slices == 'train' else '-bands'
-    rp = ROOT / f'generated/cryo-nnunet-dataset-block2-{a.variant}{suffix}.json'
+    canonical_out = ROOT / 'data/derived/nnunet/raw'
+    is_canonical = (ROOT / a.out).resolve() == canonical_out.resolve() if not Path(a.out).is_absolute() else Path(a.out).resolve() == canonical_out.resolve()
+    rp = (ROOT / f'generated/cryo-nnunet-dataset-block2-{a.variant}{suffix}.json' if is_canonical
+          else root.parent / f'cryo-nnunet-dataset-block2-{a.variant}{suffix}.json')
+    report['is_canonical_build'] = is_canonical
+    report['output_root'] = str(root.parent)
     rp.write_text(json.dumps(report, indent=1) + '\n')
+    shown = rp.relative_to(ROOT) if rp.is_relative_to(ROOT) else rp   # a scratch build reports outside the repo
     print(json.dumps({'ok': True, 'dataset': str(root), 'cases': len(cases), 'skipped': len(skipped),
-                      'report': str(rp.relative_to(ROOT)), 'seconds': report['seconds']}))
+                      'report': str(shown), 'seconds': report['seconds']}))
 
 
 if __name__ == '__main__':

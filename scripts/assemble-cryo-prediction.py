@@ -10,6 +10,13 @@ A slice that was not predicted is written 0. That is not a claim: the evaluator 
 usable or usable-flagged, and the report records which slices carried a prediction. A predicted slice whose k is outside
 the block, or a duplicate, is a hard error.
 
+Every slice is checked BEFORE anything is converted or copied (Codex audit of 909e500, P1-1). The earlier version read
+the unique values through int(), then cast with astype(uint8): both truncate, so a float slice holding 1.9 became class 1
+and the assembled volume then passed the evaluator's prediction gate. It also ignored the input affine entirely and
+replaced it with the reference one, so a slice placed a metre away was assembled without a word. The gate below refuses
+a non-integral value, a non-finite value and an affine that is not this dataset's 2D case grid, and it refuses before
+the slice reaches the volume.
+
   .venv/bin/python scripts/assemble-cryo-prediction.py --block data/derived/nlm-vhf/cryosections/block2 \
       --predictions data/derived/nnunet/pred/Dataset501.../ --variant rgb-only --out generated/... .nii.gz
 
@@ -29,6 +36,31 @@ ROOT = Path(__file__).resolve().parents[1]
 BANDS = ROOT / 'registry/cryo-eval-bands-v1.json'
 PROTOCOL = ROOT / 'registry/machine-acceptance-protocol-v1.json'
 CASE = re.compile(r'^block2_k(\d{5})\.nii\.gz$')
+DUMMY_SLICE_SPACING_MM = 999.0   # the slice axis of a 2D case, written by scripts/build-cryo-nnunet-dataset.py
+AFFINE_ATOL_MM = 1e-3            # NIfTI headers store float32, so an exact comparison would be brittle
+
+
+def slice_gate(img, k, ni, nj, allowed, expected_affine):
+    """Refuse a prediction slice before any conversion. Returns the validated integer array."""
+    raw = np.asanyarray(img.dataobj)
+    arr = np.squeeze(raw)
+    if arr.shape != (ni, nj):
+        return None, f'shape {arr.shape} differs from the case grid {(ni, nj)}'
+    if not np.issubdtype(raw.dtype, np.integer):
+        if not np.isfinite(arr).all():
+            return None, f'dtype {raw.dtype} with non-finite values'
+        if not np.array_equal(arr, np.rint(arr)):
+            bad = arr[arr != np.rint(arr)]
+            return None, f'dtype {raw.dtype} with fractional values, first {float(bad.flat[0])}'
+        arr = np.rint(arr)
+    vals = set(int(v) for v in np.unique(arr))      # safe now: every value is already integral
+    if not vals <= allowed:
+        return None, f'classes {sorted(vals - allowed)} outside the active output classes {sorted(allowed)}'
+    if not np.allclose(img.affine, expected_affine, atol=AFFINE_ATOL_MM):
+        return None, ('affine is not this dataset\'s 2D case grid; got diagonal '
+                      f'{[round(float(img.affine[i, i]), 4) for i in range(3)]} and translation '
+                      f'{[round(float(img.affine[i, 3]), 4) for i in range(3)]}')
+    return arr.astype(np.uint8), None
 
 
 def sha256_file(p, chunk=1 << 24):
@@ -58,6 +90,9 @@ def main():
     ni, nj, nk = ref.shape
     k_first = man['block']['k_first']
     out = np.zeros((ni, nj, nk), dtype=np.uint8)
+    # the grid a 2D case was written on: block in-plane spacing, dummy spacing on the slice axis
+    sx, sy, _ = man['grid']['spacing_mm_ijk']
+    expected_affine = np.diag([sx, sy, DUMMY_SLICE_SPACING_MM, 1.0])
 
     files = sorted(Path(a.predictions).glob('block2_k*.nii.gz'))
     if not files:
@@ -73,14 +108,10 @@ def main():
             raise SystemExit(json.dumps({'ok': False, 'error': f'slice k {k} is outside the block'}))
         if z in written:
             raise SystemExit(json.dumps({'ok': False, 'error': f'slice k {k} predicted twice'}))
-        arr = np.asanyarray(nib.load(f).dataobj)
-        arr = np.squeeze(arr)
-        if arr.shape != (ni, nj):
-            raise SystemExit(json.dumps({'ok': False, 'error': f'slice k {k} has shape {arr.shape}, expected {(ni, nj)}'}))
-        vals = set(int(v) for v in np.unique(arr))
-        if not vals <= allowed:
-            raise SystemExit(json.dumps({'ok': False, 'error': f'slice k {k} holds classes {sorted(vals - allowed)}'}))
-        out[:, :, z] = arr.astype(np.uint8)
+        arr, why = slice_gate(nib.load(f), k, ni, nj, allowed, expected_affine)
+        if why is not None:
+            raise SystemExit(json.dumps({'ok': False, 'error': f'slice k {k}: {why}'}))
+        out[:, :, z] = arr
         written.append(z)
 
     op = Path(a.out)
@@ -100,12 +131,21 @@ def main():
                    'band_eligible_without_prediction': missing,
                    'outside_the_bands': sorted(k for k in got if k not in set(scoring))},
         'note': 'slices without a prediction are class 0; the evaluator scores only eligible band slices',
+        'slice_gate': {
+            'checked_before_conversion': ['squeezed shape', 'integer dtype or an exactly integral float',
+                                          'finite values', 'only the active output classes',
+                                          "the 2D case affine, diag(%.3f, %.3f, %.1f)" % (sx, sy, DUMMY_SLICE_SPACING_MM)],
+            'affine_atol_mm': AFFINE_ATOL_MM,
+            'reason': 'Codex audit of 909e500, P1-1: reading values through int() and casting with astype truncated a '
+                      'fractional class, and the input affine was ignored, so a slice from another grid was accepted',
+        },
         'seconds': round(time.time() - t0, 1),
     }
     rp = ROOT / f'generated/cryo-prediction-block2-{a.variant}.json'
     rp.write_text(json.dumps(report, indent=1) + '\n')
+    shown = rp.relative_to(ROOT) if rp.is_relative_to(ROOT) else rp
     print(json.dumps({'ok': not missing, 'out': str(op), 'predicted': len(written),
-                      'band_eligible_without_prediction': len(missing), 'report': str(rp.relative_to(ROOT))}))
+                      'band_eligible_without_prediction': len(missing), 'report': str(shown)}))
     if missing:
         raise SystemExit(1)
 

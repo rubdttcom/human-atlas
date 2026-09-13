@@ -423,7 +423,8 @@
   "bands_sha256": "9806cf37f211c7500477fd19328c41e30baef6bb29c5657d18416dbea9e65cd9"
  },
  "split": {
-  "kind": "frozen, spatially blocked by the 50 mm bins of the bands file",
+  "kind": "frozen, blocked by the 50 mm bins of the bands file",
+  "boundary_limit": "a training slice and a validation slice can be adjacent across a bin boundary (minimum distance 1 slice, 0.333 mm, in all four folds); the blocking stops a shuffled-slice split, not the boundary pair. The graded bands keep their 10 mm buffers and are never sampled.",
   "folds": [
    {
     "bin_k": [
@@ -488,5 +489,7 @@
   "a 2D configuration sees one slice at a time; no through-plane context",
   "the frozen split reports only; the graded result is the band prediction"
  ],
- "seconds": 4.3
+ "seconds": 4.2,
+ "is_canonical_build": true,
+ "output_root": "<repository root>/data/derived/nnunet/raw"
 }

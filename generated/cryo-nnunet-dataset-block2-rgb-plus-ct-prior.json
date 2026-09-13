@@ -429,7 +429,8 @@
   "bands_sha256": "9806cf37f211c7500477fd19328c41e30baef6bb29c5657d18416dbea9e65cd9"
  },
  "split": {
-  "kind": "frozen, spatially blocked by the 50 mm bins of the bands file",
+  "kind": "frozen, blocked by the 50 mm bins of the bands file",
+  "boundary_limit": "a training slice and a validation slice can be adjacent across a bin boundary (minimum distance 1 slice, 0.333 mm, in all four folds); the blocking stops a shuffled-slice split, not the boundary pair. The graded bands keep their 10 mm buffers and are never sampled.",
   "folds": [
    {
     "bin_k": [
@@ -475,7 +476,7 @@
   "tissue_map_sha256": "efabc86953124cd031e892128a67f78978e287be8a04e3c70bb16d5b1c0954a4",
   "protocol_sha256": "8404c8573bfe3246329f474e82b68cb4dd91a8206a1d679dbd11daeb2bab0d2d",
   "ct_prior_sha256": "f5bdf6be4b242faa9a27814da95ac66b807cee63dc9bfbeb373b076fdf574f19",
-  "ct_prior_map_sha256": "514fd2bfba66cff89afc58dc9cbbc743262f5a599fd966aa5de862551a06a231"
+  "ct_prior_map_sha256": "1fb46b2082172871bab6a3b6dac73917af6f90acfcde38454e6a0e0a2d3f2c04"
  },
  "slice_axis_spacing": {
   "stored_mm": 999.0,
@@ -496,7 +497,7 @@
   "a 2D configuration sees one slice at a time; no through-plane context",
   "the frozen split reports only; the graded result is the band prediction"
  ],
- "seconds": 4.9,
+ "seconds": 4.7,
  "prior_coverage": {
   "slices_with_any_ct_field_of_view": 1248,
   "whole_block": {
@@ -556,5 +557,7 @@
    },
    "prior_any_voxels": 12823414
   }
- }
+ },
+ "is_canonical_build": true,
+ "output_root": "<repository root>/data/derived/nnunet/raw"
 }

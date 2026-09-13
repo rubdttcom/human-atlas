@@ -36,4 +36,7 @@ for p in sorted(glob.glob(pre + '/Dataset*/nnUNetPlans.json')):
                  'problems': bad}
 ok = sys.argv[1] == '0' and bool(out) and not any(v['problems'] for v in out.values())
 print('SENTINEL ' + json.dumps({'ok': ok, 'plans': out}))
+# exit non-zero as well: a sentinel saying ok:false with exit 0 let a degenerate plan look like a
+# clean run to anything that checks the status code (Codex audit of 909e500)
+sys.exit(0 if ok else 1)
 PY

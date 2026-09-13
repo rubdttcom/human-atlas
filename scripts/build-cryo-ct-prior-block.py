@@ -129,7 +129,8 @@ def main():
         prior[:, :, k] = cls
         in_field[k] = int(inside.sum())
 
-    out = Path(a.out) if a.out else block / 'ct-prior-tissue.nii.gz'
+    canonical = block / 'ct-prior-tissue.nii.gz'
+    out = Path(a.out) if a.out else canonical
     ref = nib.load(block / 'tissue-classes.nii.gz')
     nib.save(nib.Nifti1Image(prior, ref.affine, dtype=np.uint8), out)
 
@@ -187,9 +188,16 @@ def main():
         ],
         'seconds': round(time.time() - t0, 1),
     }
-    rp = ROOT / 'generated/cryo-ct-prior-block2.json'
+    # A throwaway run must not overwrite the canonical report. The earlier version always wrote to the fixed
+    # path, so an audit run with --out pointing at a discard file replaced the committed report with one naming
+    # a volume that never existed there, and git add -A swept it into c060d45 (found while applying the Codex
+    # audit of 909e500). The report now follows the output it describes.
+    rp = ROOT / 'generated/cryo-ct-prior-block2.json' if out == canonical else out.with_suffix('').with_suffix('.report.json')
+    report['outputs']['path'] = str(out)
+    report['outputs']['is_canonical'] = out == canonical
     rp.write_text(json.dumps(report, indent=1) + '\n')
-    print(json.dumps({'ok': True, 'out': str(out), 'report': str(rp.relative_to(ROOT)),
+    shown = rp.relative_to(ROOT) if rp.is_relative_to(ROOT) else rp   # a scratch build reports outside the repo
+    print(json.dumps({'ok': True, 'out': str(out), 'report': str(shown),
                       'primary': report['coverage']['primary_training_slices'],
                       'seconds': report['seconds']}))
 

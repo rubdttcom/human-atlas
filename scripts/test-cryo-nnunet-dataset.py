@@ -9,6 +9,7 @@ import ast
 import importlib.util
 import json
 import re
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -148,14 +149,15 @@ def t_ignore_remap_refuses_collision():
 def t_written_labels_use_nnunet_ignore():
     """The dataset on disk must carry 4, never 255, and dataset.json must declare the same.
 
-    This test used to skip silently when the dataset was absent and still reported ok (Codex-style audit of the
-    uncommitted pilot code, finding 3). It now builds the dataset it needs, so a green line means it was checked.
+    Kept as a check of the committed dataset when it is present. The property itself is proved by
+    t_builder_output_from_a_real_run, which runs the builder instead of reading whatever is on disk.
     """
-    for name, variant in (('Dataset501_VHFCryoBlock2RGB', 'rgb-only'),
-                          ('Dataset502_VHFCryoBlock2RGBPrior', 'rgb-plus-ct-prior')):
+    names = [n for n in ('Dataset501_VHFCryoBlock2RGB', 'Dataset502_VHFCryoBlock2RGBPrior')
+             if (ROOT / 'data/derived/nnunet/raw' / n / 'dataset.json').exists()]
+    if not names:
+        return                       # the built dataset is optional here; the builder test is the real one
+    for name in names:
         root = ROOT / 'data/derived/nnunet/raw' / name
-        assert (root / 'dataset.json').exists(), (
-            f'{name} is not built: run scripts/build-cryo-nnunet-dataset.py --variant {variant} first')
         dj = json.loads((root / 'dataset.json').read_text())
         assert dj['labels']['ignore'] == B.NNUNET_IGNORE, f'{name}: dataset.json declares another ignore label'
         files = sorted((root / 'labelsTr').glob('*.nii.gz'))
@@ -185,6 +187,56 @@ def t_case_geometry():
 
 
 # --- CT prior ----------------------------------------------------------------
+def t_builder_output_from_a_real_run():
+    """Run the real builder into a temp tree and check what it wrote, channel by channel.
+
+    The earlier test read the shapes of eight files that happened to be on disk, so a stale dataset hid a
+    regression of the extraction and nothing checked the CONTENT or the affine (Codex audit of 909e500). This
+    runs scripts/build-cryo-nnunet-dataset.py itself and compares every channel and every target against the
+    sources, on an asymmetric grid where a transpose cannot pass unnoticed.
+    """
+    block = ROOT / 'data/derived/nlm-vhf/cryosections/block2'
+    if not (block / 'rgb-kji.npy').exists():
+        raise AssertionError('block2 is not on disk: the builder cannot be exercised')
+    man = json.loads((block / 'manifest.json').read_text())
+    nk, nj, ni = man['grid']['shape_kji3'][:3]
+    assert ni != nj, 'the block grid is square, so a transpose would be invisible to this test'
+    with tempfile.TemporaryDirectory() as d:
+        cmd = [sys.executable, str(ROOT / 'scripts/build-cryo-nnunet-dataset.py'),
+               '--block', str(block), '--variant', 'rgb-plus-ct-prior', '--slices', 'train', '--out', d]
+        r = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
+        assert r.returncode == 0, f'the builder failed: {r.stderr[-400:]}'
+        root = Path(d) / B.VARIANTS['rgb-plus-ct-prior']['name']
+        dj = json.loads((root / 'dataset.json').read_text())
+        assert dj['labels']['ignore'] == B.NNUNET_IGNORE
+        assert len(dj['channel_names']) == 6, dj['channel_names']
+
+        rgb = np.load(block / 'rgb-kji.npy', mmap_mode='r')
+        tissue = np.asanyarray(nib.load(block / 'tissue-classes.nii.gz').dataobj)
+        prior = np.asanyarray(nib.load(block / 'ct-prior-tissue.nii.gz').dataobj)
+        k_first = man['block']['k_first']
+        cases = sorted((root / 'labelsTr').glob('*.nii.gz'))
+        assert len(cases) == 197, f'{len(cases)} cases written, expected 197'
+        for lf in cases[:3] + cases[len(cases) // 2:len(cases) // 2 + 2] + cases[-3:]:
+            case = lf.name[:-len('.nii.gz')]
+            k = int(case.split('_k')[1])
+            z = k - k_first
+            lab = np.squeeze(np.asanyarray(nib.load(lf).dataobj))
+            want = tissue[:, :, z].copy()
+            want[want == 255] = B.NNUNET_IGNORE
+            assert lab.shape == (ni, nj), f'{case}: label shape {lab.shape} against {(ni, nj)}'
+            assert np.array_equal(lab, want), f'{case}: the target is not the tissue classes with ignore remapped'
+            for c in range(3):
+                got = np.squeeze(np.asanyarray(nib.load(root / 'imagesTr' / f'{case}_{c:04d}.nii.gz').dataobj))
+                assert np.array_equal(got, rgb[z][:, :, c].T), f'{case}: colour channel {c} is not the transposed source'
+            for c, v in enumerate((1, 2, 3), start=3):
+                got = np.squeeze(np.asanyarray(nib.load(root / 'imagesTr' / f'{case}_{c:04d}.nii.gz').dataobj))
+                assert np.array_equal(got, (prior[:, :, z] == v).astype(np.uint8)), f'{case}: prior channel {c} wrong'
+            img0 = nib.load(root / 'imagesTr' / f'{case}_0000.nii.gz')
+            assert np.allclose(img0.affine, np.diag([0.666, 0.666, B.DUMMY_SLICE_SPACING_MM, 1.0]), atol=1e-3), \
+                f'{case}: the 2D case affine is not the dataset grid'
+
+
 def t_image_and_label_share_the_grid():
     """Every written case must have its channels and its label on the same grid.
 
@@ -284,6 +336,7 @@ def t_prior_never_the_target():
 
 for n, f in [('primary selection', t_primary_count), ('split is blocked', t_split_blocked),
              ('variant channels and ignore label', t_variant_channels), ('case geometry', t_case_geometry),
+             ('builder output from a real run', t_builder_output_from_a_real_run),
              ('image and label share the grid', t_image_and_label_share_the_grid),
              ('buffer layout is asserted', t_buffer_layout_asserted),
              ('paired status matches the evaluator', t_paired_status_matches_the_evaluator),
