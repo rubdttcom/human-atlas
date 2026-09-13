@@ -1,0 +1,137 @@
+{
+ "id": "cryo-eval-bands",
+ "version": 1,
+ "date": "2026-09-13",
+ "block": {
+  "region": 2,
+  "k_first": 2285,
+  "k_last": 3532,
+  "slices": 1248,
+  "z_mm": [
+   760.572,
+   1175.823
+  ],
+  "nlm_first": "avf1554b",
+  "nlm_last": "avf1970a"
+ },
+ "rules": {
+  "band_mm": 50.0,
+  "band_slices": 150,
+  "buffer_mm": 10.0,
+  "buffer_slices": 30,
+  "bands": 2,
+  "seed": 20260913,
+  "rng": "numpy default_rng, uniform choice among remaining candidates, one band at a time",
+  "candidate_starts": "1 mm grid (every 3 slices) from k_first",
+  "candidates_total": 367,
+  "content_rule": "at least 0.70 of the band slices have pair status usable or usable-flagged",
+  "spacing_rule": "band plus buffers inside the block; bands with buffers do not overlap",
+  "use": "bands: evaluation only, scored against Denver original labels through the tissue map on usable and usable-flagged slices; buffers: nothing; the rest: training and pseudo-labelling",
+  "no_human_reference": "plan B 2.4 revised 13 September 2026: the machine prepares the evaluation from Denver labels; nobody draws a reference; unlabelled regions get consistency reports, not accuracy"
+ },
+ "draws": 2,
+ "rejection": "candidates failing a rule are filtered before each draw; candidates_at_draw per band says how many remained",
+ "bands": [
+  {
+   "band": 1,
+   "k_first": 2528,
+   "k_last": 2677,
+   "slices": 150,
+   "z_mm": [
+    841.491,
+    891.108
+   ],
+   "buffer_k": [
+    [
+     2498,
+     2527
+    ],
+    [
+     2678,
+     2707
+    ]
+   ],
+   "status_counts": {
+    "usable": 24,
+    "usable-flagged": 117,
+    "excluded-identity": 9
+   },
+   "scoring_slices": 141,
+   "paired_fraction": 0.94,
+   "denver_voxels_per_class_on_scoring_slices": {
+    "bone": 2068592,
+    "cartilage": 55653,
+    "muscle": 6743049
+   },
+   "candidates_at_draw": 316
+  },
+  {
+   "band": 2,
+   "k_first": 2870,
+   "k_last": 3019,
+   "slices": 150,
+   "z_mm": [
+    955.377,
+    1004.994
+   ],
+   "buffer_k": [
+    [
+     2840,
+     2869
+    ],
+    [
+     3020,
+     3049
+    ]
+   ],
+   "status_counts": {
+    "usable-flagged": 74,
+    "usable": 76
+   },
+   "scoring_slices": 150,
+   "paired_fraction": 1.0,
+   "denver_voxels_per_class_on_scoring_slices": {
+    "bone": 2782888,
+    "muscle": 4123961
+   },
+   "candidates_at_draw": 206
+  }
+ ],
+ "training_k_ranges": [
+  [
+   2285,
+   2497
+  ],
+  [
+   2708,
+   2839
+  ],
+  [
+   3050,
+   3532
+  ]
+ ],
+ "training_slices": 828,
+ "training_status_counts": {
+  "excluded-identity": 197,
+  "usable": 253,
+  "excluded-observability": 6,
+  "usable-flagged": 372
+ },
+ "reserved_slices_including_buffers": 420,
+ "frozen_to": {
+  "manifest": "generated/cryosection-rgb-block2-manifest.json",
+  "manifest_sha256": "dbb73030ca5a4961de164fc9c0dbb85e6c839eeb414969f1185a3d909061325e",
+  "rgb_sha256": "f7997b57c5446e4988df634956714da3e521672ddd17153922e89f981c1bc0a5",
+  "labels_nifti_sha256": "de04d834695448625317f7edf052a15c93e405eb05f17b47ba4dd5572cda113f",
+  "transform_sha256": "72a17ac73c17f24e507bf4be149a93428151f1ed9b6173401bd2a105ae831de3",
+  "pairs_sha256": "11c6acccf61363d82c786b0fcee143b62133ec373ec46fd9452115103faee3db",
+  "pairs_policy": "pairs-v1",
+  "tissue_map": "registry/cryo-tissue-map.json",
+  "tissue_map_sha256": "efabc86953124cd031e892128a67f78978e287be8a04e3c70bb16d5b1c0954a4",
+  "tissue_map_version": 1,
+  "labels_npz_sha256": "1dbaa2943f3589554f451a1e221c28925a6fb66281dca3bf8a823022797f8a4c",
+  "labels_mat_sha256": "fbe07d8d1f5dd63bc39ef5104082e89f73ca8b7492aca4f639e851e33d60ba69"
+ },
+ "statement": "frozen before any training; a training set built from a manifest with another hash, or a band edited after this date, invalidates every result scored on it; nothing here is anatomy"
+}

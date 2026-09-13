@@ -76,6 +76,7 @@ Definition of done for any change that touches data or scripts:
 .venv/bin/python scripts/test-consensus-metadata.py
 .venv/bin/python scripts/test-qa-carryover.py
 .venv/bin/python scripts/test-cryosection-transform.py
+.venv/bin/python scripts/validate-cryo-pilot.py
 node --experimental-strip-types scripts/test-agreement-panel.mjs
 npx tsc --noEmit
 ```

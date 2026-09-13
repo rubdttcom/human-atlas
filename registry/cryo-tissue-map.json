@@ -1,0 +1,1387 @@
+{
+ "id": "cryo-tissue-map",
+ "version": 1,
+ "date": "2026-09-13",
+ "purpose": "explicit, exhaustive mapping of every Denver original label value to one tissue class for the loss and the metrics of the cryosection pilot (plan B stage 2); read by scripts/build-cryo-tissue-classes.py; a change is a new version and invalidates any acceptance bound to the old hash",
+ "classes": [
+  {
+   "value": 0,
+   "name": "background",
+   "definition": "blue embedding block, air, table: outside the body mask and without a Denver label"
+  },
+  {
+   "value": 1,
+   "name": "bone",
+   "definition": "Denver Bone labels (cortical and trabecular together; Denver does not separate them)"
+  },
+  {
+   "value": 2,
+   "name": "cartilage",
+   "definition": "Denver Cartilage labels (articular cartilage)"
+  },
+  {
+   "value": 3,
+   "name": "muscle",
+   "definition": "Denver Muscle labels (skeletal muscle bellies; tendon is not separated by Denver, so tendinous parts inside a muscle label count as muscle)"
+  },
+  {
+   "value": 4,
+   "name": "ligament-tendon",
+   "definition": "Denver Ligament labels (knee ligaments in this release); tendons have no Denver label"
+  },
+  {
+   "value": 5,
+   "name": "fat",
+   "definition": "reserved; no Denver source in the 2022 release; never assigned in the pilot; reported machine-not-assessable"
+  },
+  {
+   "value": 255,
+   "name": "ignore",
+   "definition": "unknown: inside the body without a Denver label, and every voxel of a slice whose pair status is not usable or usable-flagged; excluded from the loss and from every metric; never background"
+  }
+ ],
+ "precedence": [
+  "slice pair status not in {usable, usable-flagged} -> every voxel ignore (255)",
+  "Denver label value != 0 -> its class from the table (labels are trusted wherever they are, inside or outside the body mask)",
+  "Denver 0 and body mask true -> ignore (255): unknown tissue, never background",
+  "Denver 0 and body mask false -> background (0)"
+ ],
+ "body_mask_rule": {
+  "input": "resampled Denver-grid RGB of the slice (uint8)",
+  "tissue": "R > B + 25 and max(R, G, B) > 60",
+  "morphology": "binary closing 2 iterations, fill holes, keep connected components with at least 811 pixels (3.6 cm2 at 0.666 mm; the 200 blocks of 4 x 4 photograph px of scripts/check-photo-ct-alignment.py)",
+  "note": "a colour rule against the blue block; frost, dark or block-coloured pixels inside the outline are still body because holes are filled; it decides only background versus unknown, never any tissue"
+ },
+ "composite_labels": "none in Denver 2022 original maps; every non-zero label is one structure of one tissue; fat, skin, fascia, vessels and nerves are unlabelled and stay ignore inside the body",
+ "not_supervised_in_pilot": [
+  "fat (class 5, no source)",
+  "ligament-tendon (class 4) has no voxel in the pelvis block: Denver ligaments are the knee ligaments"
+ ],
+ "labels": [
+  {
+   "value": 0,
+   "name": "Background",
+   "class": 0,
+   "class_name": "background",
+   "note": "Denver 0 is \"no label\": background only outside the body mask, ignore inside it",
+   "voxels_block2": 318091771
+  },
+  {
+   "value": 1,
+   "name": "Left_Bone_Calcaneous",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Calcaneous",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 2,
+   "name": "Left_Bone_Coccyx",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Coccyx",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 353
+  },
+  {
+   "value": 3,
+   "name": "Left_Bone_Cuboid",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Cuboid",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 4,
+   "name": "Left_Bone_Femur",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Femur",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 1169512
+  },
+  {
+   "value": 5,
+   "name": "Left_Bone_Fibula",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Fibula",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 6,
+   "name": "Left_Bone_IntermediateCuneiform",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "IntermediateCuneiform",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 7,
+   "name": "Left_Bone_LateralCuneiform",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "LateralCuneiform",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 8,
+   "name": "Left_Bone_MedialCuneiform",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "MedialCuneiform",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 9,
+   "name": "Left_Bone_Navicular",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Navicular",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 10,
+   "name": "Left_Bone_Patella",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Patella",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 11,
+   "name": "Left_Bone_Pelvis",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Pelvis",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 2362643
+  },
+  {
+   "value": 12,
+   "name": "Left_Bone_Phalanges",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Phalanges",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 13,
+   "name": "Left_Bone_Sacrum",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Sacrum",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 227691
+  },
+  {
+   "value": 14,
+   "name": "Left_Bone_Talus",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Talus",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 15,
+   "name": "Left_Bone_Tibia",
+   "side": "Left",
+   "denver_tissue": "Bone",
+   "structure": "Tibia",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 16,
+   "name": "Left_Cartilage_FemurDistal",
+   "side": "Left",
+   "denver_tissue": "Cartilage",
+   "structure": "FemurDistal",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 17,
+   "name": "Left_Cartilage_FemurHead",
+   "side": "Left",
+   "denver_tissue": "Cartilage",
+   "structure": "FemurHead",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 32681
+  },
+  {
+   "value": 18,
+   "name": "Left_Cartilage_Patella",
+   "side": "Left",
+   "denver_tissue": "Cartilage",
+   "structure": "Patella",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 19,
+   "name": "Left_Cartilage_PelvisAcetabulum",
+   "side": "Left",
+   "denver_tissue": "Cartilage",
+   "structure": "PelvisAcetabulum",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 14451
+  },
+  {
+   "value": 20,
+   "name": "Left_Cartilage_Talus",
+   "side": "Left",
+   "denver_tissue": "Cartilage",
+   "structure": "Talus",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 21,
+   "name": "Left_Cartilage_TibiaDistal",
+   "side": "Left",
+   "denver_tissue": "Cartilage",
+   "structure": "TibiaDistal",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 22,
+   "name": "Left_Cartilage_TibiaLateral",
+   "side": "Left",
+   "denver_tissue": "Cartilage",
+   "structure": "TibiaLateral",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 23,
+   "name": "Left_Cartilage_TibiaMedial",
+   "side": "Left",
+   "denver_tissue": "Cartilage",
+   "structure": "TibiaMedial",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 24,
+   "name": "Left_Ligament_ACL",
+   "side": "Left",
+   "denver_tissue": "Ligament",
+   "structure": "ACL",
+   "class": 4,
+   "class_name": "ligament-tendon",
+   "voxels_block2": 0
+  },
+  {
+   "value": 25,
+   "name": "Left_Ligament_LCL",
+   "side": "Left",
+   "denver_tissue": "Ligament",
+   "structure": "LCL",
+   "class": 4,
+   "class_name": "ligament-tendon",
+   "voxels_block2": 0
+  },
+  {
+   "value": 26,
+   "name": "Left_Ligament_MCL",
+   "side": "Left",
+   "denver_tissue": "Ligament",
+   "structure": "MCL",
+   "class": 4,
+   "class_name": "ligament-tendon",
+   "voxels_block2": 0
+  },
+  {
+   "value": 27,
+   "name": "Left_Ligament_PCL",
+   "side": "Left",
+   "denver_tissue": "Ligament",
+   "structure": "PCL",
+   "class": 4,
+   "class_name": "ligament-tendon",
+   "voxels_block2": 0
+  },
+  {
+   "value": 28,
+   "name": "Left_Muscle_AdductorBrevis",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "AdductorBrevis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 432881
+  },
+  {
+   "value": 29,
+   "name": "Left_Muscle_AdductorLongus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "AdductorLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 298689
+  },
+  {
+   "value": 30,
+   "name": "Left_Muscle_AdductorMagnus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "AdductorMagnus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 1126597
+  },
+  {
+   "value": 31,
+   "name": "Left_Muscle_BicepsFemorisLongHead",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "BicepsFemorisLongHead",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 40958
+  },
+  {
+   "value": 32,
+   "name": "Left_Muscle_BicepsFemorisShortHead",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "BicepsFemorisShortHead",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 33,
+   "name": "Left_Muscle_ExtensorDigitorumLongus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "ExtensorDigitorumLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 34,
+   "name": "Left_Muscle_ExtensorHallucisLongus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "ExtensorHallucisLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 35,
+   "name": "Left_Muscle_FlexorDigitorumLongus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "FlexorDigitorumLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 36,
+   "name": "Left_Muscle_FlexorHallucisLongus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "FlexorHallucisLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 37,
+   "name": "Left_Muscle_GastrocnemiusLateral",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "GastrocnemiusLateral",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 38,
+   "name": "Left_Muscle_GastrocnemiusMedial",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "GastrocnemiusMedial",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 39,
+   "name": "Left_Muscle_GluteusMaximus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "GluteusMaximus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 5415195
+  },
+  {
+   "value": 40,
+   "name": "Left_Muscle_GluteusMedius",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "GluteusMedius",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 2514459
+  },
+  {
+   "value": 41,
+   "name": "Left_Muscle_GluteusMinimus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "GluteusMinimus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 895461
+  },
+  {
+   "value": 42,
+   "name": "Left_Muscle_Gracilis",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Gracilis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 141362
+  },
+  {
+   "value": 43,
+   "name": "Left_Muscle_Illiacus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Illiacus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 1009352
+  },
+  {
+   "value": 44,
+   "name": "Left_Muscle_InferiorGemellus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "InferiorGemellus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 17416
+  },
+  {
+   "value": 45,
+   "name": "Left_Muscle_ObturatorExternus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "ObturatorExternus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 319210
+  },
+  {
+   "value": 46,
+   "name": "Left_Muscle_ObturatorInternus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "ObturatorInternus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 315247
+  },
+  {
+   "value": 47,
+   "name": "Left_Muscle_Pectineus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Pectineus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 313950
+  },
+  {
+   "value": 48,
+   "name": "Left_Muscle_PeroneusLongus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "PeroneusLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 49,
+   "name": "Left_Muscle_Piriformis",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Piriformis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 299125
+  },
+  {
+   "value": 50,
+   "name": "Left_Muscle_Plantaris",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Plantaris",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 51,
+   "name": "Left_Muscle_Popliteus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Popliteus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 52,
+   "name": "Left_Muscle_PsoasMajor",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "PsoasMajor",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 1136352
+  },
+  {
+   "value": 53,
+   "name": "Left_Muscle_QuadratisFemoris",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "QuadratisFemoris",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 262491
+  },
+  {
+   "value": 54,
+   "name": "Left_Muscle_RectusFemoris",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "RectusFemoris",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 604790
+  },
+  {
+   "value": 55,
+   "name": "Left_Muscle_Sartorius",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Sartorius",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 251807
+  },
+  {
+   "value": 56,
+   "name": "Left_Muscle_Semimembranosus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Semimembranosus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 5449
+  },
+  {
+   "value": 57,
+   "name": "Left_Muscle_Semitendinosus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Semitendinosus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 123051
+  },
+  {
+   "value": 58,
+   "name": "Left_Muscle_Soleus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "Soleus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 59,
+   "name": "Left_Muscle_SuperiorGemellus",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "SuperiorGemellus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 15809
+  },
+  {
+   "value": 60,
+   "name": "Left_Muscle_TensorFasciaeLatae",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "TensorFasciaeLatae",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 397263
+  },
+  {
+   "value": 61,
+   "name": "Left_Muscle_TibialisAnterior",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "TibialisAnterior",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 62,
+   "name": "Left_Muscle_TibialisPosterior",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "TibialisPosterior",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 63,
+   "name": "Left_Muscle_VastusIntermedius",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "VastusIntermedius",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 366998
+  },
+  {
+   "value": 64,
+   "name": "Left_Muscle_VastusLateralis",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "VastusLateralis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 835643
+  },
+  {
+   "value": 65,
+   "name": "Left_Muscle_VastusMedialis",
+   "side": "Left",
+   "denver_tissue": "Muscle",
+   "structure": "VastusMedialis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 97242
+  },
+  {
+   "value": 66,
+   "name": "Right_Bone_Calcaneous",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Calcaneous",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 67,
+   "name": "Right_Bone_Coccyx",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Coccyx",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 8525
+  },
+  {
+   "value": 68,
+   "name": "Right_Bone_Cuboid",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Cuboid",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 69,
+   "name": "Right_Bone_Femur",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Femur",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 1103357
+  },
+  {
+   "value": 70,
+   "name": "Right_Bone_Fibula",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Fibula",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 71,
+   "name": "Right_Bone_IntermediateCuneiform",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "IntermediateCuneiform",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 72,
+   "name": "Right_Bone_LateralCuneiform",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "LateralCuneiform",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 73,
+   "name": "Right_Bone_MedialCuneiform",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "MedialCuneiform",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 74,
+   "name": "Right_Bone_Navicular",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Navicular",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 75,
+   "name": "Right_Bone_Patella",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Patella",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 76,
+   "name": "Right_Bone_Pelvis",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Pelvis",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 2264489
+  },
+  {
+   "value": 77,
+   "name": "Right_Bone_Phalanges",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Phalanges",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 78,
+   "name": "Right_Bone_Sacrum",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Sacrum",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 1499479
+  },
+  {
+   "value": 79,
+   "name": "Right_Bone_Talus",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Talus",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 80,
+   "name": "Right_Bone_Tibia",
+   "side": "Right",
+   "denver_tissue": "Bone",
+   "structure": "Tibia",
+   "class": 1,
+   "class_name": "bone",
+   "voxels_block2": 0
+  },
+  {
+   "value": 81,
+   "name": "Right_Cartilage_FemurDistal",
+   "side": "Right",
+   "denver_tissue": "Cartilage",
+   "structure": "FemurDistal",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 82,
+   "name": "Right_Cartilage_FemurHead",
+   "side": "Right",
+   "denver_tissue": "Cartilage",
+   "structure": "FemurHead",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 54444
+  },
+  {
+   "value": 83,
+   "name": "Right_Cartilage_Patella",
+   "side": "Right",
+   "denver_tissue": "Cartilage",
+   "structure": "Patella",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 84,
+   "name": "Right_Cartilage_PelvisAcetabulum",
+   "side": "Right",
+   "denver_tissue": "Cartilage",
+   "structure": "PelvisAcetabulum",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 22128
+  },
+  {
+   "value": 85,
+   "name": "Right_Cartilage_Talus",
+   "side": "Right",
+   "denver_tissue": "Cartilage",
+   "structure": "Talus",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 86,
+   "name": "Right_Cartilage_TibiaDistal",
+   "side": "Right",
+   "denver_tissue": "Cartilage",
+   "structure": "TibiaDistal",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 87,
+   "name": "Right_Cartilage_TibiaLateral",
+   "side": "Right",
+   "denver_tissue": "Cartilage",
+   "structure": "TibiaLateral",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 88,
+   "name": "Right_Cartilage_TibiaMedial",
+   "side": "Right",
+   "denver_tissue": "Cartilage",
+   "structure": "TibiaMedial",
+   "class": 2,
+   "class_name": "cartilage",
+   "voxels_block2": 0
+  },
+  {
+   "value": 89,
+   "name": "Right_Ligament_ACL",
+   "side": "Right",
+   "denver_tissue": "Ligament",
+   "structure": "ACL",
+   "class": 4,
+   "class_name": "ligament-tendon",
+   "voxels_block2": 0
+  },
+  {
+   "value": 90,
+   "name": "Right_Ligament_LCL",
+   "side": "Right",
+   "denver_tissue": "Ligament",
+   "structure": "LCL",
+   "class": 4,
+   "class_name": "ligament-tendon",
+   "voxels_block2": 0
+  },
+  {
+   "value": 91,
+   "name": "Right_Ligament_MCL",
+   "side": "Right",
+   "denver_tissue": "Ligament",
+   "structure": "MCL",
+   "class": 4,
+   "class_name": "ligament-tendon",
+   "voxels_block2": 0
+  },
+  {
+   "value": 92,
+   "name": "Right_Ligament_PCL",
+   "side": "Right",
+   "denver_tissue": "Ligament",
+   "structure": "PCL",
+   "class": 4,
+   "class_name": "ligament-tendon",
+   "voxels_block2": 0
+  },
+  {
+   "value": 93,
+   "name": "Right_Muscle_AdductorBrevis",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "AdductorBrevis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 500401
+  },
+  {
+   "value": 94,
+   "name": "Right_Muscle_AdductorLongus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "AdductorLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 280711
+  },
+  {
+   "value": 95,
+   "name": "Right_Muscle_AdductorMagnus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "AdductorMagnus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 1009717
+  },
+  {
+   "value": 96,
+   "name": "Right_Muscle_BicepsFemorisLongHead",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "BicepsFemorisLongHead",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 36962
+  },
+  {
+   "value": 97,
+   "name": "Right_Muscle_BicepsFemorisShortHead",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "BicepsFemorisShortHead",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 98,
+   "name": "Right_Muscle_ExtensorDigitorumLongus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "ExtensorDigitorumLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 99,
+   "name": "Right_Muscle_ExtensorHallucisLongus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "ExtensorHallucisLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 100,
+   "name": "Right_Muscle_FlexorDigitorumLongus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "FlexorDigitorumLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 101,
+   "name": "Right_Muscle_FlexorHallucisLongus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "FlexorHallucisLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 102,
+   "name": "Right_Muscle_GastrocnemiusLateral",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "GastrocnemiusLateral",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 103,
+   "name": "Right_Muscle_GastrocnemiusMedial",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "GastrocnemiusMedial",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 104,
+   "name": "Right_Muscle_GluteusMaximus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "GluteusMaximus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 5573717
+  },
+  {
+   "value": 105,
+   "name": "Right_Muscle_GluteusMedius",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "GluteusMedius",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 2061408
+  },
+  {
+   "value": 106,
+   "name": "Right_Muscle_GluetusMinimus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "GluetusMinimus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 841383
+  },
+  {
+   "value": 107,
+   "name": "Right_Muscle_Gracilis",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Gracilis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 129762
+  },
+  {
+   "value": 108,
+   "name": "Right_Muscle_Illiacus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Illiacus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 1038111
+  },
+  {
+   "value": 109,
+   "name": "Right_Muscle_InferiorGemellus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "InferiorGemellus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 17981
+  },
+  {
+   "value": 110,
+   "name": "Right_Muscle_ObturatorExternus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "ObturatorExternus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 343621
+  },
+  {
+   "value": 111,
+   "name": "Right_Muscle_OnturatorInternus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "OnturatorInternus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 318505
+  },
+  {
+   "value": 112,
+   "name": "Right_Muscle_Pectineus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Pectineus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 265573
+  },
+  {
+   "value": 113,
+   "name": "Right_Muscle_PeroneusLongus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "PeroneusLongus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 114,
+   "name": "Right_Muscle_Piriformis",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Piriformis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 304524
+  },
+  {
+   "value": 115,
+   "name": "Right_Muscle_Plantaris",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Plantaris",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 116,
+   "name": "Right_Muscle_Popliteus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Popliteus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 117,
+   "name": "Right_Muscle_PsoasMajor",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "PsoasMajor",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 1049150
+  },
+  {
+   "value": 118,
+   "name": "Right_Muscle_QuadratisFemoris",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "QuadratisFemoris",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 219993
+  },
+  {
+   "value": 119,
+   "name": "Right_Muscle_RectusFemoris",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "RectusFemoris",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 515803
+  },
+  {
+   "value": 120,
+   "name": "Right_Muscle_Sartorius",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Sartorius",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 234329
+  },
+  {
+   "value": 121,
+   "name": "Right_Muscle_Semimembranosus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Semimembranosus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 3880
+  },
+  {
+   "value": 122,
+   "name": "Right_Muscle_Semitendonosus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Semitendonosus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 101355
+  },
+  {
+   "value": 123,
+   "name": "Right_Muscle_Soleus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "Soleus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 124,
+   "name": "Right_Muscle_SuperiorGemellus",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "SuperiorGemellus",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 21445
+  },
+  {
+   "value": 125,
+   "name": "Right_Muscle_TensorFasciaeLatae",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "TensorFasciaeLatae",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 439432
+  },
+  {
+   "value": 126,
+   "name": "Right_Muscle_TibialisAnterior",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "TibialisAnterior",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 127,
+   "name": "Right_Muscle_TibialisPosterior",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "TibialisPosterior",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 0
+  },
+  {
+   "value": 128,
+   "name": "Right_Muscle_VastusIntermedius",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "VastusIntermedius",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 349272
+  },
+  {
+   "value": 129,
+   "name": "Right_Muscle_VastusLateralis",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "VastusLateralis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 941886
+  },
+  {
+   "value": 130,
+   "name": "Right_Muscle_VastusMedialis",
+   "side": "Right",
+   "denver_tissue": "Muscle",
+   "structure": "VastusMedialis",
+   "class": 3,
+   "class_name": "muscle",
+   "voxels_block2": 39670
+  }
+ ],
+ "per_class_voxels_block2_denver_labels": {
+  "bone": 8636049,
+  "cartilage": 123704,
+  "ligament-tendon": 0,
+  "muscle": 33875388
+ },
+ "sources": {
+  "label_names": "VHF_Full.mat geometry_labels/name (131 entries, value = index)",
+  "labels_npz": "data/derived/denver/label-blocks/block2-k2285-3532-labels.npz",
+  "labels_mat_sha256": "fbe07d8d1f5dd63bc39ef5104082e89f73ca8b7492aca4f639e851e33d60ba69",
+  "block2_counts_from": "labels_present_in_block of the npz (k 2285..3532)"
+ },
+ "limits": [
+  "class level only: Denver structures are merged per tissue; a class Dice does not see confusions between neighbouring structures of the same tissue",
+  "Denver does not separate cortical from trabecular bone nor tendon from muscle belly; the classes inherit that",
+  "the body mask is a colour rule and is not anatomy; label voxels never depend on it"
+ ]
+}
