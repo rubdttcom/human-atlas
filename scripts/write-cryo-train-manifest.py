@@ -88,7 +88,8 @@ def main():
     out = Path(a.out) if a.out else ROOT / f'generated/cryo-nnunet-train-block2-{a.variant}.json'
     out.write_text(json.dumps(man, indent=1) + '\n')
     missing = [f for f in REQUIRED if not man.get(f) and man.get(f) != 0]
-    print(json.dumps({'ok': not missing and not problems, 'out': str(out.relative_to(ROOT)),
+    shown = out.relative_to(ROOT) if out.is_relative_to(ROOT) else out   # --out may point outside the repo
+    print(json.dumps({'ok': not missing and not problems, 'out': str(shown),
                       'missing': missing, 'problems': problems,
                       'training_slices': len(man['training_slices_k']),
                       'runs_declared': len(declared), 'runs_observed': len(observed)}))
