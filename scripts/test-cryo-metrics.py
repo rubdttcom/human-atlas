@@ -108,6 +108,34 @@ predk = np.zeros(shape, bool); predk[:, :, 1:] = ref[:, :, :-1]
 s = M.surface_p95(predk, ref, E, runs_one, K0)
 case('k_shift_uses_0.333', abs(s['p95_mm'] - 0.333) < 1e-9)
 
+# 11. Codex audit of 87ff582: caps must not act as targets. Reference fills the whole eligible run (every reference surface
+#     voxel is a cap), prediction is a box inside: no observable reference surface -> undefined, never a finite distance.
+shp = (35, 35, 3); Eall = np.ones(shp, bool)
+Rall = np.ones(shp, bool); Pbox = np.zeros(shp, bool); Pbox[10:25, 10:25, :] = True
+s = M.surface_p95(Pbox, Rall, Eall, [(K0, K0 + 2)], K0)
+case('cap_never_a_target', s['status'] == 'no-observable-surface' and s['p95_mm'] is None)
+#     nested boxes touching a crop: the prediction's distance must be to the real reference boundary, not to a cap face
+shp2 = (40, 40, 12); E2b = np.ones(shp2, bool)
+Rn = box(shp2, (5, 35), (5, 35), (0, 12))                     # reference spans the whole k range: its k faces are caps
+Pn = box(shp2, (10, 30), (10, 30), (0, 12))                    # prediction 5 px inside: real distance 5 * 0.666 = 3.33 mm
+s = M.surface_p95(Pn, Rn, E2b, [(K0, K0 + 11)], K0)
+case('nested_box_distance_is_to_real_boundary', s['status'] == 'ok' and s['mean_mm'] >= 3.33 - 1e-9 and 3.33 - 1e-9 <= s['p95_mm'] <= 5 * np.sqrt(2) * 0.666 + 1e-9)   # every distance >= 5 px (a cap target would give 0.333); corners up to 5 sqrt 2 px
+case('support_reported', s['support']['reference_surface_caps_removed'] > 0 and s['support']['prediction_surface_kept'] > 0)
+
+# 12. Codex audit of 87ff582: a missing prediction in a single-slice run (every reference surface voxel would be a cap)
+#     must be detected as emptiness BEFORE cap extraction
+shp3 = (30, 30, 9); E3b = np.ones(shp3, bool)
+R3 = np.zeros(shp3, bool); R3[5:15, 5:15, 0] = True; R3[5:15, 5:15, 3:9] = True
+P3 = np.zeros(shp3, bool); P3[5:15, 5:15, 3:9] = True             # first run omitted entirely
+s = M.surface_p95(P3, R3, E3b, [(K0, K0), (K0 + 3, K0 + 8)], K0)
+case('missing_single_slice_run_detected', s['status'] == 'empty-prediction-in-run' and s['p95_mm'] is None and s['per_run'][0]['status'] == 'empty-prediction-in-run')
+
+# 13. documented limit: a small omitted component inside a run with a correctly predicted component is NOT emptiness
+R4 = box(shape, (5, 25), (15, 35), (5, 35)); R4[40:44, 40:44, 10:12] = True
+P4 = box(shape, (5, 25), (15, 35), (5, 35))
+s = M.surface_p95(P4, R4, E, runs_one, K0)
+case('small_omitted_component_is_a_documented_limit', s['status'] == 'ok' and s['p95_mm'] is not None and M.dice(P4, R4, E) < 1.0)
+
 # 10. k_runs
 case('k_runs', M.k_runs([5, 6, 7, 10, 11, 20]) == [(5, 7), (10, 11), (20, 20)])
 

@@ -9,15 +9,19 @@ Definitions (every consumer imports these; the protocol names this file):
   surface    voxels of a mask (restricted to E) that have a 6-neighbour outside the mask, computed inside each k-run
              separately (a run = consecutive k positions of one band; runs are never concatenated, so the gap between
              bands and any missing slice never creates neighbours).
-  caps       a surface voxel whose 6-neighbourhood touches an ineligible voxel or the run's k boundary is a cap created
-             by the crop or the ignore region, not by the object: it is removed from the SOURCE set of its direction.
-             The TARGET set keeps every surface voxel of the other mask (a distance to a real boundary that happens to
-             sit next to ignore is still a real distance; a cap as a source would measure the crop).
+  caps       a surface voxel whose 6-neighbourhood touches an ineligible voxel or any face of the run's volume (the two k
+             faces of the run and the four i/j faces of the grid) is a cap created by the crop or the ignore region, not by
+             the object. Caps are removed from BOTH the source and the target set of every direction (symmetric,
+             conservative: a distance is never manufactured against an artificial face). The number of surface voxels
+             kept and removed per mask is reported as `support`. If a mask keeps no observable surface voxel while the
+             other mask has one, the run is 'no-observable-surface' and its p95 is undefined.
   distance   nearest target-surface voxel, Euclidean in mm with spacing (0.666, 0.666, 0.333), by EDT on the target
              surface complement inside the run.
-  p95        95th percentile of the pooled distances, both directions, all runs. Empty prediction with a non-empty
-             reference (overall or in one run): p95 is None and the status says 'empty-prediction' /
-             'empty-prediction-in-run' (fails every surface criterion). Empty reference everywhere: None, 'no-reference'.
+  p95        95th percentile of the pooled distances, both directions, all runs. Emptiness is decided per run BEFORE any
+             surface or cap extraction: prediction empty where the reference exists (overall or in one run) -> p95 None,
+             status 'empty-prediction' / 'empty-prediction-in-run' (fails every surface criterion). Empty reference
+             everywhere: None, 'no-reference'. The guarantee is per RUN: a small omitted component inside a run that also
+             holds a correctly predicted component is NOT detected as emptiness; p95 can miss small components (limit).
              A run with prediction but no reference ('false-positives-only', e.g. cartilage in band 2): no distance is
              defined there; the run is left out of the surface pool and its voxels are reported; they still count in the
              pooled Dice.
@@ -53,7 +57,8 @@ def _surface(mask):
 
 
 def _caps(eligible):
-    """Voxels whose 6-neighbourhood touches an ineligible voxel or the volume boundary (inside this run)."""
+    """Voxels whose 6-neighbourhood touches an ineligible voxel or any of the six faces of the run volume (two k faces of the
+    run, four i/j faces of the grid)."""
     inel = ~eligible
     grown = ndimage.binary_dilation(inel, STRUCT6, border_value=1)
     return grown
@@ -85,42 +90,53 @@ def k_runs(ks):
 def surface_p95(pred, ref, eligible, runs, k_first, spacing=SPACING):
     """pred, ref, eligible: boolean (i, j, K) volumes of the block (k index = k - k_first). runs: [(k_lo, k_hi)] in Denver k.
 
-    Returns dict(p95_mm, mean_mm, n_distances, status, per_run=[...])."""
+    Returns dict(p95_mm, mean_mm, n_distances, status, support, per_run=[...])."""
     pooled, per_run = [], []
     any_ref, any_pred = False, False
+    kept_p = kept_r = caps_p = caps_r = 0
     for lo, hi in runs:
         sl = slice(lo - k_first, hi - k_first + 1)
         E = eligible[:, :, sl]
         P = pred[:, :, sl] & E
         R = ref[:, :, sl] & E
-        any_ref |= bool(R.any()); any_pred |= bool(P.any())
-        if not R.any() and not P.any():
+        r_any, p_any = bool(R.any()), bool(P.any())
+        any_ref |= r_any; any_pred |= p_any
+        if not r_any and not p_any:
             per_run.append({'k': [lo, hi], 'n_distances': 0, 'status': 'empty-both'}); continue
-        if not R.any():
+        if not r_any:
             # false positives in a run without reference: no surface distance is defined there; the voxels count in the
             # pooled Dice (they are in |P & E|) and are reported here, the run is left out of the surface pool
             per_run.append({'k': [lo, hi], 'n_distances': 0, 'status': 'false-positives-only', 'n_prediction_voxels': int(P.sum())}); continue
+        if not p_any:
+            # decided before any surface extraction: the reference exists here and the prediction has nothing
+            per_run.append({'k': [lo, hi], 'n_distances': 0, 'status': 'empty-prediction-in-run', 'n_reference_voxels': int(R.sum())})
+            pooled.append(np.array([np.inf])); continue
         caps = _caps(E)
-        sP, sR = _surface(P), _surface(R)
-        d1 = _distances(sP & ~caps, sR, spacing)     # prediction -> reference
-        d2 = _distances(sR & ~caps, sP, spacing)     # reference -> prediction
+        sP, sR = _surface(P) & ~caps, _surface(R) & ~caps
+        cp, cr = int((_surface(P) & caps).sum()), int((_surface(R) & caps).sum())
+        kept_p += int(sP.sum()); kept_r += int(sR.sum()); caps_p += cp; caps_r += cr
+        sup = {'prediction_surface_kept': int(sP.sum()), 'prediction_surface_caps_removed': cp, 'reference_surface_kept': int(sR.sum()), 'reference_surface_caps_removed': cr}
+        if not sP.any() or not sR.any():
+            per_run.append({'k': [lo, hi], 'n_distances': 0, 'status': 'no-observable-surface', 'support': sup})
+            pooled.append(np.array([np.inf])); continue
+        d1 = _distances(sP, sR, spacing)     # prediction -> reference
+        d2 = _distances(sR, sP, spacing)     # reference -> prediction
         d = np.concatenate([d1, d2])
         pooled.append(d)
-        fin = d[np.isfinite(d)]
-        per_run.append({'k': [lo, hi], 'n_distances': int(d.size), 'n_infinite': int(d.size - fin.size),
-                        'p95_mm': float(np.quantile(fin, 0.95)) if fin.size else None,
-                        'status': 'ok' if fin.size == d.size else ('empty-prediction' if not P.any() else 'empty-reference')})
+        per_run.append({'k': [lo, hi], 'n_distances': int(d.size), 'p95_mm': float(np.quantile(d, 0.95)), 'status': 'ok', 'support': sup})
+    support = {'prediction_surface_kept': kept_p, 'prediction_surface_caps_removed': caps_p, 'reference_surface_kept': kept_r, 'reference_surface_caps_removed': caps_r}
     if not any_ref:
-        return {'p95_mm': None, 'mean_mm': None, 'n_distances': 0, 'status': 'no-reference', 'per_run': per_run}
+        return {'p95_mm': None, 'mean_mm': None, 'n_distances': 0, 'status': 'no-reference', 'support': support, 'per_run': per_run}
     if not any_pred:
-        return {'p95_mm': None, 'mean_mm': None, 'n_distances': 0, 'status': 'empty-prediction', 'per_run': per_run}
+        return {'p95_mm': None, 'mean_mm': None, 'n_distances': 0, 'status': 'empty-prediction', 'support': support, 'per_run': per_run}
     d = np.concatenate(pooled) if pooled else np.zeros(0)
     if d.size == 0:
-        return {'p95_mm': None, 'mean_mm': None, 'n_distances': 0, 'status': 'no-surface', 'per_run': per_run}
+        return {'p95_mm': None, 'mean_mm': None, 'n_distances': 0, 'status': 'no-surface', 'support': support, 'per_run': per_run}
     if not np.isfinite(d).all():
-        # a run with reference and no prediction: the reference surface has no target; the pooled figure is undefined
-        return {'p95_mm': None, 'mean_mm': None, 'n_distances': int(d.size), 'status': 'empty-prediction-in-run', 'per_run': per_run}
-    return {'p95_mm': float(np.quantile(d, 0.95)), 'mean_mm': float(d.mean()), 'n_distances': int(d.size), 'status': 'ok', 'per_run': per_run}
+        bad = [r['status'] for r in per_run if r['status'] in ('empty-prediction-in-run', 'no-observable-surface')]
+        st = 'empty-prediction-in-run' if 'empty-prediction-in-run' in bad else 'no-observable-surface'
+        return {'p95_mm': None, 'mean_mm': None, 'n_distances': int(np.isfinite(d).sum()), 'status': st, 'support': support, 'per_run': per_run}
+    return {'p95_mm': float(np.quantile(d, 0.95)), 'mean_mm': float(d.mean()), 'n_distances': int(d.size), 'status': 'ok', 'support': support, 'per_run': per_run}
 
 
 def degrades(base, perturbed, dice_tol=DICE_TOL, p95_tol=P95_TOL):

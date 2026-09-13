@@ -56,8 +56,11 @@ def voxelise(mesh_ijk, shape):
         try:
             p2, to_3d = path.to_2D()
             loops = p2.discrete
-        except Exception:
-            failed += 1; continue
+        except Exception as e:                      # a failed section would leave an empty slice and bias the floor: refuse
+            raise RuntimeError(f'section failed at slice k={k}: {e!r}') from e
+        if len(p2.dangling) or len(loops) != len(p2.paths) or not all(np.allclose(d[0], d[-1]) for d in loops):
+            # trimesh lists only closed paths in `discrete`; an open polyline would silently rasterise to nothing
+            raise RuntimeError(f'open contour in the section at slice k={k}: {len(p2.dangling)} dangling entities; the even-odd fill needs closed loops')
         mask = np.zeros((shape[0], shape[1]), bool)
         for d in loops:
             p3 = trimesh.transform_points(np.column_stack([np.asarray(d), np.zeros(len(d))]), to_3d)
@@ -106,8 +109,8 @@ def main():
         d = M.dice(vox, orig, E)
         s = M.surface_p95(vox, orig, E, runs, k_first)
         o = old_by.get(key, {})
-        rows.append({'structure': key, 'label_value': lab, 'tissue_class': m['tissue_class'], 'dice_vox': d, 'p95_vox_mm': s['p95_mm'], 'mean_vox_mm': s['mean_mm'],
-                     'surface_status': s['status'], 'n_distances': s['n_distances'], 'section_failures': failed, 'original_voxels': int(orig.sum()), 'final_voxels': int(vox.sum()),
+        rows.append({'structure': key, 'label_value': lab, 'tissue_class': m['tissue_class'], 'mesh_watertight': bool(mesh.is_watertight), 'mesh_bodies': int(mesh.body_count), 'dice_vox': d, 'p95_vox_mm': s['p95_mm'], 'mean_vox_mm': s['mean_mm'],
+                     'surface_status': s['status'], 'n_distances': s['n_distances'], 'section_failures': failed, 'support': s['support'], 'original_voxels': int(orig.sum()), 'final_voxels': int(vox.sum()),
                      'old_dice': o.get('dice'), 'old_p95_original_to_final_mm': (o.get('surface') or {}).get('original_to_final', {}).get('p95_mm')})
         print(f"{key:40s} Dice {d if d is not None else float('nan'):.3f}  p95_vox {s['p95_mm'] if s['p95_mm'] is not None else float('nan'):.3f} mm  (old o->f {rows[-1]['old_p95_original_to_final_mm']})", flush=True)
     per_class = {}
