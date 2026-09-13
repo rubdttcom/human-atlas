@@ -66,6 +66,11 @@ node --experimental-strip-types scripts/test-agreement-panel.mjs   # viewer word
 .venv/bin/python scripts/ct-bone-consensus.py nlm        # about 4 min: gated per-name bone candidates (plan B 2.6), generated/ct-bone-consensus-nlm.json; nothing is composed
 .venv/bin/python scripts/denver-ct-baseline.py            # about 5 min: Denver bones against the HU = 300 edge of the fresh CT (shape baseline), generated/denver-ct-baseline.json
 python3 scripts/inventory-cryosections.py /media/rub/Backups/VHF/Female-Images --workers 12   # on rub-pc, about 2.5 min: SHA-256, decompressed size, planar RGB statistics, missing and placeholder slices -> fullbody-inventory.json (copied to generated/cryosection-inventory.json)
+# Block C stage 0: alignment of the colour photographs against Denver's aligned slices (on rub-pc; env /media/rub/Backups/VHF/env has pydicom and scikit-image)
+python3 scripts/check-cryosection-alignment.py --nlm /media/rub/Backups/VHF/Female-Images/fullbody --denver "/media/rub/Backups/VHF/denver/aligned-cryo/Aligned Cryosection-DICOM" --inventory /media/rub/Backups/VHF/Female-Images/fullbody-inventory.json --step 1 --workers 12 --window 8 --out cryosection-alignment-dense.json   # about 50 min, 22 GB RSS with 12 workers (per-worker photograph cache)
+python3 scripts/check-cryosection-alignment.py ... --no-probe --refine-from cryosection-alignment-dense.json --out cryosection-alignment-final.json            # seeded third pass on the slices inconsistent with their neighbours, about 15 s; run once more with --compact to write the copy for generated/
+#   full report (rotation grids, per-block rows) -> data/derived/nlm-vhf/cryosections/cryosection-alignment-full.json; compact copy -> generated/cryosection-alignment-check.json
+.venv/bin/python scripts/build-cryosection-transform.py   # -> transforms/nlm-cryosection-to-vhf.json (three Denver blocks, per-slice table, extrapolation above the pelvis marked unverified)
 .venv/bin/python scripts/ct-candidate-shape-check.py nlm  # about 1 min: the same procedure on the shipped bone candidates; writes generated/ct-candidate-shape-check-nlm.json and shape_check into the bone report; re-run ingest afterwards
 .venv/bin/python scripts/summarize-reports.py
 ```

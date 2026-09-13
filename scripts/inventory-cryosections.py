@@ -14,8 +14,11 @@ Checks, all automatic, nothing anatomical:
      means and a grey image; the planar reading gives the blue block, red muscle and yellow fat).
   4. Per-slice content statistics on the decompressed bytes: mean and standard deviation per channel, fraction of near-black
      pixels (blue background of the block is not black; an all-black or constant slice is a corrupt or blank file).
-  5. Spacing and orientation are documentation values (0.33 mm x 0.33 mm x 0.33 mm; image rows anterior to posterior in the
-     original photographs) and are recorded as *declared, unverified*: the image-to-Denver comparison of stage 0 verifies them.
+  5. Spacing and orientation are documentation values (0.33 mm x 0.33 mm x 0.33 mm) and are recorded as *declared,
+     unverified*: the image-to-Denver comparison of stage 0 (`scripts/check-cryosection-alignment.py`) measures them.
+     Measured there on 13 September 2026: columns increase towards the subject's left, rows increase towards anterior
+     (Denver's aligned slices are the photographs mirrored left-right; the patella lies at larger row than the femur in
+     the Denver label map), one Denver pixel = 2.000 photograph pixels, three photographs per millimetre.
 Output: one JSON with per-file rows and a summary. Runtime is disk-bound (22 GB read for the hashes and again for the
 decompression); with 12 workers about 10 minutes on rub-pc.
 """
