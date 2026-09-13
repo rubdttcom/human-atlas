@@ -1,5 +1,29 @@
 # Reproduce the local atlas
 
+## Synchronized slices preview (viewer work in progress)
+
+The CT preview uses existing inputs and does not require a geometry or registry rebuild:
+
+```bash
+.venv/bin/python scripts/build-viewer-volume.py --serve
+.venv/bin/python scripts/test-viewer-volume.py
+node --experimental-strip-types scripts/test-volume-loader.mjs
+node --experimental-strip-types scripts/test-slices.mjs
+```
+
+The builder verifies the CT/label identities, shared grids, original label-to-asset ids
+and existing geometry digests, then writes a read-only derivative to ignored
+`data/derived/viewer/nlm-abdomen/`. `--serve` copies the content-addressed buffers
+and atomically replaces the manifest in ignored `public/volumes/nlm-abdomen/`.
+This is local static serving, not deployment. A clean checkout needs this command
+before using Slices; generated binaries are deliberately absent from Git. A rebuilt
+source atlas requires rebuilding the preview, since the loader binds its full hash.
+Source NIfTI files, frozen pilot data, meshes and QA registries are never overwritten.
+See `docs/plans/synchronized-slices-decisions.md` for the crop, display conventions,
+frozen tolerances and resource budgets. The actual UI remains in progress.
+
+## Atlas pipeline environment
+
 Use Node 22.13+ and two Python environments: `.venv` with the pinned pipeline packages in
 `requirements-pipeline.txt`, and `.venv-seg` with TotalSegmentator (CPU build of torch;
 the exact versions used are recorded in `generated/nlm-ct-registration.json` and in the

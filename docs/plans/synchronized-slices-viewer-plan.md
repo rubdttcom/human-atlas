@@ -1,6 +1,6 @@
 # Synchronized 3D and slice viewer: implementation specification
 
-Status: deferred proposal, requested by the user on 13 September 2026. No implementation has started. This plan does not change the current priority of block C (cryosection segmentation), start training, or authorize deployment. Repository working agreement and data rules continue to apply.
+Status: implementation started at the user's subsequent request. First-release scope remains phases 0–4; phase 5 is separate. Phase 0 decisions and frozen tolerances are in [synchronized-slices-decisions.md](synchronized-slices-decisions.md). This work does not start training or authorize deployment. Repository working agreement and data rules continue to apply.
 
 ## 1. Purpose and reference
 

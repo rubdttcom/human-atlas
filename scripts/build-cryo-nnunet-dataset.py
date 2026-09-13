@@ -322,7 +322,9 @@ def main():
     rp = (ROOT / f'generated/cryo-nnunet-dataset-block2-{a.variant}{suffix}.json' if is_canonical
           else root.parent / f'cryo-nnunet-dataset-block2-{a.variant}{suffix}.json')
     report['is_canonical_build'] = is_canonical
-    report['output_root'] = str(root.parent)
+    # relative to the repository when it is inside it: an absolute path would publish the machine's
+    # home directory and user name in a public repository, and says nothing a reader needs
+    report['output_root'] = str(root.parent.relative_to(ROOT)) if root.parent.is_relative_to(ROOT) else '(outside the repository)'
     rp.write_text(json.dumps(report, indent=1) + '\n')
     shown = rp.relative_to(ROOT) if rp.is_relative_to(ROOT) else rp   # a scratch build reports outside the repo
     print(json.dumps({'ok': True, 'dataset': str(root), 'cases': len(cases), 'skipped': len(skipped),

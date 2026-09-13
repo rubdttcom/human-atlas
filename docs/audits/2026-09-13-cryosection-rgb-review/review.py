@@ -5,7 +5,7 @@ import numpy as np
 from scipy import ndimage
 from PIL import Image, ImageDraw
 
-ROOT=Path('<repository root>')
+ROOT=Path(__file__).resolve().parents[3]   # the repository root; an absolute path here published the author's home directory
 OUT=Path('/tmp/cryo-audit-ivJcL2')
 report=json.loads((ROOT/'generated/cryosection-alignment-check.json').read_text())
 transform=json.loads((ROOT/'transforms/nlm-cryosection-to-vhf.json').read_text())

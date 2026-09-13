@@ -1749,6 +1749,8 @@ Pending in this phase: trunk posture between fresh CT and frozen block (unmeasur
 
 ## 29.3 Next steps, in order
 
+Subsequent user request (2026-09-13): implement the synchronized slices viewer first-release phases 0–4 in this thread (`synchronized-slices-viewer-plan.md`). Phase 0 foundations and decisions are recorded in `synchronized-slices-decisions.md` and `docs/PROGRESS.md`; volume preparation and UI remain. This is a viewer task alongside block C and does not modify or restart its training, geometry or registrations.
+
 Working rule (revised 2026-09-13, user decision agreed by Claude and the Codex auditor): no anatomist takes part in this project; the blinded audit and the human sealed set (plan B sections 2.3, 2.4) become an optional stage 8 that runs only if the project gains attention. The terminal status is `machine-accepted` (plan B section 2.7). Block C, the cryosection segmentation, is the current work; the CT atlas is touched only when it is a prerequisite of the stage in progress. Order: inventory of the colour slices on rub-pc -> trunk posture offset -> alignment and RGB pilot in a Denver-covered region -> stages 2 to 7.
 
 1. **Block C, current work: VHF cryosections with AI** (own project, `docs/plans/vhf-cryosection-machine-driven-plan.md`): appendicular bones, hands, trunk and head of the same donor at 0.33 mm. **Started 2026-09-13** with the inventory of the 5,186 colour slices already on rub-pc; training runs on the RTX 3080 as planned in plan B section 7; any download or import beyond plan B still needs a separate decision.

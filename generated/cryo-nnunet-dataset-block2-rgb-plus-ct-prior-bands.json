@@ -430,7 +430,7 @@
   "a 2D configuration sees one slice at a time; no through-plane context",
   "the frozen split reports only; the graded result is the band prediction"
  ],
- "seconds": 5.6,
+ "seconds": 5.7,
  "prior_coverage": {
   "slices_with_any_ct_field_of_view": 1248,
   "whole_block": {
@@ -492,5 +492,5 @@
   }
  },
  "is_canonical_build": true,
- "output_root": "<repository root>/data/derived/nnunet/raw"
+ "output_root": "data/derived/nnunet/raw"
 }

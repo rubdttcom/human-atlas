@@ -424,5 +424,5 @@
  ],
  "seconds": 5.0,
  "is_canonical_build": true,
- "output_root": "<repository root>/data/derived/nnunet/raw"
+ "output_root": "data/derived/nnunet/raw"
 }
