@@ -1,0 +1,5226 @@
+{
+ "id": "trunk-posture-offset",
+ "date": "2026-09-13",
+ "script": "scripts/trunk-posture-offset.py",
+ "seed": 1993,
+ "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+ "what_it_measures": "the remainder between the same consensus instance on the two same-donor CTs after each CT was placed by its own rigid pelvis fit: posture difference (fresh CT on the table versus frozen block) plus two registration errors plus two segmentation differences; not separated here and not anatomy",
+ "what_it_does_not_do": "it corrects nothing, attributes nothing to anatomy and does not name the levels; segmenter agreement does not correct registration or posture",
+ "inputs": {
+  "nlm": {
+   "vertebra-instances": {
+    "path": "data/derived/nlm-vhf/consensus/vertebra-instances.nii.gz",
+    "sha256": "3b9a0fec28e9d7df06017faaf4dab26c137f737fc04df77587b3f870ad7d1a33"
+   },
+   "rib-left-instances": {
+    "path": "data/derived/nlm-vhf/consensus/rib-left-instances.nii.gz",
+    "sha256": "49bc7fbb431b7f5a0b09b2229c4c14acde0a8dbec4c33dcc5125cb07019ae4f7"
+   },
+   "rib-right-instances": {
+    "path": "data/derived/nlm-vhf/consensus/rib-right-instances.nii.gz",
+    "sha256": "518c469544e711f665747bab815ad3afe1f82fe126a703b55c95f3fcea6776ff"
+   },
+   "vertebra-model-totalseg": {
+    "path": "data/derived/nlm-vhf/consensus/vertebra-model-totalseg.nii.gz",
+    "sha256": "c902dcd3132d75fe9a1b31dd90612975bb56c712b294e9b94aac7d03e6524f13"
+   },
+   "vertebra-model-moose": {
+    "path": "data/derived/nlm-vhf/consensus/vertebra-model-moose.nii.gz",
+    "sha256": "ef9ce0c0b28dffc39c9b9ce5dfe1aaa3d006969563227c8a0b3b9d01a61fa45c"
+   },
+   "vertebra-model-skellytour": {
+    "path": "data/derived/nlm-vhf/consensus/vertebra-model-skellytour.nii.gz",
+    "sha256": "49c242f02be97342e86a64add08ed215543d345fd81ba5b7d73b358299504ad3"
+   },
+   "totalseg": {
+    "path": "data/derived/nlm-vhf/totalseg.nii",
+    "sha256": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177"
+   }
+  },
+  "denver": {
+   "vertebra-instances": {
+    "path": "data/derived/denver/priors/consensus/vertebra-instances.nii.gz",
+    "sha256": "61cf3d854a02a5cfa631fa232018eb83fbcf2552abea3b9c2e9c8b7214c22266"
+   },
+   "rib-left-instances": {
+    "path": "data/derived/denver/priors/consensus/rib-left-instances.nii.gz",
+    "sha256": "b516baaf061a179b0eefd1d0603fb4691f4fcad9132197771c28e16a02ec4c72"
+   },
+   "rib-right-instances": {
+    "path": "data/derived/denver/priors/consensus/rib-right-instances.nii.gz",
+    "sha256": "bb9a6149d6521a9aaa4035d896e3e534f4b93f0962243e91ccef7131b6d61291"
+   },
+   "vertebra-model-totalseg": {
+    "path": "data/derived/denver/priors/consensus/vertebra-model-totalseg.nii.gz",
+    "sha256": "bec00c998d8bebc8ec96bc403f0e82cedfa16e5c0e39837dd7435b7a6c629352"
+   },
+   "vertebra-model-moose": {
+    "path": "data/derived/denver/priors/consensus/vertebra-model-moose.nii.gz",
+    "sha256": "063648f899d9423676dd1618df55d9d44deba53b1792de01527a3b4767565740"
+   },
+   "vertebra-model-skellytour": {
+    "path": "data/derived/denver/priors/consensus/vertebra-model-skellytour.nii.gz",
+    "sha256": "da25abdbbf27c7a5127ab34a53cc3c41f281ea10f31386d92b221129b2684bc2"
+   },
+   "totalseg": {
+    "path": "data/derived/denver/priors/totalseg/total.nii.gz",
+    "sha256": "f40c75f0ec4b4f7abab808e8d2c38492fe4b130f289abc9d5fc1b9758e2d584b"
+   }
+  }
+ },
+ "instance_tables": {
+  "nlm": {
+   "path": "generated/ct-vertebra-instances-nlm.json",
+   "sha256": "89959c1273ab380f8b86188a9e0dad7b9f90357535966cb954d731fc926322c3",
+   "instance_count": {
+    "vertebra_consensus_full": 25,
+    "vertebra_pieces": 2,
+    "vertebra_any": 28,
+    "sacrum": 1,
+    "conflict_voxels": 81950
+   }
+  },
+  "denver": {
+   "path": "generated/ct-vertebra-instances-denver.json",
+   "sha256": "0a1a4573456f00e52034a7bdfeba5eb950ef9e6c6a9a617ab16bba3a593b95cb",
+   "instance_count": {
+    "vertebra_consensus_full": 25,
+    "vertebra_pieces": 1,
+    "vertebra_any": 28,
+    "sacrum": 1,
+    "conflict_voxels": 203685
+   }
+  }
+ },
+ "transforms": {
+  "nlm": {
+   "path": "transforms/nlm-ct-to-vhf.json",
+   "id": "nlm-ct-to-vhf",
+   "applies_to": "RAS mm (image affine first)",
+   "sha256": "92cb688b2a2c950ad30f081d9566409311059c0a61024ee33245b07817943be4"
+  },
+  "denver": {
+   "path": "transforms/denver-aligned-ct-voxel-to-vhf.json",
+   "id": "denver-aligned-ct-voxel-to-vhf",
+   "applies_to": "voxel index",
+   "sha256": "19143f08325428cd7a5c550f0a2f0090aea016b4db87ade40134bd4e32be1633"
+  }
+ },
+ "method": {
+  "instance_matching": "same geometric id on both CTs (cranial to caudal order), checked against the nearest transformed Denver centroid",
+  "surface": "marching cubes at 0.5 on each instance mask, vertices carried to VHF mm; up to 20,000 points per surface, seeded",
+  "rigid_fit": "trimesh ICP without scale, anchored at the NLM instance centroid, 60 iterations; the residual after the fit is the segmentation difference between the two CTs",
+  "chain_fit": "Kabsch rigid fit of vertebra centroids NLM -> Denver, whole spine and per region",
+  "model_spread": "centroid offset recomputed with each model's own instance map (vertebra-model-*.nii.gz)"
+ },
+ "summary": {
+  "vertebrae_measured": 25,
+  "sacrum_measured": true,
+  "ribs_measured": 24,
+  "registration_floor_pelvis_mm": 3.35,
+  "registration_floor_pelvis_surface_p95_mm": 3.49,
+  "centroid_offset_norm_mm": {
+   "min": 2.33,
+   "median": 3.51,
+   "max": 6.86
+  },
+  "levels_beyond_uncertainty": [
+   "V01",
+   "V02",
+   "V03"
+  ],
+  "common_shift_vhf_mm": {
+   "x_right": -0.15,
+   "y_anterior": 0.86,
+   "z_superior": -3.23,
+   "norm": 3.35,
+   "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+  },
+  "relative_to_pelvis_norm_mm": {
+   "min": 0.83,
+   "median": 2.19,
+   "max": 5.0
+  },
+  "relative_floor_mm": 0.76,
+  "levels_beyond_relative_uncertainty": [
+   "V01",
+   "V02",
+   "V03"
+  ],
+  "own_rigid_fit_rotation_deg": {
+   "median": 0.22,
+   "max": 4.273
+  },
+  "whole_spine_chain_rotation_deg": 0.518,
+  "seconds": 70.4
+ },
+ "anchors": {
+  "pelvis": {
+   "definition": "TotalSegmentator hip_left + hip_right of each CT + consensus sacrum",
+   "meaning": "what both registrations fitted onto the Denver pelvis meshes: its offset is the floor of the method, not posture",
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.15,
+    "y_anterior": 0.86,
+    "z_superior": -3.23,
+    "norm": 3.35
+   },
+   "volume_ml": {
+    "nlm": 918.24,
+    "denver": 905.27
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 2.06,
+     "rms_mm": 2.22,
+     "p95_mm": 3.49,
+     "max_mm": 7.23,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 2.05,
+     "rms_mm": 2.2,
+     "p95_mm": 3.42,
+     "max_mm": 8.52,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.153,
+    "about_x_right_deg": 0.148,
+    "about_y_anterior_deg": -0.034,
+    "about_z_superior_deg": 0.017,
+    "translation_mm": [
+     -0.11,
+     0.17,
+     -2.92
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 1.56,
+      "rms_mm": 1.71,
+      "p95_mm": 2.82,
+      "max_mm": 7.72,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 1.55,
+      "rms_mm": 1.71,
+      "p95_mm": 2.79,
+      "max_mm": 10.49,
+      "n": 20000
+     }
+    }
+   }
+  },
+  "skull": {
+   "definition": "TotalSegmentator skull of each CT",
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.54,
+    "y_anterior": -3.75,
+    "z_superior": -5.66,
+    "norm": 6.81
+   },
+   "volume_ml": {
+    "nlm": 756.61,
+    "denver": 755.35
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 3.68,
+     "rms_mm": 23.41,
+     "p95_mm": 6.28,
+     "max_mm": 1465.69,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 3.38,
+     "rms_mm": 3.76,
+     "p95_mm": 6.42,
+     "max_mm": 10.44,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 3.844,
+    "about_x_right_deg": 3.432,
+    "about_y_anterior_deg": 1.664,
+    "about_z_superior_deg": -0.48,
+    "translation_mm": [
+     0.66,
+     -4.05,
+     -4.39
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 2.44,
+      "rms_mm": 23.23,
+      "p95_mm": 4.04,
+      "max_mm": 1465.54,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 2.09,
+      "rms_mm": 2.36,
+      "p95_mm": 4.16,
+      "max_mm": 8.77,
+      "n": 20000
+     }
+    }
+   }
+  },
+  "hip_left": {
+   "definition": "TotalSegmentator hip_left",
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.3,
+    "y_anterior": 0.18,
+    "z_superior": -2.92,
+    "norm": 2.94
+   },
+   "volume_ml": {
+    "nlm": 382.49,
+    "denver": 382.0
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.66,
+     "rms_mm": 1.81,
+     "p95_mm": 2.91,
+     "max_mm": 5.95,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.67,
+     "rms_mm": 1.82,
+     "p95_mm": 2.91,
+     "max_mm": 6.81,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.199,
+    "about_x_right_deg": 0.107,
+    "about_y_anterior_deg": -0.168,
+    "about_z_superior_deg": 0.015,
+    "translation_mm": [
+     -0.22,
+     0.38,
+     -2.98
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 1.06,
+      "rms_mm": 1.15,
+      "p95_mm": 1.84,
+      "max_mm": 6.49,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 1.05,
+      "rms_mm": 1.15,
+      "p95_mm": 1.82,
+      "max_mm": 7.03,
+      "n": 20000
+     }
+    }
+   }
+  },
+  "hip_right": {
+   "definition": "TotalSegmentator hip_right",
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.01,
+    "y_anterior": 0.4,
+    "z_superior": -3.14,
+    "norm": 3.17
+   },
+   "volume_ml": {
+    "nlm": 381.13,
+    "denver": 380.07
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.57,
+     "rms_mm": 1.72,
+     "p95_mm": 2.8,
+     "max_mm": 4.6,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.57,
+     "rms_mm": 1.72,
+     "p95_mm": 2.84,
+     "max_mm": 4.48,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.252,
+    "about_x_right_deg": 0.235,
+    "about_y_anterior_deg": 0.08,
+    "about_z_superior_deg": 0.041,
+    "translation_mm": [
+     -0.11,
+     0.36,
+     -3.16
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 1.03,
+      "rms_mm": 1.12,
+      "p95_mm": 1.82,
+      "max_mm": 3.31,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 1.02,
+      "rms_mm": 1.11,
+      "p95_mm": 1.8,
+      "max_mm": 2.99,
+      "n": 20000
+     }
+    }
+   }
+  }
+ },
+ "chain_fit": {
+  "whole_spine": {
+   "ids": [
+    "V01",
+    "V02",
+    "V03",
+    "V04",
+    "V05",
+    "V06",
+    "V07",
+    "V08",
+    "V09",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V25",
+    "V26",
+    "V27"
+   ],
+   "angle_deg": 0.518,
+   "about_x_right_deg": 0.254,
+   "about_y_anterior_deg": 0.069,
+   "about_z_superior_deg": -0.446,
+   "translation_mm": [
+    -4.59,
+    8.81,
+    -4.78
+   ],
+   "centroid_spread_singular_values_mm": [
+    837.2,
+    96.7,
+    5.6
+   ],
+   "rotation_about_spine_axis_ill_determined": true,
+   "note": "the centroids are nearly collinear (second singular value below 15 % of the first): the rotation about the spine axis and the translation are not physical; read the residuals only",
+   "residual_after_chain_fit_mm": {
+    "V01": 2.63,
+    "V02": 2.7,
+    "V03": 2.55,
+    "V04": 1.97,
+    "V05": 2.76,
+    "V06": 0.33,
+    "V07": 0.47,
+    "V08": 0.68,
+    "V09": 0.64,
+    "V10": 0.84,
+    "V11": 0.74,
+    "V12": 0.7,
+    "V13": 0.67,
+    "V14": 0.7,
+    "V15": 0.62,
+    "V16": 0.49,
+    "V17": 0.35,
+    "V18": 0.45,
+    "V19": 0.35,
+    "V20": 1.05,
+    "V21": 1.44,
+    "V22": 2.16,
+    "V25": 1.13,
+    "V26": 0.53,
+    "V27": 0.51
+   },
+   "residual_rms_mm": 1.37,
+   "residual_max_mm": 2.76
+  },
+  "cervical": {
+   "ids": [
+    "V01",
+    "V02",
+    "V03",
+    "V04",
+    "V05",
+    "V06",
+    "V07"
+   ],
+   "angle_deg": 1.898,
+   "about_x_right_deg": 0.843,
+   "about_y_anterior_deg": -0.121,
+   "about_z_superior_deg": -1.696,
+   "translation_mm": [
+    -8.39,
+    36.16,
+    -12.24
+   ],
+   "centroid_spread_singular_values_mm": [
+    85.1,
+    9.1,
+    1.6
+   ],
+   "rotation_about_spine_axis_ill_determined": true,
+   "note": "the centroids are nearly collinear (second singular value below 15 % of the first): the rotation about the spine axis and the translation are not physical; read the residuals only",
+   "residual_after_chain_fit_mm": {
+    "V01": 1.08,
+    "V02": 1.2,
+    "V03": 1.15,
+    "V04": 0.62,
+    "V05": 2.33,
+    "V06": 1.43,
+    "V07": 1.93
+   },
+   "residual_rms_mm": 1.49,
+   "residual_max_mm": 2.33
+  },
+  "thoracic": {
+   "ids": [
+    "V08",
+    "V09",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19"
+   ],
+   "angle_deg": 0.352,
+   "about_x_right_deg": 0.176,
+   "about_y_anterior_deg": -0.008,
+   "about_z_superior_deg": -0.305,
+   "translation_mm": [
+    -1.88,
+    5.62,
+    -4.43
+   ],
+   "centroid_spread_singular_values_mm": [
+    273.3,
+    24.5,
+    1.5
+   ],
+   "rotation_about_spine_axis_ill_determined": true,
+   "note": "the centroids are nearly collinear (second singular value below 15 % of the first): the rotation about the spine axis and the translation are not physical; read the residuals only",
+   "residual_after_chain_fit_mm": {
+    "V08": 0.18,
+    "V09": 0.2,
+    "V10": 0.41,
+    "V11": 0.27,
+    "V12": 0.17,
+    "V13": 0.18,
+    "V14": 0.22,
+    "V15": 0.14,
+    "V16": 0.17,
+    "V17": 0.28,
+    "V18": 0.16,
+    "V19": 0.28
+   },
+   "residual_rms_mm": 0.23,
+   "residual_max_mm": 0.41
+  },
+  "lumbar_type": {
+   "ids": [
+    "V20",
+    "V21",
+    "V22",
+    "V25",
+    "V26",
+    "V27"
+   ],
+   "angle_deg": 6.166,
+   "about_x_right_deg": 0.626,
+   "about_y_anterior_deg": 1.041,
+   "about_z_superior_deg": -6.046,
+   "translation_mm": [
+    -58.58,
+    71.15,
+    3.19
+   ],
+   "centroid_spread_singular_values_mm": [
+    141.7,
+    3.8,
+    0.6
+   ],
+   "rotation_about_spine_axis_ill_determined": true,
+   "note": "the centroids are nearly collinear (second singular value below 15 % of the first): the rotation about the spine axis and the translation are not physical; read the residuals only",
+   "residual_after_chain_fit_mm": {
+    "V20": 0.85,
+    "V21": 0.82,
+    "V22": 1.58,
+    "V25": 1.42,
+    "V26": 0.5,
+    "V27": 0.58
+   },
+   "residual_rms_mm": 1.04,
+   "residual_max_mm": 1.58
+  }
+ },
+ "levels": [
+  {
+   "id": "V01",
+   "index": 1,
+   "role": "vertebra",
+   "hra_name_by_order": "C1",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    531.41,
+    437.73,
+    1569.27
+   ],
+   "denver_centroid": [
+    532.09,
+    434.57,
+    1563.28
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.69,
+    "y_anterior": -3.16,
+    "z_superior": -5.98,
+    "norm": 6.8
+   },
+   "volume_ml": {
+    "nlm": 17.62,
+    "denver": 17.0
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 2.88,
+     "rms_mm": 3.4,
+     "p95_mm": 5.98,
+     "max_mm": 7.26,
+     "n": 10566
+    },
+    "denver_to_nlm": {
+     "mean_mm": 3.0,
+     "rms_mm": 3.56,
+     "p95_mm": 6.14,
+     "max_mm": 7.42,
+     "n": 15250
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.385,
+    "about_x_right_deg": 0.37,
+    "about_y_anterior_deg": -0.098,
+    "about_z_superior_deg": 0.045,
+    "translation_mm": [
+     0.6,
+     -3.16,
+     -5.97
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.43,
+      "rms_mm": 0.5,
+      "p95_mm": 0.87,
+      "max_mm": 3.06,
+      "n": 10566
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.48,
+      "rms_mm": 0.53,
+      "p95_mm": 0.93,
+      "max_mm": 2.12,
+      "n": 15250
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.71,
+      "y_anterior": -3.33,
+      "z_superior": -5.93,
+      "norm": 6.84
+     },
+     "moose": {
+      "x_right": 0.87,
+      "y_anterior": -3.2,
+      "z_superior": -3.71,
+      "norm": 4.98
+     },
+     "skellytour": {
+      "x_right": 0.61,
+      "y_anterior": -2.94,
+      "z_superior": -5.99,
+      "norm": 6.7
+     }
+    },
+    "range_of_norm_mm": 1.86,
+    "max_component_range_mm": 2.28,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.84,
+    "y_anterior": -4.02,
+    "z_superior": -2.75,
+    "norm": 4.94,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.28,
+    "combined_mm": 5.63,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": true,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.04,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": true
+   }
+  },
+  {
+   "id": "V02",
+   "index": 2,
+   "role": "vertebra",
+   "hra_name_by_order": "C2",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    533.12,
+    437.09,
+    1552.91
+   ],
+   "denver_centroid": [
+    533.73,
+    433.88,
+    1546.88
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.61,
+    "y_anterior": -3.21,
+    "z_superior": -6.04,
+    "norm": 6.86
+   },
+   "volume_ml": {
+    "nlm": 18.44,
+    "denver": 17.91
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 2.75,
+     "rms_mm": 3.24,
+     "p95_mm": 5.91,
+     "max_mm": 7.33,
+     "n": 9945
+    },
+    "denver_to_nlm": {
+     "mean_mm": 2.91,
+     "rms_mm": 3.43,
+     "p95_mm": 6.12,
+     "max_mm": 7.64,
+     "n": 14120
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.251,
+    "about_x_right_deg": 0.238,
+    "about_y_anterior_deg": 0.063,
+    "about_z_superior_deg": 0.048,
+    "translation_mm": [
+     0.6,
+     -3.08,
+     -6.03
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.42,
+      "rms_mm": 0.47,
+      "p95_mm": 0.82,
+      "max_mm": 1.53,
+      "n": 9945
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.46,
+      "rms_mm": 0.51,
+      "p95_mm": 0.87,
+      "max_mm": 1.86,
+      "n": 14120
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.7,
+      "y_anterior": -3.27,
+      "z_superior": -6.01,
+      "norm": 6.87
+     },
+     "moose": {
+      "x_right": 0.63,
+      "y_anterior": -3.39,
+      "z_superior": -3.78,
+      "norm": 5.12
+     },
+     "skellytour": {
+      "x_right": 0.58,
+      "y_anterior": -3.12,
+      "z_superior": -6.04,
+      "norm": 6.83
+     }
+    },
+    "range_of_norm_mm": 1.75,
+    "max_component_range_mm": 2.26,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.76,
+    "y_anterior": -4.07,
+    "z_superior": -2.81,
+    "norm": 5.0,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.26,
+    "combined_mm": 5.61,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": true,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.02,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": true
+   }
+  },
+  {
+   "id": "V03",
+   "index": 3,
+   "role": "vertebra",
+   "hra_name_by_order": "C3",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    533.59,
+    436.56,
+    1534.4
+   ],
+   "denver_centroid": [
+    534.18,
+    433.47,
+    1528.51
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.59,
+    "y_anterior": -3.08,
+    "z_superior": -5.89,
+    "norm": 6.68
+   },
+   "volume_ml": {
+    "nlm": 11.43,
+    "denver": 10.98
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 2.95,
+     "rms_mm": 3.46,
+     "p95_mm": 6.08,
+     "max_mm": 7.37,
+     "n": 7466
+    },
+    "denver_to_nlm": {
+     "mean_mm": 2.97,
+     "rms_mm": 3.48,
+     "p95_mm": 6.07,
+     "max_mm": 7.26,
+     "n": 10587
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.242,
+    "about_x_right_deg": -0.009,
+    "about_y_anterior_deg": 0.082,
+    "about_z_superior_deg": 0.227,
+    "translation_mm": [
+     0.62,
+     -2.99,
+     -5.99
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.42,
+      "rms_mm": 0.48,
+      "p95_mm": 0.85,
+      "max_mm": 2.14,
+      "n": 7466
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.46,
+      "rms_mm": 0.51,
+      "p95_mm": 0.87,
+      "max_mm": 1.91,
+      "n": 10587
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.64,
+      "y_anterior": -2.99,
+      "z_superior": -5.79,
+      "norm": 6.55
+     },
+     "moose": {
+      "x_right": 0.71,
+      "y_anterior": -3.19,
+      "z_superior": -3.81,
+      "norm": 5.02
+     },
+     "skellytour": {
+      "x_right": 0.56,
+      "y_anterior": -3.15,
+      "z_superior": -6.0,
+      "norm": 6.8
+     }
+    },
+    "range_of_norm_mm": 1.78,
+    "max_component_range_mm": 2.19,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.74,
+    "y_anterior": -3.94,
+    "z_superior": -2.66,
+    "norm": 4.81,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.19,
+    "combined_mm": 5.54,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": true,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.95,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": true
+   }
+  },
+  {
+   "id": "V04",
+   "index": 4,
+   "role": "vertebra",
+   "hra_name_by_order": "C4",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    534.49,
+    433.79,
+    1520.09
+   ],
+   "denver_centroid": [
+    534.78,
+    431.37,
+    1514.64
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.29,
+    "y_anterior": -2.42,
+    "z_superior": -5.45,
+    "norm": 5.97
+   },
+   "volume_ml": {
+    "nlm": 11.58,
+    "denver": 10.27
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 2.69,
+     "rms_mm": 3.25,
+     "p95_mm": 5.97,
+     "max_mm": 8.09,
+     "n": 7865
+    },
+    "denver_to_nlm": {
+     "mean_mm": 2.47,
+     "rms_mm": 2.91,
+     "p95_mm": 5.06,
+     "max_mm": 6.55,
+     "n": 10683
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.302,
+    "about_x_right_deg": 0.298,
+    "about_y_anterior_deg": 0.043,
+    "about_z_superior_deg": -0.022,
+    "translation_mm": [
+     0.33,
+     -2.61,
+     -5.22
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.55,
+      "rms_mm": 0.62,
+      "p95_mm": 1.12,
+      "max_mm": 2.81,
+      "n": 7865
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.57,
+      "rms_mm": 0.62,
+      "p95_mm": 1.06,
+      "max_mm": 2.0,
+      "n": 10683
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.21,
+      "y_anterior": -2.42,
+      "z_superior": -5.31,
+      "norm": 5.84
+     },
+     "moose": {
+      "x_right": 0.1,
+      "y_anterior": -2.76,
+      "z_superior": -3.34,
+      "norm": 4.33
+     },
+     "skellytour": {
+      "x_right": -1.14,
+      "y_anterior": -5.11,
+      "z_superior": -7.43,
+      "norm": 9.08
+     }
+    },
+    "range_of_norm_mm": 4.75,
+    "max_component_range_mm": 4.09,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.44,
+    "y_anterior": -3.28,
+    "z_superior": -2.22,
+    "norm": 3.99,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 4.09,
+    "combined_mm": 7.44,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 4.85,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V05",
+   "index": 5,
+   "role": "vertebra",
+   "hra_name_by_order": "C5",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    533.3,
+    430.0,
+    1505.32
+   ],
+   "denver_centroid": [
+    534.91,
+    430.12,
+    1500.44
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 1.62,
+    "y_anterior": 0.12,
+    "z_superior": -4.87,
+    "norm": 5.14
+   },
+   "volume_ml": {
+    "nlm": 12.41,
+    "denver": 9.39
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 2.19,
+     "rms_mm": 2.69,
+     "p95_mm": 5.12,
+     "max_mm": 6.77,
+     "n": 8733
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.96,
+     "rms_mm": 2.35,
+     "p95_mm": 4.16,
+     "max_mm": 5.69,
+     "n": 11347
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 4.273,
+    "about_x_right_deg": -4.27,
+    "about_y_anterior_deg": -0.09,
+    "about_z_superior_deg": 0.102,
+    "translation_mm": [
+     0.22,
+     -1.8,
+     -3.91
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.91,
+      "rms_mm": 1.18,
+      "p95_mm": 2.54,
+      "max_mm": 5.83,
+      "n": 8733
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.8,
+      "rms_mm": 0.96,
+      "p95_mm": 1.8,
+      "max_mm": 4.41,
+      "n": 11347
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.15,
+      "y_anterior": -2.18,
+      "z_superior": -4.46,
+      "norm": 4.97
+     },
+     "moose": {
+      "x_right": 0.24,
+      "y_anterior": -2.72,
+      "z_superior": -2.5,
+      "norm": 3.7
+     },
+     "skellytour": {
+      "x_right": 2.04,
+      "y_anterior": 0.74,
+      "z_superior": -5.37,
+      "norm": 5.79
+     }
+    },
+    "range_of_norm_mm": 2.09,
+    "max_component_range_mm": 3.46,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 1.77,
+    "y_anterior": -0.74,
+    "z_superior": -1.64,
+    "norm": 2.52,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 3.46,
+    "combined_mm": 6.81,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 4.22,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V06",
+   "index": 6,
+   "role": "vertebra",
+   "hra_name_by_order": "C6",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    531.49,
+    423.74,
+    1490.35
+   ],
+   "denver_centroid": [
+    531.69,
+    421.8,
+    1486.58
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.2,
+    "y_anterior": -1.94,
+    "z_superior": -3.77,
+    "norm": 4.25
+   },
+   "volume_ml": {
+    "nlm": 12.94,
+    "denver": 12.2
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.83,
+     "rms_mm": 2.17,
+     "p95_mm": 3.97,
+     "max_mm": 5.39,
+     "n": 8645
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.93,
+     "rms_mm": 2.27,
+     "p95_mm": 3.98,
+     "max_mm": 5.6,
+     "n": 12426
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.206,
+    "about_x_right_deg": 0.165,
+    "about_y_anterior_deg": -0.007,
+    "about_z_superior_deg": 0.123,
+    "translation_mm": [
+     0.2,
+     -1.67,
+     -3.88
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.47,
+      "rms_mm": 0.52,
+      "p95_mm": 0.95,
+      "max_mm": 1.56,
+      "n": 8645
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.51,
+      "rms_mm": 0.57,
+      "p95_mm": 1.0,
+      "max_mm": 2.1,
+      "n": 12426
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.08,
+      "y_anterior": -1.81,
+      "z_superior": -3.67,
+      "norm": 4.09
+     },
+     "moose": {
+      "x_right": 0.25,
+      "y_anterior": -2.04,
+      "z_superior": -1.65,
+      "norm": 2.64
+     },
+     "skellytour": {
+      "x_right": 0.17,
+      "y_anterior": -2.02,
+      "z_superior": -3.87,
+      "norm": 4.37
+     }
+    },
+    "range_of_norm_mm": 1.73,
+    "max_component_range_mm": 2.22,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.35,
+    "y_anterior": -2.8,
+    "z_superior": -0.54,
+    "norm": 2.87,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.22,
+    "combined_mm": 5.57,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.98,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V07",
+   "index": 7,
+   "role": "vertebra",
+   "hra_name_by_order": "C7",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    531.43,
+    414.03,
+    1474.66
+   ],
+   "denver_centroid": [
+    531.49,
+    412.42,
+    1471.28
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.06,
+    "y_anterior": -1.61,
+    "z_superior": -3.37,
+    "norm": 3.74
+   },
+   "volume_ml": {
+    "nlm": 17.42,
+    "denver": 16.53
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.71,
+     "rms_mm": 2.04,
+     "p95_mm": 3.59,
+     "max_mm": 6.16,
+     "n": 10069
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.71,
+     "rms_mm": 1.99,
+     "p95_mm": 3.35,
+     "max_mm": 4.42,
+     "n": 14237
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.293,
+    "about_x_right_deg": 0.291,
+    "about_y_anterior_deg": 0.014,
+    "about_z_superior_deg": -0.027,
+    "translation_mm": [
+     -0.0,
+     -1.79,
+     -3.2
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.44,
+      "rms_mm": 0.51,
+      "p95_mm": 0.88,
+      "max_mm": 2.61,
+      "n": 10069
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.47,
+      "rms_mm": 0.52,
+      "p95_mm": 0.89,
+      "max_mm": 1.95,
+      "n": 14237
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.09,
+      "y_anterior": -1.49,
+      "z_superior": -3.25,
+      "norm": 3.58
+     },
+     "moose": {
+      "x_right": 0.2,
+      "y_anterior": -1.61,
+      "z_superior": -1.35,
+      "norm": 2.11
+     },
+     "skellytour": {
+      "x_right": 0.12,
+      "y_anterior": -1.71,
+      "z_superior": -3.5,
+      "norm": 3.9
+     }
+    },
+    "range_of_norm_mm": 1.79,
+    "max_component_range_mm": 2.15,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.21,
+    "y_anterior": -2.47,
+    "z_superior": -0.14,
+    "norm": 2.48,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.15,
+    "combined_mm": 5.5,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.91,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V08",
+   "index": 8,
+   "role": "vertebra",
+   "hra_name_by_order": "T1",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.97,
+    405.73,
+    1457.96
+   ],
+   "denver_centroid": [
+    530.03,
+    403.92,
+    1454.96
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.05,
+    "y_anterior": -1.81,
+    "z_superior": -3.0,
+    "norm": 3.5
+   },
+   "volume_ml": {
+    "nlm": 21.11,
+    "denver": 20.94
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.52,
+     "rms_mm": 1.8,
+     "p95_mm": 3.17,
+     "max_mm": 4.17,
+     "n": 11019
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.61,
+     "rms_mm": 1.89,
+     "p95_mm": 3.29,
+     "max_mm": 4.17,
+     "n": 15874
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.14,
+    "about_x_right_deg": 0.089,
+    "about_y_anterior_deg": -0.053,
+    "about_z_superior_deg": 0.094,
+    "translation_mm": [
+     -0.03,
+     -1.81,
+     -3.06
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.35,
+      "rms_mm": 0.4,
+      "p95_mm": 0.67,
+      "max_mm": 1.65,
+      "n": 11019
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.41,
+      "rms_mm": 0.45,
+      "p95_mm": 0.71,
+      "max_mm": 1.35,
+      "n": 15874
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.1,
+      "y_anterior": -1.83,
+      "z_superior": -2.94,
+      "norm": 3.46
+     },
+     "moose": {
+      "x_right": -0.04,
+      "y_anterior": -1.79,
+      "z_superior": -0.85,
+      "norm": 1.99
+     },
+     "skellytour": {
+      "x_right": 0.02,
+      "y_anterior": -1.98,
+      "z_superior": -3.07,
+      "norm": 3.65
+     }
+    },
+    "range_of_norm_mm": 1.66,
+    "max_component_range_mm": 2.22,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.2,
+    "y_anterior": -2.67,
+    "z_superior": 0.23,
+    "norm": 2.69,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.22,
+    "combined_mm": 5.57,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.98,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V09",
+   "index": 9,
+   "role": "vertebra",
+   "hra_name_by_order": "T2",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    528.84,
+    396.81,
+    1438.42
+   ],
+   "denver_centroid": [
+    528.84,
+    395.01,
+    1435.34
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.0,
+    "y_anterior": -1.79,
+    "z_superior": -3.07,
+    "norm": 3.56
+   },
+   "volume_ml": {
+    "nlm": 21.66,
+    "denver": 21.32
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.47,
+     "rms_mm": 1.76,
+     "p95_mm": 3.21,
+     "max_mm": 4.29,
+     "n": 11330
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.58,
+     "rms_mm": 1.89,
+     "p95_mm": 3.4,
+     "max_mm": 4.88,
+     "n": 16180
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.155,
+    "about_x_right_deg": 0.101,
+    "about_y_anterior_deg": 0.118,
+    "about_z_superior_deg": 0.009,
+    "translation_mm": [
+     -0.04,
+     -1.75,
+     -3.1
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.37,
+      "rms_mm": 0.42,
+      "p95_mm": 0.7,
+      "max_mm": 1.87,
+      "n": 11330
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.42,
+      "rms_mm": 0.46,
+      "p95_mm": 0.75,
+      "max_mm": 1.96,
+      "n": 16180
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.08,
+      "y_anterior": -1.84,
+      "z_superior": -3.0,
+      "norm": 3.52
+     },
+     "moose": {
+      "x_right": 0.09,
+      "y_anterior": -1.41,
+      "z_superior": -0.83,
+      "norm": 1.64
+     },
+     "skellytour": {
+      "x_right": 0.03,
+      "y_anterior": -1.85,
+      "z_superior": -3.2,
+      "norm": 3.7
+     }
+    },
+    "range_of_norm_mm": 2.06,
+    "max_component_range_mm": 2.37,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.15,
+    "y_anterior": -2.65,
+    "z_superior": 0.16,
+    "norm": 2.66,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.37,
+    "combined_mm": 5.72,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.13,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V10",
+   "index": 10,
+   "role": "vertebra",
+   "hra_name_by_order": "T3",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    528.32,
+    387.31,
+    1418.09
+   ],
+   "denver_centroid": [
+    528.28,
+    386.14,
+    1415.07
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.04,
+    "y_anterior": -1.17,
+    "z_superior": -3.03,
+    "norm": 3.25
+   },
+   "volume_ml": {
+    "nlm": 21.44,
+    "denver": 21.24
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.39,
+     "rms_mm": 1.69,
+     "p95_mm": 3.15,
+     "max_mm": 4.06,
+     "n": 11291
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.48,
+     "rms_mm": 1.79,
+     "p95_mm": 3.25,
+     "max_mm": 4.36,
+     "n": 15875
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.198,
+    "about_x_right_deg": -0.041,
+    "about_y_anterior_deg": -0.002,
+    "about_z_superior_deg": 0.194,
+    "translation_mm": [
+     -0.03,
+     -1.56,
+     -3.06
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.4,
+      "rms_mm": 0.5,
+      "p95_mm": 0.77,
+      "max_mm": 3.38,
+      "n": 11291
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.43,
+      "rms_mm": 0.49,
+      "p95_mm": 0.79,
+      "max_mm": 2.96,
+      "n": 15875
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.01,
+      "y_anterior": -1.03,
+      "z_superior": -2.94,
+      "norm": 3.11
+     },
+     "moose": {
+      "x_right": -0.06,
+      "y_anterior": -1.25,
+      "z_superior": -0.93,
+      "norm": 1.56
+     },
+     "skellytour": {
+      "x_right": -0.06,
+      "y_anterior": -1.58,
+      "z_superior": -3.27,
+      "norm": 3.63
+     }
+    },
+    "range_of_norm_mm": 2.07,
+    "max_component_range_mm": 2.34,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.11,
+    "y_anterior": -2.03,
+    "z_superior": 0.2,
+    "norm": 2.04,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.34,
+    "combined_mm": 5.69,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.1,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V11",
+   "index": 11,
+   "role": "vertebra",
+   "hra_name_by_order": "T4",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    528.4,
+    381.51,
+    1396.49
+   ],
+   "denver_centroid": [
+    528.38,
+    380.26,
+    1393.43
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.01,
+    "y_anterior": -1.25,
+    "z_superior": -3.06,
+    "norm": 3.31
+   },
+   "volume_ml": {
+    "nlm": 21.48,
+    "denver": 21.23
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.3,
+     "rms_mm": 1.58,
+     "p95_mm": 3.09,
+     "max_mm": 4.18,
+     "n": 11340
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.4,
+     "rms_mm": 1.7,
+     "p95_mm": 3.17,
+     "max_mm": 4.3,
+     "n": 16083
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.224,
+    "about_x_right_deg": 0.215,
+    "about_y_anterior_deg": 0.02,
+    "about_z_superior_deg": 0.058,
+    "translation_mm": [
+     -0.02,
+     -1.46,
+     -3.11
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.37,
+      "rms_mm": 0.41,
+      "p95_mm": 0.7,
+      "max_mm": 1.77,
+      "n": 11340
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.42,
+      "rms_mm": 0.46,
+      "p95_mm": 0.74,
+      "max_mm": 1.91,
+      "n": 16083
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.06,
+      "y_anterior": -1.35,
+      "z_superior": -3.0,
+      "norm": 3.29
+     },
+     "moose": {
+      "x_right": -0.13,
+      "y_anterior": -1.31,
+      "z_superior": -1.0,
+      "norm": 1.65
+     },
+     "skellytour": {
+      "x_right": 0.1,
+      "y_anterior": -1.36,
+      "z_superior": -3.29,
+      "norm": 3.57
+     }
+    },
+    "range_of_norm_mm": 1.92,
+    "max_component_range_mm": 2.29,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.14,
+    "y_anterior": -2.11,
+    "z_superior": 0.17,
+    "norm": 2.12,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.29,
+    "combined_mm": 5.64,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.05,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V12",
+   "index": 12,
+   "role": "vertebra",
+   "hra_name_by_order": "T5",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    528.75,
+    378.55,
+    1374.61
+   ],
+   "denver_centroid": [
+    528.64,
+    377.24,
+    1371.53
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.12,
+    "y_anterior": -1.31,
+    "z_superior": -3.08,
+    "norm": 3.35
+   },
+   "volume_ml": {
+    "nlm": 22.12,
+    "denver": 21.88
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.35,
+     "rms_mm": 1.64,
+     "p95_mm": 3.12,
+     "max_mm": 4.1,
+     "n": 11357
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.46,
+     "rms_mm": 1.75,
+     "p95_mm": 3.18,
+     "max_mm": 4.74,
+     "n": 16175
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.19,
+    "about_x_right_deg": 0.114,
+    "about_y_anterior_deg": 0.024,
+    "about_z_superior_deg": 0.15,
+    "translation_mm": [
+     -0.04,
+     -1.45,
+     -3.13
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.37,
+      "rms_mm": 0.42,
+      "p95_mm": 0.71,
+      "max_mm": 1.57,
+      "n": 11357
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.42,
+      "rms_mm": 0.47,
+      "p95_mm": 0.77,
+      "max_mm": 1.73,
+      "n": 16175
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.38,
+      "y_anterior": -1.77,
+      "z_superior": -3.04,
+      "norm": 3.54
+     },
+     "moose": {
+      "x_right": -0.11,
+      "y_anterior": -1.14,
+      "z_superior": -1.05,
+      "norm": 1.55
+     },
+     "skellytour": {
+      "x_right": -0.03,
+      "y_anterior": -1.01,
+      "z_superior": -3.21,
+      "norm": 3.36
+     }
+    },
+    "range_of_norm_mm": 1.99,
+    "max_component_range_mm": 2.16,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.03,
+    "y_anterior": -2.17,
+    "z_superior": 0.15,
+    "norm": 2.18,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.16,
+    "combined_mm": 5.51,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.92,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V13",
+   "index": 13,
+   "role": "vertebra",
+   "hra_name_by_order": "T6",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.43,
+    376.48,
+    1351.82
+   ],
+   "denver_centroid": [
+    529.35,
+    374.97,
+    1348.69
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.07,
+    "y_anterior": -1.51,
+    "z_superior": -3.13,
+    "norm": 3.48
+   },
+   "volume_ml": {
+    "nlm": 23.4,
+    "denver": 23.15
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.39,
+     "rms_mm": 1.7,
+     "p95_mm": 3.14,
+     "max_mm": 4.38,
+     "n": 11684
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.44,
+     "rms_mm": 1.72,
+     "p95_mm": 3.13,
+     "max_mm": 4.17,
+     "n": 16488
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.156,
+    "about_x_right_deg": 0.02,
+    "about_y_anterior_deg": -0.005,
+    "about_z_superior_deg": 0.155,
+    "translation_mm": [
+     -0.06,
+     -1.39,
+     -3.18
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.38,
+      "rms_mm": 0.43,
+      "p95_mm": 0.73,
+      "max_mm": 1.62,
+      "n": 11684
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.43,
+      "rms_mm": 0.47,
+      "p95_mm": 0.78,
+      "max_mm": 2.09,
+      "n": 16488
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.02,
+      "y_anterior": -1.54,
+      "z_superior": -3.06,
+      "norm": 3.43
+     },
+     "moose": {
+      "x_right": 0.08,
+      "y_anterior": -1.16,
+      "z_superior": -1.26,
+      "norm": 1.71
+     },
+     "skellytour": {
+      "x_right": -0.21,
+      "y_anterior": -1.41,
+      "z_superior": -3.24,
+      "norm": 3.54
+     }
+    },
+    "range_of_norm_mm": 1.83,
+    "max_component_range_mm": 1.98,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.08,
+    "y_anterior": -2.37,
+    "z_superior": 0.1,
+    "norm": 2.37,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 1.98,
+    "combined_mm": 5.33,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.74,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V14",
+   "index": 14,
+   "role": "vertebra",
+   "hra_name_by_order": "T7",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.37,
+    375.75,
+    1329.17
+   ],
+   "denver_centroid": [
+    529.2,
+    374.29,
+    1326.05
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.17,
+    "y_anterior": -1.47,
+    "z_superior": -3.12,
+    "norm": 3.45
+   },
+   "volume_ml": {
+    "nlm": 25.39,
+    "denver": 25.49
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.38,
+     "rms_mm": 1.67,
+     "p95_mm": 3.12,
+     "max_mm": 4.42,
+     "n": 11828
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.49,
+     "rms_mm": 1.79,
+     "p95_mm": 3.14,
+     "max_mm": 5.5,
+     "n": 16972
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.347,
+    "about_x_right_deg": 0.296,
+    "about_y_anterior_deg": -0.178,
+    "about_z_superior_deg": 0.033,
+    "translation_mm": [
+     -0.05,
+     -1.3,
+     -3.2
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.36,
+      "rms_mm": 0.41,
+      "p95_mm": 0.69,
+      "max_mm": 2.28,
+      "n": 11828
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.41,
+      "rms_mm": 0.47,
+      "p95_mm": 0.74,
+      "max_mm": 2.32,
+      "n": 16972
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.35,
+      "y_anterior": -1.68,
+      "z_superior": -3.06,
+      "norm": 3.51
+     },
+     "moose": {
+      "x_right": 0.07,
+      "y_anterior": -0.89,
+      "z_superior": -0.94,
+      "norm": 1.3
+     },
+     "skellytour": {
+      "x_right": -0.11,
+      "y_anterior": -1.34,
+      "z_superior": -3.25,
+      "norm": 3.52
+     }
+    },
+    "range_of_norm_mm": 2.22,
+    "max_component_range_mm": 2.31,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": -0.02,
+    "y_anterior": -2.33,
+    "z_superior": 0.11,
+    "norm": 2.33,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.31,
+    "combined_mm": 5.66,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.07,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V15",
+   "index": 15,
+   "role": "vertebra",
+   "hra_name_by_order": "T8",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.5,
+    375.91,
+    1306.3
+   ],
+   "denver_centroid": [
+    529.49,
+    374.58,
+    1303.1
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.01,
+    "y_anterior": -1.33,
+    "z_superior": -3.21,
+    "norm": 3.47
+   },
+   "volume_ml": {
+    "nlm": 26.82,
+    "denver": 26.6
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.41,
+     "rms_mm": 1.69,
+     "p95_mm": 3.12,
+     "max_mm": 4.84,
+     "n": 12228
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.52,
+     "rms_mm": 1.79,
+     "p95_mm": 3.14,
+     "max_mm": 4.13,
+     "n": 17490
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.132,
+    "about_x_right_deg": 0.122,
+    "about_y_anterior_deg": 0.035,
+    "about_z_superior_deg": 0.036,
+    "translation_mm": [
+     -0.05,
+     -1.19,
+     -3.17
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.37,
+      "rms_mm": 0.42,
+      "p95_mm": 0.71,
+      "max_mm": 1.97,
+      "n": 12228
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.42,
+      "rms_mm": 0.47,
+      "p95_mm": 0.77,
+      "max_mm": 1.95,
+      "n": 17490
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.11,
+      "y_anterior": -1.4,
+      "z_superior": -3.28,
+      "norm": 3.57
+     },
+     "moose": {
+      "x_right": 0.03,
+      "y_anterior": -1.24,
+      "z_superior": -0.98,
+      "norm": 1.58
+     },
+     "skellytour": {
+      "x_right": -0.09,
+      "y_anterior": -1.25,
+      "z_superior": -3.22,
+      "norm": 3.46
+     }
+    },
+    "range_of_norm_mm": 1.99,
+    "max_component_range_mm": 2.3,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.14,
+    "y_anterior": -2.19,
+    "z_superior": 0.02,
+    "norm": 2.19,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.3,
+    "combined_mm": 5.65,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.06,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V16",
+   "index": 16,
+   "role": "vertebra",
+   "hra_name_by_order": "T9",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.23,
+    377.4,
+    1283.06
+   ],
+   "denver_centroid": [
+    529.25,
+    376.21,
+    1279.72
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.03,
+    "y_anterior": -1.19,
+    "z_superior": -3.34,
+    "norm": 3.55
+   },
+   "volume_ml": {
+    "nlm": 28.69,
+    "denver": 28.43
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.53,
+     "rms_mm": 1.82,
+     "p95_mm": 3.15,
+     "max_mm": 4.54,
+     "n": 12622
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.64,
+     "rms_mm": 1.92,
+     "p95_mm": 3.23,
+     "max_mm": 4.33,
+     "n": 18135
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.281,
+    "about_x_right_deg": 0.239,
+    "about_y_anterior_deg": 0.017,
+    "about_z_superior_deg": 0.147,
+    "translation_mm": [
+     -0.01,
+     -1.1,
+     -3.28
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.39,
+      "rms_mm": 0.43,
+      "p95_mm": 0.75,
+      "max_mm": 1.66,
+      "n": 12622
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.43,
+      "rms_mm": 0.47,
+      "p95_mm": 0.8,
+      "max_mm": 1.47,
+      "n": 18135
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.05,
+      "y_anterior": -1.5,
+      "z_superior": -3.7,
+      "norm": 4.0
+     },
+     "moose": {
+      "x_right": 0.24,
+      "y_anterior": -1.05,
+      "z_superior": -1.06,
+      "norm": 1.52
+     },
+     "skellytour": {
+      "x_right": -0.06,
+      "y_anterior": -1.25,
+      "z_superior": -3.25,
+      "norm": 3.48
+     }
+    },
+    "range_of_norm_mm": 2.48,
+    "max_component_range_mm": 2.64,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.18,
+    "y_anterior": -2.05,
+    "z_superior": -0.11,
+    "norm": 2.06,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.64,
+    "combined_mm": 5.99,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.4,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V17",
+   "index": 17,
+   "role": "vertebra",
+   "hra_name_by_order": "T10",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.06,
+    378.61,
+    1259.27
+   ],
+   "denver_centroid": [
+    529.07,
+    377.62,
+    1255.8
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.02,
+    "y_anterior": -0.99,
+    "z_superior": -3.46,
+    "norm": 3.6
+   },
+   "volume_ml": {
+    "nlm": 34.13,
+    "denver": 34.15
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.54,
+     "rms_mm": 1.84,
+     "p95_mm": 3.29,
+     "max_mm": 4.81,
+     "n": 14002
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.63,
+     "rms_mm": 1.94,
+     "p95_mm": 3.47,
+     "max_mm": 4.32,
+     "n": 19964
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.142,
+    "about_x_right_deg": 0.122,
+    "about_y_anterior_deg": 0.063,
+    "about_z_superior_deg": 0.036,
+    "translation_mm": [
+     -0.05,
+     -1.0,
+     -3.31
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.41,
+      "rms_mm": 0.46,
+      "p95_mm": 0.85,
+      "max_mm": 1.87,
+      "n": 14002
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.46,
+      "rms_mm": 0.5,
+      "p95_mm": 0.88,
+      "max_mm": 1.51,
+      "n": 19964
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.01,
+      "y_anterior": -1.28,
+      "z_superior": -3.77,
+      "norm": 3.98
+     },
+     "moose": {
+      "x_right": 0.13,
+      "y_anterior": -0.86,
+      "z_superior": -1.14,
+      "norm": 1.43
+     },
+     "skellytour": {
+      "x_right": -0.12,
+      "y_anterior": -0.98,
+      "z_superior": -3.38,
+      "norm": 3.52
+     }
+    },
+    "range_of_norm_mm": 2.55,
+    "max_component_range_mm": 2.63,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.17,
+    "y_anterior": -1.85,
+    "z_superior": -0.23,
+    "norm": 1.87,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.63,
+    "combined_mm": 5.98,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.39,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V18",
+   "index": 18,
+   "role": "vertebra",
+   "hra_name_by_order": "T11",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    528.96,
+    381.34,
+    1233.94
+   ],
+   "denver_centroid": [
+    528.87,
+    380.39,
+    1230.6
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.1,
+    "y_anterior": -0.95,
+    "z_superior": -3.34,
+    "norm": 3.47
+   },
+   "volume_ml": {
+    "nlm": 37.18,
+    "denver": 37.38
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.51,
+     "rms_mm": 1.82,
+     "p95_mm": 3.18,
+     "max_mm": 5.19,
+     "n": 14632
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.59,
+     "rms_mm": 1.89,
+     "p95_mm": 3.21,
+     "max_mm": 4.23,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.157,
+    "about_x_right_deg": 0.15,
+    "about_y_anterior_deg": -0.047,
+    "about_z_superior_deg": -0.004,
+    "translation_mm": [
+     -0.05,
+     -0.91,
+     -3.27
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.4,
+      "rms_mm": 0.45,
+      "p95_mm": 0.82,
+      "max_mm": 2.35,
+      "n": 14632
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.44,
+      "rms_mm": 0.48,
+      "p95_mm": 0.85,
+      "max_mm": 1.72,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.14,
+      "y_anterior": -1.27,
+      "z_superior": -3.59,
+      "norm": 3.81
+     },
+     "moose": {
+      "x_right": -0.02,
+      "y_anterior": -0.96,
+      "z_superior": -1.52,
+      "norm": 1.8
+     },
+     "skellytour": {
+      "x_right": -0.19,
+      "y_anterior": -0.75,
+      "z_superior": -3.35,
+      "norm": 3.44
+     }
+    },
+    "range_of_norm_mm": 2.01,
+    "max_component_range_mm": 2.07,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.05,
+    "y_anterior": -1.81,
+    "z_superior": -0.11,
+    "norm": 1.81,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.07,
+    "combined_mm": 5.42,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.83,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V19",
+   "index": 19,
+   "role": "vertebra",
+   "hra_name_by_order": "T12",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.37,
+    384.23,
+    1206.2
+   ],
+   "denver_centroid": [
+    529.3,
+    383.37,
+    1202.74
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.08,
+    "y_anterior": -0.86,
+    "z_superior": -3.46,
+    "norm": 3.57
+   },
+   "volume_ml": {
+    "nlm": 42.18,
+    "denver": 42.53
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.53,
+     "rms_mm": 1.86,
+     "p95_mm": 3.59,
+     "max_mm": 4.16,
+     "n": 15690
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.61,
+     "rms_mm": 1.95,
+     "p95_mm": 3.75,
+     "max_mm": 4.44,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.087,
+    "about_x_right_deg": -0.084,
+    "about_y_anterior_deg": 0.004,
+    "about_z_superior_deg": 0.023,
+    "translation_mm": [
+     -0.05,
+     -0.78,
+     -3.31
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.45,
+      "rms_mm": 0.49,
+      "p95_mm": 0.83,
+      "max_mm": 1.59,
+      "n": 15690
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.47,
+      "rms_mm": 0.52,
+      "p95_mm": 0.86,
+      "max_mm": 1.69,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.07,
+      "y_anterior": -0.97,
+      "z_superior": -3.62,
+      "norm": 3.75
+     },
+     "moose": {
+      "x_right": 0.17,
+      "y_anterior": -0.74,
+      "z_superior": -1.58,
+      "norm": 1.75
+     },
+     "skellytour": {
+      "x_right": -0.15,
+      "y_anterior": -1.07,
+      "z_superior": -3.23,
+      "norm": 3.4
+     }
+    },
+    "range_of_norm_mm": 2.0,
+    "max_component_range_mm": 2.04,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.07,
+    "y_anterior": -1.72,
+    "z_superior": -0.23,
+    "norm": 1.74,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.04,
+    "combined_mm": 5.39,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.8,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V20",
+   "index": 20,
+   "role": "vertebra",
+   "hra_name_by_order": "L1",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.01,
+    386.81,
+    1175.39
+   ],
+   "denver_centroid": [
+    529.15,
+    385.41,
+    1172.16
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.14,
+    "y_anterior": -1.4,
+    "z_superior": -3.23,
+    "norm": 3.52
+   },
+   "volume_ml": {
+    "nlm": 48.66,
+    "denver": 46.18
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.5,
+     "rms_mm": 1.82,
+     "p95_mm": 3.54,
+     "max_mm": 4.26,
+     "n": 18491
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.49,
+     "rms_mm": 1.81,
+     "p95_mm": 3.26,
+     "max_mm": 4.37,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.486,
+    "about_x_right_deg": 0.428,
+    "about_y_anterior_deg": 0.209,
+    "about_z_superior_deg": 0.095,
+    "translation_mm": [
+     -0.07,
+     -0.77,
+     -3.17
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.55,
+      "rms_mm": 0.68,
+      "p95_mm": 1.14,
+      "max_mm": 3.49,
+      "n": 18491
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.54,
+      "rms_mm": 0.66,
+      "p95_mm": 1.12,
+      "max_mm": 4.03,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.06,
+      "y_anterior": -0.93,
+      "z_superior": -3.52,
+      "norm": 3.64
+     },
+     "moose": {
+      "x_right": 0.26,
+      "y_anterior": -0.79,
+      "z_superior": -1.46,
+      "norm": 1.68
+     },
+     "skellytour": {
+      "x_right": -0.26,
+      "y_anterior": -1.94,
+      "z_superior": -3.14,
+      "norm": 3.7
+     }
+    },
+    "range_of_norm_mm": 2.02,
+    "max_component_range_mm": 2.06,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.29,
+    "y_anterior": -2.26,
+    "z_superior": 0.0,
+    "norm": 2.28,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.06,
+    "combined_mm": 5.41,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.82,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V21",
+   "index": 21,
+   "role": "vertebra",
+   "hra_name_by_order": "L2",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    529.43,
+    392.44,
+    1142.6
+   ],
+   "denver_centroid": [
+    529.34,
+    391.91,
+    1140.33
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.09,
+    "y_anterior": -0.53,
+    "z_superior": -2.27,
+    "norm": 2.33
+   },
+   "volume_ml": {
+    "nlm": 49.93,
+    "denver": 40.42
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.26,
+     "rms_mm": 1.63,
+     "p95_mm": 3.63,
+     "max_mm": 4.6,
+     "n": 19555
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.12,
+     "rms_mm": 1.46,
+     "p95_mm": 3.24,
+     "max_mm": 4.92,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.037,
+    "about_x_right_deg": -0.02,
+    "about_y_anterior_deg": 0.03,
+    "about_z_superior_deg": 0.007,
+    "translation_mm": [
+     -0.05,
+     -0.57,
+     -2.01
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.94,
+      "rms_mm": 1.14,
+      "p95_mm": 2.14,
+      "max_mm": 3.87,
+      "n": 19555
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.9,
+      "rms_mm": 1.09,
+      "p95_mm": 2.11,
+      "max_mm": 3.96,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.07,
+      "y_anterior": -0.88,
+      "z_superior": -3.5,
+      "norm": 3.61
+     },
+     "moose": {
+      "x_right": 0.31,
+      "y_anterior": -0.71,
+      "z_superior": -1.44,
+      "norm": 1.63
+     },
+     "skellytour": null
+    },
+    "range_of_norm_mm": 1.98,
+    "max_component_range_mm": 2.06,
+    "models_present_on_both": 2
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.06,
+    "y_anterior": -1.39,
+    "z_superior": 0.96,
+    "norm": 1.69,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 2.06,
+    "combined_mm": 5.41,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.82,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V22",
+   "index": 22,
+   "role": "vertebra",
+   "hra_name_by_order": "L3",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    530.19,
+    399.56,
+    1107.2
+   ],
+   "denver_centroid": [
+    529.66,
+    400.74,
+    1105.12
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.52,
+    "y_anterior": 1.18,
+    "z_superior": -2.08,
+    "norm": 2.45
+   },
+   "volume_ml": {
+    "nlm": 60.75,
+    "denver": 54.8
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.45,
+     "rms_mm": 1.77,
+     "p95_mm": 3.23,
+     "max_mm": 6.17,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.4,
+     "rms_mm": 1.7,
+     "p95_mm": 3.1,
+     "max_mm": 4.64,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 1.821,
+    "about_x_right_deg": -1.693,
+    "about_y_anterior_deg": -0.659,
+    "about_z_superior_deg": 0.118,
+    "translation_mm": [
+     -0.18,
+     -0.27,
+     -2.19
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.87,
+      "rms_mm": 1.13,
+      "p95_mm": 2.04,
+      "max_mm": 6.92,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.75,
+      "rms_mm": 0.88,
+      "p95_mm": 1.61,
+      "max_mm": 4.82,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.25,
+      "y_anterior": 1.47,
+      "z_superior": -1.1,
+      "norm": 1.86
+     },
+     "moose": {
+      "x_right": 1.15,
+      "y_anterior": -2.5,
+      "z_superior": -2.83,
+      "norm": 3.95
+     },
+     "skellytour": {
+      "x_right": -0.93,
+      "y_anterior": 1.77,
+      "z_superior": -4.38,
+      "norm": 4.81
+     }
+    },
+    "range_of_norm_mm": 2.95,
+    "max_component_range_mm": 4.27,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": -0.37,
+    "y_anterior": 0.32,
+    "z_superior": 1.15,
+    "norm": 1.25,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 4.27,
+    "combined_mm": 7.62,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 5.03,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V25",
+   "index": 25,
+   "role": "vertebra",
+   "hra_name_by_order": "L4",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    530.95,
+    404.82,
+    1073.15
+   ],
+   "denver_centroid": [
+    530.36,
+    405.64,
+    1068.98
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.59,
+    "y_anterior": 0.82,
+    "z_superior": -4.17,
+    "norm": 4.29
+   },
+   "volume_ml": {
+    "nlm": 65.98,
+    "denver": 60.78
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.85,
+     "rms_mm": 2.47,
+     "p95_mm": 4.52,
+     "max_mm": 11.7,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.62,
+     "rms_mm": 1.98,
+     "p95_mm": 3.96,
+     "max_mm": 6.22,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 1.3,
+    "about_x_right_deg": 0.959,
+    "about_y_anterior_deg": -0.876,
+    "about_z_superior_deg": 0.031,
+    "translation_mm": [
+     -0.15,
+     -0.19,
+     -3.84
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.86,
+      "rms_mm": 1.26,
+      "p95_mm": 2.67,
+      "max_mm": 8.49,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.72,
+      "rms_mm": 0.88,
+      "p95_mm": 1.6,
+      "max_mm": 4.76,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.1,
+      "y_anterior": -0.41,
+      "z_superior": -3.5,
+      "norm": 3.53
+     },
+     "moose": {
+      "x_right": -0.56,
+      "y_anterior": -1.68,
+      "z_superior": -5.26,
+      "norm": 5.55
+     },
+     "skellytour": {
+      "x_right": -1.17,
+      "y_anterior": 1.32,
+      "z_superior": -4.2,
+      "norm": 4.56
+     }
+    },
+    "range_of_norm_mm": 2.02,
+    "max_component_range_mm": 3.0,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": -0.44,
+    "y_anterior": -0.04,
+    "z_superior": -0.94,
+    "norm": 1.04,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 3.0,
+    "combined_mm": 6.35,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 3.76,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V26",
+   "index": 26,
+   "role": "vertebra",
+   "hra_name_by_order": "L5",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    533.02,
+    410.33,
+    1040.53
+   ],
+   "denver_centroid": [
+    532.94,
+    410.28,
+    1037.42
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.08,
+    "y_anterior": -0.05,
+    "z_superior": -3.11,
+    "norm": 3.11
+   },
+   "volume_ml": {
+    "nlm": 64.54,
+    "denver": 63.85
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.52,
+     "rms_mm": 1.8,
+     "p95_mm": 3.08,
+     "max_mm": 4.26,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.55,
+     "rms_mm": 1.83,
+     "p95_mm": 3.08,
+     "max_mm": 4.18,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.221,
+    "about_x_right_deg": 0.217,
+    "about_y_anterior_deg": 0.018,
+    "about_z_superior_deg": 0.037,
+    "translation_mm": [
+     -0.1,
+     -0.13,
+     -3.14
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.51,
+      "rms_mm": 0.57,
+      "p95_mm": 0.98,
+      "max_mm": 1.49,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.49,
+      "rms_mm": 0.54,
+      "p95_mm": 0.95,
+      "max_mm": 1.8,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": -0.2,
+      "y_anterior": -0.44,
+      "z_superior": -3.29,
+      "norm": 3.33
+     },
+     "moose": {
+      "x_right": 0.17,
+      "y_anterior": -0.24,
+      "z_superior": -1.42,
+      "norm": 1.45
+     },
+     "skellytour": {
+      "x_right": -0.16,
+      "y_anterior": 0.12,
+      "z_superior": -3.15,
+      "norm": 3.16
+     }
+    },
+    "range_of_norm_mm": 1.88,
+    "max_component_range_mm": 1.87,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.07,
+    "y_anterior": -0.91,
+    "z_superior": 0.12,
+    "norm": 0.92,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 1.87,
+    "combined_mm": 5.22,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.63,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "V27",
+   "index": 27,
+   "role": "vertebra",
+   "hra_name_by_order": "L6",
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    536.83,
+    412.27,
+    1009.52
+   ],
+   "denver_centroid": [
+    536.8,
+    412.31,
+    1006.37
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.03,
+    "y_anterior": 0.04,
+    "z_superior": -3.15,
+    "norm": 3.15
+   },
+   "volume_ml": {
+    "nlm": 64.89,
+    "denver": 63.99
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.68,
+     "rms_mm": 1.92,
+     "p95_mm": 3.14,
+     "max_mm": 4.23,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.68,
+     "rms_mm": 1.91,
+     "p95_mm": 3.08,
+     "max_mm": 4.23,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.098,
+    "about_x_right_deg": 0.09,
+    "about_y_anterior_deg": 0.034,
+    "about_z_superior_deg": 0.021,
+    "translation_mm": [
+     -0.07,
+     0.0,
+     -3.16
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.53,
+      "rms_mm": 0.59,
+      "p95_mm": 0.98,
+      "max_mm": 2.56,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.51,
+      "rms_mm": 0.56,
+      "p95_mm": 0.95,
+      "max_mm": 1.73,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.02,
+      "y_anterior": -0.12,
+      "z_superior": -3.37,
+      "norm": 3.38
+     },
+     "moose": {
+      "x_right": 0.22,
+      "y_anterior": -0.05,
+      "z_superior": -1.43,
+      "norm": 1.44
+     },
+     "skellytour": {
+      "x_right": -0.12,
+      "y_anterior": 0.14,
+      "z_superior": -3.06,
+      "norm": 3.07
+     }
+    },
+    "range_of_norm_mm": 1.94,
+    "max_component_range_mm": 1.94,
+    "models_present_on_both": 3
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.12,
+    "y_anterior": -0.82,
+    "z_superior": 0.08,
+    "norm": 0.83,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 1.94,
+    "combined_mm": 5.29,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.7,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  },
+  {
+   "id": "S29",
+   "index": 29,
+   "role": "sacrum",
+   "hra_name_by_order": null,
+   "name_status": "pending",
+   "match": "same geometric id",
+   "nlm_centroid": [
+    536.44,
+    383.81,
+    964.15
+   ],
+   "denver_centroid": [
+    536.49,
+    384.47,
+    961.87
+   ],
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.06,
+    "y_anterior": 0.67,
+    "z_superior": -2.28,
+    "norm": 2.37
+   },
+   "volume_ml": {
+    "nlm": 154.62,
+    "denver": 143.2
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.49,
+     "rms_mm": 1.68,
+     "p95_mm": 2.93,
+     "max_mm": 5.48,
+     "n": 20000
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.42,
+     "rms_mm": 1.58,
+     "p95_mm": 2.68,
+     "max_mm": 5.26,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.212,
+    "about_x_right_deg": 0.211,
+    "about_y_anterior_deg": -0.007,
+    "about_z_superior_deg": -0.024,
+    "translation_mm": [
+     -0.11,
+     0.19,
+     -2.57
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.92,
+      "rms_mm": 1.01,
+      "p95_mm": 1.68,
+      "max_mm": 3.18,
+      "n": 20000
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.89,
+      "rms_mm": 0.97,
+      "p95_mm": 1.59,
+      "max_mm": 2.99,
+      "n": 20000
+     }
+    }
+   },
+   "model_spread": {
+    "per_model": {
+     "totalseg": {
+      "x_right": 0.14,
+      "y_anterior": 0.19,
+      "z_superior": -3.43,
+      "norm": 3.44
+     },
+     "moose": {
+      "x_right": -0.02,
+      "y_anterior": 0.17,
+      "z_superior": -1.69,
+      "norm": 1.7
+     },
+     "skellytour": null
+    },
+    "range_of_norm_mm": 1.74,
+    "max_component_range_mm": 1.74,
+    "models_present_on_both": 2
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.21,
+    "y_anterior": -0.19,
+    "z_superior": 0.95,
+    "norm": 0.99,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   },
+   "uncertainty": {
+    "registration_floor_mm": 3.35,
+    "segmentation_model_range_mm": 1.74,
+    "combined_mm": 5.09,
+    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+    "exceeds_uncertainty": false,
+    "relative_floor_mm": 0.76,
+    "relative_combined_mm": 2.5,
+    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+    "relative_exceeds_uncertainty": false
+   }
+  }
+ ],
+ "ribs": {
+  "RL01": {
+   "side": "left",
+   "order": 1,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.7,
+    "y_anterior": -1.57,
+    "z_superior": -3.09,
+    "norm": 3.54
+   },
+   "volume_ml": {
+    "nlm": 10.14,
+    "denver": 9.21
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.97,
+     "rms_mm": 2.23,
+     "p95_mm": 3.42,
+     "max_mm": 4.26,
+     "n": 8702
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.89,
+     "rms_mm": 2.13,
+     "p95_mm": 3.29,
+     "max_mm": 4.03,
+     "n": 12312
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.723,
+    "about_x_right_deg": 0.343,
+    "about_y_anterior_deg": -0.612,
+    "about_z_superior_deg": 0.178,
+    "translation_mm": [
+     -0.01,
+     -1.73,
+     -2.83
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.45,
+      "rms_mm": 0.53,
+      "p95_mm": 0.93,
+      "max_mm": 2.79,
+      "n": 8702
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.48,
+      "rms_mm": 0.54,
+      "p95_mm": 0.92,
+      "max_mm": 2.54,
+      "n": 12312
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -0.55,
+    "y_anterior": -2.43,
+    "z_superior": 0.14,
+    "norm": 2.5,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL02": {
+   "side": "left",
+   "order": 2,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -1.31,
+    "y_anterior": -0.71,
+    "z_superior": -3.54,
+    "norm": 3.84
+   },
+   "volume_ml": {
+    "nlm": 12.8,
+    "denver": 11.95
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.81,
+     "rms_mm": 2.04,
+     "p95_mm": 3.29,
+     "max_mm": 4.13,
+     "n": 11274
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.76,
+     "rms_mm": 1.96,
+     "p95_mm": 3.1,
+     "max_mm": 4.37,
+     "n": 16061
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.477,
+    "about_x_right_deg": 0.255,
+    "about_y_anterior_deg": -0.381,
+    "about_z_superior_deg": 0.13,
+    "translation_mm": [
+     -0.01,
+     -1.63,
+     -2.88
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.42,
+      "rms_mm": 0.48,
+      "p95_mm": 0.84,
+      "max_mm": 2.35,
+      "n": 11274
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.46,
+      "rms_mm": 0.51,
+      "p95_mm": 0.88,
+      "max_mm": 1.98,
+      "n": 16061
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -1.16,
+    "y_anterior": -1.57,
+    "z_superior": -0.31,
+    "norm": 1.98,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL03": {
+   "side": "left",
+   "order": 3,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -2.24,
+    "y_anterior": -1.62,
+    "z_superior": -2.69,
+    "norm": 3.86
+   },
+   "volume_ml": {
+    "nlm": 13.74,
+    "denver": 12.71
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.62,
+     "rms_mm": 1.83,
+     "p95_mm": 3.13,
+     "max_mm": 4.25,
+     "n": 12875
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.59,
+     "rms_mm": 1.8,
+     "p95_mm": 3.08,
+     "max_mm": 4.65,
+     "n": 17773
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.848,
+    "about_x_right_deg": 0.421,
+    "about_y_anterior_deg": -0.731,
+    "about_z_superior_deg": 0.089,
+    "translation_mm": [
+     0.04,
+     -1.56,
+     -2.68
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.47,
+      "rms_mm": 0.54,
+      "p95_mm": 0.92,
+      "max_mm": 3.12,
+      "n": 12875
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.49,
+      "rms_mm": 0.54,
+      "p95_mm": 0.9,
+      "max_mm": 2.39,
+      "n": 17773
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -2.09,
+    "y_anterior": -2.48,
+    "z_superior": 0.54,
+    "norm": 3.29,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL04": {
+   "side": "left",
+   "order": 4,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -1.87,
+    "y_anterior": -0.18,
+    "z_superior": -3.42,
+    "norm": 3.9
+   },
+   "volume_ml": {
+    "nlm": 15.82,
+    "denver": 14.73
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.57,
+     "rms_mm": 1.8,
+     "p95_mm": 3.17,
+     "max_mm": 4.24,
+     "n": 13844
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.51,
+     "rms_mm": 1.71,
+     "p95_mm": 2.95,
+     "max_mm": 3.8,
+     "n": 19029
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.536,
+    "about_x_right_deg": 0.301,
+    "about_y_anterior_deg": -0.12,
+    "about_z_superior_deg": 0.427,
+    "translation_mm": [
+     0.14,
+     -1.74,
+     -2.28
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.51,
+      "rms_mm": 0.57,
+      "p95_mm": 0.95,
+      "max_mm": 2.42,
+      "n": 13844
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.54,
+      "rms_mm": 0.59,
+      "p95_mm": 0.96,
+      "max_mm": 2.41,
+      "n": 19029
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -1.72,
+    "y_anterior": -1.04,
+    "z_superior": -0.19,
+    "norm": 2.02,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL05": {
+   "side": "left",
+   "order": 5,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -2.5,
+    "y_anterior": 2.11,
+    "z_superior": -4.7,
+    "norm": 5.73
+   },
+   "volume_ml": {
+    "nlm": 18.46,
+    "denver": 16.87
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.52,
+     "rms_mm": 1.77,
+     "p95_mm": 3.2,
+     "max_mm": 4.65,
+     "n": 14674
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.45,
+     "rms_mm": 1.66,
+     "p95_mm": 2.91,
+     "max_mm": 4.34,
+     "n": 19896
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.704,
+    "about_x_right_deg": 0.307,
+    "about_y_anterior_deg": -0.128,
+    "about_z_superior_deg": 0.62,
+    "translation_mm": [
+     0.14,
+     -1.79,
+     -2.23
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.54,
+      "rms_mm": 0.63,
+      "p95_mm": 1.11,
+      "max_mm": 3.54,
+      "n": 14674
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.56,
+      "rms_mm": 0.63,
+      "p95_mm": 1.06,
+      "max_mm": 3.25,
+      "n": 19896
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -2.35,
+    "y_anterior": 1.25,
+    "z_superior": -1.47,
+    "norm": 3.04,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL06": {
+   "side": "left",
+   "order": 6,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -3.2,
+    "y_anterior": 4.15,
+    "z_superior": -6.26,
+    "norm": 8.16
+   },
+   "volume_ml": {
+    "nlm": 18.64,
+    "denver": 17.92
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.47,
+     "rms_mm": 1.72,
+     "p95_mm": 3.18,
+     "max_mm": 4.46,
+     "n": 14475
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.42,
+     "rms_mm": 1.64,
+     "p95_mm": 2.94,
+     "max_mm": 3.91,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.499,
+    "about_x_right_deg": 0.293,
+    "about_y_anterior_deg": -0.061,
+    "about_z_superior_deg": 0.399,
+    "translation_mm": [
+     0.12,
+     -1.57,
+     -2.29
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.56,
+      "rms_mm": 0.63,
+      "p95_mm": 1.11,
+      "max_mm": 2.42,
+      "n": 14475
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.6,
+      "rms_mm": 0.67,
+      "p95_mm": 1.16,
+      "max_mm": 3.96,
+      "n": 20000
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -3.05,
+    "y_anterior": 3.29,
+    "z_superior": -3.03,
+    "norm": 5.41,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL07": {
+   "side": "left",
+   "order": 7,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -1.61,
+    "y_anterior": -3.42,
+    "z_superior": 0.32,
+    "norm": 3.79
+   },
+   "volume_ml": {
+    "nlm": 21.78,
+    "denver": 19.21
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.5,
+     "rms_mm": 1.82,
+     "p95_mm": 3.27,
+     "max_mm": 7.61,
+     "n": 15558
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.35,
+     "rms_mm": 1.58,
+     "p95_mm": 2.91,
+     "max_mm": 4.1,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 2.518,
+    "about_x_right_deg": 1.645,
+    "about_y_anterior_deg": -0.983,
+    "about_z_superior_deg": 1.634,
+    "translation_mm": [
+     0.66,
+     -2.0,
+     -1.66
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.81,
+      "rms_mm": 1.11,
+      "p95_mm": 2.02,
+      "max_mm": 7.14,
+      "n": 15558
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.7,
+      "rms_mm": 0.82,
+      "p95_mm": 1.55,
+      "max_mm": 3.82,
+      "n": 20000
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -1.46,
+    "y_anterior": -4.28,
+    "z_superior": 3.55,
+    "norm": 5.75,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL08": {
+   "side": "left",
+   "order": 8,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -2.42,
+    "y_anterior": 0.69,
+    "z_superior": -4.25,
+    "norm": 4.94
+   },
+   "volume_ml": {
+    "nlm": 20.43,
+    "denver": 19.89
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.36,
+     "rms_mm": 1.61,
+     "p95_mm": 3.04,
+     "max_mm": 4.26,
+     "n": 15148
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.34,
+     "rms_mm": 1.57,
+     "p95_mm": 2.92,
+     "max_mm": 4.13,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.688,
+    "about_x_right_deg": 0.355,
+    "about_y_anterior_deg": -0.17,
+    "about_z_superior_deg": 0.564,
+    "translation_mm": [
+     0.33,
+     -1.51,
+     -2.24
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.53,
+      "rms_mm": 0.59,
+      "p95_mm": 1.01,
+      "max_mm": 2.14,
+      "n": 15148
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.55,
+      "rms_mm": 0.6,
+      "p95_mm": 0.99,
+      "max_mm": 2.15,
+      "n": 20000
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -2.27,
+    "y_anterior": -0.17,
+    "z_superior": -1.02,
+    "norm": 2.49,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL09": {
+   "side": "left",
+   "order": 9,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -1.09,
+    "y_anterior": -2.95,
+    "z_superior": -0.66,
+    "norm": 3.21
+   },
+   "volume_ml": {
+    "nlm": 18.26,
+    "denver": 16.92
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.44,
+     "rms_mm": 1.81,
+     "p95_mm": 3.32,
+     "max_mm": 7.89,
+     "n": 14346
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.27,
+     "rms_mm": 1.5,
+     "p95_mm": 2.8,
+     "max_mm": 4.58,
+     "n": 18800
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 2.274,
+    "about_x_right_deg": 0.923,
+    "about_y_anterior_deg": 0.076,
+    "about_z_superior_deg": 2.077,
+    "translation_mm": [
+     0.94,
+     -2.08,
+     -1.65
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.72,
+      "rms_mm": 1.0,
+      "p95_mm": 1.83,
+      "max_mm": 7.37,
+      "n": 14346
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.63,
+      "rms_mm": 0.72,
+      "p95_mm": 1.32,
+      "max_mm": 2.82,
+      "n": 18800
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -0.94,
+    "y_anterior": -3.81,
+    "z_superior": 2.57,
+    "norm": 4.69,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL10": {
+   "side": "left",
+   "order": 10,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -3.48,
+    "y_anterior": 2.51,
+    "z_superior": -8.23,
+    "norm": 9.28
+   },
+   "volume_ml": {
+    "nlm": 13.91,
+    "denver": 13.86
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.26,
+     "rms_mm": 1.51,
+     "p95_mm": 2.9,
+     "max_mm": 4.23,
+     "n": 11281
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.46,
+     "rms_mm": 2.02,
+     "p95_mm": 3.23,
+     "max_mm": 11.81,
+     "n": 16154
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.913,
+    "about_x_right_deg": 0.292,
+    "about_y_anterior_deg": 0.019,
+    "about_z_superior_deg": 0.865,
+    "translation_mm": [
+     0.6,
+     -1.27,
+     -2.28
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.49,
+      "rms_mm": 0.56,
+      "p95_mm": 0.95,
+      "max_mm": 2.47,
+      "n": 11281
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.76,
+      "rms_mm": 1.5,
+      "p95_mm": 1.36,
+      "max_mm": 10.76,
+      "n": 16154
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -3.33,
+    "y_anterior": 1.65,
+    "z_superior": -5.0,
+    "norm": 6.23,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL11": {
+   "side": "left",
+   "order": 11,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.46,
+    "y_anterior": -0.75,
+    "z_superior": -3.31,
+    "norm": 3.42
+   },
+   "volume_ml": {
+    "nlm": 10.17,
+    "denver": 9.23
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.16,
+     "rms_mm": 1.39,
+     "p95_mm": 2.71,
+     "max_mm": 3.82,
+     "n": 9508
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.09,
+     "rms_mm": 1.27,
+     "p95_mm": 2.36,
+     "max_mm": 4.22,
+     "n": 12479
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.531,
+    "about_x_right_deg": 0.141,
+    "about_y_anterior_deg": 0.093,
+    "about_z_superior_deg": 0.504,
+    "translation_mm": [
+     0.34,
+     -0.93,
+     -2.26
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.5,
+      "rms_mm": 0.57,
+      "p95_mm": 0.99,
+      "max_mm": 2.9,
+      "n": 9508
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.51,
+      "rms_mm": 0.56,
+      "p95_mm": 0.96,
+      "max_mm": 1.96,
+      "n": 12479
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -0.31,
+    "y_anterior": -1.61,
+    "z_superior": -0.08,
+    "norm": 1.64,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RL12": {
+   "side": "left",
+   "order": 12,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.42,
+    "y_anterior": -0.93,
+    "z_superior": -3.54,
+    "norm": 3.69
+   },
+   "volume_ml": {
+    "nlm": 5.85,
+    "denver": 5.53
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.2,
+     "rms_mm": 1.37,
+     "p95_mm": 2.37,
+     "max_mm": 4.15,
+     "n": 5894
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.18,
+     "rms_mm": 1.33,
+     "p95_mm": 2.29,
+     "max_mm": 3.24,
+     "n": 8036
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 1.823,
+    "about_x_right_deg": 0.454,
+    "about_y_anterior_deg": 0.066,
+    "about_z_superior_deg": 1.765,
+    "translation_mm": [
+     1.03,
+     -0.81,
+     -1.42
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.53,
+      "rms_mm": 0.62,
+      "p95_mm": 1.2,
+      "max_mm": 2.76,
+      "n": 5894
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.54,
+      "rms_mm": 0.6,
+      "p95_mm": 1.04,
+      "max_mm": 2.4,
+      "n": 8036
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -0.27,
+    "y_anterior": -1.79,
+    "z_superior": -0.31,
+    "norm": 1.84,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR01": {
+   "side": "right",
+   "order": 1,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.8,
+    "y_anterior": -1.7,
+    "z_superior": -3.07,
+    "norm": 3.6
+   },
+   "volume_ml": {
+    "nlm": 10.55,
+    "denver": 9.75
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.87,
+     "rms_mm": 2.09,
+     "p95_mm": 3.18,
+     "max_mm": 4.28,
+     "n": 9322
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.85,
+     "rms_mm": 2.06,
+     "p95_mm": 3.18,
+     "max_mm": 4.01,
+     "n": 12964
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.762,
+    "about_x_right_deg": 0.313,
+    "about_y_anterior_deg": 0.315,
+    "about_z_superior_deg": -0.619,
+    "translation_mm": [
+     -0.07,
+     -1.97,
+     -2.32
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.49,
+      "rms_mm": 0.56,
+      "p95_mm": 0.94,
+      "max_mm": 2.82,
+      "n": 9322
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.51,
+      "rms_mm": 0.56,
+      "p95_mm": 0.91,
+      "max_mm": 2.17,
+      "n": 12964
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.95,
+    "y_anterior": -2.56,
+    "z_superior": 0.16,
+    "norm": 2.74,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR02": {
+   "side": "right",
+   "order": 2,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 1.69,
+    "y_anterior": -1.2,
+    "z_superior": -3.53,
+    "norm": 4.1
+   },
+   "volume_ml": {
+    "nlm": 12.01,
+    "denver": 11.11
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.7,
+     "rms_mm": 1.92,
+     "p95_mm": 3.15,
+     "max_mm": 4.22,
+     "n": 10846
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.65,
+     "rms_mm": 1.84,
+     "p95_mm": 3.07,
+     "max_mm": 3.99,
+     "n": 15088
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.527,
+    "about_x_right_deg": 0.244,
+    "about_y_anterior_deg": 0.449,
+    "about_z_superior_deg": -0.127,
+    "translation_mm": [
+     -0.04,
+     -1.53,
+     -2.86
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.43,
+      "rms_mm": 0.51,
+      "p95_mm": 0.87,
+      "max_mm": 2.68,
+      "n": 10846
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.47,
+      "rms_mm": 0.52,
+      "p95_mm": 0.89,
+      "max_mm": 2.29,
+      "n": 15088
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 1.84,
+    "y_anterior": -2.06,
+    "z_superior": -0.3,
+    "norm": 2.78,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR03": {
+   "side": "right",
+   "order": 3,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 1.44,
+    "y_anterior": -1.46,
+    "z_superior": -3.01,
+    "norm": 3.65
+   },
+   "volume_ml": {
+    "nlm": 13.24,
+    "denver": 12.26
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.62,
+     "rms_mm": 1.83,
+     "p95_mm": 3.15,
+     "max_mm": 4.28,
+     "n": 12236
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.59,
+     "rms_mm": 1.78,
+     "p95_mm": 3.01,
+     "max_mm": 4.61,
+     "n": 16969
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.581,
+    "about_x_right_deg": 0.227,
+    "about_y_anterior_deg": 0.534,
+    "about_z_superior_deg": -0.012,
+    "translation_mm": [
+     -0.07,
+     -1.32,
+     -2.86
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.45,
+      "rms_mm": 0.52,
+      "p95_mm": 0.88,
+      "max_mm": 3.3,
+      "n": 12236
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.48,
+      "rms_mm": 0.53,
+      "p95_mm": 0.89,
+      "max_mm": 2.41,
+      "n": 16969
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 1.59,
+    "y_anterior": -2.32,
+    "z_superior": 0.22,
+    "norm": 2.82,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR04": {
+   "side": "right",
+   "order": 4,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -2.3,
+    "y_anterior": -0.59,
+    "z_superior": -3.38,
+    "norm": 4.13
+   },
+   "volume_ml": {
+    "nlm": 15.64,
+    "denver": 12.54
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.53,
+     "rms_mm": 1.78,
+     "p95_mm": 3.2,
+     "max_mm": 4.23,
+     "n": 13514
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.41,
+     "rms_mm": 1.62,
+     "p95_mm": 2.86,
+     "max_mm": 3.71,
+     "n": 17578
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.366,
+    "about_x_right_deg": 0.217,
+    "about_y_anterior_deg": -0.097,
+    "about_z_superior_deg": 0.279,
+    "translation_mm": [
+     0.03,
+     -1.33,
+     -2.21
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.66,
+      "rms_mm": 0.77,
+      "p95_mm": 1.44,
+      "max_mm": 3.17,
+      "n": 13514
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.67,
+      "rms_mm": 0.76,
+      "p95_mm": 1.42,
+      "max_mm": 2.93,
+      "n": 17578
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -2.15,
+    "y_anterior": -1.45,
+    "z_superior": -0.15,
+    "norm": 2.6,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR05": {
+   "side": "right",
+   "order": 5,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": -0.72,
+    "y_anterior": 2.02,
+    "z_superior": -5.66,
+    "norm": 6.05
+   },
+   "volume_ml": {
+    "nlm": 19.13,
+    "denver": 17.02
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.55,
+     "rms_mm": 1.8,
+     "p95_mm": 3.21,
+     "max_mm": 4.23,
+     "n": 14590
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.49,
+     "rms_mm": 1.71,
+     "p95_mm": 2.95,
+     "max_mm": 4.08,
+     "n": 19729
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.23,
+    "about_x_right_deg": 0.192,
+    "about_y_anterior_deg": -0.045,
+    "about_z_superior_deg": -0.119,
+    "translation_mm": [
+     0.01,
+     -1.42,
+     -2.29
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.6,
+      "rms_mm": 0.71,
+      "p95_mm": 1.32,
+      "max_mm": 3.31,
+      "n": 14590
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.62,
+      "rms_mm": 0.71,
+      "p95_mm": 1.28,
+      "max_mm": 3.13,
+      "n": 19729
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": -0.57,
+    "y_anterior": 1.16,
+    "z_superior": -2.43,
+    "norm": 2.75,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR06": {
+   "side": "right",
+   "order": 6,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 2.48,
+    "y_anterior": 3.49,
+    "z_superior": -6.01,
+    "norm": 7.37
+   },
+   "volume_ml": {
+    "nlm": 21.13,
+    "denver": 19.13
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.48,
+     "rms_mm": 1.75,
+     "p95_mm": 3.2,
+     "max_mm": 4.63,
+     "n": 15492
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.41,
+     "rms_mm": 1.63,
+     "p95_mm": 2.9,
+     "max_mm": 3.94,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.52,
+    "about_x_right_deg": 0.262,
+    "about_y_anterior_deg": 0.074,
+    "about_z_superior_deg": -0.443,
+    "translation_mm": [
+     -0.13,
+     -1.45,
+     -2.3
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.56,
+      "rms_mm": 0.64,
+      "p95_mm": 1.18,
+      "max_mm": 3.3,
+      "n": 15492
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.58,
+      "rms_mm": 0.65,
+      "p95_mm": 1.13,
+      "max_mm": 2.98,
+      "n": 20000
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 2.63,
+    "y_anterior": 2.63,
+    "z_superior": -2.78,
+    "norm": 4.64,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR07": {
+   "side": "right",
+   "order": 7,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 1.4,
+    "y_anterior": 1.71,
+    "z_superior": -5.31,
+    "norm": 5.75
+   },
+   "volume_ml": {
+    "nlm": 22.89,
+    "denver": 22.36
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.45,
+     "rms_mm": 1.69,
+     "p95_mm": 3.07,
+     "max_mm": 4.4,
+     "n": 16220
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.44,
+     "rms_mm": 1.67,
+     "p95_mm": 2.99,
+     "max_mm": 4.45,
+     "n": 20000
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.623,
+    "about_x_right_deg": 0.317,
+    "about_y_anterior_deg": 0.063,
+    "about_z_superior_deg": -0.533,
+    "translation_mm": [
+     -0.2,
+     -1.51,
+     -2.31
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.52,
+      "rms_mm": 0.58,
+      "p95_mm": 0.96,
+      "max_mm": 2.7,
+      "n": 16220
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.53,
+      "rms_mm": 0.58,
+      "p95_mm": 0.97,
+      "max_mm": 2.26,
+      "n": 20000
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 1.55,
+    "y_anterior": 0.85,
+    "z_superior": -2.08,
+    "norm": 2.73,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR08": {
+   "side": "right",
+   "order": 8,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 2.28,
+    "y_anterior": 0.72,
+    "z_superior": -4.59,
+    "norm": 5.17
+   },
+   "volume_ml": {
+    "nlm": 18.09,
+    "denver": 16.88
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.36,
+     "rms_mm": 1.62,
+     "p95_mm": 3.1,
+     "max_mm": 5.15,
+     "n": 14081
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.33,
+     "rms_mm": 1.55,
+     "p95_mm": 2.83,
+     "max_mm": 4.4,
+     "n": 18994
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.585,
+    "about_x_right_deg": 0.348,
+    "about_y_anterior_deg": 0.138,
+    "about_z_superior_deg": -0.45,
+    "translation_mm": [
+     -0.34,
+     -1.34,
+     -2.35
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.51,
+      "rms_mm": 0.57,
+      "p95_mm": 0.95,
+      "max_mm": 2.77,
+      "n": 14081
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.53,
+      "rms_mm": 0.59,
+      "p95_mm": 0.96,
+      "max_mm": 2.81,
+      "n": 18994
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 2.43,
+    "y_anterior": -0.14,
+    "z_superior": -1.36,
+    "norm": 2.79,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR09": {
+   "side": "right",
+   "order": 9,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 1.99,
+    "y_anterior": 0.02,
+    "z_superior": -4.55,
+    "norm": 4.97
+   },
+   "volume_ml": {
+    "nlm": 18.28,
+    "denver": 17.15
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.28,
+     "rms_mm": 1.54,
+     "p95_mm": 2.99,
+     "max_mm": 4.18,
+     "n": 14413
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.26,
+     "rms_mm": 1.5,
+     "p95_mm": 2.79,
+     "max_mm": 4.46,
+     "n": 19475
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.698,
+    "about_x_right_deg": 0.348,
+    "about_y_anterior_deg": 0.082,
+    "about_z_superior_deg": -0.6,
+    "translation_mm": [
+     -0.35,
+     -1.27,
+     -2.33
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.5,
+      "rms_mm": 0.56,
+      "p95_mm": 0.96,
+      "max_mm": 2.21,
+      "n": 14413
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.52,
+      "rms_mm": 0.58,
+      "p95_mm": 0.97,
+      "max_mm": 2.24,
+      "n": 19475
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 2.14,
+    "y_anterior": -0.84,
+    "z_superior": -1.32,
+    "norm": 2.65,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR10": {
+   "side": "right",
+   "order": 10,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.96,
+    "y_anterior": -0.7,
+    "z_superior": -3.77,
+    "norm": 3.96
+   },
+   "volume_ml": {
+    "nlm": 13.82,
+    "denver": 13.05
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.19,
+     "rms_mm": 1.45,
+     "p95_mm": 2.85,
+     "max_mm": 4.25,
+     "n": 12194
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.18,
+     "rms_mm": 1.42,
+     "p95_mm": 2.72,
+     "max_mm": 4.41,
+     "n": 16462
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.8,
+    "about_x_right_deg": 0.288,
+    "about_y_anterior_deg": -0.006,
+    "about_z_superior_deg": -0.747,
+    "translation_mm": [
+     -0.56,
+     -1.15,
+     -2.32
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.46,
+      "rms_mm": 0.52,
+      "p95_mm": 0.89,
+      "max_mm": 2.47,
+      "n": 12194
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.49,
+      "rms_mm": 0.54,
+      "p95_mm": 0.93,
+      "max_mm": 2.53,
+      "n": 16462
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 1.11,
+    "y_anterior": -1.56,
+    "z_superior": -0.54,
+    "norm": 1.99,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR11": {
+   "side": "right",
+   "order": 11,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 0.48,
+    "y_anterior": -0.98,
+    "z_superior": -3.37,
+    "norm": 3.54
+   },
+   "volume_ml": {
+    "nlm": 10.59,
+    "denver": 9.89
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.18,
+     "rms_mm": 1.39,
+     "p95_mm": 2.6,
+     "max_mm": 3.67,
+     "n": 10057
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.15,
+     "rms_mm": 1.34,
+     "p95_mm": 2.48,
+     "max_mm": 3.71,
+     "n": 13396
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 0.928,
+    "about_x_right_deg": -0.129,
+    "about_y_anterior_deg": -0.343,
+    "about_z_superior_deg": -0.852,
+    "translation_mm": [
+     -0.95,
+     -1.13,
+     -1.55
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.53,
+      "rms_mm": 0.61,
+      "p95_mm": 1.08,
+      "max_mm": 2.41,
+      "n": 10057
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.54,
+      "rms_mm": 0.59,
+      "p95_mm": 1.02,
+      "max_mm": 2.23,
+      "n": 13396
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 0.63,
+    "y_anterior": -1.84,
+    "z_superior": -0.14,
+    "norm": 1.95,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  },
+  "RR12": {
+   "side": "right",
+   "order": 12,
+   "name_status": "pending",
+   "centroid_offset_vhf_mm": {
+    "x_right": 1.44,
+    "y_anterior": -0.7,
+    "z_superior": -4.8,
+    "norm": 5.06
+   },
+   "volume_ml": {
+    "nlm": 6.54,
+    "denver": 6.09
+   },
+   "surface_distance_placed": {
+    "nlm_to_denver": {
+     "mean_mm": 1.13,
+     "rms_mm": 1.3,
+     "p95_mm": 2.28,
+     "max_mm": 3.48,
+     "n": 6427
+    },
+    "denver_to_nlm": {
+     "mean_mm": 1.13,
+     "rms_mm": 1.29,
+     "p95_mm": 2.22,
+     "max_mm": 4.16,
+     "n": 8620
+    }
+   },
+   "own_rigid_fit": {
+    "angle_deg": 1.81,
+    "about_x_right_deg": 0.497,
+    "about_y_anterior_deg": 0.14,
+    "about_z_superior_deg": -1.735,
+    "translation_mm": [
+     -0.95,
+     -0.7,
+     -1.42
+    ],
+    "residual_after_fit": {
+     "nlm_to_denver": {
+      "mean_mm": 0.53,
+      "rms_mm": 0.6,
+      "p95_mm": 1.11,
+      "max_mm": 2.53,
+      "n": 6427
+     },
+     "denver_to_nlm": {
+      "mean_mm": 0.54,
+      "rms_mm": 0.61,
+      "p95_mm": 1.06,
+      "max_mm": 3.04,
+      "n": 8620
+     }
+    }
+   },
+   "relative_to_pelvis": {
+    "x_right": 1.59,
+    "y_anterior": -1.56,
+    "z_superior": -1.57,
+    "norm": 2.73,
+    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+   }
+  }
+ },
+ "neighbour_control": {
+  "meaning": "each NLM vertebra against the next caudal Denver instance; the method must show the inter-level spacing here",
+  "pairs": [
+   {
+    "nlm": "V01",
+    "denver": "V02",
+    "centroid_offset_norm_mm": 22.84
+   },
+   {
+    "nlm": "V02",
+    "denver": "V03",
+    "centroid_offset_norm_mm": 24.69
+   },
+   {
+    "nlm": "V03",
+    "denver": "V04",
+    "centroid_offset_norm_mm": 20.47
+   },
+   {
+    "nlm": "V04",
+    "denver": "V05",
+    "centroid_offset_norm_mm": 19.99
+   },
+   {
+    "nlm": "V05",
+    "denver": "V06",
+    "centroid_offset_norm_mm": 20.52
+   },
+   {
+    "nlm": "V06",
+    "denver": "V07",
+    "centroid_offset_norm_mm": 22.17
+   },
+   {
+    "nlm": "V07",
+    "denver": "V08",
+    "centroid_offset_norm_mm": 22.19
+   },
+   {
+    "nlm": "V08",
+    "denver": "V09",
+    "centroid_offset_norm_mm": 25.05
+   },
+   {
+    "nlm": "V09",
+    "denver": "V10",
+    "centroid_offset_norm_mm": 25.68
+   },
+   {
+    "nlm": "V10",
+    "denver": "V11",
+    "centroid_offset_norm_mm": 25.65
+   },
+   {
+    "nlm": "V11",
+    "denver": "V12",
+    "centroid_offset_norm_mm": 25.32
+   },
+   {
+    "nlm": "V12",
+    "denver": "V13",
+    "centroid_offset_norm_mm": 26.17
+   },
+   {
+    "nlm": "V13",
+    "denver": "V14",
+    "centroid_offset_norm_mm": 25.86
+   },
+   {
+    "nlm": "V14",
+    "denver": "V15",
+    "centroid_offset_norm_mm": 26.1
+   },
+   {
+    "nlm": "V15",
+    "denver": "V16",
+    "centroid_offset_norm_mm": 26.58
+   },
+   {
+    "nlm": "V16",
+    "denver": "V17",
+    "centroid_offset_norm_mm": 27.26
+   },
+   {
+    "nlm": "V17",
+    "denver": "V18",
+    "centroid_offset_norm_mm": 28.72
+   },
+   {
+    "nlm": "V18",
+    "denver": "V19",
+    "centroid_offset_norm_mm": 31.27
+   },
+   {
+    "nlm": "V19",
+    "denver": "V20",
+    "centroid_offset_norm_mm": 34.06
+   },
+   {
+    "nlm": "V20",
+    "denver": "V21",
+    "centroid_offset_norm_mm": 35.43
+   },
+   {
+    "nlm": "V21",
+    "denver": "V22",
+    "centroid_offset_norm_mm": 38.39
+   },
+   {
+    "nlm": "V22",
+    "denver": "V25",
+    "centroid_offset_norm_mm": 38.7
+   },
+   {
+    "nlm": "V25",
+    "denver": "V26",
+    "centroid_offset_norm_mm": 36.19
+   },
+   {
+    "nlm": "V26",
+    "denver": "V27",
+    "centroid_offset_norm_mm": 34.43
+   }
+  ]
+ },
+ "panel": "generated/trunk-posture-offset.png"
+}

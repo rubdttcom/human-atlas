@@ -12,7 +12,19 @@ export interface Gates {class_equivalence?:{equivalent_models:string[];passed:bo
 export interface DistanceStats {p50:number;p95:number}
 export interface ShapeCheck {geometry_sha256?:string;hu_edge?:number;band_mm?:number;decision:string;passed:boolean|null;placement_p95_mm?:number|null;shape_p95_mm?:number|null;
  own_fit_rotation_deg?:number|null;own_fit_centroid_displacement_mm?:number|null;diverged?:boolean|null;baseline_bone?:string|null;baseline_shape_p95_mm?:number|null;report?:string;note?:string}
+export interface OffsetVector {x_right:number;y_anterior:number;z_superior:number;norm:number;meaning?:string}
+export interface PostureUncertainty {registration_floor_mm:number;segmentation_model_range_mm:number;combined_mm:number;exceeds_uncertainty:boolean;
+ relative_floor_mm?:number;relative_combined_mm?:number;relative_exceeds_uncertainty?:boolean;rule?:string;relative_rule?:string}
+/** Plan B stage 0 (scripts/trunk-posture-offset.py): Denver aligned CT minus NLM fresh CT for one consensus instance. */
+export interface PostureOffset {status:string;report:string;report_sha256:string;frame?:string;match?:string;centroid_offset_vhf_mm?:OffsetVector;relative_to_pelvis?:OffsetVector|null;
+ common_shift_vhf_mm?:OffsetVector;surface_p95_placed_mm?:number;own_rigid_fit?:{angle_deg:number;about_x_right_deg:number;about_y_anterior_deg:number;about_z_superior_deg:number;residual_after_fit_p95_mm:number};
+ uncertainty?:PostureUncertainty|null;registration_floor_pelvis_mm?:number;whole_spine_chain_rotation_deg?:number|null;note?:string}
+/** The same measurement carried to a plain CT label (nlm-vhf-ct) through the instance its label voted into or the nearest level by z. */
+export interface TrunkPostureContext {report:string;report_sha256:string;frame?:string;link:string;instance_id:string;instance_hra_name_by_order?:string|null;mesh_centroid_z_vhf_mm:number;
+ inside_measured_span:boolean;centroid_offset_vhf_mm:OffsetVector;relative_to_pelvis?:OffsetVector|null;common_shift_vhf_mm?:OffsetVector;own_rigid_fit_angle_deg:number;
+ uncertainty_combined_mm?:number|null;registration_floor_pelvis_mm:number;whole_spine_chain_rotation_deg?:number|null;note?:string}
 export interface ModelAgreement {
+ posture_offset?:PostureOffset|null;trunk_posture_context?:TrunkPostureContext|null;
  geometry_type?:string;vote_rule?:string;segmentation_models?:string;instance_id?:string;instance_family?:string;role?:string;
  bone_class?:string;review_status?:string;consensus_status?:string;gates?:Gates|null;denver_mesh?:string|null;
  versus_nlm_vhf_ct_label?:{dice:number;volume_ratio_candidate_over_label:number}|null;
@@ -149,4 +161,48 @@ export function agreementSections(record:ModelAgreement):AgreementSection[] {
   sections.push({title:'Shape check (plan B 2.6)',note:'The candidate was segmented on this same CT, so a small residual to the CT edge measures the label boundary against the HU threshold, not independent geometry. Same procedure as the Denver baseline (scripts/ct_edge_fit.py). Not anatomical validation; acceptance under 2.6 needs the class baseline, and substitution stays a recorded decision.',rows});
  }
  return sections;
+}
+
+export const POSTURE_TITLE='Trunk posture, fresh CT versus frozen block (plan B stage 0)';
+export const POSTURE_DISCLAIMER='Denver aligned CT (frozen block) minus NLM fresh CT (on the table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected and nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame.';
+const vec=(v:OffsetVector|null|undefined)=>v?`x ${num(v.x_right,1)} · y ${num(v.y_anterior,1)} · z ${num(v.z_superior,1)} · norm ${num(v.norm,1,' mm')} (+x right, +y anterior, +z superior)`:'not recorded';
+
+export function hasPosture(record:ModelAgreement|null|undefined):boolean {
+ return !!record&&(!!record.posture_offset||!!record.trunk_posture_context);
+}
+
+/** Rows for the posture panel; null when the record carries no measurement. */
+export function postureSection(record:ModelAgreement):AgreementSection|null {
+ const p=record.posture_offset;
+ if(p){
+  if(p.status!=='measured'||!p.centroid_offset_vhf_mm) return {title:POSTURE_TITLE,note:`not measured for this instance (report ${p.report})`,rows:[['Status',p.status]]};
+  const u=p.uncertainty;
+  const rows:Row[]=[
+   ['Centroid offset (as placed)',vec(p.centroid_offset_vhf_mm)],
+   ['Common shift of both registrations',p.common_shift_vhf_mm?`${vec(p.common_shift_vhf_mm)}: pelvis-anchor offset shared by every level, registration not posture`:'not recorded'],
+   ['Relative to the pelvis',p.relative_to_pelvis?`${vec(p.relative_to_pelvis)}: what moved with respect to the pelvis between the two acquisitions (posture + segmentation)`:'not recorded'],
+   ['Own rigid fit',p.own_rigid_fit?`rotation ${num(p.own_rigid_fit.angle_deg,2,' deg')} (about x ${num(p.own_rigid_fit.about_x_right_deg,2)}, y ${num(p.own_rigid_fit.about_y_anterior_deg,2)}, z ${num(p.own_rigid_fit.about_z_superior_deg,2)}); residual after the fit p95 ${num(p.own_rigid_fit.residual_after_fit_p95_mm,2,' mm')} (segmentation difference between the two CTs)`:'not recorded'],
+   ['Surface distance as placed',num(p.surface_p95_placed_mm,2,' mm')+' p95, NLM surface to Denver surface'],
+   ['Uncertainty',u?`absolute ${num(u.combined_mm,2,' mm')} (registration floor ${num(u.registration_floor_mm,2,' mm')} + model range ${num(u.segmentation_model_range_mm,2,' mm')}); relative to the pelvis ${num(u.relative_combined_mm,2,' mm')} (floor ${num(u.relative_floor_mm,2,' mm')} + model range) · offset ${u.relative_exceeds_uncertainty?'exceeds':'within'} the relative uncertainty`:'not recorded'],
+   ['Whole-spine chain rotation',num(p.whole_spine_chain_rotation_deg,2,' deg')+' (Kabsch on vertebra centroids; rotation about the spine axis is ill determined on near-collinear points)'],
+   ['Report',`${p.report} · SHA-256 ${p.report_sha256}`],
+  ];
+  return {title:POSTURE_TITLE,note:p.note??POSTURE_DISCLAIMER,rows};
+ }
+ const c=record.trunk_posture_context;
+ if(c){
+  const rows:Row[]=[
+   ['Level used',`${c.instance_id}${c.instance_hra_name_by_order?` (by-order candidate ${c.instance_hra_name_by_order}, name pending)`:''} · ${c.link}`],
+   ['Mesh centroid z',`${num(c.mesh_centroid_z_vhf_mm,1,' mm')} in the VHF frame · ${c.inside_measured_span?'inside the measured span (C1 to sacrum)':'outside the measured span: context only'}`],
+   ['Centroid offset at that level (as placed)',vec(c.centroid_offset_vhf_mm)],
+   ['Common shift of both registrations',c.common_shift_vhf_mm?vec(c.common_shift_vhf_mm):'not recorded'],
+   ['Relative to the pelvis',c.relative_to_pelvis?vec(c.relative_to_pelvis):'not recorded'],
+   ['Own rigid fit of that level',num(c.own_rigid_fit_angle_deg,2,' deg')],
+   ['Uncertainty at that level',num(c.uncertainty_combined_mm,2,' mm')+' (registration floor + model range, absolute)'],
+   ['Whole-spine chain rotation',num(c.whole_spine_chain_rotation_deg,2,' deg')],
+   ['Report',`${c.report} · SHA-256 ${c.report_sha256}`],
+  ];
+  return {title:POSTURE_TITLE,note:c.note??POSTURE_DISCLAIMER,rows};
+ }
+ return null;
 }

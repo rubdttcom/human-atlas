@@ -1,0 +1,122 @@
+{
+ "purpose": "origin completeness of the fullbody colour set, separate from the local integrity proven by inventory-cryosections.py",
+ "inventory": "generated/cryosection-inventory.json",
+ "origin_listing": {
+  "file": "data/raw/nlm-vhf/INDEX",
+  "section": "./Fullcolor/fullbody",
+  "listing_date": "1996-02-01 (NLM ls -lR shipped with the data set)",
+  "entries": 5186,
+  "placeholders_5454_bytes": 21
+ },
+ "local_vs_origin_listing": {
+  "in_origin_not_on_disk": [],
+  "on_disk_not_in_origin": [],
+  "byte_size_mismatches": [],
+  "placeholder_lists_equal": true
+ },
+ "absent_inside_range": {
+  "files": [
+   "avf2328c.raw.Z",
+   "avf2329a.raw.Z",
+   "avf2329b.raw.Z",
+   "avf2730c.raw.Z"
+  ],
+  "listed_by_origin": [],
+  "conclusion": "absent from the 1996 origin listing and not served by the NLM server today (HEAD 403; neighbours 200)"
+ },
+ "server_probe": {
+  "base_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/Fullcolor/fullbody/",
+  "method": "HTTP HEAD; the server answers 403 for unserved paths and for directory listings",
+  "results": {
+   "avf2328c.raw.Z": {
+    "status": 403,
+    "content_length": null,
+    "expected": "absent"
+   },
+   "avf2329a.raw.Z": {
+    "status": 403,
+    "content_length": null,
+    "expected": "absent"
+   },
+   "avf2329b.raw.Z": {
+    "status": 403,
+    "content_length": null,
+    "expected": "absent"
+   },
+   "avf2730c.raw.Z": {
+    "status": 403,
+    "content_length": null,
+    "expected": "absent"
+   },
+   "avf2328b.raw.Z": {
+    "status": 200,
+    "content_length": "4426305",
+    "expected": "present"
+   },
+   "avf2329c.raw.Z": {
+    "status": 200,
+    "content_length": "5454",
+    "expected": "present"
+   },
+   "avf2730b.raw.Z": {
+    "status": 200,
+    "content_length": "3902730",
+    "expected": "present"
+   },
+   "avf1001a.raw.Z": {
+    "status": 200,
+    "content_length": "4711585",
+    "expected": "present"
+   }
+  }
+ },
+ "counts": {
+  "files_on_disk": 5186,
+  "expected_if_complete": 5190,
+  "absent": 4,
+  "placeholders": 21,
+  "usable_slices": 5165,
+  "nlm_documented_slice_count": 5189,
+  "nlm_documented_count_note": "NLM documents 5189 slices; the origin listing has 5186 files and 5165 non-placeholder files; neither matches 5189, so the documented figure is recorded as unexplained, not attributed to any single absent file"
+ },
+ "placeholder_groups": [
+  {
+   "first": "avf1492b",
+   "last": "avf1497b",
+   "count": 16,
+   "thickness_of_missing_slices_mm": 5.33,
+   "distance_between_bounding_valid_slices_mm": 5.67
+  },
+  {
+   "first": "avf1977c",
+   "last": "avf1978b",
+   "count": 3,
+   "thickness_of_missing_slices_mm": 1.0,
+   "distance_between_bounding_valid_slices_mm": 1.33
+  },
+  {
+   "first": "avf2329c",
+   "last": "avf2330a",
+   "count": 2,
+   "thickness_of_missing_slices_mm": 0.67,
+   "distance_between_bounding_valid_slices_mm": 1.0
+  }
+ ],
+ "absent_groups": [
+  {
+   "first": "avf2328c",
+   "last": "avf2329b",
+   "count": 3,
+   "thickness_of_missing_slices_mm": 1.0,
+   "distance_between_bounding_valid_slices_mm": 1.33
+  },
+  {
+   "first": "avf2730c",
+   "last": "avf2730c",
+   "count": 1,
+   "thickness_of_missing_slices_mm": 0.33,
+   "distance_between_bounding_valid_slices_mm": 0.67
+  }
+ ],
+ "thickness_rule": "thickness_of_missing_slices_mm = count x 1/3 mm; distance_between_bounding_valid_slices_mm = (count + 1) x 1/3 mm; both are declared-spacing values, unverified until stage 0"
+}

@@ -7,7 +7,7 @@
     "source_asset": "CTCONS:VHF:V01",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -108,6 +108,55 @@
     "hra_name_by_order": "C1",
     "hra_z_offset_mm": 1.6,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.69,
+        "y_anterior": -3.16,
+        "z_superior": -5.98,
+        "norm": 6.8
+      },
+      "surface_p95_placed_mm": 5.98,
+      "own_rigid_fit": {
+        "angle_deg": 0.385,
+        "about_x_right_deg": 0.37,
+        "about_y_anterior_deg": -0.098,
+        "about_z_superior_deg": 0.045,
+        "residual_after_fit_p95_mm": 0.87
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.84,
+        "y_anterior": -4.02,
+        "z_superior": -2.75,
+        "norm": 4.94,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.28,
+        "combined_mm": 5.63,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": true,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.04,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": true
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -140,7 +189,7 @@
     "source_asset": "CTCONS:VHF:V02",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -241,6 +290,55 @@
     "hra_name_by_order": "C2",
     "hra_z_offset_mm": -3.3,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.61,
+        "y_anterior": -3.21,
+        "z_superior": -6.04,
+        "norm": 6.86
+      },
+      "surface_p95_placed_mm": 5.91,
+      "own_rigid_fit": {
+        "angle_deg": 0.251,
+        "about_x_right_deg": 0.238,
+        "about_y_anterior_deg": 0.063,
+        "about_z_superior_deg": 0.048,
+        "residual_after_fit_p95_mm": 0.82
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.76,
+        "y_anterior": -4.07,
+        "z_superior": -2.81,
+        "norm": 5,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.26,
+        "combined_mm": 5.61,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": true,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.02,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": true
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -273,7 +371,7 @@
     "source_asset": "CTCONS:VHF:V03",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -374,6 +472,55 @@
     "hra_name_by_order": "C3",
     "hra_z_offset_mm": 4,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.59,
+        "y_anterior": -3.08,
+        "z_superior": -5.89,
+        "norm": 6.68
+      },
+      "surface_p95_placed_mm": 6.08,
+      "own_rigid_fit": {
+        "angle_deg": 0.242,
+        "about_x_right_deg": -0.009,
+        "about_y_anterior_deg": 0.082,
+        "about_z_superior_deg": 0.227,
+        "residual_after_fit_p95_mm": 0.85
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.74,
+        "y_anterior": -3.94,
+        "z_superior": -2.66,
+        "norm": 4.81,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.19,
+        "combined_mm": 5.54,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": true,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.95,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": true
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -406,7 +553,7 @@
     "source_asset": "CTCONS:VHF:V04",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -507,6 +654,55 @@
     "hra_name_by_order": "C4",
     "hra_z_offset_mm": 4.3,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.29,
+        "y_anterior": -2.42,
+        "z_superior": -5.45,
+        "norm": 5.97
+      },
+      "surface_p95_placed_mm": 5.97,
+      "own_rigid_fit": {
+        "angle_deg": 0.302,
+        "about_x_right_deg": 0.298,
+        "about_y_anterior_deg": 0.043,
+        "about_z_superior_deg": -0.022,
+        "residual_after_fit_p95_mm": 1.12
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.44,
+        "y_anterior": -3.28,
+        "z_superior": -2.22,
+        "norm": 3.99,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 4.09,
+        "combined_mm": 7.44,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 4.85,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -539,7 +735,7 @@
     "source_asset": "CTCONS:VHF:V05",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -640,6 +836,55 @@
     "hra_name_by_order": "C5",
     "hra_z_offset_mm": 3.4,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 1.62,
+        "y_anterior": 0.12,
+        "z_superior": -4.87,
+        "norm": 5.14
+      },
+      "surface_p95_placed_mm": 5.12,
+      "own_rigid_fit": {
+        "angle_deg": 4.273,
+        "about_x_right_deg": -4.27,
+        "about_y_anterior_deg": -0.09,
+        "about_z_superior_deg": 0.102,
+        "residual_after_fit_p95_mm": 2.54
+      },
+      "relative_to_pelvis": {
+        "x_right": 1.77,
+        "y_anterior": -0.74,
+        "z_superior": -1.64,
+        "norm": 2.52,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 3.46,
+        "combined_mm": 6.81,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 4.22,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -672,7 +917,7 @@
     "source_asset": "CTCONS:VHF:V06",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -773,6 +1018,55 @@
     "hra_name_by_order": "C6",
     "hra_z_offset_mm": 3.6,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.2,
+        "y_anterior": -1.94,
+        "z_superior": -3.77,
+        "norm": 4.25
+      },
+      "surface_p95_placed_mm": 3.97,
+      "own_rigid_fit": {
+        "angle_deg": 0.206,
+        "about_x_right_deg": 0.165,
+        "about_y_anterior_deg": -0.007,
+        "about_z_superior_deg": 0.123,
+        "residual_after_fit_p95_mm": 0.95
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.35,
+        "y_anterior": -2.8,
+        "z_superior": -0.54,
+        "norm": 2.87,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.22,
+        "combined_mm": 5.57,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.98,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -805,7 +1099,7 @@
     "source_asset": "CTCONS:VHF:V07",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -908,6 +1202,55 @@
     "crosses_skellytour_seam_z": [
       260
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.06,
+        "y_anterior": -1.61,
+        "z_superior": -3.37,
+        "norm": 3.74
+      },
+      "surface_p95_placed_mm": 3.59,
+      "own_rigid_fit": {
+        "angle_deg": 0.293,
+        "about_x_right_deg": 0.291,
+        "about_y_anterior_deg": 0.014,
+        "about_z_superior_deg": -0.027,
+        "residual_after_fit_p95_mm": 0.88
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.21,
+        "y_anterior": -2.47,
+        "z_superior": -0.14,
+        "norm": 2.48,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.15,
+        "combined_mm": 5.5,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.91,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -940,7 +1283,7 @@
     "source_asset": "CTCONS:VHF:V08",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1043,6 +1386,55 @@
     "crosses_skellytour_seam_z": [
       260
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.05,
+        "y_anterior": -1.81,
+        "z_superior": -3,
+        "norm": 3.5
+      },
+      "surface_p95_placed_mm": 3.17,
+      "own_rigid_fit": {
+        "angle_deg": 0.14,
+        "about_x_right_deg": 0.089,
+        "about_y_anterior_deg": -0.053,
+        "about_z_superior_deg": 0.094,
+        "residual_after_fit_p95_mm": 0.67
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.2,
+        "y_anterior": -2.67,
+        "z_superior": 0.23,
+        "norm": 2.69,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.22,
+        "combined_mm": 5.57,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.98,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -1075,7 +1467,7 @@
     "source_asset": "CTCONS:VHF:V09",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1176,6 +1568,55 @@
     "hra_name_by_order": "T2",
     "hra_z_offset_mm": 1.8,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0,
+        "y_anterior": -1.79,
+        "z_superior": -3.07,
+        "norm": 3.56
+      },
+      "surface_p95_placed_mm": 3.21,
+      "own_rigid_fit": {
+        "angle_deg": 0.155,
+        "about_x_right_deg": 0.101,
+        "about_y_anterior_deg": 0.118,
+        "about_z_superior_deg": 0.009,
+        "residual_after_fit_p95_mm": 0.7
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.15,
+        "y_anterior": -2.65,
+        "z_superior": 0.16,
+        "norm": 2.66,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.37,
+        "combined_mm": 5.72,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.13,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -1208,7 +1649,7 @@
     "source_asset": "CTCONS:VHF:V10",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1309,6 +1750,55 @@
     "hra_name_by_order": "T3",
     "hra_z_offset_mm": 1.8,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.04,
+        "y_anterior": -1.17,
+        "z_superior": -3.03,
+        "norm": 3.25
+      },
+      "surface_p95_placed_mm": 3.15,
+      "own_rigid_fit": {
+        "angle_deg": 0.198,
+        "about_x_right_deg": -0.041,
+        "about_y_anterior_deg": -0.002,
+        "about_z_superior_deg": 0.194,
+        "residual_after_fit_p95_mm": 0.77
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.11,
+        "y_anterior": -2.03,
+        "z_superior": 0.2,
+        "norm": 2.04,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.34,
+        "combined_mm": 5.69,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.1,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -1341,7 +1831,7 @@
     "source_asset": "CTCONS:VHF:V11",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1442,6 +1932,55 @@
     "hra_name_by_order": "T4",
     "hra_z_offset_mm": 3.6,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.01,
+        "y_anterior": -1.25,
+        "z_superior": -3.06,
+        "norm": 3.31
+      },
+      "surface_p95_placed_mm": 3.09,
+      "own_rigid_fit": {
+        "angle_deg": 0.224,
+        "about_x_right_deg": 0.215,
+        "about_y_anterior_deg": 0.02,
+        "about_z_superior_deg": 0.058,
+        "residual_after_fit_p95_mm": 0.7
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.14,
+        "y_anterior": -2.11,
+        "z_superior": 0.17,
+        "norm": 2.12,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.29,
+        "combined_mm": 5.64,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.05,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -1474,7 +2013,7 @@
     "source_asset": "CTCONS:VHF:V12",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1575,6 +2114,55 @@
     "hra_name_by_order": "T5",
     "hra_z_offset_mm": 3,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.12,
+        "y_anterior": -1.31,
+        "z_superior": -3.08,
+        "norm": 3.35
+      },
+      "surface_p95_placed_mm": 3.12,
+      "own_rigid_fit": {
+        "angle_deg": 0.19,
+        "about_x_right_deg": 0.114,
+        "about_y_anterior_deg": 0.024,
+        "about_z_superior_deg": 0.15,
+        "residual_after_fit_p95_mm": 0.71
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.03,
+        "y_anterior": -2.17,
+        "z_superior": 0.15,
+        "norm": 2.18,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.16,
+        "combined_mm": 5.51,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.92,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -1607,7 +2195,7 @@
     "source_asset": "CTCONS:VHF:V13",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1708,6 +2296,55 @@
     "hra_name_by_order": "T6",
     "hra_z_offset_mm": 2.8,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.07,
+        "y_anterior": -1.51,
+        "z_superior": -3.13,
+        "norm": 3.48
+      },
+      "surface_p95_placed_mm": 3.14,
+      "own_rigid_fit": {
+        "angle_deg": 0.156,
+        "about_x_right_deg": 0.02,
+        "about_y_anterior_deg": -0.005,
+        "about_z_superior_deg": 0.155,
+        "residual_after_fit_p95_mm": 0.73
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.08,
+        "y_anterior": -2.37,
+        "z_superior": 0.1,
+        "norm": 2.37,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 1.98,
+        "combined_mm": 5.33,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.74,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -1740,7 +2377,7 @@
     "source_asset": "CTCONS:VHF:V14",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1841,6 +2478,55 @@
     "hra_name_by_order": "T7",
     "hra_z_offset_mm": 4.3,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.17,
+        "y_anterior": -1.47,
+        "z_superior": -3.12,
+        "norm": 3.45
+      },
+      "surface_p95_placed_mm": 3.12,
+      "own_rigid_fit": {
+        "angle_deg": 0.347,
+        "about_x_right_deg": 0.296,
+        "about_y_anterior_deg": -0.178,
+        "about_z_superior_deg": 0.033,
+        "residual_after_fit_p95_mm": 0.69
+      },
+      "relative_to_pelvis": {
+        "x_right": -0.02,
+        "y_anterior": -2.33,
+        "z_superior": 0.11,
+        "norm": 2.33,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.31,
+        "combined_mm": 5.66,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.07,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -1873,7 +2559,7 @@
     "source_asset": "CTCONS:VHF:V15",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -1974,6 +2660,55 @@
     "hra_name_by_order": "T8",
     "hra_z_offset_mm": 4.3,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.01,
+        "y_anterior": -1.33,
+        "z_superior": -3.21,
+        "norm": 3.47
+      },
+      "surface_p95_placed_mm": 3.12,
+      "own_rigid_fit": {
+        "angle_deg": 0.132,
+        "about_x_right_deg": 0.122,
+        "about_y_anterior_deg": 0.035,
+        "about_z_superior_deg": 0.036,
+        "residual_after_fit_p95_mm": 0.71
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.14,
+        "y_anterior": -2.19,
+        "z_superior": 0.02,
+        "norm": 2.19,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.3,
+        "combined_mm": 5.65,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.06,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -2006,7 +2741,7 @@
     "source_asset": "CTCONS:VHF:V16",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2107,6 +2842,55 @@
     "hra_name_by_order": "T9",
     "hra_z_offset_mm": 2.4,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.03,
+        "y_anterior": -1.19,
+        "z_superior": -3.34,
+        "norm": 3.55
+      },
+      "surface_p95_placed_mm": 3.15,
+      "own_rigid_fit": {
+        "angle_deg": 0.281,
+        "about_x_right_deg": 0.239,
+        "about_y_anterior_deg": 0.017,
+        "about_z_superior_deg": 0.147,
+        "residual_after_fit_p95_mm": 0.75
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.18,
+        "y_anterior": -2.05,
+        "z_superior": -0.11,
+        "norm": 2.06,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.64,
+        "combined_mm": 5.99,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.4,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -2139,7 +2923,7 @@
     "source_asset": "CTCONS:VHF:V17",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2240,6 +3024,55 @@
     "hra_name_by_order": "T10",
     "hra_z_offset_mm": 0.2,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.02,
+        "y_anterior": -0.99,
+        "z_superior": -3.46,
+        "norm": 3.6
+      },
+      "surface_p95_placed_mm": 3.29,
+      "own_rigid_fit": {
+        "angle_deg": 0.142,
+        "about_x_right_deg": 0.122,
+        "about_y_anterior_deg": 0.063,
+        "about_z_superior_deg": 0.036,
+        "residual_after_fit_p95_mm": 0.85
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.17,
+        "y_anterior": -1.85,
+        "z_superior": -0.23,
+        "norm": 1.87,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.63,
+        "combined_mm": 5.98,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.39,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -2272,7 +3105,7 @@
     "source_asset": "CTCONS:VHF:V18",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2373,6 +3206,55 @@
     "hra_name_by_order": "T11",
     "hra_z_offset_mm": -1.7,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.1,
+        "y_anterior": -0.95,
+        "z_superior": -3.34,
+        "norm": 3.47
+      },
+      "surface_p95_placed_mm": 3.18,
+      "own_rigid_fit": {
+        "angle_deg": 0.157,
+        "about_x_right_deg": 0.15,
+        "about_y_anterior_deg": -0.047,
+        "about_z_superior_deg": -0.004,
+        "residual_after_fit_p95_mm": 0.82
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.05,
+        "y_anterior": -1.81,
+        "z_superior": -0.11,
+        "norm": 1.81,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.07,
+        "combined_mm": 5.42,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.83,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -2405,7 +3287,7 @@
     "source_asset": "CTCONS:VHF:V19",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2508,6 +3390,55 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.08,
+        "y_anterior": -0.86,
+        "z_superior": -3.46,
+        "norm": 3.57
+      },
+      "surface_p95_placed_mm": 3.59,
+      "own_rigid_fit": {
+        "angle_deg": 0.087,
+        "about_x_right_deg": -0.084,
+        "about_y_anterior_deg": 0.004,
+        "about_z_superior_deg": 0.023,
+        "residual_after_fit_p95_mm": 0.83
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.07,
+        "y_anterior": -1.72,
+        "z_superior": -0.23,
+        "norm": 1.74,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.04,
+        "combined_mm": 5.39,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.8,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -2540,7 +3471,7 @@
     "source_asset": "CTCONS:VHF:V20",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2641,6 +3572,55 @@
     "hra_name_by_order": "L1",
     "hra_z_offset_mm": 0.6,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.14,
+        "y_anterior": -1.4,
+        "z_superior": -3.23,
+        "norm": 3.52
+      },
+      "surface_p95_placed_mm": 3.54,
+      "own_rigid_fit": {
+        "angle_deg": 0.486,
+        "about_x_right_deg": 0.428,
+        "about_y_anterior_deg": 0.209,
+        "about_z_superior_deg": 0.095,
+        "residual_after_fit_p95_mm": 1.14
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.29,
+        "y_anterior": -2.26,
+        "z_superior": 0,
+        "norm": 2.28,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.06,
+        "combined_mm": 5.41,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.82,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -2673,7 +3653,7 @@
     "source_asset": "CTCONS:VHF:V21",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2780,6 +3760,55 @@
     "hra_name_by_order": "L2",
     "hra_z_offset_mm": 1.8,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.09,
+        "y_anterior": -0.53,
+        "z_superior": -2.27,
+        "norm": 2.33
+      },
+      "surface_p95_placed_mm": 3.63,
+      "own_rigid_fit": {
+        "angle_deg": 0.037,
+        "about_x_right_deg": -0.02,
+        "about_y_anterior_deg": 0.03,
+        "about_z_superior_deg": 0.007,
+        "residual_after_fit_p95_mm": 2.14
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.06,
+        "y_anterior": -1.39,
+        "z_superior": 0.96,
+        "norm": 1.69,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 2.06,
+        "combined_mm": 5.41,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.82,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -2812,7 +3841,7 @@
     "source_asset": "CTCONS:VHF:V22",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -2913,6 +3942,55 @@
     "hra_name_by_order": "L3",
     "hra_z_offset_mm": 4.6,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.52,
+        "y_anterior": 1.18,
+        "z_superior": -2.08,
+        "norm": 2.45
+      },
+      "surface_p95_placed_mm": 3.23,
+      "own_rigid_fit": {
+        "angle_deg": 1.821,
+        "about_x_right_deg": -1.693,
+        "about_y_anterior_deg": -0.659,
+        "about_z_superior_deg": 0.118,
+        "residual_after_fit_p95_mm": 2.04
+      },
+      "relative_to_pelvis": {
+        "x_right": -0.37,
+        "y_anterior": 0.32,
+        "z_superior": 1.15,
+        "norm": 1.25,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 4.27,
+        "combined_mm": 7.62,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 5.03,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -2945,7 +4023,7 @@
     "source_asset": "CTCONS:VHF:V25",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -3046,6 +4124,55 @@
     "hra_name_by_order": "L4",
     "hra_z_offset_mm": 0.5,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.59,
+        "y_anterior": 0.82,
+        "z_superior": -4.17,
+        "norm": 4.29
+      },
+      "surface_p95_placed_mm": 4.52,
+      "own_rigid_fit": {
+        "angle_deg": 1.3,
+        "about_x_right_deg": 0.959,
+        "about_y_anterior_deg": -0.876,
+        "about_z_superior_deg": 0.031,
+        "residual_after_fit_p95_mm": 2.67
+      },
+      "relative_to_pelvis": {
+        "x_right": -0.44,
+        "y_anterior": -0.04,
+        "z_superior": -0.94,
+        "norm": 1.04,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 3,
+        "combined_mm": 6.35,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 3.76,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -3078,7 +4205,7 @@
     "source_asset": "CTCONS:VHF:V26",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-0.bin",
     "source_chunk_sha256": "3a6108e1ed8de856f7e1584534f8d4f347acae723e45c17a66e8aba1efc60c74",
     "source_sex": "female",
@@ -3179,6 +4306,55 @@
     "hra_name_by_order": "L5",
     "hra_z_offset_mm": -3.6,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.08,
+        "y_anterior": -0.05,
+        "z_superior": -3.11,
+        "norm": 3.11
+      },
+      "surface_p95_placed_mm": 3.08,
+      "own_rigid_fit": {
+        "angle_deg": 0.221,
+        "about_x_right_deg": 0.217,
+        "about_y_anterior_deg": 0.018,
+        "about_z_superior_deg": 0.037,
+        "residual_after_fit_p95_mm": 0.98
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.07,
+        "y_anterior": -0.91,
+        "z_superior": 0.12,
+        "norm": 0.92,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 1.87,
+        "combined_mm": 5.22,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.63,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -3211,7 +4387,7 @@
     "source_asset": "CTCONS:VHF:V27",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3312,6 +4488,55 @@
     "hra_name_by_order": "L6",
     "hra_z_offset_mm": -6,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.03,
+        "y_anterior": 0.04,
+        "z_superior": -3.15,
+        "norm": 3.15
+      },
+      "surface_p95_placed_mm": 3.14,
+      "own_rigid_fit": {
+        "angle_deg": 0.098,
+        "about_x_right_deg": 0.09,
+        "about_y_anterior_deg": 0.034,
+        "about_z_superior_deg": 0.021,
+        "residual_after_fit_p95_mm": 0.98
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.12,
+        "y_anterior": -0.82,
+        "z_superior": 0.08,
+        "norm": 0.83,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 1.94,
+        "combined_mm": 5.29,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.7,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -3344,7 +4569,7 @@
     "source_asset": "CTCONS:VHF:S29",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3439,6 +4664,55 @@
     "crosses_skellytour_seam_z": [
       780
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.06,
+        "y_anterior": 0.67,
+        "z_superior": -2.28,
+        "norm": 2.37
+      },
+      "surface_p95_placed_mm": 2.93,
+      "own_rigid_fit": {
+        "angle_deg": 0.212,
+        "about_x_right_deg": 0.211,
+        "about_y_anterior_deg": -0.007,
+        "about_z_superior_deg": -0.024,
+        "residual_after_fit_p95_mm": 1.68
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.21,
+        "y_anterior": -0.19,
+        "z_superior": 0.95,
+        "norm": 0.99,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": {
+        "registration_floor_mm": 3.35,
+        "segmentation_model_range_mm": 1.74,
+        "combined_mm": 5.09,
+        "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
+        "exceeds_uncertainty": false,
+        "relative_floor_mm": 0.76,
+        "relative_combined_mm": 2.5,
+        "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
+        "relative_exceeds_uncertainty": false
+      },
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -3471,7 +4745,7 @@
     "source_asset": "CTCONS:VHF:RL01",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3572,6 +4846,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.7,
+        "y_anterior": -1.57,
+        "z_superior": -3.09,
+        "norm": 3.54
+      },
+      "surface_p95_placed_mm": 3.42,
+      "own_rigid_fit": {
+        "angle_deg": 0.723,
+        "about_x_right_deg": 0.343,
+        "about_y_anterior_deg": -0.612,
+        "about_z_superior_deg": 0.178,
+        "residual_after_fit_p95_mm": 0.93
+      },
+      "relative_to_pelvis": {
+        "x_right": -0.55,
+        "y_anterior": -2.43,
+        "z_superior": 0.14,
+        "norm": 2.5,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -3604,7 +4917,7 @@
     "source_asset": "CTCONS:VHF:RL02",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3705,6 +5018,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -1.31,
+        "y_anterior": -0.71,
+        "z_superior": -3.54,
+        "norm": 3.84
+      },
+      "surface_p95_placed_mm": 3.29,
+      "own_rigid_fit": {
+        "angle_deg": 0.477,
+        "about_x_right_deg": 0.255,
+        "about_y_anterior_deg": -0.381,
+        "about_z_superior_deg": 0.13,
+        "residual_after_fit_p95_mm": 0.84
+      },
+      "relative_to_pelvis": {
+        "x_right": -1.16,
+        "y_anterior": -1.57,
+        "z_superior": -0.31,
+        "norm": 1.98,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -3737,7 +5089,7 @@
     "source_asset": "CTCONS:VHF:RL03",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3838,6 +5190,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -2.24,
+        "y_anterior": -1.62,
+        "z_superior": -2.69,
+        "norm": 3.86
+      },
+      "surface_p95_placed_mm": 3.13,
+      "own_rigid_fit": {
+        "angle_deg": 0.848,
+        "about_x_right_deg": 0.421,
+        "about_y_anterior_deg": -0.731,
+        "about_z_superior_deg": 0.089,
+        "residual_after_fit_p95_mm": 0.92
+      },
+      "relative_to_pelvis": {
+        "x_right": -2.09,
+        "y_anterior": -2.48,
+        "z_superior": 0.54,
+        "norm": 3.29,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -3870,7 +5261,7 @@
     "source_asset": "CTCONS:VHF:RL04",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -3971,6 +5362,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -1.87,
+        "y_anterior": -0.18,
+        "z_superior": -3.42,
+        "norm": 3.9
+      },
+      "surface_p95_placed_mm": 3.17,
+      "own_rigid_fit": {
+        "angle_deg": 0.536,
+        "about_x_right_deg": 0.301,
+        "about_y_anterior_deg": -0.12,
+        "about_z_superior_deg": 0.427,
+        "residual_after_fit_p95_mm": 0.95
+      },
+      "relative_to_pelvis": {
+        "x_right": -1.72,
+        "y_anterior": -1.04,
+        "z_superior": -0.19,
+        "norm": 2.02,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -4003,7 +5433,7 @@
     "source_asset": "CTCONS:VHF:RL05",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4104,6 +5534,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -2.5,
+        "y_anterior": 2.11,
+        "z_superior": -4.7,
+        "norm": 5.73
+      },
+      "surface_p95_placed_mm": 3.2,
+      "own_rigid_fit": {
+        "angle_deg": 0.704,
+        "about_x_right_deg": 0.307,
+        "about_y_anterior_deg": -0.128,
+        "about_z_superior_deg": 0.62,
+        "residual_after_fit_p95_mm": 1.11
+      },
+      "relative_to_pelvis": {
+        "x_right": -2.35,
+        "y_anterior": 1.25,
+        "z_superior": -1.47,
+        "norm": 3.04,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -4136,7 +5605,7 @@
     "source_asset": "CTCONS:VHF:RL06",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4248,6 +5717,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -3.2,
+        "y_anterior": 4.15,
+        "z_superior": -6.26,
+        "norm": 8.16
+      },
+      "surface_p95_placed_mm": 3.18,
+      "own_rigid_fit": {
+        "angle_deg": 0.499,
+        "about_x_right_deg": 0.293,
+        "about_y_anterior_deg": -0.061,
+        "about_z_superior_deg": 0.399,
+        "residual_after_fit_p95_mm": 1.11
+      },
+      "relative_to_pelvis": {
+        "x_right": -3.05,
+        "y_anterior": 3.29,
+        "z_superior": -3.03,
+        "norm": 5.41,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -4280,7 +5788,7 @@
     "source_asset": "CTCONS:VHF:RL07",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4393,6 +5901,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -1.61,
+        "y_anterior": -3.42,
+        "z_superior": 0.32,
+        "norm": 3.79
+      },
+      "surface_p95_placed_mm": 3.27,
+      "own_rigid_fit": {
+        "angle_deg": 2.518,
+        "about_x_right_deg": 1.645,
+        "about_y_anterior_deg": -0.983,
+        "about_z_superior_deg": 1.634,
+        "residual_after_fit_p95_mm": 2.02
+      },
+      "relative_to_pelvis": {
+        "x_right": -1.46,
+        "y_anterior": -4.28,
+        "z_superior": 3.55,
+        "norm": 5.75,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -4425,7 +5972,7 @@
     "source_asset": "CTCONS:VHF:RL08",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4540,6 +6087,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -2.42,
+        "y_anterior": 0.69,
+        "z_superior": -4.25,
+        "norm": 4.94
+      },
+      "surface_p95_placed_mm": 3.04,
+      "own_rigid_fit": {
+        "angle_deg": 0.688,
+        "about_x_right_deg": 0.355,
+        "about_y_anterior_deg": -0.17,
+        "about_z_superior_deg": 0.564,
+        "residual_after_fit_p95_mm": 1.01
+      },
+      "relative_to_pelvis": {
+        "x_right": -2.27,
+        "y_anterior": -0.17,
+        "z_superior": -1.02,
+        "norm": 2.49,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -4572,7 +6158,7 @@
     "source_asset": "CTCONS:VHF:RL09",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4686,6 +6272,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -1.09,
+        "y_anterior": -2.95,
+        "z_superior": -0.66,
+        "norm": 3.21
+      },
+      "surface_p95_placed_mm": 3.32,
+      "own_rigid_fit": {
+        "angle_deg": 2.274,
+        "about_x_right_deg": 0.923,
+        "about_y_anterior_deg": 0.076,
+        "about_z_superior_deg": 2.077,
+        "residual_after_fit_p95_mm": 1.83
+      },
+      "relative_to_pelvis": {
+        "x_right": -0.94,
+        "y_anterior": -3.81,
+        "z_superior": 2.57,
+        "norm": 4.69,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -4718,7 +6343,7 @@
     "source_asset": "CTCONS:VHF:RL10",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4821,6 +6446,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -3.48,
+        "y_anterior": 2.51,
+        "z_superior": -8.23,
+        "norm": 9.28
+      },
+      "surface_p95_placed_mm": 2.9,
+      "own_rigid_fit": {
+        "angle_deg": 0.913,
+        "about_x_right_deg": 0.292,
+        "about_y_anterior_deg": 0.019,
+        "about_z_superior_deg": 0.865,
+        "residual_after_fit_p95_mm": 0.95
+      },
+      "relative_to_pelvis": {
+        "x_right": -3.33,
+        "y_anterior": 1.65,
+        "z_superior": -5,
+        "norm": 6.23,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -4853,7 +6517,7 @@
     "source_asset": "CTCONS:VHF:RL11",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -4956,6 +6620,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.46,
+        "y_anterior": -0.75,
+        "z_superior": -3.31,
+        "norm": 3.42
+      },
+      "surface_p95_placed_mm": 2.71,
+      "own_rigid_fit": {
+        "angle_deg": 0.531,
+        "about_x_right_deg": 0.141,
+        "about_y_anterior_deg": 0.093,
+        "about_z_superior_deg": 0.504,
+        "residual_after_fit_p95_mm": 0.99
+      },
+      "relative_to_pelvis": {
+        "x_right": -0.31,
+        "y_anterior": -1.61,
+        "z_superior": -0.08,
+        "norm": 1.64,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -4988,7 +6691,7 @@
     "source_asset": "CTCONS:VHF:RL12",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5091,6 +6794,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.42,
+        "y_anterior": -0.93,
+        "z_superior": -3.54,
+        "norm": 3.69
+      },
+      "surface_p95_placed_mm": 2.37,
+      "own_rigid_fit": {
+        "angle_deg": 1.823,
+        "about_x_right_deg": 0.454,
+        "about_y_anterior_deg": 0.066,
+        "about_z_superior_deg": 1.765,
+        "residual_after_fit_p95_mm": 1.2
+      },
+      "relative_to_pelvis": {
+        "x_right": -0.27,
+        "y_anterior": -1.79,
+        "z_superior": -0.31,
+        "norm": 1.84,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -5123,7 +6865,7 @@
     "source_asset": "CTCONS:VHF:RR01",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5224,6 +6966,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.8,
+        "y_anterior": -1.7,
+        "z_superior": -3.07,
+        "norm": 3.6
+      },
+      "surface_p95_placed_mm": 3.18,
+      "own_rigid_fit": {
+        "angle_deg": 0.762,
+        "about_x_right_deg": 0.313,
+        "about_y_anterior_deg": 0.315,
+        "about_z_superior_deg": -0.619,
+        "residual_after_fit_p95_mm": 0.94
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.95,
+        "y_anterior": -2.56,
+        "z_superior": 0.16,
+        "norm": 2.74,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -5256,7 +7037,7 @@
     "source_asset": "CTCONS:VHF:RR02",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5357,6 +7138,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 1.69,
+        "y_anterior": -1.2,
+        "z_superior": -3.53,
+        "norm": 4.1
+      },
+      "surface_p95_placed_mm": 3.15,
+      "own_rigid_fit": {
+        "angle_deg": 0.527,
+        "about_x_right_deg": 0.244,
+        "about_y_anterior_deg": 0.449,
+        "about_z_superior_deg": -0.127,
+        "residual_after_fit_p95_mm": 0.87
+      },
+      "relative_to_pelvis": {
+        "x_right": 1.84,
+        "y_anterior": -2.06,
+        "z_superior": -0.3,
+        "norm": 2.78,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -5389,7 +7209,7 @@
     "source_asset": "CTCONS:VHF:RR03",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5490,6 +7310,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 1.44,
+        "y_anterior": -1.46,
+        "z_superior": -3.01,
+        "norm": 3.65
+      },
+      "surface_p95_placed_mm": 3.15,
+      "own_rigid_fit": {
+        "angle_deg": 0.581,
+        "about_x_right_deg": 0.227,
+        "about_y_anterior_deg": 0.534,
+        "about_z_superior_deg": -0.012,
+        "residual_after_fit_p95_mm": 0.88
+      },
+      "relative_to_pelvis": {
+        "x_right": 1.59,
+        "y_anterior": -2.32,
+        "z_superior": 0.22,
+        "norm": 2.82,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -5522,7 +7381,7 @@
     "source_asset": "CTCONS:VHF:RR04",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5623,6 +7482,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -2.3,
+        "y_anterior": -0.59,
+        "z_superior": -3.38,
+        "norm": 4.13
+      },
+      "surface_p95_placed_mm": 3.2,
+      "own_rigid_fit": {
+        "angle_deg": 0.366,
+        "about_x_right_deg": 0.217,
+        "about_y_anterior_deg": -0.097,
+        "about_z_superior_deg": 0.279,
+        "residual_after_fit_p95_mm": 1.44
+      },
+      "relative_to_pelvis": {
+        "x_right": -2.15,
+        "y_anterior": -1.45,
+        "z_superior": -0.15,
+        "norm": 2.6,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -5655,7 +7553,7 @@
     "source_asset": "CTCONS:VHF:RR05",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5756,6 +7654,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": -0.72,
+        "y_anterior": 2.02,
+        "z_superior": -5.66,
+        "norm": 6.05
+      },
+      "surface_p95_placed_mm": 3.21,
+      "own_rigid_fit": {
+        "angle_deg": 0.23,
+        "about_x_right_deg": 0.192,
+        "about_y_anterior_deg": -0.045,
+        "about_z_superior_deg": -0.119,
+        "residual_after_fit_p95_mm": 1.32
+      },
+      "relative_to_pelvis": {
+        "x_right": -0.57,
+        "y_anterior": 1.16,
+        "z_superior": -2.43,
+        "norm": 2.75,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -5788,7 +7725,7 @@
     "source_asset": "CTCONS:VHF:RR06",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -5889,6 +7826,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 2.48,
+        "y_anterior": 3.49,
+        "z_superior": -6.01,
+        "norm": 7.37
+      },
+      "surface_p95_placed_mm": 3.2,
+      "own_rigid_fit": {
+        "angle_deg": 0.52,
+        "about_x_right_deg": 0.262,
+        "about_y_anterior_deg": 0.074,
+        "about_z_superior_deg": -0.443,
+        "residual_after_fit_p95_mm": 1.18
+      },
+      "relative_to_pelvis": {
+        "x_right": 2.63,
+        "y_anterior": 2.63,
+        "z_superior": -2.78,
+        "norm": 4.64,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -5921,7 +7897,7 @@
     "source_asset": "CTCONS:VHF:RR07",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -6022,6 +7998,45 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": [],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 1.4,
+        "y_anterior": 1.71,
+        "z_superior": -5.31,
+        "norm": 5.75
+      },
+      "surface_p95_placed_mm": 3.07,
+      "own_rigid_fit": {
+        "angle_deg": 0.623,
+        "about_x_right_deg": 0.317,
+        "about_y_anterior_deg": 0.063,
+        "about_z_superior_deg": -0.533,
+        "residual_after_fit_p95_mm": 0.96
+      },
+      "relative_to_pelvis": {
+        "x_right": 1.55,
+        "y_anterior": 0.85,
+        "z_superior": -2.08,
+        "norm": 2.73,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -6054,7 +8069,7 @@
     "source_asset": "CTCONS:VHF:RR08",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -6157,6 +8172,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 2.28,
+        "y_anterior": 0.72,
+        "z_superior": -4.59,
+        "norm": 5.17
+      },
+      "surface_p95_placed_mm": 3.1,
+      "own_rigid_fit": {
+        "angle_deg": 0.585,
+        "about_x_right_deg": 0.348,
+        "about_y_anterior_deg": 0.138,
+        "about_z_superior_deg": -0.45,
+        "residual_after_fit_p95_mm": 0.95
+      },
+      "relative_to_pelvis": {
+        "x_right": 2.43,
+        "y_anterior": -0.14,
+        "z_superior": -1.36,
+        "norm": 2.79,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -6189,7 +8243,7 @@
     "source_asset": "CTCONS:VHF:RR09",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-1.bin",
     "source_chunk_sha256": "7da536adae4b82cf13ac2f3f3a4613f9cec1fb308731de938d92a7111edd0c85",
     "source_sex": "female",
@@ -6292,6 +8346,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 1.99,
+        "y_anterior": 0.02,
+        "z_superior": -4.55,
+        "norm": 4.97
+      },
+      "surface_p95_placed_mm": 2.99,
+      "own_rigid_fit": {
+        "angle_deg": 0.698,
+        "about_x_right_deg": 0.348,
+        "about_y_anterior_deg": 0.082,
+        "about_z_superior_deg": -0.6,
+        "residual_after_fit_p95_mm": 0.96
+      },
+      "relative_to_pelvis": {
+        "x_right": 2.14,
+        "y_anterior": -0.84,
+        "z_superior": -1.32,
+        "norm": 2.65,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -6324,7 +8417,7 @@
     "source_asset": "CTCONS:VHF:RR10",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -6427,6 +8520,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.96,
+        "y_anterior": -0.7,
+        "z_superior": -3.77,
+        "norm": 3.96
+      },
+      "surface_p95_placed_mm": 2.85,
+      "own_rigid_fit": {
+        "angle_deg": 0.8,
+        "about_x_right_deg": 0.288,
+        "about_y_anterior_deg": -0.006,
+        "about_z_superior_deg": -0.747,
+        "residual_after_fit_p95_mm": 0.89
+      },
+      "relative_to_pelvis": {
+        "x_right": 1.11,
+        "y_anterior": -1.56,
+        "z_superior": -0.54,
+        "norm": 1.99,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -6459,7 +8591,7 @@
     "source_asset": "CTCONS:VHF:RR11",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -6562,6 +8694,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 0.48,
+        "y_anterior": -0.98,
+        "z_superior": -3.37,
+        "norm": 3.54
+      },
+      "surface_p95_placed_mm": 2.6,
+      "own_rigid_fit": {
+        "angle_deg": 0.928,
+        "about_x_right_deg": -0.129,
+        "about_y_anterior_deg": -0.343,
+        "about_z_superior_deg": -0.852,
+        "residual_after_fit_p95_mm": 1.08
+      },
+      "relative_to_pelvis": {
+        "x_right": 0.63,
+        "y_anterior": -1.84,
+        "z_superior": -0.14,
+        "norm": 1.95,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -6594,7 +8765,7 @@
     "source_asset": "CTCONS:VHF:RR12",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -6697,6 +8868,45 @@
     "crosses_skellytour_seam_z": [
       520
     ],
+    "posture_offset": {
+      "status": "measured",
+      "report": "generated/trunk-posture-offset.json",
+      "report_sha256": "26d4ec1e9b2a2ba42bafcbc848a1d9a531f3ef3661869cc4ec9755c0603bd5c0",
+      "frame": "VHF-image-2022 (+x subject right, +y anterior, +z superior, mm); offsets are Denver aligned CT minus NLM fresh CT",
+      "match": "same geometric id",
+      "centroid_offset_vhf_mm": {
+        "x_right": 1.44,
+        "y_anterior": -0.7,
+        "z_superior": -4.8,
+        "norm": 5.06
+      },
+      "surface_p95_placed_mm": 2.28,
+      "own_rigid_fit": {
+        "angle_deg": 1.81,
+        "about_x_right_deg": 0.497,
+        "about_y_anterior_deg": 0.14,
+        "about_z_superior_deg": -1.735,
+        "residual_after_fit_p95_mm": 1.11
+      },
+      "relative_to_pelvis": {
+        "x_right": 1.59,
+        "y_anterior": -1.56,
+        "z_superior": -1.57,
+        "norm": 2.73,
+        "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+      },
+      "common_shift_vhf_mm": {
+        "x_right": -0.15,
+        "y_anterior": 0.86,
+        "z_superior": -3.23,
+        "norm": 3.35,
+        "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+      },
+      "uncertainty": null,
+      "registration_floor_pelvis_mm": 3.35,
+      "whole_spine_chain_rotation_deg": 0.518,
+      "note": "Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0)."
+    },
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -6729,7 +8939,7 @@
     "source_asset": "CTCONS:VHF:B01",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -6842,6 +9052,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -6962,7 +9173,7 @@
     "source_asset": "CTCONS:VHF:B04",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -7075,6 +9286,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -7182,7 +9394,7 @@
     "source_asset": "CTCONS:VHF:B05",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -7285,6 +9497,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -7392,7 +9605,7 @@
     "source_asset": "CTCONS:VHF:B17",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -7505,6 +9718,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -7625,7 +9839,7 @@
     "source_asset": "CTCONS:VHF:B19",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -7738,6 +9952,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -7845,7 +10060,7 @@
     "source_asset": "CTCONS:VHF:B20",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -7958,6 +10173,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -8065,7 +10281,7 @@
     "source_asset": "CTCONS:VHF:B21",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-2.bin",
     "source_chunk_sha256": "605baaeb27ff021a4b6be9471e650f842ecaafdcf77111a003e4278508b2515f",
     "source_sex": "female",
@@ -8168,6 +10384,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -8275,7 +10492,7 @@
     "source_asset": "CTCONS:VHF:B33",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-3.bin",
     "source_chunk_sha256": "d36b50ac2bb605f7b77e0cd9f24fc036dc8d07be41f83fb68921618d4006345c",
     "source_sex": "female",
@@ -8388,6 +10605,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",
@@ -8489,7 +10707,7 @@
     "source_asset": "CTCONS:VHF:B34",
     "source_url": "https://data.lhncbc.nlm.nih.gov/public/Visible-Human/Female-Images/radiological/normalCT/",
     "source_revision": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
-    "source_manifest_sha256": "511a1625c0681142e6b6f3042e9525adb4966419ebabdc89836cea8c83b57956",
+    "source_manifest_sha256": "042197ae840f5494bb22a5d956acb45e419f5706977ab17048cdc0aef53376ad",
     "source_chunk": "/models/ct-consensus-lod-3.bin",
     "source_chunk_sha256": "d36b50ac2bb605f7b77e0cd9f24fc036dc8d07be41f83fb68921618d4006345c",
     "source_sex": "female",
@@ -8602,6 +10820,7 @@
     "hra_name_by_order": null,
     "hra_z_offset_mm": null,
     "crosses_skellytour_seam_z": null,
+    "posture_offset": null,
     "segmentation_models": "TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_peripheral_bones / clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)",
     "vote_rule": "one label per model per bone class (registry/ct-label-equivalence.json); gates of plan B 2.6 before the vote; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-a-group-label kept apart from negative)",
     "registration_transform": "nlm-ct-to-vhf",

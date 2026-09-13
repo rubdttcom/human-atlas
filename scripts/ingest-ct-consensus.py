@@ -55,6 +55,30 @@ def bone_instances(report):
                            'reason': 'not a consensus candidate under plan B section 2.6; label map kept in data/derived (bone-single-model.nii.gz) or no mask'})
     return rows, review
 ct_meta = json.loads((ROOT / 'data/derived/nlm-vhf/vhf-fresh-ct-metadata.json').read_text())
+POSTURE_PATH = ROOT / 'generated/trunk-posture-offset.json'
+POSTURE = json.loads(POSTURE_PATH.read_text())
+POSTURE_SHA = hashlib.sha256(POSTURE_PATH.read_bytes()).hexdigest()
+POSTURE_BY_ID = {**{lv['id']: lv for lv in POSTURE['levels']}, **{k: v for k, v in POSTURE['ribs'].items() if 'centroid_offset_vhf_mm' in v}}
+
+
+def posture_offset(instance_id):
+    """Plan B stage 0 measurement for this instance (scripts/trunk-posture-offset.py): Denver aligned CT minus NLM fresh CT
+    in the canonical frame, posture + two registrations + two segmentations, not separated and not corrected."""
+    lv = POSTURE_BY_ID.get(instance_id)
+    if lv is None:
+        return {'status': 'not-measured', 'report': str(POSTURE_PATH.relative_to(ROOT)), 'report_sha256': POSTURE_SHA}
+    fit = lv['own_rigid_fit']
+    return {'status': 'measured', 'report': str(POSTURE_PATH.relative_to(ROOT)), 'report_sha256': POSTURE_SHA, 'frame': POSTURE['frame'],
+            'match': lv.get('match', 'same geometric id'), 'centroid_offset_vhf_mm': lv['centroid_offset_vhf_mm'],
+            'surface_p95_placed_mm': lv['surface_distance_placed']['nlm_to_denver']['p95_mm'],
+            'own_rigid_fit': {'angle_deg': fit['angle_deg'], 'about_x_right_deg': fit['about_x_right_deg'], 'about_y_anterior_deg': fit['about_y_anterior_deg'],
+                              'about_z_superior_deg': fit['about_z_superior_deg'], 'residual_after_fit_p95_mm': fit['residual_after_fit']['nlm_to_denver']['p95_mm']},
+            'relative_to_pelvis': lv.get('relative_to_pelvis'), 'common_shift_vhf_mm': POSTURE['summary']['common_shift_vhf_mm'],
+            'uncertainty': lv.get('uncertainty'), 'registration_floor_pelvis_mm': POSTURE['summary']['registration_floor_pelvis_mm'],
+            'whole_spine_chain_rotation_deg': POSTURE['summary']['whole_spine_chain_rotation_deg'],
+            'note': 'Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. '
+                    'The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. '
+                    'Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0).'}
 transform = json.loads((ROOT / 'transforms/nlm-ct-to-vhf.json').read_text())
 stage = json.loads((ROOT / 'transforms/source-to-stage.json').read_text())
 ts_labels = ROOT / 'data/derived/nlm-vhf/totalseg.nii'
@@ -178,6 +202,7 @@ for family, nii_path, table_path in FAMILIES:
                     'candidate_name': cand, 'candidate_evidence': evidence, 'name_status': inst.get('name_status', 'pending'),
                     'hra_name_by_order': inst.get('hra_name_by_order'), 'hra_z_offset_mm': inst.get('hra_z_offset_mm'),
                     'crosses_skellytour_seam_z': inst.get('crosses_skellytour_seam_z'),
+                    'posture_offset': posture_offset(inst['id']) if family != 'bones' else None,
                     'segmentation_models': 'TotalSegmentator 2.18.0 total (Apache-2.0); MOOSE 3.2.2 clin_ct_vertebrae / clin_ct_ribs (Apache-2.0 code, CC BY 4.0 weights); Skellytour high (Apache-2.0 code; weight licence to confirm, paper states CC BY 4.0)',
                     'vote_rule': 'one vote per model per geometric instance; strict majority of the eligible models per voxel (unsupported class, unprocessed region and absorbed-into-another-label kept apart from negative)',
                     'registration_transform': transform['id'], 'registration_p95_mm': transform['p95_mm'],

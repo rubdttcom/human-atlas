@@ -20,6 +20,7 @@ Checks (no metric is recomputed from voxels; the instance tables written by ct-v
    SHA-256 to the shipped geometry, HU = 300 edge with a 20 mm band, decision in the documented vocabulary, passed flag equal to
    shape p95 <= the Denver baseline figure of generated/denver-ct-baseline.json (or None where no class baseline exists).
 """
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -33,7 +34,7 @@ VOTE_STATES = {'matched', 'split', 'merge', 'partial', 'seed', 'single', 'voted'
 NO_VOTE_STATES = {'unsupported', 'unprocessed', 'absorbed', 'negative', 'unmatched'}
 FIELDS = ('instance_id', 'instance_family', 'role', 'consensus_ml', 'union_ml', 'agreement_ratio', 'unanimous_fraction', 'eligible_models_on_consensus',
           'votes_histogram_on_union', 'conflict_voxels', 'lost_to_other_winner_ml', 'size_class', 'models', 'source_labels', 'candidate_name', 'candidate_evidence',
-          'name_status', 'hra_name_by_order', 'hra_z_offset_mm', 'crosses_skellytour_seam_z', 'vote_rule', 'segmentation_models', 'registration_p95_mm')
+          'name_status', 'hra_name_by_order', 'hra_z_offset_mm', 'crosses_skellytour_seam_z', 'vote_rule', 'segmentation_models', 'registration_p95_mm', 'posture_offset')
 # Bone-candidate fields (plan B 2.6): copied from the bone report and compared between copies; a laxer copy would hide a failed gate or a lost comparison.
 BONE_FIELDS = ('gates', 'versus_nlm_vhf_ct_label', 'versus_denver_mesh', 'denver_mesh', 'bone_class', 'label_name', 'review_status', 'consensus_status', 'shape_check')
 BONE_TABLE_FIELDS = ('gates', 'versus_nlm_vhf_ct_label', 'versus_denver_mesh', 'denver_mesh', 'bone_class', 'review_status', 'shape_check')
@@ -62,6 +63,14 @@ buffers = [(ROOT / 'public' / c['url'].lstrip('/')).read_bytes() for c in atlas[
 _baseline_path = ROOT / 'generated/denver-ct-baseline.json'
 baseline_bones = {b['bone']: b for b in json.loads(_baseline_path.read_text())['bones'] if 'own_rigid_fit' in b} if _baseline_path.exists() else {}
 nlm_terms = {p['provenance']['label_name']: p['provenance']['structure_id'] for p in json.loads((ROOT / 'public/atlases/nlm-vhf-ct.json').read_text())['parts']}
+nlm_atlas = json.loads((ROOT / 'public/atlases/nlm-vhf-ct.json').read_text())
+nlm_manifest = {r['source_asset']: r for r in json.loads((ROOT / 'manifests/nlm-vhf-ct.json').read_text())}
+composed_nlm = {p['provenance']['source_asset']: p for p in json.loads((ROOT / 'public/atlases/composed.json').read_text())['parts'] if p['provenance']['source'] == 'nlm-vhf-ct'}
+# Plan B stage 0: the trunk posture offset report must be the one the meshes carry (hash-bound) and its figures must be copied unchanged.
+POSTURE_PATH = ROOT / 'generated/trunk-posture-offset.json'
+posture = json.loads(POSTURE_PATH.read_text())
+posture_sha = hashlib.sha256(POSTURE_PATH.read_bytes()).hexdigest()
+posture_by_id = {**{lv['id']: lv for lv in posture['levels']}, **{k: v for k, v in posture['ribs'].items() if 'centroid_offset_vhf_mm' in v}}
 vox_ml = float(atlas['voxel_spacing_mm'][0] * atlas['voxel_spacing_mm'][1] * atlas['voxel_spacing_mm'][2]) / 1000.0
 review_only = {r['id'] for r in atlas['review_only_instances']}
 problems = []
@@ -135,6 +144,23 @@ for part in atlas['parts']:
     check(len(voting) >= 1, f'{pid}: no voting model')
     check(max(int(k) for k in elig) <= len(prov['models']), f'{pid}: more eligible models than models')
     check(prov['name_status'] == 'pending', f'{pid}: name_status {prov["name_status"]} (must stay pending)')
+    po = prov.get('posture_offset')
+    if prov['instance_family'] == 'bones':
+        check(po is None, f'{pid}: bone candidate carries a posture offset (measured only for vertebra, rib and sacrum instances)')
+    else:
+        check(isinstance(po, dict) and po.get('report_sha256') == posture_sha, f'{pid}: posture_offset missing or bound to another report (plan B stage 0)')
+        ref = posture_by_id.get(prov['instance_id'])
+        if ref is None:
+            check(po.get('status') == 'not-measured', f'{pid}: posture_offset status {po.get("status")} but the report has no entry for {prov["instance_id"]}')
+        elif isinstance(po, dict):
+            check(po.get('status') == 'measured', f'{pid}: posture_offset status {po.get("status")} although the report measured {prov["instance_id"]}')
+            check(po.get('centroid_offset_vhf_mm') == ref['centroid_offset_vhf_mm'], f'{pid}: posture centroid offset differs from the report')
+            check(po.get('relative_to_pelvis') == ref.get('relative_to_pelvis'), f'{pid}: posture relative-to-pelvis offset differs from the report')
+            check(po.get('uncertainty') == ref.get('uncertainty'), f'{pid}: posture uncertainty differs from the report')
+            check((po.get('own_rigid_fit') or {}).get('angle_deg') == ref['own_rigid_fit']['angle_deg'], f'{pid}: posture own-fit rotation differs from the report')
+            check(po.get('common_shift_vhf_mm') == posture['summary']['common_shift_vhf_mm'], f'{pid}: posture common shift differs from the report')
+            note = (po.get('note') or '').lower()
+            check('nothing is corrected' in note and 'nothing is anatomy' in note and 'validat' not in note, f'{pid}: posture note must say nothing is corrected and nothing is anatomy, never validation')
     if prov['instance_family'] == 'bones':
         check(prov.get('review_status') == 'machine-unverified' and prov.get('consensus_status') == 'candidate-consensus', f'{pid}: bone candidate must be machine-unverified candidate-consensus')
         check(prov['structure_id'] == nlm_terms.get(prov['label_name']), f'{pid}: bone candidate structure id {prov["structure_id"]} differs from the nlm-vhf-ct label {prov["label_name"]} ({nlm_terms.get(prov["label_name"])})')
@@ -201,6 +227,29 @@ for part in atlas['parts']:
     check(prov['geometry_type'] == 'automatic_segmentation_consensus' and 'strict majority' in prov['vote_rule'], f'{pid}: geometry_type or vote_rule wording changed')
     check('unsupported' in prov['vote_rule'] and 'negative' in prov['vote_rule'], f'{pid}: vote_rule must state that unsupported/unprocessed/absorbed are kept apart from negative')
 
+# nlm-vhf-ct meshes carry the same measurement as context (trunk_posture_context), hash-bound and copied unchanged to manifest and composite.
+for part in nlm_atlas['parts']:
+    prov = part['provenance']
+    pid = part['id']
+    ctx = prov.get('trunk_posture_context')
+    check(isinstance(ctx, dict) and ctx.get('report_sha256') == posture_sha, f'{pid}: trunk_posture_context missing or bound to another report')
+    if isinstance(ctx, dict):
+        ref = posture_by_id.get(ctx.get('instance_id'))
+        check(ref is not None, f'{pid}: trunk_posture_context points to an unmeasured instance {ctx.get("instance_id")}')
+        if ref:
+            check(ctx.get('centroid_offset_vhf_mm') == ref['centroid_offset_vhf_mm'] and ctx.get('relative_to_pelvis') == ref.get('relative_to_pelvis'), f'{pid}: trunk_posture_context figures differ from the report')
+            check(ctx.get('own_rigid_fit_angle_deg') == ref['own_rigid_fit']['angle_deg'], f'{pid}: trunk_posture_context rotation differs from the report')
+        label = prov.get('label_name', '')
+        if label.startswith('vertebrae_') or label.startswith('rib_'):
+            linked = any(inst['source_labels'].get('totalseg') == label for fam, tb in tables.items() if fam != 'bones' for inst in tb.values() if inst.get('consensus_ml', 0) > 0)
+            if linked:
+                check(ctx.get('link', '').startswith('instance the TotalSegmentator label voted into'), f'{pid}: {label} voted into a consensus instance but the context uses the nearest level')
+        check('nothing is corrected' in (ctx.get('note') or '').lower() and 'validat' not in (ctx.get('note') or '').lower(), f'{pid}: trunk_posture_context note wording')
+    if pid in nlm_manifest:
+        check(nlm_manifest[pid].get('trunk_posture_context') == ctx, f'{pid}: manifest copy of trunk_posture_context differs')
+    if pid in composed_nlm:
+        check(composed_nlm[pid]['provenance'].get('trunk_posture_context') == ctx, f'{pid}: composite copy of trunk_posture_context differs')
+
 check(not (meshed & review_only), f'review-only instances meshed: {sorted(meshed & review_only)}')
 for r in atlas['review_only_instances']:
     inst = tables.get(r['family'], {}).get(r['id'])
@@ -230,4 +279,5 @@ for part in atlas['parts']:
     for m, v in part['provenance']['models'].items():
         states[v['state']] = states.get(v['state'], 0) + 1
 print(json.dumps({'meshed_instances': len(atlas['parts']), 'composed_instances': len(composed), 'review_only': len(review_only), 'model_states': states,
-                  'pending_names': sum(p['provenance']['name_status'] == 'pending' for p in atlas['parts']), 'copies_equal': True}))
+                  'pending_names': sum(p['provenance']['name_status'] == 'pending' for p in atlas['parts']), 'copies_equal': True,
+                  'posture_measured': sum((p['provenance'].get('posture_offset') or {}).get('status') == 'measured' for p in atlas['parts']), 'nlm_meshes_with_posture_context': sum('trunk_posture_context' in p['provenance'] for p in nlm_atlas['parts'])}))

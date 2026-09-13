@@ -20,13 +20,13 @@ MANIFEST = (ROOT / 'manifests/ct-consensus.json').resolve()
 REAL_READ_TEXT = Path.read_text
 
 
-def run(mutate_atlas=None, mutate_manifest=None):
+def run(mutate_atlas=None, mutate_manifest=None, families=('bones',)):
     def read_text(self, *a, **k):
         text = REAL_READ_TEXT(self, *a, **k)
         if mutate_atlas and self.resolve() == ATLAS:
             data = json.loads(text)
             for p in data['parts']:
-                if p['provenance']['instance_family'] == 'bones':
+                if p['provenance']['instance_family'] in families:
                     mutate_atlas(p['provenance'])
             return json.dumps(data)
         if mutate_manifest and self.resolve() == MANIFEST:
@@ -89,6 +89,26 @@ def shape_check_dropped(prov):
     prov['shape_check'] = None
 
 
+def posture_dropped(prov):
+    prov['posture_offset'] = None
+
+
+def posture_shifted(prov):
+    if prov.get('posture_offset') and prov['posture_offset'].get('relative_to_pelvis'):
+        prov['posture_offset']['relative_to_pelvis']['norm'] = 0.0
+
+
+def posture_other_report(prov):
+    if prov.get('posture_offset'):
+        prov['posture_offset']['report_sha256'] = '0' * 64
+
+
+def posture_validated_wording(prov):
+    if prov.get('posture_offset'):
+        prov['posture_offset']['note'] = 'validated posture; nothing is corrected; nothing is anatomy'
+
+
+INSTANCES = ('vertebrae', 'ribs_left', 'ribs_right')
 cases = [
     ('unchanged files pass', None, None, True),
     ('versus_nlm_vhf_ct_label None', set_ct_none, None, False),
@@ -101,10 +121,14 @@ cases = [
     ('shape check bound to another geometry', shape_check_other_geometry, None, False),
     ('shape check decision flipped to reaches-baseline', shape_check_flipped, None, False),
     ('shape check dropped', shape_check_dropped, None, False),
+    ('posture offset dropped from the instances', posture_dropped, None, False, INSTANCES),
+    ('posture relative offset zeroed in the atlas only', posture_shifted, None, False, INSTANCES),
+    ('posture offset bound to another report', posture_other_report, None, False, INSTANCES),
+    ('posture note reads as validation', posture_validated_wording, None, False, INSTANCES),
 ]
 failures = []
-for name, ma, mm, expect_ok in cases:
-    ok, code, out = run(ma, mm)
+for name, ma, mm, expect_ok, *fam in cases:
+    ok, code, out = run(ma, mm, fam[0] if fam else ('bones',))
     status = 'ok' if ok == expect_ok else 'UNEXPECTED'
     if ok != expect_ok:
         failures.append(name)

@@ -36,6 +36,11 @@ OMP_NUM_THREADS=20 .venv-seg/bin/TotalSegmentator -i data/derived/nlm-vhf/vhf-fr
 node scripts/optimize-anatomy.mjs atlas-nlm-vhf-ct.json nlm-vhf-ct-lod
 node scripts/compress-models.mjs atlas-nlm-vhf-ct.json
 
+# Block C stage 0: origin completeness of the colour slices (reads the NLM 1996 INDEX and probes the server; nothing downloaded) and the trunk posture offset
+.venv/bin/python scripts/check-cryosection-origin.py    # -> generated/cryosection-origin-check.json; --offline skips the HTTP HEAD probes
+.venv/bin/python scripts/trunk-posture-offset.py        # ~70 s, 9 GB RSS; needs the consensus instance maps of BOTH CTs (nlm and denver); -> generated/trunk-posture-offset.json + .png
+# The two ingests below read generated/trunk-posture-offset.json (posture_offset / trunk_posture_context in every trunk CT mesh): run it first.
+
 # CT consensus source (vertebrae, sacrum, ribs voted per geometric instance; needs the MOOSE and Skellytour copies described below)
 .venv-seg/bin/python scripts/ct-vertebra-instances.py nlm vertebrae --selftest
 .venv-seg/bin/python scripts/ct-vertebra-instances.py nlm ribs_left --selftest

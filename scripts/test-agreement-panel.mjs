@@ -7,7 +7,7 @@ import {pathToFileURL} from 'node:url';
 
 const root = resolve(new URL('..', import.meta.url).pathname);
 const mod = await import(pathToFileURL(join(root, 'app/agreement.ts')).href);
-const {agreementSections, hasModelAgreement, histogramText, stateText, VOTE_STATES, NO_VOTE_STATES, AGREEMENT_DISCLAIMER} = mod;
+const {agreementSections, hasModelAgreement, histogramText, stateText, VOTE_STATES, NO_VOTE_STATES, AGREEMENT_DISCLAIMER, hasPosture, postureSection, POSTURE_DISCLAIMER} = mod;
 
 const fail = (m) => { console.error('FAIL: ' + m); process.exit(1); };
 const rows = (record) => Object.fromEntries(agreementSections(record).flatMap(s => s.rows));
@@ -99,3 +99,25 @@ if (bone) {
 const noGates = agreementSections({vote_rule: 'x'}).map(s => s.title);
 if (noGates.includes('Gates before the vote (plan B 2.6)') || noGates.includes('Comparison, not substitution')) fail('gates/comparison sections must be absent without data');
 console.log(JSON.stringify({bone_candidates_rendered: atlas.parts.filter(p => p.provenance.instance_family === 'bones').length, instances_rendered: atlas.parts.length, source_equals_composed: true, null_zero_missing_cases: 'ok', wording_rule: 'ok'}));
+
+// 4. Trunk posture panel (plan B stage 0): renders for consensus instances and for CT labels, never as validation.
+const ps = postureSection(v20);
+if (!ps || !hasPosture(v20)) fail('V20 must carry a posture panel');
+const pr = Object.fromEntries(ps.rows);
+if (!/norm [0-9.]+ mm/.test(pr['Relative to the pelvis']) || !/posture \+ segmentation/.test(pr['Relative to the pelvis'])) fail('relative offset row: ' + pr['Relative to the pelvis']);
+if (!/registration not posture/.test(pr['Common shift of both registrations'])) fail('common shift must be attributed to registration: ' + pr['Common shift of both registrations']);
+if (!/exceeds|within/.test(pr['Uncertainty'])) fail('uncertainty row must state exceeds/within: ' + pr['Uncertainty']);
+if (!/SHA-256 [0-9a-f]{64}/.test(pr['Report'])) fail('posture panel must show the report hash');
+if (JSON.stringify(ps) !== JSON.stringify(postureSection(v20c))) fail('posture panel differs between source and composite copies');
+for (const s of [JSON.stringify(ps), POSTURE_DISCLAIMER]) if (/validated|confirmed|correct\b/i.test(s) && !/nothing is corrected/.test(s)) fail('posture wording must never read as validation: ' + s);
+if (!/nothing is corrected/.test(ps.note) || !/nothing is anatomy/.test(ps.note)) fail('posture note must say nothing is corrected and nothing is anatomy');
+const nlm = JSON.parse(readFileSync(join(root, 'public/atlases/nlm-vhf-ct.json'), 'utf8'));
+const liver = nlm.parts.find(p => p.provenance.label_name === 'liver').provenance;
+const ls = postureSection(liver);
+if (!ls || !/nearest measured vertebral level/.test(Object.fromEntries(ls.rows)['Level used'])) fail('CT label context must state the nearest-level link');
+const l1 = nlm.parts.find(p => p.provenance.label_name === 'vertebrae_L1').provenance;
+if (!/voted into/.test(Object.fromEntries(postureSection(l1).rows)['Level used'])) fail('vertebra label must link to the instance it voted into');
+const nm = postureSection({posture_offset: {status: 'not-measured', report: 'r', report_sha256: 'x'}});
+if (!nm || nm.rows[0][1] !== 'not-measured') fail('not-measured posture must render explicitly');
+if (hasPosture({}) || hasPosture(null) || postureSection({}) !== null) fail('records without a measurement must not show a posture panel');
+if (/NaN|undefined|null/.test(JSON.stringify(ps))) fail('raw NaN/undefined/null in the posture panel');
