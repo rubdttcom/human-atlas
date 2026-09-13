@@ -1,4 +1,4 @@
-"""Regression test for scripts/build-cryosection-transform.py (Codex audit of 02d3f59, two P2 findings).
+"""Regression test for scripts/build-cryosection-transform.py (Codex audit of acbe4dd, two P2 findings).
 
 In-memory corruptions of the shipped alignment report; the builder must refuse each one and must keep the identity
 status of every slice in the transform it does build. Nothing is written.

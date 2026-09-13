@@ -190,8 +190,8 @@ def main():
     }
     # A throwaway run must not overwrite the canonical report. The earlier version always wrote to the fixed
     # path, so an audit run with --out pointing at a discard file replaced the committed report with one naming
-    # a volume that never existed there, and git add -A swept it into c060d45 (found while applying the Codex
-    # audit of 909e500). The report now follows the output it describes.
+    # a volume that never existed there, and git add -A swept it into 97cf1b5 (found while applying the Codex
+    # audit of 1af1c60). The report now follows the output it describes.
     rp = ROOT / 'generated/cryo-ct-prior-block2.json' if out == canonical else out.with_suffix('').with_suffix('.report.json')
     report['outputs']['path'] = str(out)
     report['outputs']['is_canonical'] = out == canonical

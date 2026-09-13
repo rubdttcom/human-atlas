@@ -108,7 +108,7 @@ predk = np.zeros(shape, bool); predk[:, :, 1:] = ref[:, :, :-1]
 s = M.surface_p95(predk, ref, E, runs_one, K0)
 case('k_shift_uses_0.333', abs(s['p95_mm'] - 0.333) < 1e-9)
 
-# 11. Codex audit of 87ff582: caps must not act as targets. Reference fills the whole eligible run (every reference surface
+# 11. Codex audit of 8a5da4b: caps must not act as targets. Reference fills the whole eligible run (every reference surface
 #     voxel is a cap), prediction is a box inside: no observable reference surface -> undefined, never a finite distance.
 shp = (35, 35, 3); Eall = np.ones(shp, bool)
 Rall = np.ones(shp, bool); Pbox = np.zeros(shp, bool); Pbox[10:25, 10:25, :] = True
@@ -122,7 +122,7 @@ s = M.surface_p95(Pn, Rn, E2b, [(K0, K0 + 11)], K0)
 case('nested_box_distance_is_to_real_boundary', s['status'] == 'ok' and s['mean_mm'] >= 3.33 - 1e-9 and 3.33 - 1e-9 <= s['p95_mm'] <= 5 * np.sqrt(2) * 0.666 + 1e-9)   # every distance >= 5 px (a cap target would give 0.333); corners up to 5 sqrt 2 px
 case('support_reported', s['support']['reference_surface_caps_removed'] > 0 and s['support']['prediction_surface_kept'] > 0)
 
-# 12. Codex audit of 87ff582: a missing prediction in a single-slice run (every reference surface voxel would be a cap)
+# 12. Codex audit of 8a5da4b: a missing prediction in a single-slice run (every reference surface voxel would be a cap)
 #     must be detected as emptiness BEFORE cap extraction
 shp3 = (30, 30, 9); E3b = np.ones(shp3, bool)
 R3 = np.zeros(shp3, bool); R3[5:15, 5:15, 0] = True; R3[5:15, 5:15, 3:9] = True

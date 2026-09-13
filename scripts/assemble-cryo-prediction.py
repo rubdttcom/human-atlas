@@ -10,7 +10,7 @@ A slice that was not predicted is written 0. That is not a claim: the evaluator 
 usable or usable-flagged, and the report records which slices carried a prediction. A predicted slice whose k is outside
 the block, or a duplicate, is a hard error.
 
-Every slice is checked BEFORE anything is converted or copied (Codex audit of 909e500, P1-1). The earlier version read
+Every slice is checked BEFORE anything is converted or copied (Codex audit of 1af1c60, P1-1). The earlier version read
 the unique values through int(), then cast with astype(uint8): both truncate, so a float slice holding 1.9 became class 1
 and the assembled volume then passed the evaluator's prediction gate. It also ignored the input affine entirely and
 replaced it with the reference one, so a slice placed a metre away was assembled without a word. The gate below refuses
@@ -136,7 +136,7 @@ def main():
                                           'finite values', 'only the active output classes',
                                           "the 2D case affine, diag(%.3f, %.3f, %.1f)" % (sx, sy, DUMMY_SLICE_SPACING_MM)],
             'affine_atol_mm': AFFINE_ATOL_MM,
-            'reason': 'Codex audit of 909e500, P1-1: reading values through int() and casting with astype truncated a '
+            'reason': 'Codex audit of 1af1c60, P1-1: reading values through int() and casting with astype truncated a '
                       'fractional class, and the input affine was ignored, so a slice from another grid was accepted',
         },
         'seconds': round(time.time() - t0, 1),

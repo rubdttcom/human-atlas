@@ -19,7 +19,7 @@ map. The machine draws the bands; nobody draws a reference (no anatomist). Rules
 Per band the file lists the slices by status, the Denver voxels per tissue class on the scoring slices (usable and
 usable-flagged only) and the training complement (block minus bands minus buffers).
 
-Training eligibility (Codex audit of afec927, point A, decided 13 September 2026 before any training): the complement is
+Training eligibility (Codex audit of 4da4b5b, point A, decided 13 September 2026 before any training): the complement is
 split by supervision density. A 50 mm bin of the block (aligned to k_first) is `sparsely-supervised` when the median
 ignore fraction of the body over its paired slices (generated/cryo-tissue-classes-block2.json) exceeds --sparse-ignore
 (0.95): there Denver labels only the psoas. Primary training = paired complement slices in dense bins; auxiliary stratum =

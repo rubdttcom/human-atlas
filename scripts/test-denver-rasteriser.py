@@ -1,4 +1,4 @@
-"""Analytic tests of the even-odd rasteriser of scripts/denver-surface-floor.py (Codex audit of 87ff582): one box, two disjoint
+"""Analytic tests of the even-odd rasteriser of scripts/denver-surface-floor.py (Codex audit of 8a5da4b): one box, two disjoint
 boxes, a box with a hole (nested shells), two overlapping shells (XOR by convention, documented), and the refusal of an open
 contour. Volumes are compared with the analytic voxel counts on integer slice planes.
 

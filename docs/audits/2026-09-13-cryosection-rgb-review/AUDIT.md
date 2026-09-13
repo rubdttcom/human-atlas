@@ -1,6 +1,6 @@
 # Revisión profunda por muestreo — RGB / Denver
 
-Fecha: 2026-09-13. Auditor: Codex. Geometría de 02d3f59; estados de identidad del transform en trabajo durante la revisión. No se han modificado archivos del proyecto, ni hecho commit/push.
+Fecha: 2026-09-13. Auditor: Codex. Geometría de acbe4dd; estados de identidad del transform en trabajo durante la revisión. No se han modificado archivos del proyecto, ni hecho commit/push.
 
 ## Alcance y procedimiento ejecutado
 

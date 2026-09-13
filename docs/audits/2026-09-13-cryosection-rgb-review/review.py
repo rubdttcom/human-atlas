@@ -72,4 +72,4 @@ for off in range(0,len(panels),4):
     sheet=Image.new('RGB',(1332,928),'white')
     for q,path in enumerate(panels[off:off+4]):sheet.paste(Image.open(path).resize((666,464)),((q%2)*666,(q//2)*464))
     sheet.save(OUT/f'sheet-{off//4}.jpg')
-(OUT/'review-results.json').write_text(json.dumps({'revision':'02d3f59 geometry, working transform identity states','samples':results,'denver_blank_checks':blanks},indent=2))
+(OUT/'review-results.json').write_text(json.dumps({'revision':'acbe4dd geometry, working transform identity states','samples':results,'denver_blank_checks':blanks},indent=2))

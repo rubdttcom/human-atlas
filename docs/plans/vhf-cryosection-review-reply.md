@@ -61,7 +61,7 @@ Enlaces (rama `female-open-atlas`): plan B `docs/plans/vhf-cryosection-machine-d
 
 ---
 
-# Segunda ronda (9 de septiembre de 2026, tras el commit 29171cb)
+# Segunda ronda (9 de septiembre de 2026, tras el commit f63296c)
 
 Aceptamos los seis puntos y los tres restos del borrador. Cambios hechos y medidas nuevas:
 

@@ -2,7 +2,7 @@
 
 Usage: python scripts/test-qa-carryover.py            (seconds; exits non-zero on any failure)
 
-Case from the b0063fd/083589a review: two disconnected closed boxes (main side 0.03125 m, secondary side
+Case from the c8fbedb/f30c55f review: two disconnected closed boxes (main side 0.03125 m, secondary side
 0.015625 m). Moving the secondary box from x = 0.03125 m to x = 0.125 m leaves triangle count, degenerate
 faces, boundary and nonmanifold edge counts and signed volume exactly equal (a closed component's volume is
 translation-invariant) while the outlier test flips from 0 to 1 at OUTLIER_MM = 60. A fingerprint on those

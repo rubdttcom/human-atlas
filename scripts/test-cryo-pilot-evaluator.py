@@ -1,4 +1,4 @@
-"""Gate tests of scripts/cryo-pilot-evaluate.py (Codex audit of 87ff582, two P1): every refused input below must produce a
+"""Gate tests of scripts/cryo-pilot-evaluate.py (Codex audit of 8a5da4b, two P1): every refused input below must produce a
 report with every class machine-not-assessable and exit 1 BEFORE any score, and the reasons must be the expected ones.
 Runs the evaluator as a subprocess on the real block with synthetic predictions written to a temporary directory; no gate
 case takes more than a few seconds because scoring never starts.

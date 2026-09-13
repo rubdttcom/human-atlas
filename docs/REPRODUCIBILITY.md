@@ -112,7 +112,7 @@ python3 scripts/build-cryosection-rgb-block.py --nlm .../fullbody --denver ".../
 .venv/bin/python scripts/test-denver-rasteriser.py           # 6 analytic cases of the even-odd rasteriser (one box, disjoint, nested hole, overlap = XOR by convention, open contour refused)
 .venv/bin/python scripts/denver-surface-floor.py             # about 10 min, 25 GB RSS: Denver original labels vs final meshes voxelised (even-odd fill; the noise-floor rasteriser dropped multi-contour slices) scored with cryo_metrics -> generated/denver-surface-floor.json (H_vox, P_vox per class: the protocol thresholds)
 .venv/bin/python scripts/cryo-pilot-evaluate.py --block data/derived/nlm-vhf/cryosections/block2 --oracle   # about 13 min: prediction := reference (gates: registry validator, identity chain, grid, training provenance); freezes the evaluator sanity figures -> generated/cryo-pilot-oracle-controls-block2.json
-#   registry/machine-acceptance-protocol-v1.json is written by hand before training (plan B 2.7; revised after the Codex audit of afec927, before any training); hashes and thresholds are checked by the validator
+#   registry/machine-acceptance-protocol-v1.json is written by hand before training (plan B 2.7; revised after the Codex audit of 4da4b5b, before any training); hashes and thresholds are checked by the validator
 .venv/bin/python scripts/validate-cryo-pilot.py              # manifest rows = transform rows and inventory hashes, map names = source names, bands and training eligibility reproduce, protocol thresholds = surface floor, hash chain
 .venv/bin/python scripts/test-cryo-pilot-validator.py        # 27 in-memory corruptions (wrong n / tc / hash / name / band / threshold / eligibility) must each fail the validator
 .venv/bin/python scripts/test-cryo-pilot-evaluator.py        # about 1 min: gate cases of the evaluator (translated affine, int16 256.., float, foreign label, foreign block, missing or contaminated training manifest) must each be refused before scoring
@@ -204,7 +204,7 @@ anatomy pass ships `not-assessed` into the manifests. Identity is the SHA-256 of
 bytes (`geometry_sha256`, `scripts/qa_identity.py`); aggregate statistics never count, and a
 row without a digest is never carried over. A report that predates the field is migrated
 with `scripts/qa-hash-revision.py REV REPORT OUT`, which digests the buffers of the git
-revision that produced it (the 4,415 rows measured at f830ea5 were checked this way: all
+revision that produced it (the 4,415 rows measured at cdb005d were checked this way: all
 carried rows are byte-identical to that revision). `scripts/test-qa-carryover.py` is the
 regression test (two boxes with equal statistics and different geometry). The anatomy pass
 reuses previous measurements of identical meshes and recomputes the rest; the spine selector
@@ -363,7 +363,7 @@ alternative of the same catalogue entry as the `nlm-vhf-ct` label and the Denver
 side-by-side comparison); machine-unverified records never become `best_available` ahead of a
 source of equal priority, `compose-female.py` never composes them, and `validate-composition.py`
 and `validate-consensus-metadata.py` fail if they are composed, if a gate did not pass, or if the
-comparison is missing. Since 2026-09-12 (audit finding on f28467f) the validator also compares
+comparison is missing. Since 2026-09-12 (audit finding on a20cd0c) the validator also compares
 `gates`, `versus_nlm_vhf_ct_label`, `versus_denver_mesh`, `denver_mesh`, `bone_class`,
 `review_status` and `consensus_status` field by field between the bone report, the source atlas and
 the manifest, checks the gate records internally (one passed pair per pair of voting models,

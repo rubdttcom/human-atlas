@@ -32,10 +32,10 @@ from pathlib import Path
 
 # nnU-Net writes "2026-09-13 17:50:20.236377: Epoch 0 ". The earlier pattern used [^:]* for the timestamp,
 # which cannot cross the colons of the clock, so it never matched and last_epoch_logged was always null
-# (Codex audit of 909e500). "Epoch time: 43.31 s" must still not match: digits are required before the end.
+# (Codex audit of 1af1c60). "Epoch time: 43.31 s" must still not match: digits are required before the end.
 EPOCH_LINE = re.compile(r'^(?:.*\s)?Epoch (\d+)\s*$', re.M)
 # every seeding call a launcher may make, not only random.seed: a launcher that seeded torch differently
-# used to be reported as a single clean seed (Codex audit of 909e500)
+# used to be reported as a single clean seed (Codex audit of 1af1c60)
 SEED_LINE = re.compile(r'(?:random|np\.random|numpy\.random|torch|torch\.cuda)\.'
                        r'(?:seed|manual_seed|manual_seed_all)\(\s*(\d+)\s*\)')
 
@@ -100,7 +100,7 @@ def main():
         if p.exists():
             rec[key + '_sha256'] = sha256_file(p)
     # the split ACTUALLY installed, so the manifest writer can bind the run to the frozen one instead of
-    # trusting the dataset name the operator typed (Codex audit of 909e500, P1-2)
+    # trusting the dataset name the operator typed (Codex audit of 1af1c60, P1-2)
     sp = prep / 'splits_final.json'
     if sp.exists():
         splits = json.loads(sp.read_text())

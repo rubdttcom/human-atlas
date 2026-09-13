@@ -1,4 +1,4 @@
-"""Denver post-processing floor measured with the pilot's own metric implementation (Codex audit of afec927, P1).
+"""Denver post-processing floor measured with the pilot's own metric implementation (Codex audit of 4da4b5b, P1).
 
 generated/denver-noise-floor.json measures original label versus final mesh with marching-cubes surface points, mesh
 samples and the original-to-final direction only. The acceptance protocol scores predictions with scripts/cryo_metrics.py

@@ -1,4 +1,4 @@
-"""Corruption tests of scripts/validate-cryo-pilot.py (Codex audit of afec927, P2 finding 4): every in-memory mutation below
+"""Corruption tests of scripts/validate-cryo-pilot.py (Codex audit of 4da4b5b, P2 finding 4): every in-memory mutation below
 must make the corresponding check fail, and the unmodified documents must pass. Hash-pointer checks are exercised by the
 validator itself; these cases cover the semantic assertions (row = transform, names = source, eligibility, thresholds).
 

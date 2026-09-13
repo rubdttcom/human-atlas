@@ -22,7 +22,7 @@ classes 0 to 3, which is what the evaluator's prediction gate allows.
 
 The internal split is frozen and spatially blocked by the 50 mm bins of the bands file: fold f validates bin f. The
 earlier wording here claimed that two neighbouring slices never straddle train and validation. That is false and the
-Codex audit of 909e500 measured it: the primary slices run continuously across a bin boundary, so in all four folds the
+Codex audit of 1af1c60 measured it: the primary slices run continuously across a bin boundary, so in all four folds the
 minimum distance between a training slice and a validation slice is one slice, 0.333 mm. What the blocking does give is
 that validation never samples INSIDE a training bin, which removes the shuffled-slice leak but not the boundary pair.
 The bands and their 10 mm buffers are a different mechanism and are unaffected: they are never sampled at all. Fold 0 is trained because bin 0 holds the fewest primary slices

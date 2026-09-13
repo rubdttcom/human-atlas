@@ -15,7 +15,7 @@
  },
  "inputs": {
   "prior_map": "registry/cryo-ct-prior-map.json",
-  "prior_map_sha256": "1fb46b2082172871bab6a3b6dac73917af6f90acfcde38454e6a0e0a2d3f2c04",
+  "prior_map_sha256": "8cd556d7a045a16c7c6b837cf48fffdb02c35d2ce99dbb8eba082b238af4472b",
   "transform": "transforms/nlm-ct-to-vhf.json",
   "transform_sha256": "92cb688b2a2c950ad30f081d9566409311059c0a61024ee33245b07817943be4",
   "ct_labels": "data/derived/nlm-vhf/totalseg.nii",
@@ -59,7 +59,7 @@
    "protocol_erratum": {
     "text": "registry/machine-acceptance-protocol-v1.json says \"the CT prior variant carries the fresh-CT placement error of the pelvis (3 to 5 mm) into its input channel\". That figure describes the pelvis, which is where the transform was fitted, and understates this block, which is mostly thigh.",
     "why_not_corrected_there": "the protocol is frozen and its own sha256 gates the evaluator; editing it silently would void protocol v1. The erratum is recorded here and in docs/PROGRESS.md instead, and the protocol is changed only by a version 2.",
-    "raised_by": "Codex audit of 909e500"
+    "raised_by": "Codex audit of 1af1c60"
    }
   },
   "outside_field_of_view": "class 0 (none): the prior is silent, never background"
@@ -133,5 +133,5 @@
   "prior_recall_of_reference is the fraction of Denver reference voxels of a class that the placed CT prior also calls that class; it mixes segmentation difference, placement error and posture, and separates none of them",
   "reference voxels here include every voxel of the class, ignored slices excluded only where the reference is 255"
  ],
- "seconds": 20.9
+ "seconds": 22.2
 }

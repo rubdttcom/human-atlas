@@ -1,6 +1,6 @@
 """Regression test for validate-consensus-metadata.py: corrupted bone-candidate fields must fail the validator.
 
-Reproduces the Codex audit of f28467f (12 September 2026): the validator accepted an in-memory copy of
+Reproduces the Codex audit of a20cd0c (12 September 2026): the validator accepted an in-memory copy of
 public/atlases/ct-consensus.json with versus_nlm_vhf_ct_label=None, empty correspondence pairs and a Denver p95 of 999 mm.
 Nothing is written; the shipped files are read through a patched Path.read_text and altered only in memory.
 

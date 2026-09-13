@@ -1,5 +1,5 @@
 """Validator of the cryosection pilot registries (plan B stage 2 preparation, roadmap 6b steps 1 to 4; extended after the
-Codex audit of afec927, P2 finding 4: source-to-row assertions, not only hash pointers).
+Codex audit of 4da4b5b, P2 finding 4: source-to-row assertions, not only hash pointers).
 
 Checks, with no data volume needed (hashes and JSON only):
   manifest   generated/cryosection-rgb-block2-manifest.json: one row per Denver slice of the block; statuses equal the pair

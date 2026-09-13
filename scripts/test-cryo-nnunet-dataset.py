@@ -191,7 +191,7 @@ def t_builder_output_from_a_real_run():
     """Run the real builder into a temp tree and check what it wrote, channel by channel.
 
     The earlier test read the shapes of eight files that happened to be on disk, so a stale dataset hid a
-    regression of the extraction and nothing checked the CONTENT or the affine (Codex audit of 909e500). This
+    regression of the extraction and nothing checked the CONTENT or the affine (Codex audit of 1af1c60). This
     runs scripts/build-cryo-nnunet-dataset.py itself and compares every channel and every target against the
     sources, on an asymmetric grid where a transpose cannot pass unnoticed.
     """

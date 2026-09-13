@@ -10,7 +10,7 @@ is checked against the training_log_*.txt files nnU-Net wrote: nnU-Net starts a 
 declaration that hides an attempt is refused here (audit of the uncommitted pilot code, finding 2). The protocol's
 iteration limit is worth nothing if the run count is free text.
 
-Two refusals were added after the Codex audit of 909e500.
+Two refusals were added after the Codex audit of 1af1c60.
 
 P1-2: --variant chose the dataset report and --provenance was any file, with nothing tying them together, so an rgb-only
 report combined with a provenance naming Dataset502 and six channels was written and then accepted. bind_gate() now
@@ -49,7 +49,7 @@ def sha256_file(p, chunk=1 << 24):
 
 
 def bind_gate(ds, prov):
-    """Tie the provenance to the dataset report. Names alone prove nothing (Codex audit of 909e500, P1-2)."""
+    """Tie the provenance to the dataset report. Names alone prove nothing (Codex audit of 1af1c60, P1-2)."""
     problems = []
     name = ds['dataset_name']
     for key in ('results', 'preprocessed'):
@@ -129,7 +129,7 @@ def main():
     missing = [f for f in REQUIRED if not man.get(f) and man.get(f) != 0]
     # A rejected manifest is never written where the evaluator would read it. The evaluator's training gate
     # reads neither consistency_problems nor runs_observed, and it is frozen by hash, so the refusal has to
-    # be here: no acceptable file is produced at all (Codex audit of 909e500, P1-3).
+    # be here: no acceptable file is produced at all (Codex audit of 1af1c60, P1-3).
     if missing or problems:
         out = out.with_suffix('.rejected.json')
         man['REJECTED'] = 'this manifest was refused; it is not a training record and the evaluator must not read it'

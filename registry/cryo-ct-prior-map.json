@@ -59,7 +59,7 @@
   "protocol_erratum": {
    "text": "registry/machine-acceptance-protocol-v1.json says \"the CT prior variant carries the fresh-CT placement error of the pelvis (3 to 5 mm) into its input channel\". That figure describes the pelvis, which is where the transform was fitted, and understates this block, which is mostly thigh.",
    "why_not_corrected_there": "the protocol is frozen and its own sha256 gates the evaluator; editing it silently would void protocol v1. The erratum is recorded here and in docs/PROGRESS.md instead, and the protocol is changed only by a version 2.",
-   "raised_by": "Codex audit of 909e500"
+   "raised_by": "Codex audit of 1af1c60"
   }
  },
  "limits": [
