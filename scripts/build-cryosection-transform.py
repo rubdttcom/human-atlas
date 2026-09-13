@@ -12,7 +12,9 @@ and 0.3 deg) form a region; Denver registered the block in pieces, and each piec
 range the per-slice table is the transform. Outside it (NLM photographs above the pelvis, n below the smallest
 matched index) no aligned photograph exists: the file carries the pelvis region's transform as an *extrapolation*,
 marked unverified, for stage 1 to place priors provisionally; the photograph-to-CT check of stage 0 has to measure it.
-Nothing here is anatomy.
+Per-slice identity keeps its status: `settled` (label card and frame agree), `frame-with-margin`, or `provisional-block-consistent`
+(no card in the crop and a whole-frame margin below 0.005: the block offset is consistency, not identification). Consumers
+must read `per_slice[].provisional`. The builder refuses partial or unresolved reports (`check_coverage`). Nothing here is anatomy.
 """
 import hashlib
 import json
@@ -33,12 +35,82 @@ def nlm_name(n):
     return f'avf{1001 + n // 3:04d}{"abc"[n % 3]}'
 
 
-def main():
-    rep = json.loads(REPORT.read_text())
+DEN_N = 3533
+FRAME_ONLY_MARGIN = 0.005      # below this whole-frame margin a frame-only identity is provisional
+
+
+def check_coverage(rep):
+    """Refuse anything but a complete, unique, resolved dense report: every Denver slice 0..3532 exactly once, every
+    non-blank slice matched with a consistent n/offset, no photograph chosen twice. Partial runs (--ks, a truncated
+    --refine-from input) carry step == 1 too, so step alone proves nothing."""
+    problems = []
+    if rep['summary'].get('step') != 1:
+        problems.append('step != 1 (%r)' % rep['summary'].get('step'))
+    ks = [r['k'] for r in rep['slices']]
+    if sorted(ks) != list(range(DEN_N)):
+        missing = sorted(set(range(DEN_N)) - set(ks)); dup = sorted({k for k in ks if ks.count(k) > 1})
+        problems.append('Denver slices not covered exactly once: %d missing (first %s), %d duplicated (first %s), %d outside 0..%d'
+                        % (len(missing), missing[:5], len(dup), dup[:5], sum(1 for k in ks if not 0 <= k < DEN_N), DEN_N - 1))
+    counts = {}
+    for r in rep['slices']:
+        counts[r['status']] = counts.get(r['status'], 0) + 1
+    summ = rep['summary']
+    if summ.get('statuses') != counts or summ.get('matched') != counts.get('matched', 0) or summ.get('denver_slices_sampled') != len(rep['slices']):
+        problems.append('summary counts disagree with the rows: summary %s / matched %r / sampled %r, rows %s / %d'
+                        % (summ.get('statuses'), summ.get('matched'), summ.get('denver_slices_sampled'), counts, len(rep['slices'])))
+    bad_status = {r['status'] for r in rep['slices']} - {'matched', 'denver-blank'}
+    if bad_status:
+        problems.append('unresolved slice statuses exported as nothing: %s' % sorted(bad_status))
+    seen = {}
+    for r in rep['slices']:
+        if r['status'] != 'matched':
+            continue
+        if r.get('n_best') is None or r.get('offset_best') != r['n_best'] + r['k']:
+            problems.append('slice k=%d: n_best/offset_best inconsistent' % r['k'])
+        if r.get('similarity') is None or (r.get('local_residual') or {}).get('mean_nlm_px') is None:
+            problems.append('slice k=%d: matched without similarity or residual' % r['k'])
+        seen.setdefault(r['n_best'], []).append(r['k'])
+    dups = {n: k for n, k in seen.items() if len(k) > 1}
+    if dups:
+        problems.append('photographs chosen by several Denver slices: %s' % dict(list(dups.items())[:5]))
+    return problems
+
+
+def identity_of(r, region_offset):
+    """Per-slice identity record: how the photograph was chosen and whether that choice is provisional."""
+    lab = r.get('label_choice') or {}
+    frame = r.get('frame_choice') or {}
+    rec = {'identity_by': r['identity_by'], 'label_margin': lab.get('margin'), 'frame_margin': frame.get('margin'),
+           'label_and_frame_agree': r.get('label_and_frame_agree'), 'offset_equals_block': r['offset_best'] == region_offset}
+    if r['identity_by'] == 'label' and r.get('label_and_frame_agree') is True:
+        rec['identity_status'] = 'settled'; rec['resolution'] = 'label card and whole frame chose the same photograph'
+    elif r['identity_by'] == 'frame' and (frame.get('margin') or 0) >= FRAME_ONLY_MARGIN and rec['offset_equals_block']:
+        rec['identity_status'] = 'frame-with-margin'; rec['resolution'] = 'no label card in the Denver crop; whole-frame margin >= %.3f and offset equal to the block' % FRAME_ONLY_MARGIN
+    elif r['identity_by'] == 'frame' and rec['offset_equals_block']:
+        rec['identity_status'] = 'provisional-block-consistent'
+        rec['resolution'] = ('no label card in the Denver crop and whole-frame margin below %.3f: neighbouring photographs 1/3 mm apart differ '
+                             'little in tissue, so the frame alone does not settle the photograph; the choice equals the block offset, which is '
+                             'consistency, not identification. Treat as provisional; exclude or flag when pairing RGB with labels.' % FRAME_ONLY_MARGIN)
+    else:
+        rec['identity_status'] = 'unresolved'; rec['resolution'] = 'identity criteria disagree or the offset differs from the block'
+    rec['provisional'] = rec['identity_status'] in ('provisional-block-consistent', 'unresolved')
+    if rec['provisional'] or rec['identity_status'] == 'frame-with-margin':
+        # the ambiguity set: every present photograph whose whole-frame NCC lies within the margin threshold of the chosen one
+        best = frame.get('ncc')
+        alts = sorted(c['n'] for c in r.get('candidates', []) if c.get('status') == 'present' and c['n'] != r['n_best']
+                      and best is not None and best - c['ncc_frame'] < FRAME_ONLY_MARGIN)
+        rec['ambiguity_set_n'] = sorted(alts + [r['n_best']])
+        rec['ambiguity_set_nlm'] = [nlm_name(n) for n in rec['ambiguity_set_n']]
+        rec['ambiguity_span_mm'] = round((max(rec['ambiguity_set_n']) - min(rec['ambiguity_set_n'])) / 3, 3)
+    return rec
+
+
+def build(rep):
+    problems = check_coverage(rep)
+    if problems:
+        raise SystemExit('report not fit for a transform:\n  ' + '\n  '.join(problems))
     rows = sorted([r for r in rep['slices'] if r['status'] == 'matched'], key=lambda r: r['k'])
     blanks = sorted(r['k'] for r in rep['slices'] if r['status'] == 'denver-blank')
-    if rep['summary'].get('step') != 1:
-        raise SystemExit('the transform needs the dense run (step 1); got step %r' % rep['summary'].get('step'))
     # regions by breakpoints between consecutive matched slices
     regions = []
     for r in rows:
@@ -72,10 +144,24 @@ def main():
             'local_residual_mean_nlm_px': {'median': round(float(np.median(loc)), 3), 'p95': round(float(np.percentile(loc, 95)), 3), 'max': round(float(loc.max()), 3)} if len(loc) else None,
             'ncc_full_median': round(float(np.median([x['similarity']['ncc_full'] for x in rs])), 4),
         })
-    per_slice = [{'k': r['k'], 'n': r['n_best'], 'nlm': nlm_name(r['n_best']), 'tc': r['similarity']['tc_nlm_px'], 'tr': r['similarity']['tr_nlm_px'],
-                  's': r['similarity']['scale_nlm_px_per_denver_px'], 'theta_deg': r['similarity']['rotation_deg'],
-                  'residual_mean_nlm_px': r['local_residual']['mean_nlm_px'], 'ncc': r['similarity']['ncc_full'],
-                  'identity_by': r['identity_by'], 'label_margin': (r['label_choice'] or {}).get('margin')} for r in rows]
+    region_of_k = {}
+    for g, grp in zip(out_regions, regions):
+        for r in grp['rows']:
+            region_of_k[r['k']] = g
+    per_slice = []
+    for r in rows:
+        g = region_of_k[r['k']]
+        per_slice.append({'k': r['k'], 'region': g['region'], 'n': r['n_best'], 'nlm': nlm_name(r['n_best']), 'tc': r['similarity']['tc_nlm_px'], 'tr': r['similarity']['tr_nlm_px'],
+                          's': r['similarity']['scale_nlm_px_per_denver_px'], 'theta_deg': r['similarity']['rotation_deg'],
+                          'residual_mean_nlm_px': r['local_residual']['mean_nlm_px'], 'ncc': r['similarity']['ncc_full'],
+                          **identity_of(r, g['offset'])})
+    status_counts = {}
+    for p in per_slice:
+        status_counts[p['identity_status']] = status_counts.get(p['identity_status'], 0) + 1
+    for g in out_regions:
+        ps = [p for p in per_slice if p['region'] == g['region']]
+        g['identity_status_counts'] = {s: sum(1 for p in ps if p['identity_status'] == s) for s in sorted({p['identity_status'] for p in ps})}
+        g['provisional_slices_k'] = [p['k'] for p in ps if p['provisional']]
     pelvis = max(out_regions, key=lambda g: g['k_last'])
     n_min = min(r['n_best'] for r in rows)
     fit = rep['summary']['slice_identity_fit']
@@ -92,6 +178,10 @@ def main():
             'photograph_axes_measured': 'c increases towards the subject\'s left (Denver +i = subject right, mirrored); r increases towards anterior (the patella lies at larger j than the femur in the Denver label map); n increases towards the feet',
         },
         'regions': out_regions,
+        'identity': {'status_counts': status_counts, 'provisional_slices': sum(1 for p in per_slice if p['provisional']),
+                     'block_consistency_resolves_nothing': True,
+                     'pair_selection': 'scripts/select-cryosection-pairs.py applies the declared policy (pairs-v1) and writes generated/cryosection-pair-selection.json: settled -> usable, frame-with-margin -> usable-flagged, provisional/unresolved -> excluded with their ambiguity sets; blank Denver slices have no reference',
+                     'rule': 'settled = label card and whole frame agree; frame-with-margin = no card, frame margin >= %.3f and block offset; provisional-block-consistent = no card and frame margin below that: the block offset is consistency, not identification, so the in-plane residual (which is below 0.1 px everywhere) does not settle which of two neighbouring photographs 1/3 mm apart it is. Consumers pairing RGB with Denver labels must read per_slice[].provisional and exclude or flag those slices; no automatic selection here.' % FRAME_ONLY_MARGIN},
         'denver_blank_slices': blanks,
         'nlm_photographs_in_range_no_denver_slice_chose': rep['summary'].get('nlm_photographs_in_range_no_denver_slice_chose'),
         'nlm_photographs_chosen_by_several_denver_slices': rep['summary'].get('nlm_photographs_chosen_by_several_denver_slices'),
@@ -109,9 +199,14 @@ def main():
         'review_status': 'image-to-image measurement between two publications of the same block; no anatomical review; the extrapolation above the pelvis is unverified',
         'per_slice': per_slice,
     }
+    return doc
+
+
+def main():
+    doc = build(json.loads(REPORT.read_text()))
     OUT.write_text(json.dumps(doc, indent=1))
-    print(json.dumps({'done': True, 'out': str(OUT.relative_to(ROOT)), 'regions': [(g['region'], g['k_first'], g['k_last'], g['offset'], g['similarity_median'], g['irregular']) for g in out_regions],
-                      'blank': len(blanks), 'per_slice': len(per_slice)}, indent=None))
+    print(json.dumps({'done': True, 'out': str(OUT.relative_to(ROOT)), 'regions': [(g['region'], g['k_first'], g['k_last'], g['offset'], g['similarity_median'], g['irregular']) for g in doc['regions']],
+                      'blank': len(doc['denver_blank_slices']), 'per_slice': len(doc['per_slice']), 'identity': doc['identity']['status_counts']}, indent=None))
 
 
 if __name__ == '__main__':
