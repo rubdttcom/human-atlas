@@ -109,7 +109,7 @@
  "method": {
   "instance_matching": "same geometric id on both CTs (cranial to caudal order), checked against the nearest transformed Denver centroid",
   "surface": "marching cubes at 0.5 on each instance mask, vertices carried to VHF mm; up to 20,000 points per surface, seeded",
-  "rigid_fit": "trimesh ICP without scale, anchored at the NLM instance centroid, 60 iterations; the residual after the fit is the segmentation difference between the two CTs",
+  "rigid_fit": "trimesh ICP without scale, anchored at the NLM instance centroid, 60 iterations; the residual after the fit mixes segmentation differences between the two CTs with voxel discretisation, surface sampling and the limits of the fit",
   "chain_fit": "Kabsch rigid fit of vertebra centroids NLM -> Denver, whole spine and per region",
   "model_spread": "centroid offset recomputed with each model's own instance map (vertebra-model-*.nii.gz)"
  },
@@ -124,7 +124,7 @@
    "median": 3.51,
    "max": 6.86
   },
-  "levels_beyond_uncertainty": [
+  "levels_beyond_heuristic_threshold": [
    "V01",
    "V02",
    "V03"
@@ -134,15 +134,15 @@
    "y_anterior": 0.86,
    "z_superior": -3.23,
    "norm": 3.35,
-   "meaning": "pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture"
+   "meaning": "pelvis-anchor offset shared by every level; its cause (registration translation, angular registration error, anchor segmentation) is not identified by this calculation"
   },
   "relative_to_pelvis_norm_mm": {
    "min": 0.83,
    "median": 2.19,
    "max": 5.0
   },
-  "relative_floor_mm": 0.76,
-  "levels_beyond_relative_uncertainty": [
+  "relative_anchor_disagreement_mm": 0.76,
+  "levels_beyond_relative_heuristic_threshold": [
    "V01",
    "V02",
    "V03"
@@ -152,12 +152,12 @@
    "max": 4.273
   },
   "whole_spine_chain_rotation_deg": 0.518,
-  "seconds": 70.4
+  "seconds": 71.5
  },
  "anchors": {
   "pelvis": {
    "definition": "TotalSegmentator hip_left + hip_right of each CT + consensus sacrum",
-   "meaning": "what both registrations fitted onto the Denver pelvis meshes: its offset is the floor of the method, not posture",
+   "meaning": "what both registrations fitted onto the Denver pelvis meshes: its offset is shared by every level; this calculation does not identify its cause (registration, angular error, anchor segmentation)",
    "centroid_offset_vhf_mm": {
     "x_right": -0.15,
     "y_anterior": 0.86,
@@ -680,18 +680,17 @@
     "y_anterior": -4.02,
     "z_superior": -2.75,
     "norm": 4.94,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.28,
-    "combined_mm": 5.63,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": true,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.04,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": true
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.28,
+    "heuristic_threshold_mm": 5.63,
+    "beyond_threshold": true,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.04,
+    "relative_beyond_threshold": true,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -794,18 +793,17 @@
     "y_anterior": -4.07,
     "z_superior": -2.81,
     "norm": 5.0,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.26,
-    "combined_mm": 5.61,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": true,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.02,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": true
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.26,
+    "heuristic_threshold_mm": 5.61,
+    "beyond_threshold": true,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.02,
+    "relative_beyond_threshold": true,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -908,18 +906,17 @@
     "y_anterior": -3.94,
     "z_superior": -2.66,
     "norm": 4.81,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.19,
-    "combined_mm": 5.54,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": true,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.95,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": true
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.19,
+    "heuristic_threshold_mm": 5.54,
+    "beyond_threshold": true,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.95,
+    "relative_beyond_threshold": true,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1022,18 +1019,17 @@
     "y_anterior": -3.28,
     "z_superior": -2.22,
     "norm": 3.99,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 4.09,
-    "combined_mm": 7.44,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 4.85,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 4.09,
+    "heuristic_threshold_mm": 7.44,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 4.85,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1136,18 +1132,17 @@
     "y_anterior": -0.74,
     "z_superior": -1.64,
     "norm": 2.52,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 3.46,
-    "combined_mm": 6.81,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 4.22,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 3.46,
+    "heuristic_threshold_mm": 6.81,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 4.22,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1250,18 +1245,17 @@
     "y_anterior": -2.8,
     "z_superior": -0.54,
     "norm": 2.87,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.22,
-    "combined_mm": 5.57,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.98,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.22,
+    "heuristic_threshold_mm": 5.57,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.98,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1364,18 +1358,17 @@
     "y_anterior": -2.47,
     "z_superior": -0.14,
     "norm": 2.48,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.15,
-    "combined_mm": 5.5,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.91,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.15,
+    "heuristic_threshold_mm": 5.5,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.91,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1478,18 +1471,17 @@
     "y_anterior": -2.67,
     "z_superior": 0.23,
     "norm": 2.69,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.22,
-    "combined_mm": 5.57,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.98,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.22,
+    "heuristic_threshold_mm": 5.57,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.98,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1592,18 +1584,17 @@
     "y_anterior": -2.65,
     "z_superior": 0.16,
     "norm": 2.66,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.37,
-    "combined_mm": 5.72,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.13,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.37,
+    "heuristic_threshold_mm": 5.72,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.13,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1706,18 +1697,17 @@
     "y_anterior": -2.03,
     "z_superior": 0.2,
     "norm": 2.04,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.34,
-    "combined_mm": 5.69,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.1,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.34,
+    "heuristic_threshold_mm": 5.69,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.1,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1820,18 +1810,17 @@
     "y_anterior": -2.11,
     "z_superior": 0.17,
     "norm": 2.12,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.29,
-    "combined_mm": 5.64,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.05,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.29,
+    "heuristic_threshold_mm": 5.64,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.05,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -1934,18 +1923,17 @@
     "y_anterior": -2.17,
     "z_superior": 0.15,
     "norm": 2.18,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.16,
-    "combined_mm": 5.51,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.92,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.16,
+    "heuristic_threshold_mm": 5.51,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.92,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2048,18 +2036,17 @@
     "y_anterior": -2.37,
     "z_superior": 0.1,
     "norm": 2.37,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 1.98,
-    "combined_mm": 5.33,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.74,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 1.98,
+    "heuristic_threshold_mm": 5.33,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.74,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2162,18 +2149,17 @@
     "y_anterior": -2.33,
     "z_superior": 0.11,
     "norm": 2.33,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.31,
-    "combined_mm": 5.66,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.07,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.31,
+    "heuristic_threshold_mm": 5.66,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.07,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2276,18 +2262,17 @@
     "y_anterior": -2.19,
     "z_superior": 0.02,
     "norm": 2.19,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.3,
-    "combined_mm": 5.65,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.06,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.3,
+    "heuristic_threshold_mm": 5.65,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.06,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2390,18 +2375,17 @@
     "y_anterior": -2.05,
     "z_superior": -0.11,
     "norm": 2.06,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.64,
-    "combined_mm": 5.99,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.4,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.64,
+    "heuristic_threshold_mm": 5.99,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.4,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2504,18 +2488,17 @@
     "y_anterior": -1.85,
     "z_superior": -0.23,
     "norm": 1.87,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.63,
-    "combined_mm": 5.98,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.39,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.63,
+    "heuristic_threshold_mm": 5.98,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.39,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2618,18 +2601,17 @@
     "y_anterior": -1.81,
     "z_superior": -0.11,
     "norm": 1.81,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.07,
-    "combined_mm": 5.42,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.83,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.07,
+    "heuristic_threshold_mm": 5.42,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.83,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2732,18 +2714,17 @@
     "y_anterior": -1.72,
     "z_superior": -0.23,
     "norm": 1.74,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.04,
-    "combined_mm": 5.39,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.8,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.04,
+    "heuristic_threshold_mm": 5.39,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.8,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2846,18 +2827,17 @@
     "y_anterior": -2.26,
     "z_superior": 0.0,
     "norm": 2.28,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.06,
-    "combined_mm": 5.41,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.82,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.06,
+    "heuristic_threshold_mm": 5.41,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.82,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -2955,18 +2935,17 @@
     "y_anterior": -1.39,
     "z_superior": 0.96,
     "norm": 1.69,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 2.06,
-    "combined_mm": 5.41,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.82,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 2.06,
+    "heuristic_threshold_mm": 5.41,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.82,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -3069,18 +3048,17 @@
     "y_anterior": 0.32,
     "z_superior": 1.15,
     "norm": 1.25,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 4.27,
-    "combined_mm": 7.62,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 5.03,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 4.27,
+    "heuristic_threshold_mm": 7.62,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 5.03,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -3183,18 +3161,17 @@
     "y_anterior": -0.04,
     "z_superior": -0.94,
     "norm": 1.04,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 3.0,
-    "combined_mm": 6.35,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 3.76,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 3.0,
+    "heuristic_threshold_mm": 6.35,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 3.76,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -3297,18 +3274,17 @@
     "y_anterior": -0.91,
     "z_superior": 0.12,
     "norm": 0.92,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 1.87,
-    "combined_mm": 5.22,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.63,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 1.87,
+    "heuristic_threshold_mm": 5.22,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.63,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -3411,18 +3387,17 @@
     "y_anterior": -0.82,
     "z_superior": 0.08,
     "norm": 0.83,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 1.94,
-    "combined_mm": 5.29,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.7,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 1.94,
+    "heuristic_threshold_mm": 5.29,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.7,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   },
   {
@@ -3520,18 +3495,17 @@
     "y_anterior": -0.19,
     "z_superior": 0.95,
     "norm": 0.99,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    },
-   "uncertainty": {
-    "registration_floor_mm": 3.35,
-    "segmentation_model_range_mm": 1.74,
-    "combined_mm": 5.09,
-    "rule": "combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error",
-    "exceeds_uncertainty": false,
-    "relative_floor_mm": 0.76,
-    "relative_combined_mm": 2.5,
-    "relative_rule": "relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range",
-    "relative_exceeds_uncertainty": false
+   "discrepancy_threshold": {
+    "pelvis_anchor_offset_mm": 3.35,
+    "model_range_mm": 1.74,
+    "heuristic_threshold_mm": 5.09,
+    "beyond_threshold": false,
+    "relative_anchor_disagreement_mm": 0.76,
+    "relative_heuristic_threshold_mm": 2.5,
+    "relative_beyond_threshold": false,
+    "rule": "heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing."
    }
   }
  ],
@@ -3598,7 +3572,7 @@
     "y_anterior": -2.43,
     "z_superior": 0.14,
     "norm": 2.5,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL02": {
@@ -3663,7 +3637,7 @@
     "y_anterior": -1.57,
     "z_superior": -0.31,
     "norm": 1.98,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL03": {
@@ -3728,7 +3702,7 @@
     "y_anterior": -2.48,
     "z_superior": 0.54,
     "norm": 3.29,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL04": {
@@ -3793,7 +3767,7 @@
     "y_anterior": -1.04,
     "z_superior": -0.19,
     "norm": 2.02,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL05": {
@@ -3858,7 +3832,7 @@
     "y_anterior": 1.25,
     "z_superior": -1.47,
     "norm": 3.04,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL06": {
@@ -3923,7 +3897,7 @@
     "y_anterior": 3.29,
     "z_superior": -3.03,
     "norm": 5.41,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL07": {
@@ -3988,7 +3962,7 @@
     "y_anterior": -4.28,
     "z_superior": 3.55,
     "norm": 5.75,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL08": {
@@ -4053,7 +4027,7 @@
     "y_anterior": -0.17,
     "z_superior": -1.02,
     "norm": 2.49,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL09": {
@@ -4118,7 +4092,7 @@
     "y_anterior": -3.81,
     "z_superior": 2.57,
     "norm": 4.69,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL10": {
@@ -4183,7 +4157,7 @@
     "y_anterior": 1.65,
     "z_superior": -5.0,
     "norm": 6.23,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL11": {
@@ -4248,7 +4222,7 @@
     "y_anterior": -1.61,
     "z_superior": -0.08,
     "norm": 1.64,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RL12": {
@@ -4313,7 +4287,7 @@
     "y_anterior": -1.79,
     "z_superior": -0.31,
     "norm": 1.84,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR01": {
@@ -4378,7 +4352,7 @@
     "y_anterior": -2.56,
     "z_superior": 0.16,
     "norm": 2.74,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR02": {
@@ -4443,7 +4417,7 @@
     "y_anterior": -2.06,
     "z_superior": -0.3,
     "norm": 2.78,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR03": {
@@ -4508,7 +4482,7 @@
     "y_anterior": -2.32,
     "z_superior": 0.22,
     "norm": 2.82,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR04": {
@@ -4573,7 +4547,7 @@
     "y_anterior": -1.45,
     "z_superior": -0.15,
     "norm": 2.6,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR05": {
@@ -4638,7 +4612,7 @@
     "y_anterior": 1.16,
     "z_superior": -2.43,
     "norm": 2.75,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR06": {
@@ -4703,7 +4677,7 @@
     "y_anterior": 2.63,
     "z_superior": -2.78,
     "norm": 4.64,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR07": {
@@ -4768,7 +4742,7 @@
     "y_anterior": 0.85,
     "z_superior": -2.08,
     "norm": 2.73,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR08": {
@@ -4833,7 +4807,7 @@
     "y_anterior": -0.14,
     "z_superior": -1.36,
     "norm": 2.79,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR09": {
@@ -4898,7 +4872,7 @@
     "y_anterior": -0.84,
     "z_superior": -1.32,
     "norm": 2.65,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR10": {
@@ -4963,7 +4937,7 @@
     "y_anterior": -1.56,
     "z_superior": -0.54,
     "norm": 1.99,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR11": {
@@ -5028,7 +5002,7 @@
     "y_anterior": -1.84,
     "z_superior": -0.14,
     "norm": 1.95,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   },
   "RR12": {
@@ -5093,7 +5067,7 @@
     "y_anterior": -1.56,
     "z_superior": -1.57,
     "norm": 2.73,
-    "meaning": "centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed"
+    "meaning": "centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated"
    }
   }
  },

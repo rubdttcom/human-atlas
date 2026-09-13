@@ -156,11 +156,14 @@ for part in atlas['parts']:
             check(po.get('status') == 'measured', f'{pid}: posture_offset status {po.get("status")} although the report measured {prov["instance_id"]}')
             check(po.get('centroid_offset_vhf_mm') == ref['centroid_offset_vhf_mm'], f'{pid}: posture centroid offset differs from the report')
             check(po.get('relative_to_pelvis') == ref.get('relative_to_pelvis'), f'{pid}: posture relative-to-pelvis offset differs from the report')
-            check(po.get('uncertainty') == ref.get('uncertainty'), f'{pid}: posture uncertainty differs from the report')
+            check(po.get('discrepancy_threshold') == ref.get('discrepancy_threshold'), f'{pid}: posture discrepancy threshold differs from the report')
+            if prov['role'] != 'rib':   # ribs carry no per-model maps, so no model range and no threshold
+                check('not an error bound' in ((po.get('discrepancy_threshold') or {}).get('rule') or ''), f'{pid}: discrepancy threshold rule must state it is not an error bound')
             check((po.get('own_rigid_fit') or {}).get('angle_deg') == ref['own_rigid_fit']['angle_deg'], f'{pid}: posture own-fit rotation differs from the report')
             check(po.get('common_shift_vhf_mm') == posture['summary']['common_shift_vhf_mm'], f'{pid}: posture common shift differs from the report')
             note = (po.get('note') or '').lower()
             check('nothing is corrected' in note and 'nothing is anatomy' in note and 'validat' not in note, f'{pid}: posture note must say nothing is corrected and nothing is anatomy, never validation')
+            check('not identif' in note or 'identifies the cause of no part' in note, f'{pid}: posture note must say the cause is not identified')
     if prov['instance_family'] == 'bones':
         check(prov.get('review_status') == 'machine-unverified' and prov.get('consensus_status') == 'candidate-consensus', f'{pid}: bone candidate must be machine-unverified candidate-consensus')
         check(prov['structure_id'] == nlm_terms.get(prov['label_name']), f'{pid}: bone candidate structure id {prov["structure_id"]} differs from the nlm-vhf-ct label {prov["label_name"]} ({nlm_terms.get(prov["label_name"])})')
@@ -240,10 +243,17 @@ for part in nlm_atlas['parts']:
             check(ctx.get('centroid_offset_vhf_mm') == ref['centroid_offset_vhf_mm'] and ctx.get('relative_to_pelvis') == ref.get('relative_to_pelvis'), f'{pid}: trunk_posture_context figures differ from the report')
             check(ctx.get('own_rigid_fit_angle_deg') == ref['own_rigid_fit']['angle_deg'], f'{pid}: trunk_posture_context rotation differs from the report')
         label = prov.get('label_name', '')
-        if label.startswith('vertebrae_') or label.startswith('rib_'):
-            linked = any(inst['source_labels'].get('totalseg') == label for fam, tb in tables.items() if fam != 'bones' for inst in tb.values() if inst.get('consensus_ml', 0) > 0)
-            if linked:
-                check(ctx.get('link', '').startswith('instance the TotalSegmentator label voted into'), f'{pid}: {label} voted into a consensus instance but the context uses the nearest level')
+        voted = sorted(iid for fam, tb in tables.items() if fam != 'bones' for iid, inst in tb.items() if inst.get('consensus_ml', 0) > 0 and inst['source_labels'].get('totalseg') == label)
+        check(sorted(ctx.get('linked_instance_ids') or []) == voted, f'{pid}: linked_instance_ids {ctx.get("linked_instance_ids")} differ from the instances the label voted into {voted} (a split label must keep every instance)')
+        if voted:
+            check(ctx.get('instance_id') in voted and ctx.get('link', '').startswith('label voted into'), f'{pid}: {label} voted into {voted} but the context uses {ctx.get("instance_id")} / {ctx.get("link")}')
+            if len(voted) > 1:
+                z = ctx.get('mesh_centroid_z_vhf_mm')
+                nearest = min(voted, key=lambda i: abs(posture_by_id[i]['nlm_centroid'][2] - z)) if all(i in posture_by_id and 'nlm_centroid' in posture_by_id[i] for i in voted) else None
+                check(nearest is None or ctx.get('instance_id') == nearest, f'{pid}: split label figures must come from the linked instance nearest in z ({nearest}), got {ctx.get("instance_id")}')
+                check(sorted(l['id'] for l in (ctx.get('linked_levels') or [])) == voted, f'{pid}: linked_levels must list every linked instance')
+        else:
+            check(ctx.get('link', '').startswith('nearest measured vertebral level'), f'{pid}: label voted into no instance but link is {ctx.get("link")}')
         check('nothing is corrected' in (ctx.get('note') or '').lower() and 'validat' not in (ctx.get('note') or '').lower(), f'{pid}: trunk_posture_context note wording')
     if pid in nlm_manifest:
         check(nlm_manifest[pid].get('trunk_posture_context') == ctx, f'{pid}: manifest copy of trunk_posture_context differs')

@@ -74,11 +74,11 @@ def posture_offset(instance_id):
             'own_rigid_fit': {'angle_deg': fit['angle_deg'], 'about_x_right_deg': fit['about_x_right_deg'], 'about_y_anterior_deg': fit['about_y_anterior_deg'],
                               'about_z_superior_deg': fit['about_z_superior_deg'], 'residual_after_fit_p95_mm': fit['residual_after_fit']['nlm_to_denver']['p95_mm']},
             'relative_to_pelvis': lv.get('relative_to_pelvis'), 'common_shift_vhf_mm': POSTURE['summary']['common_shift_vhf_mm'],
-            'uncertainty': lv.get('uncertainty'), 'registration_floor_pelvis_mm': POSTURE['summary']['registration_floor_pelvis_mm'],
+            'discrepancy_threshold': lv.get('discrepancy_threshold'), 'registration_floor_pelvis_mm': POSTURE['summary']['registration_floor_pelvis_mm'],
             'whole_spine_chain_rotation_deg': POSTURE['summary']['whole_spine_chain_rotation_deg'],
             'note': 'Denver aligned CT (frozen block) minus NLM fresh CT (table) for the same consensus instance, each CT placed by its own rigid pelvis fit. '
-                    'The figure mixes posture, two registration errors and two segmentation differences; nothing is corrected, nothing is anatomy. '
-                    'Until a correction is recorded, this mesh is a prior with this placement uncertainty in the cryosection frame (plan B stage 0).'}
+                    'The figure mixes posture, two registration errors (translation and angle) and two segmentation differences; this calculation does not identify the cause of any part of it, '
+                    'the pelvis-anchor offset included. Nothing is corrected, nothing is anatomy. Until a correction is recorded, this mesh is a prior with this measured discrepancy in the cryosection frame (plan B stage 0).'}
 transform = json.loads((ROOT / 'transforms/nlm-ct-to-vhf.json').read_text())
 stage = json.loads((ROOT / 'transforms/source-to-stage.json').read_text())
 ts_labels = ROOT / 'data/derived/nlm-vhf/totalseg.nii'

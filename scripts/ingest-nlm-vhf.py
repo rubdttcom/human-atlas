@@ -44,36 +44,51 @@ POSTURE_SHA = hashlib.sha256(POSTURE_PATH.read_bytes()).hexdigest()
 POSTURE_LEVELS = POSTURE['levels']
 POSTURE_RIBS = {k: v for k, v in POSTURE['ribs'].items() if 'centroid_offset_vhf_mm' in v}
 NLM_INSTANCES = json.loads((ROOT / 'generated/ct-vertebra-instances-nlm.json').read_text())['instances']
-TS_TO_INSTANCE = {i['source_labels'].get('totalseg'): i['id'] for i in NLM_INSTANCES if i.get('consensus_ml', 0) > 0 and i['source_labels'].get('totalseg')}
+TS_TO_INSTANCES = {}   # TotalSegmentator label -> every consensus instance it voted into (a label can span two instances: the six-lumbar split)
+for i in NLM_INSTANCES:
+    if i.get('consensus_ml', 0) > 0 and i['source_labels'].get('totalseg'):
+        TS_TO_INSTANCES.setdefault(i['source_labels']['totalseg'], []).append(i['id'])
 for side in ('left', 'right'):
     for i in json.loads((ROOT / f'generated/ct-rib-instances-nlm-{side}.json').read_text())['instances']:
         if i.get('consensus_ml', 0) > 0 and i['source_labels'].get('totalseg'):
-            TS_TO_INSTANCE[i['source_labels']['totalseg']] = i['id']
+            TS_TO_INSTANCES.setdefault(i['source_labels']['totalseg'], []).append(i['id'])
 stage_to_image = np.linalg.inv(image_to_stage)
 
 
 def trunk_posture_context(label, vertices_stage):
-    """Plan B stage 0: the measured fresh-CT versus frozen-block offset that applies to this mesh in the cryosection frame.
-    Vertebra and rib labels link to the consensus instance the TotalSegmentator label voted into; every other mesh gets the
-    nearest measured level by z of its centroid. Posture + two registrations + two segmentations; nothing is corrected."""
+    """Plan B stage 0: the measured fresh-CT versus frozen-block discrepancy that applies to this mesh in the cryosection frame.
+    Vertebra and rib labels link to every consensus instance the TotalSegmentator label voted into (a split label keeps both);
+    the figures shown come from the linked instance whose NLM centroid is nearest in z to the mesh centroid, and every linked
+    instance is listed. Other meshes get the nearest measured level by z. Posture + two registrations + two segmentations;
+    nothing is corrected and no cause is identified."""
     z = float(nib.affines.apply_affine(stage_to_image, vertices_stage.mean(axis=0))[2])
     span = (min(l['nlm_centroid'][2] for l in POSTURE_LEVELS), max(l['nlm_centroid'][2] for l in POSTURE_LEVELS))
-    inst_id = TS_TO_INSTANCE.get(label)
-    rec = next((l for l in POSTURE_LEVELS if l['id'] == inst_id), None) or POSTURE_RIBS.get(inst_id)
-    link = 'instance the TotalSegmentator label voted into' if rec else 'nearest measured vertebral level by z of the mesh centroid'
-    if rec is None:
-        rec = min(POSTURE_LEVELS, key=lambda l: abs(l['nlm_centroid'][2] - z))
-        inst_id = rec['id']
-    return {'report': str(POSTURE_PATH.relative_to(ROOT)), 'report_sha256': POSTURE_SHA, 'frame': POSTURE['frame'], 'link': link, 'instance_id': inst_id,
+    by_id = {l['id']: l for l in POSTURE_LEVELS}
+    by_id.update(POSTURE_RIBS)
+    linked = [i for i in TS_TO_INSTANCES.get(label, []) if i in by_id]
+    if linked:
+        link = ('label voted into one consensus instance' if len(linked) == 1
+                else f'label voted into {len(linked)} consensus instances (split label); figures from the one nearest in z to the mesh centroid, all listed')
+        chosen = min(linked, key=lambda i: abs(by_id[i].get('nlm_centroid', [0, 0, z])[2] - z)) if len(linked) > 1 else linked[0]
+    else:
+        link = 'nearest measured vertebral level by z of the mesh centroid (this label voted into no consensus instance)'
+        chosen = min(POSTURE_LEVELS, key=lambda l: abs(l['nlm_centroid'][2] - z))['id']
+        linked = []
+    rec = by_id[chosen]
+    def figures(r):
+        return {'id': r.get('id'), 'hra_name_by_order': r.get('hra_name_by_order'), 'centroid_offset_vhf_mm': r['centroid_offset_vhf_mm'], 'relative_to_pelvis': r.get('relative_to_pelvis'),
+                'own_rigid_fit_angle_deg': r['own_rigid_fit']['angle_deg'], 'heuristic_threshold_mm': (r.get('discrepancy_threshold') or {}).get('heuristic_threshold_mm')}
+    return {'report': str(POSTURE_PATH.relative_to(ROOT)), 'report_sha256': POSTURE_SHA, 'frame': POSTURE['frame'], 'link': link, 'instance_id': chosen,
+            'linked_instance_ids': linked, 'linked_levels': [figures({**by_id[i], 'id': i}) for i in linked] if len(linked) > 1 else None,
             'instance_hra_name_by_order': rec.get('hra_name_by_order'), 'mesh_centroid_z_vhf_mm': round(z, 1),
             'inside_measured_span': bool(span[0] - 20 <= z <= span[1] + 20),
             'centroid_offset_vhf_mm': rec['centroid_offset_vhf_mm'], 'relative_to_pelvis': rec.get('relative_to_pelvis'), 'common_shift_vhf_mm': POSTURE['summary']['common_shift_vhf_mm'],
             'own_rigid_fit_angle_deg': rec['own_rigid_fit']['angle_deg'],
-            'uncertainty_combined_mm': (rec.get('uncertainty') or {}).get('combined_mm'),
+            'heuristic_threshold_mm': (rec.get('discrepancy_threshold') or {}).get('heuristic_threshold_mm'),
             'registration_floor_pelvis_mm': POSTURE['summary']['registration_floor_pelvis_mm'], 'whole_spine_chain_rotation_deg': POSTURE['summary']['whole_spine_chain_rotation_deg'],
-            'note': 'Denver aligned CT (frozen block) minus NLM fresh CT (table) at this level, each CT placed by its own rigid pelvis fit: posture, two registration errors and two '
-                    'segmentation differences together; nothing is corrected, nothing is anatomy. This CT label is a prior with this placement uncertainty in the cryosection frame (plan B stage 0). '
-                    'Outside the measured span (skull above C1, limbs) the nearest level is context only.'}
+            'note': 'Denver aligned CT (frozen block) minus NLM fresh CT (table) at this level, each CT placed by its own rigid pelvis fit: posture, two registration errors (translation and angle) and two '
+                    'segmentation differences together; this calculation identifies the cause of no part of it, the pelvis-anchor offset included. Nothing is corrected, nothing is anatomy. '
+                    'This CT label is a prior with this measured discrepancy in the cryosection frame (plan B stage 0). Outside the measured span (skull above C1, limbs) the nearest level is context only.'}
 voxel_mm3 = float(np.prod(image.header.get_zooms()))
 SYSTEM_RULES = [
     (r'vertebrae|sacrum|rib_|sternum|humerus|scapula|clavicula|femur|^hip_|skull', 'skeletal'),

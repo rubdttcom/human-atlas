@@ -17,12 +17,18 @@ ROOT = Path(__file__).resolve().parents[1]
 VALIDATOR = ROOT / 'scripts/validate-consensus-metadata.py'
 ATLAS = (ROOT / 'public/atlases/ct-consensus.json').resolve()
 MANIFEST = (ROOT / 'manifests/ct-consensus.json').resolve()
+NLM_ATLAS = (ROOT / 'public/atlases/nlm-vhf-ct.json').resolve()
 REAL_READ_TEXT = Path.read_text
 
 
-def run(mutate_atlas=None, mutate_manifest=None, families=('bones',)):
+def run(mutate_atlas=None, mutate_manifest=None, families=('bones',), mutate_nlm=None):
     def read_text(self, *a, **k):
         text = REAL_READ_TEXT(self, *a, **k)
+        if mutate_nlm and self.resolve() == NLM_ATLAS:
+            data = json.loads(text)
+            for p in data['parts']:
+                mutate_nlm(p['provenance'])
+            return json.dumps(data)
         if mutate_atlas and self.resolve() == ATLAS:
             data = json.loads(text)
             for p in data['parts']:
@@ -98,6 +104,18 @@ def posture_shifted(prov):
         prov['posture_offset']['relative_to_pelvis']['norm'] = 0.0
 
 
+def split_link_collapsed(prov):
+    ctx = prov.get('trunk_posture_context') or {}
+    if len(ctx.get('linked_instance_ids') or []) > 1:
+        ctx['linked_instance_ids'] = ctx['linked_instance_ids'][-1:]
+        ctx['linked_levels'] = None
+
+
+def threshold_as_bound(prov):
+    if prov.get('posture_offset') and prov['posture_offset'].get('discrepancy_threshold'):
+        prov['posture_offset']['discrepancy_threshold']['rule'] = 'conservative error bound'
+
+
 def posture_other_report(prov):
     if prov.get('posture_offset'):
         prov['posture_offset']['report_sha256'] = '0' * 64
@@ -125,10 +143,12 @@ cases = [
     ('posture relative offset zeroed in the atlas only', posture_shifted, None, False, INSTANCES),
     ('posture offset bound to another report', posture_other_report, None, False, INSTANCES),
     ('posture note reads as validation', posture_validated_wording, None, False, INSTANCES),
+    ('discrepancy threshold rule presented as an error bound', threshold_as_bound, None, False, INSTANCES),
+    ('split label link collapsed to one instance in nlm-vhf-ct', None, None, False, ('bones',), split_link_collapsed),
 ]
 failures = []
-for name, ma, mm, expect_ok, *fam in cases:
-    ok, code, out = run(ma, mm, fam[0] if fam else ('bones',))
+for name, ma, mm, expect_ok, *rest in cases:
+    ok, code, out = run(ma, mm, rest[0] if rest else ('bones',), rest[1] if len(rest) > 1 else None)
     status = 'ok' if ok == expect_ok else 'UNEXPECTED'
     if ok != expect_ok:
         failures.append(name)

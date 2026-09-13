@@ -15,11 +15,13 @@ Per instance (matched by geometric id, then verified by nearest transformed cent
   surface_distance_placed     NLM surface -> Denver surface (and back) as placed by the two transforms
   own_rigid_fit               rigid ICP (no scale) of the NLM instance surface onto the Denver one: rotation (deg,
                               axis-angle components about x = sagittal flexion/extension, y = frontal tilt,
-                              z = axial), translation, and the residual after the fit (segmentation difference)
+                              z = axial), translation, and the residual after the fit (segmentation, discretisation, sampling and fit limits)
   model_spread                the centroid offset recomputed with each model's own instance map; the range across
-                              models is the segmentation part of the uncertainty
+                              models is one observable component of the discrepancy (models may share bias)
 Anchors: pelvis (TotalSegmentator hips + consensus sacrum) and skull, same measures. The pelvis is what both
-registrations fitted, so its offset is the floor of the method, not posture.
+registrations fitted, so its offset is the anchor offset shared by every level. This calculation does not identify its
+cause (registration translation, angular registration error, anchor segmentation); subtracting it removes one
+translational reference only, never angular registration error (0.5 deg gives about 5 mm at 600 mm from the pelvis).
 Chain: one rigid fit (Kabsch) of all vertebra centroids NLM -> Denver, whole spine and per region, with residuals
 per level, to separate a global trunk rotation from local intervertebral change.
 Controls: each NLM vertebra against the next caudal Denver instance (must show the inter-level spacing).
@@ -276,7 +278,7 @@ def main():
     anchors = {}
     pel = {n: v.union([(v.totalseg, TS_CLASS['hip_left']), (v.totalseg, TS_CLASS['hip_right'])] + ([(v.maps['vertebra'], sac)] if sac else [])) for n, v in vols.items()}
     anchors['pelvis'] = {'definition': 'TotalSegmentator hip_left + hip_right of each CT' + (' + consensus sacrum' if sac else ''),
-                         'meaning': 'what both registrations fitted onto the Denver pelvis meshes: its offset is the floor of the method, not posture', **compare(pel['nlm'], pel['denver'], rng)}
+                         'meaning': 'what both registrations fitted onto the Denver pelvis meshes: its offset is shared by every level; this calculation does not identify its cause (registration, angular error, anchor segmentation)', **compare(pel['nlm'], pel['denver'], rng)}
     sk = {n: v.instance(v.totalseg, TS_CLASS['skull']) for n, v in vols.items()}
     if all(sk.values()):
         anchors['skull'] = {'definition': 'TotalSegmentator skull of each CT', **compare(sk['nlm'], sk['denver'], rng)}
@@ -301,17 +303,18 @@ def main():
     for rec in list(levels.values()) + [r for r in ribs.values() if 'centroid_offset_vhf_mm' in r]:
         o = np.array([rec['centroid_offset_vhf_mm'][k] for k in ('x_right', 'y_anterior', 'z_superior')]) - common
         rec['relative_to_pelvis'] = {'x_right': round(float(o[0]), 2), 'y_anterior': round(float(o[1]), 2), 'z_superior': round(float(o[2]), 2), 'norm': round(float(np.linalg.norm(o)), 2),
-                                     'meaning': 'centroid offset minus the pelvis-anchor offset: what moved with respect to the pelvis between the two acquisitions (posture + segmentation), the common shift of both registrations removed'}
+                                     'meaning': 'centroid offset minus the pelvis-anchor offset: one translational reference removed; still a mixture of posture, angular registration error and segmentation, not separated'}
     for rec in levels.values():
         spread = rec['model_spread']['max_component_range_mm'] or 0.0
-        rec['uncertainty'] = {'registration_floor_mm': floor, 'segmentation_model_range_mm': spread,
-                              'combined_mm': round(floor + spread, 2),
-                              'rule': 'combined = pelvis-anchor centroid offset (both registrations) + largest per-component range of the offset across the three models; a conservative sum, not a standard error',
-                              'exceeds_uncertainty': bool(rec['centroid_offset_vhf_mm']['norm'] > floor + spread),
-                              'relative_floor_mm': floor_relative,
-                              'relative_combined_mm': round(floor_relative + spread, 2),
-                              'relative_rule': 'relative floor = largest disagreement between the three pelvis anchors (hip left, hip right, hips + sacrum) about the common shift; relative combined = that floor + the model range',
-                              'relative_exceeds_uncertainty': bool(rec['relative_to_pelvis']['norm'] > floor_relative + spread)}
+        rec['discrepancy_threshold'] = {'pelvis_anchor_offset_mm': floor, 'model_range_mm': spread,
+                                        'heuristic_threshold_mm': round(floor + spread, 2),
+                                        'beyond_threshold': bool(rec['centroid_offset_vhf_mm']['norm'] > floor + spread),
+                                        'relative_anchor_disagreement_mm': floor_relative,
+                                        'relative_heuristic_threshold_mm': round(floor_relative + spread, 2),
+                                        'relative_beyond_threshold': bool(rec['relative_to_pelvis']['norm'] > floor_relative + spread),
+                                        'rule': 'heuristic threshold = pelvis-anchor offset norm + largest per-component range of the offset across the three models; relative = largest disagreement of the three pelvis anchors about the anchor offset + the same model range. '
+                                                'A descriptive threshold for discrepancy, not an error bound, not a confidence level: it propagates no angular uncertainty, the models may share bias, and a per-axis range is not a Euclidean range. '
+                                                'beyond_threshold marks a discrepancy to inspect; it does not attribute the excess to posture and it decides nothing.'}
 
     order = [i for i in full_ids]
     summary = {
@@ -319,13 +322,13 @@ def main():
         'registration_floor_pelvis_mm': floor, 'registration_floor_pelvis_surface_p95_mm': floor_surface,
         'centroid_offset_norm_mm': {'min': min(l['centroid_offset_vhf_mm']['norm'] for l in levels.values()), 'median': round(float(np.median([l['centroid_offset_vhf_mm']['norm'] for l in levels.values()])), 2),
                                     'max': max(l['centroid_offset_vhf_mm']['norm'] for l in levels.values())},
-        'levels_beyond_uncertainty': [l['id'] for l in levels.values() if l['uncertainty']['exceeds_uncertainty']],
+        'levels_beyond_heuristic_threshold': [l['id'] for l in levels.values() if l['discrepancy_threshold']['beyond_threshold']],
         'common_shift_vhf_mm': {'x_right': round(float(common[0]), 2), 'y_anterior': round(float(common[1]), 2), 'z_superior': round(float(common[2]), 2), 'norm': floor,
-                                'meaning': 'pelvis-anchor offset shared by every level: the difference between the two pelvis registrations, not posture'},
+                                'meaning': 'pelvis-anchor offset shared by every level; its cause (registration translation, angular registration error, anchor segmentation) is not identified by this calculation'},
         'relative_to_pelvis_norm_mm': {'min': min(l['relative_to_pelvis']['norm'] for l in levels.values()), 'median': round(float(np.median([l['relative_to_pelvis']['norm'] for l in levels.values()])), 2),
                                        'max': max(l['relative_to_pelvis']['norm'] for l in levels.values())},
-        'relative_floor_mm': floor_relative,
-        'levels_beyond_relative_uncertainty': [l['id'] for l in levels.values() if l['uncertainty']['relative_exceeds_uncertainty']],
+        'relative_anchor_disagreement_mm': floor_relative,
+        'levels_beyond_relative_heuristic_threshold': [l['id'] for l in levels.values() if l['discrepancy_threshold']['relative_beyond_threshold']],
         'own_rigid_fit_rotation_deg': {'median': round(float(np.median([l['own_rigid_fit']['angle_deg'] for l in levels.values()])), 2), 'max': max(l['own_rigid_fit']['angle_deg'] for l in levels.values())},
         'whole_spine_chain_rotation_deg': chain['whole_spine']['angle_deg'] if chain['whole_spine'] else None,
         'seconds': round(time.time() - t0, 1),
@@ -345,7 +348,7 @@ def main():
                            'sha256': sha256(CT[n]['transform'])} for n in vols},
         'method': {'instance_matching': 'same geometric id on both CTs (cranial to caudal order), checked against the nearest transformed Denver centroid',
                    'surface': 'marching cubes at 0.5 on each instance mask, vertices carried to VHF mm; up to 20,000 points per surface, seeded',
-                   'rigid_fit': 'trimesh ICP without scale, anchored at the NLM instance centroid, 60 iterations; the residual after the fit is the segmentation difference between the two CTs',
+                   'rigid_fit': 'trimesh ICP without scale, anchored at the NLM instance centroid, 60 iterations; the residual after the fit mixes segmentation differences between the two CTs with voxel discretisation, surface sampling and the limits of the fit',
                    'chain_fit': 'Kabsch rigid fit of vertebra centroids NLM -> Denver, whole spine and per region', 'model_spread': 'centroid offset recomputed with each model\'s own instance map (vertebra-model-*.nii.gz)'},
         'summary': summary,
         'anchors': anchors,
