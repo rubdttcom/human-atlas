@@ -2,51 +2,77 @@
  "id": "machine-acceptance-protocol",
  "version": 1,
  "date": "2026-09-13",
- "plan_reference": "docs/plans/vhf-cryosection-machine-driven-plan.md section 2.7 (terminal status without an anatomist), 2.4 (reserved evaluation), 2.1 (Denver floor H_c, P_c), 9 (decision rule); roadmap section 6b",
- "pre_registration": "written before any training run of the pilot; the criteria, controls, thresholds and status rules below are fixed; any change after a result has been seen is version 2, and every result already scored stays reported under version 1",
+ "revision": "revised 2026-09-13 after the Codex audit of afec927 (one P1, three P2), before any training run; the first text of the same day is in git history (afec927). Changes: surface bar measured with the pilot's own metric implementation (P1), surface scoring fully specified with synthetic tests (P2), evaluator sanity controls separated from model-side controls (P2), training eligibility restricted to the densely supervised range (A), zero-support bands and false positives (C), tolerance and tie policy (D), literal mirror wording (E), reserved classes never trained (F). No score has been seen.",
+ "plan_reference": "docs/plans/vhf-cryosection-machine-driven-plan.md section 2.7 (terminal status without an anatomist), 2.4 (reserved evaluation), 2.1 (Denver floor), 9 (decision rule); roadmap section 6b",
+ "pre_registration": "written before any training run of the pilot; criteria, controls, thresholds and status rules are fixed; any change after a result has been seen is version 2, and every result already scored stays reported under version 1",
  "scope": {
-  "region": "Denver block 2, mid-thigh to pelvis: Denver slices k 2285..3532 (z 760.6 to 1175.8 mm, VHF-image-2022), the block without rotation and with one photograph offset",
+  "region": "Denver block 2, mid-thigh to lower thorax: Denver slices k 2285..3532 (z 760.6 to 1175.8 mm, VHF-image-2022), the block without rotation and with one photograph offset; Denver labels stop at the psoas above about z 1,010 mm",
   "classes_assessed": ["bone", "cartilage", "muscle"],
   "classes_not_assessable_by_construction": {"ligament-tendon": "no Denver ligament voxel in the block (Denver ligaments are the knee ligaments)", "fat": "no Denver source in the 2022 release", "background": "reported, never a status"},
   "use": "tissue-class segmentation of the colour cryosections (class level, no instances, no names); the result speaks for this block, these classes and this use only",
   "variants": ["rgb-only", "rgb-plus-ct-prior"],
-  "network": "nnU-Net v2, 2D configuration, fold 0 of the frozen split (training slices of registry/cryo-eval-bands-v1.json); the variant and fold are part of the frozen result identity"
+  "network": "nnU-Net v2, 2D configuration, fold 0 of the frozen split; the variant and fold are part of the frozen result identity"
+ },
+ "training": {
+  "eligible_slices": "primary",
+  "source": "registry/cryo-eval-bands-v1.json training_eligibility.primary_k_ranges (197 paired slices in densely supervised 50 mm bins); the auxiliary stratum (428 paired slices above k 3049 where Denver labels only the psoas) is off; using it is a separate recorded decision and a new split hash; excluded slices are never sampled",
+  "active_output_classes": [0, 1, 2, 3],
+  "ignore_encoding": "255 in the label volume, excluded from the loss (nnU-Net ignore label); classes 4 (ligament-tendon) and 5 (fat) are reserved registry ids with no supervision here: not output by the network, never learned as negatives on ignored voxels, reported machine-not-assessable",
+  "never_seen": "band slices and their 10 mm buffers; the evaluator refuses a prediction whose training manifest lists a band or buffer slice"
  },
  "statuses": {
-  "machine-accepted": "a frozen prediction volume that meets every criterion of its class below and for which every negative control behaves as required; no human anatomical review; never called validation",
-  "machine-failed": "a frozen prediction volume that is assessable and misses at least one criterion of its class; the failing criterion is named",
-  "machine-not-assessable": "the class has no reference support in the scoring slices (below min_reference_voxels), or a negative control did not behave as required (the evaluation itself is then not trusted for any class), or the input hashes do not match this protocol",
-  "separate_states": "technical acceptance (this protocol) / name (pending, not applicable at class level) / placement (the block is in Denver's frame by construction; the alignment uncertainty is that of transforms/nlm-cryosection-to-vhf.json, residual below 0.1 px in this block)"
+  "machine-accepted": "a frozen prediction volume that meets every criterion of its class and whose model-side controls behave as required, with the evaluator sanity controls passed; no human anatomical review; never called validation",
+  "machine-failed": "an assessable class that misses a criterion or a model-side control; the failing item is named; other classes are not affected",
+  "machine-not-assessable": "reference support below min_reference_voxels, or an evaluator sanity control on the reference did not degrade (the evaluation itself is then not trusted for any class), or the fixed_now hashes do not match this protocol, or the class has no supervision by construction",
+  "separate_states": "technical acceptance (this protocol) / name (pending, not applicable at class level) / placement (the block is in Denver's frame by construction; alignment uncertainty is that of transforms/nlm-cryosection-to-vhf.json, residual below 0.1 px in this block)"
  },
  "reference": {
-  "labels": "Denver ORIGINAL label maps (VHF_Full.mat) of the scoring slices, mapped through registry/cryo-tissue-map.json version 1; never the voxelised final meshes",
-  "scoring_slices": "slices of the two frozen bands of registry/cryo-eval-bands-v1.json whose pair status is usable or usable-flagged (141 + 150 = 291 slices); excluded-identity and excluded-observability slices inside a band are not scored",
-  "ignore": "voxels with tissue class 255 (unknown inside the body, whole excluded slices) are outside every metric, numerator and denominator; background (0) is not a class under acceptance",
-  "training_never_sees": "band slices and their 10 mm buffers (registry/cryo-eval-bands-v1.json, training_k_ranges is the only source of training slices)"
+  "labels": "Denver ORIGINAL label maps (VHF_Full.mat) of the scoring slices, mapped through registry/cryo-tissue-map.json version 1 into data/derived/nlm-vhf/cryosections/block2/tissue-classes.nii.gz; never the voxelised final meshes",
+  "scoring_slices": "slices of the two frozen bands whose pair status is usable or usable-flagged (141 + 150 = 291); excluded-identity and excluded-observability slices inside a band are ineligible; the 9 excluded slices of band 1 stay at their k position as ineligible slices, nothing is compacted",
+  "eligibility": "eligible = scoring slice and reference class != 255; ineligible voxels are outside numerator and denominator of every metric",
+  "zero_support_bands": "a band with no reference voxels of a class (cartilage in band 2) contributes its false positives to the pooled Dice (they are in |P & E|) and to the per-band false-positive count; it contributes no surface distance (none is defined) and is reported as false-positives-only for the surface metric",
+  "training_never_sees": "band slices and their 10 mm buffers"
  },
  "noise_floor": {
-  "file": "generated/denver-noise-floor.json",
-  "sha256": "5539a188e9c788e1e65c0d91a21114ef1c0bdef674ebded9a49815154ce9aa91",
-  "meaning": "agreement between Denver's original label maps and Denver's final meshes per structure, class median (plan B 2.1): the effect of Denver's post-processing, not human variability and not a bound on anatomical truth",
-  "H_dice_median": {"bone": 0.9224, "cartilage": 0.5947, "ligament": 0.8027, "muscle": 0.9395},
-  "P_p95_mm_median": {"bone": 1.1391, "cartilage": 1.3818, "ligament": 1.0024, "muscle": 1.3064}
+  "file": "generated/denver-surface-floor.json",
+  "surface_floor_sha256": "365e821c273bfa4a30be0845440681e0913471981eb735761523c3eec09b00a7",
+  "meaning": "agreement between Denver's original label maps and Denver's final meshes voxelised on the label grid, measured per structure with scripts/cryo_metrics.py (the pilot's metric) and summarised by class median (plan B 2.1): the effect of Denver's post-processing, not human variability and not a bound on anatomical truth",
+  "H_dice_vox_median": {"bone": 0.9324, "cartilage": 0.7449, "ligament": 0.8027, "muscle": 0.9405},
+  "P_vox_p95_mm_median": {"bone": 0.9419, "cartilage": 0.9704, "ligament": 0.9419, "muscle": 0.9419},
+  "old_floor": {"file": "generated/denver-noise-floor.json", "sha256": "5539a188e9c788e1e65c0d91a21114ef1c0bdef674ebded9a49815154ce9aa91", "H_dice_median": {"bone": 0.9224, "cartilage": 0.5947, "ligament": 0.8027, "muscle": 0.9395}, "P_p95_mm_median_original_to_final": {"bone": 1.1391, "cartilage": 1.3818, "ligament": 1.0024, "muscle": 1.3064},
+                "why_not_used": "its surface figure is marching-cubes vertices against mesh samples in the original-to-final direction only, another metric than the evaluator's (Codex P1); and its rasteriser dropped every mesh slice with more than one contour (rtree missing, exception swallowed), which biased 57 of 123 structure Dice values low, cartilage most (0.59 -> 0.74 median). Kept for the record; plan B 2.1 figures need this correction."},
+  "quantisation": "0.9419 mm is one in-plane diagonal pixel (0.666 * sqrt 2): Denver's two versions differ by about one pixel at the 95th percentile; the surface bar is therefore one pixel and p95 values are quantised on the grid"
  },
  "metrics": {
-  "dice": "per class, voxels pooled over all scoring slices of both bands (the 2D predictions stacked into one volume), ignore excluded; also reported per band and on usable-only slices (sensitivity rows, no criterion)",
-  "surface_p95_mm": "95th percentile of the symmetric surface distance between the pooled prediction mask and the pooled reference mask of the class, in mm, spacing 0.666 x 0.666 x 0.333, computed as in scripts/denver-noise-floor.py (surface voxels, nearest-neighbour distance both ways, pooled percentile)",
-  "granularity_caveat": "H_c is a median of per-structure Dice; the pilot scores one union per tissue class, which does not see confusions between neighbouring structures of the same tissue; a class Dice at H_c is therefore a weaker statement than per-structure concordance, and the report says so next to every figure"
+  "implementation": "scripts/cryo_metrics.py",
+  "tests": "scripts/test-cryo-metrics.py (20 synthetic cases: identical, 1 px shift, gap between runs, ignore caps, excluded slice inside a run, empty prediction, false positives without reference, Dice under eligibility, tolerance and ties, eroded-then-dilated counterexample, anisotropy) must pass before any evaluation",
+  "dice": "2 |P & R & E| / (|P & E| + |R & E|), voxels pooled over all scoring slices of both bands; also per band and on usable-only slices (sensitivity rows, no criterion)",
+  "surface_p95_mm": "voxel surfaces (6-connected) of prediction and reference inside each k-run (one run per band, original k coordinates, spacing 0.666 x 0.666 x 0.333, runs never concatenated); surface voxels whose 6-neighbourhood touches an ineligible voxel or the run's k boundary are caps and are removed from the source set of their direction; distance to the nearest surface voxel of the other mask by anisotropic EDT; both directions and all runs pooled; 95th percentile. Empty prediction where the reference exists (overall or in one run) gives an undefined p95 that fails the criterion; a run with prediction and no reference is left out of the pool and reported (see zero_support_bands)",
+  "tolerance": "a perturbation degrades Dice when it drops by at least 0.01 and degrades p95 when it rises by at least 0.333 mm (one slice spacing); ties within tolerance count as not degraded",
+  "granularity_caveat": "H is a median of per-structure Dice; the pilot scores one union per tissue class, which does not see confusions between neighbouring structures of the same tissue; a class Dice at H is therefore a weaker statement than per-structure concordance, and the report says so next to every figure"
  },
  "criteria": {
-  "bone": {"dice_min": 0.9224, "surface_p95_mm_max": 1.1391, "rule": "Dice >= H_bone and p95 <= P_bone (plan B 2.2, bone and muscle rows); Dice is the primary figure of the plan B 9 decision rule, p95 the secondary; a class that passes Dice and fails p95 is machine-failed with reason surface", "min_reference_voxels": 20000},
-  "muscle": {"dice_min": 0.9095, "surface_p95_mm_max": 1.3064, "rule": "Dice >= H_muscle - 0.03 (roadmap 6b, plan B 9: within 0.03 of H_c) and p95 <= P_muscle; same primary/secondary reading as bone", "min_reference_voxels": 20000},
-  "cartilage": {"dice_min": null, "surface_p95_mm_max": 1.3818, "rule": "p95 <= P_cartilage only; Dice reported, not a criterion (thin structure, H_cartilage 0.59 says Dice is not informative, plan B 2.2 cartilage row)", "min_reference_voxels": 20000, "note": "cartilage reference exists in band 1 only (55,653 voxels on scoring slices); band 2 is machine-not-assessable for cartilage by construction and the pooled figure is band 1"}
+  "bone": {"dice_min": 0.9324, "surface_p95_mm_max": 0.9419, "rule": "Dice >= H_bone and p95 <= P_bone, both from generated/denver-surface-floor.json with the same implementation (plan B 2.2 bone and muscle rows); Dice is the primary figure of the plan B 9 decision rule, p95 the secondary; a class that passes Dice and fails p95 is machine-failed with reason surface", "min_reference_voxels": 20000},
+  "muscle": {"dice_min": 0.9105, "surface_p95_mm_max": 0.9419, "rule": "Dice >= H_muscle - 0.03 (roadmap 6b, plan B 9: within 0.03 of H) and p95 <= P_muscle; same primary/secondary reading as bone", "min_reference_voxels": 20000},
+  "cartilage": {"dice_min": null, "surface_p95_mm_max": 0.9704, "rule": "p95 <= P_cartilage only; Dice and support reported (plan B 2.2 cartilage row; the corrected H_cartilage is 0.74, still the lowest class, and p95-only can miss a small omitted component: an omitted component in a run with reference makes p95 undefined and fails)", "min_reference_voxels": 20000, "note": "reference exists in band 1 only (55,653 voxels, about 8.2 mL, on scoring slices); band 2 is machine-not-assessable for cartilage by construction; its false positives count in the pooled Dice and are reported"},
+  "min_reference_voxels_meaning": "20,000 voxels (about 2.95 mL) is a declared pilot heuristic, not a reliability threshold and not 20,000 independent observations; slice and structure support are reported next to it"
  },
  "negative_controls": {
-  "purpose": "each control transforms the frozen prediction or the reference in a way that must degrade the score; a control that does not degrade it means the metric or the pairing is broken and every class becomes machine-not-assessable for that evaluation",
-  "mirror": {"operation": "prediction mirrored about the Denver i axis (i -> 665 - i) on every scoring slice", "required": "Dice lower than the unmirrored prediction by at least 0.05 for bone and for muscle", "why_0_05": "the pelvis is roughly bilaterally symmetric and the Denver frame is roughly centred, so a mirrored gluteal muscle still overlaps its contralateral; the margin separates a real prediction from a symmetric blob"},
-  "shift": {"operation": "prediction shifted by +3 Denver pixels along i (2.0 mm, the 6 photograph pixels of the Codex RGB review controls) on every scoring slice", "required": "Dice strictly lower and p95 strictly higher than the unshifted prediction for every assessed class"},
-  "dilation": {"operation": "prediction dilated by 3 Denver pixels in-plane (2.0 mm) on every scoring slice", "required": "Dice strictly lower and p95 strictly higher than the undilated prediction for every assessed class"},
-  "wrong_neighbour": {"operation": "the reference of slice k replaced by the Denver labels of slice k + 30 (10 mm) where k + 30 lies inside the same band and is a scoring slice; scored as if it were the prediction", "required": "Dice of the wrong neighbour against the true reference lower than the model's Dice for every assessed class; if the model does not beat a 10 mm-displaced copy of Denver, it has learnt nothing the neighbour did not already say"}
+  "evaluator_sanity": {
+   "operand": "the REFERENCE class mask, perturbed and scored against the unperturbed reference on the same eligibility",
+   "operations": ["mirror (i -> 665 - i)", "shift +3 px along i", "dilation 3 px in-plane"],
+   "required": "Dice drops by at least the tolerance and p95 rises by at least the tolerance for every class with support",
+   "on_failure": "the evaluator is not trusted: every class machine-not-assessable with the control named",
+   "frozen_figures": "generated/cryo-pilot-oracle-controls-block2.json (the evaluator run with prediction := reference) records the reference-control figures before training; Codex measured independently on 13 September 2026 (Dice): bone mirror 0.789, shift 0.944, dilation 0.970, neighbour 0.780; cartilage 0.064, 0.474, 0.697, 0.395; muscle 0.838, 0.959, 0.988, 0.854"
+  },
+  "model_side": {
+   "operand": "the PREDICTION class mask, perturbed and scored against the reference; and the wrong-neighbour baseline",
+   "meaning": "a model-side control that does not behave as required is a property of the model (for example a systematically displaced or undersegmented prediction improves under the opposite perturbation, as the audit showed on an eroded reference), not of the evaluator; that class is machine-failed with the control named; other classes are untouched"
+  },
+  "mirror": {"operation": "mask mirrored about the Denver frame i axis (i -> 665 - i) on every scoring slice; a reflection of the frame, not of the anatomical midline; after merging left and right into tissue classes it establishes no laterality and detects no swapped same-tissue instances", "dice_margin": 0.05, "classes": ["bone", "muscle"], "required": "model-side: Dice of the mirrored prediction lower than the prediction's Dice by at least 0.05 for bone and muscle (cartilage reported only)", "why_0_05": "the pelvis is roughly bilaterally symmetric and the frame roughly centred, so a mirrored gluteal muscle still overlaps its contralateral; the margin separates a prediction from a symmetric blob; it is a declared choice, not an empirical bound for arbitrary models"},
+  "shift": {"pixels": 3, "operation": "+3 Denver pixels along i (2.0 mm, the 6 photograph pixels of the Codex RGB review controls) on every scoring slice; voxels shifted out of the frame are dropped", "required": "model-side: Dice lower and p95 higher than the unshifted prediction by at least the tolerances"},
+  "dilation": {"pixels": 3, "operation": "binary dilation of the class mask, 2D cross (4-neighbour) structuring element, 3 iterations, slice by slice; each class is perturbed and scored as its own binary mask, so dilated classes may overlap (no collision policy is needed for a binary metric)", "required": "model-side: Dice lower and p95 higher by at least the tolerances"},
+  "wrong_neighbour": {"slices": 30, "operation": "for every scoring slice k of a band whose slice k + 30 (10 mm) is also a scoring slice of the same band, the prediction is replaced by the reference labels of slice k + 30; the model and the neighbour are both scored on exactly these slices with the same eligibility (matched support)", "required": "model-side: the model's Dice on the matched slices exceeds the neighbour's Dice by at least the tolerance; a model that does not beat a 10 mm-displaced copy of Denver has learnt nothing the neighbour did not already say"}
  },
  "identity_by_hash": {
   "fixed_now": {
@@ -56,31 +82,41 @@
    "denver_labels_nifti_sha256": "from the manifest (outputs.labels_sha256)",
    "tissue_map": "registry/cryo-tissue-map.json",
    "tissue_map_sha256": "efabc86953124cd031e892128a67f78978e287be8a04e3c70bb16d5b1c0954a4",
+   "tissue_classes_report": "generated/cryo-tissue-classes-block2.json",
+   "tissue_classes_report_sha256": "d15eeaff698e5c83d1a7e15f967ed1eac9a3f998d4a2d263326aabf545600154",
+   "tissue_classes_volume_sha256": "a3d44efe5965e6b8d6ccbbf496c5407962f877737cf08c7d58013d319eccf812",
    "eval_bands": "registry/cryo-eval-bands-v1.json",
-   "eval_bands_sha256": "dbb3e7398def663ad2582a5898936f410c04adfd124a5590b3f8a5ff31096082",
+   "eval_bands_sha256": "9806cf37f211c7500477fd19328c41e30baef6bb29c5657d18416dbea9e65cd9",
    "pair_selection_sha256_json_sorted": "from the manifest (sources.pairs_sha256), policy pairs-v1",
    "transform_sha256_json_sorted": "from the manifest (sources.transform_sha256)",
-   "noise_floor_sha256": "5539a188e9c788e1e65c0d91a21114ef1c0bdef674ebded9a49815154ce9aa91"
+   "noise_floor_sha256": "5539a188e9c788e1e65c0d91a21114ef1c0bdef674ebded9a49815154ce9aa91",
+   "surface_floor_sha256": "365e821c273bfa4a30be0845440681e0913471981eb735761523c3eec09b00a7",
+   "metrics": "scripts/cryo_metrics.py",
+   "metrics_sha256": "d6fd9d22c1e5ed2335bc06f9666422dca4d66dd6611533b85a6439860896fd83",
+   "evaluator": "scripts/cryo-pilot-evaluate.py",
+   "evaluator_sha256": "560e3b2043e5bac17f73966c5bb1ddf5ca70c61c99984f5d2be9a576c8be81b4"
   },
-  "fixed_at_evaluation": ["tissue-classes volume sha256 (generated/cryo-tissue-classes-block2.json output.sha256)", "nnU-Net v2 version and git revision", "dataset fingerprint and plans identifier", "training seed and fold", "model weights sha256 per variant", "prediction volume sha256 per variant", "evaluation script revision", "date"],
-  "rule": "an evaluation whose fixed_now hashes differ from this file is machine-not-assessable under version 1; a new manifest, map or band file means version 2"
+  "fixed_at_evaluation": ["nnU-Net v2 version and git revision", "dataset fingerprint and plans identifier", "training manifest (slices used) and its hash", "training seed and fold", "model weights sha256 per variant", "prediction volume sha256 per variant", "date"],
+  "rule": "an evaluation whose fixed_now hashes differ from this file is machine-not-assessable under version 1; a new manifest, map, band file, floor, metric module or evaluator means version 2"
  },
  "iteration_limit": {
   "training_runs_per_variant": 2,
   "rule": "at most two training runs per variant under version 1 (the second only for a technical failure of the first: crash, non-convergence, wrong input); every run is listed in the report with its status; a third run or any change to data, map, bands, thresholds or controls after seeing a score is version 2"
  },
  "report": {
-  "file": "generated/cryo-pilot-acceptance-block2.json (written by the evaluation script of stage 6; does not exist yet)",
-  "must_contain": ["per variant and per class: Dice pooled, per band, usable-only; p95 pooled, per band; every control figure; status and the reason", "closure: the lists machine-accepted, machine-failed, machine-not-assessable, none omitted", "the difference between variants per class (what the CT prior channel adds), reported without a criterion", "every hash of identity_by_hash", "the granularity caveat and the limits below, verbatim or by reference"]
+  "file": "generated/cryo-pilot-acceptance-block2-<variant>.json written by scripts/cryo-pilot-evaluate.py",
+  "must_contain": ["per class: Dice pooled, per band, usable-only; p95 pooled, per band with run statuses; reference support in voxels and slices", "evaluator sanity figures on the reference and the trusted flag", "every model-side control figure with as_required", "status and the reason per class", "closure: the lists machine-accepted, machine-failed, machine-not-assessable, none omitted", "the difference between variants per class (what the CT prior channel adds), reported without a criterion", "every hash of identity_by_hash", "the granularity caveat and the limits below, verbatim or by reference"]
  },
  "decision_rule_plan_b_9": "plan B proceeds to the first block without labels (the trunk above the pelvis, with its own alignment protocol first) if, in at least one variant, bone is machine-accepted and muscle is machine-accepted (Dice within 0.03 of H_muscle); otherwise the assisted-annotation phase C of plan A with the same proofs; the decision is the user's and is recorded, this file only states the rule agreed in advance",
  "limits": [
   "concordance with Denver's original labels on 291 held-out slices of one block; never anatomical accuracy, never validation",
-  "class level: structure confusions inside a tissue are invisible; H_c was measured per structure",
+  "class level: structure confusions inside a tissue are invisible; H was measured per structure",
   "usable-flagged pairs (whole-frame identity only) are scored together with usable pairs; the usable-only row shows the sensitivity",
   "Denver's labels are the reference, not the truth: a Denver labelling error counts against the model",
   "observability was measured only at the block-boundary bands; a non-observable slice elsewhere would count against the model too",
   "the CT prior variant carries the fresh-CT placement error of the pelvis (3 to 5 mm) into its input channel; nothing is corrected",
+  "the surface bar is one pixel (Denver's own two versions differ by that much at p95) on a class union; a 2D network's slice-to-slice jitter shows up in the 3D surface",
+  "the evaluator sanity controls prove the metric moves in the right direction on this reference; they do not prove the metric is a good proxy for anatomy",
   "inspected and batch-audited are never granted by this protocol (reserved for the optional stage 8)"
  ]
 }

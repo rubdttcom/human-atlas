@@ -84,8 +84,12 @@ python3 scripts/build-cryosection-rgb-block.py --nlm .../fullbody --denver ".../
 .venv/bin/python scripts/build-cryo-tissue-map.py            # -> registry/cryo-tissue-map.json v1 (131 Denver values -> tissue class; precedence, body-mask rule)
 .venv/bin/python scripts/build-cryo-tissue-classes.py --block data/derived/nlm-vhf/cryosections/block2 --selftest   # 20 s: tissue-classes.nii.gz (ignore 255 inside the body and on excluded slices) + generated/cryo-tissue-classes-block2.json
 .venv/bin/python scripts/select-cryo-eval-bands.py           # -> registry/cryo-eval-bands-v1.json: two seeded 50 mm bands with 10 mm buffers, frozen to the manifest, map and label-slab hashes; deterministic (seed 20260913)
-#   registry/machine-acceptance-protocol-v1.json is written by hand before training (plan B 2.7); its hashes and thresholds are checked by the validator below
-.venv/bin/python scripts/validate-cryo-pilot.py              # manifest = pair selection per slice, map exhaustive, bands reproduce from the label slab, protocol thresholds = noise floor, hash chain
+.venv/bin/python scripts/test-cryo-metrics.py                # 20 synthetic cases of the frozen pilot metrics (scripts/cryo_metrics.py: Dice under eligibility, symmetric pooled voxel-surface p95 per k-run, caps, tolerance)
+.venv/bin/python scripts/denver-surface-floor.py             # about 10 min, 25 GB RSS: Denver original labels vs final meshes voxelised (even-odd fill; the noise-floor rasteriser dropped multi-contour slices) scored with cryo_metrics -> generated/denver-surface-floor.json (H_vox, P_vox per class: the protocol thresholds)
+.venv/bin/python scripts/cryo-pilot-evaluate.py --block data/derived/nlm-vhf/cryosections/block2 --oracle   # about 15 min: prediction := reference; freezes the evaluator sanity figures -> generated/cryo-pilot-oracle-controls-block2.json
+#   registry/machine-acceptance-protocol-v1.json is written by hand before training (plan B 2.7; revised after the Codex audit of afec927, before any training); hashes and thresholds are checked by the validator
+.venv/bin/python scripts/validate-cryo-pilot.py              # manifest rows = transform rows and inventory hashes, map names = source names, bands and training eligibility reproduce, protocol thresholds = surface floor, hash chain
+.venv/bin/python scripts/test-cryo-pilot-validator.py        # 27 in-memory corruptions (wrong n / tc / hash / name / band / threshold / eligibility) must each fail the validator
 .venv/bin/python scripts/ct-candidate-shape-check.py nlm  # about 1 min: the same procedure on the shipped bone candidates; writes generated/ct-candidate-shape-check-nlm.json and shape_check into the bone report; re-run ingest afterwards
 .venv/bin/python scripts/summarize-reports.py
 ```

@@ -17,7 +17,15 @@ map. The machine draws the bands; nobody draws a reference (no anatomist). Rules
             this file's hash
 
 Per band the file lists the slices by status, the Denver voxels per tissue class on the scoring slices (usable and
-usable-flagged only) and the training complement (block minus bands minus buffers). Nothing here is anatomy.
+usable-flagged only) and the training complement (block minus bands minus buffers).
+
+Training eligibility (Codex audit of afec927, point A, decided 13 September 2026 before any training): the complement is
+split by supervision density. A 50 mm bin of the block (aligned to k_first) is `sparsely-supervised` when the median
+ignore fraction of the body over its paired slices (generated/cryo-tissue-classes-block2.json) exceeds --sparse-ignore
+(0.95): there Denver labels only the psoas. Primary training = paired complement slices in dense bins; auxiliary stratum =
+paired complement slices in sparse bins (declared, off by default, a separate decision to use); excluded slices are never
+sampled. Both counts are recorded; the bands are not redrawn. This is a label-density rule, not an anatomical boundary.
+Nothing here is anatomy.
 
   .venv/bin/python scripts/select-cryo-eval-bands.py [--seed 20260913 --bands 2 --band-mm 50 --buffer-mm 10]
 """
@@ -64,6 +72,8 @@ def main():
     ap.add_argument('--band-mm', type=float, default=50.0)
     ap.add_argument('--buffer-mm', type=float, default=10.0)
     ap.add_argument('--min-paired-fraction', type=float, default=0.70)
+    ap.add_argument('--classes-report', default=str(ROOT / 'generated/cryo-tissue-classes-block2.json'))
+    ap.add_argument('--sparse-ignore', type=float, default=0.95)
     a = ap.parse_args()
     man = json.loads(Path(a.manifest).read_text())
     tmap = json.loads(Path(a.tissue_map).read_text())
@@ -124,6 +134,24 @@ def main():
     tr_status = {}
     for k in training:
         tr_status[status[k]] = tr_status.get(status[k], 0) + 1
+    # supervision density per 50 mm bin from the tissue-classes report
+    rep = json.loads(Path(a.classes_report).read_text())
+    ign = {r['k']: r['ignore_fraction_of_body'] for r in rep['per_slice'] if 'ignore_fraction_of_body' in r}
+    bins = []
+    for lo in range(k_first, k_last + 1, band_n):
+        hi = min(lo + band_n - 1, k_last)
+        vals = [ign[k] for k in range(lo, hi + 1) if k in ign]
+        med = float(np.median(vals)) if vals else None
+        bins.append({'k': [lo, hi], 'paired_slices': len(vals), 'ignore_fraction_of_body_median': round(med, 4) if med is not None else None,
+                     'sparsely_supervised': bool(med is not None and med > a.sparse_ignore)})
+    sparse_k = set()
+    for b in bins:
+        if b['sparsely_supervised']:
+            sparse_k.update(range(b['k'][0], b['k'][1] + 1))
+    primary = [k for k in training if status[k] in PAIRED and k not in sparse_k]
+    auxiliary = [k for k in training if status[k] in PAIRED and k in sparse_k]
+    never = [k for k in training if status[k] not in PAIRED]
+    low_end = [k for k in range(k_first, k_first + 151) if status[k] in PAIRED]
     doc = {
         'id': 'cryo-eval-bands', 'version': 1, 'date': '2026-09-13', 'block': man['block'],
         'rules': {'band_mm': a.band_mm, 'band_slices': band_n, 'buffer_mm': a.buffer_mm, 'buffer_slices': buf_n, 'bands': a.bands, 'seed': a.seed, 'rng': 'numpy default_rng, uniform choice among remaining candidates, one band at a time',
@@ -136,6 +164,16 @@ def main():
         'bands': bands,
         'training_k_ranges': ranges(training), 'training_slices': len(training), 'training_status_counts': tr_status,
         'reserved_slices_including_buffers': len(reserved),
+        'training_eligibility': {
+            'rule': 'primary = paired complement slices in densely supervised 50 mm bins; auxiliary = paired complement slices in sparsely supervised bins (median ignore fraction of the body > %.2f, Denver labels only the psoas there); excluded slices are never sampled; a label-density rule, not an anatomical boundary' % a.sparse_ignore,
+            'classes_report': str(Path(a.classes_report).relative_to(ROOT)), 'classes_report_sha256': sha256_file(a.classes_report),
+            'bins_50mm': bins,
+            'primary_k_ranges': ranges(primary), 'primary_slices': len(primary), 'primary_status_counts': {s: sum(1 for k in primary if status[k] == s) for s in PAIRED},
+            'auxiliary_k_ranges': ranges(auxiliary), 'auxiliary_slices': len(auxiliary), 'auxiliary_status_counts': {s: sum(1 for k in auxiliary if status[k] == s) for s in PAIRED},
+            'auxiliary_use': 'off by default; using it is a separate recorded decision and a new split hash',
+            'never_sampled_slices': len(never),
+            'lowest_50mm_paired_slices_k': low_end,
+            'note_lowest_50mm': 'k 2285..2435 is almost entirely excluded-identity; the %d paired slices there are listed and stay eligible' % len(low_end)},
         'frozen_to': {'manifest': str(Path(a.manifest).relative_to(ROOT)), 'manifest_sha256': sha256_file(a.manifest), 'rgb_sha256': man['outputs']['rgb_sha256'], 'labels_nifti_sha256': man['outputs']['labels_sha256'],
                       'transform_sha256': man['sources']['transform_sha256'], 'pairs_sha256': man['sources']['pairs_sha256'], 'pairs_policy': man['sources']['pairs_policy'],
                       'tissue_map': str(Path(a.tissue_map).relative_to(ROOT)), 'tissue_map_sha256': sha256_file(a.tissue_map), 'tissue_map_version': tmap['version'],
@@ -144,7 +182,7 @@ def main():
     }
     Path(a.out).write_text(json.dumps(doc, indent=1))
     print(json.dumps({'done': True, 'out': str(Path(a.out).relative_to(ROOT)), 'bands': [(b['k_first'], b['k_last'], b['scoring_slices'], b['denver_voxels_per_class_on_scoring_slices']) for b in bands],
-                      'training_slices': len(training), 'sha256': sha256_file(a.out)}))
+                      'training_slices': len(training), 'primary': len(primary), 'auxiliary': len(auxiliary), 'sha256': sha256_file(a.out)}))
 
 
 if __name__ == '__main__':

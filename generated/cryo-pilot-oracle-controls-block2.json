@@ -1,0 +1,472 @@
+{
+ "id": "cryo-pilot-acceptance-block2",
+ "variant": "oracle",
+ "oracle": true,
+ "date": "2026-09-13",
+ "note": null,
+ "protocol": {
+  "file": "registry/machine-acceptance-protocol-v1.json",
+  "version": 1,
+  "sha256": "2e92ba3226b1f97467a6cf7e5baa70377e1b26ad3193a12d27a3aa8e26eead79"
+ },
+ "identity": {
+  "manifest_sha256": "dbb73030ca5a4961de164fc9c0dbb85e6c839eeb414969f1185a3d909061325e",
+  "reference_sha256": "a3d44efe5965e6b8d6ccbbf496c5407962f877737cf08c7d58013d319eccf812",
+  "bands_sha256": "9806cf37f211c7500477fd19328c41e30baef6bb29c5657d18416dbea9e65cd9",
+  "tissue_map_sha256": "efabc86953124cd031e892128a67f78978e287be8a04e3c70bb16d5b1c0954a4",
+  "metrics_sha256": "d6fd9d22c1e5ed2335bc06f9666422dca4d66dd6611533b85a6439860896fd83",
+  "evaluator_sha256": "560e3b2043e5bac17f73966c5bb1ddf5ca70c61c99984f5d2be9a576c8be81b4",
+  "prediction_sha256": "oracle: prediction is the reference",
+  "weights_sha256": null
+ },
+ "scoring": {
+  "slices": 291,
+  "usable_only_slices": 100,
+  "runs_k": [
+   [
+    2528,
+    2677
+   ],
+   [
+    2870,
+    3019
+   ]
+  ],
+  "eligible_voxels": 42151283
+ },
+ "evaluator_trusted": true,
+ "evaluator_notes": [],
+ "classes": {
+  "bone": {
+   "class": "bone",
+   "value": 1,
+   "reference_voxels_on_scoring_slices": 4851480,
+   "min_reference_voxels": 20000,
+   "pooled": {
+    "dice": 1.0,
+    "p95_mm": 0.0,
+    "mean_mm": 0.0,
+    "n_distances": 148322,
+    "status": "ok"
+   },
+   "usable_only": {
+    "dice": 1.0,
+    "p95_mm": 0.0,
+    "mean_mm": 0.0,
+    "n_distances": 34276,
+    "status": "ok"
+   },
+   "per_band": {
+    "1": {
+     "reference_voxels": 2068592,
+     "dice": 1.0,
+     "p95_mm": 0.0,
+     "mean_mm": 0.0,
+     "n_distances": 46046,
+     "status": "ok"
+    },
+    "2": {
+     "reference_voxels": 2782888,
+     "dice": 1.0,
+     "p95_mm": 0.0,
+     "mean_mm": 0.0,
+     "n_distances": 102276,
+     "status": "ok"
+    }
+   },
+   "evaluator_sanity_on_reference": {
+    "mirror": {
+     "dice": 0.7890979246980886,
+     "p95_mm": 8.885548266708138,
+     "mean_mm": 2.6900960716421793,
+     "n_distances": 301503,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    },
+    "shift": {
+     "dice": 0.9435022027836315,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.1625544818162818,
+     "n_distances": 272871,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    },
+    "dilation": {
+     "dice": 0.9696066097005029,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.4377969417008425,
+     "n_distances": 165070,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    }
+   },
+   "model_side_controls": {
+    "mirror": {
+     "dice": 0.7890979246980886,
+     "p95_mm": 8.885548266708138,
+     "mean_mm": 2.6900960716421793,
+     "n_distances": 301503,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": true
+    },
+    "shift": {
+     "dice": 0.9435022027836315,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.1625544818162818,
+     "n_distances": 272871,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": true
+    },
+    "dilation": {
+     "dice": 0.9696066097005029,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.4377969417008425,
+     "n_distances": 165070,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": true
+    },
+    "wrong_neighbour": {
+     "neighbour_slices_mm": 9.99,
+     "matched_slices": 223,
+     "neighbour": {
+      "dice": 0.7804343203799653,
+      "p95_mm": 6.929281131546042,
+      "mean_mm": 2.66877094870315,
+      "n_distances": 230476,
+      "status": "ok"
+     },
+     "model_on_same_slices": {
+      "dice": 1.0,
+      "p95_mm": 0.0,
+      "mean_mm": 0.0,
+      "n_distances": 109978,
+      "status": "ok"
+     },
+     "as_required": true
+    }
+   },
+   "status": "machine-accepted",
+   "reason": "every criterion and control as required"
+  },
+  "cartilage": {
+   "class": "cartilage",
+   "value": 2,
+   "reference_voxels_on_scoring_slices": 55653,
+   "min_reference_voxels": 20000,
+   "pooled": {
+    "dice": 1.0,
+    "p95_mm": 0.0,
+    "mean_mm": 0.0,
+    "n_distances": 20190,
+    "status": "ok"
+   },
+   "usable_only": {
+    "dice": 1.0,
+    "p95_mm": null,
+    "mean_mm": null,
+    "n_distances": 0,
+    "status": "no-surface"
+   },
+   "per_band": {
+    "1": {
+     "reference_voxels": 55653,
+     "dice": 1.0,
+     "p95_mm": 0.0,
+     "mean_mm": 0.0,
+     "n_distances": 20190,
+     "status": "ok"
+    },
+    "2": {
+     "reference_voxels": 0,
+     "dice": null,
+     "p95_mm": null,
+     "mean_mm": null,
+     "n_distances": 0,
+     "status": "no-reference"
+    }
+   },
+   "evaluator_sanity_on_reference": {
+    "mirror": {
+     "dice": 0.06387563490841927,
+     "p95_mm": 15.620504235665438,
+     "mean_mm": 6.335734732373702,
+     "n_distances": 35573,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    },
+    "shift": {
+     "dice": 0.47426494450574413,
+     "p95_mm": 3.58651976155158,
+     "mean_mm": 1.2723183902733906,
+     "n_distances": 22681,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    },
+    "dilation": {
+     "dice": 0.6973666898483168,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.2772277828294412,
+     "n_distances": 26812,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    }
+   },
+   "model_side_controls": {
+    "mirror": {
+     "dice": 0.06387563490841927,
+     "p95_mm": 15.620504235665438,
+     "mean_mm": 6.335734732373702,
+     "n_distances": 35573,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": null
+    },
+    "shift": {
+     "dice": 0.47426494450574413,
+     "p95_mm": 3.58651976155158,
+     "mean_mm": 1.2723183902733906,
+     "n_distances": 22681,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": true
+    },
+    "dilation": {
+     "dice": 0.6973666898483168,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.2772277828294412,
+     "n_distances": 26812,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": true
+    },
+    "wrong_neighbour": {
+     "neighbour_slices_mm": 9.99,
+     "matched_slices": 223,
+     "neighbour": {
+      "dice": 0.3949648886896758,
+      "p95_mm": 7.651757445188655,
+      "mean_mm": 2.592325269028197,
+      "n_distances": 14472,
+      "status": "ok"
+     },
+     "model_on_same_slices": {
+      "dice": 1.0,
+      "p95_mm": 0.0,
+      "mean_mm": 0.0,
+      "n_distances": 9686,
+      "status": "ok"
+     },
+     "as_required": true
+    }
+   },
+   "status": "machine-accepted",
+   "reason": "every criterion and control as required"
+  },
+  "muscle": {
+   "class": "muscle",
+   "value": 3,
+   "reference_voxels_on_scoring_slices": 10867010,
+   "min_reference_voxels": 20000,
+   "pooled": {
+    "dice": 1.0,
+    "p95_mm": 0.0,
+    "mean_mm": 0.0,
+    "n_distances": 124812,
+    "status": "ok"
+   },
+   "usable_only": {
+    "dice": 1.0,
+    "p95_mm": 0.0,
+    "mean_mm": 0.0,
+    "n_distances": 33992,
+    "status": "ok"
+   },
+   "per_band": {
+    "1": {
+     "reference_voxels": 6743049,
+     "dice": 1.0,
+     "p95_mm": 0.0,
+     "mean_mm": 0.0,
+     "n_distances": 24156,
+     "status": "ok"
+    },
+    "2": {
+     "reference_voxels": 4123961,
+     "dice": 1.0,
+     "p95_mm": 0.0,
+     "mean_mm": 0.0,
+     "n_distances": 100656,
+     "status": "ok"
+    }
+   },
+   "evaluator_sanity_on_reference": {
+    "mirror": {
+     "dice": 0.8377710486074051,
+     "p95_mm": 7.992000000000001,
+     "mean_mm": 2.725585798891855,
+     "n_distances": 457458,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    },
+    "shift": {
+     "dice": 0.9587178761308521,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.0741788627021818,
+     "n_distances": 426341,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    },
+    "dilation": {
+     "dice": 0.9879332613376988,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.4583158713553697,
+     "n_distances": 147790,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     }
+    }
+   },
+   "model_side_controls": {
+    "mirror": {
+     "dice": 0.8377710486074051,
+     "p95_mm": 7.992000000000001,
+     "mean_mm": 2.725585798891855,
+     "n_distances": 457458,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": true
+    },
+    "shift": {
+     "dice": 0.9587178761308521,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.0741788627021818,
+     "n_distances": 426341,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": true
+    },
+    "dilation": {
+     "dice": 0.9879332613376988,
+     "p95_mm": 1.9980000000000002,
+     "mean_mm": 1.4583158713553697,
+     "n_distances": 147790,
+     "status": "ok",
+     "degrades": {
+      "dice": true,
+      "p95": true
+     },
+     "as_required": true
+    },
+    "wrong_neighbour": {
+     "neighbour_slices_mm": 9.99,
+     "matched_slices": 223,
+     "neighbour": {
+      "dice": 0.8539803107581619,
+      "p95_mm": 4.709331162702407,
+      "mean_mm": 2.0133604591844687,
+      "n_distances": 346649,
+      "status": "ok"
+     },
+     "model_on_same_slices": {
+      "dice": 1.0,
+      "p95_mm": 0.0,
+      "mean_mm": 0.0,
+      "n_distances": 98118,
+      "status": "ok"
+     },
+     "as_required": true
+    }
+   },
+   "status": "machine-accepted",
+   "reason": "every criterion and control as required"
+  },
+  "ligament-tendon": {
+   "class": "ligament-tendon",
+   "status": "machine-not-assessable",
+   "reason": "no Denver ligament voxel in the block (Denver ligaments are the knee ligaments)"
+  },
+  "fat": {
+   "class": "fat",
+   "status": "machine-not-assessable",
+   "reason": "no Denver source in the 2022 release"
+  }
+ },
+ "closure": {
+  "machine-accepted": [
+   "bone",
+   "cartilage",
+   "muscle"
+  ],
+  "machine-failed": [],
+  "machine-not-assessable": [
+   "ligament-tendon",
+   "fat"
+  ]
+ },
+ "limits": [
+  "concordance with Denver's original labels on 291 held-out slices of one block; never anatomical accuracy, never validation",
+  "class level: structure confusions inside a tissue are invisible; H was measured per structure",
+  "usable-flagged pairs (whole-frame identity only) are scored together with usable pairs; the usable-only row shows the sensitivity",
+  "Denver's labels are the reference, not the truth: a Denver labelling error counts against the model",
+  "observability was measured only at the block-boundary bands; a non-observable slice elsewhere would count against the model too",
+  "the CT prior variant carries the fresh-CT placement error of the pelvis (3 to 5 mm) into its input channel; nothing is corrected",
+  "the surface bar is one pixel (Denver's own two versions differ by that much at p95) on a class union; a 2D network's slice-to-slice jitter shows up in the 3D surface",
+  "the evaluator sanity controls prove the metric moves in the right direction on this reference; they do not prove the metric is a good proxy for anatomy",
+  "inspected and batch-audited are never granted by this protocol (reserved for the optional stage 8)",
+  "class-level concordance with Denver original labels on the frozen bands; never anatomical accuracy; never validation"
+ ],
+ "seconds": 749.3
+}

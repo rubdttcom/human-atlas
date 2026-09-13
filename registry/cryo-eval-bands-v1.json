@@ -119,6 +119,320 @@
   "usable-flagged": 372
  },
  "reserved_slices_including_buffers": 420,
+ "training_eligibility": {
+  "rule": "primary = paired complement slices in densely supervised 50 mm bins; auxiliary = paired complement slices in sparsely supervised bins (median ignore fraction of the body > 0.95, Denver labels only the psoas there); excluded slices are never sampled; a label-density rule, not an anatomical boundary",
+  "classes_report": "generated/cryo-tissue-classes-block2.json",
+  "classes_report_sha256": "d15eeaff698e5c83d1a7e15f967ed1eac9a3f998d4a2d263326aabf545600154",
+  "bins_50mm": [
+   {
+    "k": [
+     2285,
+     2434
+    ],
+    "paired_slices": 10,
+    "ignore_fraction_of_body_median": 0.6815,
+    "sparsely_supervised": false
+   },
+   {
+    "k": [
+     2435,
+     2584
+    ],
+    "paired_slices": 124,
+    "ignore_fraction_of_body_median": 0.6593,
+    "sparsely_supervised": false
+   },
+   {
+    "k": [
+     2585,
+     2734
+    ],
+    "paired_slices": 148,
+    "ignore_fraction_of_body_median": 0.6929,
+    "sparsely_supervised": false
+   },
+   {
+    "k": [
+     2735,
+     2884
+    ],
+    "paired_slices": 150,
+    "ignore_fraction_of_body_median": 0.6895,
+    "sparsely_supervised": false
+   },
+   {
+    "k": [
+     2885,
+     3034
+    ],
+    "paired_slices": 149,
+    "ignore_fraction_of_body_median": 0.7924,
+    "sparsely_supervised": false
+   },
+   {
+    "k": [
+     3035,
+     3184
+    ],
+    "paired_slices": 142,
+    "ignore_fraction_of_body_median": 0.9745,
+    "sparsely_supervised": true
+   },
+   {
+    "k": [
+     3185,
+     3334
+    ],
+    "paired_slices": 110,
+    "ignore_fraction_of_body_median": 0.9839,
+    "sparsely_supervised": true
+   },
+   {
+    "k": [
+     3335,
+     3484
+    ],
+    "paired_slices": 148,
+    "ignore_fraction_of_body_median": 0.9934,
+    "sparsely_supervised": true
+   },
+   {
+    "k": [
+     3485,
+     3532
+    ],
+    "paired_slices": 43,
+    "ignore_fraction_of_body_median": 0.9991,
+    "sparsely_supervised": true
+   }
+  ],
+  "primary_k_ranges": [
+   [
+    2287,
+    2287
+   ],
+   [
+    2296,
+    2297
+   ],
+   [
+    2301,
+    2301
+   ],
+   [
+    2335,
+    2335
+   ],
+   [
+    2379,
+    2379
+   ],
+   [
+    2423,
+    2423
+   ],
+   [
+    2425,
+    2425
+   ],
+   [
+    2433,
+    2436
+   ],
+   [
+    2442,
+    2465
+   ],
+   [
+    2467,
+    2467
+   ],
+   [
+    2469,
+    2474
+   ],
+   [
+    2476,
+    2497
+   ],
+   [
+    2708,
+    2839
+   ]
+  ],
+  "primary_slices": 197,
+  "primary_status_counts": {
+   "usable": 102,
+   "usable-flagged": 95
+  },
+  "auxiliary_k_ranges": [
+   [
+    3050,
+    3133
+   ],
+   [
+    3136,
+    3136
+   ],
+   [
+    3140,
+    3141
+   ],
+   [
+    3144,
+    3144
+   ],
+   [
+    3146,
+    3192
+   ],
+   [
+    3194,
+    3195
+   ],
+   [
+    3197,
+    3197
+   ],
+   [
+    3201,
+    3201
+   ],
+   [
+    3205,
+    3205
+   ],
+   [
+    3207,
+    3210
+   ],
+   [
+    3214,
+    3214
+   ],
+   [
+    3216,
+    3216
+   ],
+   [
+    3218,
+    3218
+   ],
+   [
+    3220,
+    3227
+   ],
+   [
+    3229,
+    3237
+   ],
+   [
+    3239,
+    3239
+   ],
+   [
+    3241,
+    3242
+   ],
+   [
+    3244,
+    3246
+   ],
+   [
+    3248,
+    3262
+   ],
+   [
+    3271,
+    3271
+   ],
+   [
+    3273,
+    3273
+   ],
+   [
+    3277,
+    3292
+   ],
+   [
+    3294,
+    3294
+   ],
+   [
+    3296,
+    3297
+   ],
+   [
+    3300,
+    3301
+   ],
+   [
+    3303,
+    3305
+   ],
+   [
+    3307,
+    3309
+   ],
+   [
+    3311,
+    3315
+   ],
+   [
+    3317,
+    3342
+   ],
+   [
+    3344,
+    3428
+   ],
+   [
+    3430,
+    3515
+   ],
+   [
+    3517,
+    3517
+   ],
+   [
+    3519,
+    3519
+   ],
+   [
+    3521,
+    3521
+   ],
+   [
+    3523,
+    3526
+   ],
+   [
+    3528,
+    3532
+   ]
+  ],
+  "auxiliary_slices": 428,
+  "auxiliary_status_counts": {
+   "usable": 151,
+   "usable-flagged": 277
+  },
+  "auxiliary_use": "off by default; using it is a separate recorded decision and a new split hash",
+  "never_sampled_slices": 203,
+  "lowest_50mm_paired_slices_k": [
+   2287,
+   2296,
+   2297,
+   2301,
+   2335,
+   2379,
+   2423,
+   2425,
+   2433,
+   2434,
+   2435
+  ],
+  "note_lowest_50mm": "k 2285..2435 is almost entirely excluded-identity; the 11 paired slices there are listed and stay eligible"
+ },
  "frozen_to": {
   "manifest": "generated/cryosection-rgb-block2-manifest.json",
   "manifest_sha256": "dbb73030ca5a4961de164fc9c0dbb85e6c839eeb414969f1185a3d909061325e",
