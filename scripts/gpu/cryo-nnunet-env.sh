@@ -8,3 +8,6 @@ export nnUNet_results=$VHF/nnunet/results
 export PY=$VHF/env-nnunet/bin
 export PYTHONHASHSEED=12345
 export nnUNet_n_proc_DA=8
+# nnU-Net spawns 8 export workers by default for its post-training validation; that pool lost
+# workers and crashed the run on 2026-09-14. Fewer processes, less pressure.
+export nnUNet_def_n_proc=3

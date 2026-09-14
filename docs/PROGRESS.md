@@ -164,6 +164,31 @@ longer be done honestly and the path below stays published for good.
    line appended per start, outside the results folder that a retrain replaces. Until that exists,
    the protocol's two-run limit rests on the logs being intact, and the manifest says so.
 
+**First graded result, 2026-09-14** (`generated/cryo-pilot-acceptance-block2-rgb-only.json`, full
+analysis in `docs/findings-2026-09-14-rgb-only-first-score.md`): `rgb-only` is `machine-failed` on all
+three classes. Dice: muscle 0.9718 against a 0.9105 floor, bone 0.9290 against 0.9324 (missing by
+0.0034), cartilage 0.2973. Surface p95 is 32 to 37 mm against a 0.94 mm threshold, and that figure
+does not measure a boundary: `_caps` removes 79 % of the reference surface against 52 % of the
+prediction surface, because Denver's structures are surrounded by unlabelled tissue that is `ignore`,
+so the distances run from a near-complete prediction surface to a 21 % remnant. Measured without the
+reference-side removal and changing nothing else, bone p95 falls from 37.18 mm to 9.31 mm and the
+median from 8.16 mm to 1.33 mm; 9.31 mm still fails, so this does not turn a failure into a pass. The
+`shift` and `dilation` controls are reported as not behaving as required for bone and cartilage,
+which is a symptom of the same artefact: a 2 mm perturbation cannot worsen a p95 already dominated by
+30 mm. Real findings that survive the artefact: the model misses 16.8 % of the reference bone and
+predicts 96 % of that as muscle, at median depth 2.3 mm; and cartilage loses to the wrong-neighbour
+baseline (0.2405 against 0.3950), predicting 7,581 cartilage voxels on reference bone in a band where
+Denver labels no cartilage. The wrong-neighbour control passes for bone and muscle, which is the
+clearest signal that the model has learned position. One reading error of ours is corrected in the
+findings document: that control did run, its figures are nested under `neighbour`.
+
+**This closes the pre-score window for protocol v2.** The change planned above was to be made before
+any evaluation existed. It no longer can be. The path-string change still touches no criterion but
+must be recorded as made after the `rgb-only` result, and any change to the surface metric is now
+post hoc, must be labelled as such, and cannot replace the v1 result on the record. The argument that
+the metric measures something other than what it names is filed before any new number exists; the
+auditor judges it.
+
 Then the pilot itself continues: assemble each variant's prediction with
 `scripts/assemble-cryo-prediction.py`, write its manifest from the provenance that
 `scripts/record-nnunet-run.py` reads on the GPU box, and run `scripts/cryo-pilot-evaluate.py` once

@@ -26,6 +26,7 @@ Nothing here is anatomy.
 import argparse
 import hashlib
 import json
+import os
 import re
 import time
 from pathlib import Path
@@ -54,13 +55,23 @@ def main():
     ap.add_argument('--preprocessed', required=True)
     ap.add_argument('--launcher', required=True)
     ap.add_argument('--fold', type=int, default=0)
+    ap.add_argument('--root', default=None, help='path prefix replaced by $VHF_ROOT (default: $VHF)')
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
 
     res, prep, launcher = Path(a.results), Path(a.preprocessed), Path(a.launcher)
     fold = res / f'fold_{a.fold}'
+    # The record is committed to a public repository, so an absolute path would publish the machine's
+    # user name. The root is replaced by the token the launchers use; what the checks downstream need
+    # from these strings is the dataset name, which survives.
+    root = a.root or os.environ.get('VHF', '')
+
+    def tok(x):
+        x = str(x)
+        return x.replace(root, '$VHF_ROOT') if root and x.startswith(root) else x
+
     rec = {'id': 'nnunet-run-provenance', 'date': time.strftime('%Y-%m-%d %H:%M:%S'),
-           'results': str(res), 'preprocessed': str(prep), 'fold': a.fold}
+           'root_token': '$VHF_ROOT', 'results': tok(res), 'preprocessed': tok(prep), 'fold': a.fold}
 
     import importlib.metadata as md
     import nnunetv2
@@ -70,7 +81,7 @@ def main():
         rec['nnunetv2_version'] = md.version('nnunetv2')
     except md.PackageNotFoundError:
         rec['nnunetv2_version'] = None
-    rec['nnunetv2_path'] = str(Path(nnunetv2.__file__).parent)
+    rec['nnunetv2_path'] = tok(Path(nnunetv2.__file__).parent)
     rec['torch_version'] = torch.__version__
     rec['gpu'] = torch.cuda.get_device_name(0) if torch.cuda.is_available() else None
 
@@ -122,7 +133,7 @@ def main():
     if launcher.exists():
         text = launcher.read_text()
         seeds = sorted({int(m) for m in SEED_LINE.findall(text)})
-        rec['launcher'] = {'path': str(launcher), 'sha256': sha256_file(launcher),
+        rec['launcher'] = {'path': tok(launcher), 'sha256': sha256_file(launcher),
                            'seeds_found_in_launcher': seeds}
         # one value only is a seed; several different ones are not one seed and are not reported as one
         rec['seed'] = seeds[0] if len(seeds) == 1 else None

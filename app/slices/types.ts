@@ -77,3 +77,6 @@ export interface VolumeManifest {
   levels: [VolumeLevel];
 }
 export interface LoadedVolume extends VolumeGrid { manifest: VolumeManifest }
+
+export interface SliceFrame {plane: Plane; canvas: HTMLCanvasElement; widthMetres: number; heightMetres: number; revision: number}
+export interface SliceSceneConfig {frames: Map<string,SliceFrame>; visible: boolean; center: Vec3; colors: Record<string,string>}

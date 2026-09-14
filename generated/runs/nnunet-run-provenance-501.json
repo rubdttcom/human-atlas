@@ -1,0 +1,92 @@
+{
+ "id": "nnunet-run-provenance",
+ "date": "2026-09-14 06:50:42",
+ "root_token": "$VHF_ROOT",
+ "results": "$VHF_ROOT/nnunet/results/Dataset501_VHFCryoBlock2RGB/nnUNetTrainer__nnUNetPlans__2d",
+ "preprocessed": "$VHF_ROOT/nnunet/preprocessed/Dataset501_VHFCryoBlock2RGB",
+ "fold": 0,
+ "nnunetv2_version": "2.8.1",
+ "nnunetv2_path": "$VHF_ROOT/env-nnunet/lib/python3.12/site-packages/nnunetv2",
+ "torch_version": "2.14.0+cu130",
+ "gpu": "NVIDIA GeForce RTX 3080",
+ "runs_observed": [
+  {
+   "log": "training_log_2026_9_13_17_50_13.txt",
+   "started": "2026_9_13_17_50_13",
+   "last_epoch_logged": 999,
+   "bytes": 375605,
+   "sha256": "008ba8f56ada02425ea318da7a47998ecbb3b779afdb5eab0334116f42c09398"
+  }
+ ],
+ "runs_observed_count": 1,
+ "checkpoints": {
+  "checkpoint_final.pth": {
+   "sha256": "2b3d131b1ad8e659b6a6482bc832a60f2dfd8a978d60729c86533323d8c70b93",
+   "bytes": 268393717
+  },
+  "checkpoint_best.pth": {
+   "sha256": "fa5a6ac71ce068c6b84b21ab112dfd9199adc3df7dadb011ec47a8c59c74cf49",
+   "bytes": 268181807
+  }
+ },
+ "weights_sha256": "2b3d131b1ad8e659b6a6482bc832a60f2dfd8a978d60729c86533323d8c70b93",
+ "complete": true,
+ "plans_sha256": "c012559dc5ec97334beb7f497c9e7d3756fd3da35f7c7a7afb3b2d4eae6125ca",
+ "fingerprint_sha256": "0cb03786bfecaff24849111053a34ef5b6565c0736bc517fe124719105da6329",
+ "splits_sha256": "74530e530f9359768b8c3b72b768157bef9b881247271f12553c8fbf29576dd3",
+ "dataset_json_sha256": "35ea8478e12defbe252bb5b13bede2f0ee8f20f14f113d293df4c1357aa0817e",
+ "splits_folds": 4,
+ "split_counts": [
+  187,
+  10
+ ],
+ "dataset_channel_names": {
+  "0": "rgb_to_0_1",
+  "1": "rgb_to_0_1",
+  "2": "rgb_to_0_1"
+ },
+ "dataset_labels": {
+  "background": 0,
+  "bone": 1,
+  "cartilage": 2,
+  "muscle": 3,
+  "ignore": 4
+ },
+ "plans_identifier": "nnUNetPlans",
+ "configuration_2d": {
+  "patch_size": [
+   448,
+   704
+  ],
+  "batch_size": 9,
+  "spacing": [
+   0.6660000085830688,
+   0.6660000085830688
+  ],
+  "median_image_size_in_voxels": [
+   434.0,
+   666.0
+  ],
+  "normalization_schemes": [
+   "RGBTo01Normalization",
+   "RGBTo01Normalization",
+   "RGBTo01Normalization"
+  ]
+ },
+ "launcher": {
+  "path": "$VHF_ROOT/run-cryo-train.sh",
+  "sha256": "3c716f4db68ff68233869e41c7f56a93f8a999633a1930a43f78551a16939128",
+  "seeds_found_in_launcher": [
+   12345
+  ],
+  "sha256_on_disk_when_recorded": "5c50943bb2c48cfa9a432911ceac2d40a5c17b75b2ae0e4ead9f02eb55100d47",
+  "note": "The launcher was replaced AFTER this run finished, to fix the missing sentinel and the -chk extension that its own failure exposed. sha256 is the script that actually ran, captured before the edit; sha256_on_disk_when_recorded is what the file holds now. Recording the current file as the one that ran would be false provenance."
+ },
+ "seed": 12345,
+ "seed_limits": [
+  "nnUNetv2_train has no seed flag; the value is the one the launcher applies to random, numpy and torch in the main process",
+  "nnU-Net passes seeds=None to its batch-generator workers, so augmentation is unseeded and the run is not bit-reproducible",
+  "cuDNN benchmarking is on by default, which makes some kernels non-deterministic as well"
+ ],
+ "seeds_note": "the seed value is identical in both launcher versions"
+}

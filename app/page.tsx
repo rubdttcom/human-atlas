@@ -4,7 +4,7 @@ import {RegistrationPanel} from './registration';
 import {ProvenanceDetails} from './provenance';
 import {flushSync} from 'react-dom';
 import {registerAtlasTools} from './agent-tools';
-import {useEffect,useMemo,useRef,useState} from 'react';
+import {lazy,Suspense,useEffect,useMemo,useRef,useState} from 'react';
 import {Activity,ArrowUpRight,ChevronRight,Crosshair,Focus,Info,Layers3,Pause,RotateCcw,RotateCw,Search,X} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Badge} from '@/components/ui/badge';
@@ -14,14 +14,16 @@ import {Sheet,SheetContent,SheetTitle,SheetDescription} from '@/components/ui/sh
 import {Combobox,ComboboxInput,ComboboxContent,ComboboxList,ComboboxItem,ComboboxEmpty} from '@/components/ui/combobox';
 import AnatomyScene from './scene';
 import {DEFAULT_VISIBLE,SYSTEMS,EXPLANATIONS,explanation,donorOf,partVisible,type Atlas,type Concept,type SceneState,type SystemId,type View} from './anatomy';
+const SlicesWorkspace=lazy(()=>import('./slices/workspace'));
 const initial:SceneState={explode:0,visible:DEFAULT_VISIBLE,selected:[],isolate:false,view:'three-quarter',rotate:false,reset:0,donors:null,landmarks:false};
 export default function Home(){
+ const [slicesOpen,setSlicesOpen]=useState(false);
  const [source,setSource]=useState(()=>{const value=new URLSearchParams(location.search).get('source');return value&&['hra-female','tcia','denver-vhf','nlm-vhf-ct','ct-consensus','composed','bodyparts3d'].includes(value)?value:'hra-female';}),[coverage,setCoverage]=useState(false);
  const pendingSelection=useRef<string|null>(null);
  const detailTitle=useRef<HTMLHeadingElement>(null);
  const [atlas,setAtlas]=useState<Atlas|null>(null),[state,setState]=useState(initial),[progress,setProgress]=useState(0),[error,setError]=useState(''),[panel,setPanel]=useState<'layers'|'search'|null>(null),[details,setDetails]=useState(false),[about,setAbout]=useState(false),[query,setQuery]=useState(''),[chosen,setChosen]=useState<Concept|null>(null),[compare,setCompare]=useState<string[]|null>(null),[registration,setRegistration]=useState(false);
  useEffect(()=>{const abort=new AbortController();setProgress(0);setError('');setAtlas(null);setChosen(null);setDetails(false);setState({...initial,visible:DEFAULT_VISIBLE});setCompare(null);setRegistration(false);fetch(`/atlases/${source}.json`,{signal:abort.signal}).then(r=>{if(!r.ok)throw new Error('The anatomy catalogue could not be loaded.');return r.json();}).then(data=>setAtlas(data as Atlas)).catch(e=>{if(e.name!=='AbortError')setError(e.message);});return()=>abort.abort();},[source]);
- useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='/'&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault();setPanel('search');setDetails(false);}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
+ useEffect(()=>{const key=(e:KeyboardEvent)=>{if(!slicesOpen&&e.key==='/'&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault();setPanel('search');setDetails(false);}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[slicesOpen]);
  const parts=useMemo(()=>new Map(atlas?.parts.map(p=>[p.id,p])),[atlas]);
  const counts=useMemo(()=>Object.fromEntries(SYSTEMS.map(s=>[s.id,atlas?.parts.filter(p=>p.system===s.id).length??0])),[atlas]);
  const activeSystems=SYSTEMS.filter(s=>counts[s.id]>0);
@@ -30,18 +32,19 @@ export default function Home(){
  const visibleCount=atlas?.parts.filter(p=>partVisible(p,state)).length??0;
  const results=useMemo(()=>{if(!atlas)return[];const term=query.toLowerCase().trim();if(!term)return ['heart','brain','liver','stomach','spleen','pancreas','urinary bladder','trachea'].map(name=>atlas.concepts.find(c=>c.name.toLowerCase()===name)).filter((x):x is Concept=>!!x);return atlas.concepts.filter(c=>c.name.toLowerCase().includes(term)||c.id.toLowerCase().includes(term)).sort((a,b)=>a.name.length-b.name.length).slice(0,80);},[atlas,query]);
  const choose=(c:Concept)=>{setChosen(c);setState(s=>({...s,selected:c.elements,isolate:false,rotate:false}));setDetails(true);setPanel(null);};
- useEffect(()=>{if(!atlas)return;return registerAtlasTools(atlas,c=>flushSync(()=>choose(c)));},[atlas]);
+ useEffect(()=>{if(!atlas||slicesOpen)return;return registerAtlasTools(atlas,c=>flushSync(()=>choose(c)));},[atlas,slicesOpen]);
  const choosePart=(id:string)=>{const p=parts.get(id);if(!p)return;setChosen({id:p.conceptId,name:p.name,elements:[id]});setState(s=>({...s,selected:[id],isolate:false,rotate:false}));setDetails(true);setPanel(null);};
  useEffect(()=>{if(atlas&&pendingSelection.current){const id=pendingSelection.current;pendingSelection.current=null;choosePart(id);}},[atlas]);
  const inspectCoverage=(nextSource:string,id:string)=>{setCoverage(false);if(nextSource===source){choosePart(id);}else{pendingSelection.current=id;setSource(nextSource);}};
  const toggle=(id:SystemId)=>{setDetails(false);setState(s=>({...s,selected:[],isolate:false,visible:s.visible.includes(id)?s.visible.filter(x=>x!==id):[...s.visible,id]}));};
  const reset=()=>{setState(s=>({...initial,visible:DEFAULT_VISIBLE,reset:s.reset+1}));setChosen(null);setDetails(false);setPanel(null);};
  const openPanel=(next:'layers'|'search')=>{setDetails(false);setPanel(p=>p===next?null:next);};
+ if(slicesOpen)return <Suspense fallback={<main className="slices-message" role="status">Loading Slices…</main>}><SlicesWorkspace previousSource={source} onExit={()=>setSlicesOpen(false)}/></Suspense>;
  return <main className={`studio ${source==='composed'?'is-composed':''}`}>
   {atlas&&<AnatomyScene atlas={atlas} state={{...state,inspectorOpen:details&&selectedParts.length>0}} onSelect={choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
   <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ANATOMY</div><h1>Female Atlas<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'...'} meshes <span>·</span> {atlas?.source??'Loading'}</div><div className="anatomy-choice"><select aria-label="Anatomical reference" value={source} onChange={e=>setSource(e.target.value)}><option value="hra-female">Female reference · HRA</option><option value="composed">Composite · experimental</option><option value="tcia">Female donor 003 · TCIA</option><option value="denver-vhf">Female VHF lower limb · Denver</option><option value="nlm-vhf-ct">Female VHF CT segmentation · NLM</option><option value="ct-consensus">Female VHF CT consensus · instances</option><option value="bodyparts3d">Male template · BodyParts3D</option></select></div>{source==='composed'&&<div className="registration-note">Canonical space VHF-image-2022 · experimental registration · unreviewed</div>}</header>
-  <nav className="top-actions" aria-label="Explorer panels"><Button variant="ghost" className={panel==='search'?'active':''} onClick={()=>openPanel('search')} aria-label="Search anatomy"><Search size={18}/><span>Find a structure</span><kbd>/</kbd></Button>{atlas?.registration_report&&<Button variant="ghost" className={`icon-button ${registration?'active':''}`} aria-label="Registration review" title="Registration review" onClick={()=>{setDetails(false);setPanel(null);setRegistration(r=>!r);}}><Crosshair size={18}/></Button>}<Button variant="ghost" className="icon-button" aria-label="About this atlas" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}><Info size={18}/></Button></nav>
+  <nav className="top-actions" aria-label="Explorer panels"><Button variant="ghost" aria-label="Open Slices" onClick={()=>setSlicesOpen(true)}>Slices</Button><Button variant="ghost" className={panel==='search'?'active':''} onClick={()=>openPanel('search')} aria-label="Search anatomy"><Search size={18}/><span>Find a structure</span><kbd>/</kbd></Button>{atlas?.registration_report&&<Button variant="ghost" className={`icon-button ${registration?'active':''}`} aria-label="Registration review" title="Registration review" onClick={()=>{setDetails(false);setPanel(null);setRegistration(r=>!r);}}><Crosshair size={18}/></Button>}<Button variant="ghost" className="icon-button" aria-label="About this atlas" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}><Info size={18}/></Button></nav>
   <section className={`layers-panel glass ${panel==='layers'?'mobile-open':''}`} aria-label="Anatomical layers">
    <div className="panel-heading"><span>Systems</span><Button variant="ghost" className="mobile-only icon-button" onClick={()=>setPanel(null)} aria-label="Close systems"><X size={18}/></Button><Badge variant="secondary" className="desktop-only small-number">{activeSystems.length}</Badge></div>
    <div className="layer-presets"><Button variant="ghost" aria-pressed={activeSystems.every(x=>state.visible.includes(x.id))} onClick={()=>setState(s=>({...s,selected:[],isolate:false,visible:activeSystems.map(x=>x.id)}))}>All</Button><Button variant="ghost" aria-pressed={state.visible.length===1&&state.visible[0]==='skeletal'} onClick={()=>setState(s=>({...s,selected:[],isolate:false,visible:['skeletal']}))}>Skeleton</Button><Button variant="ghost" aria-pressed={state.visible.length===6&&['cardiac','respiratory','digestive','urinary','endocrine','reproductive'].every(id=>state.visible.includes(id as SystemId))} onClick={()=>setState(s=>({...s,selected:[],isolate:false,visible:['cardiac','respiratory','digestive','urinary','endocrine','reproductive']}))}>Organs</Button></div>
