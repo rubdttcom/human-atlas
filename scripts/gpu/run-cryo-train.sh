@@ -34,12 +34,7 @@ trap sentinel EXIT
 
 # The seed is set in the main process only. nnU-Net passes seeds=None to its batch-generator
 # workers, so augmentation is not seeded and the run is not bit-reproducible. Recorded as a limit.
-"$PY/python" - "$D" <<'PY'
-import sys, random, numpy as np, torch
-random.seed(12345); np.random.seed(12345); torch.manual_seed(12345); torch.cuda.manual_seed_all(12345)
-from nnunetv2.run.run_training import run_training
-run_training(sys.argv[1], '2d', 0, 'nnUNetTrainer', 'nnUNetPlans', device=torch.device('cuda'))
-PY
+"$PY/python" "$VHF/cryo-entry.py" "$D" --mode train
 train_rc=$?
 stage='trained'
 
