@@ -47,7 +47,7 @@ Two readings, both worth auditing:
   Labels copied from a centimetre away still beat the model. By the reading of the previous findings
   document, the class has not learned position. The gap narrows from 0.1545 to 0.0640.
 
-## 3. The protocol does not see 98.5 % of the rgb-only cartilage failure
+## 3. The protocol does not see 98.5 % of the rgb-only cartilage volume
 
 Band 2 (k 2870..3019) has no reference cartilage. The acceptance reports record 7,581 false-positive
 cartilage voxels for `rgb-only` and 5,524 for `rgb-plus-ct-prior`, and both are kept out of the
@@ -63,30 +63,45 @@ Counting every cartilage voxel predicted in the band, not only those landing on 
 
 `rgb-only` paints 491,401 cartilage voxels into a band where Denver labels none. All but 1.5 % of
 them land on tissue Denver never labelled, so they are `ignore`, so the evaluator is silent about
-them. The reported 7,581 is the visible 1.5 % of a failure 65 times larger.
+them. The reported 7,581 is the evaluable 1.5 % of a predicted volume 65 times larger.
+
+**What the 483,820 voxels are, and are not** (wording corrected 2026-09-20, section 10). They are
+predictions with no evaluable reference. They are not demonstrated errors: Denver labelled only the
+structures it modelled, so some unlabelled tissue may be cartilage Denver omitted. The evidence that
+most of them are wrong is indirect and comes from the distance table below, not from the count. A
+protocol v2 term that penalised volume on `ignore` as such would also penalise structures Denver
+omitted, so it cannot be a plain error term; a distance-to-required-neighbour term does not have that
+problem.
 
 This is not a defect in the evaluator: scoring against unobserved reference is exactly what the
 ignore rule exists to prevent, and the previous findings document defends that rule. It is a
 **blind spot in the acceptance criteria**, which contain no term for the total volume a class
-predicts. A model can hallucinate a class across unlabelled tissue at any scale and the protocol
-will not record it.
+predicts. A model can paint a class across unlabelled tissue at any scale and the protocol will
+not record it.
 
-Distance from each predicted cartilage voxel to the nearest reference bone, same band:
+Distance from each predicted cartilage voxel to the nearest reference bone, same band, all three
+spacings from the header (0.666 x 0.666 x 0.333 mm; the first publication used 1 mm between slices,
+section 10):
 
-| | median | p90 | max |
-|---|---|---|---|
-| rgb-only | **55.70 mm** | 105.39 mm | 154.91 mm |
-| rgb+ct-prior | **0.00 mm** | 20.68 mm | 47.78 mm |
+| | median | p90 | max | share at distance 0 |
+|---|---|---|---|---|
+| rgb-only | **49.65 mm** | 98.40 mm | 144.49 mm | 1.5 % |
+| rgb+ct-prior | **0.00 mm** | 13.75 mm | 41.20 mm | 53.5 % |
 
-Articular cartilage exists only on a bone surface. `rgb-only` puts half its cartilage more than
-55 mm from any bone, which no anatomy supports. `rgb-plus-ct-prior` puts the median voxel **on** the
-bone. Connected components in the band: 2,117 for `rgb-only`, 32 for `rgb-plus-ct-prior`.
+Articular cartilage exists only on a bone surface. `rgb-only` puts half its cartilage about 50 mm
+from any labelled bone, which no anatomy supports. For `rgb-plus-ct-prior` the median voxel is at
+distance 0, which means **inside Denver's bone label**, not on its surface: the two readings are
+"the model paints cartilage over bone Denver calls bone" or "Denver's bone label covers a surface
+layer that is cartilage". The distance alone does not separate them. Connected components in the
+band: 2,117 for `rgb-only`, 32 for `rgb-plus-ct-prior`.
 
-Suggested as a protocol v2 criterion, not adopted here: predicted volume of a class on ignore
-tissue, and median distance to the nearest anatomically required neighbour class. Both are
-computable from artefacts that already exist and neither touches a frozen threshold.
+Suggested as a protocol v2 criterion, not adopted here: median distance from each predicted voxel
+of a class to the nearest anatomically required neighbour class, computed over the whole band and
+so blind to the ignore mask. Predicted volume on `ignore` should be reported alongside it, not
+scored. Both are computable from artefacts that already exist and neither touches a frozen
+threshold.
 
-## 4. The rgb+ct-prior cartilage false positives sit on the sacrum, bilaterally
+## 4. The rgb+ct-prior cartilage false positives sit on the sacrum, near its midline
 
 Denver structures beneath the cartilage voxels that land on labelled bone in band 2:
 
@@ -96,43 +111,65 @@ Denver structures beneath the cartilage voxels that land on labelled bone in ban
 | 13 | Left_Bone_Sacrum | 2,777 | 1,260 |
 | 11 | Left_Bone_Pelvis | 191 | 0 |
 
-Both variants put this part of their cartilage on the sacrum, on both sides. Median lateral offset
-from the midline is 85 px = 56.6 mm for both.
+Both variants put this part of their cartilage on the sacrum. The first publication read the two
+Denver names as "both sides" and quoted a median "lateral offset from the midline" of 85 px =
+56.6 mm. Both statements were wrong and are withdrawn (section 10): the offset was measured along
+axis j, which is anterior-posterior in this RAS volume, from the image centre, over all predicted
+cartilage; and in band 2 both Denver sacrum labels span the same left-right range (i 239..421), so
+the 78/13 split is not a left-right split and the names say nothing about bilaterality.
 
-**Hypothesis, not a measurement.** The sacroiliac joint is at that location, it is bilateral, and it
-carries cartilage in life: hyaline on the sacral side, fibrocartilage on the iliac side
-([StatPearls, Pelvic Joints](https://www.ncbi.nlm.nih.gov/books/NBK538523/)). The pilot's tissue map
-takes cartilage only from Denver, and Denver's cartilage in this block is
-"femoral heads and acetabula only" (`generated/cryo-tissue-classes-block2.json`). If real
-sacroiliac cartilage is present in these photographs and unlabelled, then some of these false
-positives are anatomically right and the reference is incomplete.
+Measured correctly, over the voxels on the sacrum only, left-right along axis i from the sacral
+centroid (i 329.8; the image centre is 333.0):
 
-This must not be assumed. It predicts something checkable: the voxels should form a thin bilateral
-lamina on the sacral surface facing the ilium, not a rim around the whole sacrum. **Nobody has
-looked at the photographs.** An anatomist, or the audit, should settle it before it is repeated.
+| | on sacrum | slices | left-right offset median (p10, p90) | AP offset from sacral centroid | distance to nearest non-sacral bone median (p10) |
+|---|---|---|---|---|---|
+| rgb-only | 7,385 | 112 | 8.8 mm (2.2, 20.1) | +8.7 mm (anterior) | 41.8 mm (31.4) |
+| rgb+ct-prior | 5,524 | 55 | 7.2 mm (1.2, 30.8) | +3.4 mm (anterior) | 42.9 mm (20.1) |
 
-If it holds, the same question applies to the pubic symphysis (fibrocartilage, thicker in females)
-and the acetabular labrum, neither of which Denver labels either.
+**The sacroiliac hypothesis of the first publication is not supported by this measurement.**
+Sacroiliac cartilage lies where the sacrum meets the ilium, so voxels on it would be within a few
+millimetres of the pelvis label. The predicted voxels sit a median 7 to 9 mm from the sacral midline
+and about 42 mm from any non-sacral bone, slightly anterior of the sacral centroid, in a few groups
+of slices. That is a midline, anterior sacral location, not a joint surface facing the ilium.
 
-## 5. The reference cartilage is 2.6 pixels thick, and that matches the literature
+**Hypothesis, not a measurement, and weaker than the last one.** A midline anterior structure on
+the upper sacrum that looks like cartilage in a photograph could be an intervertebral disc or its
+endplates (the lumbosacral transition of this donor is an open question,
+`docs/plans/vhf-s1-lumbosacral-dossier.md`), a sacral fusion remnant, or plain confusion of the
+class at a bone boundary. Denver labels none of these as cartilage. Nothing here decides between
+them. **Nobody has looked at the photographs.** The check is the same as before: open the slices
+k 2892..2979 at the sacral midline and see what tissue the voxels cover. Until then these 5,524
+voxels stay false positives under the protocol and nothing else.
 
-Measured on the 83 band-1 slices that carry reference cartilage, in-plane spacing 0.666 mm:
+If unlabelled cartilage turns out to exist in these photographs, the same question applies to the
+pubic symphysis and the acetabular labrum, neither of which Denver labels either.
 
-- mean lamina thickness **1.76 mm = 2.6 px**;
-- per-slice maximum local thickness: median 4.00 mm, p05 2.98 mm, p95 4.74 mm.
+## 5. The reference cartilage is about 2.8 pixels thick
+
+Measured on the 83 band-1 slices that carry reference cartilage, spacing 0.666 x 0.666 x 0.333 mm.
+The first publication quoted a "mean lamina thickness" of 1.76 mm from 2 x mean(interior EDT) with
+1 mm between slices; that estimator is not a thickness (it averages the depth of every interior
+voxel, which for a lamina is about half the thickness) and the spacing was wrong (with the real
+spacing it gives 1.58 mm). Both are withdrawn (section 10). Local thickness, 2 x EDT sampled on the
+3D skeleton of the label (1,520 skeleton voxels), replaces it:
+
+- local thickness **median 1.88 mm = 2.8 px**, mean 1.83 mm, p05 1.33 mm, p95 2.98 mm;
+- per-slice maximum local thickness: median 4.00 mm, p05 2.98 mm, p95 4.74 mm (in-plane only, unchanged).
 
 Published hip cartilage thickness: acetabulum 0.95–3.13 mm and femoral head 0.32–2.53 mm by CT
 arthrography ([Radiology 2007](https://pubmed.ncbi.nlm.nih.gov/17255415/)); 1.15–1.46 mm acetabular
 and 1.18–1.78 mm femoral by MRI stereology
 ([Osteoarthritis and Cartilage 2007](https://www.sciencedirect.com/science/article/pii/S1063458406002925)).
-Denver's cartilage labels in this block are anatomically the right thickness. The reference is not
-suspect on this count.
+Denver's cartilage labels in this block fall inside the published range. That is a plausibility
+check on a summary statistic. It does not make the labels anatomically correct, and the first
+publication's sentence to that effect is withdrawn: a label can have the right thickness in the
+wrong place.
 
-The consequence is for the metric, not the label. A structure 2.6 px thick cannot survive a boundary
-error of one pixel with a good Dice: a one-pixel offset on a 3 px lamina caps Dice near 0.67. This is
-why protocol v1 sets no Dice threshold for cartilage and grades it on surface p95 only. **The Dice
-figures in section 1 are reported, not criteria**, and an auditor should not read 0.4285 as "43 % of
-the cartilage is right".
+The consequence is for the metric, not the label. A structure under 3 px thick cannot survive a
+boundary error of one pixel with a good Dice: a one-pixel offset on a 3 px lamina caps Dice near
+0.67. This is why protocol v1 sets no Dice threshold for cartilage and grades it on surface p95
+only. **The Dice figures in section 1 are reported, not criteria**, and an auditor should not read
+0.4285 as "43 % of the cartilage is right".
 
 Band-1 slice coverage, which is closer to a fair statement of the class: reference carries cartilage
 on 83 slices; `rgb-only` predicts it on 116; `rgb-plus-ct-prior` on 81.
@@ -162,14 +199,23 @@ prediction volumes directly.
 
 1. Section 3's counts, from the two prediction volumes and `tissue-classes.nii.gz`. Is the
    ignore-blindness real, and is a predicted-volume term the right answer to it?
-2. Section 4's hypothesis, against the photographs: is there unlabelled sacroiliac cartilage in
-   band 2, or is `rgb-plus-ct-prior` rimming the sacrum?
+2. Section 4, against the photographs: what tissue do the predicted cartilage voxels at the sacral
+   midline (k 2892..2979) cover? The sacroiliac reading is withdrawn; the midline reading is a
+   hypothesis with no observation behind it.
 3. Whether bone clearing its Dice floor under `rgb-plus-ct-prior` changes anything about the
    `machine-failed` status, given that the remaining bone failures are the p95 artefact and the two
-   controls that artefact disables.
-4. The iteration limit. `generated/runs/nnunet-run-provenance-502.json` records two runs for this
-   variant (a 300-epoch attempt that died, and the 1000-epoch resume). Protocol v1 allows two runs
-   per variant. Does a crashed run consume one?
+   controls that artefact disables. (Audit answer, 2026-09-20: no. Clearing one criterion removes
+   neither the surface nor the control failures, and says nothing about generalisation beyond this
+   block. The status stands.)
+4. The iteration limit. `generated/runs/nnunet-run-provenance-502.json` observes two training logs
+   for this variant. The first publication called the first one "a 300-epoch attempt that died";
+   that was wrong (section 10). `generated/cryo-nnunet-train-block2-rgb-plus-ct-prior.json` records
+   what happened: the user asked for the GPU to be freed, training was stopped after the epoch-300
+   checkpoint, and it was continued from `checkpoint_latest.pth` at epoch 300 with the same seed,
+   split and data (log 2, epochs 300 to 999). No score existed at the stop. Protocol v1 allows two
+   runs per variant. Is one training interrupted by the operator and continued from its own
+   checkpoint one run or two? The manifest says one; the auditor should say whether that reading
+   holds.
 5. The provenance and acceptance artefacts for 502 were written at 07:01 and 07:08 on 2026-09-15 by a
    process this session did not launch. Their contents should be verified rather than trusted.
 
@@ -181,7 +227,8 @@ prediction volumes directly.
 
 Volumes used, all already in the repository:
 
-- `data/derived/nlm-vhf/cryosections/block2/tissue-classes.nii.gz` (reference, 0.666 x 0.666 x 0.333 mm)
+- `data/derived/nlm-vhf/cryosections/block2/tissue-classes.nii.gz` (reference, 0.666 x 0.666 x 0.333 mm,
+  RAS: axis i is left-right, axis j anterior-posterior, axis k the slice index)
 - `data/derived/nlm-vhf/cryosections/block2/denver-original-labels.nii.gz` (structure identity)
 - `data/derived/nnunet/pred/pred-block2-rgb-only.nii.gz`
 - `data/derived/nnunet/pred/pred-block2-rgb-plus-ct-prior.nii.gz`
@@ -192,4 +239,40 @@ Band 2 is k 2870..3019, band 1 is k 2528..2677, and the block starts at k 2285.
 
 Nothing here is anatomy that a person has verified. Section 4 is a hypothesis with a stated test and
 no observation behind it. No threshold, metric, evaluator or status is changed by this document. The
-`machine-failed` status of both variants stands.
+`machine-failed` status of both variants stands. Sections 3 to 5 are analyses made after the v1
+scores were known; they explain figures, they replace none.
+
+## 10. Corrections after the external audit of a446ca8 (2026-09-20)
+
+The auditor reproduced the counts of section 3, the hashes of both predictions and manifests, ran
+the pilot validator and the 25 metric tests, and did not inspect the photographs or the remote
+checkpoints. Four findings, all confirmed on the data and applied above; the official Dice and p95
+figures of section 1 come from the evaluator and are not affected by any of them.
+
+1. **Slice spacing.** `scripts/audit-cartilage-2026-09-15.py` used 1 mm between slices instead of
+   the header's 0.333 mm in every 3D distance. Corrected figures: rgb-only median distance to bone
+   55.70 -> 49.65 mm, p90 105.39 -> 98.40, max 154.91 -> 144.49; rgb+ct-prior p90 20.68 -> 13.75,
+   max 47.78 -> 41.20; superseded thickness estimator 1.76 -> 1.58 mm. The script now takes all
+   three spacings from the header and asserts the RAS orientation.
+2. **Wrong axis for "lateral".** The 56.6 mm was measured along axis j (anterior-posterior), from
+   the image centre, over all predicted cartilage. Measured along axis i from the sacral centroid
+   over the voxels on the sacrum, the offset is a median 7 to 9 mm, and the voxels lie about 42 mm
+   from any non-sacral bone. The sacroiliac hypothesis is withdrawn; section 4 now carries a weaker
+   midline hypothesis with the same "look at the photographs" test. The Denver 78/13 label names do
+   not encode left and right in this band, so "bilaterally" is withdrawn as well.
+3. **"A failure 65 times larger".** The 483,820 voxels on `ignore` are predictions without an
+   evaluable reference, not demonstrated errors, and distance 0 to the bone label means overlap
+   with the label, not position on its surface. Section 3 now says so, and the protocol v2
+   suggestion no longer proposes penalising volume on `ignore` as an error term.
+4. **Thickness.** 2 x mean(interior EDT) is not a lamina thickness. Replaced by local thickness on
+   the 3D skeleton (median 1.88 mm). The sentence declaring Denver's labels "anatomically the right
+   thickness" is replaced by a plausibility statement; a thickness in the published range does not
+   make a label correct.
+
+Also corrected: item 4 of section 7 called the first log of variant 502 "an attempt that died".
+The training manifest records an operator-requested stop at the epoch-300 checkpoint and a
+continuation from it; there was no crash and no third attempt. The auditor's recommendation is
+adopted as the plan: these results stay on record as evidence in favour of the CT prior under
+protocol v1, the auxiliary diagnosis is corrected here, and an evaluation of observable surfaces
+is designed as a post hoc analysis, labelled as such, that keeps the v1 results, before the pilot
+is extended.

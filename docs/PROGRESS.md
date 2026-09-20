@@ -182,6 +182,38 @@ Denver labels no cartilage. The wrong-neighbour control passes for bone and musc
 clearest signal that the model has learned position. One reading error of ours is corrected in the
 findings document: that control did run, its figures are nested under `neighbour`.
 
+**Second graded result, 2026-09-15** (`generated/cryo-pilot-acceptance-block2-rgb-plus-ct-prior.json`,
+analysis in `docs/findings-2026-09-15-ct-prior-score-and-cartilage.md`): `rgb-plus-ct-prior` is also
+`machine-failed` on all three classes. Dice: bone 0.9699 (clears the 0.9324 floor that `rgb-only`
+missed), muscle 0.9891, cartilage 0.4285 (reported, not a criterion). Surface p95 27 to 31 mm for bone
+and muscle, 11.80 mm for cartilage, all under the same caps artefact; the wrong-neighbour control still
+beats the cartilage class (0.3310 against 0.3950). Training history for Dataset502: one run stopped by
+the operator at the epoch-300 checkpoint to free the GPU and continued from `checkpoint_latest.pth` to
+epoch 999 with the same seed, split and data (two logs, one training, recorded in
+`generated/cryo-nnunet-train-block2-rgb-plus-ct-prior.json` and
+`generated/runs/nnunet-run-provenance-502.json`). Whether that counts as one or two of the protocol's
+two runs is put to the auditor. These five artefacts for 502 are in the working tree and not yet
+committed.
+
+**External audit of a446ca8 applied, 2026-09-20** (auditor reproduced the counts and hashes, ran the
+pilot validator and the 25 metric tests, did not inspect photographs or remote checkpoints). Four
+findings, all confirmed and corrected in `scripts/audit-cartilage-2026-09-15.py` and section 10 of the
+findings document; none touches the evaluator or the official figures: (1) the auxiliary 3D distances
+used 1 mm between slices instead of 0.333 mm (rgb-only median distance to bone 55.70 -> 49.65 mm,
+rgb+ct-prior p90 20.68 -> 13.75 mm); (2) the "56.6 mm lateral" offset was measured along the
+anterior-posterior axis from the image centre over all predicted cartilage; measured left-right from
+the sacral centroid over the voxels on the sacrum it is a median 7 to 9 mm, about 42 mm from any
+non-sacral bone, so the sacroiliac hypothesis is withdrawn (the voxels sit at the sacral midline,
+slightly anterior, in a few slice groups; what tissue they cover is unknown until someone looks at
+k 2892..2979); (3) the 483,820 rgb-only cartilage voxels on `ignore` are predictions without an
+evaluable reference, not demonstrated errors, and distance 0 to the bone label is overlap, not
+surface; (4) 2 x mean(interior EDT) is not a lamina thickness; local thickness on the 3D skeleton of
+Denver's band-1 cartilage is a median 1.88 mm (2.8 px), which is in the published range and makes no
+label correct. Also corrected: the 502 first log was described as a crash; it was an operator stop.
+Agreed plan from the audit: keep both v1 results on record as evidence in favour of the CT prior,
+design the observable-surface evaluation as a labelled post hoc analysis that keeps the v1 results,
+and only then extend the pilot.
+
 **This closes the pre-score window for protocol v2.** The change planned above was to be made before
 any evaluation existed. It no longer can be. The path-string change still touches no criterion but
 must be recorded as made after the `rgb-only` result, and any change to the surface metric is now

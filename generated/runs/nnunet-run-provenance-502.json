@@ -1,0 +1,102 @@
+{
+ "id": "nnunet-run-provenance",
+ "date": "2026-09-15 07:01:05",
+ "root_token": "$VHF_ROOT",
+ "results": "$VHF_ROOT/nnunet/results/Dataset502_VHFCryoBlock2RGBPrior/nnUNetTrainer__nnUNetPlans__2d",
+ "preprocessed": "$VHF_ROOT/nnunet/preprocessed/Dataset502_VHFCryoBlock2RGBPrior",
+ "fold": 0,
+ "nnunetv2_version": "2.8.1",
+ "nnunetv2_path": "$VHF_ROOT/env-nnunet/lib/python3.12/site-packages/nnunetv2",
+ "torch_version": "2.14.0+cu130",
+ "gpu": "NVIDIA GeForce RTX 3080",
+ "runs_observed": [
+  {
+   "log": "training_log_2026_9_14_06_49_51.txt",
+   "started": "2026_9_14_06_49_51",
+   "last_epoch_logged": 300,
+   "bytes": 116338,
+   "sha256": "b25cec49cb90a6615fc4155b881f14e67915fe5db4e246512d90f761caa5ec9b"
+  },
+  {
+   "log": "training_log_2026_9_14_17_09_18.txt",
+   "started": "2026_9_14_17_09_18",
+   "last_epoch_logged": 999,
+   "bytes": 269489,
+   "sha256": "e4ed5bef07afef2f4676b9276fd5e6ff9f7f12797b0b15aeaf5b4a6a89c40fb6"
+  }
+ ],
+ "runs_observed_count": 2,
+ "checkpoints": {
+  "checkpoint_final.pth": {
+   "sha256": "ffdfb6eb3809d99bbf3667cc285d534eb1a9caeece061230a15e53f2ee0959ed",
+   "bytes": 268402293
+  },
+  "checkpoint_best.pth": {
+   "sha256": "8499f9bc6130e7f459e26320f442c85bde24d70b5fc6f5b1ea62e2ac63989b62",
+   "bytes": 268383983
+  }
+ },
+ "weights_sha256": "ffdfb6eb3809d99bbf3667cc285d534eb1a9caeece061230a15e53f2ee0959ed",
+ "complete": true,
+ "plans_sha256": "6607f887f2333758591a861cf2de880b585431870c0b241f3277ea5921a48388",
+ "fingerprint_sha256": "ade0d99a8b237ae79bc068dd7b313735392d0b6a0eaa0fbde529eafae6b7a715",
+ "splits_sha256": "74530e530f9359768b8c3b72b768157bef9b881247271f12553c8fbf29576dd3",
+ "dataset_json_sha256": "4a56c31c41690a278ed4786bb179fe53b5aeda094cf79570d38f158f19a1e684",
+ "splits_folds": 4,
+ "split_counts": [
+  187,
+  10
+ ],
+ "dataset_channel_names": {
+  "0": "rgb_to_0_1",
+  "1": "rgb_to_0_1",
+  "2": "rgb_to_0_1",
+  "3": "nonorm",
+  "4": "nonorm",
+  "5": "nonorm"
+ },
+ "dataset_labels": {
+  "background": 0,
+  "bone": 1,
+  "cartilage": 2,
+  "muscle": 3,
+  "ignore": 4
+ },
+ "plans_identifier": "nnUNetPlans",
+ "configuration_2d": {
+  "patch_size": [
+   448,
+   704
+  ],
+  "batch_size": 9,
+  "spacing": [
+   0.6660000085830688,
+   0.6660000085830688
+  ],
+  "median_image_size_in_voxels": [
+   434.0,
+   666.0
+  ],
+  "normalization_schemes": [
+   "RGBTo01Normalization",
+   "RGBTo01Normalization",
+   "RGBTo01Normalization",
+   "NoNormalization",
+   "NoNormalization",
+   "NoNormalization"
+  ]
+ },
+ "launcher": {
+  "path": "$VHF_ROOT/run-cryo-resume.sh",
+  "sha256": "4880de42a2ecb0baef3064a5bcb874cffe93859e387d808e607c9700d4872567",
+  "seeds_found_in_launcher": [
+   12345
+  ]
+ },
+ "seed": 12345,
+ "seed_limits": [
+  "nnUNetv2_train has no seed flag; the value is the one the launcher applies to random, numpy and torch in the main process",
+  "nnU-Net passes seeds=None to its batch-generator workers, so augmentation is unseeded and the run is not bit-reproducible",
+  "cuDNN benchmarking is on by default, which makes some kernels non-deterministic as well"
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "id": "cryo-prediction-block2-rgb-plus-ct-prior",
+ "date": "2026-09-15",
+ "variant": "rgb-plus-ct-prior",
+ "output": {
+  "path": "data/derived/nnunet/pred/pred-block2-rgb-plus-ct-prior.nii.gz",
+  "sha256": "1d864cc36650f44222ee0166af8131c364e826ac3e9f28981d513c70243c9c56",
+  "shape": [
+   666,
+   434,
+   1248
+  ],
+  "dtype": "uint8"
+ },
+ "slices": {
+  "predicted": 291,
+  "band_eligible": 291,
+  "band_eligible_without_prediction": [],
+  "outside_the_bands": []
+ },
+ "note": "slices without a prediction are class 0; the evaluator scores only eligible band slices",
+ "slice_gate": {
+  "checked_before_conversion": [
+   "squeezed shape",
+   "integer dtype or an exactly integral float",
+   "finite values",
+   "only the active output classes",
+   "the 2D case affine, diag(0.666, 0.666, 999.0)"
+  ],
+  "affine_atol_mm": 0.001,
+  "reason": "Codex audit of 1af1c60, P1-1: reading values through int() and casting with astype truncated a fractional class, and the input affine was ignored, so a slice from another grid was accepted"
+ },
+ "seconds": 1.5
+}
