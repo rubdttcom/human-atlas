@@ -214,6 +214,23 @@ Agreed plan from the audit: keep both v1 results on record as evidence in favour
 design the observable-surface evaluation as a labelled post hoc analysis that keeps the v1 results,
 and only then extend the pilot.
 
+**Observable-surface post hoc analysis, 2026-09-20** (`scripts/cryo_posthoc_surface.py`, 8 synthetic
+tests in `scripts/test-cryo-posthoc-surface.py`, `scripts/cryo-posthoc-observable-surface.py`,
+`generated/cryo-posthoc-observable-surface-block2.json`, `docs/findings-2026-09-20-observable-surface-posthoc.md`).
+Labelled post hoc; accepts nothing, fails nothing, changes no status; v1 results stand. Metric: source =
+boundary voxels with labelled tissue on both sides, target = the full boundary of the other mask, faces
+removed, ignore never a source. On the toy of the v1 artefact (structure surrounded by ignore, 3 px rim
+missed) v1 reports 11.40 mm and the post hoc metric 2.00 mm. On the real predictions: bone p95 32.27 ->
+7.71 mm (rgb-only) and 27.21 -> 3.41 mm (rgb-plus-ct-prior), p50 0.94 / 0.67 mm, shift and dilation
+controls degrade again, the prior beats the wrong neighbour on p95 and rgb-only does not; both still far
+above the 0.9419 mm floor. Muscle stays at 26 to 31 mm and the analysis says why: the missed bone rim is
+counted a second time as a muscle boundary and measured against a muscle reference that holds only the
+labelled muscles, so the "full reference surface" assumption fails for muscle (limit found on the data,
+candidate rule for v2 recorded, not applied). Cartilage is unchanged (36.6 / 13.8 mm) and no 2 mm
+perturbation moves it. Next: write protocol v2 (observable-boundary p95 with reference-side class
+attribution, volume on ignore reported per band, cartilage-to-bone distance), synthetic tests, hash pins,
+Codex diff review, all before any further training.
+
 **This closes the pre-score window for protocol v2.** The change planned above was to be made before
 any evaluation existed. It no longer can be. The path-string change still touches no criterion but
 must be recorded as made after the `rgb-only` result, and any change to the surface metric is now
