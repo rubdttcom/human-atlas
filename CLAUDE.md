@@ -79,8 +79,10 @@ Definition of done for any change that touches data or scripts:
 .venv/bin/python scripts/validate-cryo-pilot.py
 .venv/bin/python scripts/test-cryo-pilot-validator.py
 .venv/bin/python scripts/test-cryo-metrics.py
+.venv/bin/python scripts/test-cryo-metrics-v2.py
 .venv/bin/python scripts/test-denver-rasteriser.py
 .venv/bin/python scripts/test-cryo-pilot-evaluator.py
+.venv/bin/python scripts/test-cryo-posthoc-surface.py
 node --experimental-strip-types scripts/test-agreement-panel.mjs
 npx tsc --noEmit
 ```

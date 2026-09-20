@@ -1,9 +1,9 @@
-"""Gate tests of scripts/cryo-pilot-evaluate.py (Codex audit of 8a5da4b, two P1): every refused input below must produce a
+"""Gate tests of scripts/cryo-pilot-evaluate-v2.py (from the Codex audit of 8a5da4b, two P1; moved to version 2 on 2026-09-20): every refused input below must produce a
 report with every class machine-not-assessable and exit 1 BEFORE any score, and the reasons must be the expected ones.
 Runs the evaluator as a subprocess on the real block with synthetic predictions written to a temporary directory; no gate
 case takes more than a few seconds because scoring never starts.
 
-Cases: prediction with a translated affine; labels 256..259 in int16 (would wrap to 0..3 if cast); float dtype; a label
+Cases (version 2 adds: a run started before the protocol date, an undated run): prediction with a translated affine; labels 256..259 in int16 (would wrap to 0..3 if cast); float dtype; a label
 value outside the active classes; a block directory whose manifest differs from the frozen one (identity mismatch); no
 training manifest; a training manifest with a band slice, with an auxiliary slice, with a missing field, with too many runs.
 A well-formed training manifest with a valid prediction is NOT run here (12 minutes); the oracle run is the positive case.
@@ -22,7 +22,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 BLOCK = ROOT / 'data/derived/nlm-vhf/cryosections/block2'
-EVAL = ROOT / 'scripts/cryo-pilot-evaluate.py'
+EVAL = ROOT / 'scripts/cryo-pilot-evaluate-v2.py'
 PY = sys.executable
 results = {}
 
@@ -47,7 +47,7 @@ ref = np.asarray(ref_img.dataobj)
 bands = json.loads((ROOT / 'registry/cryo-eval-bands-v1.json').read_text())
 te = bands['training_eligibility']
 primary = [k for lo, hi in te['primary_k_ranges'] for k in range(lo, hi + 1)]
-good_train = {'training_slices_k': primary, 'weights_sha256': '0' * 64, 'nnunetv2_version': '2.8.1', 'dataset_fingerprint': 'x', 'plans_identifier': 'nnUNetPlans', 'seed': 12345, 'fold': 0, 'runs': [{'run': 1, 'status': 'completed'}]}
+good_train = {'training_slices_k': primary, 'weights_sha256': '0' * 64, 'nnunetv2_version': '2.8.1', 'dataset_fingerprint': 'x', 'plans_identifier': 'nnUNetPlans', 'seed': 12345, 'fold': 0, 'runs': [{'run': 1, 'status': 'completed', 'started': '2026_9_21_00_00_00'}]}
 valid_pred = np.where(ref == 255, 0, ref).astype(np.uint8)          # a legal prediction volume (ignore is not an output class)
 
 with tempfile.TemporaryDirectory() as td:
@@ -91,9 +91,17 @@ with tempfile.TemporaryDirectory() as td:
     code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(missing, 'missing.json'))], td / 'r8.json')
     case('missing_weights_hash_refused', code == 1 and rep and any('weights_sha256' in p for p in rep['training_problems']), log[-300:])
 
-    many = dict(good_train); many['runs'] = [{'run': i} for i in range(3)]
+    many = dict(good_train); many['runs'] = [{'run': i, 'started': '2026_9_21_00_00_00'} for i in range(3)]
     code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(many, 'many.json'))], td / 'r9.json')
     case('iteration_limit_enforced', code == 1 and rep and any('iteration limit' in p for p in rep['training_problems']), log[-300:])
+
+    # version 2 applicability: a run that started before the protocol date is not assessable under version 2
+    early = dict(good_train); early['runs'] = [{'run': 1, 'status': 'completed', 'started': '2026_9_14_17_09_18'}]
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(early, 'early.json'))], td / 'r11.json')
+    case('pre_v2_training_run_refused', code == 1 and rep and any('before the protocol date' in p for p in rep['training_problems']), log[-300:])
+    undated = dict(good_train); undated['runs'] = [{'run': 1, 'status': 'completed'}]
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(undated, 'undated.json'))], td / 'r12.json')
+    case('undated_training_run_refused', code == 1 and rep and any('without a parseable started date' in p for p in rep['training_problems']), log[-300:])
 
     # identity mismatch: a copy of the block with an edited manifest
     fake = td / 'block'; fake.mkdir()

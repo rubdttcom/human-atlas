@@ -255,6 +255,24 @@ perturbation moves it. Next: write protocol v2 (observable-boundary p95 with ref
 attribution, volume on ignore reported per band, cartilage-to-bone distance), synthetic tests, hash pins,
 Codex diff review, all before any further training.
 
+**Acceptance protocol version 2 written, 2026-09-20** (`registry/machine-acceptance-protocol-v2.json`; version 1 stays
+in the registry unchanged and pinned by hash from version 2). Written AFTER the two version 1 scores were known and says
+so in `post_hoc_disclosure`; a fifth evaluator gate refuses any training run started before 2026-09-20, so the two existing
+variants can never be scored under it. Changes: surface metric `scripts/cryo_metrics_v2.py` (observable boundaries,
+reference-side class attribution, full-boundary targets, faces removed, ignore never a source; 16 synthetic cases in
+`scripts/test-cryo-metrics-v2.py`), predicted volume on ignore reported per class and band (never scored), a cartilage
+required-neighbour criterion (median distance from predicted cartilage to predicted bone <= reference figure 1.332 mm +
+one diagonal pixel = 2.2739 mm, blind to ignore, so band 2 is seen), evaluator `scripts/cryo-pilot-evaluate-v2.py`,
+validator and gate tests moved to version 2 (`scripts/validate-cryo-pilot.py`, `scripts/test-cryo-pilot-evaluator.py`,
+two new refusals). Floor re-measured with the v2 metric by `scripts/denver-surface-floor.py --metrics v2`
+(`generated/denver-surface-floor-v2.json`, 800 s): bone H 0.9324 / P 0.9419 mm (v1 0.9324 / 0.9419), muscle H 0.9405 / P 0.9419 mm (v1 0.9405 / 0.9419), cartilage H 0.7449 / P 0.9704 mm (v1 0.7449 / 0.9704). Found while re-measuring: 10 Denver meshes give
+open sections at some integer planes (a plane through vertices, or a hole of a non-watertight mesh); the v1 floor of
+2026-09-13 was measured before the open-contour refusal existed and never saw them. The rasteriser now retries the section
+with offsets up to 0.1 voxel (33 um) and records the count (20 slices in 10 structures) and the largest offset per
+structure; a section still open raises. Deferred, recorded in `changed_from_v1`: the RGB block manifest still carries two
+operator path strings; re-pinning it means regenerating 13 dependent records and is a separate identity re-pin. Next: Codex
+audit of the v1-to-v2 diff before any variant is trained under version 2.
+
 **This closes the pre-score window for protocol v2.** The change planned above was to be made before
 any evaluation existed. It no longer can be. The path-string change still touches no criterion but
 must be recorded as made after the `rgb-only` result, and any change to the surface metric is now

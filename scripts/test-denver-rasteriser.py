@@ -42,25 +42,25 @@ def pixels_inside(lo, hi):
 
 # 1. one box with half-integer faces (no pixel centre on a face)
 b1 = box((4.5, 6.5, 2.5), (20.5, 30.5, 12.5))
-v, f = D.voxelise(b1, SHAPE)
+v, f, _, _ = D.voxelise(b1, SHAPE)
 case('one_box_count', f == 0 and int(v.sum()) == pixels_inside((4.5, 6.5, 2.5), (20.5, 30.5, 12.5)))
 
 # 2. two disjoint boxes add
 b2 = trimesh.util.concatenate([box((2.5, 2.5, 2.5), (10.5, 10.5, 8.5)), box((20.5, 20.5, 2.5), (30.5, 30.5, 8.5))])
-v, f = D.voxelise(b2, SHAPE)
+v, f, _, _ = D.voxelise(b2, SHAPE)
 case('disjoint_boxes_add', f == 0 and int(v.sum()) == pixels_inside((2.5, 2.5, 2.5), (10.5, 10.5, 8.5)) + pixels_inside((20.5, 20.5, 2.5), (30.5, 30.5, 8.5)))
 
 # 3. nested shells: outer box with an inner box (inverted normals) = a hole
 inner = box((10.5, 10.5, 2.5), (20.5, 20.5, 12.5)); inner.invert()
 b3 = trimesh.util.concatenate([box((4.5, 4.5, 0.5), (30.5, 30.5, 14.5)), inner])
-v, f = D.voxelise(b3, SHAPE)
+v, f, _, _ = D.voxelise(b3, SHAPE)
 expect = pixels_inside((4.5, 4.5, 0.5), (30.5, 30.5, 14.5)) - pixels_inside((10.5, 10.5, 2.5), (20.5, 20.5, 12.5))
 case('nested_shell_is_a_hole', f == 0 and int(v.sum()) == expect)
 case('hole_is_empty_inside', not v[15, 15, 6] and v[6, 6, 6])
 
 # 4. overlapping shells: XOR by convention (documented; Denver structures are single shells)
 b4 = trimesh.util.concatenate([box((2.5, 2.5, 2.5), (20.5, 20.5, 8.5)), box((10.5, 10.5, 2.5), (30.5, 30.5, 8.5))])
-v, f = D.voxelise(b4, SHAPE)
+v, f, _, _ = D.voxelise(b4, SHAPE)
 a = pixels_inside((2.5, 2.5, 2.5), (20.5, 20.5, 8.5)); b = pixels_inside((10.5, 10.5, 2.5), (30.5, 30.5, 8.5)); ov = pixels_inside((10.5, 10.5, 2.5), (20.5, 20.5, 8.5))
 case('overlap_is_xor_by_convention', f == 0 and int(v.sum()) == a + b - 2 * ov)
 

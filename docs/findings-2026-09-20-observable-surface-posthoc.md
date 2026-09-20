@@ -130,10 +130,13 @@ document are among them.
   reference has there and only once. Plus the two terms the audit of a446ca8 asked for: predicted
   volume of each class on `ignore` reported per band (never scored), and median distance from
   predicted cartilage to the nearest predicted bone (a required neighbour; blind to the ignore mask).
-  Thresholds stay the v1 Denver floors unless a new floor is measured with the same metric on the
-  Denver inter-annotator data. To be written, tested on synthetic cases and hash-pinned before the
-  next variant is trained, with the Codex auditor checking the diff against v1. Not applied to the
-  two existing predictions.
+  Written the same day as `registry/machine-acceptance-protocol-v2.json` with
+  `scripts/cryo_metrics_v2.py`, `scripts/test-cryo-metrics-v2.py` (16 cases) and
+  `scripts/cryo-pilot-evaluate-v2.py`; thresholds re-measured on the Denver original-versus-final
+  data with the v2 metric (`generated/denver-surface-floor-v2.json`); a fifth evaluator gate refuses
+  any training run started before 2026-09-20, so the two existing predictions can never be scored
+  under it. Its `post_hoc_disclosure` field says what the known scores could have influenced. The
+  Codex auditor is asked to check the v1-to-v2 diff before any variant is trained under it.
 - **What the analysis says about the CT prior**, for what post hoc evidence is worth: on bone, the
   only class where the metric measures what it names, the prior halves the observable boundary
   error (7.71 -> 3.41 mm p95, 0.94 -> 0.67 mm p50) and turns the wrong-neighbour comparison from

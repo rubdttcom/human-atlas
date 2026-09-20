@@ -26,11 +26,12 @@ from skimage.draw import polygon as draw_polygon
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-import cryo_metrics as M  # noqa: E402
+import cryo_metrics as M  # noqa: E402  (version 1; --metrics v2 swaps in cryo_metrics_v2 and writes the v2 floor file)
 
 MAT = ROOT / 'data/raw/denver/extracted/Original Segmentation Labelmaps-mat_tif/VHF_Full.mat'
 OLD = ROOT / 'generated/denver-noise-floor.json'
 OUT = ROOT / 'generated/denver-surface-floor.json'
+NUDGES = (0.0, 1e-4, -1e-4, 1e-3, -1e-3, 1e-2, -1e-2, 0.05, -0.05, 0.1, -0.1)
 
 
 def rd(ds):
@@ -49,18 +50,33 @@ def voxelise(mesh_ijk, shape):
     out = np.zeros(shape, bool)
     k0, k1 = int(np.floor(mesh_ijk.bounds[0][2])), int(np.ceil(mesh_ijk.bounds[1][2]))
     failed = 0
+    nudged, max_nudge = 0, 0.0
     for k in range(max(k0, 0), min(k1, shape[2] - 1) + 1):
-        path = mesh_ijk.section(plane_origin=[0, 0, float(k)], plane_normal=[0, 0, 1.0])
-        if path is None or len(path.entities) == 0:
-            continue
-        try:
-            p2, to_3d = path.to_2D()
-            loops = p2.discrete
-        except Exception as e:                      # a failed section would leave an empty slice and bias the floor: refuse
-            raise RuntimeError(f'section failed at slice k={k}: {e!r}') from e
-        if len(p2.dangling) or len(loops) != len(p2.paths) or not all(np.allclose(d[0], d[-1]) for d in loops):
+        # A plane through mesh vertices or through a hole of a non-watertight mesh can yield dangling entities. Found on
+        # 2026-09-20 on 10 structures (14 slices; e.g. Left_Bone_Patella k 79, Right_Bone_Talus k 103..105); the v1 floor of
+        # 2026-09-13 was measured before this refusal existed and rasterised those slices from the closed loops trimesh
+        # returned. The section is retried with growing offsets from the integer plane, up to 0.1 voxel (33 um); a section
+        # still open after that raises. The number of nudged slices and the largest offset used are reported per structure.
+        loops = p2 = to_3d = None
+        for dz in NUDGES:
+            path = mesh_ijk.section(plane_origin=[0, 0, float(k) + dz], plane_normal=[0, 0, 1.0])
+            if path is None or len(path.entities) == 0:
+                loops = []; break
+            try:
+                p2, to_3d = path.to_2D()
+                loops = p2.discrete
+            except Exception as e:                      # a failed section would leave an empty slice and bias the floor: refuse
+                raise RuntimeError(f'section failed at slice k={k}: {e!r}') from e
+            if len(p2.dangling) or len(loops) != len(p2.paths) or not all(np.allclose(d[0], d[-1]) for d in loops):
+                loops = None; continue
+            if dz != 0.0:
+                nudged += 1; max_nudge = max(max_nudge, abs(dz))
+            break
+        if loops is None:
             # trimesh lists only closed paths in `discrete`; an open polyline would silently rasterise to nothing
-            raise RuntimeError(f'open contour in the section at slice k={k}: {len(p2.dangling)} dangling entities; the even-odd fill needs closed loops')
+            raise RuntimeError(f'open contour in the section at slice k={k} even after a {NUDGES[-1]} voxel nudge: {len(p2.dangling)} dangling entities; the even-odd fill needs closed loops')
+        if not loops:
+            continue
         mask = np.zeros((shape[0], shape[1]), bool)
         for d in loops:
             p3 = trimesh.transform_points(np.column_stack([np.asarray(d), np.zeros(len(d))]), to_3d)
@@ -68,10 +84,21 @@ def voxelise(mesh_ijk, shape):
             m = np.zeros((shape[0], shape[1]), bool); m[rr, cc] = True
             mask ^= m
         out[:, :, k] = mask
-    return out, failed
+    return out, failed, nudged, max_nudge
 
 
 def main():
+    global M, OUT
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--metrics', choices=('v1', 'v2'), default='v1', help='v2: scripts/cryo_metrics_v2.py, output generated/denver-surface-floor-v2.json (2026-09-20)')
+    a = ap.parse_args()
+    metric_file = 'scripts/cryo_metrics.py'
+    if a.metrics == 'v2':
+        import cryo_metrics_v2 as M2
+        M = M2
+        OUT = ROOT / 'generated/denver-surface-floor-v2.json'
+        metric_file = 'scripts/cryo_metrics_v2.py'
     t0 = time.time()
     with h5py.File(MAT, 'r') as f:
         sd = f['segmentation_data']
@@ -103,14 +130,14 @@ def main():
         if len(idx):
             lo = np.minimum(lo, idx.min(axis=0)); hi = np.maximum(hi, idx.max(axis=0))
         orig = labels[lo[0]:hi[0] + 1, lo[1]:hi[1] + 1, lo[2]:hi[2] + 1] == lab
-        vox, failed = voxelise(trimesh.Trimesh(mesh_ijk.vertices - lo, mesh_ijk.faces, process=False), orig.shape)
+        vox, failed, nudged, max_nudge = voxelise(trimesh.Trimesh(mesh_ijk.vertices - lo, mesh_ijk.faces, process=False), orig.shape)
         E = np.ones(orig.shape, bool)
         k_first = int(lo[2]); runs = [(k_first, int(hi[2]))]
         d = M.dice(vox, orig, E)
         s = M.surface_p95(vox, orig, E, runs, k_first)
         o = old_by.get(key, {})
         rows.append({'structure': key, 'label_value': lab, 'tissue_class': m['tissue_class'], 'mesh_watertight': bool(mesh.is_watertight), 'mesh_bodies': int(mesh.body_count), 'dice_vox': d, 'p95_vox_mm': s['p95_mm'], 'mean_vox_mm': s['mean_mm'],
-                     'surface_status': s['status'], 'n_distances': s['n_distances'], 'section_failures': failed, 'support': s['support'], 'original_voxels': int(orig.sum()), 'final_voxels': int(vox.sum()),
+                     'surface_status': s['status'], 'n_distances': s['n_distances'], 'section_failures': failed, 'sections_nudged': nudged, 'max_nudge_voxel': max_nudge, 'support': s['support'], 'original_voxels': int(orig.sum()), 'final_voxels': int(vox.sum()),
                      'old_dice': o.get('dice'), 'old_p95_original_to_final_mm': (o.get('surface') or {}).get('original_to_final', {}).get('p95_mm')})
         print(f"{key:40s} Dice {d if d is not None else float('nan'):.3f}  p95_vox {s['p95_mm'] if s['p95_mm'] is not None else float('nan'):.3f} mm  (old o->f {rows[-1]['old_p95_original_to_final_mm']})", flush=True)
     per_class = {}
@@ -120,7 +147,7 @@ def main():
         per_class[c] = {'n': len(es), 'P_vox_p95_mm_median': float(np.median(p)), 'P_vox_p95_mm_p95': float(np.quantile(p, .95)), 'P_vox_p95_mm_max': float(p.max()),
                         'H_dice_vox_median': float(np.median(dd)), 'old_P_p95_mm_median': old['per_class'][c]['P_p95_mm_median'], 'old_H_dice_median': old['per_class'][c]['H_dice_median']}
         print(c, per_class[c], flush=True)
-    report = {'method': __doc__.strip(), 'metric_implementation': 'scripts/cryo_metrics.py', 'metric_sha256': hashlib.sha256((ROOT / 'scripts/cryo_metrics.py').read_bytes()).hexdigest(),
+    report = {'method': __doc__.strip(), 'metric_implementation': metric_file, 'metric_sha256': hashlib.sha256((ROOT / metric_file).read_bytes()).hexdigest(),
               'old_floor': str(OLD.relative_to(ROOT)), 'old_floor_sha256': hashlib.sha256(OLD.read_bytes()).hexdigest(), 'mat_sha256': hashlib.sha256(MAT.read_bytes()).hexdigest(),
               'grid': {'spacing_mm': list(M.SPACING), 'ijk_to_lps': ijk_to_lps.tolist()}, 'structures': rows, 'unmatched': unmatched, 'per_class': per_class,
               'statement': 'effect of Denver post-processing measured with the pilot metric; sets the surface bar of the protocol; not human variability, not anatomy', 'seconds': round(time.time() - t0, 1)}

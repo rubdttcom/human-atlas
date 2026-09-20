@@ -13,10 +13,12 @@ Checks, with no data volume needed (hashes and JSON only):
              content rule met, training ranges = block minus bands minus buffers, training eligibility (primary/auxiliary/never
              sampled) recomputed from the manifest statuses and the tissue-classes report bins, frozen hashes equal the current
              files, per-class voxel counts recomputed from the label slab when it is on disk
-  protocol   registry/machine-acceptance-protocol-v1.json: fixed_now hashes equal the current files (manifest, volume, map,
-             bands, floors, metrics module, evaluator), thresholds equal the surface-floor figures measured with the pilot
-             metric (bone H and P, muscle H - 0.03 and P, cartilage P only, 4 decimals), controls declared with their
-             parameters, statuses complete, wording
+  protocol   registry/machine-acceptance-protocol-v2.json (since 2026-09-20; version 1 stays in the registry, unchanged,
+             pinned by hash from version 2): fixed_now hashes equal the current files (manifest, volume, map, bands, floors,
+             metrics module v2, evaluator v2), thresholds equal the v2 surface-floor figures measured with the v2 metric
+             (bone H and P, muscle H - 0.03 and P, cartilage P only, 4 decimals), the cartilage required-neighbour bar equals
+             the reference figure plus one diagonal pixel, the applicability date equals the protocol date, controls declared
+             with their parameters, statuses complete, post hoc disclosure present, wording
   classes    generated/cryo-tissue-classes-block2.json (when present): sources hashes equal manifest and map; ignored slices
              equal the manifest's non-paired count; no fat or ligament voxels
 Exit 1 on the first failure with the reason. scripts/test-cryo-pilot-validator.py mutates these documents in memory and
@@ -36,12 +38,14 @@ P = {
     'inventory': ROOT / 'generated/cryosection-inventory.json',
     'map': ROOT / 'registry/cryo-tissue-map.json',
     'bands': ROOT / 'registry/cryo-eval-bands-v1.json',
-    'protocol': ROOT / 'registry/machine-acceptance-protocol-v1.json',
+    'protocol': ROOT / 'registry/machine-acceptance-protocol-v2.json',
+    'protocol_v1': ROOT / 'registry/machine-acceptance-protocol-v1.json',
     'floor': ROOT / 'generated/denver-noise-floor.json',
-    'surface_floor': ROOT / 'generated/denver-surface-floor.json',
+    'surface_floor': ROOT / 'generated/denver-surface-floor-v2.json',
+    'surface_floor_v1': ROOT / 'generated/denver-surface-floor.json',
     'classes': ROOT / 'generated/cryo-tissue-classes-block2.json',
-    'metrics': ROOT / 'scripts/cryo_metrics.py',
-    'evaluator': ROOT / 'scripts/cryo-pilot-evaluate.py',
+    'metrics': ROOT / 'scripts/cryo_metrics_v2.py',
+    'evaluator': ROOT / 'scripts/cryo-pilot-evaluate-v2.py',
     'labels_npz': ROOT / 'data/derived/denver/label-blocks/block2-k2285-3532-labels.npz',
 }
 PAIRED = ('usable', 'usable-flagged')
@@ -254,8 +258,15 @@ def check_bands(bands, man, tmap, ks, classes_report=None, labels=None):
 
 
 def check_protocol(prot, man, bands, surface_floor, hashes):
-    if prot['version'] != 1:
+    if prot['version'] != 2:
         fail('protocol version')
+    sup = prot.get('supersedes') or {}
+    if sup.get('protocol_v1_sha256') != sha_file(P['protocol_v1']) or sup.get('surface_floor_v1_sha256') != sha_file(P['surface_floor_v1']):
+        fail('version 2 must pin the unchanged version 1 protocol and floor by hash')
+    if not prot.get('post_hoc_disclosure') or prot['date'] < '2026-09-20':
+        fail('version 2 must carry its post hoc disclosure and date')
+    if (prot.get('applicability') or {}).get('training_started_on_or_after') != prot['date']:
+        fail('applicability date must equal the protocol date')
     fx = prot['identity_by_hash']['fixed_now']
     for key, name in (('rgb_block_manifest_sha256', 'manifest'), ('tissue_map_sha256', 'map'), ('eval_bands_sha256', 'bands'), ('noise_floor_sha256', 'floor'),
                       ('surface_floor_sha256', 'surface_floor'), ('metrics_sha256', 'metrics'), ('evaluator_sha256', 'evaluator'), ('tissue_classes_report_sha256', 'classes')):
@@ -276,6 +287,9 @@ def check_protocol(prot, man, bands, surface_floor, hashes):
         fail('muscle criterion is not H_muscle - 0.03 / P_muscle of the surface floor')
     if cr['cartilage']['dice_min'] is not None or cr['cartilage']['surface_p95_mm_max'] != Pp['cartilage']:
         fail('cartilage criterion is not p95 <= P_cartilage only')
+    rn = cr['cartilage'].get('required_neighbour') or {}
+    if rn.get('class') != 'bone' or rn.get('median_mm_max') != round(rn.get('reference_median_mm', -1) + rn.get('diagonal_pixel_mm', -1), 4) or rn.get('diagonal_pixel_mm') != 0.9419:
+        fail('cartilage required-neighbour bar is not the reference median plus one diagonal pixel')
     for c in prot['scope']['classes_assessed']:
         if c not in cr or 'min_reference_voxels' not in cr[c]:
             fail(f'assessed class {c} without a criterion or minimum support')
@@ -292,8 +306,8 @@ def check_protocol(prot, man, bands, surface_floor, hashes):
     tr = prot.get('training')
     if not tr or tr.get('eligible_slices') != 'primary' or tr.get('active_output_classes') != [0, 1, 2, 3]:
         fail('protocol training block must use the primary eligibility and output classes 0..3 only')
-    if prot['metrics'].get('implementation') != 'scripts/cryo_metrics.py':
-        fail('protocol must name scripts/cryo_metrics.py as the metric implementation')
+    if prot['metrics'].get('implementation') != 'scripts/cryo_metrics_v2.py':
+        fail('protocol must name scripts/cryo_metrics_v2.py as the metric implementation')
     text = P['protocol'].read_text()
     m = FORBIDDEN.search(text.replace('never called validation', '').replace('never validation', ''))
     if m:
