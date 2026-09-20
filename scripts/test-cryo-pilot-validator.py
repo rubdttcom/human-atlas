@@ -23,7 +23,7 @@ bands = json.loads(V.P['bands'].read_text())
 prot = json.loads(V.P['protocol'].read_text())
 floor = json.loads(V.P['surface_floor'].read_text())
 classes = json.loads(V.P['classes'].read_text())
-hashes = {n: V.sha_file(V.P[n]) for n in ('manifest', 'map', 'bands', 'floor', 'surface_floor', 'metrics', 'evaluator', 'classes')}
+hashes = {n: V.sha_file(V.P[n]) for n in ('manifest', 'map', 'bands', 'floor', 'surface_floor', 'metrics', 'evaluator', 'classes', 'rn_reference')}
 results = {}
 
 
@@ -144,6 +144,19 @@ expect_fail('protocol_muscle_offset_changed', lambda: V.check_protocol(prot_musc
 expect_fail('protocol_control_missing', lambda: V.check_protocol(prot_missing_control(), man, bands, floor, hashes))
 expect_fail('protocol_auxiliary_training', lambda: V.check_protocol(prot_aux_training(), man, bands, floor, hashes))
 expect_fail('protocol_floor_hash', lambda: V.check_protocol(prot_wrong_floor_hash(), man, bands, floor, hashes))
+
+
+def prot_rn_reference_changed():
+    q = copy.deepcopy(prot); q['criteria']['cartilage']['required_neighbour']['reference_median_mm'] = 1.5
+    q['criteria']['cartilage']['required_neighbour']['median_mm_max'] = round(1.5 + 0.9419, 4); return q
+
+
+def prot_freeze_instant_date_only():
+    q = copy.deepcopy(prot); q['applicability']['training_started_after'] = '2026-09-20'; return q
+
+
+expect_fail('protocol_required_neighbour_reference_changed', lambda: V.check_protocol(prot_rn_reference_changed(), man, bands, floor, hashes))
+expect_fail('protocol_freeze_instant_without_time', lambda: V.check_protocol(prot_freeze_instant_date_only(), man, bands, floor, hashes))
 
 
 def classes_ignored():

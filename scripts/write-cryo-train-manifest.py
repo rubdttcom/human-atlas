@@ -10,6 +10,10 @@ is checked against the training_log_*.txt files nnU-Net wrote: nnU-Net starts a 
 declaration that hides an attempt is refused here (audit of the uncommitted pilot code, finding 2). The protocol's
 iteration limit is worth nothing if the run count is free text.
 
+Version 2 (2026-09-20, after the external audit of b02dd3b): each declared run receives the start stamp, name and hash of
+its training log (declared runs are typed, and the applicability gate needs the observed instant), and the manifest
+names the protocol revision it was written under (protocol_sha256), which the evaluator compares with the file it reads.
+
 Two refusals were added after the Codex audit of 1af1c60.
 
 P1-2: --variant chose the dataset report and --provenance was any file, with nothing tying them together, so an rgb-only
@@ -37,7 +41,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = ('training_slices_k', 'weights_sha256', 'nnunetv2_version', 'dataset_fingerprint',
-            'plans_identifier', 'seed', 'fold', 'runs')
+            'plans_identifier', 'seed', 'fold', 'runs', 'runs_observed', 'protocol_sha256')
+PROTOCOL = ROOT / 'registry/machine-acceptance-protocol-v2.json'
 
 
 def sha256_file(p, chunk=1 << 24):
@@ -93,6 +98,11 @@ def main():
     problems = bind_gate(ds, prov)
     if len(declared) != len(observed):
         problems.append(f'{len(declared)} runs declared against {len(observed)} training logs on the training box')
+    else:
+        # the start instant of a run is read from the training log nnU-Net wrote, never typed: the version 2 evaluator's
+        # applicability gate compares it with the protocol's freeze instant (external audit of b02dd3b, finding 1)
+        for d, o in zip(declared, observed):
+            d['started'] = o.get('started'); d['log'] = o.get('log'); d['log_sha256'] = o.get('sha256')
     if not prov.get('complete'):
         problems.append('the provenance record has no checkpoint_final.pth: the training did not finish')
 
@@ -106,6 +116,7 @@ def main():
         'plans_identifier': prov.get('plans_identifier'),
         'runs': declared,
         'runs_observed': observed,
+        'protocol_sha256': sha256_file(PROTOCOL), 'protocol': str(PROTOCOL.relative_to(ROOT)), 'protocol_version': json.loads(PROTOCOL.read_text())['version'],
         'provenance': {'path': str(prov_path), 'sha256': sha256_file(prov_path),
                        'torch_version': prov.get('torch_version'), 'gpu': prov.get('gpu'),
                        'launcher': prov.get('launcher'), 'checkpoints': prov.get('checkpoints'),

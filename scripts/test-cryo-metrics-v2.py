@@ -135,7 +135,22 @@ pc = np.zeros_like(pb); box(pc, 42, 43, 20, 40, 0, 30, True)
 r1 = M.required_neighbour_distance(pc, pb, np.ones(30, bool))
 r2 = M.required_neighbour_distance(np.zeros_like(pb), pb, np.ones(30, bool))
 r3 = M.required_neighbour_distance(pc, np.zeros_like(pb), np.ones(30, bool))
-case('required neighbour distance', within(r1['median_mm'], 1.9, 2.1) and r2['status'] == 'class-not-predicted' and r3['status'] == 'neighbour-not-predicted', (r1, r2['status'], r3['status']))
+case('required neighbour distance', within(r1['median_mm'], 1.9, 2.1) and r1['voxels_without_neighbour_in_section'] == 0 and r2['status'] == 'class-not-predicted' and r3['status'] == 'neighbour-not-predicted', (r1, r2['status'], r3['status']))
+
+# 15b required neighbour is per section (external audit of b02dd3b, finding 2): bone only in the NEXT section, one slice
+#     spacing (0.333 mm) away, does not serve the cartilage of this section. The first implementation measured 0.333 mm
+#     here through a 3D EDT; now the distance is infinite, the median undefined, and the term fails. Bone on a
+#     non-scoring slice never serves either. With bone in every cartilage section the figure is the in-plane one.
+pb = np.zeros((60, 60, 30), bool); pb[20:40, 20:40, 11] = True                      # bone in section 11 only
+pc = np.zeros_like(pb); pc[42:43, 20:40, 10] = True                                  # cartilage in section 10 only
+se = np.zeros(30, bool); se[10:12] = True
+r4 = M.required_neighbour_distance(pc, pb, se)
+se10 = np.zeros(30, bool); se10[10] = True                                           # section 11 not a scoring slice
+r5 = M.required_neighbour_distance(pc, pb, se10)
+pb2 = pb.copy(); pb2[20:40, 20:40, 10] = True                                        # bone also in section 10
+r6 = M.required_neighbour_distance(pc, pb2, se)
+case('required neighbour: bone in the next section does not count', r4['median_mm'] is None and r4['status'] == 'neighbour-absent-in-most-sections' and r4['voxels_without_neighbour_in_section'] == 20
+     and r5['status'] == 'neighbour-not-predicted' and within(r6['median_mm'], 1.9, 2.1) and r6['voxels_without_neighbour_in_section'] == 0, (r4, r5['status'], r6))
 
 # 16 a false-positive bone blob inside labelled muscle, 25 px from the labelled bone: not a bone boundary (the reference has
 #    no bone here or across), so the bone surface metric ignores it and bone Dice sees it; the hole it makes in the predicted

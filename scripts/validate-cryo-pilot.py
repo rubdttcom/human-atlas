@@ -17,7 +17,8 @@ Checks, with no data volume needed (hashes and JSON only):
              pinned by hash from version 2): fixed_now hashes equal the current files (manifest, volume, map, bands, floors,
              metrics module v2, evaluator v2), thresholds equal the v2 surface-floor figures measured with the v2 metric
              (bone H and P, muscle H - 0.03 and P, cartilage P only, 4 decimals), the cartilage required-neighbour bar equals
-             the reference figure plus one diagonal pixel, the applicability date equals the protocol date, controls declared
+             the reference figure plus one diagonal pixel and that figure is the recorded same-section measurement made with
+             the pinned metric module, the applicability freeze instant is well formed, controls declared
              with their parameters, statuses complete, post hoc disclosure present, wording
   classes    generated/cryo-tissue-classes-block2.json (when present): sources hashes equal manifest and map; ignored slices
              equal the manifest's non-paired count; no fat or ligament voxels
@@ -46,6 +47,7 @@ P = {
     'classes': ROOT / 'generated/cryo-tissue-classes-block2.json',
     'metrics': ROOT / 'scripts/cryo_metrics_v2.py',
     'evaluator': ROOT / 'scripts/cryo-pilot-evaluate-v2.py',
+    'rn_reference': ROOT / 'generated/cryo-required-neighbour-reference-block2.json',
     'labels_npz': ROOT / 'data/derived/denver/label-blocks/block2-k2285-3532-labels.npz',
 }
 PAIRED = ('usable', 'usable-flagged')
@@ -265,8 +267,10 @@ def check_protocol(prot, man, bands, surface_floor, hashes):
         fail('version 2 must pin the unchanged version 1 protocol and floor by hash')
     if not prot.get('post_hoc_disclosure') or prot['date'] < '2026-09-20':
         fail('version 2 must carry its post hoc disclosure and date')
-    if (prot.get('applicability') or {}).get('training_started_on_or_after') != prot['date']:
-        fail('applicability date must equal the protocol date')
+    ap = prot.get('applicability') or {}
+    inst = str(ap.get('training_started_after', ''))
+    if len(inst) != 19 or inst[:10] < prot['date'] or inst[10] != ' ' or not ap.get('protocol_revision'):
+        fail('applicability must fix a freeze instant (YYYY-MM-DD HH:MM:SS, not before the protocol date) and the protocol-revision rule')
     fx = prot['identity_by_hash']['fixed_now']
     for key, name in (('rgb_block_manifest_sha256', 'manifest'), ('tissue_map_sha256', 'map'), ('eval_bands_sha256', 'bands'), ('noise_floor_sha256', 'floor'),
                       ('surface_floor_sha256', 'surface_floor'), ('metrics_sha256', 'metrics'), ('evaluator_sha256', 'evaluator'), ('tissue_classes_report_sha256', 'classes')):
@@ -290,6 +294,14 @@ def check_protocol(prot, man, bands, surface_floor, hashes):
     rn = cr['cartilage'].get('required_neighbour') or {}
     if rn.get('class') != 'bone' or rn.get('median_mm_max') != round(rn.get('reference_median_mm', -1) + rn.get('diagonal_pixel_mm', -1), 4) or rn.get('diagonal_pixel_mm') != 0.9419:
         fail('cartilage required-neighbour bar is not the reference median plus one diagonal pixel')
+    # the reference figure is a measurement on the record, made with the pinned metric module (audit of b02dd3b, finding 2)
+    rnref = json.loads(P['rn_reference'].read_text())
+    if fx.get('required_neighbour_reference_sha256') != hashes['rn_reference']:
+        fail('protocol bound to another required-neighbour reference file')
+    if rn.get('reference_median_mm') != rnref['reference_median_mm'] or rnref['inputs']['metrics_sha256'] != hashes['metrics'] \
+            or rnref['inputs']['tissue_classes_volume_sha256'] != fx['tissue_classes_volume_sha256'] or rnref['inputs']['eval_bands_sha256'] != hashes['bands'] \
+            or 'same section' not in rnref['definition'].lower() or 'same section' not in rn.get('rule', '').lower():
+        fail('cartilage required-neighbour reference figure is not the recorded same-section measurement made with the pinned metric module on the pinned volume and bands')
     for c in prot['scope']['classes_assessed']:
         if c not in cr or 'min_reference_voxels' not in cr[c]:
             fail(f'assessed class {c} without a criterion or minimum support')
@@ -341,7 +353,7 @@ def main():
     ks = check_manifest(man, pairs, transform, inventory)
     check_map(tmap, man, npz_names)
     check_bands(bands, man, tmap, ks, classes, labels)
-    hashes = {n: sha_file(P[n]) for n in ('manifest', 'map', 'bands', 'floor', 'surface_floor', 'metrics', 'evaluator', 'classes') if P[n].exists()}
+    hashes = {n: sha_file(P[n]) for n in ('manifest', 'map', 'bands', 'floor', 'surface_floor', 'metrics', 'evaluator', 'classes', 'rn_reference') if P[n].exists()}
     check_protocol(prot, man, bands, surface_floor, hashes)
     if classes is not None:
         check_classes(classes, man)

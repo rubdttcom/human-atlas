@@ -2,7 +2,7 @@
  "id": "machine-acceptance-protocol",
  "version": 2,
  "date": "2026-09-20",
- "revision": "version 2, written 2026-09-20 AFTER both version 1 variants (rgb-only, 2026-09-14; rgb-plus-ct-prior, 2026-09-15) had been scored. Origin: docs/findings-2026-09-14-rgb-only-first-score.md section 1 (the v1 surface p95 measures the caps rule, not a boundary), the external audit of a446ca8 (auxiliary geometry errors; a blind spot for predicted volume on ignore; distance to a required neighbour), and docs/findings-2026-09-20-observable-surface-posthoc.md (the observable-boundary metric, its limit on muscle, the class-attribution rule). Version 1 is unchanged in the registry and every result scored under it stays reported under it.",
+ "revision": "version 2, written 2026-09-20 AFTER both version 1 variants (rgb-only, 2026-09-14; rgb-plus-ct-prior, 2026-09-15) had been scored. Origin: docs/findings-2026-09-14-rgb-only-first-score.md section 1 (the v1 surface p95 measures the caps rule, not a boundary), the external audit of a446ca8 (auxiliary geometry errors; a blind spot for predicted volume on ignore; distance to a required neighbour), and docs/findings-2026-09-20-observable-surface-posthoc.md (the observable-boundary metric, its limit on muscle, the class-attribution rule). Version 1 is unchanged in the registry and every result scored under it stays reported under it. Amended 2026-09-20 (before any version 2 run existed) after the external audit of b02dd3b (three findings): the training provenance gate requires non-empty run lists, a start instant at or after the protocol freeze instant and the protocol revision hash; the cartilage required-neighbour term is an in-plane distance within the same section, its reference figure is now measured on the record (generated/cryo-required-neighbour-reference-block2.json, 1.332 mm, the same figure under the earlier 3D definition), and the bands' dependence on the version 1 scores is stated as a limit. No criterion value changed.",
  "plan_reference": "docs/plans/vhf-cryosection-machine-driven-plan.md section 2.7 (terminal status without an anatomist), 2.4 (reserved evaluation), 2.1 (Denver floor), 9 (decision rule); roadmap section 6b",
  "pre_registration": "NOT pre-registered with respect to the two version 1 variants: their scores were known when this text was written, so version 2 cannot grade them and the evaluator refuses any training run started before 2026-09-20. Pre-registered with respect to every variant trained on or after that date: criteria, controls, thresholds and status rules are fixed here before any such run exists; any change after a version 2 result has been seen is version 3.",
  "scope": {
@@ -101,11 +101,11 @@
  },
  "metrics": {
   "implementation": "scripts/cryo_metrics_v2.py",
-  "tests": "scripts/test-cryo-metrics-v2.py (16 synthetic cases: identity, 1 px erosion, the v1 artefact on a toy, class attribution of a missed rim, a real muscle boundary error, extension into ignore counted not measured, shift, faces, two runs, empty prediction, false positives without reference, excluded slice, anisotropy, volume on ignore, required neighbour, false-positive blob) and scripts/test-cryo-metrics.py for the unchanged v1 module; both must pass before any evaluation",
+  "tests": "scripts/test-cryo-metrics-v2.py (17 synthetic cases: identity, 1 px erosion, the v1 artefact on a toy, class attribution of a missed rim, a real muscle boundary error, extension into ignore counted not measured, shift, faces, two runs, empty prediction, false positives without reference, excluded slice, anisotropy, volume on ignore, required neighbour, required neighbour in the next section only, false-positive blob) and scripts/test-cryo-metrics.py for the unchanged v1 module; both must pass before any evaluation",
   "dice": "2 |P & R & E| / (|P & E| + |R & E|), voxels pooled over all scoring slices of both bands; also per band and on usable-only slices (sensitivity rows, no criterion)",
   "surface_p95_mm": "6-connected boundary voxels of the UNRESTRICTED prediction and reference masks inside each k-run (one run per band, original k, spacing 0.666 x 0.666 x 0.333, runs never concatenated); voxels on the six faces of the run volume are removed from every surface; a prediction boundary voxel is a source only when it is eligible, has an eligible 6-neighbour outside the prediction (observable), and the reference assigns the class to it or to an eligible voxel across the boundary (attributed); a reference boundary voxel is a source when it is observable; targets are the full boundary of the other mask; distances by anisotropic EDT, both directions and all runs pooled, 95th percentile. Emptiness per run before any surface extraction as in version 1; a run with reference whose attributed prediction sources or observable reference sources are empty is no-observable-surface (undefined, fails). Support reported per mask: surface, observable, attributed, against ignore. A prediction boundary against ignore is counted, never measured.",
   "predicted_volume_on_ignore": "per class and band, predicted voxels on scoring slices whose reference is ignore; reported in voxels and mL; never a criterion",
-  "required_neighbour_distance": "per class with a required neighbour (cartilage -> bone), the distance from every predicted voxel of the class on the scoring slices to the nearest predicted voxel of the neighbour, whole slice, blind to the ignore mask; median, p90, max; the same figure on the reference is reported next to it",
+  "required_neighbour_distance": "per class with a required neighbour (cartilage -> bone), the in-plane distance from every predicted voxel of the class on the scoring slices to the nearest predicted voxel of the neighbour IN THE SAME SECTION (2D EDT per slice, 0.666 x 0.666 mm, whole slice, blind to the ignore mask); a voxel whose section holds no predicted neighbour has an infinite distance and is counted (voxels_without_neighbour_in_section); median, p90, max; an infinite median is undefined and fails; the same figure on the reference is reported next to it. A neighbour in another section never counts, whatever the slice spacing (amendment after the audit of b02dd3b: the first implementation ran a 3D EDT over the whole volume, so bone 0.333 mm away in the next section, or on a non-scoring slice, satisfied the term).",
   "tolerance": "a perturbation degrades Dice when it drops by at least 0.01 and degrades p95 when it rises by at least 0.333 mm (one slice spacing); ties within tolerance count as not degraded",
   "granularity_caveat": "H is a median of per-structure Dice; the pilot scores one union per tissue class, which does not see confusions between neighbouring structures of the same tissue; a class Dice at H is therefore a weaker statement than per-structure concordance, and the report says so next to every figure",
   "per_run_guarantee": "the emptiness guarantee is per run, not per connected component: a small omitted component inside a run that also holds a correctly predicted component is not detected as emptiness and p95 can miss it; Dice and the per-band false-negative count are the figures that see it"
@@ -134,7 +134,8 @@
     "reference_median_mm": 1.332,
     "diagonal_pixel_mm": 0.9419,
     "median_mm_max": 2.2739,
-    "rule": "median distance from predicted cartilage to predicted bone (scoring slices of both bands, whole slice, blind to ignore) <= the reference figure plus one diagonal pixel; undefined (no cartilage predicted, or no bone predicted) fails; a class that exists only on the surface of another cannot be predicted far from it. This term sees band 2, where the surface metric has no reference cartilage."
+    "rule": "median in-plane distance from predicted cartilage to predicted bone in the same section (scoring slices of both bands, whole slice, blind to ignore) <= the reference figure plus one diagonal pixel; undefined (no cartilage predicted, no bone predicted on the scoring slices, or an infinite median because most predicted cartilage sits in sections without predicted bone) fails; a class that exists only on the surface of another cannot be predicted far from it in the section that shows it. This term sees band 2, where the surface metric has no reference cartilage.",
+    "reference_source": "generated/cryo-required-neighbour-reference-block2.json (scripts/measure-cryo-required-neighbour.py, reference cartilage -> reference bone, same section, 55,653 voxels on 83 sections of band 1; the 3D nearest-bone-anywhere definition gives the same median on this reference and a different p90, recorded there for comparison)"
    }
   },
   "min_reference_voxels_meaning": "20,000 voxels (about 2.95 mL) is a declared pilot heuristic, not a reliability threshold and not 20,000 independent observations; slice and structure support are reported next to it"
@@ -199,11 +200,13 @@
    "noise_floor_sha256": "5539a188e9c788e1e65c0d91a21114ef1c0bdef674ebded9a49815154ce9aa91",
    "surface_floor_sha256": "0defd1d67fc0b766beaa92ccf101e739ec61cdfea34008670dab103117848ef7",
    "metrics": "scripts/cryo_metrics_v2.py",
-   "metrics_sha256": "f5ad028abdcd8fa411ec4484821c0da210918abc89ad29e3240dad55a34feafd",
+   "metrics_sha256": "1acaf5e9fd417f4d954f46d4762de3d0841910cf0c5de1113ff6505bdfcd0529",
    "evaluator": "scripts/cryo-pilot-evaluate-v2.py",
-   "evaluator_sha256": "415e6d9a96ebbd564d9a2a0e663a04a161ec923cf4d714d89b1111c65fd0cdf8",
+   "evaluator_sha256": "44dc42a2d105f99f934c832f72dd0439c8d7fbf441dcc935500699cc89aaefcd",
    "surface_floor": "generated/denver-surface-floor-v2.json",
-   "protocol_v1_sha256": "8404c8573bfe3246329f474e82b68cb4dd91a8206a1d679dbd11daeb2bab0d2d"
+   "protocol_v1_sha256": "8404c8573bfe3246329f474e82b68cb4dd91a8206a1d679dbd11daeb2bab0d2d",
+   "required_neighbour_reference": "generated/cryo-required-neighbour-reference-block2.json",
+   "required_neighbour_reference_sha256": "5d07e904cfc3542d357c009d9b0ca627c2b5340b4633dfba0703ba19414b48f8"
   },
   "fixed_at_evaluation": [
    "nnU-Net v2 version and git revision",
@@ -214,7 +217,7 @@
    "prediction volume sha256 per variant",
    "date"
   ],
-  "rule": "the evaluator compares the actual inputs with fixed_now before scoring and refuses on any difference (every class machine-not-assessable, exit 1); a new manifest, map, band file, floor, metric module or evaluator means version 3"
+  "rule": "the evaluator compares the actual inputs with fixed_now before scoring and refuses on any difference (every class machine-not-assessable, exit 1); a new manifest, map, band file, floor, required-neighbour reference, metric module or evaluator means version 3"
  },
  "iteration_limit": {
   "training_runs_per_variant": 2,
@@ -252,18 +255,20 @@
   "the emptiness guarantee of the surface metric is per run, not per component",
   "the surface metric measures only boundaries the reference labels on both sides; a prediction boundary against ignore (over- or under-extension into unlabelled tissue) is counted in support and never measured",
   "the reference boundary of a class is taken as complete because Denver labels each structure completely; a structure Denver omitted is not in the reference and its boundary is unknown; the attribution rule assigns such an error to the class the reference has there",
-  "version 2 was designed knowing the version 1 scores of two variants; it grades none of them"
+  "version 2 was designed knowing the version 1 scores of two variants; it grades none of them",
+  "the evaluation bands are the bands whose version 1 results showed the failure mode of the version 1 surface metric and so informed the version 2 metric and attribution rule; a variant trained after the freeze instant is graded by criteria fixed before it existed (pre-registered for that run), but the bands are not an independent test set with respect to the metric design: version 2 is a technical acceptance protocol explicitly adapted to this block, and a new training run does not remove that dependence (external audit of b02dd3b, finding 3); independence would need bands, or a block, that no metric decision has seen",
+  "the required-neighbour term measures proximity of predicted cartilage to predicted bone in the same section; it does not see cartilage placed on the wrong bone surface, nor whether the segmentation of cartilage improved: a passing term is a plausibility constraint, not accuracy"
  ],
  "evaluator_gates": {
   "order": [
    "registry validator (scripts/validate-cryo-pilot.py) passes on the repository files",
    "identity chain: the ACTUAL manifest, tissue-classes volume and report, bands, tissue map, both floors, metrics module and evaluator match identity_by_hash.fixed_now byte for byte",
    "prediction grid and values: same shape AND affine (1e-6 mm) as the reference, integral dtype, finite, only the active output classes; nothing is cast or wrapped",
-   "training provenance (non-oracle): --training-manifest with training_slices_k (all inside the primary eligibility, none in a band, buffer or the auxiliary stratum), weights_sha256, nnunetv2_version, dataset_fingerprint, plans_identifier, seed, fold and the run history within the iteration limit",
-   "applicability: every training run started on or after 2026-09-20 (version 2); earlier or undated runs make the variant machine-not-assessable"
+   "training provenance (non-oracle): --training-manifest with training_slices_k (all inside the primary eligibility, none in a band, buffer or the auxiliary stratum), weights_sha256, nnunetv2_version, dataset_fingerprint, plans_identifier, seed, fold, runs and runs_observed (non-empty lists of run records of the same length, within the iteration limit) and protocol_sha256",
+   "applicability: every declared run and every observed training log started at or after applicability.training_started_after (second resolution, training-box local time) and the manifest's protocol_sha256 equals the hash of the protocol file the evaluator reads; earlier, same-day-but-earlier, undated or other-revision runs make the variant machine-not-assessable"
   ],
   "on_failure": "a report with every class machine-not-assessable and the failed gate named; exit 1; no score is computed",
-  "tests": "scripts/test-cryo-pilot-evaluator.py (the version 1 cases plus: a run started before the protocol date, an undated run)"
+  "tests": "scripts/test-cryo-pilot-evaluator.py (the version 1 cases plus: a run started before the protocol instant, an undated run, runs as an object, an empty run list, a run on the protocol day before the freeze instant, a date without time, an observed log earlier than the declared run, another protocol revision, declared and observed counts that differ)"
  },
  "post_hoc_disclosure": {
   "scores_known_when_written": {
@@ -272,11 +277,14 @@
   },
   "what_the_known_scores_could_have_influenced": "the choice of surface metric (observable boundaries) and of the attribution rule; both were derived from the failure mode of the v1 metric on these two predictions",
   "what_they_did_not_influence": "the thresholds: H and P are re-measured on the Denver original-versus-final data with the v2 metric by the same script, the muscle offset of 0.03 and the minimum support are copied from v1, and the required-neighbour bar is the reference figure plus one diagonal pixel",
-  "post_hoc_figures_of_the_v1_variants_under_the_v2_surface_metric_without_attribution": "generated/cryo-posthoc-observable-surface-block2.json (bone 7.71 / 3.41 mm p95; both would still fail); reported there as evidence about the metric, never as a v2 result"
+  "post_hoc_figures_of_the_v1_variants_under_the_v2_surface_metric_without_attribution": "generated/cryo-posthoc-observable-surface-block2.json (bone 7.71 / 3.41 mm p95; both would still fail); reported there as evidence about the metric, never as a v2 result",
+  "amendment_2026_09_20_after_the_audit_of_b02dd3b": "made before any version 2 run existed, so still pre-registered with respect to every variant trained under version 2; the audit found that the cartilage reference figure (1.332 mm) had been written into the protocol without a recorded measurement; it is now measured by scripts/measure-cryo-required-neighbour.py and equals the written figure under both the 3D definition first implemented and the same-section definition now specified; the threshold value is unchanged"
  },
  "applicability": {
-  "training_started_on_or_after": "2026-09-20",
-  "rule": "every run in the training manifest carries a started date; a run started before this date, or without a date, makes the variant machine-not-assessable under version 2 (gate 5). The two version 1 variants are therefore never re-scored here."
+  "training_started_after": "2026-09-20 21:55:30",
+  "clock": "training-box local time (rub-pc, Europe/Madrid), the clock nnU-Net stamps its training logs with (training_log_YYYY_M_D_H_M_S.txt); second resolution",
+  "protocol_revision": "the training manifest carries protocol_sha256, the hash of this file at the time the manifest was written; the evaluator compares it with the file it reads and refuses any other revision",
+  "rule": "every declared run and every training log observed on the training box carries a start instant; a run started before training_started_after, on the protocol day but before the instant, without a parseable instant, or under another protocol revision makes the variant machine-not-assessable under version 2 (gate 5). The two version 1 variants are therefore never re-scored here. The instant is the time this revision of the protocol was frozen; the commit that carries it is later. Amendment after the audit of b02dd3b, finding 1: the first gate compared dates only and skipped both the date and the iteration-limit checks when runs was not a list."
  },
  "supersedes": {
   "protocol_v1": "registry/machine-acceptance-protocol-v1.json",
@@ -292,10 +300,11 @@
  "changed_from_v1": [
   "surface metric: scripts/cryo_metrics_v2.py replaces scripts/cryo_metrics.py. Sources are observable boundaries (labelled tissue on both sides) instead of caps-removed surfaces; prediction sources are attributed to the class the reference has at the voxel or across the boundary; targets are full boundaries minus faces; ignore is never a source. Eligibility, runs, emptiness statuses, spacing, tolerance and Dice are unchanged.",
   "reported term: predicted volume of each class on ignore, per band, in voxels and mL; never scored (an unlabelled voxel may hold a structure Denver omitted).",
-  "criterion for cartilage: median distance from predicted cartilage to predicted bone on the scoring slices, whole slice, blind to ignore, at most the same figure on the reference (1.332 mm, band 1) plus one diagonal pixel (0.9419 mm) = 2.2739 mm.",
-  "gate 5: applicability by training date (see applicability).",
+  "criterion for cartilage: median in-plane distance from predicted cartilage to predicted bone in the same section (scoring slices of both bands, whole slice, blind to ignore), at most the same figure on the reference (1.332 mm, band 1, measured and recorded in generated/cryo-required-neighbour-reference-block2.json) plus one diagonal pixel (0.9419 mm) = 2.2739 mm.",
+  "gate 5: applicability by training start instant and protocol revision (see applicability).",
   "floor: generated/denver-surface-floor-v2.json, the same Denver original-versus-final comparison measured with the v2 metric by scripts/denver-surface-floor.py --metrics v2; the rasteriser now retries a section 1e-4 voxel off the integer plane when it is open (sections_nudged reported per structure).",
   "identity: fixed_now re-pinned to the v2 metric, evaluator and floor; manifest, volume, map, bands, tissue-classes report and noise floor unchanged.",
-  "NOT changed, deferred: the RGB block manifest still carries two operator path strings (photographs_dir, denver_aligned_dir). Re-pinning it means regenerating the 13 records that embed its hash (bands, dataset and training manifests, acceptance reports); scheduled as a separate identity re-pin, recorded when done."
+  "NOT changed, deferred: the RGB block manifest still carries two operator path strings (photographs_dir, denver_aligned_dir). Re-pinning it means regenerating the 13 records that embed its hash (bands, dataset and training manifests, acceptance reports); scheduled as a separate identity re-pin, recorded when done.",
+  "amendment 2026-09-20 after the external audit of b02dd3b, before any version 2 run: gate 5 hardened (non-empty run lists, second-resolution freeze instant, protocol revision hash, observed logs checked too); the required-neighbour distance made per section and its reference figure measured on the record; two limits added; scripts/write-cryo-train-manifest.py copies each run's start stamp from its training log and names the protocol revision. The dependent records of version 1 are untouched."
  ]
 }

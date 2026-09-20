@@ -273,6 +273,32 @@ structure; a section still open raises. Deferred, recorded in `changed_from_v1`:
 operator path strings; re-pinning it means regenerating 13 dependent records and is a separate identity re-pin. Next: Codex
 audit of the v1-to-v2 diff before any variant is trained under version 2.
 
+**External audit of b02dd3b applied, 2026-09-20 21:55 (before any version 2 run; no criterion value changed).** The
+auditor (Astra) reported three findings; all three reproduce in the code. (1) The provenance gate of
+`scripts/cryo-pilot-evaluate-v2.py` guarded the date and iteration-limit checks with `isinstance(runs, list)`, so a
+`runs` OBJECT passed both, and it compared dates only, so any hour of 2026-09-20, including hours before the protocol was
+frozen at 19:48, passed. Fixed: `runs` and `runs_observed` must be non-empty lists of records of the same length; every
+declared run AND every observed training log needs a start instant at or after the freeze instant
+`applicability.training_started_after` (2026-09-20 21:55:30, training-box local time, second resolution; a bare date is
+refused); the manifest must carry `protocol_sha256` equal to the protocol file the evaluator reads. Found while fixing
+it: a REAL manifest would have failed gate 5 anyway, because `scripts/write-cryo-train-manifest.py` never copied the
+log stamp into the declared runs (declared runs only carried an operator `date`); the writer now copies `started`,
+`log` and `log_sha256` from each observed log and names the protocol revision. Seven new gate cases in
+`scripts/test-cryo-pilot-evaluator.py`. (2) The required-neighbour term ran a 3D EDT over the whole volume: bone
+0.333 mm away in the next section, or on a non-scoring slice, satisfied it, while the protocol text said "whole slice".
+Now an in-plane distance to bone in the SAME section (2D EDT per slice); a section without predicted bone gives its
+cartilage an infinite distance, counted and, when it dominates the median, undefined (fails). Found while fixing it:
+the reference figure 1.332 mm sat in the protocol without a recorded measurement. It is now measured by
+`scripts/measure-cryo-required-neighbour.py` -> `generated/cryo-required-neighbour-reference-block2.json` (55,653
+reference cartilage voxels on 83 sections of band 1, no section without bone): median 1.332 mm under the same-section
+definition and 1.332 mm under the 3D one (p90 2.664 vs 2.424 mm), so the bar stays 2.2739 mm; the validator now checks
+the figure against that file and the file against the pinned metric module, volume and bands (two new corruptions in
+`scripts/test-cryo-pilot-validator.py`, 17 cases in `scripts/test-cryo-metrics-v2.py`). (3) Retraining does not make
+the bands independent: their version 1 results informed the version 2 metric. Accepted and written as a limit of the
+protocol: version 2 is a technical acceptance protocol adapted to this block, pre-registered for any run after the freeze
+instant, not an independent test with respect to the metric design; no GPU run is scheduled only to change a training
+date. `fixed_now` re-pinned (metric module, evaluator, reference file). Nothing trained; nothing here is anatomy.
+
 **This closes the pre-score window for protocol v2.** The change planned above was to be made before
 any evaluation existed. It no longer can be. The path-string change still touches no criterion but
 must be recorded as made after the `rgb-only` result, and any change to the surface metric is now

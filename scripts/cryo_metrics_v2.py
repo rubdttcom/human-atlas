@@ -39,11 +39,16 @@ Definitions (boolean (i, j, K) volumes, k index = k - k_first; one k-run per ban
              reference source set is empty is 'no-observable-surface' (undefined, fails).
   volume on ignore  per class and band, the number of predicted voxels of the class on scoring slices whose
              reference is ignore. Reported, never scored: an unlabelled voxel may hold a structure Denver omitted.
-  required neighbour  per class with a required neighbour class (cartilage -> bone), the distance from every
-             predicted voxel of the class on scoring slices to the nearest PREDICTED voxel of the neighbour
-             class, on the whole slice, blind to the ignore mask; median, p90, max. A class that exists only on
-             the surface of another cannot be predicted far from it. Compared with the same figure measured on
-             the reference (reference cartilage -> reference bone) plus one in-plane diagonal pixel.
+  required neighbour  per class with a required neighbour class (cartilage -> bone), the in-plane distance from
+             every predicted voxel of the class on scoring slices to the nearest PREDICTED voxel of the neighbour
+             class IN THE SAME SECTION (2D EDT per slice, spacing 0.666 x 0.666, whole slice, blind to the ignore
+             mask); median, p90, max, and the number of voxels whose section holds no predicted neighbour (their
+             distance is infinite; an infinite median is undefined and fails). Bone in a neighbouring section
+             never counts (external audit of b02dd3b, finding 2: the first implementation ran a 3D EDT over the
+             whole volume, so bone 0.333 mm away in the next section, or outside the scoring slices, satisfied
+             the term). A class that exists only on the surface of another cannot be predicted far from it.
+             Compared with the same figure measured on the reference (reference cartilage -> reference bone,
+             1.332 mm on band 1, the same under the 3D definition) plus one in-plane diagonal pixel.
   tolerance  a perturbation degrades Dice when it drops by at least 0.01 and p95 when it rises by at least
              0.333 mm (one slice spacing); ties within tolerance count as not degraded. Unchanged.
 
@@ -186,16 +191,36 @@ def volume_on_ignore(pred, ref_is_ignore, slice_eligible):
 
 
 def required_neighbour_distance(pred_class, pred_neighbour, slice_eligible, spacing=SPACING):
-    """Distance from every predicted voxel of a class (scoring slices, whole slice, blind to ignore) to the nearest predicted
-    voxel of its required neighbour class. None figures when the class is not predicted; inf when the neighbour is not."""
+    """In-plane distance from every predicted voxel of a class (scoring slices, whole slice, blind to ignore) to the
+    nearest predicted voxel of its required neighbour class IN THE SAME SECTION. 2D EDT per slice: a neighbour voxel in
+    another section never counts, whatever the slice spacing. None figures when the class is not predicted; a section
+    without any predicted neighbour gives its class voxels an infinite distance (counted in
+    voxels_without_neighbour_in_section); an infinite median is undefined (median_mm None) and fails the criterion."""
     src = pred_class & slice_eligible[None, None, :]
     n = int(src.sum())
     if n == 0:
-        return {'n': 0, 'median_mm': None, 'p90_mm': None, 'max_mm': None, 'status': 'class-not-predicted'}
-    if not pred_neighbour.any():
-        return {'n': n, 'median_mm': None, 'p90_mm': None, 'max_mm': None, 'status': 'neighbour-not-predicted'}
-    d = ndimage.distance_transform_edt(~pred_neighbour, sampling=spacing)[src]
-    return {'n': n, 'median_mm': float(np.median(d)), 'p90_mm': float(np.quantile(d, 0.9)), 'max_mm': float(d.max()), 'status': 'ok'}
+        return {'n': 0, 'median_mm': None, 'p90_mm': None, 'max_mm': None, 'voxels_without_neighbour_in_section': 0, 'status': 'class-not-predicted'}
+    if not (pred_neighbour & slice_eligible[None, None, :]).any():
+        return {'n': n, 'median_mm': None, 'p90_mm': None, 'max_mm': None, 'voxels_without_neighbour_in_section': n, 'status': 'neighbour-not-predicted'}
+    parts = []
+    for kk in np.flatnonzero(slice_eligible):
+        c = src[:, :, kk]
+        if not c.any():
+            continue
+        b = pred_neighbour[:, :, kk]
+        if not b.any():
+            parts.append(np.full(int(c.sum()), np.inf)); continue
+        parts.append(ndimage.distance_transform_edt(~b, sampling=spacing[:2])[c])
+    d = np.concatenate(parts)
+    without = int((~np.isfinite(d)).sum())
+    med = float(np.median(d))
+    fin = d[np.isfinite(d)]
+    if not np.isfinite(med):
+        return {'n': n, 'median_mm': None, 'p90_mm': None, 'max_mm': float(fin.max()) if fin.size else None,
+                'voxels_without_neighbour_in_section': without, 'status': 'neighbour-absent-in-most-sections'}
+    p90 = float(np.quantile(d, 0.9))
+    return {'n': n, 'median_mm': med, 'p90_mm': p90 if np.isfinite(p90) else None, 'max_mm': float(fin.max()),
+            'voxels_without_neighbour_in_section': without, 'status': 'ok'}
 
 
 def degrades(base, perturbed, dice_tol=DICE_TOL, p95_tol=P95_TOL):

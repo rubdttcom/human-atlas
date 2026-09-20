@@ -1,0 +1,54 @@
+{
+ "id": "cryo-required-neighbour-reference-block2",
+ "date": "2026-09-20",
+ "definition": "median in-plane distance (2D EDT per section, 0.666 x 0.666 mm) from every reference cartilage voxel on the scoring slices of both bands to the nearest reference bone voxel of the SAME section, whole slice, blind to ignore; scripts/cryo_metrics_v2.py required_neighbour_distance",
+ "reference_same_section": {
+  "n": 55653,
+  "median_mm": 1.332,
+  "p90_mm": 2.664,
+  "max_mm": 5.95688509205944,
+  "voxels_without_neighbour_in_section": 0,
+  "status": "ok"
+ },
+ "reference_median_mm": 1.332,
+ "per_band": {
+  "band_1": {
+   "n": 55653,
+   "median_mm": 1.332,
+   "p90_mm": 2.664,
+   "max_mm": 5.95688509205944,
+   "voxels_without_neighbour_in_section": 0,
+   "status": "ok"
+  },
+  "band_2": {
+   "n": 0,
+   "median_mm": null,
+   "p90_mm": null,
+   "max_mm": null,
+   "voxels_without_neighbour_in_section": 0,
+   "status": "class-not-predicted"
+  }
+ },
+ "cartilage_sections": {
+  "count": 83,
+  "k_first": 2594,
+  "k_last": 2677
+ },
+ "comparison_3d_nearest_bone_anywhere": {
+  "median_mm": 1.332,
+  "p90_mm": 2.424276593130413,
+  "max_mm": 5.690306494381476,
+  "note": "the definition of the first implementation (audit finding 2); the median is the same figure on this reference, p90 is not; not used by the protocol"
+ },
+ "inputs": {
+  "tissue_classes_volume_sha256": "a3d44efe5965e6b8d6ccbbf496c5407962f877737cf08c7d58013d319eccf812",
+  "rgb_block_manifest_sha256": "dbb73030ca5a4961de164fc9c0dbb85e6c839eeb414969f1185a3d909061325e",
+  "eval_bands_sha256": "9806cf37f211c7500477fd19328c41e30baef6bb29c5657d18416dbea9e65cd9",
+  "tissue_map_sha256": "efabc86953124cd031e892128a67f78978e287be8a04e3c70bb16d5b1c0954a4",
+  "metrics_sha256": "1acaf5e9fd417f4d954f46d4762de3d0841910cf0c5de1113ff6505bdfcd0529",
+  "metrics": "scripts/cryo_metrics_v2.py"
+ },
+ "scoring_slices": 291,
+ "seconds": 72.3,
+ "statement": "a distance between two Denver label classes on one block; not anatomy"
+}

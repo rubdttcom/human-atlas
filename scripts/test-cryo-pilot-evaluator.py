@@ -10,6 +10,7 @@ A well-formed training manifest with a valid prediction is NOT run here (12 minu
 
   .venv/bin/python scripts/test-cryo-pilot-evaluator.py
 """
+import hashlib
 import json
 import shutil
 import subprocess
@@ -47,7 +48,11 @@ ref = np.asarray(ref_img.dataobj)
 bands = json.loads((ROOT / 'registry/cryo-eval-bands-v1.json').read_text())
 te = bands['training_eligibility']
 primary = [k for lo, hi in te['primary_k_ranges'] for k in range(lo, hi + 1)]
-good_train = {'training_slices_k': primary, 'weights_sha256': '0' * 64, 'nnunetv2_version': '2.8.1', 'dataset_fingerprint': 'x', 'plans_identifier': 'nnUNetPlans', 'seed': 12345, 'fold': 0, 'runs': [{'run': 1, 'status': 'completed', 'started': '2026_9_21_00_00_00'}]}
+prot = json.loads((ROOT / 'registry/machine-acceptance-protocol-v2.json').read_text())
+prot_sha = hashlib.sha256((ROOT / 'registry/machine-acceptance-protocol-v2.json').read_bytes()).hexdigest()
+good_run = {'run': 1, 'status': 'completed', 'started': '2026_9_21_00_00_00', 'log': 'training_log_2026_9_21_00_00_00.txt'}
+good_train = {'training_slices_k': primary, 'weights_sha256': '0' * 64, 'nnunetv2_version': '2.8.1', 'dataset_fingerprint': 'x', 'plans_identifier': 'nnUNetPlans', 'seed': 12345, 'fold': 0,
+              'runs': [good_run], 'runs_observed': [good_run], 'protocol_sha256': prot_sha}
 valid_pred = np.where(ref == 255, 0, ref).astype(np.uint8)          # a legal prediction volume (ignore is not an output class)
 
 with tempfile.TemporaryDirectory() as td:
@@ -91,17 +96,41 @@ with tempfile.TemporaryDirectory() as td:
     code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(missing, 'missing.json'))], td / 'r8.json')
     case('missing_weights_hash_refused', code == 1 and rep and any('weights_sha256' in p for p in rep['training_problems']), log[-300:])
 
-    many = dict(good_train); many['runs'] = [{'run': i, 'started': '2026_9_21_00_00_00'} for i in range(3)]
+    many = dict(good_train); many['runs'] = [dict(good_run, run=i) for i in range(3)]; many['runs_observed'] = list(many['runs'])
     code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(many, 'many.json'))], td / 'r9.json')
     case('iteration_limit_enforced', code == 1 and rep and any('iteration limit' in p for p in rep['training_problems']), log[-300:])
 
     # version 2 applicability: a run that started before the protocol date is not assessable under version 2
     early = dict(good_train); early['runs'] = [{'run': 1, 'status': 'completed', 'started': '2026_9_14_17_09_18'}]
     code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(early, 'early.json'))], td / 'r11.json')
-    case('pre_v2_training_run_refused', code == 1 and rep and any('before the protocol date' in p for p in rep['training_problems']), log[-300:])
+    case('pre_v2_training_run_refused', code == 1 and rep and any('before the protocol freeze instant' in p for p in rep['training_problems']), log[-300:])
     undated = dict(good_train); undated['runs'] = [{'run': 1, 'status': 'completed'}]
     code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(undated, 'undated.json'))], td / 'r12.json')
-    case('undated_training_run_refused', code == 1 and rep and any('without a parseable started date' in p for p in rep['training_problems']), log[-300:])
+    case('undated_training_run_refused', code == 1 and rep and any('without a parseable start instant' in p for p in rep['training_problems']), log[-300:])
+    # external audit of b02dd3b, finding 1: a runs OBJECT skipped the date and limit checks; the protocol day alone passed
+    asdict = dict(good_train); asdict['runs'] = {'run': 1, 'status': 'completed', 'started': '2026_9_14_17_09_18'}
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(asdict, 'asdict.json'))], td / 'r13.json')
+    case('runs_object_refused', code == 1 and rep and any('non-empty list' in p for p in rep['training_problems']), log[-300:])
+    empty = dict(good_train); empty['runs'] = []
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(empty, 'empty.json'))], td / 'r14.json')
+    case('empty_runs_refused', code == 1 and rep and any('non-empty list' in p or 'missing or empty: runs' in p for p in rep['training_problems']), log[-300:])
+    freeze = prot['applicability']['training_started_after']            # 'YYYY-MM-DD HH:MM:SS'
+    day = freeze[:10].replace('-', '_')
+    sameday = dict(good_train); sameday['runs'] = [dict(good_run, started=day + '_00_00_01')]; sameday['runs_observed'] = list(sameday['runs'])
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(sameday, 'sameday.json'))], td / 'r15.json')
+    case('protocol_day_before_freeze_instant_refused', code == 1 and rep and any('before the protocol freeze instant' in p for p in rep['training_problems']), log[-300:])
+    dateonly = dict(good_train); dateonly['runs'] = [dict(good_run, started='2026-09-21')]; dateonly['runs_observed'] = list(dateonly['runs'])
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(dateonly, 'dateonly.json'))], td / 'r16.json')
+    case('date_without_time_refused', code == 1 and rep and any('without a parseable start instant' in p for p in rep['training_problems']), log[-300:])
+    obs_early = dict(good_train); obs_early['runs_observed'] = [dict(good_run, started='2026_9_14_17_09_18')]
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(obs_early, 'obs_early.json'))], td / 'r17.json')
+    case('observed_log_before_freeze_refused', code == 1 and rep and any('observed training log started' in p for p in rep['training_problems']), log[-300:])
+    otherprot = dict(good_train); otherprot['protocol_sha256'] = '1' * 64
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(otherprot, 'otherprot.json'))], td / 'r18.json')
+    case('other_protocol_revision_refused', code == 1 and rep and any('bound to protocol revision' in p for p in rep['training_problems']), log[-300:])
+    mismatch = dict(good_train); mismatch['runs_observed'] = [good_run, dict(good_run, run=2)]
+    code, rep, log = run(['--prediction', str(td / 'ok.nii.gz'), '--training-manifest', str(write_train(mismatch, 'mismatch.json'))], td / 'r19.json')
+    case('declared_vs_observed_count_refused', code == 1 and rep and any('training logs observed' in p for p in rep['training_problems']), log[-300:])
 
     # identity mismatch: a copy of the block with an edited manifest
     fake = td / 'block'; fake.mkdir()

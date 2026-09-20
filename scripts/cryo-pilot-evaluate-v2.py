@@ -20,8 +20,16 @@ Gates, all before any score is computed (Codex audit of 87ff582, two P1): nothin
      active output classes (0..3); nothing is cast or wrapped;
   4. for a non-oracle run, --training-manifest is a JSON with training_slices_k (every k in the primary eligibility of the
      bands file, none in a band, buffer or the auxiliary stratum), weights_sha256, nnunetv2_version, dataset_fingerprint,
-     plans_identifier, seed, fold, and runs (the run history under the iteration limit); a missing or inconsistent field is
-     recorded and the result is machine-not-assessable ("training provenance incomplete"), never accepted.
+     plans_identifier, seed, fold, runs and runs_observed (the declared run history and the training logs found on the
+     training box: both non-empty lists of the same length, under the iteration limit) and protocol_sha256; a missing,
+     malformed or inconsistent field is recorded and the result is machine-not-assessable ("training provenance
+     incomplete"), never accepted;
+  5. applicability (version 2): every declared and every observed run carries a parseable start stamp at or after the
+     protocol's freeze instant (applicability.training_started_after, training-box local time, second resolution), and the
+     manifest's protocol_sha256 equals the hash of the protocol file this evaluator reads. A run started earlier, on the
+     protocol day but before the instant, undated, or bound to another protocol revision is not assessable under version 2
+     (external audit of b02dd3b, finding 1: a runs OBJECT instead of a list skipped both the date and the limit checks,
+     and any hour of the protocol day passed).
 A gate failure writes a report with every class machine-not-assessable and the reason, and exits 1.
 
 Scoring: only band slices with pair status usable or usable-flagged; reference class 255 ineligible everywhere; metrics from
@@ -58,7 +66,7 @@ TMAP = ROOT / 'registry/cryo-tissue-map.json'
 CLASSES_REPORT = ROOT / 'generated/cryo-tissue-classes-block2.json'
 PAIRED = ('usable', 'usable-flagged')
 IGNORE = 255
-TRAIN_FIELDS = ('training_slices_k', 'weights_sha256', 'nnunetv2_version', 'dataset_fingerprint', 'plans_identifier', 'seed', 'fold', 'runs')
+TRAIN_FIELDS = ('training_slices_k', 'weights_sha256', 'nnunetv2_version', 'dataset_fingerprint', 'plans_identifier', 'seed', 'fold', 'runs', 'runs_observed', 'protocol_sha256')
 
 
 def sha_file(p):
@@ -138,13 +146,14 @@ def prediction_gate(pimg, ref_img, allowed):
     return problems, raw
 
 
-def _run_day(started):
-    """nnU-Net log stamps look like 2026_9_14_17_09_18; ISO dates are accepted too. Returns YYYY-MM-DD or None."""
+def _run_instant(started):
+    """nnU-Net log stamps look like 2026_9_14_17_09_18 (training-box local time); ISO date-times are accepted too. Returns
+    'YYYY-MM-DD HH:MM:SS' or None. A bare date has no time and is NOT accepted: the applicability rule is an instant."""
     import re
-    m = re.match(r'^\s*(\d{4})[-_](\d{1,2})[-_](\d{1,2})', started or '')
+    m = re.match(r'^\s*(\d{4})[-_](\d{1,2})[-_](\d{1,2})[T _](\d{1,2})[:_](\d{1,2})[:_](\d{1,2})', str(started or ''))
     if not m:
         return None
-    return '%04d-%02d-%02d' % tuple(int(g) for g in m.groups())
+    return '%04d-%02d-%02d %02d:%02d:%02d' % tuple(int(g) for g in m.groups())
 
 
 def training_gate(train, bands, protocol):
@@ -172,20 +181,36 @@ def training_gate(train, bands, protocol):
     if not used:
         problems.append('no training slices listed')
     limit = protocol['iteration_limit']['training_runs_per_variant']
-    if isinstance(train['runs'], list) and len(train['runs']) > limit:
-        problems.append(f'{len(train["runs"])} runs exceed the iteration limit {limit}')
-    # gate 5 (version 2): every training run must have started on or after the protocol date; a variant trained earlier was
-    # scored under version 1 and stays there
-    since = protocol['applicability']['training_started_on_or_after']
-    if isinstance(train['runs'], list):
-        for r in train['runs']:
-            started = str(r.get('started', '')) if isinstance(r, dict) else ''
-            day = _run_day(started)
-            if day is None:
-                problems.append('run without a parseable started date (version 2 applies only to runs started on or after %s)' % since)
-            elif day < since:
-                problems.append(f'run started {started} before the protocol date {since}: scored under version 1, not assessable under version 2')
-    return problems, {'slices_used': len(used), 'primary_slices': len(primary), 'runs': len(train['runs']) if isinstance(train['runs'], list) else None}
+    runs, observed = train['runs'], train['runs_observed']
+    for name, lst in (('runs', runs), ('runs_observed', observed)):
+        if not isinstance(lst, list) or not lst or not all(isinstance(r, dict) for r in lst):
+            problems.append(f'{name} must be a non-empty list of run records (got {type(lst).__name__})')
+    if problems:
+        return problems, None
+    if len(runs) > limit:
+        problems.append(f'{len(runs)} runs exceed the iteration limit {limit}')
+    if len(observed) != len(runs):
+        problems.append(f'{len(runs)} runs declared against {len(observed)} training logs observed on the training box')
+    # gate 5 (version 2): every declared and every observed run must have started at or after the instant this revision of
+    # the protocol was frozen; a variant trained earlier was scored under version 1 and stays there. Second resolution:
+    # the protocol day alone is not enough (audit of b02dd3b, finding 1).
+    since = _run_instant(protocol['applicability']['training_started_after'])
+    if since is None:
+        problems.append('protocol applicability.training_started_after is not a parseable instant')
+    else:
+        for name, lst in (('declared run', runs), ('observed training log', observed)):
+            for r in lst:
+                started = str(r.get('started', ''))
+                at = _run_instant(started)
+                if at is None:
+                    problems.append(f'{name} without a parseable start instant (version 2 applies only to runs started at or after {since})')
+                elif at < since:
+                    problems.append(f'{name} started {started} before the protocol freeze instant {since}: not assessable under version 2')
+    # gate 5, revision: the manifest names the protocol revision it was written under; another revision is another protocol
+    actual = sha_file(PROTOCOL)
+    if str(train['protocol_sha256']).lower() != actual:
+        problems.append(f'training manifest bound to protocol revision {str(train["protocol_sha256"])[:12]}, this evaluator reads {actual[:12]}')
+    return problems, {'slices_used': len(used), 'primary_slices': len(primary), 'runs': len(runs), 'runs_observed': len(observed), 'protocol_sha256': actual}
 
 
 def main():
