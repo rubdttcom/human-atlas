@@ -86,10 +86,15 @@ def main():
     ap.add_argument('--provenance', required=True, help='the record written by scripts/record-nnunet-run.py')
     ap.add_argument('--run', action='append', default=[], help='one JSON object per training run, in order')
     ap.add_argument('--out', default=None)
+    ap.add_argument('--prior-version', type=int, choices=[1, 2], default=1,
+                    help='rgb-plus-ct-prior only: 2 reads the dataset report of the version 2 prior (dataset 503) and names the manifest -v2')
     a = ap.parse_args()
 
-    ds_report = ROOT / f'generated/cryo-nnunet-dataset-block2-{a.variant}.json'
+    tag = '-v2' if a.prior_version == 2 else ''
+    ds_report = ROOT / f'generated/cryo-nnunet-dataset-block2-{a.variant}{tag}.json'
     ds = json.loads(ds_report.read_text())
+    if a.prior_version == 2 and ds.get('prior_version') != 2:
+        raise SystemExit(json.dumps({'ok': False, 'error': f'{ds_report.name} does not describe a version 2 prior build'}))
     prov_path = Path(a.provenance)
     prov = json.loads(prov_path.read_text())
 
@@ -107,7 +112,8 @@ def main():
         problems.append('the provenance record has no checkpoint_final.pth: the training did not finish')
 
     man = {
-        'id': f'cryo-nnunet-train-block2-{a.variant}', 'date': time.strftime('%Y-%m-%d'), 'variant': a.variant,
+        'id': f'cryo-nnunet-train-block2-{a.variant}{tag}', 'date': time.strftime('%Y-%m-%d'), 'variant': a.variant,
+        'prior_version': ds.get('prior_version'),
         'training_slices_k': ds['training_slices_k'],
         'fold': prov.get('fold'), 'seed': prov.get('seed'),
         'nnunetv2_version': prov.get('nnunetv2_version'),
@@ -136,7 +142,7 @@ def main():
         'consistency_problems': problems,
     }
 
-    out = Path(a.out) if a.out else ROOT / f'generated/cryo-nnunet-train-block2-{a.variant}.json'
+    out = Path(a.out) if a.out else ROOT / f'generated/cryo-nnunet-train-block2-{a.variant}{tag}.json'
     missing = [f for f in REQUIRED if not man.get(f) and man.get(f) != 0]
     # A rejected manifest is never written where the evaluator would read it. The evaluator's training gate
     # reads neither consistency_problems nor runs_observed, and it is frozen by hash, so the refusal has to

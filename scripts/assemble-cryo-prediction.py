@@ -77,6 +77,8 @@ def main():
     ap.add_argument('--predictions', required=True)
     ap.add_argument('--variant', required=True)
     ap.add_argument('--out', required=True)
+    ap.add_argument('--report-tag', default='',
+                    help="suffix of the report name, e.g. '-v2' for a prior-version 2 run, so the version 1 report of the same variant is not overwritten")
     a = ap.parse_args()
     t0 = time.time()
 
@@ -141,7 +143,7 @@ def main():
         },
         'seconds': round(time.time() - t0, 1),
     }
-    rp = ROOT / f'generated/cryo-prediction-block2-{a.variant}.json'
+    rp = ROOT / f'generated/cryo-prediction-block2-{a.variant}{a.report_tag}.json'
     rp.write_text(json.dumps(report, indent=1) + '\n')
     shown = rp.relative_to(ROOT) if rp.is_relative_to(ROOT) else rp
     print(json.dumps({'ok': not missing, 'out': str(op), 'predicted': len(written),

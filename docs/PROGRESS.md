@@ -299,6 +299,42 @@ protocol: version 2 is a technical acceptance protocol adapted to this block, pr
 instant, not an independent test with respect to the metric design; no GPU run is scheduled only to change a training
 date. `fixed_now` re-pinned (metric module, evaluator, reference file). Nothing trained; nothing here is anatomy.
 
+**CT prior version 2 and the first protocol v2 training, 2026-09-20 22:56 (user decision: continue the CT prior line).**
+The one-model prior of version 1 is kept for the two version 1 runs and a version 2 prior is built for the first run
+under protocol v2, so that run changes an input and not only a training date. `registry/cryo-ct-prior-map-v2.json`
+(version 1 untouched) and `scripts/build-cryo-ct-prior-v2-block.py` (selftest; 128 s): (1) bone = strict majority of
+the eligible CT models per voxel at tissue level, TotalSegmentator `total` bone labels (the 62 of the version 1 map),
+MOOSE (union of the four bone tasks) and Skellytour (inside its crop only); no model is eligible outside the CT
+field of view (643 / 2,637 / 374 labelled voxels on the field-of-view rim discarded and counted). On the CT grid:
+5.19 M consensus voxels, 3.67 M disagreement voxels; pairwise bone Dice TotalSegmentator-Skellytour 0.918,
+TotalSegmentator-MOOSE 0.746, MOOSE-Skellytour 0.741 (MOOSE labels 7.67 M bone voxels against 5.10 M and 4.98 M).
+(2) A disagreement channel (some but not all eligible models say bone). (3) An in-plane distance to consensus bone
+per section, clipped at 15 mm, uint8 on disk and float32 0..1 in the dataset (a `nonorm` channel gets no
+normalisation, and the colour channels are 0..1). (4) Muscle unchanged (TotalSegmentator, ten labels; bone wins
+2,290 conflicts). The cartilage channel is dropped: it was identically zero over the block. Placement unchanged:
+the femora's own rigid fits are NOT applied because they were fitted on the Denver femur meshes, the source of the
+reference this variant is graded against; recorded as the reason in the map. Coverage of the Denver reference on the
+197 primary slices, v2 against v1: bone recall 0.9232 / 0.9196, prior bone on labelled non-bone 0.0668 / 0.0668,
+muscle recall 0.5231 / 0.5232; 98.2 % of reference bone lies within 2 mm of consensus bone, the missed rim is
+1.35 mm deep at p50 and 4.06 mm at p95; no section without consensus bone (`generated/cryo-ct-prior-v2-block2.json`).
+The consensus adds almost nothing to recall; what the run tests is the disagreement and distance channels.
+MOOSE `clin_ct_muscles` and `clin_ct_body_composition` were considered for the thigh muscles and not used (not
+installed, unknown label set; body composition crops to the lumbar spine), recorded in the map.
+Dataset 503 `Dataset503_VHFCryoBlock2RGBPriorV2` (`scripts/build-cryo-nnunet-dataset.py --prior-version 2`, 7
+channels, same 197 primary slices, same frozen split, same target; the version 2 dataset report names protocol v2
+and every prior channel by hash; 502 and its report untouched; `scripts/test-cryo-nnunet-dataset.py` now 27 cases,
+six of them run the version 2 builder into a temporary tree and compare every channel against the volumes on disk).
+`scripts/write-cryo-train-manifest.py --prior-version 2` and `scripts/assemble-cryo-prediction.py --report-tag -v2`
+keep the version 1 records of the same variant from being overwritten. Copied to rub-pc (tree hash identical),
+planned and preprocessed (patch 448 x 704, batch 9, seven normalisation schemes, frozen split 187/10 installed;
+one preprocessed case checked: distance channel 0..1, binary channels 0/1). Training of fold 0 started
+2026-09-20 22:56:07 training-box time (after the freeze instant 21:55:30 of gate 5), `run-cryo-train.sh 503
+rgb-plus-ct-prior`, log `logs/cryo-train-503.log`, run 1 of the two protocol v2 allows for this variant; measured
+47 s per steady-state epoch (first epoch 95 s), so about 13 h and an end around 12:00 on 2026-09-21. Then: copy the band predictions, assemble with `--report-tag -v2`,
+`record-nnunet-run.py` on rub-pc, `write-cryo-train-manifest.py --variant rgb-plus-ct-prior --prior-version 2`,
+`cryo-pilot-evaluate-v2.py --variant rgb-plus-ct-prior`. The protocol pins none of the prior files, so no criterion,
+band or threshold changed; the prior is pinned at evaluation through the training manifest. Nothing here is anatomy.
+
 **This closes the pre-score window for protocol v2.** The change planned above was to be made before
 any evaluation existed. It no longer can be. The path-string change still touches no criterion but
 must be recorded as made after the `rgb-only` result, and any change to the surface metric is now

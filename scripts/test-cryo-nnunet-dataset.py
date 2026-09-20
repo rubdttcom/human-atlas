@@ -1,4 +1,4 @@
-"""Tests of scripts/build-cryo-nnunet-dataset.py and scripts/build-cryo-ct-prior-block.py.
+"""Tests of scripts/build-cryo-nnunet-dataset.py, scripts/build-cryo-ct-prior-block.py and scripts/build-cryo-ct-prior-v2-block.py.
 
 Each test mutates a document or an input in memory and requires the builder to refuse, or asserts a property of what the
 builder wrote. No GPU, no training. A passing test is consistency, not anatomy.
@@ -353,6 +353,151 @@ for n, f in [('primary slice inside a band', t_refuse_primary_in_band),
              ('primary slice count drift', t_refuse_count_drift),
              ('bins do not cover the primary slices', t_refuse_incomplete_bins)]:
     refuses(n, f)
+
+
+# --- prior version 2 (protocol version 2 runs, 2026-09-20) ---------------------------------------------------------
+P2 = load('prior_v2', 'scripts/build-cryo-ct-prior-v2-block.py')
+PRIOR_MAP_V2 = json.loads((ROOT / 'registry/cryo-ct-prior-map-v2.json').read_text())
+PROTOCOL_V2 = json.loads((ROOT / 'registry/machine-acceptance-protocol-v2.json').read_text())
+
+
+def t_v2_map_and_spec_agree():
+    assert tuple(c['name'] for c in PRIOR_MAP_V2['channels']) == B.PRIOR_V2_CHANNELS == P2.CHANNELS
+    assert B.PRIOR_V2_SPEC['channels'] == ['rgb_to_0_1'] * 3 + ['nonorm'] * 4
+    assert B.PRIOR_V2_SPEC['dataset_id'] == 503 and B.PRIOR_V2_SPEC['dataset_id'] != B.VARIANTS['rgb-plus-ct-prior']['dataset_id']
+    assert B.variant_spec('rgb-plus-ct-prior', 2) is B.PRIOR_V2_SPEC and B.variant_spec('rgb-plus-ct-prior', 1) is B.VARIANTS['rgb-plus-ct-prior']
+    assert B.report_stem('rgb-plus-ct-prior', 2) == 'cryo-nnunet-dataset-block2-rgb-plus-ct-prior-v2'
+    assert B.report_stem('rgb-plus-ct-prior', 1) == 'cryo-nnunet-dataset-block2-rgb-plus-ct-prior', 'the version 1 report name changed'
+    assert PRIOR_MAP_V2['distance_max_mm'] == P2.DIST_MAX_MM == 15.0
+    assert PRIOR_MAP_V2['version'] == 2 and PRIOR_MAP_V2['supersedes'].startswith('registry/cryo-ct-prior-map.json')
+    assert P2.MAP_V1.exists(), 'the version 1 prior map must stay on disk: the 502 run is bound to it'
+
+
+def t_v2_vote_is_strict_majority_of_eligible():
+    shape = (2, 2, 1)
+    a, b, c = (np.zeros(shape, bool) for _ in range(3))
+    e = np.ones(shape, bool)
+    a[0, 0] = b[0, 0] = True; a[1, 1] = True
+    cons, dis, votes, n = P2.vote_bone([a, b, c], [e, e, e])
+    assert cons[0, 0, 0] and dis[0, 0, 0] and not cons[1, 1, 0] and dis[1, 1, 0]
+    none = np.zeros(shape, bool)
+    cons, dis, votes, n = P2.vote_bone([a, b, c], [e, e, none])       # two eligible: 1 of 2 is not a majority
+    assert cons[0, 0, 0] and not dis[0, 0, 0] and not cons[1, 1, 0] and dis[1, 1, 0]
+    cons, dis, votes, n = P2.vote_bone([a, b, c], [none, none, none])  # nobody eligible: an ineligible vote is discarded
+    assert not cons.any() and not dis.any() and votes.max() == 0 and n.max() == 0
+    cls, conflicts = P2.class_volume(a, b)                              # bone wins the conflict once
+    assert cls[0, 0, 0] == 1 and conflicts == 1 and cls[1, 1, 0] == 1
+
+
+def t_v2_distance_encoding():
+    sl = np.zeros((9, 9), bool); sl[4, 4] = True
+    d = P2.distance_channel(sl, (0.666, 0.666))
+    assert d.dtype == np.uint8 and d[4, 4] == 0
+    assert d[4, 7] == round(255 * 3 * 0.666 / 15) == 34 and d[1, 4] == 34, 'the in-plane distance is not in mm'
+    assert (P2.distance_channel(np.zeros((3, 3), bool), (0.666, 0.666)) == 255).all(), 'a section without bone must be 255, never 0'
+    far = np.zeros((80, 80), bool); far[0, 0] = True
+    assert P2.distance_channel(far, (0.666, 0.666))[79, 79] == 255, 'the clip at 15 mm failed'
+    # the dataset builder scales the channel to 0..1 float32, the same range as the colour channels
+    assert B.PRIOR_V2_DISTANCE_SCALE == 255.0
+
+
+def t_v2_report_matches_disk():
+    rp = ROOT / 'generated/cryo-ct-prior-v2-block2.json'
+    assert rp.exists(), 'the version 2 prior report is missing: run build-cryo-ct-prior-v2-block.py'
+    rep = json.loads(rp.read_text())
+    assert rep['prior_version'] == 2
+    assert rep['inputs']['prior_map_v2_sha256'] == P2.sha256_file(ROOT / 'registry/cryo-ct-prior-map-v2.json'), 'report written against another map'
+    assert rep['inputs']['prior_map_v1_sha256'] == P2.sha256_file(ROOT / 'registry/cryo-ct-prior-map.json'), 'the version 1 map changed'
+    assert [c['name'] for c in rep['channels']] == list(P2.CHANNELS)
+    block = ROOT / 'data/derived/nlm-vhf/cryosections/block2'
+    for c in P2.CHANNELS:
+        p = block / f'ct-prior-v2-{c}.nii.gz'
+        if not p.exists():
+            continue
+        assert rep['outputs'][c]['sha256'] == P2.sha256_file(p), f'{p.name} changed after the report'
+        vol = np.asanyarray(nib.load(p).dataobj)
+        if c == 'bone-distance':
+            bone = np.asanyarray(nib.load(block / 'ct-prior-v2-bone.nii.gz').dataobj) > 0
+            assert (vol[bone] == 0).all(), 'distance inside consensus bone is not 0'
+            empty = ~bone.any(axis=(0, 1))
+            if empty.any():
+                assert (vol[:, :, empty] == 255).all(), 'a section without consensus bone is not 255'
+        else:
+            assert set(np.unique(vol).tolist()) <= {0, 1}, f'{c} is not binary'
+    cov = rep['coverage']['primary_training_slices']
+    assert cov['slices'] == 197
+    assert 0.0 <= cov['bone']['prior_recall_of_reference'] <= 1.0
+    hist = rep['ct_grid']['eligible_votes_histogram']
+    assert not any(k.startswith('eligible_0_votes_') and not k.endswith('_votes_0') for k in hist), 'a vote was counted where nobody was eligible'
+
+
+def t_v2_prior_never_the_target():
+    fixed = PROTOCOL_V2['identity_by_hash']['fixed_now']
+    assert 'cryo-ct-prior-map' not in json.dumps(fixed), 'a prior map entered the frozen protocol v2 identity'
+    assert fixed['tissue_map_sha256'] == P.sha256_file(ROOT / 'registry/cryo-tissue-map.json'), 'registry/cryo-tissue-map.json changed: protocol v2 is no longer valid'
+    assert fixed['tissue_classes_volume_sha256'] == P.sha256_file(ROOT / 'data/derived/nlm-vhf/cryosections/block2/tissue-classes.nii.gz'), 'the reference volume changed'
+
+
+def t_v2_builder_output_from_a_real_run():
+    """Run the builder with --prior-version 2 into a temp tree: 7 channels, the four prior channels equal the volumes on
+    disk (distance as float32 / 255), colour and target identical to the version 1 build."""
+    block = ROOT / 'data/derived/nlm-vhf/cryosections/block2'
+    for c in P2.CHANNELS:
+        if not (block / f'ct-prior-v2-{c}.nii.gz').exists():
+            raise AssertionError(f'ct-prior-v2-{c}.nii.gz is not on disk: the version 2 builder cannot be exercised')
+    man = json.loads((block / 'manifest.json').read_text())
+    nk, nj, ni = man['grid']['shape_kji3'][:3]
+    with tempfile.TemporaryDirectory() as d:
+        cmd = [sys.executable, str(ROOT / 'scripts/build-cryo-nnunet-dataset.py'), '--block', str(block),
+               '--variant', 'rgb-plus-ct-prior', '--prior-version', '2', '--slices', 'train', '--out', d]
+        r = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
+        assert r.returncode == 0, f'the builder failed: {r.stderr[-400:]}'
+        root = Path(d) / B.PRIOR_V2_SPEC['name']
+        dj = json.loads((root / 'dataset.json').read_text())
+        assert len(dj['channel_names']) == 7 and dj['channel_names']['6'] == 'nonorm' and dj['labels']['ignore'] == B.NNUNET_IGNORE
+        rep = json.loads((Path(d) / 'cryo-nnunet-dataset-block2-rgb-plus-ct-prior-v2.json').read_text())
+        assert rep['prior_version'] == 2 and rep['dataset_id'] == 503 and len(rep['channel_meaning']) == 7
+        assert rep['inputs']['protocol_version'] == 2, 'a version 2 dataset must name protocol version 2'
+        assert set(rep['inputs']['ct_prior_v2']) == set(P2.CHANNELS)
+        assert not (Path(d) / 'cryo-nnunet-dataset-block2-rgb-plus-ct-prior.json').exists(), 'the version 1 report name was used'
+        rgb = np.load(block / 'rgb-kji.npy', mmap_mode='r')
+        tissue = np.asanyarray(nib.load(block / 'tissue-classes.nii.gz').dataobj)
+        vols = {c: np.asanyarray(nib.load(block / f'ct-prior-v2-{c}.nii.gz').dataobj) for c in P2.CHANNELS}
+        k_first = man['block']['k_first']
+        cases = sorted((root / 'labelsTr').glob('*.nii.gz'))
+        assert len(cases) == 197
+        for lf in cases[:2] + cases[len(cases) // 2:len(cases) // 2 + 2] + cases[-2:]:
+            case = lf.name[:-len('.nii.gz')]
+            z = int(case.split('_k')[1]) - k_first
+            lab = np.squeeze(np.asanyarray(nib.load(lf).dataobj))
+            want = tissue[:, :, z].copy(); want[want == 255] = B.NNUNET_IGNORE
+            assert lab.shape == (ni, nj) and np.array_equal(lab, want), f'{case}: target differs from the tissue classes'
+            for c in range(3):
+                got = np.squeeze(np.asanyarray(nib.load(root / 'imagesTr' / f'{case}_{c:04d}.nii.gz').dataobj))
+                assert np.array_equal(got, rgb[z][:, :, c].T), f'{case}: colour channel {c} wrong'
+            for c, name in enumerate(P2.CHANNELS, start=3):
+                img = nib.load(root / 'imagesTr' / f'{case}_{c:04d}.nii.gz')
+                got = np.squeeze(np.asanyarray(img.dataobj))
+                if name == 'bone-distance':
+                    assert img.get_data_dtype() == np.float32, f'{case}: the distance channel is not float32'
+                    assert np.allclose(got, vols[name][:, :, z].astype(np.float32) / 255.0, atol=1e-7), f'{case}: distance channel wrong'
+                    assert got.min() >= 0.0 and got.max() <= 1.0
+                else:
+                    assert img.get_data_dtype() == np.uint8 and np.array_equal(got, vols[name][:, :, z]), f'{case}: prior channel {name} wrong'
+
+
+def t_v2_refuses_rgb_only():
+    B.variant_spec('rgb-only', 2)
+
+
+for n, f in [('v2 map, builder and spec agree', t_v2_map_and_spec_agree),
+             ('v2 vote is a strict majority of the eligible models', t_v2_vote_is_strict_majority_of_eligible),
+             ('v2 distance encoding', t_v2_distance_encoding),
+             ('v2 prior report matches disk', t_v2_report_matches_disk),
+             ('v2 prior is not the target and protocol v2 identity is untouched', t_v2_prior_never_the_target),
+             ('v2 builder output from a real run', t_v2_builder_output_from_a_real_run)]:
+    check(n, f)
+refuses('prior version 2 for rgb-only', t_v2_refuses_rgb_only)
 
 print(json.dumps({'ok': not failures, 'failures': failures}))
 sys.exit(1 if failures else 0)

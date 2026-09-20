@@ -1,0 +1,74 @@
+{
+ "id": "cryo-ct-prior-map-v2",
+ "version": 2,
+ "date": "2026-09-20",
+ "supersedes": "registry/cryo-ct-prior-map.json (version 1, kept unchanged: the two version 1 training runs are bound to its hash)",
+ "purpose": "the CT prior channels of the rgb-plus-ct-prior variant for any training run under registry/machine-acceptance-protocol-v2.json. The prior is an input only: it never enters the loss target, the reference, the metrics or the protocol identity (the protocol pins none of these files; the training manifest pins the prior by hash at evaluation). Version 2 applies the channel design of plan B stage 2 (consensus one-hot at tissue level, prior distance, prior uncertainty) that version 1 deferred because it read one model.",
+ "why_a_version_2": "both version 1 variants are machine-failed under protocol version 1 and can never be scored under version 2 (gate 5). The post hoc analysis of 2026-09-20 (docs/findings-2026-09-20-observable-surface-posthoc.md) showed that on bone, the one class where the metric measures what it names, the one-model prior halved the observable boundary error (7.71 -> 3.41 mm p95) and its far tail is deep interior bone predicted as muscle. Protocol v2 has no score yet, so the prior can still change before its first run; a run that only changed the training date would be uninformative (docs/PROGRESS.md, 2026-09-20).",
+ "what_changed_from_v1": [
+  "bone: strict majority of the eligible CT models per voxel (TotalSegmentator total, MOOSE, Skellytour) instead of TotalSegmentator alone; a fourth channel marks the voxels where the eligible models disagree",
+  "bone distance: the in-plane Euclidean distance from every block voxel to the nearest consensus-bone voxel of the same section, clipped at 15 mm and scaled to 0..1 (0 inside consensus bone, 1 at or beyond 15 mm or in a section without consensus bone)",
+  "cartilage channel dropped: the only TotalSegmentator cartilage label (costal_cartilages) lies above every slice of block 2, so the version 1 channel was identically zero over the block and carried no information (generated/cryo-ct-prior-block2.json, cartilage prior voxels 0 in every stratum)",
+  "muscle: unchanged (TotalSegmentator total, the same ten labels of version 1); where a voxel is both consensus bone and TotalSegmentator muscle, bone wins and the count is recorded"
+ ],
+ "not_changed_and_why": [
+  "placement: transforms/nlm-ct-to-vhf.json, the pelvis-fitted rigid transform of version 1, with the same measured per-structure error (femora 7.5 to 8.7 mm under this transform). The femora's own rigid fits (3.4 to 4.4 mm) are NOT applied: they were fitted on the Denver femur meshes, which are the source of the reference labels this variant is graded against, so a per-structure fit onto them would tune the input to the reference. The pelvis fit shares that dependence in a weaker form and is recorded as a limit, not removed.",
+  "muscle sources: MOOSE clin_ct_muscles and clin_ct_body_composition were considered and not used in this version. The muscles model is not installed on the training box (459 MB download) and its label set is unknown until installed; the body-composition workflow crops its field of view to the lumbar spine and is off-label over the thigh. Both stay candidates for a later prior version; muscle passed its Dice criterion in both version 1 variants and the failing criterion is the bone surface.",
+  "no organ, vessel or nerve channel: plan B reserves organ priors for the trunk block"
+ ],
+ "sources": {
+  "totalseg": {
+   "tool": "TotalSegmentator", "task": "total", "licence": "Apache-2.0 weights, the only task this project ships",
+   "labels": "data/derived/nlm-vhf/totalseg.nii",
+   "bone_labels": "the 62 labels mapped to bone in registry/cryo-ct-prior-map.json (read from that file, not copied)",
+   "muscle_labels": "the 10 labels mapped to muscle in registry/cryo-ct-prior-map.json"
+  },
+  "moose": {
+   "tool": "MOOSE (moosez 3.2.2)", "licence": "Apache-2.0 code, CC BY 4.0 weights",
+   "tasks": ["clin_ct_all_bones_v1", "clin_ct_peripheral_bones", "clin_ct_ribs", "clin_ct_vertebrae"],
+   "labels": "data/derived/nlm-vhf/moose/segmentations/clin_CT_<task>_segmentation_CT_vhf.nii.gz",
+   "bone_rule": "every non-zero label of every listed task is bone (all four tasks label bones only: their organ_indices files list bones, the spine, the rib cage and the pelvis)"
+  },
+  "skellytour": {
+   "tool": "Skellytour high", "licence": "Apache-2.0 code; weights as recorded in datasets.csv",
+   "labels": "data/derived/nlm-vhf/skellytour/skellytour_high.nii.gz",
+   "manifest": "data/derived/nlm-vhf/skellytour/skellytour_high.json (must be complete with no missing chunk; refused otherwise)",
+   "bone_rule": "every non-zero label is bone (60 bone labels)",
+   "eligibility": "inside the crop of data/derived/nlm-vhf/skellytour/plan.json only; voxels outside the crop were never given to the model (unprocessed, not negative)"
+  },
+  "coverage": {
+   "mask": "data/derived/nlm-vhf/ct-coverage-mask.nii.gz",
+   "rule": "no model is eligible outside the CT field of view; every channel is 0 there (bone distance 1): the prior is silent, never negative"
+  }
+ },
+ "vote": {
+  "unit": "voxel of the CT grid, tissue level (bone or not), names never enter",
+  "rule": "strict majority of the eligible models: votes * 2 > eligible; with two eligible models both must agree, with three at least two",
+  "disagreement": "0 < votes < eligible: some but not all eligible models call the voxel bone",
+  "states_kept_apart": "unsupported (outside the field of view), unprocessed (outside the Skellytour crop) and negative are different states; only eligible models vote"
+ },
+ "channels": [
+  {"channel": 0, "name": "bone", "file": "ct-prior-v2-bone.nii.gz", "encoding": "uint8 0/1, consensus bone", "nnunet_normalisation": "nonorm"},
+  {"channel": 1, "name": "bone-disagreement", "file": "ct-prior-v2-bone-disagreement.nii.gz", "encoding": "uint8 0/1, eligible models disagree", "nnunet_normalisation": "nonorm"},
+  {"channel": 2, "name": "bone-distance", "file": "ct-prior-v2-bone-distance.nii.gz", "encoding": "uint8 0..255 on disk = round(255 * min(d, 15 mm) / 15 mm), d the in-plane distance to the nearest consensus-bone voxel of the same block section; the dataset builder writes it as float32 value / 255 so the network sees 0..1", "nnunet_normalisation": "nonorm"},
+  {"channel": 3, "name": "muscle", "file": "ct-prior-v2-muscle.nii.gz", "encoding": "uint8 0/1, TotalSegmentator muscle labels, bone wins a conflict", "nnunet_normalisation": "nonorm"}
+ ],
+ "encoding_note": "the four channels are appended after the three RGB channels in this order; a voxel outside the CT field of view is 0, 0, 255, 0",
+ "resampling": "nearest neighbour of the CT-grid class and disagreement volumes at the block voxel centres through inverse(nlm-ct-to-vhf) (scripts/build-cryo-ct-prior-block.py sample_slice, unchanged); the distance channel is computed on the block grid after resampling, per section, with the block's in-plane spacing",
+ "distance_max_mm": 15.0,
+ "placement": {
+  "transform": "transforms/nlm-ct-to-vhf.json",
+  "type": "rigid, no scale, fitted on the pelvis (CT hip bones and sacrum onto the Denver pelvis)",
+  "measured_error_by_structure_mm": "as recorded in registry/cryo-ct-prior-map.json placement (hip bones 2.4, sacrum 9.8, femora 7.5 to 8.7 under this transform); nothing is corrected"
+ },
+ "limits": [
+  "three models trained on mixed-sex clinical CT, run on one CT of this donor: agreement between them is agreement between similar models, never anatomical confidence",
+  "the muscle channel is TotalSegmentator total only, which has no thigh muscle label: the muscle prior is empty over most of the primary slices, as in version 1",
+  "the fresh CT was acquired on a table and the block was frozen in another posture; the pelvis-fitted placement carries a measured per-structure error into every channel, and the distance channel carries it too (a shifted prior gives a shifted distance)",
+  "the pelvis fit itself used Denver pelvis meshes, the source family of the reference; recorded, not removed",
+  "the prior channels are inputs: the reference stays registry/cryo-tissue-map.json applied to the Denver original labels",
+  "nothing here is anatomy"
+ ],
+ "builder": "scripts/build-cryo-ct-prior-v2-block.py",
+ "report": "generated/cryo-ct-prior-v2-block2.json"
+}

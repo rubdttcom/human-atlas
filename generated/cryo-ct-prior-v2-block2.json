@@ -1,0 +1,343 @@
+{
+ "id": "cryo-ct-prior-v2-block2",
+ "date": "2026-09-20",
+ "prior_version": 2,
+ "block": {
+  "region": 2,
+  "k_first": 2285,
+  "k_last": 3532,
+  "slices": 1248,
+  "z_mm": [
+   760.572,
+   1175.823
+  ],
+  "nlm_first": "avf1554b",
+  "nlm_last": "avf1970a"
+ },
+ "inputs": {
+  "prior_map_v2": "registry/cryo-ct-prior-map-v2.json",
+  "prior_map_v2_sha256": "faf8dafce82b88e3de2b4a560670712ccc06801454e9b13e6ea9bb0b1f8248e2",
+  "prior_map_v1": "registry/cryo-ct-prior-map.json",
+  "prior_map_v1_sha256": "8cd556d7a045a16c7c6b837cf48fffdb02c35d2ce99dbb8eba082b238af4472b",
+  "transform": "transforms/nlm-ct-to-vhf.json",
+  "transform_sha256": "92cb688b2a2c950ad30f081d9566409311059c0a61024ee33245b07817943be4",
+  "totalseg": "data/derived/nlm-vhf/totalseg.nii",
+  "totalseg_sha256": "e52951d0589e325a65932483e19e6bb09556a1ca4feb7e2265c5f25199271177",
+  "moose": {
+   "all_bones_v1": {
+    "file": "data/derived/nlm-vhf/moose/segmentations/clin_CT_all_bones_v1_segmentation_CT_vhf.nii.gz",
+    "sha256": "1f06f45d3b842fb1b68190c328a9a729a069b71c18058d7b00b1c96c8451ee71"
+   },
+   "peripheral_bones": {
+    "file": "data/derived/nlm-vhf/moose/segmentations/clin_CT_peripheral_bones_segmentation_CT_vhf.nii.gz",
+    "sha256": "db04d370604173365ac4cd0e7b6c7ffde127efc0b3f3239856dd307becc5fb78"
+   },
+   "ribs": {
+    "file": "data/derived/nlm-vhf/moose/segmentations/clin_CT_ribs_segmentation_CT_vhf.nii.gz",
+    "sha256": "c8f2c1580673bbedfba1c81baf74be37ab43c99153dfac5589f0abab8757d13e"
+   },
+   "vertebrae": {
+    "file": "data/derived/nlm-vhf/moose/segmentations/clin_CT_vertebrae_segmentation_CT_vhf.nii.gz",
+    "sha256": "d7ddaa8f5727094f2059031218cb35da5816cae2922f2752c9d800a7db2af511"
+   }
+  },
+  "skellytour": "data/derived/nlm-vhf/skellytour/skellytour_high.nii.gz",
+  "skellytour_sha256": "5c697360eb31c7828e7e593f9b166a9b99922bfa6a72f8192c53a1bac3d64ddd",
+  "skellytour_manifest_sha256": "c1162db05b8b807f3a08cfa427a0b4ed1f1f673ca3f00ee0d46246c9f2610e71",
+  "skellytour_plan_sha256": "3a9ce866c1ab7fda297fa4399efd4ceae9be8a71ee9f3df32760dcba594605c2",
+  "skellytour_crop_ij": [
+   0,
+   512,
+   79,
+   391
+  ],
+  "coverage_mask": "data/derived/nlm-vhf/ct-coverage-mask.nii.gz",
+  "coverage_mask_sha256": "9d3c934e33af5c3f26be10feb7cee34b9fdcc4665a0205e3ad2c70ec13442ca6",
+  "block_manifest_sha256": "dbb73030ca5a4961de164fc9c0dbb85e6c839eeb414969f1185a3d909061325e",
+  "tissue_classes_sha256": "a3d44efe5965e6b8d6ccbbf496c5407962f877737cf08c7d58013d319eccf812",
+  "bands": "registry/cryo-eval-bands-v1.json",
+  "bands_sha256": "9806cf37f211c7500477fd19328c41e30baef6bb29c5657d18416dbea9e65cd9",
+  "v1_prior_sha256": "f5bdf6be4b242faa9a27814da95ac66b807cee63dc9bfbeb373b076fdf574f19"
+ },
+ "outputs": {
+  "bone": {
+   "file": "ct-prior-v2-bone.nii.gz",
+   "sha256": "f7803173635e2aaf11de347a7a1dfe106c0411ec07f75690b0f9d14b2595dcfd",
+   "dtype": "uint8",
+   "order": "(i, j, k)"
+  },
+  "bone-disagreement": {
+   "file": "ct-prior-v2-bone-disagreement.nii.gz",
+   "sha256": "065f578288d6568dbd330bfa52d1a9d04bdf6df1d09b46295e6d26e1cccc4c23",
+   "dtype": "uint8",
+   "order": "(i, j, k)"
+  },
+  "bone-distance": {
+   "file": "ct-prior-v2-bone-distance.nii.gz",
+   "sha256": "76a39d770797a3f61407294b710c7494356cabe8cd963da3bdc654a5b85b35e5",
+   "dtype": "uint8",
+   "order": "(i, j, k)"
+  },
+  "muscle": {
+   "file": "ct-prior-v2-muscle.nii.gz",
+   "sha256": "a1c39e65371fa3bba5df068e75f05d8d1ba1a8802eb7a9df9179af4b5e0f9f73",
+   "dtype": "uint8",
+   "order": "(i, j, k)"
+  }
+ },
+ "output_dir_is_block": true,
+ "channels": [
+  {
+   "channel": 0,
+   "name": "bone",
+   "file": "ct-prior-v2-bone.nii.gz",
+   "sha256": "f7803173635e2aaf11de347a7a1dfe106c0411ec07f75690b0f9d14b2595dcfd",
+   "dtype": "uint8",
+   "order": "(i, j, k)"
+  },
+  {
+   "channel": 1,
+   "name": "bone-disagreement",
+   "file": "ct-prior-v2-bone-disagreement.nii.gz",
+   "sha256": "065f578288d6568dbd330bfa52d1a9d04bdf6df1d09b46295e6d26e1cccc4c23",
+   "dtype": "uint8",
+   "order": "(i, j, k)"
+  },
+  {
+   "channel": 2,
+   "name": "bone-distance",
+   "file": "ct-prior-v2-bone-distance.nii.gz",
+   "sha256": "76a39d770797a3f61407294b710c7494356cabe8cd963da3bdc654a5b85b35e5",
+   "dtype": "uint8",
+   "order": "(i, j, k)"
+  },
+  {
+   "channel": 3,
+   "name": "muscle",
+   "file": "ct-prior-v2-muscle.nii.gz",
+   "sha256": "a1c39e65371fa3bba5df068e75f05d8d1ba1a8802eb7a9df9179af4b5e0f9f73",
+   "dtype": "uint8",
+   "order": "(i, j, k)"
+  }
+ ],
+ "method": {
+  "vote": {
+   "unit": "voxel of the CT grid, tissue level (bone or not), names never enter",
+   "rule": "strict majority of the eligible models: votes * 2 > eligible; with two eligible models both must agree, with three at least two",
+   "disagreement": "0 < votes < eligible: some but not all eligible models call the voxel bone",
+   "states_kept_apart": "unsupported (outside the field of view), unprocessed (outside the Skellytour crop) and negative are different states; only eligible models vote"
+  },
+  "sources": {
+   "totalseg": {
+    "tool": "TotalSegmentator",
+    "task": "total",
+    "licence": "Apache-2.0 weights, the only task this project ships",
+    "labels": "data/derived/nlm-vhf/totalseg.nii",
+    "bone_labels": "the 62 labels mapped to bone in registry/cryo-ct-prior-map.json (read from that file, not copied)",
+    "muscle_labels": "the 10 labels mapped to muscle in registry/cryo-ct-prior-map.json"
+   },
+   "moose": {
+    "tool": "MOOSE (moosez 3.2.2)",
+    "licence": "Apache-2.0 code, CC BY 4.0 weights",
+    "tasks": [
+     "clin_ct_all_bones_v1",
+     "clin_ct_peripheral_bones",
+     "clin_ct_ribs",
+     "clin_ct_vertebrae"
+    ],
+    "labels": "data/derived/nlm-vhf/moose/segmentations/clin_CT_<task>_segmentation_CT_vhf.nii.gz",
+    "bone_rule": "every non-zero label of every listed task is bone (all four tasks label bones only: their organ_indices files list bones, the spine, the rib cage and the pelvis)"
+   },
+   "skellytour": {
+    "tool": "Skellytour high",
+    "licence": "Apache-2.0 code; weights as recorded in datasets.csv",
+    "labels": "data/derived/nlm-vhf/skellytour/skellytour_high.nii.gz",
+    "manifest": "data/derived/nlm-vhf/skellytour/skellytour_high.json (must be complete with no missing chunk; refused otherwise)",
+    "bone_rule": "every non-zero label is bone (60 bone labels)",
+    "eligibility": "inside the crop of data/derived/nlm-vhf/skellytour/plan.json only; voxels outside the crop were never given to the model (unprocessed, not negative)"
+   },
+   "coverage": {
+    "mask": "data/derived/nlm-vhf/ct-coverage-mask.nii.gz",
+    "rule": "no model is eligible outside the CT field of view; every channel is 0 there (bone distance 1): the prior is silent, never negative"
+   }
+  },
+  "resampling": "nearest neighbour of the CT-grid class and disagreement volumes at the block voxel centres through inverse(nlm-ct-to-vhf) (scripts/build-cryo-ct-prior-block.py sample_slice, unchanged); the distance channel is computed on the block grid after resampling, per section, with the block's in-plane spacing",
+  "distance": "in-plane Euclidean distance to the nearest consensus-bone voxel of the same section, spacing (0.666, 0.666) mm, clipped at 15.0 mm, uint8 round(255 * d / 15.0); 255 in a section without consensus bone",
+  "placement": {
+   "transform": "transforms/nlm-ct-to-vhf.json",
+   "type": "rigid, no scale, fitted on the pelvis (CT hip bones and sacrum onto the Denver pelvis)",
+   "measured_error_by_structure_mm": "as recorded in registry/cryo-ct-prior-map.json placement (hip bones 2.4, sacrum 9.8, femora 7.5 to 8.7 under this transform); nothing is corrected"
+  }
+ },
+ "ct_grid": {
+  "grid": [
+   512,
+   512,
+   1734
+  ],
+  "voxel_ml": 0.000879,
+  "bone_voxels": {
+   "totalseg": 5096546,
+   "moose_union": 7673877,
+   "skellytour": 4976807,
+   "consensus": 5187336,
+   "disagreement": 3669220
+  },
+  "eligible_votes_histogram": {
+   "eligible_0_votes_0": 187616236,
+   "eligible_2_votes_0": 57422191,
+   "eligible_3_votes_0": 201406539,
+   "eligible_3_votes_1": 2925394,
+   "eligible_3_votes_2": 743826,
+   "eligible_3_votes_3": 4443510
+  },
+  "labels_outside_field_of_view_discarded": {
+   "totalseg_bone": 643,
+   "totalseg_muscle": 0,
+   "moose_bone": 2637,
+   "skellytour_bone": 374
+  },
+  "pairwise_dice_bone": {
+   "totalseg_moose": 0.7456,
+   "totalseg_skellytour_in_crop": 0.9184,
+   "moose_skellytour_in_crop": 0.7414
+  },
+  "bone_over_muscle_conflicts": 2290,
+  "muscle_voxels_totalseg": 4034607
+ },
+ "coverage": {
+  "slices_with_any_ct_field_of_view": 1248,
+  "whole_block": {
+   "slices": 1248,
+   "bone": {
+    "reference_voxels": 7918188,
+    "prior_voxels": 11968001,
+    "prior_recall_of_reference": 0.9327,
+    "prior_on_labelled_other_tissue_fraction": 0.0601,
+    "prior_on_ignore_voxels": 4109986,
+    "v1_prior_voxels": 11775897,
+    "v1_prior_recall_of_reference": 0.9261,
+    "v1_prior_on_labelled_other_tissue_fraction": 0.0613
+   },
+   "muscle": {
+    "reference_voxels": 26058569,
+    "prior_voxels": 20983770,
+    "prior_recall_of_reference": 0.5651,
+    "prior_on_labelled_other_tissue_fraction": 0.0003,
+    "prior_on_ignore_voxels": 6255001,
+    "v1_prior_voxels": 20996244,
+    "v1_prior_recall_of_reference": 0.5654,
+    "v1_prior_on_labelled_other_tissue_fraction": 0.0004
+   },
+   "bone_disagreement": {
+    "voxels": 4731844,
+    "on_reference_bone": 506703,
+    "on_labelled_non_bone": 418813,
+    "on_ignore": 3806328
+   },
+   "bone_distance": {
+    "reference_bone_within_2mm_of_prior_bone": 0.9839,
+    "reference_bone_within_5mm_of_prior_bone": 0.9977,
+    "missed_reference_bone_voxels": 532625,
+    "missed_reference_bone_distance_mm_p50_p95": [
+     1.353,
+     4.471
+    ],
+    "labelled_non_bone_within_2mm_of_prior_bone": 0.0087,
+    "sections_without_prior_bone": 0
+   }
+  },
+  "primary_training_slices": {
+   "slices": 197,
+   "bone": {
+    "reference_voxels": 1730136,
+    "prior_voxels": 1800911,
+    "prior_recall_of_reference": 0.9232,
+    "prior_on_labelled_other_tissue_fraction": 0.0668,
+    "prior_on_ignore_voxels": 89339,
+    "v1_prior_voxels": 1799573,
+    "v1_prior_recall_of_reference": 0.9196,
+    "v1_prior_on_labelled_other_tissue_fraction": 0.0668
+   },
+   "muscle": {
+    "reference_voxels": 9960627,
+    "prior_voxels": 5443244,
+    "prior_recall_of_reference": 0.5231,
+    "prior_on_labelled_other_tissue_fraction": 0.0,
+    "prior_on_ignore_voxels": 232945,
+    "v1_prior_voxels": 5444696,
+    "v1_prior_recall_of_reference": 0.5232,
+    "v1_prior_on_labelled_other_tissue_fraction": 0.0001
+   },
+   "bone_disagreement": {
+    "voxels": 422318,
+    "on_reference_bone": 107950,
+    "on_labelled_non_bone": 129993,
+    "on_ignore": 184375
+   },
+   "bone_distance": {
+    "reference_bone_within_2mm_of_prior_bone": 0.9823,
+    "reference_bone_within_5mm_of_prior_bone": 0.9975,
+    "missed_reference_bone_voxels": 132926,
+    "missed_reference_bone_distance_mm_p50_p95": [
+     1.353,
+     4.059
+    ],
+    "labelled_non_bone_within_2mm_of_prior_bone": 0.0096,
+    "sections_without_prior_bone": 0
+   }
+  },
+  "band_scoring_slices": {
+   "slices": 300,
+   "bone": {
+    "reference_voxels": 4851480,
+    "prior_voxels": 5662819,
+    "prior_recall_of_reference": 0.9375,
+    "prior_on_labelled_other_tissue_fraction": 0.0495,
+    "prior_on_ignore_voxels": 877529,
+    "v1_prior_voxels": 5545695,
+    "v1_prior_recall_of_reference": 0.9299,
+    "v1_prior_on_labelled_other_tissue_fraction": 0.051
+   },
+   "muscle": {
+    "reference_voxels": 10867010,
+    "prior_voxels": 7268813,
+    "prior_recall_of_reference": 0.5727,
+    "prior_on_labelled_other_tissue_fraction": 0.0005,
+    "prior_on_ignore_voxels": 1042308,
+    "v1_prior_voxels": 7277719,
+    "v1_prior_recall_of_reference": 0.5732,
+    "v1_prior_on_labelled_other_tissue_fraction": 0.0007
+   },
+   "bone_disagreement": {
+    "voxels": 1445263,
+    "on_reference_bone": 304950,
+    "on_labelled_non_bone": 172008,
+    "on_ignore": 968305
+   },
+   "bone_distance": {
+    "reference_bone_within_2mm_of_prior_bone": 0.9849,
+    "reference_bone_within_5mm_of_prior_bone": 0.9981,
+    "missed_reference_bone_voxels": 303270,
+    "missed_reference_bone_distance_mm_p50_p95": [
+     1.353,
+     4.235
+    ],
+    "labelled_non_bone_within_2mm_of_prior_bone": 0.0151,
+    "sections_without_prior_bone": 0
+   }
+  }
+ },
+ "limits": [
+  "three models trained on mixed-sex clinical CT, run on one CT of this donor: agreement between them is agreement between similar models, never anatomical confidence",
+  "the muscle channel is TotalSegmentator total only, which has no thigh muscle label: the muscle prior is empty over most of the primary slices, as in version 1",
+  "the fresh CT was acquired on a table and the block was frozen in another posture; the pelvis-fitted placement carries a measured per-structure error into every channel, and the distance channel carries it too (a shifted prior gives a shifted distance)",
+  "the pelvis fit itself used Denver pelvis meshes, the source family of the reference; recorded, not removed",
+  "the prior channels are inputs: the reference stays registry/cryo-tissue-map.json applied to the Denver original labels",
+  "nothing here is anatomy",
+  "prior_recall_of_reference is the fraction of Denver reference voxels of a class that the placed prior also calls that class; it mixes segmentation difference, placement error and posture, and separates none of them",
+  "prior_on_labelled_other_tissue_fraction counts prior voxels of a class that fall on a Denver label of another class; prior voxels on ignore are counted apart because the tissue there is unlabelled, not negative",
+  "the version 1 columns are the same measurement on data/derived/nlm-vhf/cryosections/block2/ct-prior-tissue.nii.gz; they compare two inputs, not two results"
+ ],
+ "seconds": 127.8
+}
