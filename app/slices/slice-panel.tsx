@@ -1,17 +1,17 @@
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import type {LoadedVolume,Plane,SliceFrame,Vec3} from './types.ts';
-import {add,directionLabel,pixelPoint,projectPoint,scale} from './coordinates.ts';
+import {add,directionLabel,dot,pixelPoint,projectPoint,scale,transform} from './coordinates.ts';
 import {sampleStage} from './sampler.ts';
 import type {ImageSettings,SliceRenderEngine} from './render-engine.ts';
 
 interface Props {
   id:string; title:string; plane:Plane; position:Vec3; volume:LoadedVolume; engine:SliceRenderEngine;
-  settings:ImageSettings; resolution:number; frames:Map<string,SliceFrame>; clickAction:'navigate'|'select';
-  onPosition:(point:Vec3)=>void; onSelect:(value:number)=>void; onError:(message:string)=>void;
+  settings:ImageSettings; resolution:number; frames:Map<string,SliceFrame>; clickAction:'navigate'|'select'; inputStarted:number;
+  onPosition:(point:Vec3,inputStarted?:number)=>void; onSelect:(value:number)=>void; onError:(message:string)=>void;
   slider:{value:number;min:number;max:number;step:number;label:string;onChange:(value:number)=>void};
 }
 export function SlicePanel(props:Props){
-  const {id,title,plane,position,volume,engine,settings,resolution,frames,clickAction,onPosition,onSelect,onError,slider}=props;
+  const {id,title,plane,position,volume,engine,settings,resolution,frames,clickAction,onPosition,onSelect,onError,slider,inputStarted}=props;
   const host=useRef<HTMLDivElement>(null),canvas=useRef<HTMLCanvasElement>(null);
   const [size,setSize]=useState([256,256]),[zoom,setZoom]=useState(1),[pan,setPan]=useState<[number,number]>([0,0]);
   const latest=useRef(props);latest.current=props;
@@ -19,25 +19,27 @@ export function SlicePanel(props:Props){
   const [pixelStatus,setPixelStatus]=useState('');
   const drag=useRef<{x:number;y:number;pan:[number,number];mode:'pan'|'navigate'}|null>(null);
   const pending=useRef<number>(0),pendingPoint=useRef<Vec3|null>(null);
+  const pendingStarted=useRef(0);
   useEffect(()=>{const el=host.current!;const observer=new ResizeObserver(()=>setSize([el.clientWidth,el.clientHeight]));observer.observe(el);return()=>observer.disconnect();},[]);
-  useEffect(()=>{
+  useLayoutEffect(()=>{
     const width=Math.max(32,Math.round(Math.min(resolution,size[0]))),height=Math.max(32,Math.round(width*size[1]/Math.max(1,size[0])));
     const mpp=.55/(width*zoom);
-    const displayed={...plane,origin:add(plane.origin,add(scale(plane.right,pan[0]),scale(plane.up,pan[1])))};
-    let cancelled=false;
-    const raf=requestAnimationFrame(()=>{
-      if(cancelled)return;
+    // Crosshair movement within this plane must not drag the image underneath it.
+    // Project the fixed region centre onto the shared plane, then apply local pan.
+    const center=transform(volume.voxelToStage,volume.manifest.region.initialVoxel);
+    const offset=dot(add(plane.origin,scale(center,-1)),plane.normal);
+    const displayed={...plane,origin:add(add(center,scale(plane.normal,offset)),add(scale(plane.right,pan[0]),scale(plane.up,pan[1])))};
+    // Pointer input is already coalesced per animation frame. Finish all panels
+    // in this commit before paint; a second RAF queues stale crosshair frames.
       try{
         engine.render(canvas.current!,displayed,width,height,mpp,settings);
         const ctx=canvas.current!.getContext('2d')!,cross=projectPoint(displayed,position);
         const x=width/2+cross[0]/mpp,y=height/2-cross[1]/mpp;
         ctx.strokeStyle='#65d7cc';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,height);ctx.moveTo(0,y);ctx.lineTo(width,y);ctx.stroke();
-        frames.set(id,{plane:displayed,canvas:canvas.current!,widthMetres:width*mpp,heightMetres:height*mpp,revision:(frames.get(id)?.revision??0)+1});
+        frames.set(id,{plane:displayed,canvas:canvas.current!,widthMetres:width*mpp,heightMetres:height*mpp,revision:(frames.get(id)?.revision??0)+1,inputStarted});
         rendered.current={plane:displayed,width,height,mpp};
       }catch(error){onError(error instanceof Error?error.message:'Slice rendering failed');}
-    });
-    return()=>{cancelled=true;cancelAnimationFrame(raf);};
-  },[engine,plane,position,size,zoom,pan,settings,resolution,frames,id,onError]);
+  },[engine,plane,position,size,zoom,pan,settings,resolution,frames,id,onError,volume,inputStarted]);
   useEffect(()=>()=>{frames.delete(id);cancelAnimationFrame(pending.current);},[frames,id]);
   useEffect(()=>{
     const el=host.current!;
@@ -48,7 +50,7 @@ export function SlicePanel(props:Props){
     const r=rendered.current,rect=host.current!.getBoundingClientRect();
     return r?pixelPoint(r.plane,(clientX-rect.left)/rect.width*r.width-.5,(clientY-rect.top)/rect.height*r.height-.5,r.width,r.height,r.mpp):null;
   };
-  const queue=(point:Vec3)=>{pendingPoint.current=point;if(!pending.current)pending.current=requestAnimationFrame(()=>{pending.current=0;if(pendingPoint.current)latest.current.onPosition(pendingPoint.current);});};
+  const queue=(point:Vec3)=>{pendingPoint.current=point;pendingStarted.current=performance.now();if(!pending.current)pending.current=requestAnimationFrame(()=>{pending.current=0;if(pendingPoint.current)latest.current.onPosition(pendingPoint.current,pendingStarted.current);});};
   return <section className="slice-panel" aria-label={`${title} slice`} data-slice={id}>
     <header><strong>{title}</strong><span>{pixelStatus||'Drag crosshair · wheel / ↑ ↓'}</span></header>
     <div ref={host} className="slice-image" tabIndex={0} role="application" aria-label={`${title} image navigation`}

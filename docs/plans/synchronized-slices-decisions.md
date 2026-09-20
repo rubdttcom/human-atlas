@@ -104,3 +104,96 @@ responses from a server ignoring cancellation. The loader binds the served atlas
 input identities, cropped affines, exact provenance and geometry identities before
 returning a volume. No global volume cache is retained. Phase 2 now connects this
 package to the workspace; timing estimates for UI completion remain uncommitted.
+
+## Workspace implementation observations (2026-09-14)
+
+The workspace now supplies Atlas/Slices entry/exit, orthogonal four-panel and
+oblique two-panel layouts, shared position and selection, explicit centring,
+window presets, mask boundary/fill opacity, plane visibility, independent pan/zoom,
+keyboard/wheel/drag input, reduced display resolution and mobile panel switching.
+It restricts 3D geometry to the seven mapped original CT assets and their used
+chunks, checks mesh buffer hashes, and preserves Atlas React state on return.
+The heading and source details identify these seven slice-compatible parts; the
+structure selector contains only that exact label-to-mesh mapping.
+The 3D scene consumes the actual copied slice canvases and their plane descriptors.
+It disposes plane textures and releases its graphics context on exit. Detailed
+retained-resource accounting remains to be measured.
+
+One `SliceRenderEngine` owns three `Data3DTexture`s: R32F HU, R8 labels, R8 support,
+nearest texture filtering with explicit trilinear scalar sampling in GLSL3.
+Support values 0/1 in normalized R8 must be compared against 0.5/255, not 0.5;
+the first screenshot exposed that bug, now corrected. Labels decode by ×255 and
+rounding. GPU float readback is a test-only method, not a product control.
+
+Real-package comparison against the CPU reference passed 20,173 supported samples
+across axial, coronal, sagittal and two oblique orientations: maximum error
+0.005530598 HU (frozen limit 0.1 HU), zero support or label mismatches.
+The first run found 25 support disagreements: affine inversion made exact native
+centres such as k=51 become 50.99999999999994 in CPU double math, introducing a
+spurious nonzero interpolation weight into the excluded neighbour. `sampleStage`
+now removes inversion round-off within 1e-10 voxel of integer centres;
+`sampleVoxel` still rejects every genuinely nonzero unsupported contribution,
+including the new 1e-8-voxel control. Numeric acceptance tolerances are unchanged.
+
+`scripts/browser-check-slices.py` uses Chromium 143.0.7499.4, ANGLE SwiftShader
+on CPU, at 1440×1000 and 390×844. It passes source loading, native/shader sampling,
+selection without centring, explicit centring, keyboard, wheel, width clamping,
+oblique pivot/reset, reduced resolution, exit, and no horizontal overflow.
+Added checks cover repeated picks at the same pixel, sidebar wheel isolation and
+orbit leaving both the crosshair and slice image unchanged. That repeated-pick
+test guards a UI correction: the raster centre is now the fixed volume centre
+projected onto the shared plane, so moving the crosshair within a slice does not
+drag its image underneath the cursor.
+
+The headless harness must omit inherited DISPLAY/WAYLAND_DISPLAY/XAUTHORITY;
+otherwise ANGLE attempts an authenticated X11 connection and fails. Chrome 149
+with native EGL was separately observed to expose the Radeon 880M, but no native
+performance benchmark was run. After the user's restriction on GPU work, all
+browser shader checks use SwiftShader CPU only. No training folders are accessed.
+Browser reports/screenshots are in ignored `artifacts/slices/`. These checks are
+not the complete release acceptance suite: remaining gates are recorded below.
+
+## Remaining first-release acceptance gates
+
+- Complete the remaining interaction and production checks below. The synthetic
+  shader and recovery checks recorded in the following section now pass.
+- Inspect Atlas selection/isolation/provenance restoration, actual network/load
+  time, CPU/GPU allocation budgets and repeated entry/exit retained resources.
+- Production Chromium and Firefox regressions now pass the tested interactions;
+  sustained hardware performance and resource budgets remain open. Do not claim a
+  browser supported solely from the Chromium result.
+- Complete the requirement-by-requirement release audit and applicable repository
+  checks on the final state. RGB remains phase 5, outside this first release.
+
+## CPU browser follow-up (2026-09-14, working tree based on 4f4c825)
+
+The asymmetric shader phantom now passes in Chromium 143 and Firefox 155:
+315 native centres, 720 orthogonal/tilted samples, maximum error
+0.0001189248 HU, mirror negative control, excluded-gap controls, and zero retained
+volume textures after disposal. Real-volume shader/reference comparison passes
+20,173 supported samples with maximum error 0.0055305978 HU and no label/support
+mismatches. Chromium also passes missing-intensity-chunk error/retry and actual
+3D context-loss error/retry. The browser regression selects a mapped organ by
+clicking the 3D canvas, verifies pan/overlay/plane controls and switches the
+active mobile panel.
+
+Firefox uses a private Xvfb display and Mesa llvmpipe, with software rendering
+checked before opening the atlas. It passes desktop/mobile interaction checks.
+Its resize test exposed immutable texture storage being reused after canvas
+dimensions changed. The scene now replaces and disposes that CanvasTexture;
+the repeated Firefox run passes without texSubImage errors.
+
+The sustained Chromium **software** benchmark on the production build still fails
+the performance target: with the renderer's software-adaptive 0.5 pixel ratio,
+384-pixel slices give p95 335.2 ms and 10.64 fps; 192-pixel slices give p95
+278.2 ms and 12.05 fps. These are not hardware-GPU measurements or a release pass.
+The adaptive path preserves full-resolution slice canvases and lowers only the 3D
+context density; hardware renderers retain the existing 1.5–2× density path.
+Input-to-display timing observes a coherent displayed set of planes and the next
+animation frame, including input/render scheduling. Performance measures are
+cleared after delivery to observers. The eight-cycle production run records six
+volume/mesh resources, 26.85 MB transferred and 26.89 MB decoded; the slowest
+resource took 601 ms. Backing storage stays near 33.41 MB while JS heap rises from
+11.04 to 11.35 MB and embedder heap from 2.36 to 3.15 MB. This does not establish
+the absence of retained-resource growth; the hardware performance measurement and
+a longer lifecycle audit remain open.

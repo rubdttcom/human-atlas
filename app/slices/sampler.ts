@@ -25,7 +25,13 @@ export function sampleVoxel(volume: VolumeGrid, point: Vec3): Sample {
   const label = labels[index(...p.map(Math.round) as Vec3)];
   return label === undefined ? {state:'unavailable'} : {state:'acquired',hu,label};
 }
-export const sampleStage = (volume: VolumeGrid, point: Vec3): Sample => sampleVoxel(volume,transform(volume.stageToVoxel,point));
+export const sampleStage = (volume: VolumeGrid, point: Vec3): Sample => {
+  // Affine inversion can turn an exact centre into e.g. 50.99999999999994.
+  // Remove double-precision round-off before constructing the interpolation footprint.
+  // sampleVoxel itself continues to require support for every genuinely nonzero weight.
+  const voxel=transform(volume.stageToVoxel,point).map(v=>Math.abs(v-Math.round(v))<1e-10?Math.round(v):v) as Vec3;
+  return sampleVoxel(volume,voxel);
+};
 export function windowValue(hu: number, width: number, level: number): number {
   if (!Number.isFinite(width) || width <= 0 || !Number.isFinite(level)) throw new Error('Window width must be positive and level finite');
   return Math.max(0,Math.min(1,(hu-level)/width+.5));

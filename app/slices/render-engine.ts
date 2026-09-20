@@ -14,7 +14,7 @@ uniform bool fillMask, rawOutput;
 uniform vec3 color;
 out vec4 outputColor;
 vec3 sampleAt(vec3 p){
- if(any(lessThan(p,vec3(-0.00001))) || any(greaterThan(p,dims-1.+0.00001)))return vec3(0.);
+ if(any(lessThan(p,vec3(-0.0000001))) || any(greaterThan(p,dims-1.+0.0000001)))return vec3(0.);
  p=clamp(p,vec3(0.),dims-1.);
  ivec3 low=ivec3(floor(p)), high=min(low+1,ivec3(dims)-1);
  vec3 f=p-vec3(low);float hu=0.;
@@ -65,6 +65,7 @@ export class SliceRenderEngine {
     const context=canvas.getContext('webgl2',{antialias:false,alpha:false});
     if(!context)throw new Error('WebGL 2 is unavailable for slices. Enable WebGL and retry.');
     this.renderer=new T.WebGLRenderer({canvas,context,antialias:false,alpha:false});
+    this.renderer.debug.onShaderError=()=>{this.lost=true;onError('The slice shader could not run on this device. Retry with a WebGL 2 browser.');};
     if(Math.max(...volume.dimensions)>context.getParameter(context.MAX_3D_TEXTURE_SIZE)){
       this.renderer.dispose();throw new Error('Preview exceeds this device’s 3D texture limit.');
     }

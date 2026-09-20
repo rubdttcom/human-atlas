@@ -20,7 +20,29 @@ before using Slices; generated binaries are deliberately absent from Git. A rebu
 source atlas requires rebuilding the preview, since the loader binds its full hash.
 Source NIfTI files, frozen pilot data, meshes and QA registries are never overwritten.
 See `docs/plans/synchronized-slices-decisions.md` for the crop, display conventions,
-frozen tolerances and resource budgets. The actual UI remains in progress.
+frozen tolerances and resource budgets. The UI is implemented; release acceptance remains in progress. Run `.venv/bin/python scripts/browser-check-slices.py` against Vite on port 3017 for the current browser/shader checks (CPU SwiftShader; see its `--executable` option).
+
+Add `--benchmark` for sustained drag and entry/exit memory measurements; the
+recorded software-rendering run currently fails the interaction performance target.
+Software WebGL is detected by renderer name and uses a 0.5 3D pixel ratio while
+keeping the slice canvases at their selected resolution; hardware renderers keep
+the normal density path. This is an adaptive fallback, not a relaxed benchmark.
+Firefox checks also run entirely on CPU. The loader has a small SHA-256 fallback
+for plain HTTP LAN previews where `crypto.subtle` is unavailable; HTTPS or
+localhost still use the browser's native implementation:
+
+```bash
+.venv/bin/python scripts/browser-check-slices-firefox.py --driver /tmp/geckodriver --xvfb /tmp/slices-xvfb/usr/bin/Xvfb
+```
+
+This harness uses system Firefox 155.0, geckodriver 0.37.1 from the
+[official release](https://github.com/mozilla/geckodriver/releases/tag/v0.37.1),
+and Xvfb 21.1.24 from Fedora 44, extracted under `/tmp` without system installation.
+Supply your own executable paths if these temporary tools are absent. The harness
+owns a private virtual display, forces Mesa software rendering and refuses an
+unrecognized hardware renderer. Reports and screenshots go to ignored
+`artifacts/slices/`. Use `--base-url` for a production server; the source-module
+phantom is run only against Vite on port 3017.
 
 ## Atlas pipeline environment
 

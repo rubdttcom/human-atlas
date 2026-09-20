@@ -63,6 +63,8 @@ assert.throws(()=>near(sampleVoxel(volume,[7,2,2]).hu,field([1,2,2]),1e-3));
 const hole=index(4,3,2);volume.support[hole]=0;
 assert.equal(sampleVoxel(volume,[3.5,3,2]).state,'outside-coverage');
 assert.equal(sampleVoxel(volume,[3,3,2]).state,'acquired');
+assert.equal(sampleStage(volume,oracle([3,3,2])).state,'acquired');
+assert.equal(sampleVoxel(volume,[3+1e-8,3,2]).state,'outside-coverage');
 assert.equal(sampleVoxel(volume,[-1,0,0]).state,'outside-coverage');
 assert.equal(sampleVoxel(volume,[NaN,0,0]).state,'unavailable');
 assert.equal(sampleVoxel({...volume,intensity:new Float32Array(0)},[0,0,0]).state,'unavailable');
