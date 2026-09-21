@@ -38,7 +38,24 @@ EPOCH_LINE = re.compile(r'^(?:.*\s)?Epoch (\d+)\s*$', re.M)
 # every seeding call a launcher may make, not only random.seed: a launcher that seeded torch differently
 # used to be reported as a single clean seed (Codex audit of 1af1c60)
 SEED_LINE = re.compile(r'(?:random|np\.random|numpy\.random|torch|torch\.cuda)\.'
-                       r'(?:seed|manual_seed|manual_seed_all)\(\s*(\d+)\s*\)')
+                       r'(?:seed|manual_seed|manual_seed_all)\(\s*(\d+|[A-Za-z_]\w*)\s*\)')
+
+
+def seeds_in(text):
+    """Seed values a launcher applies. A literal is read as is; a name (cryo-entry.py since 2026-09-15 writes
+    `SEED = 12345` and then `random.seed(SEED)`) is resolved to the single integer assignment of that name in the
+    same file. A name with no or several assignments is not a seed and is reported as such."""
+    seeds, unresolved = set(), []
+    for arg in SEED_LINE.findall(text):
+        if arg.isdigit():
+            seeds.add(int(arg))
+            continue
+        values = set(re.findall(r'^\s*%s\s*=\s*(\d+)\s*(?:#.*)?$' % re.escape(arg), text, re.M))
+        if len(values) == 1:
+            seeds.add(int(values.pop()))
+        else:
+            unresolved.append(arg)
+    return sorted(seeds), unresolved
 
 
 def sha256_file(p, chunk=1 << 24):
@@ -132,9 +149,12 @@ def main():
 
     if launcher.exists():
         text = launcher.read_text()
-        seeds = sorted({int(m) for m in SEED_LINE.findall(text)})
+        seeds, unresolved = seeds_in(text)
         rec['launcher'] = {'path': tok(launcher), 'sha256': sha256_file(launcher),
                            'seeds_found_in_launcher': seeds}
+        if unresolved:
+            rec['launcher']['unresolved_seed_names'] = unresolved
+            seeds = []
         # one value only is a seed; several different ones are not one seed and are not reported as one
         rec['seed'] = seeds[0] if len(seeds) == 1 else None
         if len(seeds) != 1:

@@ -1,0 +1,420 @@
+{
+ "id": "cryo-nnunet-train-block2-rgb-plus-ct-prior-v2",
+ "date": "2026-09-21",
+ "variant": "rgb-plus-ct-prior",
+ "prior_version": 2,
+ "training_slices_k": [
+  2287,
+  2296,
+  2297,
+  2301,
+  2335,
+  2379,
+  2423,
+  2425,
+  2433,
+  2434,
+  2435,
+  2436,
+  2442,
+  2443,
+  2444,
+  2445,
+  2446,
+  2447,
+  2448,
+  2449,
+  2450,
+  2451,
+  2452,
+  2453,
+  2454,
+  2455,
+  2456,
+  2457,
+  2458,
+  2459,
+  2460,
+  2461,
+  2462,
+  2463,
+  2464,
+  2465,
+  2467,
+  2469,
+  2470,
+  2471,
+  2472,
+  2473,
+  2474,
+  2476,
+  2477,
+  2478,
+  2479,
+  2480,
+  2481,
+  2482,
+  2483,
+  2484,
+  2485,
+  2486,
+  2487,
+  2488,
+  2489,
+  2490,
+  2491,
+  2492,
+  2493,
+  2494,
+  2495,
+  2496,
+  2497,
+  2708,
+  2709,
+  2710,
+  2711,
+  2712,
+  2713,
+  2714,
+  2715,
+  2716,
+  2717,
+  2718,
+  2719,
+  2720,
+  2721,
+  2722,
+  2723,
+  2724,
+  2725,
+  2726,
+  2727,
+  2728,
+  2729,
+  2730,
+  2731,
+  2732,
+  2733,
+  2734,
+  2735,
+  2736,
+  2737,
+  2738,
+  2739,
+  2740,
+  2741,
+  2742,
+  2743,
+  2744,
+  2745,
+  2746,
+  2747,
+  2748,
+  2749,
+  2750,
+  2751,
+  2752,
+  2753,
+  2754,
+  2755,
+  2756,
+  2757,
+  2758,
+  2759,
+  2760,
+  2761,
+  2762,
+  2763,
+  2764,
+  2765,
+  2766,
+  2767,
+  2768,
+  2769,
+  2770,
+  2771,
+  2772,
+  2773,
+  2774,
+  2775,
+  2776,
+  2777,
+  2778,
+  2779,
+  2780,
+  2781,
+  2782,
+  2783,
+  2784,
+  2785,
+  2786,
+  2787,
+  2788,
+  2789,
+  2790,
+  2791,
+  2792,
+  2793,
+  2794,
+  2795,
+  2796,
+  2797,
+  2798,
+  2799,
+  2800,
+  2801,
+  2802,
+  2803,
+  2804,
+  2805,
+  2806,
+  2807,
+  2808,
+  2809,
+  2810,
+  2811,
+  2812,
+  2813,
+  2814,
+  2815,
+  2816,
+  2817,
+  2818,
+  2819,
+  2820,
+  2821,
+  2822,
+  2823,
+  2824,
+  2825,
+  2826,
+  2827,
+  2828,
+  2829,
+  2830,
+  2831,
+  2832,
+  2833,
+  2834,
+  2835,
+  2836,
+  2837,
+  2838,
+  2839
+ ],
+ "fold": 0,
+ "seed": 12345,
+ "nnunetv2_version": "2.8.1",
+ "weights_sha256": "2c7b1f6db6a3e7e75ebc5ab89bdb8a0d0d33a54176f8e73e0fe8dff1c3934874",
+ "dataset_fingerprint": "251052c5d1744140f89765502430f184d0612ad9e5453479434ad943341d7e94",
+ "plans_identifier": "nnUNetPlans",
+ "runs": [
+  {
+   "run": 1,
+   "status": "interrupted-by-operator",
+   "date": "2026-09-20 to 2026-09-21",
+   "epochs": "0 to 807",
+   "reason": "started 2026-09-20 22:56:07 training-box time, after the protocol v2 freeze instant 21:55:30; the user asked for the GPU to be freed during the day and the launcher process group was stopped on 2026-09-21 09:42 at epoch 807; checkpoint_latest.pth is the epoch-800 save of 09:37. Not a failure, not a restart of training, and no score existed or was looked at.",
+   "started": "2026_9_20_22_56_07",
+   "log": "training_log_2026_9_20_22_56_07.txt",
+   "log_sha256": "5229f716b1300aa2f566a6f74c246071b571add9e6a2024d45897f1839f646a3"
+  },
+  {
+   "run": 2,
+   "status": "completed",
+   "date": "2026-09-21",
+   "epochs": "800 to 999",
+   "reason": "continuation from checkpoint_latest.pth at epoch 800 with the same seed, the same frozen split and the same data (run-cryo-resume.sh 503 rgb-plus-ct-prior, started 18:04:35). nnU-Net writes one training log per start, so the record observes two logs and the manifest writer types one entry per log; this is one training continued, not a second attempt at the variant, and the version 2 protocol text (docs/PROGRESS.md, operator stop of 2026-09-21) counts it as one run.",
+   "started": "2026_9_21_18_04_35",
+   "log": "training_log_2026_9_21_18_04_35.txt",
+   "log_sha256": "e7de6d8c589a308a1dce1e4ffb765dd38b9813ad6017a1d01d8a5eeeb79b1e00"
+  }
+ ],
+ "runs_observed": [
+  {
+   "log": "training_log_2026_9_20_22_56_07.txt",
+   "started": "2026_9_20_22_56_07",
+   "last_epoch_logged": 807,
+   "bytes": 303343,
+   "sha256": "5229f716b1300aa2f566a6f74c246071b571add9e6a2024d45897f1839f646a3"
+  },
+  {
+   "log": "training_log_2026_9_21_18_04_35.txt",
+   "started": "2026_9_21_18_04_35",
+   "last_epoch_logged": 999,
+   "bytes": 80389,
+   "sha256": "e7de6d8c589a308a1dce1e4ffb765dd38b9813ad6017a1d01d8a5eeeb79b1e00"
+  }
+ ],
+ "protocol_sha256": "9cf3d705d7df9b5a6499b643ad0ece761ff63089d94e34de2a54e34486f52a98",
+ "protocol": "registry/machine-acceptance-protocol-v2.json",
+ "protocol_version": 2,
+ "provenance": {
+  "path": "generated/runs/nnunet-run-provenance-503.json",
+  "sha256": "dd437cdfb7dd4a23ffc3ad54ef7e59b23f21aa57d71b632373c7d1d79182ce70",
+  "torch_version": "2.14.0+cu130",
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "launcher": {
+   "path": "$VHF_ROOT/cryo-entry.py",
+   "sha256": "29aabc0334bf839a20b3367a8391cdd3af563f88884967514a6af5d91b485c13",
+   "seeds_found_in_launcher": [
+    12345
+   ]
+  },
+  "checkpoints": {
+   "checkpoint_final.pth": {
+    "sha256": "2c7b1f6db6a3e7e75ebc5ab89bdb8a0d0d33a54176f8e73e0fe8dff1c3934874",
+    "bytes": 268403381
+   },
+   "checkpoint_best.pth": {
+    "sha256": "4bebb42783528bab1b5a7bba254b36fc2fc7d0afc707691a51a551f32e2a14b5",
+    "bytes": 267953711
+   }
+  },
+  "plans_sha256": "e59459c88400866bac5c94650d7d4391a4af68c194270d370b4061894f6d71ac",
+  "splits_sha256": "74530e530f9359768b8c3b72b768157bef9b881247271f12553c8fbf29576dd3",
+  "configuration_2d": {
+   "patch_size": [
+    448,
+    704
+   ],
+   "batch_size": 9,
+   "spacing": [
+    0.6660000085830688,
+    0.6660000085830688
+   ],
+   "median_image_size_in_voxels": [
+    434.0,
+    666.0
+   ],
+   "normalization_schemes": [
+    "RGBTo01Normalization",
+    "RGBTo01Normalization",
+    "RGBTo01Normalization",
+    "NoNormalization",
+    "NoNormalization",
+    "NoNormalization",
+    "NoNormalization"
+   ]
+  }
+ },
+ "dataset": {
+  "id": 503,
+  "name": "Dataset503_VHFCryoBlock2RGBPriorV2",
+  "channels": [
+   "rgb_to_0_1",
+   "rgb_to_0_1",
+   "rgb_to_0_1",
+   "nonorm",
+   "nonorm",
+   "nonorm",
+   "nonorm"
+  ],
+  "channel_meaning": [
+   "photograph R",
+   "photograph G",
+   "photograph B",
+   "CT prior v2 consensus bone",
+   "CT prior v2 bone disagreement",
+   "CT prior v2 in-plane distance to consensus bone (float32 0..1 = mm / 15)",
+   "CT prior v2 muscle (TotalSegmentator)"
+  ],
+  "report": "generated/cryo-nnunet-dataset-block2-rgb-plus-ct-prior-v2.json",
+  "report_sha256": "6c5730fa4a5914d55368645163a29a8ec8326890b90c380140a67d96f68fceff"
+ },
+ "split": {
+  "kind": "frozen, blocked by the 50 mm bins of the bands file",
+  "boundary_limit": "a training slice and a validation slice can be adjacent across a bin boundary (minimum distance 1 slice, 0.333 mm, in all four folds); the blocking stops a shuffled-slice split, not the boundary pair. The graded bands keep their 10 mm buffers and are never sampled.",
+  "folds": [
+   {
+    "bin_k": [
+     2285,
+     2434
+    ],
+    "val": 10,
+    "train": 187
+   },
+   {
+    "bin_k": [
+     2435,
+     2584
+    ],
+    "val": 55,
+    "train": 142
+   },
+   {
+    "bin_k": [
+     2585,
+     2734
+    ],
+    "val": 27,
+    "train": 170
+   },
+   {
+    "bin_k": [
+     2735,
+     2884
+    ],
+    "val": 105,
+    "train": 92
+   }
+  ],
+  "fold_trained": 0,
+  "fold_0_rationale": "bin 0 holds the fewest primary slices, so fold 0 leaves the most for training; fixed before any score existed",
+  "inference_checkpoint": "checkpoint_final: the validation fold reports, it never selects"
+ },
+ "inputs": {
+  "block_manifest_sha256": "dbb73030ca5a4961de164fc9c0dbb85e6c839eeb414969f1185a3d909061325e",
+  "rgb_sha256": "f7997b57c5446e4988df634956714da3e521672ddd17153922e89f981c1bc0a5",
+  "tissue_classes_sha256": "a3d44efe5965e6b8d6ccbbf496c5407962f877737cf08c7d58013d319eccf812",
+  "tissue_map_sha256": "efabc86953124cd031e892128a67f78978e287be8a04e3c70bb16d5b1c0954a4",
+  "protocol": "registry/machine-acceptance-protocol-v2.json",
+  "protocol_version": 2,
+  "protocol_sha256": "9cf3d705d7df9b5a6499b643ad0ece761ff63089d94e34de2a54e34486f52a98",
+  "ct_prior_v2": {
+   "bone": {
+    "file": "ct-prior-v2-bone.nii.gz",
+    "sha256": "f7803173635e2aaf11de347a7a1dfe106c0411ec07f75690b0f9d14b2595dcfd"
+   },
+   "bone-disagreement": {
+    "file": "ct-prior-v2-bone-disagreement.nii.gz",
+    "sha256": "065f578288d6568dbd330bfa52d1a9d04bdf6df1d09b46295e6d26e1cccc4c23"
+   },
+   "bone-distance": {
+    "file": "ct-prior-v2-bone-distance.nii.gz",
+    "sha256": "76a39d770797a3f61407294b710c7494356cabe8cd963da3bdc654a5b85b35e5"
+   },
+   "muscle": {
+    "file": "ct-prior-v2-muscle.nii.gz",
+    "sha256": "a1c39e65371fa3bba5df068e75f05d8d1ba1a8802eb7a9df9179af4b5e0f9f73"
+   }
+  },
+  "ct_prior_map_v2_sha256": "faf8dafce82b88e3de2b4a560670712ccc06801454e9b13e6ea9bb0b1f8248e2",
+  "ct_prior_v2_report": "generated/cryo-ct-prior-v2-block2.json",
+  "ct_prior_v2_report_sha256": "3344c0131ba7d92a5f94aaecce0caea6bdec77f68ebba52d2bb0ef2bd8aa5cd7"
+ },
+ "ignore_encoding": {
+  "reference_value": 255,
+  "nnunet_value": 4,
+  "reason": "nnU-Net asserts the ignore label equals max(labels) + 1 and refuses 255",
+  "scope": "the derived nnU-Net label files only; tissue-classes.nii.gz and its pinned hash are untouched",
+  "collision": "the registry meaning of 4 (ligament-tendon) is not declared in this dataset; the builder refuses a source volume that already holds 4 or 5"
+ },
+ "slice_axis_spacing": {
+  "stored_mm": 999.0,
+  "true_through_plane_mm": 0.333,
+  "reason": "nnU-Net orders the axes by spacing and puts the largest first; with the true 0.333 mm the singleton axis was reordered into the middle and the 2D planner produced a [1, 704] patch, one-pixel strips instead of slices",
+  "scope": "the derived nnU-Net cases only; the graded volume is rebuilt on the reference affine"
+ },
+ "limits": [
+  "the prior channels are an input, never a target: the reference stays the Denver original labels through the tissue map",
+  "the ignore label is 4 inside the nnU-Net dataset and 255 in the reference; the two encodings must never be compared directly",
+  "a 2D configuration sees one slice at a time; no through-plane context",
+  "the frozen split reports only; the graded result is the band prediction",
+  "nnUNetv2_train has no seed flag; the value is the one the launcher applies to random, numpy and torch in the main process",
+  "nnU-Net passes seeds=None to its batch-generator workers, so augmentation is unseeded and the run is not bit-reproducible",
+  "cuDNN benchmarking is on by default, which makes some kernels non-deterministic as well",
+  "the declared run history is checked against one training log per training start; a run that left no log on this box cannot be seen here"
+ ],
+ "consistency_problems": []
+}

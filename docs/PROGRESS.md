@@ -334,6 +334,58 @@ rgb-plus-ct-prior`, log `logs/cryo-train-503.log`, run 1 of the two protocol v2 
 `record-nnunet-run.py` on rub-pc, `write-cryo-train-manifest.py --variant rgb-plus-ct-prior --prior-version 2`,
 `cryo-pilot-evaluate-v2.py --variant rgb-plus-ct-prior`. The protocol pins none of the prior files, so no criterion,
 band or threshold changed; the prior is pinned at evaluation through the training manifest. Nothing here is anatomy.
+Operator stop, 2026-09-21 09:42 (user decision, to free the GPU during the day): the run was stopped at epoch 807
+with SIGTERM to the launcher's process group; nnU-Net's checkpoint_latest.pth is the epoch-800 save of 09:37:00, so
+the stop costs about seven epochs; the launcher printed its sentinel (ok false, stage start) as designed. Resumption
+was made at 18:04:20 the same day (the in-session scheduler of 18:30 died with the operator's session; the user asked
+for the resumption by hand) with `run-cryo-resume.sh 503 rgb-plus-ct-prior` (log `logs/cryo-resume-503.log`, its own
+training log `training_log_2026_9_21_18_04_35.txt`). Under protocol v2 an operator stop with a continuation from the latest checkpoint (same seed,
+split and data, no score seen) is ONE run listed with both logs; the manifest writer copies both log stamps, the
+first at 22:56:07, after the freeze instant. A watchdog on rub-pc (`cryo-watchdog.sh`, every 5 min, reports only)
+checked the run every 30 min from 23:23 to 09:28: every check ok, 47.2 s per epoch, pseudo Dice of the validation
+fold 0.66 to 0.99 (the mean over three classes, cartilage included).
+
+**Result of the first protocol v2 run, `rgb-plus-ct-prior` with the version 2 prior (dataset 503), 2026-09-21.**
+Training finished at epoch 999 at 20:45 (200 epochs after the resumption at 46.5 to 47.2 s each), nnU-Net's own
+validation and the prediction of the 291 band slices followed, sentinel ok at 20:49 (161 minutes for the second
+start). Chain: `assemble-cryo-prediction.py --report-tag=-v2` ->
+`data/derived/nnunet/pred/pred-block2-rgb-plus-ct-prior-v2.nii.gz` (sha256 aba9f558...) and
+`generated/cryo-prediction-block2-rgb-plus-ct-prior-v2.json` (291 predicted, 0 band slices without a prediction);
+`record-nnunet-run.py` on rub-pc -> `generated/runs/nnunet-run-provenance-503.json` (two logs observed, 807 and 999
+as last epochs, checkpoint_final present, split 187/10, seven channels); `write-cryo-train-manifest.py
+--prior-version 2` -> `generated/cryo-nnunet-train-block2-rgb-plus-ct-prior-v2.json`, no problems;
+`cryo-pilot-evaluate-v2.py --variant rgb-plus-ct-prior` (525 s) ->
+`generated/cryo-pilot-acceptance-v2-rgb-plus-ct-prior-block2.json` (sha256 8a77efc0...). Every gate passed,
+`evaluator_trusted: true`, 291 scoring slices (100 usable-only), 42.15 M eligible voxels.
+Closure: NO class machine-accepted; bone, cartilage and muscle machine-failed; ligament-tendon and fat
+machine-not-assessable as before. Figures (pooled, both bands): bone Dice 0.9728 (H_bone 0.9324, passes), observable
+p95 2.746 mm (P 0.9419 mm, fails; band 1 2.106, band 2 3.280; p50 0.666, mean 0.852 mm); muscle Dice 0.9892 (passes),
+p95 1.665 mm (fails; band 1 2.331, band 2 1.332; p50 0.666, mean 0.542 mm); cartilage Dice 0.4193 (reported only),
+p95 14.754 mm (P 0.9704, fails), required-neighbour median 2.401 mm to bone against the bar 2.2739 (fails; the
+reference's own figure is 1.332 mm), band 2 456 false-positive voxels with no reference, and three model-side
+controls not as required (shift 0.301, dilation 0.382 and wrong-neighbour 0.395 Dice do not sit below the prediction's
+0.419 by the required margin). Bone and muscle model-side controls degrade as required (bone: mirror 0.816, shift
+0.947, dilation 0.955, wrong neighbour 0.780 against 0.973). Reading, without anatomy: the surface criterion is the
+one that fails for bone and muscle, by a factor 1.8 to 2.9 over a bar that is the Denver mesh-to-label floor itself
+(P = 0.9419 mm is 1.4 voxels in plane); Dice sits 0.04 above H_bone and 0.08 above H_muscle - 0.03. Against the same
+variant under version 1 (dataset 502, Dice 0.9699 / 0.9891 / 0.4285; Dice's definition is unchanged in v2), the
+version 2 prior moves bone Dice by +0.003 and muscle and cartilage by less than 0.01: within what two runs with
+unseeded augmentation could show, and this is a different dataset, so nothing here separates the prior from run
+noise. The v1 surface figures (27.2 / 31.2 / 11.8 mm) and the post hoc figures of 502 (bone 3.41 mm) are not
+comparable to the v2 figures on the record: other metric, other run. Plan B 9 decision rule (bone AND muscle
+machine-accepted in at least one variant) is NOT met by this run. Protocol v2 allows one more training run of this
+variant only for a technical failure of this one; there was none. Any change to data, map, bands, thresholds or
+controls from here on is version 3 and post hoc with respect to this score.
+Record structure: `write-cryo-train-manifest.py` types one run entry per training log, so the manifest lists
+`run 1 interrupted-by-operator (0 to 807)` and `run 2 completed (800 to 999)` as dataset 502 did, and the evaluator
+counts two of the two runs the limit allows; the protocol text above counts an operator stop plus continuation as one
+run. Both readings are on the record; the manifest reasons state it. `record-nnunet-run.py` reported `seed: null` on
+the first attempt: since 2026-09-15 the launchers delegate to `cryo-entry.py`, which writes `SEED = 12345` and seeds
+through the name, and the scan read literals only. The scan now resolves a name to its single integer assignment in
+the same file and reports unresolved names (`scripts/test-record-nnunet-run.py`, 8 cases, in the done list); the
+record was made with `--launcher cryo-entry.py`, the file that seeds and calls `run_training`, not the shell wrapper.
+The 502 record was made from an older `run-cryo-resume.sh` that still held the literal. Full definition of done
+passed on 2026-09-21 after the evaluation. Nothing here is anatomy; nothing is committed.
 
 **This closes the pre-score window for protocol v2.** The change planned above was to be made before
 any evaluation existed. It no longer can be. The path-string change still touches no criterion but
